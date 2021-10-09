@@ -17,8 +17,11 @@ class _AndroidDrawerScreenState extends State<AndroidDrawerScreen> {
             height: 200,
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
+            leading: Icon(
+              Icons.home,
+              color: Colors.teal,
+            ),
+            title: Text('Home', style: TextStyle(color: Colors.teal)),
             onTap: () {
               Navigator.pop(context);
               Navigator.pushReplacement(context,
@@ -26,13 +29,19 @@ class _AndroidDrawerScreenState extends State<AndroidDrawerScreen> {
             },
           ),
           ListTile(
-            title: Text('Projects'),
+            title: Text(
+              'Projects',
+              style: TextStyle(color: Colors.teal),
+            ),
             onTap: () {
               Navigator.pop(context);
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (ctx) => AndroidProjectScreen()));
             },
-            leading: Icon(Icons.apps_sharp),
+            leading: Icon(
+              Icons.apps_sharp,
+              color: Colors.teal,
+            ),
           )
         ],
       ),

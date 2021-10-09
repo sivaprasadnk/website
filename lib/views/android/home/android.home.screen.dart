@@ -64,138 +64,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
     // var scaffold = Scaffold.of(context);
     return Scaffold(
         backgroundColor: Styles.themeData(isDarkTheme, context).backgroundColor,
-        // appBar: PreferredSize(
-        //   preferredSize: Size(screenSize.width, 65),
-        //   child: Container(
-        //     color: Colors.blue,
-        //     child: Padding(
-        //       padding: EdgeInsets.only(top: 70),
-        //       child: Row(
-        //         crossAxisAlignment: CrossAxisAlignment.start,
-        //         children: [
-        //           MouseRegion(
-        //             cursor: SystemMouseCursors.click,
-        //             child: GestureDetector(
-        //               onTap: () {
-        //                 setState(() {
-        //                   homeSelected = true;
-        //                 });
-        //               },
-        //               child: nameText(),
-        //             ),
-        //           ),
-        //           Expanded(
-        //             child: Container(),
-        //           ),
-        //           SizedBox(
-        //             height: 50,
-        //             child: Switch.adaptive(
-        //                 activeColor: Colors.black,
-        //                 value: themeProvider.darkTheme,
-        //                 onChanged: (value) {
-        //                   themeProvider.darkTheme = value;
-        //                 }),
-        //           ),
-        //           InkWell(
-        //             onHover: (value) {
-        //               setState(() {
-        //                 _isHovering[0] = value;
-        //                 _isHovering[1] = false;
-        //                 _isHovering[2] = false;
-        //               });
-        //             },
-        //             onTap: () {
-        //               setState(() {
-        //                 homeSelected = true;
-        //                 projectSelected = false;
-        //               });
-        //             },
-        //             child: Column(
-        //               mainAxisSize: MainAxisSize.min,
-        //               children: [
-        //                 Text(
-        //                   'Home',
-        //                   style: TextStyle(
-        //                     fontFamily: 'PatuaOne',
-        //                     color: _isHovering[0]
-        //                         ? Colors.blue.shade200
-        //                         : Colors.white,
-        //                   ),
-        //                 ),
-        //                 SizedBox(height: 5),
-        //                 // For showing an underline on hover
-        //                 Visibility(
-        //                   maintainAnimation: true,
-        //                   maintainState: true,
-        //                   maintainSize: true,
-        //                   visible: screenWidth > 500
-        //                       ? _isHovering[0] || homeSelected
-        //                       : homeSelected,
-        //                   child: Container(
-        //                     height: 2,
-        //                     width: 40,
-        //                     color: Colors.white,
-        //                   ),
-        //                 )
-        //               ],
-        //             ),
-        //           ),
-        //           SizedBox(
-        //             width: screenSize.width / 50,
-        //           ),
-        //           InkWell(
-        //             onHover: (value) {
-        //               setState(() {
-        //                 _isHovering[0] = false;
-        //                 _isHovering[1] = value;
-        //                 _isHovering[2] = false;
-        //               });
-        //             },
-        //             onTap: () {
-        //               setState(() {
-        //                 projectSelected = true;
-        //                 homeSelected = false;
-        //                 // projectSelected = false;
-        //               });
-        //             },
-        //             child: Column(
-        //               mainAxisSize: MainAxisSize.min,
-        //               children: [
-        //                 Text(
-        //                   'Projects',
-        //                   style: TextStyle(
-        //                     fontFamily: 'PatuaOne',
-        //                     color: _isHovering[1]
-        //                         ? Colors.blue.shade200
-        //                         : Colors.white,
-        //                   ),
-        //                 ),
-        //                 SizedBox(height: 5),
-        //                 // For showing an underline on hover
-        //                 Visibility(
-        //                   maintainAnimation: true,
-        //                   maintainState: true,
-        //                   maintainSize: true,
-        //                   visible: screenWidth > 500
-        //                       ? _isHovering[1] || projectSelected
-        //                       : projectSelected,
-        //                   child: Container(
-        //                     height: 2,
-        //                     width: 40,
-        //                     color: Colors.white,
-        //                   ),
-        //                 )
-        //               ],
-        //             ),
-        //           ),
-        //           SizedBox(
-        //             width: screenSize.width / 50,
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //   ),
-        // ),
+
         drawer: Drawer(
           child: AndroidDrawerScreen(),
         ),
@@ -286,57 +155,45 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    MouseRegion(
-                                      cursor: SystemMouseCursors.click,
-                                      child: GestureDetector(
-                                        child: Container(
-                                          child: fbPng,
-                                        ),
-                                        onTap: () {
-                                          launch(fbLink);
-                                        },
+                                    GestureDetector(
+                                      child: Container(
+                                        child: fbPng,
                                       ),
+                                      onTap: () {
+                                        launch(fbLink);
+                                      },
                                     ),
                                     SizedBox(
                                       width: 15,
                                     ),
-                                    MouseRegion(
-                                      cursor: SystemMouseCursors.click,
-                                      child: GestureDetector(
-                                        child: instaPng,
-                                        onTap: () {
-                                          launch(instaLink);
-                                        },
-                                      ),
+                                    GestureDetector(
+                                      child: instaPng,
+                                      onTap: () {
+                                        launch(instaLink);
+                                      },
                                     ),
                                     SizedBox(
                                       width: 15,
                                     ),
-                                    MouseRegion(
-                                      cursor: SystemMouseCursors.click,
-                                      child: GestureDetector(
-                                        child: waPng,
-                                        onTap: () {
-                                          if (kIsWeb) {
-                                            launch(whatsappWebLink);
-                                          } else {
-                                            if (Platform.isAndroid)
-                                              launch(whatsappAndroidLink);
-                                          }
-                                        },
-                                      ),
+                                    GestureDetector(
+                                      child: waPng,
+                                      onTap: () {
+                                        if (kIsWeb) {
+                                          launch(whatsappWebLink);
+                                        } else {
+                                          if (Platform.isAndroid)
+                                            launch(whatsappAndroidLink);
+                                        }
+                                      },
                                     ),
                                     SizedBox(
                                       width: 15,
                                     ),
-                                    MouseRegion(
-                                      cursor: SystemMouseCursors.click,
-                                      child: GestureDetector(
-                                        child: linkedInPng,
-                                        onTap: () {
-                                          launch(linkedInLink);
-                                        },
-                                      ),
+                                    GestureDetector(
+                                      child: linkedInPng,
+                                      onTap: () {
+                                        launch(linkedInLink);
+                                      },
                                     ),
                                   ],
                                 ),

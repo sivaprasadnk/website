@@ -19,7 +19,7 @@ class _WindowsProjectScreenState extends State<WindowsProjectScreen> {
     return Container(
       child: Stack(
         children: [
-          if (defaultTargetPlatform != TargetPlatform.iOS)
+         
             SizedBox(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,

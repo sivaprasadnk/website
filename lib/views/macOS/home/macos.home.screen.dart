@@ -13,7 +13,7 @@ import 'package:spnk/views/macOS/projects/macos.projects.screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MacOsHomeScreen extends StatefulWidget {
-  static const routeName = '/Home';
+  // static const routeName = '/Home';
   const MacOsHomeScreen({Key? key}) : super(key: key);
 
   @override

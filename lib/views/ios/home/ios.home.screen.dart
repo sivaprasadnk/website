@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -49,7 +50,7 @@ class _IosHomeScreenState extends State<IosHomeScreen> {
         showImage = true;
       });
     });
-    Future.delayed(Duration(seconds: 3)).then((value) {
+    Future.delayed(Duration(seconds: 2)).then((value) {
       setState(() {
         showQuote = true;
       });
@@ -69,157 +70,124 @@ class _IosHomeScreenState extends State<IosHomeScreen> {
           child: IosDrawerScreen(),
         ),
         body: homeSelected
-            ? Stack(
-                children: [
-                  Builder(
-                    builder: (ctx) => Positioned.fill(
-                      top: 50,
-                      left: 20,
-                      child: Align(
+            ? SizedBox(
+                height: screenSize.height,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      height: 75,
+                    ),
+                    Builder(
+                      builder: (ctx) => Align(
                         alignment: Alignment.topLeft,
                         child: GestureDetector(
                             onTap: () {
                               debugPrint('...@1');
                               Scaffold.of(ctx).openDrawer();
                             },
-                            child: Icon(Icons.menu)),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: Icon(Icons.menu),
+                            )),
                       ),
                     ),
-                  ),
-                  Container(
-                    height: screenSize.height,
-                    child: Column(
+                    AnimatedOpacity(
+                      opacity: showQuote ? 1 : 0,
+                      duration: Duration(seconds: 3),
+                      child: Container(
+                        padding: EdgeInsets.only(top: 20, left: 20, right: 15),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SelectableText(
+                              '" ' + quote1 + ' "',
+                              toolbarOptions:
+                                  ToolbarOptions(copy: true, selectAll: true),
+                              textAlign: TextAlign.center,
+                              style: quoteStyle,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              ' - $author1',
+                              maxLines: 2,
+                              textAlign: TextAlign.right,
+                              style: authorStyle,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Spacer(),
+                    CircleAvatar(
+                      radius: screenSize.width * 0.3,
+                      child: Image(
+                        image: AssetImage(
+                          'assets/images/profile-pic.png',
+                        ),
+                      ),
+                    ),
+                    nameText(textColor: Colors.teal),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        FadeInLeftBig(
+                          child: GestureDetector(
+                            child: Container(
+                              child: fbPng,
+                            ),
+                            onTap: () {
+                              launch(fbLink);
+                            },
+                          ),
+                        ),
                         SizedBox(
-                          height: 75,
+                          width: 15,
                         ),
-                        AnimatedOpacity(
-                          opacity: showQuote ? 1 : 0,
-                          duration: Duration(seconds: 3),
-                          child: Container(
-                            padding: EdgeInsets.all(30),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SelectableText(
-                                  '" ' + quote1 + ' "',
-                                  toolbarOptions: ToolbarOptions(
-                                      copy: true, selectAll: true),
-                                  textAlign: TextAlign.center,
-                                  style: quoteStyle,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  ' - $author1',
-                                  maxLines: 2,
-                                  textAlign: TextAlign.right,
-                                  style: authorStyle,
-                                ),
-                                // SizedBox(
-                                //   height: 20,
-                                // ),
-                              ],
-                            ),
+                        FadeInUpBig(
+                          child: GestureDetector(
+                            child: instaPng,
+                            onTap: () {
+                              launch(instaLink);
+                            },
                           ),
                         ),
-                        // Spacer(),
-                        AnimatedOpacity(
-                          opacity: showImage ? 1 : 0,
-                          duration: Duration(milliseconds: 500),
-                          child: Container(
-                            padding: const EdgeInsets.all(38.0),
-                            // height: 1000,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 50,
-                                ),
-                                Container(
-                                  child: CircleAvatar(
-                                    radius: 80,
-                                    backgroundImage: AssetImage(
-                                      'assets/images/propic3.jpg',
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Center(
-                                  child: nameText(textColor: Colors.teal),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    MouseRegion(
-                                      cursor: SystemMouseCursors.click,
-                                      child: GestureDetector(
-                                        child: Container(
-                                          child: fbPng,
-                                        ),
-                                        onTap: () {
-                                          launch(fbLink);
-                                        },
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    MouseRegion(
-                                      cursor: SystemMouseCursors.click,
-                                      child: GestureDetector(
-                                        child: instaPng,
-                                        onTap: () {
-                                          launch(instaLink);
-                                        },
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    MouseRegion(
-                                      cursor: SystemMouseCursors.click,
-                                      child: GestureDetector(
-                                        child: waPng,
-                                        onTap: () {
-                                          if (kIsWeb) {
-                                            launch(whatsappWebLink);
-                                          } else {
-                                            if (Platform.isAndroid)
-                                              launch(whatsappAndroidLink);
-                                          }
-                                        },
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    MouseRegion(
-                                      cursor: SystemMouseCursors.click,
-                                      child: GestureDetector(
-                                        child: linkedInPng,
-                                        onTap: () {
-                                          launch(linkedInLink);
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        FadeInUpBig(
+                          child: GestureDetector(
+                            child: waPng,
+                            onTap: () {
+                              launch(whatsappWebLink);
+                            },
                           ),
-                        )
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        FadeInRightBig(
+                          child: GestureDetector(
+                            child: linkedInPng,
+                            onTap: () {
+                              launch(linkedInLink);
+                            },
+                          ),
+                        ),
                       ],
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: 50,
+                    ),
+                  ],
+                ),
               )
             : IosProjectScreen());
   }

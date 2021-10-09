@@ -14,7 +14,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    precacheImage(AssetImage("assets/images/propic3.jpg"), context);
+    // precacheImage(AssetImage("assets/images/propic3.jpg"), context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<Quotes>.value(value: Quotes()),
@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
           AndroidHomeScreen.routeName: (context) => AndroidHomeScreen(),
           WindowsHomeScreen.routeName: (context) => WindowsHomeScreen(),
           IosHomeScreen.routeName: (context) => IosHomeScreen(),
-          MacOsHomeScreen.routeName: (context) => MacOsHomeScreen()
         },
       ),
     );
@@ -53,10 +52,12 @@ class _SplashScreenState extends State<SplashScreen>
       } else if (defaultTargetPlatform == TargetPlatform.iOS) {
         Navigator.pushReplacementNamed(context, IosHomeScreen.routeName);
       } else if (defaultTargetPlatform == TargetPlatform.macOS) {
-        Navigator.pushReplacementNamed(context, MacOsHomeScreen.routeName);
-      } else {
         debugPrint('...@ hereee2');
-        Navigator.pushReplacementNamed(context, WindowsHomeScreen.routeName);
+        // Navigator.pushReplacement(
+        //     context, MaterialPageRoute(builder: (ctx) => MacOsHomeScreen()));
+        // Navigator.pushReplacementNamed(context, MacOsHomeScreen.routeName);
+      } else {
+        // Navigator.pushReplacementNamed(context, WindowsHomeScreen.routeName);
       }
       // defaultTargetPlatform == Targ
     });

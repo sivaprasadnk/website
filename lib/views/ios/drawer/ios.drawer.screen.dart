@@ -17,8 +17,14 @@ class _IosDrawerScreenState extends State<IosDrawerScreen> {
             height: 200,
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
+            leading: Icon(
+              Icons.home,
+              color: Colors.teal,
+            ),
+            title: Text(
+              'Home',
+              style: TextStyle(color: Colors.teal),
+            ),
             onTap: () {
               Navigator.pop(context);
               Navigator.pushReplacement(context,
@@ -26,13 +32,19 @@ class _IosDrawerScreenState extends State<IosDrawerScreen> {
             },
           ),
           ListTile(
-            title: Text('Projects'),
+            title: Text(
+              'Projects',
+              style: TextStyle(color: Colors.teal),
+            ),
             onTap: () {
               Navigator.pop(context);
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (ctx) => IosProjectScreen()));
             },
-            leading: Icon(Icons.apps_sharp),
+            leading: Icon(
+              Icons.apps_sharp,
+              color: Colors.teal,
+            ),
           )
         ],
       ),

@@ -51,7 +51,7 @@ class _IosProjectScreenState extends State<IosProjectScreen> {
                   height: 100,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: screenWidth > 500
                       ? BorderedText(
                           strokeWidth: 4.0,
@@ -79,11 +79,11 @@ class _IosProjectScreenState extends State<IosProjectScreen> {
                   height: 25,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: ListView.separated(
                     separatorBuilder: (ctx, i) {
                       return SizedBox(
-                        height: 10,
+                        height: 20,
                       );
                     },
                     shrinkWrap: true,
@@ -124,7 +124,7 @@ class _IosProjectScreenState extends State<IosProjectScreen> {
                                       child: Text(
                                         ' A simple Quotes \n Listing App',
                                         style: TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 18,
                                           // fontFamily: 'Gugi',
                                           color: Colors.teal,
                                           fontWeight: FontWeight.bold,

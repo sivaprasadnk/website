@@ -92,7 +92,7 @@ class NameWidget extends StatelessWidget {
   }
 }
 
-Text nameText({required Color textColor}) {
+Text nameText({required Color textColor,}) {
   return Text(
     'Sivaprasad NK',
     style: TextStyle(
