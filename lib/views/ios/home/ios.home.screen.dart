@@ -74,7 +74,7 @@ class _IosHomeScreenState extends State<IosHomeScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     SizedBox(
-                      height: 75,
+                      height: screenSize.height * .1,
                     ),
                     Builder(
                       builder: (ctx) => Align(
@@ -120,14 +120,26 @@ class _IosHomeScreenState extends State<IosHomeScreen> {
                       ),
                     ),
                     Spacer(),
-                    CircleAvatar(
-                      radius: screenSize.width * 0.3,
-                      child: Image(
-                        image: AssetImage(
-                          'assets/images/propic3.jpg',
+                    AnimatedOpacity(
+                      opacity: showImage ? 1 : 0,
+                      duration: Duration(milliseconds: 900),
+                      child: Container(
+                        child: CircleAvatar(
+                          radius: 100,
+                          backgroundImage: AssetImage(
+                            'assets/images/propic3.jpg',
+                          ),
                         ),
                       ),
                     ),
+                    // CircleAvatar(
+                    //   radius: screenSize.width * 0.3,
+                    //   child: Image(
+                    //     image: AssetImage(
+                    //       'assets/images/propic3.jpg',
+                    //     ),
+                    //   ),
+                    // ),
                     nameText(textColor: Colors.teal),
                     SizedBox(
                       height: 20,
