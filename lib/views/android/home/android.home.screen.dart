@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -64,7 +65,6 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
     // var scaffold = Scaffold.of(context);
     return Scaffold(
         backgroundColor: Styles.themeData(isDarkTheme, context).backgroundColor,
-
         drawer: Drawer(
           child: AndroidDrawerScreen(),
         ),
@@ -96,7 +96,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                         ),
                         AnimatedOpacity(
                           opacity: showQuote ? 1 : 0,
-                          duration: Duration(seconds: 3),
+                          duration: Duration(milliseconds: 900),
                           child: Container(
                             padding: EdgeInsets.all(30),
                             child: Column(
@@ -155,45 +155,53 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    GestureDetector(
-                                      child: Container(
-                                        child: fbPng,
+                                    FadeInLeftBig(
+                                      child: GestureDetector(
+                                        child: Container(
+                                          child: fbPng,
+                                        ),
+                                        onTap: () {
+                                          launch(fbLink);
+                                        },
                                       ),
-                                      onTap: () {
-                                        launch(fbLink);
-                                      },
                                     ),
                                     SizedBox(
                                       width: 15,
                                     ),
-                                    GestureDetector(
-                                      child: instaPng,
-                                      onTap: () {
-                                        launch(instaLink);
-                                      },
+                                    FadeInUpBig(
+                                      child: GestureDetector(
+                                        child: instaPng,
+                                        onTap: () {
+                                          launch(instaLink);
+                                        },
+                                      ),
                                     ),
                                     SizedBox(
                                       width: 15,
                                     ),
-                                    GestureDetector(
-                                      child: waPng,
-                                      onTap: () {
-                                        if (kIsWeb) {
-                                          launch(whatsappWebLink);
-                                        } else {
-                                          if (Platform.isAndroid)
-                                            launch(whatsappAndroidLink);
-                                        }
-                                      },
+                                    FadeInUpBig(
+                                      child: GestureDetector(
+                                        child: waPng,
+                                        onTap: () {
+                                          if (kIsWeb) {
+                                            launch(whatsappWebLink);
+                                          } else {
+                                            if (Platform.isAndroid)
+                                              launch(whatsappAndroidLink);
+                                          }
+                                        },
+                                      ),
                                     ),
                                     SizedBox(
                                       width: 15,
                                     ),
-                                    GestureDetector(
-                                      child: linkedInPng,
-                                      onTap: () {
-                                        launch(linkedInLink);
-                                      },
+                                    FadeInRightBig(
+                                      child: GestureDetector(
+                                        child: linkedInPng,
+                                        onTap: () {
+                                          launch(linkedInLink);
+                                        },
+                                      ),
                                     ),
                                   ],
                                 ),

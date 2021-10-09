@@ -26,3 +26,6 @@ final spQuotesLink =
 
 final spQuizLink =
     'https://play.google.com/store/apps/details?id=com.sptpra.spquiz';
+
+final welcomeMobText = 'Welcome to \n sivaprasadnk.github.io';
+final welcomeSiteText = 'Welcome to sivaprasadnk.github.io';

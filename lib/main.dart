@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/provider/theme_provider.dart';
@@ -47,21 +46,24 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     debugPrint('...@ hereee1');
-    Future.delayed(Duration(seconds: 7)).then((value) {
-      if (defaultTargetPlatform == TargetPlatform.android) {
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      Future.delayed(Duration(seconds: 5)).then((value) {
         Navigator.pushReplacementNamed(context, AndroidHomeScreen.routeName);
-      } else if (defaultTargetPlatform == TargetPlatform.iOS) {
+      });
+    } else if (defaultTargetPlatform == TargetPlatform.iOS) {
+      Future.delayed(Duration(seconds: 5)).then((value) {
         Navigator.pushReplacementNamed(context, IosHomeScreen.routeName);
-      } else if (defaultTargetPlatform == TargetPlatform.macOS) {
-        debugPrint('...@ hereee2');
-        // Navigator.pushReplacement(
-        //     context, MaterialPageRoute(builder: (ctx) => MacOsHomeScreen()));
-        // Navigator.pushReplacementNamed(context, MacOsHomeScreen.routeName);
-      } else {
-        // Navigator.pushReplacementNamed(context, WindowsHomeScreen.routeName);
-      }
-      // defaultTargetPlatform == Targ
-    });
+      });
+    } else if (defaultTargetPlatform == TargetPlatform.macOS) {
+      Future.delayed(Duration(seconds: 5)).then((value) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (ctx) => MacOsHomeScreen()));
+      });
+    } else {
+      Future.delayed(Duration(seconds: 5)).then((value) {
+        Navigator.pushReplacementNamed(context, WindowsHomeScreen.routeName);
+      });
+    }
   }
 
   @override
@@ -82,22 +84,26 @@ class _SplashScreenState extends State<SplashScreen>
                 height: screenSize.height,
                 // child: Lotti,
               ),
-              Positioned.fill(
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Lottie.asset(
-                    'assets/lotties/congrats.json',
-                  ),
-                ),
-              ),
-              Positioned.fill(
-                child: Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Lottie.asset(
-                    'assets/lotties/congrats.json',
-                  ),
-                ),
-              ),
+              // Positioned.fill(
+              //   child: Align(
+              //     alignment: Alignment.center,
+              //     child: Lottie.network(
+              //       'https://assets10.lottiefiles.com/packages/lf20_uoempsuz.json',
+              //       // 'assets/lotties/congrats.json',
+              //       repeat: true,
+              //       animate: true,
+              //       height: screenSize.height * 0.4,
+              //     ),
+              //   ),
+              // ),
+              // Positioned.fill(
+              //   child: Align(
+              //     alignment: Alignment.bottomLeft,
+              //     child: Lottie.asset(
+              //       'assets/lotties/congrats.json',
+              //     ),
+              //   ),
+              // ),
               Align(
                 alignment: Alignment.center,
                 child: Container(
