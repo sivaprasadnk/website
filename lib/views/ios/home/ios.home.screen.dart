@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -126,7 +124,7 @@ class _IosHomeScreenState extends State<IosHomeScreen> {
                       radius: screenSize.width * 0.3,
                       child: Image(
                         image: AssetImage(
-                          'assets/images/profile-pic.png',
+                          'assets/images/propic3.jpg',
                         ),
                       ),
                     ),
