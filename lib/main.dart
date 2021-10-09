@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/provider/theme_provider.dart';
@@ -46,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     debugPrint('...@ hereee1');
-    Future.delayed(Duration(seconds: 5)).then((value) {
+    Future.delayed(Duration(seconds: 7)).then((value) {
       if (defaultTargetPlatform == TargetPlatform.android) {
         Navigator.pushReplacementNamed(context, AndroidHomeScreen.routeName);
       } else if (defaultTargetPlatform == TargetPlatform.iOS) {
@@ -75,16 +76,43 @@ class _SplashScreenState extends State<SplashScreen>
         child: Padding(
           padding:
               screenWidth < 510 ? const EdgeInsets.all(25.0) : EdgeInsets.zero,
-          child: Container(
-            width: screenWidth,
-            child: screenWidth > 500
-                ? WelcomeText(
-                    isMobile: false,
-                  )
-                : FittedBox(
-                    child: WelcomeText(
-                    isMobile: true,
-                  )),
+          child: Stack(
+            children: [
+              Container(
+                height: screenSize.height,
+                // child: Lotti,
+              ),
+              Positioned.fill(
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Lottie.asset(
+                    'assets/lotties/congrats.json',
+                  ),
+                ),
+              ),
+              Positioned.fill(
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Lottie.asset(
+                    'assets/lotties/congrats.json',
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  width: screenWidth,
+                  child: screenWidth > 500
+                      ? WelcomeText(
+                          isMobile: false,
+                        )
+                      : FittedBox(
+                          child: WelcomeText(
+                          isMobile: true,
+                        )),
+                ),
+              ),
+            ],
           ),
         ),
       ),
