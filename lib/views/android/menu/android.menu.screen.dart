@@ -1,5 +1,5 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:animate_icons/animate_icons.dart';
+
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +13,6 @@ class AndroidMenuScreen extends StatefulWidget {
 }
 
 class _AndroidMenuScreenState extends State<AndroidMenuScreen> {
-  AnimateIconController controller = AnimateIconController();
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -153,6 +152,14 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen> {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20),
                             child: ListTile(
+                              onTap: () {
+                                Provider.of<RouteProvider>(context,
+                                        listen: false)
+                                    .setMenuSelected(check: false);
+                                Provider.of<RouteProvider>(context,
+                                        listen: false)
+                                    .setScreen(name: 'MyProjects');
+                              },
                               leading: Icon(
                                 Icons.apps,
                               ),

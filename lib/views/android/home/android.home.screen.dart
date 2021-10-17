@@ -1,5 +1,4 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:animate_icons/animate_icons.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +8,8 @@ import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/theme.dart';
 import 'package:spnk/views/android/contact_me/android.contactme.screen.dart';
-import 'package:spnk/views/android/home/android.menu.screen.dart';
+import 'package:spnk/views/android/menu/android.menu.screen.dart';
+import 'package:spnk/views/android/projects/android.projects.screen2.dart';
 
 class AndroidHomeScreen extends StatefulWidget {
   static const routeName = '/AndroidHome';
@@ -34,7 +34,6 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
   bool quoteLoaded = false;
 
   bool menuSelected = false;
-  AnimateIconController controller = AnimateIconController();
   @override
   void initState() {
     super.initState();
@@ -73,18 +72,19 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
           // ),
           body: Stack(
             children: [
-              Positioned.fill(
-                child: AnimatedOpacity(
-                  opacity: !menuSelectedCheck ? 1 : 0,
-                  duration: Duration(milliseconds: 900),
-                  child: Align(
-                    child: CustomPaint(
-                      painter: MyPainter(ctx: context),
-                      child: Container(),
+              if (screen == "Home")
+                Positioned.fill(
+                  child: AnimatedOpacity(
+                    opacity: !menuSelectedCheck ? 1 : 0,
+                    duration: Duration(milliseconds: 900),
+                    child: Align(
+                      child: CustomPaint(
+                        painter: MyPainter(ctx: context),
+                        child: Container(),
+                      ),
                     ),
                   ),
                 ),
-              ),
               !menuSelectedCheck
                   ? screen == "Home"
                       ? Container(
@@ -103,50 +103,14 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                                         Padding(
                                           padding: const EdgeInsets.only(
                                               top: 50, right: 20),
-                                          child: AnimateIcons(
-                                            startIcon: !menuSelectedCheck
-                                                ? Icons.menu
-                                                : Icons.close,
-                                            endIcon: !menuSelectedCheck
-                                                ? Icons.menu
-                                                : Icons.close,
-                                            size: 20.0,
-                                            controller: controller,
-                                            onStartIconPress: () {
-                                              if (controller.isStart()) {
-                                                debugPrint('..@2');
-                                                setState(() {
-                                                  Provider.of<RouteProvider>(
-                                                          context,
-                                                          listen: false)
-                                                      .setMenuSelected(
-                                                          check: true);
-                                                  controller.animateToEnd();
-                                                });
-                                              }
-                                              return true;
+                                          child: IconButton(
+                                            icon: Icon(Icons.menu),
+                                            onPressed: () {
+                                              Provider.of<RouteProvider>(
+                                                      context,
+                                                      listen: false)
+                                                  .setMenuSelected(check: true);
                                             },
-                                            onEndIconPress: () {
-                                              print("Clicked on Close Icon");
-                                              debugPrint('..@4');
-                                              if (controller.isEnd()) {
-                                                debugPrint('..@5');
-                                                setState(() {
-                                                  Provider.of<RouteProvider>(
-                                                          context,
-                                                          listen: false)
-                                                      .setMenuSelected(
-                                                          check: false);
-                                                  controller.animateToStart();
-                                                });
-                                              }
-                                              return true;
-                                            },
-                                            duration:
-                                                Duration(milliseconds: 500),
-                                            startIconColor: Colors.black,
-                                            endIconColor: Colors.black,
-                                            clockwise: false,
                                           ),
                                         ),
                                       ],
@@ -161,7 +125,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                                         width: screenWidth * 0.7,
                                         child: FittedBox(
                                           child: Text(
-                                            "Hi, \nI 'm Sivaprasad NK ",
+                                            "Hi, \nI 'm Sivaprasad NK .",
                                             style: TextStyle(
                                               fontFamily: 'PlayfairDisplay',
                                               fontWeight: FontWeight.bold,
@@ -218,7 +182,9 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                         )
                       : screen == "ContactMe"
                           ? AndroidContactMeScreen()
-                          : Container()
+                          : screen == "MyProjects"
+                              ? AndroidProjects()
+                              : Container()
                   : AndroidMenuScreen()
             ],
           )),
