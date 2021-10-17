@@ -242,7 +242,7 @@ class DescriptionText extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(
         left: 40,
-        top: 15,
+        top: 5,
         right: 30,
       ),
       child: Text(
