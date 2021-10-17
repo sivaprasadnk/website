@@ -6,6 +6,7 @@ import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/theme.dart';
 import 'package:spnk/views/android/contact_me/android.contactme.screen.dart';
 import 'package:spnk/views/android/menu/android.menu.screen.dart';
@@ -66,10 +67,10 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
       onWillPop: () async => false,
       child: Scaffold(
           backgroundColor:
-              Styles.themeData(isDarkTheme, context).backgroundColor,
-          // drawer: Drawer(
-          //   child: AndroidDrawerScreen(),
-          // ),
+              ((screen == "MyProjects") || (screen == "ContactMe")) &&
+                      !menuSelectedCheck
+                  ? Colors.teal
+                  : Color.fromRGBO(7, 17, 26, 1),
           body: Stack(
             children: [
               if (screen == "Home")
@@ -85,6 +86,17 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                     ),
                   ),
                 ),
+              if ((screen == "Home") && (!menuSelectedCheck))
+                Positioned.fill(
+                  bottom: screenSize.height * 0.15,
+                  // left: 60,
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: ProPicWidget(
+                      radius: screenWidth * 0.3,
+                    ),
+                  ),
+                ),
               !menuSelectedCheck
                   ? screen == "Home"
                       ? Container(
@@ -96,15 +108,16 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    height: 80,
+                                    // height: 50,
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(
+                                          padding: EdgeInsets.only(
                                               top: 50, right: 20),
                                           child: IconButton(
-                                            icon: Icon(Icons.menu),
+                                            icon: Icon(Icons.menu,
+                                                color: Colors.white),
                                             onPressed: () {
                                               Provider.of<RouteProvider>(
                                                       context,
@@ -116,7 +129,9 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                                       ],
                                     ),
                                   ),
-                                  Spacer(),
+                                  SizedBox(
+                                    height: screenSize.height * 0.1,
+                                  ),
                                   Padding(
                                     padding: EdgeInsets.only(
                                         left: screenWidth * 0.1),
@@ -127,10 +142,10 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                                           child: Text(
                                             "Hi, \nI 'm Sivaprasad NK .",
                                             style: TextStyle(
-                                              fontFamily: 'PlayfairDisplay',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 40,
-                                            ),
+                                                fontFamily: 'PlayfairDisplay',
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 40,
+                                                color: Colors.white),
                                           ),
                                         ),
                                       ),
@@ -145,8 +160,8 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                                         child: Text(
                                           "\nFlutter Developer from \nTripunithura, Kerala .",
                                           style: TextStyle(
-                                            // fontFamily: 'PlayfairDisplay',
                                             fontWeight: FontWeight.bold,
+                                            color: Colors.white,
                                             fontSize: 23,
                                           ),
                                         ),
@@ -154,36 +169,20 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                                     ),
                                   ),
                                   Spacer(),
-                                  Spacer(),
-                                  // Spacer(),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      FadeInUpBig(
-                                        child: Container(
-                                          child: CircleAvatar(
-                                            radius: screenWidth * 0.3,
-                                            backgroundImage: AssetImage(
-                                              'assets/images/propic3.jpg',
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Spacer(),
-                                  SizedBox(
-                                    height: 50,
-                                  )
                                 ],
                               ),
                             ],
                           ),
                         )
                       : screen == "ContactMe"
-                          ? AndroidContactMeScreen()
+                          ? AndroidContactMeScreen(
+                              screenHeight: MediaQuery.of(context).size.height,
+                            )
                           : screen == "MyProjects"
-                              ? AndroidProjects()
+                              ? AndroidProjects(
+                                  screenHeight:
+                                      MediaQuery.of(context).size.height,
+                                )
                               : Container()
                   : AndroidMenuScreen()
             ],
@@ -202,9 +201,6 @@ class MyPainter extends CustomPainter {
     final Paint paint = Paint()
       ..color = Colors.teal
       ..style = PaintingStyle.fill
-      // ..
-
-      // ..strokeJoin  = Stroke
       ..strokeWidth = 5.0;
 
     final Path path = Path();
@@ -213,10 +209,12 @@ class MyPainter extends CustomPainter {
     final w = size.width;
 
     final y = h / 2;
+    final x = w / 2;
     // path.
-    path.moveTo(padding, h - padding);
-    path.lineTo(padding, h - h * 0.15);
-    // path.quadraticBezierTo(w, y - 55, w, y - 5);
+    path.moveTo(0, h - padding);
+    path.lineTo(0, h * 0.55);
+    path.quadraticBezierTo(w * 0.29, h * 0.55, w * 0.5, h * 0.7);
+    path.quadraticBezierTo(w * 0.73, h * 0.84, w, h * 0.74);
     path.lineTo(w - padding, y);
     path.lineTo(w - padding, h - padding);
     path.close();

@@ -88,15 +88,15 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen> {
                             child: Padding(
                               padding: const EdgeInsets.only(left: 20),
                               child: ListTile(
-                                leading: Icon(Icons.home),
+                                leading: Icon(Icons.home, color: Colors.white),
                                 title: Text(
                                   'Home',
                                   style: TextStyle(
-                                    fontFamily: 'PlayfairDisplay',
-                                    // color: Colors.,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: menuFontSize,
-                                  ),
+                                      fontFamily: 'PlayfairDisplay',
+                                      // color: Colors.,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: menuFontSize,
+                                      color: Colors.white),
                                 ),
                               ),
                             ),
@@ -115,15 +115,15 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen> {
                             child: Padding(
                               padding: const EdgeInsets.only(left: 20),
                               child: ListTile(
-                                leading: Icon(Icons.call),
+                                leading: Icon(Icons.call, color: Colors.white),
                                 title: Text(
                                   'Contact Me',
                                   style: TextStyle(
-                                    fontFamily: 'PlayfairDisplay',
-                                    // color: Colors.,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: menuFontSize,
-                                  ),
+                                      fontFamily: 'PlayfairDisplay',
+                                      // color: Colors.,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: menuFontSize,
+                                      color: Colors.white),
                                 ),
                               ),
                             ),
@@ -134,12 +134,13 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen> {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20),
                             child: ListTile(
-                              leading: Icon(Icons.home),
+                              leading: Icon(Icons.home, color: Colors.white),
                               title: Text(
                                 'Experience',
                                 style: TextStyle(
                                   fontFamily: 'PlayfairDisplay',
                                   // color: Colors.,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontSize: menuFontSize,
                                 ),
@@ -160,17 +161,15 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen> {
                                         listen: false)
                                     .setScreen(name: 'MyProjects');
                               },
-                              leading: Icon(
-                                Icons.apps,
-                              ),
+                              leading: Icon(Icons.apps, color: Colors.white),
                               title: Text(
                                 'My Projects',
                                 style: TextStyle(
-                                  fontFamily: 'PlayfairDisplay',
-                                  // color: Colors.,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: menuFontSize,
-                                ),
+                                    fontFamily: 'PlayfairDisplay',
+                                    // color: Colors.,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: menuFontSize,
+                                    color: Colors.white),
                               ),
                             ),
                           ),

@@ -7,6 +7,8 @@ import 'package:spnk/utils/common_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AndroidProjects extends StatefulWidget {
+  final double screenHeight;
+  const AndroidProjects({required this.screenHeight});
   @override
   _AndroidProjectsState createState() => _AndroidProjectsState();
 }
@@ -19,78 +21,110 @@ class _AndroidProjectsState extends State<AndroidProjects> {
     var menuSelectedCheck =
         Provider.of<RouteProvider>(context, listen: true).menuSelected as bool;
     debugPrint('...@@456 @menu menuSelectedCheck..$menuSelectedCheck');
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 50, right: 20),
-                  child: IconButton(
-                    icon: Icon(Icons.menu),
-                    onPressed: () {
-                      Provider.of<RouteProvider>(context, listen: false)
-                          .setMenuSelected(check: true);
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, top: 50),
-            child: Text(
-              'My Projects',
-              style: TextStyle(
-                fontFamily: 'PlayfairDisplay',
-                // color: Colors.,
-                fontWeight: FontWeight.bold,
-                fontSize: 35,
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: AnimatedOpacity(
+            opacity: 1,
+            duration: Duration(milliseconds: 900),
+            child: Align(
+              child: CustomPaint(
+                painter: MyPainter(ctx: context),
+                child: Container(),
               ),
             ),
           ),
-          LiveList(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.all(0),
-            showItemInterval: const Duration(milliseconds: 50),
-            showItemDuration: const Duration(milliseconds: 150),
-            itemCount: 6,
-            itemBuilder: animationItemBuilder((index) {
-              switch (index) {
-                case 0:
-                  return TitleText(title: 'SP Quotes App');
-                case 1:
-                  return DescriptionText(
-                      description: 'A Simple Quotes listing app');
-                case 2:
-                  return GooglePlayButton(
-                    url: spQuotesLink,
-                    screenWidth: screenwidth,
-                  );
-                case 3:
-                  return TitleText(title: 'SP Quiz App');
-                case 4:
-                  return DescriptionText(
-                    description:
-                        'A Quiz App with various categories ,and cool animations for each element on screen ',
-                  );
-                case 5:
-                  return GooglePlayButton(
-                    screenWidth: screenwidth,
-                    url: spQuizLink,
-                  );
-              }
+        ),
+        // Positioned.fill(
+        //   top: 55,
+        //   child: Align(
+        //     alignment: Alignment.topRight,
+        //     child: IconButton(
+        //       icon: Icon(Icons.menu, color: Colors.white),
+        //       onPressed: () {
+        //         Provider.of<RouteProvider>(context, listen: false)
+        //             .setMenuSelected(check: true);
+        //       },
+        //     ),
+        //   ),
+        // ),
+        SingleChildScrollView(
+          child: Container(
+            height: widget.screenHeight,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 40, left: 0),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: IconButton(
+                      icon: Icon(Icons.menu, color: Colors.white),
+                      onPressed: () {
+                        Provider.of<RouteProvider>(context, listen: false)
+                            .setMenuSelected(check: true);
+                      },
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 0, left: 30),
+                  child: Text(
+                    'My Projects',
+                    style: TextStyle(
+                        fontFamily: 'PlayfairDisplay',
+                        // color: Colors.,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 35,
+                        color: Colors.white),
+                  ),
+                ),
+                SizedBox(
+                  height: widget.screenHeight * 0.1,
+                ),
+                LiveList(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: const EdgeInsets.all(0),
+                  showItemInterval: const Duration(milliseconds: 50),
+                  showItemDuration: const Duration(milliseconds: 150),
+                  itemCount: 6,
+                  itemBuilder: animationItemBuilder((index) {
+                    switch (index) {
+                      case 0:
+                        return TitleText(title: 'SP Quotes App');
+                      case 1:
+                        return DescriptionText(
+                            description: 'A Simple Quotes listing app');
+                      case 2:
+                        return GooglePlayButton(
+                          url: spQuotesLink,
+                          screenWidth: screenwidth,
+                        );
+                      case 3:
+                        return TitleText(title: 'SP Quiz App');
+                      case 4:
+                        return DescriptionText(
+                          description:
+                              'A Quiz App with various categories ,and cool animations for each element on screen ',
+                        );
+                      case 5:
+                        return GooglePlayButton(
+                          screenWidth: screenwidth,
+                          url: spQuizLink,
+                        );
+                    }
 
-              return SizedBox.shrink();
-            }),
+                    return SizedBox.shrink();
+                  }),
+                ),
+                Spacer(),
+              ],
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -133,7 +167,7 @@ class GooglePlayButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 40, right: screenWidth * 0.32, top: 20),
+      padding: EdgeInsets.only(left: 40, right: screenWidth * 0.29, top: 20),
       child: GestureDetector(
         onTap: () {
           launch(url);
@@ -186,4 +220,72 @@ class GooglePlayButton extends StatelessWidget {
       ),
     );
   }
+}
+
+// class MyPainter extends CustomPainter {
+//   final BuildContext ctx;
+//   MyPainter({required this.ctx});
+//   @override
+//   void paint(Canvas canvas, Size size) {
+//     double padding = 0;
+//     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
+//     final Paint paint = Paint()
+//       ..color = Color.fromRGBO(7, 17, 26, 1)
+//       ..style = PaintingStyle.fill
+//       ..strokeWidth = 5.0;
+
+//     final Path path = Path();
+
+//     final h = size.height;
+//     final w = size.width;
+
+//     final y = h / 2;
+//     final x = w / 2;
+//     // path.
+//     path.moveTo(0, h - padding);
+//     path.lineTo(0, h * 0.29);
+//     path.quadraticBezierTo(w * 0.29, h * 0.19, w * 0.5, h * 0.3);
+//     path.quadraticBezierTo(w * 0.78, h * 0.44, w, h * 0.35);
+//     path.lineTo(w - padding, y);
+//     path.lineTo(w - padding, h - padding);
+//     path.close();
+//     canvas.drawPath(path, paint);
+//   }
+
+//   @override
+//   bool shouldRepaint(CustomPainter oldDelegate) => true;
+// }
+
+class MyPainter extends CustomPainter {
+  final BuildContext ctx;
+  MyPainter({required this.ctx});
+  @override
+  void paint(Canvas canvas, Size size) {
+    double padding = 0;
+    // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
+    final Paint paint = Paint()
+      ..color = Color.fromRGBO(7, 17, 26, 1)
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 5.0;
+
+    final Path path = Path();
+
+    final h = size.height;
+    final w = size.width;
+
+    final y = h / 2;
+    final x = w / 2;
+
+    path.moveTo(0, h - padding);
+    path.lineTo(0, h * 0.23);
+    path.quadraticBezierTo(w * 0.25, h * 0.16, w * 0.5, h * 0.23);
+    path.quadraticBezierTo(w * 0.75, h * 0.3, w, h * 0.23);
+    path.lineTo(w - padding, y);
+    path.lineTo(w - padding, h - padding);
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
@@ -212,7 +213,6 @@ class _QuoteWidgetState extends State<QuoteWidget> {
   }
 }
 
-
 class TitleText extends StatelessWidget {
   final String title;
   const TitleText({required this.title});
@@ -226,6 +226,7 @@ class TitleText extends StatelessWidget {
           // fontFamily: 'PlayfairDisplay',
           // color: Colors.,
           fontWeight: FontWeight.bold,
+          color: Colors.white,
           fontSize: 20,
         ),
       ),
@@ -252,6 +253,25 @@ class DescriptionText extends StatelessWidget {
           color: Colors.grey,
           fontWeight: FontWeight.bold,
           fontSize: 15,
+          // color: Colors.white
+        ),
+      ),
+    );
+  }
+}
+
+class ProPicWidget extends StatelessWidget {
+  final double radius;
+  const ProPicWidget({required this.radius});
+  @override
+  Widget build(BuildContext context) {
+    return FadeInUpBig(
+      child: Container(
+        child: CircleAvatar(
+          radius: radius,
+          backgroundImage: AssetImage(
+            'assets/images/propic3.jpg',
+          ),
         ),
       ),
     );
