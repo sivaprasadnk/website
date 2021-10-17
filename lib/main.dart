@@ -8,7 +8,7 @@ import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/home/android.home.screen.dart';
 import 'package:spnk/views/ios/home/ios.home.screen.dart';
 import 'package:spnk/views/macOS/home/macos.home.screen.dart';
-import 'package:spnk/views/windows/home/windows.home.screen.dart';
+import 'package:spnk/views/windows/home/windows.home.screen2.dart';
 
 void main() => runApp(MyApp());
 
@@ -74,7 +74,8 @@ class _SplashScreenState extends State<SplashScreen>
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      // backgroundColor: Colors.grey[200],
+      backgroundColor: Color.fromRGBO(7, 17, 26, 1),
       body: Align(
         alignment: screenWidth > 500 ? Alignment.center : Alignment.centerLeft,
         child: Padding(
