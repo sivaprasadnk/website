@@ -13,7 +13,6 @@ import 'package:spnk/views/macOS/projects/macos.projects.screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MacOsHomeScreen extends StatefulWidget {
-  // static const routeName = '/Home';
   const MacOsHomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -59,7 +58,7 @@ class _MacOsHomeScreenState extends State<MacOsHomeScreen> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    var screenWidth = screenSize.width;
+    // var screenWidth = screenSize.width;
     final themeProvider = Provider.of<DarkThemeProvider>(context);
     final isDarkTheme = themeProvider.darkTheme;
 
@@ -80,6 +79,7 @@ class _MacOsHomeScreenState extends State<MacOsHomeScreen> {
                       onTap: () {
                         setState(() {
                           homeSelected = true;
+                          projectSelected = false;
                         });
                       },
                       child: nameText(textColor: Colors.white),
@@ -88,23 +88,23 @@ class _MacOsHomeScreenState extends State<MacOsHomeScreen> {
                   Expanded(
                     child: Container(),
                   ),
-                  SizedBox(
-                    height: 50,
-                    child: Switch.adaptive(
-                        activeColor: Colors.black,
-                        value: themeProvider.darkTheme,
-                        onChanged: (value) {
-                          themeProvider.darkTheme = value;
-                        }),
-                  ),
+                  // SizedBox(
+                  //   height: 50,
+                  //   child: Switch.adaptive(
+                  //       activeColor: Colors.black,
+                  //       value: themeProvider.darkTheme,
+                  //       onChanged: (value) {
+                  //         themeProvider.darkTheme = value;
+                  //       }),
+                  // ),
                   InkWell(
-                    onHover: (value) {
-                      setState(() {
-                        _isHovering[0] = value;
-                        _isHovering[1] = false;
-                        _isHovering[2] = false;
-                      });
-                    },
+                    // onHover: (value) {
+                    //   setState(() {
+                    //     _isHovering[0] = value;
+                    //     _isHovering[1] = false;
+                    //     _isHovering[2] = false;
+                    //   });
+                    // },
                     onTap: () {
                       setState(() {
                         homeSelected = true;
@@ -143,13 +143,13 @@ class _MacOsHomeScreenState extends State<MacOsHomeScreen> {
                     width: screenSize.width / 50,
                   ),
                   InkWell(
-                    onHover: (value) {
-                      setState(() {
-                        _isHovering[0] = false;
-                        _isHovering[1] = value;
-                        _isHovering[2] = false;
-                      });
-                    },
+                    // onHover: (value) {
+                    //   setState(() {
+                    //     _isHovering[0] = false;
+                    //     _isHovering[1] = value;
+                    //     _isHovering[2] = false;
+                    //   });
+                    // },
                     onTap: () {
                       setState(() {
                         projectSelected = true;
@@ -192,46 +192,15 @@ class _MacOsHomeScreenState extends State<MacOsHomeScreen> {
             ),
           ),
         ),
-        body: homeSelected
-            ? Stack(
-                children: [
-                  Wave(),
-                  Container(
+        body: Stack(
+          children: [
+            Wave(),
+            homeSelected
+                ? Container(
                     height: screenSize.height,
                     child: Column(
                       children: [
-                        AnimatedOpacity(
-                          opacity: showQuote ? 1 : 0,
-                          duration: Duration(seconds: 3),
-                          child: Container(
-                            padding: EdgeInsets.all(30),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SelectableText(
-                                  '" ' + quote1 + ' "',
-                                  toolbarOptions: ToolbarOptions(
-                                      copy: true, selectAll: true),
-                                  textAlign: TextAlign.center,
-                                  style: quoteStyle,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  ' - $author1',
-                                  maxLines: 2,
-                                  textAlign: TextAlign.right,
-                                  style: authorStyle,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                        QuoteWidget(showQuote: true),
                         Spacer(),
                         AnimatedOpacity(
                           opacity: showImage ? 1 : 0,
@@ -314,9 +283,9 @@ class _MacOsHomeScreenState extends State<MacOsHomeScreen> {
                         )
                       ],
                     ),
-                  ),
-                ],
-              )
-            : MacOsProjectScreen());
+                  )
+                : MacOsProjectScreen(),
+          ],
+        ));
   }
 }

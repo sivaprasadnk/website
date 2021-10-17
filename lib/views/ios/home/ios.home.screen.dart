@@ -74,7 +74,7 @@ class _IosHomeScreenState extends State<IosHomeScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     SizedBox(
-                      height: screenSize.height * .1,
+                      height: screenSize.height * 0.08,
                     ),
                     Builder(
                       builder: (ctx) => Align(
@@ -85,40 +85,12 @@ class _IosHomeScreenState extends State<IosHomeScreen> {
                               Scaffold.of(ctx).openDrawer();
                             },
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 20),
+                              padding: const EdgeInsets.only(left: 20, top: 0),
                               child: Icon(Icons.menu),
                             )),
                       ),
                     ),
-                    AnimatedOpacity(
-                      opacity: showQuote ? 1 : 0,
-                      duration: Duration(seconds: 3),
-                      child: Container(
-                        padding: EdgeInsets.only(top: 20, left: 20, right: 15),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SelectableText(
-                              '" ' + quote1 + ' "',
-                              toolbarOptions:
-                                  ToolbarOptions(copy: true, selectAll: true),
-                              textAlign: TextAlign.center,
-                              style: quoteStyle,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              ' - $author1',
-                              maxLines: 2,
-                              textAlign: TextAlign.right,
-                              style: authorStyle,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    QuoteWidget(showQuote: true),
                     Spacer(),
                     AnimatedOpacity(
                       opacity: showImage ? 1 : 0,

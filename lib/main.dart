@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
+import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/home/android.home.screen.dart';
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<Quotes>.value(value: Quotes()),
         ChangeNotifierProvider<DarkThemeProvider>.value(
-            value: DarkThemeProvider())
+            value: DarkThemeProvider()),
+        ChangeNotifierProvider<RouteProvider>.value(value: RouteProvider())
       ],
       child: MaterialApp(
         title: 'Sivaprasad NK',
@@ -52,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen>
       });
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       Future.delayed(Duration(seconds: 5)).then((value) {
-        Navigator.pushReplacementNamed(context, IosHomeScreen.routeName);
+        Navigator.pushReplacementNamed(context, AndroidHomeScreen.routeName);
       });
     } else if (defaultTargetPlatform == TargetPlatform.macOS) {
       Future.delayed(Duration(seconds: 5)).then((value) {

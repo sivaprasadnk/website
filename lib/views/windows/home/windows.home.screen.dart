@@ -8,7 +8,6 @@ import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/utils/theme.dart';
 import 'package:spnk/views/windows/projects/windows.projects.screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -22,7 +21,7 @@ class WindowsHomeScreen extends StatefulWidget {
 
 class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
   bool isDarkModeEnabled = false;
-
+  // DateTime time = DateTime.now();
   List _isHovering = [true, false, false];
   Quotes? item;
   bool homeSelected = true, projectSelected = false;
@@ -62,9 +61,13 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
     var screenWidth = screenSize.width;
     final themeProvider = Provider.of<DarkThemeProvider>(context);
     final isDarkTheme = themeProvider.darkTheme;
-
+    // time = DateTime.now();
+    // var quote = time.second % 2 == 0 ? quote1 : quote2;
+    // var author = time.second % 2 == 0 ? author1 : author2;
+    // print('..second ==${time.second}');
     return Scaffold(
-        backgroundColor: Styles.themeData(isDarkTheme, context).backgroundColor,
+        backgroundColor: Color.fromRGBO(7, 17, 26, 255),
+        // backgroundColor: Styles.themeData(isDarkTheme, context).backgroundColor,
         appBar: PreferredSize(
           preferredSize: Size(screenSize.width, 65),
           child: Container(
@@ -80,39 +83,32 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                       onTap: () {
                         setState(() {
                           homeSelected = true;
+                          projectSelected = false;
                         });
                       },
                       child: nameText(textColor: Colors.white),
-                      // child: Text(
-                      //   'Sivaprasad NK',
-                      //   style: TextStyle(
-                      //     fontFamily: 'PatuaOne',
-                      //     color: Colors.white,
-                      //     fontSize: 21.0,
-                      //   ),
-                      // ),
                     ),
                   ),
                   Expanded(
                     child: Container(),
                   ),
-                  SizedBox(
-                    height: 50,
-                    child: Switch.adaptive(
-                        activeColor: Colors.black,
-                        value: themeProvider.darkTheme,
-                        onChanged: (value) {
-                          themeProvider.darkTheme = value;
-                        }),
-                  ),
+                  // SizedBox(
+                  //   height: 50,
+                  //   child: Switch.adaptive(
+                  //       activeColor: Colors.black,
+                  //       value: themeProvider.darkTheme,
+                  //       onChanged: (value) {
+                  //         themeProvider.darkTheme = value;
+                  //       }),
+                  // ),
                   InkWell(
-                    onHover: (value) {
-                      setState(() {
-                        _isHovering[0] = value;
-                        _isHovering[1] = false;
-                        _isHovering[2] = false;
-                      });
-                    },
+                    // onHover: (value) {
+                    //   _isHovering[0] = value;
+                    //   _isHovering[1] = false;
+                    //   _isHovering[2] = false;
+                    //   // setState(() {
+                    //   // });
+                    // },
                     onTap: () {
                       setState(() {
                         homeSelected = true;
@@ -126,9 +122,7 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                           'Home',
                           style: TextStyle(
                             fontFamily: 'PatuaOne',
-                            color: _isHovering[0]
-                                ? Colors.blue.shade200
-                                : Colors.white,
+                            color: Colors.white,
                           ),
                         ),
                         SizedBox(height: 5),
@@ -137,7 +131,7 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                           maintainAnimation: true,
                           maintainState: true,
                           maintainSize: true,
-                          visible: _isHovering[0] || homeSelected,
+                          visible: homeSelected,
                           child: Container(
                             height: 2,
                             width: 40,
@@ -151,13 +145,13 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                     width: screenSize.width / 50,
                   ),
                   InkWell(
-                    onHover: (value) {
-                      setState(() {
-                        _isHovering[0] = false;
-                        _isHovering[1] = value;
-                        _isHovering[2] = false;
-                      });
-                    },
+                    // onHover: (value) {
+                    //   _isHovering[0] = false;
+                    //   _isHovering[1] = value;
+                    //   _isHovering[2] = false;
+                    //   // setState(() {
+                    //   // });
+                    // },
                     onTap: () {
                       setState(() {
                         projectSelected = true;
@@ -171,9 +165,7 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                           'Projects',
                           style: TextStyle(
                             fontFamily: 'PatuaOne',
-                            color: _isHovering[1]
-                                ? Colors.blue.shade200
-                                : Colors.white,
+                            color: Colors.white,
                           ),
                         ),
                         SizedBox(height: 5),
@@ -182,7 +174,7 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                           maintainAnimation: true,
                           maintainState: true,
                           maintainSize: true,
-                          visible: _isHovering[1] || projectSelected,
+                          visible: projectSelected,
                           child: Container(
                             height: 2,
                             width: 40,
@@ -200,46 +192,15 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
             ),
           ),
         ),
-        body: homeSelected
-            ? Stack(
-                children: [
-                  if (defaultTargetPlatform != TargetPlatform.iOS) Wave(),
-                  Container(
+        body: Stack(
+          children: [
+            Wave(),
+            homeSelected
+                ? Container(
                     height: screenSize.height,
                     child: Column(
                       children: [
-                        AnimatedOpacity(
-                          opacity: showQuote ? 1 : 0,
-                          duration: Duration(seconds: 3),
-                          child: Container(
-                            padding: EdgeInsets.all(30),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SelectableText(
-                                  '" ' + quote1 + ' "',
-                                  toolbarOptions: ToolbarOptions(
-                                      copy: true, selectAll: true),
-                                  textAlign: TextAlign.center,
-                                  style: quoteStyle,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  ' - $author1',
-                                  maxLines: 2,
-                                  textAlign: TextAlign.right,
-                                  style: authorStyle,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                        QuoteWidget(showQuote: true),
                         Spacer(),
                         AnimatedOpacity(
                           opacity: showImage ? 1 : 0,
@@ -322,9 +283,9 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                         )
                       ],
                     ),
-                  ),
-                ],
-              )
-            : WindowsProjectScreen());
+                  )
+                : WindowsProjectScreen(),
+          ],
+        ));
   }
 }

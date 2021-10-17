@@ -65,41 +65,37 @@ class _WaveState extends State<Wave> {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      child: AnimatedOpacity(
-        opacity: showWave ? 1 : 0,
-        duration: Duration(milliseconds: 500),
-        child: WaveWidget(
-          config: CustomConfig(
-            gradients: [
-              [Colors.blueAccent, Colors.blueAccent],
-              [Colors.blueAccent, Colors.blueAccent],
-              [Colors.blue, Colors.blue],
-              [Colors.blue, Colors.blue]
-            ],
-            //  heightPercentages: [0.25, 0.26, 0.28, 0.31],
-            durations: [35000, 19440, 10800, 6000],
-            heightPercentages: [0.65, 0.63, 0.65, 0.60],
-            blur: MaskFilter.blur(BlurStyle.solid, 10),
-            gradientBegin: Alignment.bottomLeft,
-            gradientEnd: Alignment.topRight,
-          ),
-          // color: [
-          //   Colors.white70,
-          //   Colors.white54,
-          //   Colors.white30,
-          //   Colors.white24,
-          // ],
-          // durations: [
-          //   32000,
-          //   21000,
-          //   18000,
-          //   5000,
-          // ],
-          waveAmplitude: 0,
-          size: Size(
-            double.infinity,
-            double.infinity,
-          ),
+      child: WaveWidget(
+        config: CustomConfig(
+          gradients: [
+            [Colors.blueAccent, Colors.blueAccent],
+            [Colors.blueAccent, Colors.blueAccent],
+            [Colors.blue, Colors.blue],
+            [Colors.blue, Colors.blue]
+          ],
+          //  heightPercentages: [0.25, 0.26, 0.28, 0.31],
+          durations: [35000, 19440, 10800, 6000],
+          heightPercentages: [0.65, 0.63, 0.65, 0.60],
+          blur: MaskFilter.blur(BlurStyle.solid, 10),
+          gradientBegin: Alignment.bottomLeft,
+          gradientEnd: Alignment.topRight,
+        ),
+        // color: [
+        //   Colors.white70,
+        //   Colors.white54,
+        //   Colors.white30,
+        //   Colors.white24,
+        // ],
+        // durations: [
+        //   32000,
+        //   21000,
+        //   18000,
+        //   5000,
+        // ],
+        waveAmplitude: 0,
+        size: Size(
+          double.infinity,
+          double.infinity,
         ),
       ),
     );
@@ -142,13 +138,13 @@ TextStyle quoteStyle = TextStyle(
   decorationStyle: TextDecorationStyle.solid,
   fontStyle: FontStyle.italic,
   color: Colors.teal,
-  fontSize: 23,
+  fontSize: 21,
 );
 
 TextStyle authorStyle = TextStyle(
   fontWeight: FontWeight.bold,
   color: Colors.red,
-  fontSize: 25,
+  fontSize: 21,
 );
 
 class ProPic extends StatelessWidget {
@@ -161,6 +157,55 @@ class ProPic extends StatelessWidget {
         radius: 100,
         backgroundImage: AssetImage(
           'assets/images/propic3.jpg',
+        ),
+      ),
+    );
+  }
+}
+
+class QuoteWidget extends StatefulWidget {
+  final bool showQuote;
+  QuoteWidget({required this.showQuote});
+  @override
+  _QuoteWidgetState createState() => _QuoteWidgetState();
+}
+
+class _QuoteWidgetState extends State<QuoteWidget> {
+  DateTime time = DateTime.now();
+  @override
+  Widget build(BuildContext context) {
+    time = DateTime.now();
+    // var quote = time.second % 2 == 0 ? quote1 : quote2;
+    // var author = time.second % 2 == 0 ? author1 : author2;
+    print('..second ==${time.second}');
+    return AnimatedOpacity(
+      opacity: widget.showQuote ? 1 : 0,
+      duration: Duration(seconds: 3),
+      child: Container(
+        padding: EdgeInsets.all(30),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SelectableText(
+              "$quote1",
+              toolbarOptions: ToolbarOptions(copy: true, selectAll: true),
+              textAlign: TextAlign.center,
+              style: quoteStyle,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              ' - $author1',
+              maxLines: 2,
+              textAlign: TextAlign.right,
+              style: authorStyle,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+          ],
         ),
       ),
     );

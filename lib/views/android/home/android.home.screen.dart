@@ -1,17 +1,15 @@
-import 'dart:io';
-
 import 'package:animate_do/animate_do.dart';
+import 'package:animate_icons/animate_icons.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
+import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/theme.dart';
-import 'package:spnk/views/android/drawer/android.drawer.screen.dart';
-import 'package:spnk/views/android/projects/android.projects.screen.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:spnk/views/android/contact_me/android.contactme.screen.dart';
+import 'package:spnk/views/android/home/android.menu.screen.dart';
 
 class AndroidHomeScreen extends StatefulWidget {
   static const routeName = '/AndroidHome';
@@ -24,7 +22,6 @@ class AndroidHomeScreen extends StatefulWidget {
 class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
   bool isDarkModeEnabled = false;
 
-  List _isHovering = [true, false, false];
   Quotes? item;
   bool homeSelected = true, projectSelected = false;
   late Widget fbPng;
@@ -36,25 +33,23 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
   double iconSize = 30;
   bool quoteLoaded = false;
 
+  bool menuSelected = false;
+  AnimateIconController controller = AnimateIconController();
   @override
   void initState() {
     super.initState();
     showImage = false;
+    // controller = AnimateIconController();
     fbPng = Image.asset(fbPngAssetName, height: iconSize);
     waPng = Image.asset(whatsappPngeAssetName, height: iconSize);
     instaPng = Image.asset(instaPngImageName, height: iconSize);
     linkedInPng = Image.asset(linkedInAssetName,
         height: iconSize, color: Colors.blue[900]);
-    Future.delayed(Duration(seconds: 1)).then((value) {
-      setState(() {
-        showImage = true;
-      });
-    });
-    Future.delayed(Duration(seconds: 3)).then((value) {
-      setState(() {
-        showQuote = true;
-      });
-    });
+    // Future.delayed(Duration(seconds: 1)).then((value) {
+    //   setState(() {
+    //     showImage = true;
+    //   });
+    // });
   }
 
   @override
@@ -62,158 +57,206 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
     var screenSize = MediaQuery.of(context).size;
     final themeProvider = Provider.of<DarkThemeProvider>(context);
     final isDarkTheme = themeProvider.darkTheme;
-    // var scaffold = Scaffold.of(context);
-    return Scaffold(
-        backgroundColor: Styles.themeData(isDarkTheme, context).backgroundColor,
-        drawer: Drawer(
-          child: AndroidDrawerScreen(),
-        ),
-        body: homeSelected
-            ? Stack(
-                children: [
-                  Wave(),
-                  Builder(
-                    builder: (ctx) => Positioned.fill(
-                      top: 50,
-                      left: 20,
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: GestureDetector(
-                            onTap: () {
-                              debugPrint('...@1');
-                              Scaffold.of(ctx).openDrawer();
-                            },
-                            child: Icon(Icons.menu)),
-                      ),
+    // var screenHeight = screenSize.height;
+    var screenWidth = screenSize.width;
+    var screen = Provider.of<RouteProvider>(context).screen.toString();
+    var menuSelectedCheck =
+        Provider.of<RouteProvider>(context, listen: true).menuSelected as bool;
+    // debugPrint('...@@123 menuSelectedCheck..$menuSelectedCheck');
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+          backgroundColor:
+              Styles.themeData(isDarkTheme, context).backgroundColor,
+          // drawer: Drawer(
+          //   child: AndroidDrawerScreen(),
+          // ),
+          body: Stack(
+            children: [
+              Positioned.fill(
+                child: AnimatedOpacity(
+                  opacity: !menuSelectedCheck ? 1 : 0,
+                  duration: Duration(milliseconds: 900),
+                  child: Align(
+                    child: CustomPaint(
+                      painter: MyPainter(ctx: context),
+                      child: Container(),
                     ),
                   ),
-                  Container(
-                    height: screenSize.height,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 80,
-                        ),
-                        AnimatedOpacity(
-                          opacity: showQuote ? 1 : 0,
-                          duration: Duration(milliseconds: 900),
-                          child: Container(
-                            padding: EdgeInsets.all(30),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SelectableText(
-                                  '" ' + quote1 + ' "',
-                                  toolbarOptions: ToolbarOptions(
-                                      copy: true, selectAll: true),
-                                  textAlign: TextAlign.center,
-                                  style: quoteStyle,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  ' - $author1',
-                                  maxLines: 2,
-                                  textAlign: TextAlign.right,
-                                  style: authorStyle,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Spacer(),
-                        AnimatedOpacity(
-                          opacity: showImage ? 1 : 0,
-                          duration: Duration(milliseconds: 500),
-                          child: Container(
-                            padding: const EdgeInsets.all(38.0),
-                            // height: 1000,
-                            child: Column(
-                              children: [
-                                Container(
-                                  child: CircleAvatar(
-                                    radius: 100,
-                                    backgroundImage: AssetImage(
-                                      'assets/images/propic3.jpg',
+                ),
+              ),
+              !menuSelectedCheck
+                  ? screen == "Home"
+                      ? Container(
+                          height: screenSize.height,
+                          child: Stack(
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 80,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 50, right: 20),
+                                          child: AnimateIcons(
+                                            startIcon: !menuSelectedCheck
+                                                ? Icons.menu
+                                                : Icons.close,
+                                            endIcon: !menuSelectedCheck
+                                                ? Icons.menu
+                                                : Icons.close,
+                                            size: 20.0,
+                                            controller: controller,
+                                            onStartIconPress: () {
+                                              if (controller.isStart()) {
+                                                debugPrint('..@2');
+                                                setState(() {
+                                                  Provider.of<RouteProvider>(
+                                                          context,
+                                                          listen: false)
+                                                      .setMenuSelected(
+                                                          check: true);
+                                                  controller.animateToEnd();
+                                                });
+                                              }
+                                              return true;
+                                            },
+                                            onEndIconPress: () {
+                                              print("Clicked on Close Icon");
+                                              debugPrint('..@4');
+                                              if (controller.isEnd()) {
+                                                debugPrint('..@5');
+                                                setState(() {
+                                                  Provider.of<RouteProvider>(
+                                                          context,
+                                                          listen: false)
+                                                      .setMenuSelected(
+                                                          check: false);
+                                                  controller.animateToStart();
+                                                });
+                                              }
+                                              return true;
+                                            },
+                                            duration:
+                                                Duration(milliseconds: 500),
+                                            startIconColor: Colors.black,
+                                            endIconColor: Colors.black,
+                                            clockwise: false,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Center(
-                                  child: nameText(textColor: Colors.white),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    FadeInLeftBig(
-                                      child: GestureDetector(
-                                        child: Container(
-                                          child: fbPng,
+                                  Spacer(),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: screenWidth * 0.1),
+                                    child: FadeInDownBig(
+                                      child: Container(
+                                        width: screenWidth * 0.7,
+                                        child: FittedBox(
+                                          child: Text(
+                                            "Hi, \nI 'm Sivaprasad NK ",
+                                            style: TextStyle(
+                                              fontFamily: 'PlayfairDisplay',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 40,
+                                            ),
+                                          ),
                                         ),
-                                        onTap: () {
-                                          launch(fbLink);
-                                        },
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    FadeInUpBig(
-                                      child: GestureDetector(
-                                        child: instaPng,
-                                        onTap: () {
-                                          launch(instaLink);
-                                        },
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: screenWidth * 0.1),
+                                    child: FadeInLeftBig(
+                                      child: Container(
+                                        // width: screenWidth * 0.8,
+                                        child: Text(
+                                          "\nFlutter Developer from \nTripunithura, Kerala .",
+                                          style: TextStyle(
+                                            // fontFamily: 'PlayfairDisplay',
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 23,
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    FadeInUpBig(
-                                      child: GestureDetector(
-                                        child: waPng,
-                                        onTap: () {
-                                          if (kIsWeb) {
-                                            launch(whatsappWebLink);
-                                          } else {
-                                            if (Platform.isAndroid)
-                                              launch(whatsappAndroidLink);
-                                          }
-                                        },
+                                  ),
+                                  Spacer(),
+                                  Spacer(),
+                                  // Spacer(),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      FadeInUpBig(
+                                        child: Container(
+                                          child: CircleAvatar(
+                                            radius: screenWidth * 0.3,
+                                            backgroundImage: AssetImage(
+                                              'assets/images/propic3.jpg',
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    FadeInRightBig(
-                                      child: GestureDetector(
-                                        child: linkedInPng,
-                                        onTap: () {
-                                          launch(linkedInLink);
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                    ],
+                                  ),
+                                  Spacer(),
+                                  SizedBox(
+                                    height: 50,
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
                         )
-                      ],
-                    ),
-                  ),
-                ],
-              )
-            : AndroidProjectScreen());
+                      : screen == "ContactMe"
+                          ? AndroidContactMeScreen()
+                          : Container()
+                  : AndroidMenuScreen()
+            ],
+          )),
+    );
   }
+}
+
+class MyPainter extends CustomPainter {
+  final BuildContext ctx;
+  MyPainter({required this.ctx});
+  @override
+  void paint(Canvas canvas, Size size) {
+    double padding = 0;
+    // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
+    final Paint paint = Paint()
+      ..color = Colors.teal
+      ..style = PaintingStyle.fill
+      // ..
+
+      // ..strokeJoin  = Stroke
+      ..strokeWidth = 5.0;
+
+    final Path path = Path();
+
+    final h = size.height;
+    final w = size.width;
+
+    final y = h / 2;
+    // path.
+    path.moveTo(padding, h - padding);
+    path.lineTo(padding, h - h * 0.15);
+    // path.quadraticBezierTo(w, y - 55, w, y - 5);
+    path.lineTo(w - padding, y);
+    path.lineTo(w - padding, h - padding);
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

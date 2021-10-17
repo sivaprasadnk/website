@@ -7,10 +7,6 @@ final String instaPngImageName = 'assets/images/instagram.png';
 // final String linkedInAssetName = 'assets/svg/linkedin_1.svg';
 final String linkedInAssetName = 'assets/images/linkedin.png';
 
-final String quote1 =
-    'We are what we repeatedly do. \n Excellence, then, is not an act, but a habit';
-final String author1 = 'Aristotle';
-
 final fbLink = 'https://www.facebook.com/sivaprasadnk.official';
 
 final instaLink = 'https://www.instagram.com/sivaprasad_nk/';
@@ -29,3 +25,12 @@ final spQuizLink =
 
 final welcomeMobText = 'Welcome to \n sivaprasadnk.github.io';
 final welcomeSiteText = 'Welcome to sivaprasadnk.github.io';
+
+final String quote2 =
+    '" We are what we repeatedly do. \n Excellence, then, is not an act, but a habit "';
+final String author2 = 'Aristotle';
+
+final String quote1 =
+    ' "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful."';
+
+final String author1 = 'Albert Schweitzer';
