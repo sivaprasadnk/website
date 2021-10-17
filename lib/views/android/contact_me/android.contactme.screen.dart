@@ -83,7 +83,8 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
                 ),
                 LiveList(
                   shrinkWrap: true,
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.only(
+                      left: 16, right: 16, bottom: 10, top: 0),
                   physics: NeverScrollableScrollPhysics(),
                   showItemInterval: const Duration(milliseconds: 50),
                   showItemDuration: const Duration(milliseconds: 150),
