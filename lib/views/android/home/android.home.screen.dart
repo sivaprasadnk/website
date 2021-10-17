@@ -88,7 +88,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                 ),
               if ((screen == "Home") && (!menuSelectedCheck))
                 Positioned.fill(
-                  bottom: screenSize.height * 0.15,
+                  bottom: screenSize.height * 0.1,
                   // left: 60,
                   child: Align(
                     alignment: Alignment.bottomCenter,
@@ -114,7 +114,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                                       children: [
                                         Padding(
                                           padding: EdgeInsets.only(
-                                              top: 50, right: 20),
+                                              top: 20, right: 20),
                                           child: IconButton(
                                             icon: Icon(Icons.menu,
                                                 color: Colors.white),
@@ -130,7 +130,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                                     ),
                                   ),
                                   SizedBox(
-                                    height: screenSize.height * 0.1,
+                                    height: screenSize.height * 0.05,
                                   ),
                                   Padding(
                                     padding: EdgeInsets.only(
