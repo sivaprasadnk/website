@@ -2,8 +2,246 @@ import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
+
+TextStyle authorStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  color: Colors.red,
+  fontSize: 21,
+);
+
+TextStyle quoteStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  // fontFamily: 'Vollkorn',
+  decorationStyle: TextDecorationStyle.solid,
+  fontStyle: FontStyle.italic,
+  color: Colors.teal,
+  fontSize: 21,
+);
+
+Text nameText({
+  required Color textColor,
+}) {
+  return Text(
+    'Sivaprasad NK',
+    style: TextStyle(
+      fontFamily: 'PatuaOne',
+      color: textColor,
+      fontWeight: FontWeight.bold,
+      fontSize: 21.0,
+    ),
+  );
+}
+
+class AndroidBgCurve extends CustomPainter {
+  final BuildContext ctx;
+  AndroidBgCurve({required this.ctx});
+  @override
+  void paint(Canvas canvas, Size size) {
+    double padding = 0;
+    // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
+    final Paint paint = Paint()
+      ..color = Color.fromRGBO(7, 17, 26, 1)
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 5.0;
+
+    final Path path = Path();
+
+    final h = size.height;
+    final w = size.width;
+
+    final y = h / 2;
+    final x = w / 2;
+
+    path.moveTo(0, h - padding);
+    path.lineTo(0, h * 0.23);
+    path.quadraticBezierTo(w * 0.25, h * 0.16, w * 0.5, h * 0.23);
+    path.quadraticBezierTo(w * 0.75, h * 0.3, w, h * 0.23);
+    path.lineTo(w - padding, y);
+    path.lineTo(w - padding, h - padding);
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
+}
+
+class DescriptionText extends StatelessWidget {
+  final String description;
+  const DescriptionText({required this.description});
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 40,
+        top: 5,
+        right: 30,
+      ),
+      child: Text(
+        description,
+        // 'A Quiz App with various categories ,and cool animations for each element on screen ',
+        style: TextStyle(
+          // fontFamily: 'PlayfairDisplay',
+          color: Colors.grey,
+          fontWeight: FontWeight.bold,
+          fontSize: 15,
+          // color: Colors.white
+        ),
+      ),
+    );
+  }
+}
+
+class GooglePlayButton extends StatelessWidget {
+  final double screenWidth;
+  final String url;
+  const GooglePlayButton({required this.screenWidth, required this.url});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 40, right: screenWidth * 0.29, top: 20),
+      child: GestureDetector(
+        onTap: () {
+          launch(url);
+        },
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.black,
+              border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.circular(10)),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  'assets/images/google-play.png',
+                  height: 50,
+                ),
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'GET IT ON',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Google Play',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 23,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class NameWidget extends StatelessWidget {
+  const NameWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Sivaprasad NK',
+      style: TextStyle(
+        fontFamily: 'PatuaOne',
+        color: Colors.white,
+        fontSize: 21.0,
+      ),
+    );
+  }
+}
+
+class ProPic extends StatelessWidget {
+  const ProPic({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: CircleAvatar(
+        radius: 100,
+        backgroundImage: AssetImage(
+          'assets/images/propic3.jpg',
+        ),
+      ),
+    );
+  }
+}
+
+class ProPicWidget extends StatelessWidget {
+  final double radius;
+  const ProPicWidget({required this.radius});
+  @override
+  Widget build(BuildContext context) {
+    return FadeInUpBig(
+      child: Container(
+        child: CircleAvatar(
+          radius: radius,
+          backgroundImage: AssetImage(
+            'assets/images/propic3.jpg',
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class QuoteWidget extends StatefulWidget {
+  final bool showQuote;
+  QuoteWidget({required this.showQuote});
+  @override
+  _QuoteWidgetState createState() => _QuoteWidgetState();
+}
+
+class TitleText extends StatelessWidget {
+  final String title;
+  const TitleText({required this.title});
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, top: 50),
+      child: Text(
+        title,
+        style: TextStyle(
+          // fontFamily: 'PlayfairDisplay',
+          // color: Colors.,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+          fontSize: 20,
+        ),
+      ),
+    );
+  }
+}
+
+class Wave extends StatefulWidget {
+  const Wave({Key? key}) : super(key: key);
+
+  @override
+  _WaveState createState() => _WaveState();
+}
 
 class WelcomeText extends StatelessWidget {
   final bool isMobile;
@@ -40,135 +278,6 @@ class WelcomeText extends StatelessWidget {
     //   ),
     // );
   }
-}
-
-class Wave extends StatefulWidget {
-  const Wave({Key? key}) : super(key: key);
-
-  @override
-  _WaveState createState() => _WaveState();
-}
-
-class _WaveState extends State<Wave> {
-  bool showWave = false;
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration(milliseconds: 500)).then((value) {
-      setState(() {
-        showWave = true;
-      });
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: WaveWidget(
-        config: CustomConfig(
-          gradients: [
-            [Colors.blueAccent, Colors.blueAccent],
-            [Colors.blueAccent, Colors.blueAccent],
-            [Colors.blue, Colors.blue],
-            [Colors.blue, Colors.blue]
-          ],
-          //  heightPercentages: [0.25, 0.26, 0.28, 0.31],
-          durations: [35000, 19440, 10800, 6000],
-          heightPercentages: [0.65, 0.63, 0.65, 0.60],
-          blur: MaskFilter.blur(BlurStyle.solid, 10),
-          gradientBegin: Alignment.bottomLeft,
-          gradientEnd: Alignment.topRight,
-        ),
-        // color: [
-        //   Colors.white70,
-        //   Colors.white54,
-        //   Colors.white30,
-        //   Colors.white24,
-        // ],
-        // durations: [
-        //   32000,
-        //   21000,
-        //   18000,
-        //   5000,
-        // ],
-        waveAmplitude: 0,
-        size: Size(
-          double.infinity,
-          double.infinity,
-        ),
-      ),
-    );
-  }
-}
-
-class NameWidget extends StatelessWidget {
-  const NameWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'Sivaprasad NK',
-      style: TextStyle(
-        fontFamily: 'PatuaOne',
-        color: Colors.white,
-        fontSize: 21.0,
-      ),
-    );
-  }
-}
-
-Text nameText({
-  required Color textColor,
-}) {
-  return Text(
-    'Sivaprasad NK',
-    style: TextStyle(
-      fontFamily: 'PatuaOne',
-      color: textColor,
-      fontWeight: FontWeight.bold,
-      fontSize: 21.0,
-    ),
-  );
-}
-
-TextStyle quoteStyle = TextStyle(
-  fontWeight: FontWeight.bold,
-  // fontFamily: 'Vollkorn',
-  decorationStyle: TextDecorationStyle.solid,
-  fontStyle: FontStyle.italic,
-  color: Colors.teal,
-  fontSize: 21,
-);
-
-TextStyle authorStyle = TextStyle(
-  fontWeight: FontWeight.bold,
-  color: Colors.red,
-  fontSize: 21,
-);
-
-class ProPic extends StatelessWidget {
-  const ProPic({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: CircleAvatar(
-        radius: 100,
-        backgroundImage: AssetImage(
-          'assets/images/propic3.jpg',
-        ),
-      ),
-    );
-  }
-}
-
-class QuoteWidget extends StatefulWidget {
-  final bool showQuote;
-  QuoteWidget({required this.showQuote});
-  @override
-  _QuoteWidgetState createState() => _QuoteWidgetState();
 }
 
 class _QuoteWidgetState extends State<QuoteWidget> {
@@ -213,67 +322,91 @@ class _QuoteWidgetState extends State<QuoteWidget> {
   }
 }
 
-class TitleText extends StatelessWidget {
-  final String title;
-  const TitleText({required this.title});
+class _WaveState extends State<Wave> {
+  bool showWave = false;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20, top: 50),
-      child: Text(
-        title,
-        style: TextStyle(
-          // fontFamily: 'PlayfairDisplay',
-          // color: Colors.,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-          fontSize: 20,
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      child: WaveWidget(
+        config: CustomConfig(
+          gradients: [
+            [Colors.blueAccent, Colors.blueAccent],
+            [Colors.blueAccent, Colors.blueAccent],
+            [Colors.blue, Colors.blue],
+            [Colors.blue, Colors.blue]
+          ],
+          //  heightPercentages: [0.25, 0.26, 0.28, 0.31],
+          durations: [35000, 19440, 10800, 6000],
+          heightPercentages: [0.65, 0.63, 0.65, 0.60],
+          blur: MaskFilter.blur(BlurStyle.solid, 10),
+          gradientBegin: Alignment.bottomLeft,
+          gradientEnd: Alignment.topRight,
+        ),
+        // color: [
+        //   Colors.white70,
+        //   Colors.white54,
+        //   Colors.white30,
+        //   Colors.white24,
+        // ],
+        // durations: [
+        //   32000,
+        //   21000,
+        //   18000,
+        //   5000,
+        // ],
+        waveAmplitude: 0,
+        size: Size(
+          double.infinity,
+          double.infinity,
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 500)).then((value) {
+      setState(() {
+        showWave = true;
+      });
+    });
   }
 }
 
-class DescriptionText extends StatelessWidget {
-  final String description;
-  const DescriptionText({required this.description});
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 40,
-        top: 5,
-        right: 30,
-      ),
-      child: Text(
-        description,
-        // 'A Quiz App with various categories ,and cool animations for each element on screen ',
-        style: TextStyle(
-          // fontFamily: 'PlayfairDisplay',
-          color: Colors.grey,
-          fontWeight: FontWeight.bold,
-          fontSize: 15,
-          // color: Colors.white
-        ),
-      ),
-    );
-  }
-}
 
-class ProPicWidget extends StatelessWidget {
-  final double radius;
-  const ProPicWidget({required this.radius});
+class AndroidHomeBgCurve extends CustomPainter {
+  final BuildContext ctx;
+  AndroidHomeBgCurve({required this.ctx});
   @override
-  Widget build(BuildContext context) {
-    return FadeInUpBig(
-      child: Container(
-        child: CircleAvatar(
-          radius: radius,
-          backgroundImage: AssetImage(
-            'assets/images/propic3.jpg',
-          ),
-        ),
-      ),
-    );
+  void paint(Canvas canvas, Size size) {
+    double padding = 0;
+    // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
+    final Paint paint = Paint()
+      ..color = Colors.teal
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 5.0;
+
+    final Path path = Path();
+
+    final h = size.height;
+    final w = size.width;
+
+    final y = h / 2;
+    final x = w / 2;
+    // path.
+    path.moveTo(0, h - padding);
+    path.lineTo(0, h * 0.55);
+    path.quadraticBezierTo(w * 0.29, h * 0.55, w * 0.5, h * 0.7);
+    path.quadraticBezierTo(w * 0.73, h * 0.84, w, h * 0.74);
+    path.lineTo(w - padding, y);
+    path.lineTo(w - padding, h - padding);
+    path.close();
+    canvas.drawPath(path, paint);
   }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

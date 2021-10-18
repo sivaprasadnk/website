@@ -4,13 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/provider/route_provider.dart';
-import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/utils/theme.dart';
 import 'package:spnk/views/android/contact_me/android.contactme.screen.dart';
 import 'package:spnk/views/android/menu/android.menu.screen.dart';
-import 'package:spnk/views/android/projects/android.projects.screen2.dart';
+import 'package:spnk/views/android/projects/android.projects.screen.dart';
 
 class AndroidHomeScreen extends StatefulWidget {
   static const routeName = '/AndroidHome';
@@ -35,28 +33,23 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
   bool quoteLoaded = false;
 
   bool menuSelected = false;
+
   @override
   void initState() {
     super.initState();
     showImage = false;
-    // controller = AnimateIconController();
     fbPng = Image.asset(fbPngAssetName, height: iconSize);
     waPng = Image.asset(whatsappPngeAssetName, height: iconSize);
     instaPng = Image.asset(instaPngImageName, height: iconSize);
     linkedInPng = Image.asset(linkedInAssetName,
         height: iconSize, color: Colors.blue[900]);
-    // Future.delayed(Duration(seconds: 1)).then((value) {
-    //   setState(() {
-    //     showImage = true;
-    //   });
-    // });
   }
 
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    final themeProvider = Provider.of<DarkThemeProvider>(context);
-    final isDarkTheme = themeProvider.darkTheme;
+    // final themeProvider = Provider.of<DarkThemeProvider>(context);
+    // final isDarkTheme = themeProvider.darkTheme;
     // var screenHeight = screenSize.height;
     var screenWidth = screenSize.width;
     var screen = Provider.of<RouteProvider>(context).screen.toString();
@@ -80,7 +73,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                     duration: Duration(milliseconds: 900),
                     child: Align(
                       child: CustomPaint(
-                        painter: MyPainter(ctx: context),
+                        painter: AndroidHomeBgCurve(ctx: context),
                         child: Container(),
                       ),
                     ),
@@ -189,38 +182,4 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
           )),
     );
   }
-}
-
-class MyPainter extends CustomPainter {
-  final BuildContext ctx;
-  MyPainter({required this.ctx});
-  @override
-  void paint(Canvas canvas, Size size) {
-    double padding = 0;
-    // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
-    final Paint paint = Paint()
-      ..color = Colors.teal
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 5.0;
-
-    final Path path = Path();
-
-    final h = size.height;
-    final w = size.width;
-
-    final y = h / 2;
-    final x = w / 2;
-    // path.
-    path.moveTo(0, h - padding);
-    path.lineTo(0, h * 0.55);
-    path.quadraticBezierTo(w * 0.29, h * 0.55, w * 0.5, h * 0.7);
-    path.quadraticBezierTo(w * 0.73, h * 0.84, w, h * 0.74);
-    path.lineTo(w - padding, y);
-    path.lineTo(w - padding, h - padding);
-    path.close();
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

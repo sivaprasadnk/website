@@ -8,6 +8,7 @@ import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/home/android.home.screen.dart';
 import 'package:spnk/views/ios/home/ios.home.screen.dart';
 import 'package:spnk/views/macOS/home/macos.home.screen.dart';
+import 'package:spnk/views/windows/home/windows.home.screen.dart';
 import 'package:spnk/views/windows/home/windows.home.screen2.dart';
 
 void main() => runApp(MyApp());
@@ -58,8 +59,7 @@ class _SplashScreenState extends State<SplashScreen>
       });
     } else if (defaultTargetPlatform == TargetPlatform.macOS) {
       Future.delayed(Duration(seconds: 5)).then((value) {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (ctx) => MacOsHomeScreen()));
+        Navigator.pushReplacementNamed(context, WindowsHomeScreen.routeName);
       });
     } else {
       Future.delayed(Duration(seconds: 5)).then((value) {
