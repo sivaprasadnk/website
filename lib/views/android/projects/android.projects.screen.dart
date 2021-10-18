@@ -119,7 +119,7 @@ class _AndroidProjectsState extends State<AndroidProjects> {
                       case 4:
                         return DescriptionText(
                           description:
-                              'A Quiz App with various categories ,and cool animations for each element on screen ',
+                              "A Simple quiz app \nwith cool animations and effects",
                         );
                       case 5:
                         return GooglePlayButton(
