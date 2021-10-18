@@ -22,7 +22,6 @@ environment:
 
 dependencies:
   animate_do: ^2.0.0
-
   animated_text_kit: ^4.2.1
   animations: ^2.0.1
   auto_animated: ^3.0.0
@@ -38,6 +37,7 @@ dependencies:
   http: ^0.13.3
   lottie: ^1.0.1
   mouse_parallax: ^1.1.0
+  page_view_indicators: ^2.0.0
   provider: ^5.0.0
   tab_indicator_styler: 2.0.0-null-safety
   transition: ^2.0.2
