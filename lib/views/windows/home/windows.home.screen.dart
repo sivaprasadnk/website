@@ -6,38 +6,6 @@ import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/home/windows.home.container.dart';
 import 'package:spnk/views/windows/projects/windows.project.container.dart';
 
-class MyPainter extends CustomPainter {
-  final BuildContext ctx;
-  MyPainter({required this.ctx});
-  @override
-  void paint(Canvas canvas, Size size) {
-    double padding = 0;
-    // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
-    final Paint paint = Paint()
-      ..color = Colors.teal
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 5.0;
-
-    final Path path = Path();
-
-    final h = size.height;
-    final w = size.width;
-
-    final y = h / 2;
-    path.moveTo(0, h - padding);
-    path.lineTo(0, h * 0.55);
-    path.quadraticBezierTo(w * 0.29, h * 0.55, w * 0.5, h * 0.7);
-    path.quadraticBezierTo(w * 0.73, h * 0.84, w, h * 0.74);
-    path.lineTo(w - padding, y);
-    path.lineTo(w - padding, h - padding);
-    path.close();
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => true;
-}
-
 class WindowsHomeScreen extends StatefulWidget {
   static const routeName = '/Home';
   const WindowsHomeScreen({Key? key}) : super(key: key);
@@ -45,38 +13,6 @@ class WindowsHomeScreen extends StatefulWidget {
   @override
   _WindowsHomeScreenState createState() => _WindowsHomeScreenState();
 }
-
-// class MyPainter extends CustomPainter {
-//   final BuildContext ctx;
-//   MyPainter({required this.ctx});
-//   @override
-//   void paint(Canvas canvas, Size size) {
-//     double padding = 0;
-//     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
-//     final Paint paint = Paint()
-//       ..color = Colors.teal
-//       ..style = PaintingStyle.fill
-//       ..strokeWidth = 5.0;
-
-//     final Path path = Path();
-
-//     final h = size.height;
-//     final w = size.width;
-//     var x = w / 2;
-//     x = 0;
-//     final y = h / 2;
-//     path.moveTo(padding + x, h - padding);
-//     path.lineTo(padding + x, h - h * 0.15);
-//     path.quadraticBezierTo(w, y - 55, w, y - 5);
-//     path.lineTo(w - padding + x, y - y * 0.5);
-//     path.lineTo(w - padding + x, h - padding);
-//     path.close();
-//     canvas.drawPath(path, paint);
-//   }
-
-//   @override
-//   bool shouldRepaint(CustomPainter oldDelegate) => true;
-// }
 
 class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
   bool isDarkModeEnabled = false;
@@ -209,24 +145,8 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
         ),
       ),
       body: (homeSelected)
-          ? Stack(
-              children: [
-                Positioned.fill(
-                  child: AnimatedOpacity(
-                    opacity: 1,
-                    duration: Duration(milliseconds: 900),
-                    child: Align(
-                      child: CustomPaint(
-                        painter: MyPainter(ctx: context),
-                        child: Container(),
-                      ),
-                    ),
-                  ),
-                ),
-                WindowsHomeContainer(
-                    screenWidth: screenWidth, screenHeight: screenHeight)
-              ],
-            )
+          ? WindowsHomeContainer(
+              screenWidth: screenWidth, screenHeight: screenHeight)
           : projectSelected
               ? WindowsProjectContainer(
                   screenWidth: screenWidth, screenHeight: screenHeight)

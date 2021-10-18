@@ -1,5 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/utils/common_widgets.dart';
 
 class MyPainter extends CustomPainter {
   final BuildContext ctx;
@@ -46,6 +48,7 @@ class WindowsProjectContainer extends StatelessWidget {
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: screenHeight * 0.1,
@@ -66,6 +69,81 @@ class WindowsProjectContainer extends StatelessWidget {
                         ),
                       ),
                     ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: screenWidth * 0.2,
+                  top: screenHeight * 0.1,
+                ),
+                child: FadeInLeftBig(
+                  child: Container(
+                    width: screenWidth * 0.15,
+                    child: FittedBox(
+                      child: Text(
+                        "SP Quiz App",
+                        style: TextStyle(
+                          // fontFamily: 'PlayfairDisplay',
+                          fontWeight: FontWeight.bold,
+                          // fontSize: 40,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: screenWidth * 0.2,
+                  top: screenHeight * 0.1,
+                ),
+                child: FadeInLeftBig(
+                  child: Row(
+                    children: [
+                      Container(
+                        width: screenWidth * 0.15,
+                        child: Image(
+                          height: 250,
+                          image: AssetImage(
+                            'assets/images/quizApp/screen2.png',
+                          ),
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Container(
+                              // width: screenWidth * 0.15,
+                              child: Text(
+                                "A Simple quiz app \n with cool animations and effects",
+                                style: TextStyle(
+                                  // fontFamily: 'PlayfairDisplay',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 30),
+                          // Container(
+                          //   width: screenWidth * 0.15,
+                          //   child: Image(
+                          //     height: 150,
+                          //     image: AssetImage(
+                          //       'assets/images/quizApp/screen2.png',
+                          //     ),
+                          //   ),
+                          // ),
+                          GooglePlayButton(
+                              screenWidth: screenWidth, url: spQuizLink),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
