@@ -139,7 +139,7 @@ class _WindowsProjectContainerState extends State<WindowsProjectContainer> {
                             child: Image(
                               height: 250,
                               image: AssetImage(
-                                'assets/images/quizApp/screen2.png',
+                                'assets/images/quotesApp/screen1.png',
                               ),
                             ),
                           ),
