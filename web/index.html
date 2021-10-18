@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -26,11 +27,13 @@
   <title>spnk</title>
   <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
   <script>
+
     var serviceWorkerVersion = null;
     var scriptLoaded = false;
     function loadMainDartJs() {
@@ -94,5 +97,22 @@
       loadMainDartJs();
     }
   </script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDZ-ULwtn_LspmuJMdoHr0F3VLVMukZp_U",
+      authDomain: "spquotesapp.firebaseapp.com",
+      databaseURL: "https://spquotesapp-default-rtdb.firebaseio.com",
+      projectId: "spquotesapp",
+      storageBucket: "spquotesapp.appspot.com",
+      messagingSenderId: "984774628334",
+      appId: "1:984774628334:web:1e346bee08fcca1dc074ff",
+      measurementId: "G-ZED2HJPTED"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
 </body>
+
 </html>

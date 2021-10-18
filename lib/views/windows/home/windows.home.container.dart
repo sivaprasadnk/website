@@ -23,6 +23,39 @@ class WindowsHomeContainer extends StatelessWidget {
             ),
           ),
         ),
+        if (screenWidth <= 600)
+          Positioned.fill(
+            top: screenHeight * 0.1,
+            left: screenWidth * 0.2,
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "Hi, \nI 'm Sivaprasad NK .",
+                style: TextStyle(
+                  fontFamily: 'PlayfairDisplay',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        if (screenWidth <= 600)
+          Positioned.fill(
+            top: screenHeight * 0.2,
+            left: screenWidth * 0.2,
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "\nFlutter Developer from Tripunithura, Kerala .",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -37,37 +70,40 @@ class WindowsHomeContainer extends StatelessWidget {
                     padding: EdgeInsets.only(
                         left: screenWidth * 0.2, top: screenHeight * 0.25),
                     child: FadeInDownBig(
-                      child: Container(
-                        width: screenWidth * 0.5,
-                        child: FittedBox(
-                          child: Text(
-                            "Hi, \nI 'm Sivaprasad NK .",
-                            style: TextStyle(
-                              fontFamily: 'PlayfairDisplay',
-                              fontWeight: FontWeight.bold,
-                              // fontSize: 40,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
+                      child: screenWidth > 600
+                          ? Container(
+                              width: screenWidth * 0.5,
+                              child: FittedBox(
+                                  child: Text(
+                                "Hi, \nI 'm Sivaprasad NK .",
+                                style: TextStyle(
+                                  fontFamily: 'PlayfairDisplay',
+                                  fontWeight: FontWeight.bold,
+                                  // fontSize: 40,
+                                  color: Colors.white,
+                                ),
+                              )),
+                            )
+                          : Container(),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: screenWidth * 0.2),
                     child: FadeInLeftBig(
-                      child: Container(
-                        child: FittedBox(
-                          child: Text(
-                            "\nFlutter Developer from Tripunithura, Kerala .",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 23,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
+                      child: screenWidth > 600
+                          ? Container(
+                              child: FittedBox(
+                                child: Text(
+                                  "\nFlutter Developer from Tripunithura, Kerala .",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 23,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            )
+                          : Container(),
                     ),
                   ),
                 ],

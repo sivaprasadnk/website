@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/views/windows/contactme/windows.contactme.container.dart';
 import 'package:spnk/views/windows/home/windows.home.container.dart';
 import 'package:spnk/views/windows/projects/windows.project.container.dart';
 
@@ -34,6 +35,7 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
+    debugPrint('..@ screenWidth : $screenWidth');
     // final themeProvider = Provider.of<DarkThemeProvider>(context);
     // var screen = Provider.of<RouteProvider>(context).screen.toString();
 
@@ -55,6 +57,7 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                       setState(() {
                         homeSelected = true;
                         projectSelected = false;
+                        contactmeSelected = false;
                       });
                     },
                     child: nameText(textColor: Colors.white),
@@ -68,6 +71,7 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                     setState(() {
                       homeSelected = true;
                       projectSelected = false;
+                      contactmeSelected = false;
                     });
                   },
                   child: Column(
@@ -106,6 +110,7 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                     setState(() {
                       projectSelected = true;
                       homeSelected = false;
+                      contactmeSelected = false;
                     });
                   },
                   child: Column(
@@ -129,7 +134,7 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                         visible: projectSelected,
                         child: Container(
                           height: 2,
-                          width: 40,
+                          width: 45,
                           color: Colors.white,
                         ),
                       )
@@ -138,6 +143,40 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                 ),
                 SizedBox(
                   width: screenWidth / 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      homeSelected = false;
+                      projectSelected = false;
+                      contactmeSelected = true;
+                    });
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Contact Me',
+                        style: TextStyle(
+                          fontFamily: 'PatuaOne',
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      // For showing an underline on hover
+                      Visibility(
+                        maintainAnimation: true,
+                        maintainState: true,
+                        maintainSize: true,
+                        visible: contactmeSelected,
+                        child: Container(
+                          height: 2,
+                          width: 64,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -150,7 +189,10 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
           : projectSelected
               ? WindowsProjectContainer(
                   screenWidth: screenWidth, screenHeight: screenHeight)
-              : Container(),
+              : contactmeSelected
+                  ? WindowsContactMeContainer(
+                      screenWidth: screenWidth, screenHeight: screenHeight)
+                  : Container(),
     );
   }
 

@@ -7,9 +7,7 @@ import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/home/android.home.screen.dart';
 import 'package:spnk/views/ios/home/ios.home.screen.dart';
-import 'package:spnk/views/macOS/home/macos.home.screen.dart';
 import 'package:spnk/views/windows/home/windows.home.screen.dart';
-import 'package:spnk/views/windows/home/windows.home.screen2.dart';
 
 void main() => runApp(MyApp());
 

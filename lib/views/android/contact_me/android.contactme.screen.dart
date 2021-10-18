@@ -100,12 +100,12 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
                       case 2:
                         return TitleText(title: 'Mobile');
                       case 3:
-                        return DescriptionText(description: '8086028340');
+                        return DescriptionText(description: '+91 8086028340');
                       case 4:
                         return TitleText(title: 'E-mail');
                       case 5:
                         return DescriptionText(
-                            description: 'sivaprasadnk123@gmail.com');
+                            description: 'sivaprasadnk.official@gmail.com');
                       case 6:
                         return TitleText(title: 'Social Media');
                       case 7:
