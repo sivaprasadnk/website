@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:page_view_indicators/page_view_indicators.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 
@@ -56,6 +57,7 @@ class _WindowsProjectContainerState extends State<WindowsProjectContainer> {
   _buildPageView(
           PageController pageController, ValueNotifier currentPageNotifier) =>
       Container(
+        // color: Colors.amber,
         width: widget.screenWidth * 0.9,
         height: widget.screenHeight * 0.6,
         child: PageView.builder(
@@ -70,20 +72,24 @@ class _WindowsProjectContainerState extends State<WindowsProjectContainer> {
                       ),
                       child: Row(
                         children: [
-                          Container(
-                            width: widget.screenWidth * 0.15,
-                            child: Image(
-                              height: 250,
-                              image: AssetImage(
-                                'assets/images/quizApp/screen2.png',
+                          Flexible(
+                            child: Container(
+                              width: widget.screenWidth * 0.15,
+                              child: Image(
+                                height: 250,
+                                image: AssetImage(
+                                  'assets/images/quizApp/screen2.png',
+                                ),
                               ),
                             ),
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                height: widget.screenHeight * 0.1,
+                              Flexible(
+                                child: SizedBox(
+                                  height: widget.screenHeight * 0.13,
+                                ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 20),
@@ -119,9 +125,37 @@ class _WindowsProjectContainerState extends State<WindowsProjectContainer> {
                                 ),
                               ),
                               SizedBox(height: 30),
-                              GooglePlayButton(
-                                  screenWidth: widget.screenWidth,
-                                  url: spQuizLink),
+                              Flexible(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: SizedBox(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        WinddowsGooglePlayButton(
+                                            screenWidth: widget.screenWidth,
+                                            url: spQuizLink),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        QrImage(
+                                          backgroundColor: Colors.white,
+                                          data: spQuizLink,
+                                          version: QrVersions.auto,
+                                          size: 75.0,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              // QrImage(
+                              //   data: spQuizLink,
+                              //   version: QrVersions.auto,
+                              //   size: 75.0,
+                              // ),
                             ],
                           ),
                         ],
@@ -134,33 +168,39 @@ class _WindowsProjectContainerState extends State<WindowsProjectContainer> {
                       ),
                       child: Row(
                         children: [
-                          Container(
-                            width: widget.screenWidth * 0.15,
-                            child: Image(
-                              height: 250,
-                              image: AssetImage(
-                                'assets/images/quotesApp/screen1.png',
+                          Flexible(
+                            child: Container(
+                              width: widget.screenWidth * 0.15,
+                              child: Image(
+                                height: 250,
+                                image: AssetImage(
+                                  'assets/images/quotesApp/screen1.png',
+                                ),
                               ),
                             ),
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                height: widget.screenHeight * 0.1,
+                              Flexible(
+                                child: SizedBox(
+                                  height: widget.screenHeight * 0.13,
+                                ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Container(
-                                  width: widget.screenWidth * 0.15,
-                                  child: FittedBox(
-                                    child: Text(
-                                      "SP Quotes App",
-                                      style: TextStyle(
-                                        // fontFamily: 'PlayfairDisplay',
-                                        fontWeight: FontWeight.bold,
-                                        // fontSize: 40,
-                                        color: Colors.white,
+                              Flexible(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: Container(
+                                    width: widget.screenWidth * 0.15,
+                                    child: FittedBox(
+                                      child: Text(
+                                        "SP Quotes App",
+                                        style: TextStyle(
+                                          // fontFamily: 'PlayfairDisplay',
+                                          fontWeight: FontWeight.bold,
+                                          // fontSize: 40,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -183,9 +223,32 @@ class _WindowsProjectContainerState extends State<WindowsProjectContainer> {
                                 ),
                               ),
                               SizedBox(height: 30),
-                              GooglePlayButton(
-                                  screenWidth: widget.screenWidth,
-                                  url: spQuotesLink),
+                              Flexible(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: SizedBox(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        WinddowsGooglePlayButton(
+                                            screenWidth: widget.screenWidth,
+                                            url: spQuotesLink),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        QrImage(
+                                          backgroundColor: Colors.white,
+                                          data: spQuotesLink,
+                                          version: QrVersions.auto,
+                                          size: 75.0,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ],

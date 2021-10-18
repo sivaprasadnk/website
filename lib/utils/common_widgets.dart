@@ -121,6 +121,7 @@ class GooglePlayButton extends StatelessWidget {
                 child: Image.asset(
                   'assets/images/google-play.png',
                   height: 50,
+                  // width: 10,
                 ),
               ),
               SizedBox(
@@ -152,6 +153,69 @@ class GooglePlayButton extends StatelessWidget {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class WinddowsGooglePlayButton extends StatelessWidget {
+  final double screenWidth;
+  final String url;
+  const WinddowsGooglePlayButton(
+      {required this.screenWidth, required this.url});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        launch(url);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.black,
+            border: Border.all(color: Colors.grey),
+            borderRadius: BorderRadius.circular(10)),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Image.asset(
+                'assets/images/google-play.png',
+                height: 40,
+                // width: 10,
+              ),
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'GET IT ON',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 10,
+                    ),
+                  ),
+                  Text(
+                    'Google Play',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 21,
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
@@ -376,7 +440,6 @@ class _WaveState extends State<Wave> {
   }
 }
 
-
 class AndroidHomeBgCurve extends CustomPainter {
   final BuildContext ctx;
   AndroidHomeBgCurve({required this.ctx});
@@ -410,7 +473,6 @@ class AndroidHomeBgCurve extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
-
 
 class WindowsHomeBgCurve extends CustomPainter {
   final BuildContext ctx;
