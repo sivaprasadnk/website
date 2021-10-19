@@ -68,7 +68,7 @@ class _AndroidProjectsState extends State<AndroidProjects> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 20, left: 0),
+                  padding: EdgeInsets.only(top: 30, left: 0),
                   child: Align(
                     alignment: Alignment.topRight,
                     child: IconButton(

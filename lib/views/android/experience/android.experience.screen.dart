@@ -1,20 +1,19 @@
 import 'package:auto_animated/auto_animated.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class AndroidContactMeScreen extends StatefulWidget {
+class AndroidExperienceScreen extends StatefulWidget {
   final double screenHeight;
-  const AndroidContactMeScreen({required this.screenHeight});
+  const AndroidExperienceScreen({required this.screenHeight});
   @override
-  _AndroidContactMeScreenState createState() => _AndroidContactMeScreenState();
+  _AndroidExperienceScreenState createState() =>
+      _AndroidExperienceScreenState();
 }
 
-class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
+class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
   late Widget fbPng;
   late Widget waPng;
   late Widget instaPng;
@@ -23,9 +22,6 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
   @override
   Widget build(BuildContext context) {
     double iconSize = 30;
-    var menuSelectedCheck =
-        Provider.of<RouteProvider>(context, listen: true).menuSelected as bool;
-    debugPrint('...@@456 @menu menuSelectedCheck..$menuSelectedCheck');
     fbPng = Image.asset(fbPngAssetName, height: iconSize);
     waPng = Image.asset(whatsappPngeAssetName, height: iconSize);
     instaPng = Image.asset(instaPngImageName, height: iconSize);
@@ -69,7 +65,7 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
                 Padding(
                   padding: EdgeInsets.only(top: 0, left: 30),
                   child: Text(
-                    'Contact Me',
+                    'Experience',
                     style: TextStyle(
                         fontFamily: 'PlayfairDisplay',
                         // color: Colors.,
@@ -92,69 +88,81 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
                   itemBuilder: animationItemBuilder((index) {
                     switch (index) {
                       case 0:
-                        return TitleText(title: 'Address');
+                        return TitleText(title: '\nProgrammer');
                       case 1:
                         return DescriptionText(
-                            description:
-                                'Prasadam, Nadama, \nTripunithura, Ernakulam, Kerala .');
+                            description: '\nBayasys Infotech Pvt Ltd.');
                       case 2:
-                        return TitleText(title: 'Mobile');
+                        return DescriptionText(
+                            description: 'Java , Postgres Programmer');
                       case 3:
-                        return DescriptionText(description: '+91 8086028340');
+                        return DescriptionText(
+                            description: '07/2019 - 09/2020');
                       case 4:
-                        return TitleText(title: 'E-mail');
+                        return TitleText(title: '\nDeveloper');
                       case 5:
                         return DescriptionText(
-                            description: 'sivaprasadnk.official@gmail.com');
+                            description: '\nIndbytes Technologies.');
                       case 6:
-                        return TitleText(title: 'Social Media');
+                        return DescriptionText(
+                            description: 'Lead Flutter Developer');
                       case 7:
-                        return Padding(
-                          padding: const EdgeInsets.only(top: 15, left: 40),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              GestureDetector(
-                                child: fbPng,
-                                onTap: () {
-                                  launch(fbLink);
-                                },
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              GestureDetector(
-                                child: instaPng,
-                                onTap: () {
-                                  launch(instaLink);
-                                },
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              GestureDetector(
-                                child: waPng,
-                                onTap: () {
-                                  if (defaultTargetPlatform ==
-                                      TargetPlatform.iOS) {
-                                    launch(whatsappWebLink);
-                                  } else {
-                                    launch(whatsappAndroidLink);
-                                  }
-                                },
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              GestureDetector(
-                                child: linkedInPng,
-                                onTap: () {
-                                  launch(linkedInLink);
-                                },
-                              ),
-                            ],
-                          ),
-                        );
+                        return DescriptionText(
+                            description: '12/2020 - present');
+                      // case 4:
+                      //   return TitleText(title: 'E-mail');
+                      // case 5:
+                      //   return DescriptionText(
+                      //       description: 'sivaprasadnk.official@gmail.com');
+                      // case 6:
+                      //   return TitleText(title: 'Social Media');
+                      // case 7:
+                      //   return Padding(
+                      //     padding: const EdgeInsets.only(top: 15, left: 40),
+                      //     child: Row(
+                      //       mainAxisAlignment: MainAxisAlignment.start,
+                      //       children: [
+                      //         GestureDetector(
+                      //           child: fbPng,
+                      //           onTap: () {
+                      //             launch(fbLink);
+                      //           },
+                      //         ),
+                      //         SizedBox(
+                      //           width: 15,
+                      //         ),
+                      //         GestureDetector(
+                      //           child: instaPng,
+                      //           onTap: () {
+                      //             launch(instaLink);
+                      //           },
+                      //         ),
+                      //         SizedBox(
+                      //           width: 15,
+                      //         ),
+                      //         GestureDetector(
+                      //           child: waPng,
+                      //           onTap: () {
+                      //             if (defaultTargetPlatform ==
+                      //                 TargetPlatform.iOS) {
+                      //               launch(whatsappWebLink);
+                      //             } else {
+                      //               launch(whatsappAndroidLink);
+                      //             }
+                      //           },
+                      //         ),
+                      //         SizedBox(
+                      //           width: 15,
+                      //         ),
+                      //         GestureDetector(
+                      //           child: linkedInPng,
+                      //           onTap: () {
+                      //             launch(linkedInLink);
+                      //           },
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   );
                       //  case 7: return DescriptionText(description: description)
                     }
 

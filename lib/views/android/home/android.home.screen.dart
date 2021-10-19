@@ -7,6 +7,7 @@ import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/contact_me/android.contactme.screen.dart';
+import 'package:spnk/views/android/experience/android.experience.screen.dart';
 import 'package:spnk/views/android/menu/android.menu.screen.dart';
 import 'package:spnk/views/android/projects/android.projects.screen.dart';
 
@@ -59,11 +60,12 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-          backgroundColor:
-              ((screen == "MyProjects") || (screen == "ContactMe")) &&
-                      !menuSelectedCheck
-                  ? Colors.teal
-                  : Color.fromRGBO(7, 17, 26, 1),
+          backgroundColor: ((screen == "MyProjects") ||
+                      (screen == "ContactMe") ||
+                      (screen == "Experience")) &&
+                  !menuSelectedCheck
+              ? Colors.teal
+              : Color.fromRGBO(7, 17, 26, 1),
           body: Stack(
             children: [
               if (screen == "Home")
@@ -107,7 +109,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                                       children: [
                                         Padding(
                                           padding: EdgeInsets.only(
-                                              top: 20, right: 20),
+                                              top: 30, right: 20),
                                           child: IconButton(
                                             icon: Icon(Icons.menu,
                                                 color: Colors.white),
@@ -176,7 +178,11 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                                   screenHeight:
                                       MediaQuery.of(context).size.height,
                                 )
-                              : Container()
+                              : screen == "Experience"
+                                  ? AndroidExperienceScreen(
+                                      screenHeight:
+                                          MediaQuery.of(context).size.height)
+                                  : Container()
                   : AndroidMenuScreen()
             ],
           )),

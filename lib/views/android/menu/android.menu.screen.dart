@@ -138,7 +138,15 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen> {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20),
                             child: ListTile(
-                              leading: Icon(Icons.home, color: Colors.white),
+                              onTap: () {
+                                Provider.of<RouteProvider>(context,
+                                        listen: false)
+                                    .setMenuSelected(check: false);
+                                Provider.of<RouteProvider>(context,
+                                        listen: false)
+                                    .setScreen(name: 'Experience');
+                              },
+                              leading: Icon(Icons.work, color: Colors.white),
                               title: Text(
                                 'Experience',
                                 style: TextStyle(

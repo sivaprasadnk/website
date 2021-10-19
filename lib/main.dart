@@ -25,6 +25,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Sivaprasad NK',
         debugShowCheckedModeBanner: false,
+        // home: ChangeNotifierProvider(
+        //   create: (_) => RouteProvider(),
+        //   child: SplashScreen(),
+        // ),
         routes: {
           '/': (context) => SplashScreen(),
           AndroidHomeScreen.routeName: (context) => AndroidHomeScreen(),
