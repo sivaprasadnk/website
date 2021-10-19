@@ -3,6 +3,7 @@ import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
+import 'package:spnk/utils/common_strings.dart';
 
 class AndroidMenuScreen extends StatefulWidget {
   const AndroidMenuScreen({Key? key}) : super(key: key);
@@ -62,7 +63,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen> {
                   child: CircleAvatar(
                     radius: screenWidth * 0.25,
                     backgroundImage: AssetImage(
-                      'assets/images/propic3.jpg',
+                      proPicAssetPath,
                     ),
                   ),
                 ),

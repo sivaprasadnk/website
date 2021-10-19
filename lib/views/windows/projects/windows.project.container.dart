@@ -114,7 +114,7 @@ class _WindowsProjectContainerState extends State<WindowsProjectContainer> {
                                 child: Container(
                                   // width: screenWidth * 0.15,
                                   child: Text(
-                                    "A Simple quiz app \nwith cool animations and effects",
+                                    spQuizAppDescription,
                                     style: TextStyle(
                                       // fontFamily: 'PlayfairDisplay',
                                       fontWeight: FontWeight.bold,
@@ -212,7 +212,7 @@ class _WindowsProjectContainerState extends State<WindowsProjectContainer> {
                                 child: Container(
                                   // width: screenWidth * 0.15,
                                   child: Text(
-                                    "A Simple Quotes listing app",
+                                    spQuotesAppDescription,
                                     style: TextStyle(
                                       // fontFamily: 'PlayfairDisplay',
                                       fontWeight: FontWeight.bold,

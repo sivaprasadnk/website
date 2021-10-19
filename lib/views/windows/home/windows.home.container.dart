@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 
 class WindowsHomeContainer extends StatelessWidget {
@@ -121,9 +122,7 @@ class WindowsHomeContainer extends StatelessWidget {
                         child: Container(
                           child: CircleAvatar(
                             radius: 100,
-                            backgroundImage: AssetImage(
-                              'assets/images/propic3.jpg',
-                            ),
+                            backgroundImage: AssetImage(proPicAssetPath),
                           ),
                         ),
                       ),

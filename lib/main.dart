@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
+import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/home/android.home.screen.dart';
 import 'package:spnk/views/ios/home/ios.home.screen.dart';
@@ -14,7 +15,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // precacheImage(AssetImage("assets/images/propic3.jpg"), context);
+    precacheImage(AssetImage(proPicAssetPath), context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<Quotes>.value(value: Quotes()),
@@ -50,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    debugPrint('...@ hereee1');
+
     if (defaultTargetPlatform == TargetPlatform.android) {
       Future.delayed(Duration(seconds: 5)).then((value) {
         Navigator.pushReplacementNamed(context, AndroidHomeScreen.routeName);
@@ -76,7 +77,6 @@ class _SplashScreenState extends State<SplashScreen>
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     return Scaffold(
-      // backgroundColor: Colors.grey[200],
       backgroundColor: Color.fromRGBO(7, 17, 26, 1),
       body: Align(
         alignment: screenWidth > 500 ? Alignment.center : Alignment.centerLeft,
@@ -87,28 +87,7 @@ class _SplashScreenState extends State<SplashScreen>
             children: [
               Container(
                 height: screenSize.height,
-                // child: Lotti,
               ),
-              // Positioned.fill(
-              //   child: Align(
-              //     alignment: Alignment.center,
-              //     child: Lottie.network(
-              //       'https://assets10.lottiefiles.com/packages/lf20_uoempsuz.json',
-              //       // 'assets/lotties/congrats.json',
-              //       repeat: true,
-              //       animate: true,
-              //       height: screenSize.height * 0.4,
-              //     ),
-              //   ),
-              // ),
-              // Positioned.fill(
-              //   child: Align(
-              //     alignment: Alignment.bottomLeft,
-              //     child: Lottie.asset(
-              //       'assets/lotties/congrats.json',
-              //     ),
-              //   ),
-              // ),
               Align(
                 alignment: Alignment.center,
                 child: Container(

@@ -34,3 +34,10 @@ final String quote1 =
     ' "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful."';
 
 final String author1 = 'Albert Schweitzer';
+
+final String spQuizAppDescription =
+    "A Simple quiz app \nwith cool animations and effects";
+
+final String spQuotesAppDescription = 'A Simple Quotes listing app';
+
+final String proPicAssetPath = 'assets/images/propic3.jpg';

@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
-import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/contactme/windows.contactme.container.dart';
 import 'package:spnk/views/windows/home/windows.home.container.dart';
@@ -20,15 +19,10 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
   // DateTime time = DateTime.now();
   List _isHovering = [true, false, false];
   Quotes? item;
-  bool homeSelected = true, projectSelected = false, contactmeSelected = false;
-  late Widget fbPng;
-  late Widget waPng;
-  late Widget instaPng;
-  late Widget linkedInPng;
-  late bool showImage;
-  late bool showQuote = false;
-  double iconSize = 30;
-  bool quoteLoaded = false;
+  bool homeSelected = true,
+      projectSelected = false,
+      contactmeSelected = false,
+      experienceSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +52,7 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                         homeSelected = true;
                         projectSelected = false;
                         contactmeSelected = false;
+                        experienceSelected = false;
                       });
                     },
                     child: nameText(textColor: Colors.white),
@@ -72,6 +67,7 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                       homeSelected = true;
                       projectSelected = false;
                       contactmeSelected = false;
+                      experienceSelected = false;
                     });
                   },
                   child: Column(
@@ -108,9 +104,48 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                 InkWell(
                   onTap: () {
                     setState(() {
+                      homeSelected = false;
+                      projectSelected = false;
+                      contactmeSelected = false;
+                      experienceSelected = true;
+                    });
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Experience',
+                        style: TextStyle(
+                          fontFamily: 'PatuaOne',
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      // For showing an underline on hover
+                      Visibility(
+                        maintainAnimation: true,
+                        maintainState: true,
+                        maintainSize: true,
+                        visible: experienceSelected,
+                        child: Container(
+                          height: 2,
+                          width: 64,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: screenWidth / 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
                       projectSelected = true;
                       homeSelected = false;
                       contactmeSelected = false;
+                      experienceSelected = false;
                     });
                   },
                   child: Column(
@@ -150,6 +185,7 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                       homeSelected = false;
                       projectSelected = false;
                       contactmeSelected = true;
+                      experienceSelected = false;
                     });
                   },
                   child: Column(
@@ -178,6 +214,9 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                     ],
                   ),
                 ),
+                SizedBox(
+                  width: screenWidth / 50,
+                ),
               ],
             ),
           ),
@@ -194,16 +233,5 @@ class _WindowsHomeScreenState extends State<WindowsHomeScreen> {
                       screenWidth: screenWidth, screenHeight: screenHeight)
                   : Container(),
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    showImage = false;
-    fbPng = Image.asset(fbPngAssetName, height: iconSize);
-    waPng = Image.asset(whatsappPngeAssetName, height: iconSize);
-    instaPng = Image.asset(instaPngImageName, height: iconSize);
-    linkedInPng = Image.asset(linkedInAssetName,
-        height: iconSize, color: Colors.blue[900]);
   }
 }

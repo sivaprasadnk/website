@@ -247,7 +247,7 @@ class ProPic extends StatelessWidget {
       child: CircleAvatar(
         radius: 100,
         backgroundImage: AssetImage(
-          'assets/images/propic3.jpg',
+          proPicAssetPath,
         ),
       ),
     );
@@ -263,9 +263,7 @@ class ProPicWidget extends StatelessWidget {
       child: Container(
         child: CircleAvatar(
           radius: radius,
-          backgroundImage: AssetImage(
-            'assets/images/propic3.jpg',
-          ),
+          backgroundImage: AssetImage(proPicAssetPath),
         ),
       ),
     );
@@ -285,7 +283,7 @@ class TitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, top: 50),
+      padding: const EdgeInsets.only(left: 20, top: 30),
       child: Text(
         title,
         style: TextStyle(

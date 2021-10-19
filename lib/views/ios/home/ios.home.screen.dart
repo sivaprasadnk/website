@@ -98,20 +98,10 @@ class _IosHomeScreenState extends State<IosHomeScreen> {
                       child: Container(
                         child: CircleAvatar(
                           radius: 100,
-                          backgroundImage: AssetImage(
-                            'assets/images/propic3.jpg',
-                          ),
+                          backgroundImage: AssetImage(proPicAssetPath),
                         ),
                       ),
                     ),
-                    // CircleAvatar(
-                    //   radius: screenSize.width * 0.3,
-                    //   child: Image(
-                    //     image: AssetImage(
-                    //       'assets/images/propic3.jpg',
-                    //     ),
-                    //   ),
-                    // ),
                     nameText(textColor: Colors.teal),
                     SizedBox(
                       height: 20,

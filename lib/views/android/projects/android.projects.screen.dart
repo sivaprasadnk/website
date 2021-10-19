@@ -60,42 +60,42 @@ class _AndroidProjectsState extends State<AndroidProjects> {
             ),
           ),
         ),
-        SingleChildScrollView(
-          child: Container(
-            height: widget.screenHeight,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 30, left: 0),
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: IconButton(
-                      icon: Icon(Icons.menu, color: Colors.white),
-                      onPressed: () {
-                        Provider.of<RouteProvider>(context, listen: false)
-                            .setMenuSelected(check: true);
-                      },
-                    ),
+        Container(
+          height: widget.screenHeight,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 20, left: 0),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    icon: Icon(Icons.menu, color: Colors.white),
+                    onPressed: () {
+                      Provider.of<RouteProvider>(context, listen: false)
+                          .setMenuSelected(check: true);
+                    },
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 0, left: 30),
-                  child: Text(
-                    'My Projects',
-                    style: TextStyle(
-                        fontFamily: 'PlayfairDisplay',
-                        // color: Colors.,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35,
-                        color: Colors.white),
-                  ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 0, left: 30),
+                child: Text(
+                  'My Projects',
+                  style: TextStyle(
+                      fontFamily: 'PlayfairDisplay',
+                      // color: Colors.,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 35,
+                      color: Colors.white),
                 ),
-                SizedBox(
-                  height: widget.screenHeight * 0.1,
-                ),
-                LiveList(
+              ),
+              SizedBox(
+                height: widget.screenHeight * 0.1,
+              ),
+              SingleChildScrollView(
+                child: LiveList(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   padding: const EdgeInsets.all(0),
@@ -108,7 +108,7 @@ class _AndroidProjectsState extends State<AndroidProjects> {
                         return TitleText(title: 'SP Quotes App');
                       case 1:
                         return DescriptionText(
-                            description: 'A Simple Quotes listing app');
+                            description: spQuotesAppDescription);
                       case 2:
                         return GooglePlayButton(
                           url: spQuotesLink,
@@ -118,8 +118,7 @@ class _AndroidProjectsState extends State<AndroidProjects> {
                         return TitleText(title: 'SP Quiz App');
                       case 4:
                         return DescriptionText(
-                          description:
-                              "A Simple quiz app \nwith cool animations and effects",
+                          description: spQuizAppDescription,
                         );
                       case 5:
                         return GooglePlayButton(
@@ -127,13 +126,12 @@ class _AndroidProjectsState extends State<AndroidProjects> {
                           url: spQuizLink,
                         );
                     }
-
                     return SizedBox.shrink();
                   }),
                 ),
-                Spacer(),
-              ],
-            ),
+              ),
+              Spacer(),
+            ],
           ),
         ),
       ],

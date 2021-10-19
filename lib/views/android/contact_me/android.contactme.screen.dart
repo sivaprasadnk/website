@@ -32,6 +32,7 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
     linkedInPng = Image.asset(linkedInAssetName,
         height: iconSize, color: Colors.blue[900]);
     return Stack(
+      // mainAxisSize: MainAxisSize.min,
       children: [
         Positioned.fill(
           child: AnimatedOpacity(
@@ -39,53 +40,76 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
             duration: Duration(milliseconds: 900),
             child: Align(
               child: CustomPaint(
-                painter: MyPainter(ctx: context),
+                painter: AndroidBgCurve(ctx: context),
                 child: Container(),
               ),
             ),
           ),
         ),
-        SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
-          child: Container(
-            height: widget.screenHeight + 100,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 30, left: 0),
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: IconButton(
-                      icon: Icon(Icons.menu, color: Colors.white),
-                      onPressed: () {
-                        Provider.of<RouteProvider>(context, listen: false)
-                            .setMenuSelected(check: true);
-                      },
-                    ),
+        Container(
+          height: widget.screenHeight,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 20, left: 0),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    icon: Icon(Icons.menu, color: Colors.white),
+                    onPressed: () {
+                      Provider.of<RouteProvider>(context, listen: false)
+                          .setMenuSelected(check: true);
+                    },
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 0, left: 30),
-                  child: Text(
-                    'Contact Me',
-                    style: TextStyle(
-                        fontFamily: 'PlayfairDisplay',
-                        // color: Colors.,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35,
-                        color: Colors.white),
-                  ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 0, left: 30),
+                child: Text(
+                  'Contact Me',
+                  style: TextStyle(
+                      fontFamily: 'PlayfairDisplay',
+                      // color: Colors.,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 35,
+                      color: Colors.white),
                 ),
-                SizedBox(
-                  height: widget.screenHeight * 0.05,
-                ),
-                LiveList(
+              ),
+              SizedBox(
+                height: widget.screenHeight * 0.1,
+              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     print("...@@1234");
+              //   },
+              //   child: Icon(
+              //     Icons.menu,
+              //     color: Colors.white,
+              //   ),
+              // ),
+              // Padding(
+              //   padding: EdgeInsets.only(top: 0, left: 30),
+              //   child: Text(
+              //     'Contact Me',
+              //     style: TextStyle(
+              //         fontFamily: 'PlayfairDisplay',
+              //         // color: Colors.,
+              //         fontWeight: FontWeight.bold,
+              //         fontSize: 35,
+              //         color: Colors.white),
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: widget.screenHeight * 0.23,
+              // ),
+              SingleChildScrollView(
+                child: LiveList(
                   shrinkWrap: true,
                   padding: const EdgeInsets.only(
-                      left: 16, right: 16, bottom: 10, top: 0),
-                  physics: NeverScrollableScrollPhysics(),
+                      left: 16, right: 16, bottom: 5, top: 0),
+                  // physics: NeverScrollableScrollPhysics(),
                   showItemInterval: const Duration(milliseconds: 50),
                   showItemDuration: const Duration(milliseconds: 150),
                   itemCount: 8,
@@ -155,14 +179,21 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
                             ],
                           ),
                         );
+                      case 8:
+                        return SizedBox(
+                          height: 300,
+                        );
                       //  case 7: return DescriptionText(description: description)
                     }
 
                     return Container();
                   }),
                 ),
-              ],
-            ),
+              ),
+              // SizedBox(
+              //   height: widget.screenHeight * 0.1,
+              // ),
+            ],
           ),
         ),
       ],
@@ -218,8 +249,17 @@ class MyPainter extends CustomPainter {
     final w = size.width;
 
     final y = h / 2;
-    final x = w / 2;
+    // final x = w / 2;
 
+    // path.moveTo(0, h - padding);
+    // path.moveTo(0, h * 0.23);
+    // path.quadraticBezierTo(w * 0.25, h * 0.16, w * 0.5, h * 0.23);
+    // path.quadraticBezierTo(w * 0.75, h * 0.3, w, h * 0.23);
+    // path.lineTo(w - padding, y);
+    // path.lineTo(w - padding, 0);
+    // path.lineTo(0, 0);
+    // path.close();
+    // canvas.drawPath(path, paint);
     path.moveTo(0, h - padding);
     path.lineTo(0, h * 0.23);
     path.quadraticBezierTo(w * 0.25, h * 0.16, w * 0.5, h * 0.23);
