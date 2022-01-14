@@ -1,5 +1,4 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
@@ -22,7 +21,6 @@ class IosHomeScreen extends StatefulWidget {
 class _IosHomeScreenState extends State<IosHomeScreen> {
   bool isDarkModeEnabled = false;
 
-  List _isHovering = [true, false, false];
   Quotes? item;
   bool homeSelected = true, projectSelected = false;
   late Widget fbPng;
@@ -44,14 +42,16 @@ class _IosHomeScreenState extends State<IosHomeScreen> {
     linkedInPng = Image.asset(linkedInAssetName,
         height: iconSize, color: Colors.blue[900]);
     Future.delayed(Duration(seconds: 1)).then((value) {
-      setState(() {
-        showImage = true;
-      });
+      if (mounted)
+        setState(() {
+          showImage = true;
+        });
     });
     Future.delayed(Duration(seconds: 2)).then((value) {
-      setState(() {
-        showQuote = true;
-      });
+      if (mounted)
+        setState(() {
+          showQuote = true;
+        });
     });
   }
 

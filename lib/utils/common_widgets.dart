@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
@@ -43,7 +42,8 @@ class AndroidBgCurve extends CustomPainter {
     double padding = 0;
     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
     final Paint paint = Paint()
-      ..color = Color.fromRGBO(7, 17, 26, 1)
+      // ..color = Color.fromRGBO(7, 17, 26, 1)
+      ..color = Colors.white
       ..style = PaintingStyle.fill
       ..strokeWidth = 5.0;
 
@@ -53,12 +53,12 @@ class AndroidBgCurve extends CustomPainter {
     final w = size.width;
 
     final y = h / 2;
-    final x = w / 2;
+    // final x = w / 2;
 
     path.moveTo(0, h - padding);
-    path.lineTo(0, h * 0.23);
-    path.quadraticBezierTo(w * 0.25, h * 0.16, w * 0.5, h * 0.23);
-    path.quadraticBezierTo(w * 0.75, h * 0.3, w, h * 0.23);
+    path.lineTo(0, h * 0.33);
+    path.quadraticBezierTo(w * 0.25, h * 0.26, w * 0.5, h * 0.33);
+    path.quadraticBezierTo(w * 0.75, h * 0.40, w, h * 0.33);
     path.lineTo(w - padding, y);
     path.lineTo(w - padding, h - padding);
     path.close();
@@ -259,12 +259,10 @@ class ProPicWidget extends StatelessWidget {
   const ProPicWidget({required this.radius});
   @override
   Widget build(BuildContext context) {
-    return FadeInUpBig(
-      child: Container(
-        child: CircleAvatar(
-          radius: radius,
-          backgroundImage: AssetImage(proPicAssetPath),
-        ),
+    return Container(
+      child: CircleAvatar(
+        radius: radius,
+        backgroundImage: AssetImage(proPicAssetPath),
       ),
     );
   }
@@ -290,7 +288,7 @@ class TitleText extends StatelessWidget {
           // fontFamily: 'PlayfairDisplay',
           // color: Colors.,
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          // color: Colors.white,
           fontSize: 20,
         ),
       ),
@@ -446,7 +444,7 @@ class AndroidHomeBgCurve extends CustomPainter {
     double padding = 0;
     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
     final Paint paint = Paint()
-      ..color = Colors.teal
+      ..color = Colors.white
       ..style = PaintingStyle.fill
       ..strokeWidth = 5.0;
 
@@ -456,12 +454,12 @@ class AndroidHomeBgCurve extends CustomPainter {
     final w = size.width;
 
     final y = h / 2;
-    final x = w / 2;
+    // final x = w / 2;
     // path.
     path.moveTo(0, h - padding);
-    path.lineTo(0, h * 0.55);
-    path.quadraticBezierTo(w * 0.29, h * 0.55, w * 0.5, h * 0.7);
-    path.quadraticBezierTo(w * 0.73, h * 0.84, w, h * 0.74);
+    path.lineTo(0, h * 0.65);
+    path.quadraticBezierTo(w * 0.29, h * 0.65, w * 0.5, h * 0.8);
+    path.quadraticBezierTo(w * 0.73, h * 0.94, w, h * 0.84);
     path.lineTo(w - padding, y);
     path.lineTo(w - padding, h - padding);
     path.close();
@@ -480,7 +478,7 @@ class WindowsHomeBgCurve extends CustomPainter {
     double padding = 0;
     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
     final Paint paint = Paint()
-      ..color = Colors.teal
+      ..color = Color.fromRGBO(4, 139, 168, 1)
       ..style = PaintingStyle.fill
       ..strokeWidth = 5.0;
 
@@ -491,7 +489,40 @@ class WindowsHomeBgCurve extends CustomPainter {
 
     final y = h / 2;
     path.moveTo(0, h - padding);
-    path.lineTo(0, h * 0.55);
+    path.lineTo(0, h * 0.65);
+    path.quadraticBezierTo(w * 0.29, h * 0.55, w * 0.5, h * 0.7);
+    path.quadraticBezierTo(w * 0.73, h * 0.84, w, h * 0.74);
+    path.lineTo(w - padding, y);
+    path.lineTo(w - padding, h - padding);
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
+}
+
+class WindowsExpBgCurve extends CustomPainter {
+  final BuildContext ctx;
+  WindowsExpBgCurve({required this.ctx});
+  @override
+  void paint(Canvas canvas, Size size) {
+    double padding = 0;
+    // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
+    final Paint paint = Paint()
+      // ..color = Colors.teal
+      ..color = Colors.white
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 5.0;
+
+    final Path path = Path();
+
+    final h = size.height;
+    final w = size.width;
+
+    final y = h / 2;
+    path.moveTo(0, h - padding);
+    path.lineTo(0, h * 0.74);
     path.quadraticBezierTo(w * 0.29, h * 0.55, w * 0.5, h * 0.7);
     path.quadraticBezierTo(w * 0.73, h * 0.84, w, h * 0.74);
     path.lineTo(w - padding, y);

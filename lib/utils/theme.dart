@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 
@@ -56,7 +54,7 @@ class Styles {
       // backgroundColor: isDarkTheme ? Colors.black : Color(0xffF1F5FB),
 
       indicatorColor: isDarkTheme ? Color(0xff0E1D36) : Color(0xffCBDCF8),
-      buttonColor: isDarkTheme ? Color(0xff3B3B3B) : Color(0xffF1F5FB),
+      // buttonColor: isDarkTheme ? Color(0xff3B3B3B) : Color(0xffF1F5FB),
 
       hintColor: isDarkTheme ? Color(0xff280C0B) : Color(0xffEECED3),
 
@@ -77,9 +75,9 @@ class Styles {
         backgroundColor: isDarkTheme ? Colors.black : Colors.white,
         // color: isDarkTheme ? Colors.white : Colors.black,
         iconTheme: IconThemeData(color: Colors.blue),
-        textTheme: TextTheme(
-            bodyText1:
-                TextStyle(color: isDarkTheme ? Colors.white : Colors.black)),
+        // textTheme: TextTheme(
+        //     bodyText1:
+        //         TextStyle(color: isDarkTheme ? Colors.white : Colors.black)),
         // actionsIconTheme: ,
         elevation: 0.0,
       ),

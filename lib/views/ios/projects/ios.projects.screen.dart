@@ -1,5 +1,4 @@
 import 'package:bordered_text/bordered_text.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/views/ios/drawer/ios.drawer.screen.dart';
