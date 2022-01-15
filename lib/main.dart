@@ -5,7 +5,7 @@ import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/views/android/home/android.home.screen.dart';
+import 'package:spnk/views/android/home/android.home.dart';
 import 'package:spnk/views/ios/home/ios.home.screen.dart';
 import 'package:spnk/views/windows/large/home/windows.home.large.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.home.dart';
@@ -22,17 +22,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<Quotes>.value(value: Quotes()),
         ChangeNotifierProvider<DarkThemeProvider>.value(
             value: DarkThemeProvider()),
-        ChangeNotifierProvider<RouteProvider>.value(value: RouteProvider())
+        ChangeNotifierProvider<RouteProvider>.value(
+            value: RouteProvider(menuSelectedCheck: false, screenName: "Home"))
       ],
       child: MaterialApp(
         title: 'Sivaprasad NK',
         debugShowCheckedModeBanner: false,
         routes: {
           '/': (context) => SplashScreen(),
-          AndroidHomeScreen.routeName: (context) => AndroidHomeScreen(),
-          // WindowsHomeScreenNew.routeName: (context) => WindowsHomeScreenNew(),
-          // WindowsHomeScreenSmall.routeName: (context) =>
-          //     WindowsHomeScreenSmall(),
           IosHomeScreen.routeName: (context) => IosHomeScreen(),
         },
       ),
@@ -50,7 +47,7 @@ class SplashScreen extends StatelessWidget {
     // var screenHeight = screenSize.height;
     return defaultTargetPlatform == TargetPlatform.android ||
             defaultTargetPlatform == TargetPlatform.iOS
-        ? AndroidHomeScreen()
+        ? AndroidHome()
         : screenWidth > 880
             ? WindowsHomeLarge()
             : screenWidth > 640

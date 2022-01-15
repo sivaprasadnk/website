@@ -1,16 +1,14 @@
 import 'package:flutter/cupertino.dart';
 
 class RouteProvider extends ChangeNotifier {
-  String? screenName;
-  bool? menuSelectedCheck;
+  String screenName = "Home";
+  bool menuSelectedCheck = false;
 
-  RouteProvider({this.screenName, this.menuSelectedCheck});
+  RouteProvider({required this.screenName, required this.menuSelectedCheck});
 
-  // RouteProvider _screen = RouteProvider();
+  String get screen => screenName;
 
-  String? get screen => screenName ?? "Home";
-
-  bool? get menuSelected => menuSelectedCheck ?? false;
+  bool get menuSelected => menuSelectedCheck;
 
   setScreen({required String name}) {
     screenName = name;
