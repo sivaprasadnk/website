@@ -5,7 +5,7 @@ import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/views/android/backup/home/android.home.screen.dart';
+import 'package:spnk/views/android/home/android.home.screen.dart';
 import 'package:spnk/views/ios/home/ios.home.screen.dart';
 import 'package:spnk/views/windows/large/home/windows.home.large.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.home.dart';
