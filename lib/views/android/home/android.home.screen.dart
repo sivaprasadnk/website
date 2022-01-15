@@ -1,9 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
-import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/backup/contact_me/android.contactme.screen.dart';
 import 'package:spnk/views/android/backup/experience/android.experience.screen.dart';
@@ -154,19 +152,22 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen>
                               ],
                             ),
                             Positioned.fill(
-                              left: screenWidth * 0.1,
+                              left: screenWidth * 0.12,
                               bottom: 45,
                               child: Align(
                                 alignment: Alignment.bottomCenter,
-                                child: Lottie.asset(
-                                  blobLottieAssetPath,
-                                  // height: 250,
+                                child: Image.asset(
+                                  'assets/images/blob1.png',
                                 ),
+                                // child: Lottie.asset(
+                                //   blobLottieAssetPath,
+                                //   // height: 250,
+                                // ),
                               ),
                             ),
                             // Stack()
                             Positioned.fill(
-                              left: screenWidth * 0.1,
+                              left: screenWidth * 0.09,
                               bottom: 100,
                               child: Align(
                                 alignment: Alignment.bottomCenter,

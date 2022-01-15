@@ -1,6 +1,5 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 
@@ -74,8 +73,8 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                 duration: Duration(seconds: 2),
                 child: Container(
                   padding: const EdgeInsets.only(left: 0, top: 50),
-                  child: Lottie.asset(
-                    'assets/lotties/mobile-app-process.json',
+                  child: Image.asset(
+                    'assets/images/exp_icon.png',
                     height: 250,
                   ),
                 ),
