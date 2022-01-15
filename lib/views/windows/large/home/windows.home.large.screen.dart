@@ -194,7 +194,8 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
                     opacity: showProPic ? 1 : 0,
                     child: Stack(
                       children: [
-                        Lottie.asset(blobLottieAssetPath),
+                        Lottie.asset(blobLottieAssetPath,
+                            height: screenHeight * 0.43),
                         Padding(
                           padding: const EdgeInsets.all(40.0),
                           child: CircleAvatar(
