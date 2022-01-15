@@ -1,12 +1,14 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
+import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/backup/contact_me/android.contactme.screen.dart';
 import 'package:spnk/views/android/backup/experience/android.experience.screen.dart';
-import 'package:spnk/views/android/backup/menu/android.menu.screen.dart';
 import 'package:spnk/views/android/backup/projects/android.projects.screen.dart';
+import 'package:spnk/views/android/menu/android.menu.screen.dart';
 
 class AndroidHomeScreen extends StatefulWidget {
   static const routeName = '/AndroidHome';
@@ -62,27 +64,15 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen>
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        backgroundColor: ((screen == "MyProjects") ||
-                    (screen == "ContactMe") ||
-                    (screen == "Experience")) &&
-                !menuSelectedCheck
-            ? Color.fromRGBO(206, 45, 1, 1)
-            : Color.fromRGBO(206, 45, 1, 1),
+        backgroundColor: const Color.fromRGBO(0, 34, 51, 1),
+        // backgroundColor: ((screen == "MyProjects") ||
+        //             (screen == "ContactMe") ||
+        //             (screen == "Experience")) &&
+        //         !menuSelectedCheck
+        //     ? Color.fromRGBO(206, 45, 1, 1)
+        //     : Color.fromRGBO(206, 45, 1, 1),
         body: Stack(
           children: [
-            if (screen == "Home")
-              Positioned.fill(
-                child: AnimatedOpacity(
-                  opacity: !menuSelectedCheck ? 1 : 0,
-                  duration: Duration(milliseconds: 900),
-                  child: Align(
-                    child: CustomPaint(
-                      painter: AndroidHomeBgCurve(ctx: context),
-                      child: Container(),
-                    ),
-                  ),
-                ),
-              ),
             if ((screen == "Home") && (!menuSelectedCheck))
               Padding(
                 padding: const EdgeInsets.only(right: 10, top: 20),
@@ -108,19 +98,19 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: screenSize.height * 0.1,
+                                  height: screenSize.height * 0.28,
                                 ),
-                                Center(
-                                  child: Opacity(
-                                    opacity: _animation.value,
-                                    child: Image(
-                                      height: screenSize.height * 0.18,
-                                      image: AssetImage(
-                                        'assets/images/wishText.png',
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                // Center(
+                                //   child: Opacity(
+                                //     opacity: _animation.value,
+                                //     child: Image(
+                                //       height: screenSize.height * 0.18,
+                                //       image: AssetImage(
+                                //         'assets/images/wishText.png',
+                                //       ),
+                                //     ),
+                                //   ),
+                                // ),
                                 Padding(
                                   padding:
                                       EdgeInsets.only(left: screenWidth * 0.1),
@@ -144,14 +134,17 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen>
                                   padding:
                                       EdgeInsets.only(left: screenWidth * 0.1),
                                   child: FadeInLeftBig(
-                                    child: Container(
-                                      // width: screenWidth * 0.8,
-                                      child: Text(
-                                        "\nFlutter Developer from \nTripunithura, Kerala .",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          fontSize: 23,
+                                    child: Opacity(
+                                      opacity: _animation.value,
+                                      child: Container(
+                                        // width: screenWidth * 0.8,
+                                        child: Text(
+                                          "\nFlutter Developer from \nTripunithura, Kerala .",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                            fontSize: 23,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -159,6 +152,28 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen>
                                 ),
                                 Spacer(),
                               ],
+                            ),
+                            Positioned.fill(
+                              left: screenWidth * 0.1,
+                              bottom: 45,
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Lottie.asset(
+                                  blobLottieAssetPath,
+                                  // height: 250,
+                                ),
+                              ),
+                            ),
+                            // Stack()
+                            Positioned.fill(
+                              left: screenWidth * 0.1,
+                              bottom: 100,
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: ProPicWidget(
+                                  radius: screenWidth * 0.23,
+                                ),
+                              ),
                             ),
                           ],
                         ),

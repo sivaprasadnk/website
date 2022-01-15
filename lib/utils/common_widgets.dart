@@ -262,6 +262,7 @@ class ProPicWidget extends StatelessWidget {
     return Container(
       child: CircleAvatar(
         radius: radius,
+        backgroundColor: Colors.transparent,
         backgroundImage: AssetImage(proPicAssetPath),
       ),
     );
