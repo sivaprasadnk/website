@@ -73,7 +73,15 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            nameText(textColor: Colors.white),
+            GestureDetector(
+              onTap: () {
+                Provider.of<RouteProvider>(context, listen: false)
+                    .setMenuSelected(check: false);
+                Provider.of<RouteProvider>(context, listen: false)
+                    .setScreen(name: 'Home');
+              },
+              child: nameText(textColor: Colors.white).showCursorOnHover,
+            ),
             Spacer(),
             if (!menuSelectedCheck)
               GestureDetector(
