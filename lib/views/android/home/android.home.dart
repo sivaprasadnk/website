@@ -35,7 +35,7 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
             ? AndroidMenuScreen()
             : screen == "Home"
                 ? AndroidHomeScreen()
-                : screen == "Projects"
+                : screen == "MyProjects"
                     ? AndroidProjects(screenHeight: screenHeight)
                     : screen == "Experience"
                         ? AndroidExperienceScreen(screenHeight: screenHeight)

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/large/contactme/windows.large.contactme.screen.dart';
@@ -17,17 +18,13 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   List _isHovering = [true, false, false];
+  Quotes? item;
   bool homeSelected = true,
-      projectHovered = false,
+      projectSelected = false,
       contactmeSelected = false,
       experienceSelected = false;
 
-  @override
-  void setState(VoidCallback fn) {
-    if (mounted) {
-      super.setState(fn);
-    }
-  }
+  double ballTopPosition = -250;
 
   @override
   void initState() {
@@ -48,10 +45,9 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
-    // var screenHeight = screenSize.height;
+    var screenHeight = screenSize.height;
 
     debugPrint('..@ screenWidth1 large: $screenWidth');
-    debugPrint('..@ experienceSelected large: $experienceSelected');
     // final themeProvider = Provider.of<DarkThemeProvider>(context);
     // var screen = Provider.of<RouteProvider>(context).screen.toString();
     Duration _duration = Duration(seconds: 1);
@@ -86,12 +82,10 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                   ),
                   Expanded(
                     child: TabBar(
-                      indicatorColor: Colors.red,
                       indicatorPadding: EdgeInsets.symmetric(horizontal: 25),
                       controller: _tabController,
                       tabs: [
                         InkWell(
-                          // onHover: (bool status) {},
                           onTap: () {
                             _tabController.animateTo(
                               0,
@@ -100,31 +94,18 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                             // if (mounted)
                             //   setState(() {
                             //     homeSelected = true;
-                            //     projectHovered = false;
+                            //     projectSelected = false;
                             //     contactmeSelected = false;
                             //     experienceSelected = false;
                             //   });
                           },
-                          child: Column(
-                            children: [
-                              Text(
-                                'Home',
-                                style: TextStyle(
-                                    fontFamily: 'PatuaOne',
-                                    color: Colors.white),
-                              ),
-                              SizedBox(height: 5),
-                            ],
+                          child: Text(
+                            'Home',
+                            style: TextStyle(
+                                fontFamily: 'PatuaOne', color: Colors.white),
                           ),
                         ),
                         InkWell(
-                          // hoverColor: Colors.cyanAccent,
-                          // // highlightColor: Colors.cyan,
-                          // onHover: (bool status) {
-                          //   setState(() {
-                          //     experienceSelected = status;
-                          //   });
-                          // },
                           onTap: () {
                             _tabController.animateTo(
                               1,
@@ -133,57 +114,36 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                             // if (mounted)
                             //   setState(() {
                             //     homeSelected = false;
-                            //     projectHovered = false;
+                            //     projectSelected = false;
                             //     contactmeSelected = false;
                             //     experienceSelected = true;
                             //   });
                           },
-                          child: Container(
-                            // decoration: BoxDecoration(
-                            //   color: experienceSelected
-                            //       ? Colors.cyanAccent
-                            //       : Colors.transparent,
-                            // ),
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Experience',
-                                  style: TextStyle(
-                                    fontFamily: 'PatuaOne',
-                                    color: experienceSelected
-                                        ? Colors.black
-                                        : Colors.white,
-                                  ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Experience',
+                                style: TextStyle(
+                                  fontFamily: 'PatuaOne',
+                                  color: Colors.white,
                                 ),
-                                SizedBox(height: 5),
-                              ],
-                            ),
+                              ),
+                              SizedBox(height: 5),
+                              // For showing an underline on hover
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                maintainSize: true,
+                                visible: experienceSelected,
+                                child: Container(
+                                  height: 2,
+                                  width: 64,
+                                  color: Colors.white,
+                                ),
+                              )
+                            ],
                           ),
-                          // child: Column(
-                          //   mainAxisSize: MainAxisSize.min,
-                          //   children: [
-                          //     Text(
-                          //       'Experience',
-                          //       style: TextStyle(
-                          //         fontFamily: 'PatuaOne',
-                          //         color: Colors.white,
-                          //       ),
-                          //     ),
-                          //     SizedBox(height: 5),
-                          //     // For showing an underline on hover
-                          //     Visibility(
-                          //       maintainAnimation: true,
-                          //       maintainState: true,
-                          //       maintainSize: true,
-                          //       visible: experienceSelected,
-                          //       child: Container(
-                          //         height: 2,
-                          //         width: 64,
-                          //         color: Colors.white,
-                          //       ),
-                          //     )
-                          //   ],
-                          // ),
                         ),
                         InkWell(
                           onTap: () {
@@ -193,13 +153,14 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                             );
                             // if (mounted)
                             //   setState(() {
-                            //     projectHovered = true;
+                            //     projectSelected = true;
                             //     homeSelected = false;
                             //     contactmeSelected = false;
                             //     experienceSelected = false;
                             //   });
                           },
                           child: Column(
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
                                 'Projects',
@@ -211,6 +172,18 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                                 ),
                               ),
                               SizedBox(height: 5),
+                              // For showing an underline on hover
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                maintainSize: true,
+                                visible: projectSelected,
+                                child: Container(
+                                  height: 2,
+                                  width: 45,
+                                  color: Colors.white,
+                                ),
+                              )
                             ],
                           ),
                         ),
@@ -223,7 +196,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                             // if (mounted)
                             //   setState(() {
                             //     homeSelected = false;
-                            //     projectHovered = false;
+                            //     projectSelected = false;
                             //     contactmeSelected = true;
                             //     experienceSelected = false;
                             //   });
@@ -239,6 +212,18 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                                 ),
                               ),
                               SizedBox(height: 5),
+                              // For showing an underline on hover
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                maintainSize: true,
+                                visible: contactmeSelected,
+                                child: Container(
+                                  height: 2,
+                                  width: 64,
+                                  color: Colors.white,
+                                ),
+                              )
                             ],
                           ),
                         ),

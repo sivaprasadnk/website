@@ -52,7 +52,7 @@ class _WindowsLargeExperienceScreenState
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  left: screenWidth * 0.25,
+                  left: screenWidth * 0.5,
                   top: screenHeight * .1,
                 ),
                 child: ListTile(
@@ -106,7 +106,7 @@ class _WindowsLargeExperienceScreenState
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  left: screenWidth * 0.25,
+                  left: screenWidth * 0.5,
                   top: screenHeight * .05,
                 ),
                 child: ListTile(
@@ -163,9 +163,9 @@ class _WindowsLargeExperienceScreenState
         ),
         Positioned.fill(
           top: 100,
-          right: 50,
+          left: screenWidth * 0.15,
           child: Align(
-            alignment: Alignment.centerRight,
+            alignment: Alignment.centerLeft,
             child: AnimatedOpacity(
               duration: Duration(seconds: 2),
               opacity: showLottie ? 1 : 0,

@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
@@ -49,6 +48,19 @@ class _WindowsHomeSmallDrawerState extends State<WindowsSmallDrawer> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        FadeInLeftBig(
+          child: Container(
+            padding: const EdgeInsets.only(left: 0, top: 50),
+            child: Image.asset(
+              'assets/images/exp_icon.png',
+              height: 250,
+            ),
+            // child: Lottie.asset(
+            //   'assets/lotties/mobile-app-process.json',
+            //   height: 250,
+            // ),
+          ),
+        ),
         SizedBox(height: 25),
         Container(
           child: LiveList(
@@ -73,15 +85,19 @@ class _WindowsHomeSmallDrawerState extends State<WindowsSmallDrawer> {
             }),
           ),
         ),
-        FadeInLeftBig(
-          child: Container(
-            padding: const EdgeInsets.only(left: 0, top: 50),
-            child: Lottie.asset(
-              'assets/lotties/mobile-app-process.json',
-              height: 250,
-            ),
-          ),
-        ),
+        // FadeInLeftBig(
+        //   child: Container(
+        //     padding: const EdgeInsets.only(left: 0, top: 50),
+        //     child: Image.asset(
+        //       'assets/images/exp_icon.png',
+        //       height: 250,
+        //     ),
+        //     // child: Lottie.asset(
+        //     //   'assets/lotties/mobile-app-process.json',
+        //     //   height: 250,
+        //     // ),
+        //   ),
+        // ),
         SizedBox(
           height: 20,
         )

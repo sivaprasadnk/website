@@ -2,7 +2,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/views/windows/social.media.icons.dart';
 
 class WindowsLargeContactMeScreen extends StatefulWidget {
   @override
@@ -196,12 +195,6 @@ class _WindowsLargeContactMeScreenState
                   ),
                 ],
               ),
-              SizedBox(height: screenHeight * 0.03),
-
-              Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.1),
-                child: SocialMediaIcons(),
-              )
             ],
           ),
         ),

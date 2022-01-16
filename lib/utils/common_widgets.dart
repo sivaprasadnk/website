@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:blobs/blobs.dart';
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -476,11 +477,13 @@ class WindowsHomeBgCurve extends CustomPainter {
   WindowsHomeBgCurve({required this.ctx});
   @override
   void paint(Canvas canvas, Size size) {
-    double padding = 0;
+    double padding = 20;
     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
     final Paint paint = Paint()
       ..color = Color.fromRGBO(4, 139, 168, 1)
       ..style = PaintingStyle.fill
+      ..strokeJoin = StrokeJoin.bevel
+      // ..strokeJoin
       ..strokeWidth = 5.0;
 
     final Path path = Path();
@@ -489,13 +492,26 @@ class WindowsHomeBgCurve extends CustomPainter {
     final w = size.width;
 
     final y = h / 2;
-    path.moveTo(0, h - padding);
-    path.lineTo(0, h * 0.65);
-    path.quadraticBezierTo(w * 0.29, h * 0.55, w * 0.5, h * 0.7);
-    path.quadraticBezierTo(w * 0.73, h * 0.84, w, h * 0.74);
-    path.lineTo(w - padding, y);
+    final x = w / 2;
+    // path.addRRect(RRect.fromLTRBR(
+    //   h - padding,
+    //   h * 0.65,
+    //   10 * padding,
+    //   h - padding,
+    //   Radius.circular(10),
+    // ));
+    path.moveTo(x, h - padding);
+    path.lineTo(x, h * 0.65);
+    path.quadraticBezierTo(x, h * 0.6, x + 60, h * 0.55);
+    path.lineTo(w - 5 * padding, 2 * padding + 100);
+    path.lineTo(w - padding, padding + 100);
+    // path.quadraticBezierTo(
+    //     w - padding, 10 * padding, w - padding, 10 * padding);
+    path.lineTo(w - padding, 10 * padding);
+    // // path.lineTo(w - padding, padding);
     path.lineTo(w - padding, h - padding);
     path.close();
+    // canvas.clipRRect(rrect)
     canvas.drawPath(path, paint);
   }
 
@@ -534,4 +550,106 @@ class WindowsExpBgCurve extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
+}
+
+class ProPicLargeWithBlob extends StatefulWidget {
+  const ProPicLargeWithBlob({Key? key}) : super(key: key);
+
+  @override
+  _ProPicWithBlobState createState() => _ProPicWithBlobState();
+}
+
+class _ProPicWithBlobState extends State<ProPicLargeWithBlob> {
+  bool showProPicWithBlob = false;
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 500)).then((value) {
+      setState(() {
+        showProPicWithBlob = true;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: AnimatedOpacity(
+        duration: Duration(milliseconds: 900),
+        opacity: showProPicWithBlob ? 1 : 0,
+        child: Container(
+          child: Blob.fromID(
+            id: ['16-7-5840'],
+            styles: BlobStyles(
+              color: Colors.cyanAccent.shade700,
+            ),
+            size: 300,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                bottom: 25,
+                left: 5,
+                right: 5,
+                // top: 10,
+              ),
+              child: Image.asset(
+                'assets/images/propiccc.png',
+                height: 300,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProPicMediumWithBlob extends StatefulWidget {
+  const ProPicMediumWithBlob({Key? key}) : super(key: key);
+
+  @override
+  _ProPicMediumWithBlobState createState() => _ProPicMediumWithBlobState();
+}
+
+class _ProPicMediumWithBlobState extends State<ProPicMediumWithBlob> {
+  bool showProPicWithBlob = false;
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 500)).then((value) {
+      setState(() {
+        showProPicWithBlob = true;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: AnimatedOpacity(
+        duration: Duration(milliseconds: 900),
+        opacity: showProPicWithBlob ? 1 : 0,
+        child: Container(
+          child: Blob.fromID(
+            id: ['16-7-5840'],
+            styles: BlobStyles(
+              color: Colors.cyanAccent.shade700,
+            ),
+            size: 250,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                bottom: 25,
+                left: 5,
+                right: 5,
+                // top: 10,
+              ),
+              child: Image.asset(
+                'assets/images/propiccc.png',
+                height: 300,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }

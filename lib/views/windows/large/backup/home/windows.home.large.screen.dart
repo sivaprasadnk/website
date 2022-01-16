@@ -1,7 +1,10 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import "package:hovering/hovering.dart";
-import 'package:spnk/utils/common_widgets.dart';
+import 'package:lottie/lottie.dart';
+import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/views/windows/hover_extensions.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class WindowsHomeLargeScreen extends StatefulWidget {
   @override
@@ -9,9 +12,16 @@ class WindowsHomeLargeScreen extends StatefulWidget {
 }
 
 class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
+  late Widget fbPng;
+  late Widget waPng;
+  late Widget instaPng;
+  late Widget linkedInPng;
+
   bool showName = false;
   bool showProPic = false;
   bool showLottie = false;
+  double nameTopPosition = -150;
+  double leftPosition = -150;
   @override
   void initState() {
     super.initState();
@@ -25,6 +35,8 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
         if (mounted)
           setState(() {
             showName = true;
+            nameTopPosition = MediaQuery.of(context).size.height * 0.08;
+            leftPosition = MediaQuery.of(context).size.width * 0.05;
           });
       }).then((value) {
         Future.delayed(Duration(seconds: 1)).then((value) {
@@ -42,7 +54,12 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
-
+    double iconSize = 30;
+    fbPng = Image.asset(fbPngAssetName, height: iconSize);
+    waPng = Image.asset(whatsappPngeAssetName, height: iconSize);
+    instaPng = Image.asset(instaPngImageName, height: iconSize);
+    linkedInPng = Image.asset(linkedInAssetName,
+        height: iconSize, color: Colors.blue[900]);
     return Stack(
       children: [
         // Positioned.fill(
@@ -50,20 +67,14 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
         //     opacity: 1,
         //     duration: Duration(milliseconds: 900),
         //     child: Align(
-        //       child: ClipRRect(
-        //         borderRadius: BorderRadius.circular(12),
-        //         child: CustomPaint(
-        //           painter: WindowsHomeBgCurve(ctx: context),
-        //           child: Container(
-        //             decoration: BoxDecoration(
-        //               borderRadius: BorderRadius.circular(12),
-        //             ),
-        //           ),
-        //         ),
+        //       child: CustomPaint(
+        //         painter: WindowsHomeBgCurve(ctx: context),
+        //         child: Container(),
         //       ),
         //     ),
         //   ),
         // ),
+
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -75,28 +86,30 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: screenHeight * 0.35,
+                      height: screenHeight * 0.25,
                     ),
-                    // AnimatedOpacity(
-                    //   duration: Duration(seconds: 1),
-                    //   opacity: showLottie ? 1 : 0,
-                    //   child: Lottie.asset(
-                    //     'assets/lotties/robot_hello.json',
-                    //     height: 200,
-                    //   ),
-                    // ),
+                    AnimatedOpacity(
+                      duration: Duration(seconds: 1),
+                      opacity: showLottie ? 1 : 0,
+                      child: Lottie.asset(
+                        'assets/lotties/robot_hello.json',
+                        height: 200,
+                      ),
+                    ),
                     AnimatedOpacity(
                       duration: Duration(seconds: 1),
                       opacity: showName ? 1 : 0,
                       child: Container(
-                        margin: EdgeInsets.only(left: screenWidth * 0.15),
-                        width: screenWidth * 0.3,
+                        margin: EdgeInsets.only(
+                          left: screenWidth * 0.2,
+                        ),
+                        width: screenWidth * 0.5,
                         child: FittedBox(
                           child: Text(
-                            "Hi , \nI 'm Sivaprasad NK .",
+                            "I 'm Sivaprasad NK .",
                             style: TextStyle(
                               fontFamily: 'PlayfairDisplay',
                               fontWeight: FontWeight.bold,
@@ -112,7 +125,7 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
                         duration: Duration(seconds: 1),
                         opacity: showName ? 1 : 0,
                         child: Container(
-                          margin: EdgeInsets.only(left: screenWidth * 0.15),
+                          margin: EdgeInsets.only(left: screenWidth * 0.2),
                           child: FittedBox(
                             child: HoverWidget(
                               onHover: (event) {},
@@ -152,6 +165,14 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
                                   ),
                                 ],
                               ),
+                              // child: Text(
+                              //   "\nFlutter Developer from Tripunithura, Kerala .",
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //     fontSize: 23,
+                              //     color: Colors.white,
+                              //   ),
+                              // ),
                             ),
                           ),
                         ),
@@ -168,8 +189,68 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.23,
                   ),
-                  // ProPicMediumWithBlob()
-                  ProPicLargeWithBlob()
+                  AnimatedOpacity(
+                    duration: Duration(milliseconds: 900),
+                    opacity: showProPic ? 1 : 0,
+                    child: Stack(
+                      children: [
+                        Lottie.asset(blobLottieAssetPath,
+                            height: screenHeight * 0.43),
+                        Padding(
+                          padding: const EdgeInsets.all(40.0),
+                          child: CircleAvatar(
+                            radius: 115,
+                            backgroundColor: Colors.transparent,
+                            backgroundImage: AssetImage(proPicAssetPath),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  AnimatedOpacity(
+                    duration: Duration(milliseconds: 900),
+                    opacity: showProPic ? 1 : 0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          child: Container(
+                            child: fbPng,
+                          ),
+                          onTap: () {
+                            launch(fbLink);
+                          },
+                        ).showCursorOnHover,
+                        SizedBox(
+                          width: 15,
+                        ),
+                        GestureDetector(
+                          child: instaPng,
+                          onTap: () {
+                            launch(instaLink);
+                          },
+                        ).showCursorOnHover,
+                        SizedBox(
+                          width: 15,
+                        ),
+                        GestureDetector(
+                          child: waPng,
+                          onTap: () {
+                            launch(whatsappWebLink);
+                          },
+                        ).showCursorOnHover,
+                        SizedBox(
+                          width: 15,
+                        ),
+                        GestureDetector(
+                          child: linkedInPng,
+                          onTap: () {
+                            launch(linkedInLink);
+                          },
+                        ).showCursorOnHover,
+                      ],
+                    ),
+                  ),
                 ],
               ),
             )
