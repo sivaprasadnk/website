@@ -38,7 +38,7 @@ dependencies:
   gradients: ^0.1.1+1
   hovering: ^1.0.4
   http: ^0.13.3
-  import_lint: ^0.5.0
+  # import_lint: ^0.5.0
   infinite_carousel: ^1.0.2
   lottie: ^1.0.1
   mouse_parallax: ^1.1.0

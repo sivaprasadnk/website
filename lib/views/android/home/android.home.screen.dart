@@ -45,7 +45,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                 width: screenWidth * 0.7,
                 child: FittedBox(
                   child: Text(
-                    "Hi, \nI 'm Sivaprasad NK .",
+                    "Hi , \nI 'm Sivaprasad NK .",
                     style: TextStyle(
                         fontFamily: 'PlayfairDisplay',
                         fontWeight: FontWeight.bold,
@@ -76,25 +76,26 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
 
           Flexible(
             child: Padding(
-              padding: EdgeInsets.only(left: screenWidth * 0.1),
-              child: Stack(
-                children: [
-                  Image.asset(
-                    'assets/images/blob1.png',
-                    height: screenHeight * 0.4,
-                  ),
-                  Positioned.fill(
-                    bottom: 10,
-                    right: 15,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: ProPicWidget(
-                        radius: screenWidth * 0.25,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              padding: EdgeInsets.only(left: screenWidth * 0.15),
+              child: ProPicMediumWithBlob(),
+              // child: Stack(
+              //   children: [
+              //     Image.asset(
+              //       'assets/images/blob1.png',
+              //       height: screenHeight * 0.4,
+              //     ),
+              //     Positioned.fill(
+              //       bottom: 10,
+              //       right: 15,
+              //       child: Align(
+              //         alignment: Alignment.center,
+              //         child: ProPicWidget(
+              //           radius: screenWidth * 0.25,
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ),
           )
         ],
