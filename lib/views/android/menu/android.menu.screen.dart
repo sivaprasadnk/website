@@ -59,7 +59,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
     var screenSize = MediaQuery.of(context).size;
     var screenHeight = screenSize.height;
     var screenWidth = screenSize.width;
-    double menuFontSize = 25;
+    double menuFontSize = screenWidth * 0.08;
     return Container(
       height: screenHeight,
       child: Stack(
@@ -72,7 +72,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                 opacity: showLottie ? 1 : 0,
                 duration: Duration(seconds: 2),
                 child: Container(
-                  padding: const EdgeInsets.only(left: 0, top: 50),
+                  padding: EdgeInsets.only(left: screenWidth * .2, top: 50),
                   child: Image.asset(
                     'assets/images/exp_icon.png',
                     height: 250,
@@ -181,6 +181,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                         );
                       case 3:
                         return Container(
+                          width: screenWidth * .1,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20),
                             child: ListTile(
@@ -210,7 +211,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: screenHeight * 0.15,
               )
             ],
           ),

@@ -604,7 +604,13 @@ class _ProPicWithBlobState extends State<ProPicLargeWithBlob> {
 }
 
 class ProPicMediumWithBlob extends StatefulWidget {
-  const ProPicMediumWithBlob({Key? key}) : super(key: key);
+  final double height;
+  final double leftPadding;
+  final double bottomPadding;
+  ProPicMediumWithBlob(
+      {required this.height,
+      required this.bottomPadding,
+      required this.leftPadding});
 
   @override
   _ProPicMediumWithBlobState createState() => _ProPicMediumWithBlobState();
@@ -634,17 +640,17 @@ class _ProPicMediumWithBlobState extends State<ProPicMediumWithBlob> {
             styles: BlobStyles(
               color: Colors.cyanAccent.shade700,
             ),
-            size: 250,
+            size: widget.height,
             child: Padding(
-              padding: const EdgeInsets.only(
-                bottom: 25,
-                left: 5,
-                right: 5,
+              padding: EdgeInsets.only(
+                bottom: widget.bottomPadding,
+                left: widget.leftPadding,
+                right: 15,
                 // top: 10,
               ),
               child: Image.asset(
                 'assets/images/propiccc.png',
-                height: 300,
+                // height: widget.height * .4,
               ),
             ),
           ),

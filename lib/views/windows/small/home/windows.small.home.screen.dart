@@ -70,7 +70,11 @@ class WindowsSmallHomeScreen extends StatelessWidget {
             opacity: showProPic ? 1 : 0,
             child: Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.2),
-              child: ProPicMediumWithBlob(),
+              child: ProPicMediumWithBlob(
+                height: screenHeight * 0.3,
+                bottomPadding: screenHeight * .02,
+                leftPadding: screenWidth * 0.02,
+              ),
             ),
             // child: Column(
             //   mainAxisSize: MainAxisSize.min,

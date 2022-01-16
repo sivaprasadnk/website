@@ -77,7 +77,11 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
           Flexible(
             child: Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.15),
-              child: ProPicMediumWithBlob(),
+              child: ProPicMediumWithBlob(
+                height: screenHeight * 0.3,
+                bottomPadding: screenHeight * .02,
+                leftPadding: screenWidth * 0.01,
+              ),
               // child: Stack(
               //   children: [
               //     Image.asset(

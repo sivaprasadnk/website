@@ -118,7 +118,11 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
             opacity: showProPic ? 1 : 0,
             child: Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.25),
-              child: ProPicMediumWithBlob(),
+              child: ProPicMediumWithBlob(
+                height: screenHeight * .3,
+                bottomPadding: screenHeight * .02,
+                leftPadding: screenWidth * 0.01,
+              ),
               // child: Stack(
               //   children: [
               //     Lottie.asset(
