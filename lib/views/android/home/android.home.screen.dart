@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
@@ -33,7 +34,16 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
               },
             ),
           ),
-          SizedBox(height: screenHeight * 0.2),
+          SizedBox(height: screenHeight * 0.03),
+          Container(
+            margin: EdgeInsets.only(
+              left: screenWidth * 0.15,
+            ),
+            child: Lottie.asset(
+              'assets/lotties/robot_hello.json',
+              height: 200,
+            ),
+          ),
           // Image.asset(
           //   'assets/images/bot.png',
           //   height: screenHeight * 0.2,
