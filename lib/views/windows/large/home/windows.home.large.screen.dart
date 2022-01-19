@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import "package:hovering/hovering.dart";
+import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_widgets.dart';
 
 class WindowsHomeLargeScreen extends StatefulWidget {
@@ -78,16 +79,19 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: screenHeight * 0.35,
+                      height: screenHeight * 0.15,
                     ),
-                    // AnimatedOpacity(
-                    //   duration: Duration(seconds: 1),
-                    //   opacity: showLottie ? 1 : 0,
-                    //   child: Lottie.asset(
-                    //     'assets/lotties/robot_hello.json',
-                    //     height: 200,
-                    //   ),
-                    // ),
+                    Padding(
+                      padding: EdgeInsets.only(left: screenWidth * .15),
+                      child: AnimatedOpacity(
+                        duration: Duration(seconds: 1),
+                        opacity: showLottie ? 1 : 0,
+                        child: Lottie.asset(
+                          'assets/lotties/robot_hello.json',
+                          height: 200,
+                        ),
+                      ),
+                    ),
                     AnimatedOpacity(
                       duration: Duration(seconds: 1),
                       opacity: showName ? 1 : 0,

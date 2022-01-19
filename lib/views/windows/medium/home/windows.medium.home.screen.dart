@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_widgets.dart';
 
 class WindowsMediumHomeScreen extends StatefulWidget {
@@ -52,18 +53,18 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: screenHeight * 0.3),
-          // AnimatedOpacity(
-          //   duration: Duration(seconds: 1),
-          //   opacity: showLottie ? 1 : 0,
-          //   child: Container(
-          //     margin: EdgeInsets.only(left: screenWidth * 0.15),
-          //     child: Lottie.asset(
-          //       'assets/lotties/robot_hello.json',
-          //       height: 200,
-          //     ),
-          //   ),
-          // ),
+          SizedBox(height: screenHeight * 0.1),
+          AnimatedOpacity(
+            duration: Duration(seconds: 1),
+            opacity: showLottie ? 1 : 0,
+            child: Container(
+              margin: EdgeInsets.only(left: screenWidth * 0.15),
+              child: Lottie.asset(
+                'assets/lotties/robot_hello.json',
+                height: 200,
+              ),
+            ),
+          ),
           AnimatedOpacity(
             duration: Duration(seconds: 1),
             opacity: showName ? 1 : 0,
@@ -112,16 +113,16 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
               ),
             ),
           ),
-          SizedBox(height: screenHeight * 0.12),
+          SizedBox(height: screenHeight * 0.08),
           AnimatedOpacity(
             duration: Duration(seconds: 2),
             opacity: showProPic ? 1 : 0,
             child: Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.25),
               child: ProPicMediumWithBlob(
-                height: screenHeight * .3,
+                height: screenHeight * .32,
                 bottomPadding: screenHeight * .02,
-                leftPadding: screenWidth * 0.01,
+                leftPadding: screenWidth * 0.015,
               ),
               // child: Stack(
               //   children: [

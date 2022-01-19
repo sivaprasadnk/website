@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_widgets.dart';
 
 class WindowsSmallHomeScreen extends StatelessWidget {
@@ -14,22 +15,22 @@ class WindowsSmallHomeScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: screenHeight * 0.28),
-          // Container(
-          //   margin: EdgeInsets.only(
-          //     left: screenWidth * 0.15,
-          //   ),
-          //   child: Lottie.asset(
-          //     'assets/lotties/robot_hello.json',
-          //     height: 200,
-          //   ),
-          // ),
+          SizedBox(height: screenHeight * 0.18),
+          Container(
+            margin: EdgeInsets.only(
+              left: screenWidth * 0.15,
+            ),
+            child: Lottie.asset(
+              'assets/lotties/robot_hello.json',
+              height: 180,
+            ),
+          ),
           Flexible(
             child: Container(
               margin: EdgeInsets.only(
                 left: screenWidth * 0.15,
               ),
-              width: screenWidth * 0.5,
+              width: screenWidth * 0.52,
               child: FittedBox(
                 child: Text(
                   "Hi ,\nI 'm Sivaprasad NK .",
@@ -64,7 +65,7 @@ class WindowsSmallHomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: screenHeight * 0.09),
+          SizedBox(height: screenHeight * 0.08),
           AnimatedOpacity(
             duration: Duration(seconds: 2),
             opacity: showProPic ? 1 : 0,
