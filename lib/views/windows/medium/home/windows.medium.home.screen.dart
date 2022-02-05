@@ -47,7 +47,7 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
-    var size = screenWidth / 15;
+    // var size = screenWidth / 15;
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,7 +60,7 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
               margin: EdgeInsets.only(left: screenWidth * 0.15),
               child: Lottie.asset(
                 'assets/lotties/robot_hello.json',
-                height: 200,
+                height: 195,
               ),
             ),
           ),
@@ -72,15 +72,13 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
                 left: screenWidth * 0.1,
               ),
               width: screenWidth * 0.4,
-              child: FittedBox(
-                child: Text(
-                  "Hi ,\nI 'm Sivaprasad NK .",
-                  style: TextStyle(
-                    fontFamily: 'PlayfairDisplay',
-                    fontWeight: FontWeight.bold,
-                    // fontSize: 40,
-                    color: Colors.white,
-                  ),
+              child: Text(
+                "Hi ,\nI 'm Sivaprasad NK .",
+                style: TextStyle(
+                  fontFamily: 'PlayfairDisplay',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -97,14 +95,16 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   FlutterLogo(
-                    size: size / 1.8,
+                    size: 30,
+                    // size: size / 1.8,
                     style: FlutterLogoStyle.markOnly,
                   ),
                   Text(
                     ' Flutter Developer from Tripunithura, Kerala .',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: size / 2.8,
+                      fontSize: 20,
+                      // fontSize: size / 2.8,
                       color: Colors.white,
                     ),
                   )

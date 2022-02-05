@@ -41,7 +41,7 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
-    var size = screenWidth / 25;
+    // var size = screenWidth / 25;
     return Stack(
       children: [
         Row(
@@ -76,17 +76,17 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
                       duration: Duration(seconds: 1),
                       opacity: showName ? 1 : 0,
                       child: Container(
-                        margin: EdgeInsets.only(left: screenWidth * 0.23),
-                        width: screenWidth * 0.2,
-                        child: FittedBox(
-                          child: Text(
-                            "Hi , \nI 'm Sivaprasad NK .",
-                            style: TextStyle(
-                              fontFamily: 'PlayfairDisplay',
-                              fontWeight: FontWeight.bold,
-                              // fontSize: 40,
-                              color: Colors.white,
-                            ),
+                        margin: EdgeInsets.only(
+                          left: screenWidth * 0.15,
+                        ),
+                        width: screenWidth * 0.3,
+                        child: Text(
+                          "Hi , \nI 'm Sivaprasad NK .",
+                          style: TextStyle(
+                            fontFamily: 'PlayfairDisplay',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -96,19 +96,23 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
                       duration: Duration(seconds: 1),
                       opacity: showName ? 1 : 0,
                       child: Container(
-                        margin: EdgeInsets.only(left: screenWidth * 0.23),
+                        margin: EdgeInsets.only(
+                          left: screenWidth * 0.15,
+                        ),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             FlutterLogo(
-                              size: size / 1.8,
+                              size: 30,
+                              // size: size / 1.8,
                               style: FlutterLogoStyle.markOnly,
                             ),
                             Text(
                               ' Flutter Developer from Tripunithura, Kerala .',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: size / 2.8,
+                                fontSize: 20,
+                                // fontSize: size / 2.8,
                                 color: Colors.white,
                               ),
                             )

@@ -26,12 +26,12 @@ Text nameText({
   required Color textColor,
 }) {
   return Text(
-    'Sivaprasad NK',
+    'SP',
     style: TextStyle(
       fontFamily: 'PatuaOne',
       color: textColor,
       fontWeight: FontWeight.bold,
-      fontSize: 21.0,
+      fontSize: 28.0,
     ),
   );
 }
@@ -804,6 +804,17 @@ class WindowsLeftFooter extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class NameLogo extends StatelessWidget {
+  const NameLogo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text('SP'),
     );
   }
 }

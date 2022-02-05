@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/provider/route_provider.dart';
@@ -11,7 +14,17 @@ import 'package:spnk/views/windows/large/home/windows.home.large.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.home.dart';
 import 'package:spnk/views/windows/small/home/windows.small.home.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  lockOrientation();
+  runApp(MyApp());
+}
+
+lockOrientation() async {
+  if (Platform.isAndroid || Platform.isIOS) {
+    await SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  }
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -48,9 +61,9 @@ class SplashScreen extends StatelessWidget {
     return defaultTargetPlatform == TargetPlatform.android ||
             defaultTargetPlatform == TargetPlatform.iOS
         ? AndroidHome()
-        : screenWidth > 880
+        : screenWidth > 1091
             ? WindowsHomeLarge()
-            : screenWidth > 640
+            : screenWidth > 695
                 ? WindowsMediumHome()
                 : WindowsSmallHome();
   }

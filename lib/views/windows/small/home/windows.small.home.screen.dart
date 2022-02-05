@@ -10,7 +10,7 @@ class WindowsSmallHomeScreen extends StatelessWidget {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
-    var size = screenWidth / 11;
+    // var size = screenWidth / 11;
 
     return Container(
       child: Column(
@@ -31,16 +31,14 @@ class WindowsSmallHomeScreen extends StatelessWidget {
               margin: EdgeInsets.only(
                 left: screenWidth * 0.15,
               ),
-              width: screenWidth * 0.52,
-              child: FittedBox(
-                child: Text(
-                  "Hi ,\nI 'm Sivaprasad NK .",
-                  style: TextStyle(
-                    fontFamily: 'PlayfairDisplay',
-                    fontWeight: FontWeight.bold,
-                    // fontSize: 40,
-                    color: Colors.white,
-                  ),
+              // width: screenWidth * 0.5,
+              child: Text(
+                "Hi ,\nI 'm Sivaprasad NK .",
+                style: TextStyle(
+                  fontFamily: 'PlayfairDisplay',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -51,14 +49,16 @@ class WindowsSmallHomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 FlutterLogo(
-                  size: size / 1.8,
+                  size: 25,
+                  // size: size / 1.8,
                   style: FlutterLogoStyle.markOnly,
                 ),
                 Text(
                   ' Flutter Developer from Tripunithura, Kerala .',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: size / 2.8,
+                    fontSize: 18,
+                    // fontSize: size / 2.8,
                     color: Colors.white,
                   ),
                 )
