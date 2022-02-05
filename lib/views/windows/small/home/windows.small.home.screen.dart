@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_widgets.dart';
@@ -11,11 +10,13 @@ class WindowsSmallHomeScreen extends StatelessWidget {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
+    var size = screenWidth / 11;
+
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: screenHeight * 0.18),
+          SizedBox(height: screenHeight * 0.15),
           Container(
             margin: EdgeInsets.only(
               left: screenWidth * 0.15,
@@ -45,23 +46,22 @@ class WindowsSmallHomeScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: screenWidth * 0.15),
-            child: AnimatedTextKit(
-              animatedTexts: [
-                ColorizeAnimatedText(
-                  "\nFlutter Developer from Tripunithura, Kerala .",
-                  textStyle: TextStyle(
+            padding: EdgeInsets.only(left: screenWidth * 0.15, top: 10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                FlutterLogo(
+                  size: size / 1.8,
+                  style: FlutterLogoStyle.markOnly,
+                ),
+                Text(
+                  ' Flutter Developer from Tripunithura, Kerala .',
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontSize: size / 2.8,
                     color: Colors.white,
                   ),
-                  colors: [
-                    Colors.cyan,
-                    Colors.blue,
-                    Colors.yellow,
-                    Colors.red,
-                  ],
-                ),
+                )
               ],
             ),
           ),
@@ -77,30 +77,6 @@ class WindowsSmallHomeScreen extends StatelessWidget {
                 leftPadding: screenWidth * 0.02,
               ),
             ),
-            // child: Column(
-            //   mainAxisSize: MainAxisSize.min,
-            //   children: [
-            //     Padding(
-            //       padding: EdgeInsets.only(left: screenWidth * 0.2),
-            //       child: Stack(
-            //         children: [
-            //           Lottie.asset(
-            //             blobLottieAssetPath,
-            //             height: 280,
-            //           ),
-            //           Padding(
-            //             padding: const EdgeInsets.only(left: 40, top: 40),
-            //             child: CircleAvatar(
-            //               radius: 100,
-            //               backgroundColor: Colors.transparent,
-            //               backgroundImage: AssetImage(proPicAssetPath),
-            //             ),
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //   ],
-            // ),
           ),
         ],
       ),

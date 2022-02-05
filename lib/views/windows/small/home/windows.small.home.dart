@@ -50,6 +50,8 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
   @override
   Widget build(BuildContext context) {
     double iconSize = 30;
+    double size = 15;
+
     fbPng = Image.asset(fbPngAssetName, height: iconSize);
     waPng = Image.asset(whatsappPngeAssetName, height: iconSize);
     instaPng = Image.asset(instaPngImageName, height: iconSize);
@@ -60,7 +62,7 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
 
     var screen = Provider.of<RouteProvider>(context).screen.toString();
     var menuSelectedCheck =
-        Provider.of<RouteProvider>(context, listen: true).menuSelected as bool;
+        Provider.of<RouteProvider>(context, listen: true).menuSelected;
     debugPrint('..@ screenWidth @ small : $screenWidth');
     debugPrint('..@ screen @ small :$screen');
     debugPrint('..@ menuSelectedCheck @ small :$menuSelectedCheck');
@@ -73,6 +75,7 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
+            // SizedBox(width: screenWidth * 0.1),
             GestureDetector(
               onTap: () {
                 Provider.of<RouteProvider>(context, listen: false)
@@ -97,17 +100,27 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
           ],
         ),
       ),
-      body: !menuSelectedCheck
-          ? screen == "Home"
-              ? WindowsSmallHomeScreen(showProPic: showProPic)
-              : screen == "ContactMe"
-                  ? WindowsSmallContactMeScreen()
-                  : screen == "MyProjects"
-                      ? WindowsSmallProjectsScreen()
-                      : screen == "Experience"
-                          ? WindowsSmallExperienceScreen()
-                          : Container()
-          : WindowsSmallDrawer(),
+      body: Container(
+        width: screenWidth,
+        // padding: EdgeInsets.only(left: screenWidth * 0.1),
+        child: Stack(
+          children: [
+            !menuSelectedCheck
+                ? screen == "Home"
+                    ? WindowsSmallHomeScreen(showProPic: showProPic)
+                    : screen == "ContactMe"
+                        ? WindowsSmallContactMeScreen()
+                        : screen == "MyProjects"
+                            ? WindowsSmallProjectsScreen()
+                            : screen == "Experience"
+                                ? WindowsSmallExperienceScreen()
+                                : SizedBox.shrink()
+                : WindowsSmallDrawer(),
+            WindowsRightFooter(size: size),
+            WindowsLeftFooter(size: size)
+          ],
+        ),
+      ),
     );
   }
 }

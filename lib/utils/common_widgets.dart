@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:blobs/blobs.dart';
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
@@ -653,6 +654,153 @@ class _ProPicMediumWithBlobState extends State<ProPicMediumWithBlob> {
                 // height: widget.height * .4,
               ),
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class WindowsLargeRightFooter extends StatelessWidget {
+  const WindowsLargeRightFooter({Key? key, required this.size})
+      : super(key: key);
+  final double size;
+  @override
+  Widget build(BuildContext context) {
+    return Positioned.fill(
+      bottom: 10,
+      right: 20,
+      child: Align(
+        alignment: Alignment.bottomRight,
+        child: Container(
+          // color: Colors.grey,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                ' Made with ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: size,
+                  color: Colors.grey,
+                ),
+              ),
+              Icon(
+                Icons.favorite,
+                color: Colors.red,
+              ),
+              Text(
+                ' in ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: size,
+                  color: Colors.grey,
+                ),
+              ),
+              FlutterLogo(
+                size: size,
+                style: FlutterLogoStyle.markOnly,
+              ),
+              Text(
+                ' Flutter  ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: size,
+                  color: Colors.grey,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class WindowsRightFooter extends StatelessWidget {
+  const WindowsRightFooter({
+    Key? key,
+    required this.size,
+  }) : super(key: key);
+  final double size;
+  @override
+  Widget build(BuildContext context) {
+    return Positioned.fill(
+      bottom: 0,
+      child: Align(
+        alignment: Alignment.bottomRight,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              ' Made with ',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: size,
+                color: Colors.grey,
+              ),
+            ),
+            AvatarGlow(
+              glowColor: Colors.grey,
+              endRadius: 20.0,
+              duration: Duration(milliseconds: 2000),
+              repeat: true,
+              showTwoGlows: false,
+              repeatPauseDuration: Duration(milliseconds: 100),
+              child: Icon(
+                Icons.favorite,
+                color: Colors.red,
+              ),
+            ),
+            // CircleAvatar(
+            //   child: Icon(
+            //     Icons.favorite,
+            //     color: Colors.red,
+            //   ),
+            // ),
+            Text(
+              ' in ',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: size,
+                color: Colors.grey,
+              ),
+            ),
+            FlutterLogo(
+              size: size,
+              style: FlutterLogoStyle.markOnly,
+            ),
+            Text(
+              ' Flutter  ',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: size,
+                color: Colors.grey,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class WindowsLeftFooter extends StatelessWidget {
+  const WindowsLeftFooter({Key? key, required this.size}) : super(key: key);
+  final double size;
+  @override
+  Widget build(BuildContext context) {
+    return Positioned.fill(
+      bottom: 12,
+      left: 10,
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: Text(
+          'Copyright © 2022 Sivaprasad NK .',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: size,
+            color: Colors.grey,
           ),
         ),
       ),

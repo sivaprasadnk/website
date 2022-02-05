@@ -52,6 +52,7 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
 
     debugPrint('..@ screenWidth @ medium : $screenWidth');
     var screen = Provider.of<RouteProvider>(context).screen.toString();
+    double size = 15;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -68,18 +69,24 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
         ),
       ),
       body: Container(
-        child: Row(
+        child: Stack(
           children: [
-            WindowsMediumMenu(),
-            screen == "Home"
-                ? WindowsMediumHomeScreen()
-                : screen == "ContactMe"
-                    ? WindowsMediumContactMeScreen()
-                    : screen == "Experience"
-                        ? WindowsMediumExperienceScreen()
-                        : screen == "MyProjects"
-                            ? WindowsMediumProjectsScreen()
-                            : Container()
+            Row(
+              children: [
+                WindowsMediumMenu(),
+                screen == "Home"
+                    ? WindowsMediumHomeScreen()
+                    : screen == "ContactMe"
+                        ? WindowsMediumContactMeScreen()
+                        : screen == "Experience"
+                            ? WindowsMediumExperienceScreen()
+                            : screen == "MyProjects"
+                                ? WindowsMediumProjectsScreen()
+                                : Container()
+              ],
+            ),
+            WindowsRightFooter(size: size),
+            WindowsLeftFooter(size: size)
           ],
         ),
       ),

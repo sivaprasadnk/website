@@ -25,6 +25,7 @@ dependencies:
   animated_text_kit: ^4.2.1
   animations: ^2.0.1
   auto_animated: ^3.0.0
+  avatar_glow: ^2.0.2
   blobs: ^2.0.0
   bordered_text: ^2.0.0
   carousel_slider: ^4.0.0
@@ -38,7 +39,6 @@ dependencies:
   gradients: ^0.1.1+1
   hovering: ^1.0.4
   http: ^0.13.3
-  # import_lint: ^0.5.0
   infinite_carousel: ^1.0.2
   lottie: ^1.0.1
   mouse_parallax: ^1.1.0

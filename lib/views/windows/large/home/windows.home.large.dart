@@ -49,7 +49,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     // var screenHeight = screenSize.height;
-
+    double size = 15;
     debugPrint('..@ screenWidth1 large: $screenWidth');
     debugPrint('..@ experienceSelected large: $experienceSelected');
     // final themeProvider = Provider.of<DarkThemeProvider>(context);
@@ -65,7 +65,8 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
         appBar: PreferredSize(
           preferredSize: Size(screenWidth, 65),
           child: Padding(
-            padding: EdgeInsets.all(18),
+            padding: EdgeInsets.all(18) +
+                EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
             child: SizedBox(
               width: screenWidth,
               child: Row(
@@ -97,13 +98,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                               0,
                               duration: _duration,
                             );
-                            // if (mounted)
-                            //   setState(() {
-                            //     homeSelected = true;
-                            //     projectHovered = false;
-                            //     contactmeSelected = false;
-                            //     experienceSelected = false;
-                            //   });
                           },
                           child: Column(
                             children: [
@@ -118,32 +112,13 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                           ),
                         ),
                         InkWell(
-                          // hoverColor: Colors.cyanAccent,
-                          // // highlightColor: Colors.cyan,
-                          // onHover: (bool status) {
-                          //   setState(() {
-                          //     experienceSelected = status;
-                          //   });
-                          // },
                           onTap: () {
                             _tabController.animateTo(
                               1,
                               duration: _duration,
                             );
-                            // if (mounted)
-                            //   setState(() {
-                            //     homeSelected = false;
-                            //     projectHovered = false;
-                            //     contactmeSelected = false;
-                            //     experienceSelected = true;
-                            //   });
                           },
                           child: Container(
-                            // decoration: BoxDecoration(
-                            //   color: experienceSelected
-                            //       ? Colors.cyanAccent
-                            //       : Colors.transparent,
-                            // ),
                             child: Column(
                               children: [
                                 Text(
@@ -159,31 +134,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                               ],
                             ),
                           ),
-                          // child: Column(
-                          //   mainAxisSize: MainAxisSize.min,
-                          //   children: [
-                          //     Text(
-                          //       'Experience',
-                          //       style: TextStyle(
-                          //         fontFamily: 'PatuaOne',
-                          //         color: Colors.white,
-                          //       ),
-                          //     ),
-                          //     SizedBox(height: 5),
-                          //     // For showing an underline on hover
-                          //     Visibility(
-                          //       maintainAnimation: true,
-                          //       maintainState: true,
-                          //       maintainSize: true,
-                          //       visible: experienceSelected,
-                          //       child: Container(
-                          //         height: 2,
-                          //         width: 64,
-                          //         color: Colors.white,
-                          //       ),
-                          //     )
-                          //   ],
-                          // ),
                         ),
                         InkWell(
                           onTap: () {
@@ -191,13 +141,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                               2,
                               duration: _duration,
                             );
-                            // if (mounted)
-                            //   setState(() {
-                            //     projectHovered = true;
-                            //     homeSelected = false;
-                            //     contactmeSelected = false;
-                            //     experienceSelected = false;
-                            //   });
                           },
                           child: Column(
                             children: [
@@ -220,13 +163,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                               3,
                               duration: _duration,
                             );
-                            // if (mounted)
-                            //   setState(() {
-                            //     homeSelected = false;
-                            //     projectHovered = false;
-                            //     contactmeSelected = true;
-                            //     experienceSelected = false;
-                            //   });
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -250,18 +186,23 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
             ),
           ),
         ),
-        body: Stack(
-          children: [
-            TabBarView(
-              controller: _tabController,
-              children: [
-                WindowsHomeLargeScreen(),
-                WindowsLargeExperienceScreen(),
-                WindowsLargeProjectScreen(),
-                WindowsLargeContactMeScreen(),
-              ],
-            ),
-          ],
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+          child: Stack(
+            children: [
+              TabBarView(
+                controller: _tabController,
+                children: [
+                  WindowsHomeLargeScreen(),
+                  WindowsLargeExperienceScreen(),
+                  WindowsLargeProjectScreen(),
+                  WindowsLargeContactMeScreen(),
+                ],
+              ),
+              WindowsRightFooter(size: size),
+              WindowsLeftFooter(size: size),
+            ],
+          ),
         ),
       ),
     );

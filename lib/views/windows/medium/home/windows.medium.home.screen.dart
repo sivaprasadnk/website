@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_widgets.dart';
@@ -48,7 +47,7 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
-
+    var size = screenWidth / 15;
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,24 +90,24 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
             opacity: showName ? 1 : 0,
             child: Padding(
               padding: EdgeInsets.only(
+                top: 10,
                 left: screenWidth * 0.1,
               ),
-              child: AnimatedTextKit(
-                animatedTexts: [
-                  ColorizeAnimatedText(
-                    "\nFlutter Developer from Tripunithura, Kerala .",
-                    textStyle: TextStyle(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  FlutterLogo(
+                    size: size / 1.8,
+                    style: FlutterLogoStyle.markOnly,
+                  ),
+                  Text(
+                    ' Flutter Developer from Tripunithura, Kerala .',
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontSize: size / 2.8,
                       color: Colors.white,
                     ),
-                    colors: [
-                      Colors.cyan,
-                      Colors.blue,
-                      Colors.yellow,
-                      Colors.red,
-                    ],
-                  ),
+                  )
                 ],
               ),
             ),

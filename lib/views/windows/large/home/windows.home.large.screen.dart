@@ -1,6 +1,4 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import "package:hovering/hovering.dart";
 import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_widgets.dart';
 
@@ -43,28 +41,9 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
-
+    var size = screenWidth / 25;
     return Stack(
       children: [
-        // Positioned.fill(
-        //   child: AnimatedOpacity(
-        //     opacity: 1,
-        //     duration: Duration(milliseconds: 900),
-        //     child: Align(
-        //       child: ClipRRect(
-        //         borderRadius: BorderRadius.circular(12),
-        //         child: CustomPaint(
-        //           painter: WindowsHomeBgCurve(ctx: context),
-        //           child: Container(
-        //             decoration: BoxDecoration(
-        //               borderRadius: BorderRadius.circular(12),
-        //             ),
-        //           ),
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -72,7 +51,8 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
               opacity: showName ? 1 : 0,
               duration: Duration(milliseconds: 900),
               child: Container(
-                width: screenWidth / 2,
+                // color: Colors.amber,
+                width: screenWidth / 1.6,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -82,7 +62,7 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
                       height: screenHeight * 0.15,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: screenWidth * .15),
+                      padding: EdgeInsets.only(left: screenWidth * .23),
                       child: AnimatedOpacity(
                         duration: Duration(seconds: 1),
                         opacity: showLottie ? 1 : 0,
@@ -96,8 +76,8 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
                       duration: Duration(seconds: 1),
                       opacity: showName ? 1 : 0,
                       child: Container(
-                        margin: EdgeInsets.only(left: screenWidth * 0.15),
-                        width: screenWidth * 0.3,
+                        margin: EdgeInsets.only(left: screenWidth * 0.23),
+                        width: screenWidth * 0.2,
                         child: FittedBox(
                           child: Text(
                             "Hi , \nI 'm Sivaprasad NK .",
@@ -111,53 +91,28 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
                         ),
                       ),
                     ),
-                    Flexible(
-                      child: AnimatedOpacity(
-                        duration: Duration(seconds: 1),
-                        opacity: showName ? 1 : 0,
-                        child: Container(
-                          margin: EdgeInsets.only(left: screenWidth * 0.15),
-                          child: FittedBox(
-                            child: HoverWidget(
-                              onHover: (event) {},
-                              hoverChild: AnimatedTextKit(
-                                animatedTexts: [
-                                  ColorizeAnimatedText(
-                                    "\nFlutter Developer from Tripunithura, Kerala .",
-                                    textStyle: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 23,
-                                      color: Colors.white,
-                                    ),
-                                    colors: [
-                                      Colors.purple,
-                                      Colors.blue,
-                                      Colors.yellow,
-                                      Colors.red,
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              child: AnimatedTextKit(
-                                animatedTexts: [
-                                  ColorizeAnimatedText(
-                                    "\nFlutter Developer from Tripunithura, Kerala .",
-                                    textStyle: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 23,
-                                      color: Colors.white,
-                                    ),
-                                    colors: [
-                                      Colors.purple,
-                                      Colors.blue,
-                                      Colors.yellow,
-                                      Colors.red,
-                                    ],
-                                  ),
-                                ],
-                              ),
+                    SizedBox(height: 20),
+                    AnimatedOpacity(
+                      duration: Duration(seconds: 1),
+                      opacity: showName ? 1 : 0,
+                      child: Container(
+                        margin: EdgeInsets.only(left: screenWidth * 0.23),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            FlutterLogo(
+                              size: size / 1.8,
+                              style: FlutterLogoStyle.markOnly,
                             ),
-                          ),
+                            Text(
+                              ' Flutter Developer from Tripunithura, Kerala .',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: size / 2.8,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
@@ -165,16 +120,18 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
                 ),
               ),
             ),
-            Container(
-              width: screenWidth / 2,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.23,
-                  ),
-                  // ProPicMediumWithBlob()
-                  ProPicLargeWithBlob()
-                ],
+            Flexible(
+              child: Container(
+                width: screenWidth / 1.8,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.23,
+                    ),
+                    // ProPicMediumWithBlob()
+                    ProPicLargeWithBlob()
+                  ],
+                ),
               ),
             )
           ],
