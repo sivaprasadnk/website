@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
+import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/backup/contact_me/android.contactme.screen.dart';
 import 'package:spnk/views/android/backup/experience/android.experience.screen.dart';
 import 'package:spnk/views/android/backup/projects/android.projects.screen.dart';
@@ -19,8 +20,9 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
+    double size = 15;
 
-    // var screenWidth = screenSize.width;
+    var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
     var screen = Provider.of<RouteProvider>(context).screen.toString();
     var menuSelectedCheck =
@@ -31,15 +33,34 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
       onWillPop: () async => false,
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(0, 34, 51, 1),
-        body: menuSelectedCheck
-            ? AndroidMenuScreen()
-            : screen == "Home"
-                ? AndroidHomeScreen()
-                : screen == "MyProjects"
-                    ? AndroidProjects(screenHeight: screenHeight)
-                    : screen == "Experience"
-                        ? AndroidExperienceScreen(screenHeight: screenHeight)
-                        : AndroidContactMeScreen(screenHeight: screenHeight),
+        body: Container(
+          width: screenWidth,
+          child: Stack(
+            children: [
+              menuSelectedCheck
+                  ? AndroidMenuScreen()
+                  : screen == "Home"
+                      ? AndroidHomeScreen()
+                      : screen == "MyProjects"
+                          ? AndroidProjects(screenHeight: screenHeight)
+                          : screen == "Experience"
+                              ? AndroidExperienceScreen(
+                                  screenHeight: screenHeight)
+                              : AndroidContactMeScreen(
+                                  screenHeight: screenHeight),
+              AndroidRightFooter(size: size),
+            ],
+          ),
+        ),
+        // body: menuSelectedCheck
+        //     ? AndroidMenuScreen()
+        //     : screen == "Home"
+        //         ? AndroidHomeScreen()
+        //         : screen == "MyProjects"
+        //             ? AndroidProjects(screenHeight: screenHeight)
+        //             : screen == "Experience"
+        //                 ? AndroidExperienceScreen(screenHeight: screenHeight)
+        //                 : AndroidContactMeScreen(screenHeight: screenHeight),
       ),
     );
   }
