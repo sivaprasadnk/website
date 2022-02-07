@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/provider/route_provider.dart';
@@ -20,10 +17,11 @@ void main() {
 }
 
 lockOrientation() async {
-  if (Platform.isAndroid || Platform.isIOS) {
-    await SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  }
+  // if (defaultTargetPlatform == TargetPlatform.android ||
+  //     defaultTargetPlatform == TargetPlatform.iOS) {
+  //   await SystemChrome.setPreferredOrientations(
+  //       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  // }
 }
 
 class MyApp extends StatelessWidget {

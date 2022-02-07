@@ -52,7 +52,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
               // ),
               Padding(
                 padding: EdgeInsets.only(left: screenWidth * 0.1),
-                child: FadeInDownBig(
+                child: FadeInDown(
                   child: Container(
                     width: screenWidth * 0.7,
                     child: FittedBox(
@@ -69,22 +69,56 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.1),
-                child: FadeInLeftBig(
+                padding: EdgeInsets.only(left: screenWidth * 0.1, top: 15),
+                child: FadeInLeft(
                   child: Container(
-                    // width: screenWidth * 0.8,
-                    child: Text(
-                      "\nFlutter Developer from \nTripunithura, Kerala .",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 23,
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            FlutterLogo(
+                              size: 30,
+                              // size: size / 1.8,
+                              style: FlutterLogoStyle.markOnly,
+                            ),
+                            Text(
+                              ' Flutter Developer from',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                // fontSize: size / 2.8,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          ' Tripunithura, Kerala .',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            // fontSize: size / 2.8,
+                            color: Colors.white,
+                          ),
+                        )
+                      ],
                     ),
+                    // width: screenWidth * 0.8,
+                    // child: Text(
+                    //   "\nFlutter Developer from \nTripunithura, Kerala .",
+                    //   style: TextStyle(
+                    //     fontWeight: FontWeight.bold,
+                    //     color: Colors.white,
+                    //     fontSize: 23,
+                    //   ),
+                    // ),
                   ),
                 ),
               ),
-              SizedBox(height: screenHeight * 0.1),
+              SizedBox(height: screenHeight * 0.05),
 
               Flexible(
                 child: Padding(
