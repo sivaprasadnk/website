@@ -63,7 +63,7 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                height: widget.screenHeight * 0.18,
+                height: widget.screenHeight * 0.15,
               ),
               Padding(
                 padding: EdgeInsets.only(left: 30),

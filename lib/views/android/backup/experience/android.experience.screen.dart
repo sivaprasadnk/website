@@ -58,7 +58,7 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                height: widget.screenHeight * 0.18,
+                height: widget.screenHeight * 0.15,
               ),
               Padding(
                 padding: EdgeInsets.only(top: 0, left: 30),
