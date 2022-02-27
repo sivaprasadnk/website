@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_strings.dart';
@@ -17,6 +18,14 @@ class _WindowsMediumProjectsScreenState
   PageController controller = PageController();
   bool showLottie = false;
   bool showNextIcon = true;
+
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -39,71 +48,73 @@ class _WindowsMediumProjectsScreenState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: screenHeight * 0.18),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Stack(
-                  children: [
-                    Container(
-                      // color: Colors.black,
-                      height: screenHeight * 0.5,
-                      width: screenWidth * 0.7,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: PageView(
-                          controller: controller,
-                          children: [
-                            SpQuotesProjectItem(width: screenWidth),
-                            SpQuizProjectItem(width: screenWidth),
-                          ],
-                        ),
-                      ),
-                    ),
-                    if (!showNextIcon)
-                      Positioned.fill(
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: GestureDetector(
-                            onTap: () {
-                              controller.previousPage(
-                                duration: Duration(seconds: 1),
-                                curve: Curves.bounceOut,
-                              );
-                              setState(() {
-                                showNextIcon = true;
-                              });
-                            },
-                            child: Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.white,
-                            ).showCursorOnHover,
+            FadeInRight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Stack(
+                    children: [
+                      Container(
+                        // color: Colors.black,
+                        height: screenHeight * 0.5,
+                        width: screenWidth * 0.7,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: PageView(
+                            controller: controller,
+                            children: [
+                              SpQuotesProjectItem(width: screenWidth),
+                              SpQuizProjectItem(width: screenWidth),
+                            ],
                           ),
                         ),
                       ),
-                    if (showNextIcon)
-                      Positioned.fill(
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: GestureDetector(
-                            onTap: () {
-                              controller.nextPage(
-                                duration: Duration(seconds: 1),
-                                curve: Curves.bounceOut,
-                              );
-                              setState(() {
-                                showNextIcon = false;
-                              });
-                            },
-                            child: Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.white,
-                            ).showCursorOnHover,
+                      if (!showNextIcon)
+                        Positioned.fill(
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: GestureDetector(
+                              onTap: () {
+                                controller.previousPage(
+                                  duration: Duration(seconds: 1),
+                                  curve: Curves.bounceOut,
+                                );
+                                setState(() {
+                                  showNextIcon = true;
+                                });
+                              },
+                              child: Icon(
+                                Icons.arrow_back_ios,
+                                color: Colors.white,
+                              ).showCursorOnHover,
+                            ),
                           ),
                         ),
-                      )
-                  ],
-                ),
-              ],
+                      if (showNextIcon)
+                        Positioned.fill(
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: GestureDetector(
+                              onTap: () {
+                                controller.nextPage(
+                                  duration: Duration(seconds: 1),
+                                  curve: Curves.bounceOut,
+                                );
+                                setState(() {
+                                  showNextIcon = false;
+                                });
+                              },
+                              child: Icon(
+                                Icons.arrow_forward_ios,
+                                color: Colors.white,
+                              ).showCursorOnHover,
+                            ),
+                          ),
+                        )
+                    ],
+                  ),
+                ],
+              ),
             ),
             // Row(
             //   children: [

@@ -112,7 +112,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen>
                                 Padding(
                                   padding:
                                       EdgeInsets.only(left: screenWidth * 0.1),
-                                  child: FadeInDownBig(
+                                  child: FadeInDown(
                                     child: Container(
                                       width: screenWidth * 0.7,
                                       child: FittedBox(

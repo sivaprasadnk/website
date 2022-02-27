@@ -36,14 +36,6 @@ class _WindowsMediumMenuState extends State<WindowsMediumMenu> {
             GestureDetector(
               onTap: () {
                 Provider.of<RouteProvider>(context, listen: false)
-                    .setScreen(name: 'ContactMe');
-              },
-              child: ContactmeMenu(),
-            ),
-            SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                Provider.of<RouteProvider>(context, listen: false)
                     .setScreen(name: 'Experience');
               },
               child: ExperienceMenu(),
@@ -55,6 +47,14 @@ class _WindowsMediumMenuState extends State<WindowsMediumMenu> {
                     .setScreen(name: 'MyProjects');
               },
               child: MyProjectsMenu(),
+            ),
+            SizedBox(height: 20),
+            GestureDetector(
+              onTap: () {
+                Provider.of<RouteProvider>(context, listen: false)
+                    .setScreen(name: 'ContactMe');
+              },
+              child: ContactmeMenu(),
             ),
             SizedBox(height: 20),
             Spacer(),
@@ -107,7 +107,7 @@ class MyProjectsMenu extends StatelessWidget {
     var screen = Provider.of<RouteProvider>(context).screen.toString();
 
     return HoverText(
-      title: 'My Projects',
+      title: 'Projects',
       isSelected: screen == "MyProjects",
     );
   }
@@ -127,6 +127,13 @@ class HoverText extends StatefulWidget {
 
 class _HoverTextState extends State<HoverText> {
   bool isHovering = false;
+
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

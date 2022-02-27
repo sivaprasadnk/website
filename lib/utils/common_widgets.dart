@@ -3,7 +3,10 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:blobs/blobs.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
@@ -830,7 +833,7 @@ class AndroidRightFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned.fill(
-      bottom: 20,
+      bottom: 5,
       child: Align(
         alignment: Alignment.bottomCenter,
         child: FadeInUp(
@@ -921,6 +924,210 @@ class NameLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Text('SP'),
+    );
+  }
+}
+
+class WindowsSmallSocialMediaIcons extends StatelessWidget {
+  final bool showIcons;
+  final double screenWidth;
+  final bool isLarge;
+
+  const WindowsSmallSocialMediaIcons({
+    required this.showIcons,
+    required this.screenWidth,
+    this.isLarge = false,
+  });
+  @override
+  Widget build(BuildContext context) {
+    double iconSize = 35;
+    return Container(
+      child: AnimatedOpacity(
+        duration: Duration(milliseconds: 900),
+        opacity: showIcons ? 1 : 0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(width: !isLarge ? screenWidth * 0.23 : screenWidth * 0.00),
+            GestureDetector(
+              child: Container(
+                child: FaIcon(
+                  FontAwesomeIcons.facebook,
+                  color: Colors.blue,
+                  size: iconSize,
+                ),
+              ),
+              onTap: () {
+                launch(fbLink);
+              },
+            ).showCursorOnHover,
+            SizedBox(
+              width: 15,
+            ),
+            GestureDetector(
+              child: FaIcon(
+                FontAwesomeIcons.instagram,
+                color: Colors.orange,
+                size: iconSize,
+              ),
+              onTap: () {
+                launch(instaLink);
+              },
+            ).showCursorOnHover,
+            SizedBox(
+              width: 15,
+            ),
+            GestureDetector(
+              child: FaIcon(
+                FontAwesomeIcons.whatsapp,
+                size: iconSize,
+                color: Colors.green,
+              ),
+              onTap: () {
+                launch(whatsappWebLink);
+              },
+            ).showCursorOnHover,
+            SizedBox(
+              width: 15,
+            ),
+            GestureDetector(
+              child: FaIcon(
+                FontAwesomeIcons.linkedin,
+                size: iconSize,
+                color: Colors.blue,
+              ),
+              onTap: () {
+                launch(linkedInLink);
+              },
+            ).showCursorOnHover,
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProPicWithBlobLottie extends StatelessWidget {
+  const ProPicWithBlobLottie({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Lottie.asset(blobLottieAssetPath, height: 280),
+        Padding(
+          padding: const EdgeInsets.all(40.0),
+          child: CircleAvatar(
+            radius: 95,
+            backgroundColor: Colors.transparent,
+            backgroundImage: AssetImage(proPicAssetPath),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class FlutterDeveloperContainer extends StatelessWidget {
+  const FlutterDeveloperContainer({
+    Key? key,
+    required this.showName,
+    required this.screenWidth,
+  }) : super(key: key);
+
+  final bool showName;
+  final double screenWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      duration: Duration(seconds: 1),
+      opacity: showName ? 1 : 0,
+      child: Padding(
+        padding: EdgeInsets.only(
+          top: 10,
+          left: screenWidth * 0.1,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            FlutterLogo(
+              size: 30,
+              style: FlutterLogoStyle.markOnly,
+            ),
+            Text(
+              ' Flutter Developer from Tripunithura, Kerala .',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.white,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class HiNameContainer extends StatelessWidget {
+  const HiNameContainer({
+    Key? key,
+    required this.showName,
+    required this.screenWidth,
+  }) : super(key: key);
+
+  final bool showName;
+  final double screenWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      duration: Duration(seconds: 1),
+      opacity: showName ? 1 : 0,
+      child: Container(
+        margin: EdgeInsets.only(
+          left: screenWidth * 0.1,
+        ),
+        width: screenWidth * 0.6,
+        child: Text(
+          "Hi ,\nI 'm Sivaprasad NK .",
+          style: TextStyle(
+            fontFamily: 'PlayfairDisplay',
+            fontWeight: FontWeight.bold,
+            fontSize: 28,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class RobotLottie extends StatelessWidget {
+  const RobotLottie({
+    Key? key,
+    required this.showLottie,
+    required this.screenWidth,
+  }) : super(key: key);
+
+  final bool showLottie;
+  final double screenWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      duration: Duration(seconds: 1),
+      opacity: showLottie ? 1 : 0,
+      child: Container(
+        margin: EdgeInsets.only(left: screenWidth * 0.15),
+        child: Lottie.asset(
+          'assets/lotties/robot_hello.json',
+          height: 195,
+        ),
+      ),
     );
   }
 }

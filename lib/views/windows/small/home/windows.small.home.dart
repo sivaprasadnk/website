@@ -59,11 +59,13 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
         height: iconSize, color: Colors.blue[900]);
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
+    var screenHeight = screenSize.height;
 
     var screen = Provider.of<RouteProvider>(context).screen.toString();
     var menuSelectedCheck =
         Provider.of<RouteProvider>(context, listen: true).menuSelected;
     debugPrint('..@ screenWidth @ small : $screenWidth');
+    debugPrint('..@ screenHeight @ small : $screenHeight');
     debugPrint('..@ screen @ small :$screen');
     debugPrint('..@ menuSelectedCheck @ small :$menuSelectedCheck');
     return Scaffold(
@@ -101,26 +103,27 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
         ),
       ),
       body: Container(
-        width: screenWidth,
-        // padding: EdgeInsets.only(left: screenWidth * 0.1),
-        child: Stack(
-          children: [
-            !menuSelectedCheck
-                ? screen == "Home"
-                    ? WindowsSmallHomeScreen(showProPic: showProPic)
-                    : screen == "ContactMe"
-                        ? WindowsSmallContactMeScreen()
-                        : screen == "MyProjects"
-                            ? WindowsSmallProjectsScreen()
-                            : screen == "Experience"
-                                ? WindowsSmallExperienceScreen()
-                                : SizedBox.shrink()
-                : WindowsSmallDrawer(),
-            WindowsRightFooter(size: size),
-            WindowsLeftFooter(size: size)
-          ],
-        ),
-      ),
+          width: screenWidth,
+          // padding: EdgeInsets.only(left: screenWidth * 0.1),
+          child: Stack(
+            children: [
+              !menuSelectedCheck
+                  ? screen == "Home"
+                      ? WindowsSmallHomeScreen(showProPic: showProPic)
+                      : screen == "ContactMe"
+                          ? WindowsSmallContactMeScreen()
+                          : screen == "MyProjects"
+                              ? WindowsSmallProjectsScreen()
+                              : screen == "Experience"
+                                  ? WindowsSmallExperienceScreen()
+                                  : SizedBox.shrink()
+                  : WindowsSmallDrawer(),
+              WindowsRightFooter(size: size),
+              WindowsLeftFooter(size: size)
+            ],
+          )
+          // : InvalidDisplayScreen(),
+          ),
     );
   }
 }

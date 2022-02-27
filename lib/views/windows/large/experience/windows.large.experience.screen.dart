@@ -11,6 +11,14 @@ class WindowsLargeExperienceScreen extends StatefulWidget {
 class _WindowsLargeExperienceScreenState
     extends State<WindowsLargeExperienceScreen> {
   bool showLottie = false;
+
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -34,7 +42,7 @@ class _WindowsLargeExperienceScreenState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: screenHeight * 0.2),
-              FadeInDownBig(
+              FadeInDown(
                 child: Container(
                   width: screenWidth * 0.25,
                   padding: EdgeInsets.only(left: screenWidth * 0.1),

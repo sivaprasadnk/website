@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/views/windows/social.media.icons.dart';
+import 'package:spnk/utils/common_widgets.dart';
 
 class WindowsLargeContactMeScreen extends StatefulWidget {
   @override
@@ -13,6 +13,14 @@ class WindowsLargeContactMeScreen extends StatefulWidget {
 class _WindowsLargeContactMeScreenState
     extends State<WindowsLargeContactMeScreen> {
   bool showLottie = false;
+
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -36,7 +44,7 @@ class _WindowsLargeContactMeScreenState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: screenHeight * 0.2),
-              FadeInDownBig(
+              FadeInDown(
                 child: Container(
                   width: screenWidth * 0.25,
                   padding: EdgeInsets.only(left: screenWidth * 0.1),
@@ -137,19 +145,42 @@ class _WindowsLargeContactMeScreenState
               // ),
               //-------------------------------------
 
-              SizedBox(
-                width: screenWidth * 0.7,
+              FadeInRight(
+                child: SizedBox(
+                  width: screenWidth * 0.7,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(width: screenWidth * 0.1),
+                      Icon(
+                        Icons.location_on,
+                        color: Colors.white,
+                      ),
+                      SizedBox(width: 20),
+                      Text(
+                        addressText,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: screenHeight * 0.03),
+              FadeInRight(
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(width: screenWidth * 0.1),
                     Icon(
-                      Icons.location_on,
+                      Icons.call,
                       color: Colors.white,
                     ),
                     SizedBox(width: 20),
                     Text(
-                      addressText,
+                      mobileNumberText,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -159,48 +190,37 @@ class _WindowsLargeContactMeScreenState
                 ),
               ),
               SizedBox(height: screenHeight * 0.03),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(width: screenWidth * 0.1),
-                  Icon(
-                    Icons.call,
-                    color: Colors.white,
-                  ),
-                  SizedBox(width: 20),
-                  Text(
-                    mobileNumberText,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+              FadeInRight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(width: screenWidth * 0.1),
+                    Icon(
+                      Icons.email,
                       color: Colors.white,
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(height: screenHeight * 0.03),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(width: screenWidth * 0.1),
-                  Icon(
-                    Icons.email,
-                    color: Colors.white,
-                  ),
-                  SizedBox(width: 20),
-                  Text(
-                    emailText,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                    SizedBox(width: 20),
+                    Text(
+                      emailText,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              SizedBox(height: screenHeight * 0.03),
+              SizedBox(height: screenHeight * 0.07),
 
-              Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.1),
-                child: SocialMediaIcons(),
+              FadeInDown(
+                child: Padding(
+                  padding: EdgeInsets.only(left: screenWidth * 0.1),
+                  child: WindowsSmallSocialMediaIcons(
+                    screenWidth: screenWidth,
+                    showIcons: true,
+                    isLarge: true,
+                  ),
+                ),
               )
             ],
           ),

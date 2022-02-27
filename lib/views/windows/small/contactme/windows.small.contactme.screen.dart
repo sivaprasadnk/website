@@ -2,8 +2,8 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/views/windows/hover_extensions.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 
 class WindowsSmallContactMeScreen extends StatefulWidget {
   @override
@@ -14,10 +14,13 @@ class WindowsSmallContactMeScreen extends StatefulWidget {
 class _WindowsSmallContactMeScreenState
     extends State<WindowsSmallContactMeScreen> {
   var _formKey = GlobalKey<FormState>();
-  late Widget fbPng;
-  late Widget waPng;
-  late Widget instaPng;
-  late Widget linkedInPng;
+
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
 
   bool showLottie = false;
   bool showIcons = false;
@@ -37,12 +40,6 @@ class _WindowsSmallContactMeScreenState
     var screenSize = MediaQuery.of(context).size;
     var screenHeight = screenSize.height;
     var screenWidth = screenSize.width;
-    double iconSize = 30;
-    fbPng = Image.asset(fbPngAssetName, height: iconSize);
-    waPng = Image.asset(whatsappPngeAssetName, height: iconSize);
-    instaPng = Image.asset(instaPngImageName, height: iconSize);
-    linkedInPng = Image.asset(linkedInAssetName,
-        height: iconSize, color: Colors.blue[900]);
     return Form(
       key: _formKey,
       child: Container(
@@ -50,22 +47,7 @@ class _WindowsSmallContactMeScreenState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: screenHeight * 0.13),
-            FadeInDownBig(
-              child: Container(
-                width: screenWidth * 0.45,
-                padding: EdgeInsets.only(left: screenWidth * 0.1),
-                child: FittedBox(
-                  child: Text(
-                    "Contact Me",
-                    style: TextStyle(
-                      fontFamily: 'PlayfairDisplay',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            SectionTitle(screenWidth: screenWidth, title: 'Contact Me'),
             SizedBox(height: screenHeight * 0.13),
             // Padding(
             //   padding: EdgeInsets.only(left: screenWidth * 0.22, bottom: 30),
@@ -151,111 +133,26 @@ class _WindowsSmallContactMeScreenState
             //     ),
             //   ),
             // ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(width: screenWidth * 0.22),
-                Icon(
-                  Icons.location_on,
-                  color: Colors.white,
-                ),
-                SizedBox(width: 20),
-                Text(
-                  addressText,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                Spacer(),
-              ],
-            ),
+            ContactDetailsItem(
+                screenWidth: screenWidth,
+                icon: Icons.location_on,
+                details: addressText),
             SizedBox(height: screenHeight * 0.03),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(width: screenWidth * 0.22),
-                Icon(
-                  Icons.call,
-                  color: Colors.white,
-                ),
-                SizedBox(width: 20),
-                Text(
-                  mobileNumberText,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                Spacer(),
-              ],
-            ),
+            ContactDetailsItem(
+                screenWidth: screenWidth,
+                icon: Icons.call,
+                details: mobileNumberText),
             SizedBox(height: screenHeight * 0.03),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(width: screenWidth * 0.22),
-                Icon(
-                  Icons.email,
-                  color: Colors.white,
-                ),
-                SizedBox(width: 20),
-                Text(
-                  emailText,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                Spacer(),
-              ],
+            ContactDetailsItem(
+              screenWidth: screenWidth,
+              icon: Icons.email,
+              details: emailText,
             ),
             SizedBox(height: screenHeight * 0.03),
 
-            AnimatedOpacity(
-              duration: Duration(milliseconds: 900),
-              opacity: showIcons ? 1 : 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(width: screenWidth * 0.22),
-                  GestureDetector(
-                    child: Container(
-                      child: fbPng,
-                    ),
-                    onTap: () {
-                      launch(fbLink);
-                    },
-                  ).showCursorOnHover,
-                  SizedBox(
-                    width: 15,
-                  ),
-                  GestureDetector(
-                    child: instaPng,
-                    onTap: () {
-                      launch(instaLink);
-                    },
-                  ).showCursorOnHover,
-                  SizedBox(
-                    width: 15,
-                  ),
-                  GestureDetector(
-                    child: waPng,
-                    onTap: () {
-                      launch(whatsappWebLink);
-                    },
-                  ).showCursorOnHover,
-                  SizedBox(
-                    width: 15,
-                  ),
-                  GestureDetector(
-                    child: linkedInPng,
-                    onTap: () {
-                      launch(linkedInLink);
-                    },
-                  ).showCursorOnHover,
-                ],
-              ),
+            WindowsSmallSocialMediaIcons(
+              showIcons: showIcons,
+              screenWidth: screenWidth,
             ),
             Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.22, top: 80),
@@ -278,6 +175,42 @@ class _WindowsSmallContactMeScreenState
             // )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ContactDetailsItem extends StatelessWidget {
+  const ContactDetailsItem({
+    required this.screenWidth,
+    required this.icon,
+    required this.details,
+  });
+  final double screenWidth;
+  final String details;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeInRight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(width: screenWidth * 0.22),
+          Icon(
+            icon,
+            color: Colors.white,
+          ),
+          SizedBox(width: 20),
+          Text(
+            details,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          Spacer(),
+        ],
       ),
     );
   }

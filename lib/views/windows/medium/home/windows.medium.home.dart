@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
-import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/medium/contactme/windows.medium.contactme.screen.dart';
@@ -16,10 +15,13 @@ class WindowsMediumHome extends StatefulWidget {
 }
 
 class _WindowsMediumHomeState extends State<WindowsMediumHome> {
-  late Widget fbPng;
-  late Widget waPng;
-  late Widget instaPng;
-  late Widget linkedInPng;
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   bool homeSelected = true,
       projectSelected = false,
       contactmeSelected = false,
@@ -40,12 +42,6 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
 
   @override
   Widget build(BuildContext context) {
-    double iconSize = 30;
-    fbPng = Image.asset(fbPngAssetName, height: iconSize);
-    waPng = Image.asset(whatsappPngeAssetName, height: iconSize);
-    instaPng = Image.asset(instaPngImageName, height: iconSize);
-    linkedInPng = Image.asset(linkedInAssetName,
-        height: iconSize, color: Colors.blue[900]);
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     // var screenHeight = screenSize.height;

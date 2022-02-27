@@ -2,9 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_widgets.dart';
 
-class WindowsSmallHomeScreen extends StatelessWidget {
+class WindowsSmallHomeScreen extends StatefulWidget {
   final bool showProPic;
   WindowsSmallHomeScreen({required this.showProPic});
+
+  @override
+  State<WindowsSmallHomeScreen> createState() => _WindowsSmallHomeScreenState();
+}
+
+class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
+  bool showLottie = false;
+  bool showName = false;
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 500)).then((value) {
+      setState(() {
+        showLottie = true;
+      });
+    }).then((value) {
+      Future.delayed(Duration(milliseconds: 500)).then((value) {
+        setState(() {
+          showName = true;
+        });
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -26,57 +50,24 @@ class WindowsSmallHomeScreen extends StatelessWidget {
               height: 180,
             ),
           ),
-          Flexible(
-            child: Container(
-              margin: EdgeInsets.only(
-                left: screenWidth * 0.15,
-              ),
-              // width: screenWidth * 0.5,
-              child: Text(
-                "Hi ,\nI 'm Sivaprasad NK .",
-                style: TextStyle(
-                  fontFamily: 'PlayfairDisplay',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: screenWidth * 0.15, top: 10),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                FlutterLogo(
-                  size: 25,
-                  // size: size / 1.8,
-                  style: FlutterLogoStyle.markOnly,
-                ),
-                Text(
-                  ' Flutter Developer from Tripunithura, Kerala .',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    // fontSize: size / 2.8,
-                    color: Colors.white,
-                  ),
-                )
-              ],
-            ),
-          ),
-          SizedBox(height: screenHeight * 0.08),
+          HiNameContainer(showName: showName, screenWidth: screenWidth),
+          SizedBox(height: 10),
+          FlutterDeveloperContainer(
+              showName: showName, screenWidth: screenWidth),
+          SizedBox(height: screenHeight * 0.04),
           AnimatedOpacity(
             duration: Duration(seconds: 2),
-            opacity: showProPic ? 1 : 0,
+            opacity: widget.showProPic ? 1 : 0,
             child: Padding(
-              padding: EdgeInsets.only(left: screenWidth * 0.2),
-              child: ProPicMediumWithBlob(
-                height: screenHeight * 0.3,
-                bottomPadding: screenHeight * .02,
-                leftPadding: screenWidth * 0.02,
-              ),
-            ),
+                padding: EdgeInsets.only(left: screenWidth * 0.2),
+                child: ProPicWithBlobLottie()
+
+                // child: ProPicMediumWithBlob(
+                //   height: screenHeight * 0.3,
+                //   bottomPadding: screenHeight * .02,
+                //   leftPadding: screenWidth * 0.02,
+                // ),
+                ),
           ),
         ],
       ),

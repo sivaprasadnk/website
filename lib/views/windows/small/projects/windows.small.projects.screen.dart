@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
+import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 
 class WindowsSmallProjectsScreen extends StatefulWidget {
   @override
@@ -26,43 +27,30 @@ class _WindowsSmallProjectsScreenState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: screenHeight * 0.13),
-          FadeInDownBig(
-            child: Container(
-              width: screenWidth * 0.45,
-              padding: EdgeInsets.only(left: screenWidth * 0.1),
-              child: FittedBox(
-                child: Text(
-                  "My Projects",
-                  style: TextStyle(
-                    fontFamily: 'PlayfairDisplay',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+          SectionTitle(screenWidth: screenWidth, title: 'My Projects'),
+          SizedBox(height: screenHeight * 0.13),
+          FadeInRight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(width: screenWidth * 0.1),
+                Container(
+                  height: screenHeight * 0.5,
+                  width: screenWidth * 0.9,
+                  child: PageView(
+                    controller: controller,
+                    children: [
+                      ProjectItem1(
+                        width: screenWidth,
+                      ),
+                      ProjectItem2(
+                        width: screenWidth,
+                      ),
+                    ],
                   ),
                 ),
-              ),
+              ],
             ),
-          ),
-          SizedBox(height: screenHeight * 0.13),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(width: screenWidth * 0.1),
-              Container(
-                height: screenHeight * 0.5,
-                width: screenWidth * 0.9,
-                child: PageView(
-                  controller: controller,
-                  children: [
-                    ProjectItem1(
-                      width: screenWidth,
-                    ),
-                    ProjectItem2(
-                      width: screenWidth,
-                    ),
-                  ],
-                ),
-              ),
-            ],
           ),
           Row(
             children: [
@@ -122,7 +110,9 @@ class ProjectItem1 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 30),
+              Flexible(
+                child: SizedBox(height: 50),
+              ),
               Text(
                 'SP Quotes App',
                 style: TextStyle(
@@ -138,7 +128,7 @@ class ProjectItem1 extends StatelessWidget {
                   quoteStr1 + quoteStr2 + quoteStr3 + quoteStr4,
                   style: TextStyle(
                     color: Colors.grey,
-                    fontSize: 15,
+                    fontSize: 13,
                     // fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -147,7 +137,7 @@ class ProjectItem1 extends StatelessWidget {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 20),
+                    padding: const EdgeInsets.only(top: 15),
                     child: WinddowsGooglePlayButton(
                       screenWidth: width,
                       url: spQuotesLink,
@@ -192,7 +182,9 @@ class ProjectItem2 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 30),
+              Flexible(
+                child: SizedBox(height: 50),
+              ),
               Text(
                 'SP Quiz',
                 style: TextStyle(
@@ -208,7 +200,7 @@ class ProjectItem2 extends StatelessWidget {
                   quizStr1 + quizStr2 + quizStr3 + quizStr4 + quizStr5,
                   style: TextStyle(
                     color: Colors.grey,
-                    fontSize: 15,
+                    fontSize: 13,
                     // fontWeight: FontWeight.bold,
                   ),
                 ),

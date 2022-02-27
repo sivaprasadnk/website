@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/utils/common_strings.dart';
 
 class WindowsHomeLargeScreen extends StatefulWidget {
   @override
@@ -11,6 +11,14 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
   bool showName = false;
   bool showProPic = false;
   bool showLottie = false;
+
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -21,16 +29,14 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
       });
     }).then((value) {
       Future.delayed(Duration(milliseconds: 500)).then((value) {
-        if (mounted)
-          setState(() {
-            showName = true;
-          });
+        setState(() {
+          showName = true;
+        });
       }).then((value) {
         Future.delayed(Duration(seconds: 1)).then((value) {
-          if (mounted)
-            setState(() {
-              showProPic = true;
-            });
+          setState(() {
+            showProPic = true;
+          });
         });
       });
     });
@@ -51,96 +57,191 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
               opacity: showName ? 1 : 0,
               duration: Duration(milliseconds: 900),
               child: Container(
-                // color: Colors.amber,
                 width: screenWidth / 1.6,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: screenHeight * 0.15,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: screenWidth * .23),
-                      child: AnimatedOpacity(
-                        duration: Duration(seconds: 1),
-                        opacity: showLottie ? 1 : 0,
-                        child: Lottie.asset(
-                          'assets/lotties/robot_hello.json',
-                          height: 200,
-                        ),
-                      ),
-                    ),
-                    AnimatedOpacity(
-                      duration: Duration(seconds: 1),
-                      opacity: showName ? 1 : 0,
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          left: screenWidth * 0.15,
-                        ),
-                        width: screenWidth * 0.3,
-                        child: Text(
-                          "Hi , \nI 'm Sivaprasad NK .",
-                          style: TextStyle(
-                            fontFamily: 'PlayfairDisplay',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
+                    SizedBox(height: screenHeight * 0.15),
+                    RobotLottie(
+                        screenWidth: screenWidth, showLottie: showLottie),
+                    HiNameContainer(
+                        showName: showName, screenWidth: screenWidth),
                     SizedBox(height: 20),
-                    AnimatedOpacity(
-                      duration: Duration(seconds: 1),
-                      opacity: showName ? 1 : 0,
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          left: screenWidth * 0.15,
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            FlutterLogo(
-                              size: 30,
-                              // size: size / 1.8,
-                              style: FlutterLogoStyle.markOnly,
-                            ),
-                            Text(
-                              ' Flutter Developer from Tripunithura, Kerala .',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                // fontSize: size / 2.8,
-                                color: Colors.white,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
+                    FlutterDeveloperWidget(
+                        showName: showName, screenWidth: screenWidth),
                   ],
                 ),
               ),
             ),
-            Flexible(
-              child: Container(
-                width: screenWidth / 1.8,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.23,
-                    ),
-                    // ProPicMediumWithBlob()
-                    ProPicLargeWithBlob()
-                  ],
-                ),
-              ),
-            )
+            ProPic(screenWidth: screenWidth)
           ],
         ),
       ],
+    );
+  }
+}
+
+class RobotLottie extends StatelessWidget {
+  const RobotLottie({
+    Key? key,
+    required this.screenWidth,
+    required this.showLottie,
+  }) : super(key: key);
+
+  final double screenWidth;
+  final bool showLottie;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: screenWidth * .23),
+      child: AnimatedOpacity(
+        duration: Duration(seconds: 1),
+        opacity: showLottie ? 1 : 0,
+        child: Lottie.asset(
+          'assets/lotties/robot_hello.json',
+          height: 200,
+        ),
+      ),
+    );
+  }
+}
+
+class HiNameContainer extends StatelessWidget {
+  const HiNameContainer({
+    Key? key,
+    required this.showName,
+    required this.screenWidth,
+  }) : super(key: key);
+
+  final bool showName;
+  final double screenWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      duration: Duration(seconds: 1),
+      opacity: showName ? 1 : 0,
+      child: Container(
+        margin: EdgeInsets.only(
+          left: screenWidth * 0.15,
+        ),
+        width: screenWidth * 0.3,
+        child: HiText(),
+      ),
+    );
+  }
+}
+
+class HiText extends StatelessWidget {
+  const HiText({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "Hi , \nI 'm Sivaprasad NK .",
+      style: TextStyle(
+        fontFamily: 'PlayfairDisplay',
+        fontWeight: FontWeight.bold,
+        fontSize: 30,
+        color: Colors.white,
+      ),
+    );
+  }
+}
+
+class FlutterDeveloperWidget extends StatelessWidget {
+  const FlutterDeveloperWidget({
+    Key? key,
+    required this.showName,
+    required this.screenWidth,
+  }) : super(key: key);
+
+  final bool showName;
+  final double screenWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      duration: Duration(seconds: 1),
+      opacity: showName ? 1 : 0,
+      child: Container(
+        margin: EdgeInsets.only(
+          left: screenWidth * 0.15,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            FlutterLogo(
+              size: 30,
+              style: FlutterLogoStyle.markOnly,
+            ),
+            FlutterDeveloperText()
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class FlutterDeveloperText extends StatelessWidget {
+  const FlutterDeveloperText({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      ' Flutter Developer from Tripunithura, Kerala .',
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 20,
+        color: Colors.white,
+      ),
+    );
+  }
+}
+
+class ProPic extends StatelessWidget {
+  const ProPic({
+    Key? key,
+    required this.screenWidth,
+  }) : super(key: key);
+
+  final double screenWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: Container(
+        width: screenWidth / 1.8,
+        child: Column(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.23,
+            ),
+            // ProPicMediumWithBlob()
+            // ProPicLargeWithBlob()
+            Stack(
+              children: [
+                Lottie.asset(blobLottieAssetPath, height: 350),
+                Padding(
+                  padding: const EdgeInsets.all(60.0),
+                  child: CircleAvatar(
+                    radius: 115,
+                    backgroundColor: Colors.transparent,
+                    backgroundImage: AssetImage(proPicAssetPath),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

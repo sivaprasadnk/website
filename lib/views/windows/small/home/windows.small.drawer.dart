@@ -55,10 +55,6 @@ class _WindowsHomeSmallDrawerState extends State<WindowsSmallDrawer> {
               'assets/images/exp_icon.png',
               height: 250,
             ),
-            // child: Lottie.asset(
-            //   'assets/lotties/mobile-app-process.json',
-            //   height: 250,
-            // ),
           ),
         ),
         SizedBox(height: 25),
@@ -158,7 +154,7 @@ class MyProjectsListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListItem(
-      title: 'My Projects',
+      title: 'Projects',
       callback: () {
         Provider.of<RouteProvider>(context, listen: false)
             .setMenuSelected(check: false);

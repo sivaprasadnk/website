@@ -17,6 +17,13 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
   late Widget instaPng;
   late Widget linkedInPng;
 
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   bool showName = false;
   bool showProPic = false;
   bool showLottie = false;
@@ -32,12 +39,11 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
       });
     }).then((value) {
       Future.delayed(Duration(milliseconds: 500)).then((value) {
-        if (mounted)
-          setState(() {
-            showName = true;
-            nameTopPosition = MediaQuery.of(context).size.height * 0.08;
-            leftPosition = MediaQuery.of(context).size.width * 0.05;
-          });
+        setState(() {
+          showName = true;
+          nameTopPosition = MediaQuery.of(context).size.height * 0.08;
+          leftPosition = MediaQuery.of(context).size.width * 0.05;
+        });
       }).then((value) {
         Future.delayed(Duration(seconds: 1)).then((value) {
           if (mounted)

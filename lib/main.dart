@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
@@ -7,6 +8,7 @@ import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/views/android/home/android.home.dart';
 import 'package:spnk/views/ios/home/ios.home.screen.dart';
+import 'package:spnk/views/min_size_container.dart';
 import 'package:spnk/views/windows/large/home/windows.home.large.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.home.dart';
 import 'package:spnk/views/windows/small/home/windows.small.home.dart';
@@ -37,8 +39,23 @@ class MyApp extends StatelessWidget {
             value: RouteProvider(menuSelectedCheck: false, screenName: "Home"))
       ],
       child: MaterialApp(
+        scrollBehavior: MaterialScrollBehavior().copyWith(
+          dragDevices: {
+            PointerDeviceKind.mouse,
+            PointerDeviceKind.touch,
+            PointerDeviceKind.stylus,
+            PointerDeviceKind.unknown
+          },
+        ),
         title: 'Sivaprasad NK',
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          highlightColor: Colors.cyan,
+          scrollbarTheme: ScrollbarThemeData().copyWith(
+            isAlwaysShown: false,
+            thumbColor: MaterialStateProperty.all(Colors.cyan),
+          ),
+        ),
         routes: {
           '/': (context) => SplashScreen(),
           IosHomeScreen.routeName: (context) => IosHomeScreen(),
@@ -60,9 +77,18 @@ class SplashScreen extends StatelessWidget {
             defaultTargetPlatform == TargetPlatform.iOS
         ? AndroidHome()
         : screenWidth > 1091
-            ? WindowsHomeLarge()
+            ? MinSize(
+                child: WindowsHomeLarge(),
+                minHeight: 734,
+              )
             : screenWidth > 695
-                ? WindowsMediumHome()
-                : WindowsSmallHome();
+                ? MinSize(
+                    child: WindowsMediumHome(),
+                    minHeight: 734,
+                  )
+                : MinSize(
+                    child: WindowsSmallHome(),
+                    minHeight: 734,
+                  );
   }
 }

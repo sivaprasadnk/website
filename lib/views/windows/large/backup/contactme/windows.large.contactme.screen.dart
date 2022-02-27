@@ -35,7 +35,7 @@ class _WindowsLargeContactMeScreenState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: screenHeight * 0.2),
-              FadeInDownBig(
+              FadeInDown(
                 child: Container(
                   width: screenWidth * 0.25,
                   padding: EdgeInsets.only(left: screenWidth * 0.1),

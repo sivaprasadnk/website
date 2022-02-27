@@ -71,7 +71,7 @@ class _WindowsExperienceContainerState
               ),
               Padding(
                 padding: EdgeInsets.only(left: widget.screenWidth * 0.2),
-                child: FadeInDownBig(
+                child: FadeInDown(
                   child: Container(
                     width: widget.screenWidth * 0.2,
                     child: FittedBox(

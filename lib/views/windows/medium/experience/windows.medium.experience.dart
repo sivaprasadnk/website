@@ -11,6 +11,14 @@ class WindowsMediumExperienceScreen extends StatefulWidget {
 class _WindowsMediumExperienceScreenState
     extends State<WindowsMediumExperienceScreen> {
   bool showLottie = false;
+
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -31,21 +39,11 @@ class _WindowsMediumExperienceScreenState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: screenHeight * 0.13),
-          FadeInDownBig(
-            child: Container(
-              padding: EdgeInsets.only(left: screenWidth * 0.1),
-              child: Text(
-                "Experience",
-                style: TextStyle(
-                  fontFamily: 'PlayfairDisplay',
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontSize: 40,
-                ),
-              ),
-            ),
-          ),
-          FadeInRightBig(
+          // SectionTitle(
+          //   screenWidth: screenWidth,
+          //   title: 'Experience',
+          // ),
+          FadeInRight(
             child: Container(
               width: screenWidth * 0.7,
               child: ListTile(
@@ -104,7 +102,7 @@ class _WindowsMediumExperienceScreenState
               ),
             ),
           ),
-          FadeInRightBig(
+          FadeInRight(
             child: SizedBox(
               width: screenWidth * 0.7,
               child: ListTile(

@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 
 class WindowsSmallExperienceScreen extends StatefulWidget {
   @override
@@ -19,31 +20,15 @@ class _WindowsSmallExperienceScreenState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: screenHeight * 0.13),
-          FadeInDownBig(
-            child: Container(
-              width: screenWidth * 0.45,
-              padding: EdgeInsets.only(left: screenWidth * 0.1),
-              child: FittedBox(
-                child: Text(
-                  "Experience",
-                  style: TextStyle(
-                    fontFamily: 'PlayfairDisplay',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          SectionTitle(screenWidth: screenWidth, title: 'Experience'),
           SizedBox(height: screenHeight * 0.13),
-          FadeInRightBig(
+          FadeInRight(
             child: Container(
               width: screenWidth * 0.7,
               child: ListTile(
                 title: Padding(
                   padding: EdgeInsets.only(
                     left: screenWidth * 0.2,
-                    // top: screenHeight * .1,
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -95,7 +80,7 @@ class _WindowsSmallExperienceScreenState
               ),
             ),
           ),
-          FadeInRightBig(
+          FadeInRight(
             child: SizedBox(
               width: screenWidth * 0.7,
               child: ListTile(

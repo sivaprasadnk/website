@@ -14,6 +14,13 @@ class WindowsLargeProjectScreen extends StatefulWidget {
 class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen> {
   PageController controller = PageController();
 
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   bool showNextIcon = true;
   bool showLottie = false;
   @override
@@ -40,7 +47,7 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: screenHeight * 0.2),
-                FadeInDownBig(
+                FadeInDown(
                   child: Container(
                     width: screenWidth * 0.25,
                     padding: EdgeInsets.only(left: screenWidth * 0.1),
