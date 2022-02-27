@@ -13,6 +13,7 @@ class WindowsSmallHomeScreen extends StatefulWidget {
 class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
   bool showLottie = false;
   bool showName = false;
+  bool showProPic = false;
   @override
   void initState() {
     super.initState();
@@ -24,6 +25,12 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
       Future.delayed(Duration(milliseconds: 500)).then((value) {
         setState(() {
           showName = true;
+        });
+      }).then((value) {
+        Future.delayed(Duration(milliseconds: 500)).then((value) {
+          setState(() {
+            showProPic = true;
+          });
         });
       });
     });
@@ -41,13 +48,17 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: screenHeight * 0.15),
-          Container(
-            margin: EdgeInsets.only(
-              left: screenWidth * 0.15,
-            ),
-            child: Lottie.asset(
-              'assets/lotties/robot_hello.json',
-              height: 180,
+          AnimatedOpacity(
+            opacity: showLottie ? 1 : 0,
+            duration: Duration(milliseconds: 600),
+            child: Container(
+              margin: EdgeInsets.only(
+                left: screenWidth * 0.15,
+              ),
+              child: Lottie.asset(
+                'assets/lotties/robot_hello.json',
+                height: 180,
+              ),
             ),
           ),
           HiNameContainer(showName: showName, screenWidth: screenWidth),
@@ -57,7 +68,7 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
           SizedBox(height: screenHeight * 0.04),
           AnimatedOpacity(
             duration: Duration(seconds: 2),
-            opacity: widget.showProPic ? 1 : 0,
+            opacity: showProPic ? 1 : 0,
             child: Padding(
                 padding: EdgeInsets.only(left: screenWidth * 0.2),
                 child: ProPicWithBlobLottie()

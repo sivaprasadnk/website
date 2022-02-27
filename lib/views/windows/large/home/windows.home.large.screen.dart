@@ -75,7 +75,10 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
                 ),
               ),
             ),
-            ProPic(screenWidth: screenWidth)
+            ProPic(
+              screenWidth: screenWidth,
+              showPic: showProPic,
+            )
           ],
         ),
       ],
@@ -209,11 +212,12 @@ class FlutterDeveloperText extends StatelessWidget {
 class ProPic extends StatelessWidget {
   const ProPic({
     Key? key,
+    required this.showPic,
     required this.screenWidth,
   }) : super(key: key);
 
   final double screenWidth;
-
+  final bool showPic;
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -226,18 +230,22 @@ class ProPic extends StatelessWidget {
             ),
             // ProPicMediumWithBlob()
             // ProPicLargeWithBlob()
-            Stack(
-              children: [
-                Lottie.asset(blobLottieAssetPath, height: 350),
-                Padding(
-                  padding: const EdgeInsets.all(60.0),
-                  child: CircleAvatar(
-                    radius: 115,
-                    backgroundColor: Colors.transparent,
-                    backgroundImage: AssetImage(proPicAssetPath),
+            AnimatedOpacity(
+              opacity: showPic ? 1 : 0,
+              duration: Duration(milliseconds: 500),
+              child: Stack(
+                children: [
+                  Lottie.asset(blobLottieAssetPath, height: 350),
+                  Padding(
+                    padding: const EdgeInsets.all(60.0),
+                    child: CircleAvatar(
+                      radius: 115,
+                      backgroundColor: Colors.transparent,
+                      backgroundImage: AssetImage(proPicAssetPath),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

@@ -111,78 +111,10 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                           tabController: _tabController,
                           duration: _duration,
                         ),
-
                         ContactMeTab(
                           tabController: _tabController,
                           duration: _duration,
                         ),
-                        // InkWell(
-                        //   onTap: () {
-                        //     _tabController.animateTo(
-                        //       1,
-                        //       duration: _duration,
-                        //     );
-                        //   },
-                        //   child: Container(
-                        //     child: Column(
-                        //       children: [
-                        //         Text(
-                        //           'Experience',
-                        //           style: TextStyle(
-                        //             fontFamily: 'PatuaOne',
-                        //             color: experienceSelected
-                        //                 ? Colors.black
-                        //                 : Colors.white,
-                        //           ),
-                        //         ),
-                        //         SizedBox(height: 5),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
-                        // InkWell(
-                        //   onTap: () {
-                        //     _tabController.animateTo(
-                        //       2,
-                        //       duration: _duration,
-                        //     );
-                        //   },
-                        //   child: Column(
-                        //     children: [
-                        //       Text(
-                        //         'Projects',
-                        //         style: TextStyle(
-                        //           fontFamily: 'PatuaOne',
-                        //           color: _isHovering[1]
-                        //               ? Colors.blue.shade200
-                        //               : Colors.white,
-                        //         ),
-                        //       ),
-                        //       SizedBox(height: 5),
-                        //     ],
-                        //   ),
-                        // ),
-                        // InkWell(
-                        //   onTap: () {
-                        //     _tabController.animateTo(
-                        //       3,
-                        //       duration: _duration,
-                        //     );
-                        //   },
-                        //   child: Column(
-                        //     mainAxisSize: MainAxisSize.min,
-                        //     children: [
-                        //       Text(
-                        //         'Contact Me',
-                        //         style: TextStyle(
-                        //           fontFamily: 'PatuaOne',
-                        //           color: Colors.white,
-                        //         ),
-                        //       ),
-                        //       SizedBox(height: 5),
-                        //     ],
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -290,7 +222,8 @@ class ExperienceTab extends StatelessWidget {
     return Container(
       child: TabItem(
         onTap: () {
-          tabController.animateTo(1, duration: duration);
+          tabController.animateTo(1,
+              duration: duration, curve: Curves.decelerate);
         },
         title: 'Experience',
       ),
