@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/views/android/backup/contact_me/android.contactme.screen.dart';
-import 'package:spnk/views/android/backup/experience/android.experience.screen.dart';
-import 'package:spnk/views/android/backup/projects/android.projects.screen.dart';
+import 'package:spnk/views/android/contactme/android.contactme.screen.dart';
+import 'package:spnk/views/android/experience/android.experience.screen.dart';
 import 'package:spnk/views/android/menu/android.menu.screen.dart';
+import 'package:spnk/views/android/projects/android.projects.screen.dart';
 
 class AndroidHomeScreen extends StatefulWidget {
   static const routeName = '/AndroidHome';

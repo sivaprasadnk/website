@@ -59,7 +59,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
     var screenSize = MediaQuery.of(context).size;
     var screenHeight = screenSize.height;
     var screenWidth = screenSize.width;
-    double menuFontSize = screenWidth * 0.08;
+    double menuFontSize = screenWidth * 0.07;
     return Container(
       height: screenHeight,
       child: Stack(
@@ -114,7 +114,11 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                             child: Padding(
                               padding: const EdgeInsets.only(left: 20),
                               child: ListTile(
-                                leading: Icon(Icons.home, color: Colors.white),
+                                leading: Icon(
+                                  Icons.home,
+                                  color: Colors.white,
+                                  size: menuFontSize,
+                                ),
                                 title: Text(
                                   'Home',
                                   style: TextStyle(
@@ -127,7 +131,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                             ),
                           ),
                         );
-                      case 1:
+                      case 3:
                         return GestureDetector(
                           onTap: () {
                             debugPrint('...@@123');
@@ -140,7 +144,11 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                             child: Padding(
                               padding: const EdgeInsets.only(left: 20),
                               child: ListTile(
-                                leading: Icon(Icons.call, color: Colors.white),
+                                leading: Icon(
+                                  Icons.call,
+                                  color: Colors.white,
+                                  size: menuFontSize,
+                                ),
                                 title: Text(
                                   'Contact Me',
                                   style: TextStyle(
@@ -153,7 +161,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                             ),
                           ),
                         );
-                      case 2:
+                      case 1:
                         return Container(
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20),
@@ -166,7 +174,11 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                                         listen: false)
                                     .setScreen(name: 'Experience');
                               },
-                              leading: Icon(Icons.work, color: Colors.white),
+                              leading: Icon(
+                                Icons.work,
+                                color: Colors.white,
+                                size: menuFontSize,
+                              ),
                               title: Text(
                                 'Experience',
                                 style: TextStyle(
@@ -179,7 +191,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                             ),
                           ),
                         );
-                      case 3:
+                      case 2:
                         return Container(
                           width: screenWidth * .1,
                           child: Padding(
@@ -193,7 +205,11 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                                         listen: false)
                                     .setScreen(name: 'MyProjects');
                               },
-                              leading: Icon(Icons.apps, color: Colors.white),
+                              leading: Icon(
+                                Icons.apps,
+                                color: Colors.white,
+                                size: menuFontSize,
+                              ),
                               title: Text(
                                 'My Projects',
                                 style: TextStyle(

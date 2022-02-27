@@ -118,8 +118,7 @@ class _WindowsMediumContactMeScreenState
           ),
           SizedBox(height: screenHeight * 0.13),
           FadeInDown(
-            child: WindowsSmallSocialMediaIcons(
-                showIcons: showIcons, screenWidth: screenWidth),
+            child: SocialMedia(showIcons: showIcons, screenWidth: screenWidth),
           )
         ],
       ),

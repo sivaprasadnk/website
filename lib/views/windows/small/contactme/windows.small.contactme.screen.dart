@@ -150,7 +150,7 @@ class _WindowsSmallContactMeScreenState
             ),
             SizedBox(height: screenHeight * 0.03),
 
-            WindowsSmallSocialMediaIcons(
+            SocialMedia(
               showIcons: showIcons,
               screenWidth: screenWidth,
             ),

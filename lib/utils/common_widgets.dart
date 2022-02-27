@@ -928,19 +928,21 @@ class NameLogo extends StatelessWidget {
   }
 }
 
-class WindowsSmallSocialMediaIcons extends StatelessWidget {
+class SocialMedia extends StatelessWidget {
   final bool showIcons;
   final double screenWidth;
   final bool isLarge;
+  final double? size;
 
-  const WindowsSmallSocialMediaIcons({
+  const SocialMedia({
     required this.showIcons,
     required this.screenWidth,
+    this.size,
     this.isLarge = false,
   });
   @override
   Widget build(BuildContext context) {
-    double iconSize = 35;
+    double iconSize = size == null ? 35 : size as double;
     return Container(
       child: AnimatedOpacity(
         duration: Duration(milliseconds: 900),

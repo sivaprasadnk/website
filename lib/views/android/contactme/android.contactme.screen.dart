@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AndroidContactMeScreen extends StatefulWidget {
   final double screenHeight;
@@ -23,8 +22,9 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
   @override
   Widget build(BuildContext context) {
     double iconSize = 30;
+    double screenWidth = MediaQuery.of(context).size.width;
     var menuSelectedCheck =
-        Provider.of<RouteProvider>(context, listen: true).menuSelected as bool;
+        Provider.of<RouteProvider>(context, listen: true).menuSelected;
     debugPrint('...@@456 @menu menuSelectedCheck..$menuSelectedCheck');
     fbPng = Image.asset(fbPngAssetName, height: iconSize);
     waPng = Image.asset(whatsappPngeAssetName, height: iconSize);
@@ -111,49 +111,54 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
                       case 7:
                         return Padding(
                           padding: const EdgeInsets.only(top: 15, left: 40),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              GestureDetector(
-                                child: fbPng,
-                                onTap: () {
-                                  launch(fbLink);
-                                },
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              GestureDetector(
-                                child: instaPng,
-                                onTap: () {
-                                  launch(instaLink);
-                                },
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              GestureDetector(
-                                child: waPng,
-                                onTap: () {
-                                  if (defaultTargetPlatform ==
-                                      TargetPlatform.iOS) {
-                                    launch(whatsappWebLink);
-                                  } else {
-                                    launch(whatsappAndroidLink);
-                                  }
-                                },
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              GestureDetector(
-                                child: linkedInPng,
-                                onTap: () {
-                                  launch(linkedInLink);
-                                },
-                              ),
-                            ],
+                          child: SocialMedia(
+                            screenWidth: screenWidth,
+                            showIcons: true,
+                            isLarge: true,
+                            size: 30,
                           ),
+                          // child: Row(
+                          //   mainAxisAlignment: MainAxisAlignment.start,
+                          //   children: [
+                          //     GestureDetector(
+                          //       child: fbPng,
+                          //       onTap: () {
+                          //         launch(fbLink);
+                          //       },
+                          //     ),
+                          //     SizedBox(
+                          //       width: 15,
+                          //     ),
+                          //     GestureDetector(
+                          //       child: instaPng,
+                          //       onTap: () {
+                          //         launch(instaLink);
+                          //       },
+                          //     ),
+                          //     SizedBox(
+                          //       width: 15,
+                          //     ),
+                          //     GestureDetector(
+                          //       child: waPng,
+                          //       onTap: () {
+                          //         if (defaultTargetPlatform ==
+                          //             TargetPlatform.iOS) {
+                          //           launch(whatsappWebLink);
+                          //         } else {
+                          //           launch(whatsappAndroidLink);
+                          //         }
+                          //       },
+                          //     ),
+                          //     SizedBox(
+                          //       width: 15,
+                          //     ),
+                          //     GestureDetector(
+                          //       child: linkedInPng,
+                          //       onTap: () {
+                          //         launch(linkedInLink);
+                          //       },
+                          //     ),
+                          //   ],
                         );
                       case 8:
                         return SizedBox(

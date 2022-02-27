@@ -215,7 +215,7 @@ class _WindowsLargeContactMeScreenState
               FadeInDown(
                 child: Padding(
                   padding: EdgeInsets.only(left: screenWidth * 0.1),
-                  child: WindowsSmallSocialMediaIcons(
+                  child: SocialMedia(
                     screenWidth: screenWidth,
                     showIcons: true,
                     isLarge: true,
