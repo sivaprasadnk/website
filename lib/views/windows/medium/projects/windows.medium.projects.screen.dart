@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
@@ -153,18 +152,13 @@ class _WindowsMediumProjectsScreenState
             //       ),
             //   ],
             // ),
-            Padding(
-              padding: EdgeInsets.only(left: screenWidth * 0.2),
+            Flexible(
               child: AnimatedOpacity(
                 duration: Duration(seconds: 2),
                 opacity: showLottie ? 1 : 0,
-                child: Lottie.asset(
-                  // 'assets/lotties/astronaut-laptop.json',
-                  // 'assets/lotties/online-work.json',
-                  // 'assets/lotties/dev5.json',
-                  'assets/lotties/dev8.json',
-                  // 'assets/lotties/dev1.json',
-                  height: screenHeight * 0.22,
+                child: Image.asset(
+                  'assets/images/dash/dash3.png',
+                  height: 250,
                 ),
               ),
             ),

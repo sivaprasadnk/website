@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class WindowsMediumExperienceScreen extends StatefulWidget {
   @override
@@ -161,15 +160,18 @@ class _WindowsMediumExperienceScreenState
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(left: screenWidth * 0.25, top: 50),
+          Flexible(
             child: AnimatedOpacity(
               duration: Duration(seconds: 2),
               opacity: showLottie ? 1 : 0,
-              child: Lottie.asset(
-                'assets/lotties/work.json',
-                height: screenHeight * 0.22,
+              child: Image.asset(
+                'assets/images/dash/dash2.png',
+                height: 280,
               ),
+              // child: Lottie.asset(
+              //   'assets/lotties/work.json',
+              //   height: screenHeight * 0.22,
+              // ),
             ),
           ),
         ],

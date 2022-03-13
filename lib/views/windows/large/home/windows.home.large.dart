@@ -2,7 +2,7 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
-import 'package:spnk/views/windows/large/contactme/windows.large.contactme.screen.dart';
+import 'package:spnk/views/windows/large/contactme/contact.me.screen.dart';
 import 'package:spnk/views/windows/large/experience/windows.large.experience.screen.dart';
 import 'package:spnk/views/windows/large/home/windows.home.large.screen.dart';
 import 'package:spnk/views/windows/large/projects/windows.large.projects.screen.dart';
@@ -59,13 +59,16 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        bottomNavigationBar: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // SizedBox(width: 20),
-            CopyrightText(size: size),
-            MadeWithFlutterWidget(size: size),
-          ],
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // SizedBox(width: 20),
+              CopyrightText(size: size),
+              MadeWithFlutterWidget(size: size),
+            ],
+          ),
         ),
         extendBodyBehindAppBar: true,
         // backgroundColor: Color.fromRGBO(206, 45, 1, 1),

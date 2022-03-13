@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class WindowsLargeExperienceScreen extends StatefulWidget {
   @override
@@ -35,13 +34,15 @@ class _WindowsLargeExperienceScreenState
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
     return Stack(
       children: [
         Container(
-          padding: EdgeInsets.only(left: screenWidth * 0.05),
+          padding: EdgeInsets.only(left: screenWidth * 0.02),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -175,19 +176,15 @@ class _WindowsLargeExperienceScreenState
         ),
         Positioned.fill(
           top: 100,
-          left: screenWidth * 0.15,
+          left: screenWidth * 0.0,
           child: Align(
             alignment: Alignment.centerLeft,
             child: AnimatedOpacity(
               duration: Duration(seconds: 2),
               opacity: showLottie ? 1 : 0,
-              child: Lottie.asset(
-                // 'assets/lotties/astronaut-laptop.json',
-                // 'assets/lotties/online-work.json',
-                // 'assets/lotties/dev5.json',
-                'assets/lotties/work.json',
-                // 'assets/lotties/dev1.json',
-                height: 200,
+              child: Image.asset(
+                'assets/images/dash/dash2.png',
+                height: 350,
               ),
             ),
           ),

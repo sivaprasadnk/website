@@ -52,11 +52,12 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: screenHeight * 0.1),
-          RobotLottie(showLottie: showLottie, screenWidth: screenWidth),
+          // RobotLottie(showLottie: showLottie, screenWidth: screenWidth),
+          DashImageMedium(showLottie: showLottie, screenWidth: screenWidth),
           HiNameContainer(showName: showName, screenWidth: screenWidth),
           FlutterDeveloperContainer(
               showName: showName, screenWidth: screenWidth),
-          SizedBox(height: screenHeight * 0.08),
+          SizedBox(height: screenHeight * 0.05),
           AnimatedOpacity(
             duration: Duration(seconds: 2),
             opacity: showProPic ? 1 : 0,

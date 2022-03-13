@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import "package:flutter/material.dart";
-import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
@@ -39,6 +38,8 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
@@ -46,7 +47,7 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
       children: [
         Container(
           child: Padding(
-            padding: EdgeInsets.only(left: screenWidth * 0.05),
+            padding: EdgeInsets.only(left: screenWidth * 0.02),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -205,20 +206,25 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
         ),
         Positioned.fill(
           top: 100,
-          right: 50,
+          left: 400,
+          right: -300,
           child: Align(
-            alignment: Alignment.centerRight,
+            alignment: Alignment.center,
             child: AnimatedOpacity(
               duration: Duration(seconds: 2),
               opacity: showLottie ? 1 : 0,
-              child: Lottie.asset(
-                // 'assets/lotties/astronaut-laptop.json',
-                // 'assets/lotties/online-work.json',
-                // 'assets/lotties/dev5.json',
-                'assets/lotties/dev8.json',
-                // 'assets/lotties/dev1.json',
-                height: screenHeight * 0.22,
+              child: Image.asset(
+                'assets/images/dash/dash3.png',
+                height: 300,
               ),
+              // child: Lottie.asset(
+              //   // 'assets/lotties/astronaut-laptop.json',
+              //   // 'assets/lotties/online-work.json',
+              //   // 'assets/lotties/dev5.json',
+              //   'assets/lotties/dev8.json',
+              //   // 'assets/lotties/dev1.json',
+              //   height: screenHeight * 0.22,
+              // ),
             ),
           ),
         )

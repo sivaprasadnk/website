@@ -1133,3 +1133,55 @@ class RobotLottie extends StatelessWidget {
     );
   }
 }
+
+class DashImage extends StatelessWidget {
+  const DashImage({
+    Key? key,
+    required this.showLottie,
+    required this.screenWidth,
+  }) : super(key: key);
+
+  final bool showLottie;
+  final double screenWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      duration: Duration(seconds: 1),
+      opacity: showLottie ? 1 : 0,
+      child: Container(
+        margin: EdgeInsets.only(left: screenWidth * 0.15),
+        child: Image.asset(
+          'assets/images/dash/dash1.png',
+          height: 250,
+        ),
+      ),
+    );
+  }
+}
+
+class DashImageMedium extends StatelessWidget {
+  const DashImageMedium({
+    Key? key,
+    required this.showLottie,
+    required this.screenWidth,
+  }) : super(key: key);
+
+  final bool showLottie;
+  final double screenWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      duration: Duration(seconds: 1),
+      opacity: showLottie ? 1 : 0,
+      child: Container(
+        margin: EdgeInsets.only(left: screenWidth * 0.12),
+        child: Image.asset(
+          'assets/images/dash/dash1.png',
+          height: 220,
+        ),
+      ),
+    );
+  }
+}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/utils/common_widgets.dart';
 
 class WindowsHomeLargeScreen extends StatefulWidget {
   @override
@@ -48,6 +49,7 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
@@ -67,9 +69,11 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: screenHeight * 0.15),
-                    RobotLottie(
-                        screenWidth: screenWidth, showLottie: showLottie),
+                    SizedBox(height: screenHeight * 0.12),
+                    DashImage(showLottie: showLottie, screenWidth: screenWidth),
+
+                    // RobotLottie(
+                    //     screenWidth: screenWidth, showLottie: showLottie),
                     HiNameContainer(
                         showName: showName, screenWidth: screenWidth),
                     SizedBox(height: 20),

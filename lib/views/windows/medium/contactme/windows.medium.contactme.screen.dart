@@ -119,7 +119,17 @@ class _WindowsMediumContactMeScreenState
           SizedBox(height: screenHeight * 0.13),
           FadeInDown(
             child: SocialMedia(showIcons: showIcons, screenWidth: screenWidth),
-          )
+          ),
+          Flexible(
+            child: AnimatedOpacity(
+              duration: Duration(seconds: 2),
+              opacity: showIcons ? 1 : 0,
+              child: Image.asset(
+                'assets/images/dash/dash4.png',
+                height: 250,
+              ),
+            ),
+          ),
         ],
       ),
     );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_widgets.dart';
 
 class WindowsSmallHomeScreen extends StatefulWidget {
@@ -53,19 +52,23 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
             duration: Duration(milliseconds: 600),
             child: Container(
               margin: EdgeInsets.only(
-                left: screenWidth * 0.15,
+                left: screenWidth * 0.12,
               ),
-              child: Lottie.asset(
-                'assets/lotties/robot_hello.json',
-                height: 180,
+              child: Image.asset(
+                'assets/images/dash/dash1.png',
+                height: 200,
               ),
+              // child: Lottie.asset(
+              //   'assets/lotties/robot_hello.json',
+              //   height: 180,
+              // ),
             ),
           ),
           HiNameContainer(showName: showName, screenWidth: screenWidth),
           SizedBox(height: 10),
           FlutterDeveloperContainer(
               showName: showName, screenWidth: screenWidth),
-          SizedBox(height: screenHeight * 0.04),
+          SizedBox(height: screenHeight * 0.01),
           AnimatedOpacity(
             duration: Duration(seconds: 2),
             opacity: showProPic ? 1 : 0,

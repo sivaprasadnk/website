@@ -10,6 +10,25 @@ class WindowsSmallExperienceScreen extends StatefulWidget {
 
 class _WindowsSmallExperienceScreenState
     extends State<WindowsSmallExperienceScreen> {
+  bool showLottie = false;
+
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 1)).then((value) {
+      setState(() {
+        showLottie = true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -137,6 +156,20 @@ class _WindowsSmallExperienceScreenState
                   ),
                 ),
               ),
+            ),
+          ),
+          Flexible(
+            child: AnimatedOpacity(
+              duration: Duration(seconds: 2),
+              opacity: showLottie ? 1 : 0,
+              child: Image.asset(
+                'assets/images/dash/dash2.png',
+                height: 280,
+              ),
+              // child: Lottie.asset(
+              //   'assets/lotties/work.json',
+              //   height: screenHeight * 0.22,
+              // ),
             ),
           ),
         ],

@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
@@ -154,18 +153,14 @@ class _WindowsSmallContactMeScreenState
               showIcons: showIcons,
               screenWidth: screenWidth,
             ),
-            Padding(
-              padding: EdgeInsets.only(left: screenWidth * 0.22, top: 80),
+            SizedBox(height: 50),
+            Flexible(
               child: AnimatedOpacity(
                 duration: Duration(seconds: 2),
-                opacity: showLottie ? 1 : 0,
-                child: Lottie.asset(
-                  // 'assets/lotties/astronaut-laptop.json',
-                  // 'assets/lotties/online-work.json',
-                  // 'assets/lotties/dev5.json',
-                  'assets/lotties/contact1.json',
-                  // 'assets/lotties/dev1.json',
-                  height: 200,
+                opacity: showIcons ? 1 : 0,
+                child: Image.asset(
+                  'assets/images/dash/dash4.png',
+                  height: 250,
                 ),
               ),
             ),
