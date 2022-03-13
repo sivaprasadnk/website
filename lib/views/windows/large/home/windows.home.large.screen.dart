@@ -7,7 +7,8 @@ class WindowsHomeLargeScreen extends StatefulWidget {
   _WindowsHomeLargeScreenState createState() => _WindowsHomeLargeScreenState();
 }
 
-class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
+class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
+    with AutomaticKeepAliveClientMixin {
   bool showName = false;
   bool showProPic = false;
   bool showLottie = false;
@@ -18,6 +19,9 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen> {
       super.setState(fn);
     }
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {

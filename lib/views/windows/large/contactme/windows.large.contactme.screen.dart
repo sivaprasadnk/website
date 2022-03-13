@@ -11,7 +11,8 @@ class WindowsLargeContactMeScreen extends StatefulWidget {
 }
 
 class _WindowsLargeContactMeScreenState
-    extends State<WindowsLargeContactMeScreen> {
+    extends State<WindowsLargeContactMeScreen>
+    with AutomaticKeepAliveClientMixin {
   bool showLottie = false;
 
   @override
@@ -20,6 +21,9 @@ class _WindowsLargeContactMeScreenState
       super.setState(fn);
     }
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {

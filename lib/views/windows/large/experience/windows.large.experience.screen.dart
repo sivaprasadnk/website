@@ -9,7 +9,8 @@ class WindowsLargeExperienceScreen extends StatefulWidget {
 }
 
 class _WindowsLargeExperienceScreenState
-    extends State<WindowsLargeExperienceScreen> {
+    extends State<WindowsLargeExperienceScreen>
+    with AutomaticKeepAliveClientMixin {
   bool showLottie = false;
 
   @override
@@ -18,6 +19,9 @@ class _WindowsLargeExperienceScreenState
       super.setState(fn);
     }
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {

@@ -11,7 +11,8 @@ class WindowsLargeProjectScreen extends StatefulWidget {
       _WindowsLargeProjectScreenState();
 }
 
-class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen> {
+class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
+    with AutomaticKeepAliveClientMixin {
   PageController controller = PageController();
 
   @override
@@ -20,6 +21,9 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen> {
       super.setState(fn);
     }
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
   bool showNextIcon = true;
   bool showLottie = false;
