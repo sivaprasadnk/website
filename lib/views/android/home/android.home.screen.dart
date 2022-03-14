@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
@@ -152,13 +151,17 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
           ),
         ),
         Positioned.fill(
-          top: screenHeight * 0.1,
+          top: screenHeight * 0.05,
           child: Align(
             alignment: Alignment.topCenter,
-            child: Lottie.asset(
-              'assets/lotties/robot_hello.json',
-              height: 200,
+            child: Image.asset(
+              'assets/images/dash/dash1.png',
+              height: 230,
             ),
+            // child: Lottie.asset(
+            //   'assets/lotties/robot_hello.json',
+            //   height: 200,
+            // ),
           ),
         )
       ],

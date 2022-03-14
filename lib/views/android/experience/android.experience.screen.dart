@@ -37,6 +37,17 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
             ),
           ),
         ),
+        Positioned.fill(
+          top: 120,
+          right: -40,
+          child: Align(
+            alignment: Alignment.topRight,
+            child: Image.asset(
+              'assets/images/dash/dash2.png',
+              height: 150,
+            ),
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.only(right: 10, top: 20),
           child: Align(
