@@ -1,8 +1,8 @@
-import 'package:animate_do/animate_do.dart';
 import "package:flutter/material.dart";
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
+import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
 class WindowsLargeProjectScreen extends StatefulWidget {
   @override
@@ -52,22 +52,9 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: screenHeight * 0.2),
-                FadeInDown(
-                  child: Container(
-                    width: screenWidth * 0.25,
-                    padding: EdgeInsets.only(left: screenWidth * 0.1),
-                    child: FittedBox(
-                      child: Text(
-                        "My Projects",
-                        style: TextStyle(
-                          fontFamily: 'PlayfairDisplay',
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                WindowsLargeSectionTitle(
+                    title: 'My Projects', width: screenWidth),
+
                 SizedBox(height: screenHeight * 0.1),
                 // Stack(
                 //   children: [
@@ -177,7 +164,7 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
                           },
                           child: Icon(
                             Icons.arrow_back_ios,
-                            color: Colors.white,
+                            color: Theme.of(context).splashColor,
                           ).showCursorOnHover,
                         ),
                       SizedBox(width: screenWidth * 0.13),
@@ -194,7 +181,7 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
                           },
                           child: Icon(
                             Icons.arrow_forward_ios,
-                            color: Colors.white,
+                            color: Theme.of(context).splashColor,
                           ).showCursorOnHover,
                         ),
                     ],
@@ -217,14 +204,6 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
                 'assets/images/dash/dash3.png',
                 height: 300,
               ),
-              // child: Lottie.asset(
-              //   // 'assets/lotties/astronaut-laptop.json',
-              //   // 'assets/lotties/online-work.json',
-              //   // 'assets/lotties/dev5.json',
-              //   'assets/lotties/dev8.json',
-              //   // 'assets/lotties/dev1.json',
-              //   height: screenHeight * 0.22,
-              // ),
             ),
           ),
         )
@@ -268,11 +247,7 @@ class ProjectItem extends StatelessWidget {
               SizedBox(height: 30),
               Text(
                 title,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.headline2,
               ),
               SizedBox(height: 25),
               Flexible(
@@ -281,11 +256,7 @@ class ProjectItem extends StatelessWidget {
                   width: width * 0.28,
                   child: Text(
                     description,
-                    style: TextStyle(
-                      color: Colors.grey,
-                      // fontSize: 15,
-                      // fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
                 ),
               ),

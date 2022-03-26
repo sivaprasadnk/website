@@ -1,12 +1,3 @@
-// final String fbAssetName = 'assets/svg/facebook_1.svg';
-final String fbPngAssetName = 'assets/images/facebook.png';
-// final String whatsappPngAssetName = 'assets/svg/whatsapp_1.svg';
-final String whatsappPngeAssetName = 'assets/images/whatsapp.png';
-// final String instaAssetName = 'assets/svg/instagram_1.png';
-final String instaPngImageName = 'assets/images/instagram.png';
-// final String linkedInAssetName = 'assets/svg/linkedin_1.svg';
-final String linkedInAssetName = 'assets/images/linkedin.png';
-
 final String fbLink = 'https://www.facebook.com/sivaprasadnk.official';
 
 final String instaLink = 'https://www.instagram.com/sivaprasad_nk/';

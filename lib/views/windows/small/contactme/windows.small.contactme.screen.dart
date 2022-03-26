@@ -194,15 +194,12 @@ class ContactDetailsItem extends StatelessWidget {
           SizedBox(width: screenWidth * 0.22),
           Icon(
             icon,
-            color: Colors.white,
+            color: Theme.of(context).splashColor,
           ),
           SizedBox(width: 20),
           Text(
             details,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+            style: Theme.of(context).textTheme.bodyText1,
           ),
           Spacer(),
         ],

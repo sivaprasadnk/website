@@ -43,62 +43,65 @@ class _WindowsHomeSmallDrawerState extends State<WindowsSmallDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        FadeInLeftBig(
-          child: Container(
-            padding: const EdgeInsets.only(left: 0, top: 50),
-            child: Image.asset(
-              'assets/images/exp_icon.png',
-              height: 250,
+    return Center(
+      child: Container(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          FadeInLeftBig(
+            child: Container(
+              padding: const EdgeInsets.only(top: 30),
+              child: Image.asset(
+                'assets/images/exp_icon.png',
+                height: 250,
+              ),
             ),
           ),
-        ),
-        SizedBox(height: 25),
-        Container(
-          child: LiveList(
-            shrinkWrap: true,
-            separatorBuilder: (ctx, _) => SizedBox(height: 10),
-            padding: const EdgeInsets.all(20),
-            showItemInterval: const Duration(milliseconds: 200),
-            showItemDuration: const Duration(milliseconds: 150),
-            itemCount: 4,
-            itemBuilder: animationItemBuilder((index) {
-              switch (index) {
-                case 0:
-                  return HomeListItem();
-                case 3:
-                  return ContactMeListItem();
-                case 1:
-                  return ExperienceListItem();
-                case 2:
-                  return MyProjectsListItem();
-              }
-              return Container();
-            }),
+          SizedBox(height: 25),
+          SizedBox(
+            width: 320,
+            child: LiveList(
+              shrinkWrap: true,
+              separatorBuilder: (ctx, _) => SizedBox(height: 10),
+              padding: const EdgeInsets.all(20),
+              showItemInterval: const Duration(milliseconds: 200),
+              showItemDuration: const Duration(milliseconds: 150),
+              itemCount: 4,
+              itemBuilder: animationItemBuilder((index) {
+                switch (index) {
+                  case 0:
+                    return HomeListItem();
+                  case 3:
+                    return ContactMeListItem();
+                  case 1:
+                    return ExperienceListItem();
+                  case 2:
+                    return MyProjectsListItem();
+                }
+                return Container();
+              }),
+            ),
           ),
-        ),
-        // FadeInLeftBig(
-        //   child: Container(
-        //     padding: const EdgeInsets.only(left: 0, top: 50),
-        //     child: Image.asset(
-        //       'assets/images/exp_icon.png',
-        //       height: 250,
-        //     ),
-        //     // child: Lottie.asset(
-        //     //   'assets/lotties/mobile-app-process.json',
-        //     //   height: 250,
-        //     // ),
-        //   ),
-        // ),
-        SizedBox(
-          height: 20,
-        )
-      ],
-    ));
+          // FadeInLeftBig(
+          //   child: Container(
+          //     padding: const EdgeInsets.only(left: 0, top: 50),
+          //     child: Image.asset(
+          //       'assets/images/exp_icon.png',
+          //       height: 250,
+          //     ),
+          //     // child: Lottie.asset(
+          //     //   'assets/lotties/mobile-app-process.json',
+          //     //   height: 250,
+          //     // ),
+          //   ),
+          // ),
+          SizedBox(
+            height: 20,
+          )
+        ],
+      )),
+    );
   }
 }
 
@@ -202,25 +205,29 @@ class _ListItemState extends State<ListItem> {
           });
         },
         child: Padding(
-          padding: EdgeInsets.only(left: 50),
+          padding: EdgeInsets.only(left: 20),
           child: ListTile(
-            hoverColor: Colors.transparent,
+            dense: true,
+            hoverColor: Color.fromRGBO(249, 139, 125, 1),
+            // hoverColor: Colors.transparent,
             onTap: () {
               widget.callback.call();
               setState(() {});
             },
             leading: Icon(
               widget.icon,
-              color: isHovering ? Colors.cyanAccent : Colors.white,
+              color: Theme.of(context).textTheme.caption!.color,
+              // color: isHovering ? Colors.cyanAccent : Colors.white,
             ),
             title: Text(
               widget.title,
-              style: TextStyle(
-                fontFamily: 'PlayfairDisplay',
-                color: isHovering ? Colors.cyanAccent : Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-              ),
+              style: Theme.of(context).textTheme.caption,
+              // style: TextStyle(
+              //   fontFamily: 'PlayfairDisplay',
+              //   color: isHovering ? Colors.cyanAccent : Colors.white,
+              //   fontWeight: FontWeight.bold,
+              //   fontSize: 30,
+              // ),
             ),
           ).showCursorOnHover,
         ),

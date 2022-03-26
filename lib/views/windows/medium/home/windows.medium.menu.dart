@@ -140,16 +140,6 @@ class _HoverTextState extends State<HoverText> {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
 
-    TextStyle _normalTextStyle = TextStyle(
-      fontFamily: 'PlayfairDisplay',
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    );
-    TextStyle _hoverTextSTyle = TextStyle(
-      fontFamily: 'PlayfairDisplay',
-      fontWeight: FontWeight.bold,
-      color: Colors.cyanAccent,
-    );
     return MouseRegion(
       onEnter: (_) {
         setState(() {
@@ -161,23 +151,25 @@ class _HoverTextState extends State<HoverText> {
           isHovering = false;
         });
       },
-      child: Container(
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 200),
         width: screenWidth * 0.2,
         height: 60,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(30),
           border: Border.all(
-            color: widget.isSelected ? Colors.cyanAccent : Colors.transparent,
+            width: 2,
+            color: widget.isSelected
+                ? Color.fromRGBO(249, 139, 125, 1)
+                : Colors.transparent,
           ),
         ),
         child: FittedBox(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.symmetric(horizontal: 1, vertical: 7),
             child: Text(
               widget.title,
-              style: widget.isSelected || isHovering
-                  ? _hoverTextSTyle
-                  : _normalTextStyle,
+              style: Theme.of(context).textTheme.bodyText2,
             ),
           ),
         ),

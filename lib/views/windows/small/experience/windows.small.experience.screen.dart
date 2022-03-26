@@ -55,10 +55,7 @@ class _WindowsSmallExperienceScreenState
                     children: [
                       Text(
                         ' Java, Postgres Programmer',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                       SizedBox(height: 20),
                       Row(
@@ -66,14 +63,11 @@ class _WindowsSmallExperienceScreenState
                         children: [
                           CircleAvatar(
                             radius: 5,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context).splashColor,
                           ),
                           Text(
                             '      Bayasys Infotech Pvt Ltd.',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
+                            style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ],
                       ),
@@ -82,14 +76,11 @@ class _WindowsSmallExperienceScreenState
                         children: [
                           CircleAvatar(
                             radius: 5,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context).splashColor,
                           ),
                           Text(
                             '      07/2019 - 09/2020',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
+                            style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ],
                       ),
@@ -114,10 +105,7 @@ class _WindowsSmallExperienceScreenState
                     children: [
                       Text(
                         'Flutter Developer',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                       SizedBox(height: 20),
                       Row(
@@ -125,14 +113,11 @@ class _WindowsSmallExperienceScreenState
                         children: [
                           CircleAvatar(
                             radius: 5,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context).splashColor,
                           ),
                           Text(
                             '      Indbytes Technologies',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
+                            style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ],
                       ),
@@ -141,14 +126,11 @@ class _WindowsSmallExperienceScreenState
                         children: [
                           CircleAvatar(
                             radius: 5,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context).splashColor,
                           ),
                           Text(
                             '      12/2020 - Present',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
+                            style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ],
                       ),

@@ -1,20 +1,21 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
-class SectionTitle extends StatelessWidget {
-  const SectionTitle({
-    required this.screenWidth,
+class WindowsLargeSectionTitle extends StatelessWidget {
+  const WindowsLargeSectionTitle({
+    Key? key,
+    required this.width,
     required this.title,
-  });
-  final double screenWidth;
-  final String title;
+  }) : super(key: key);
 
+  final String title;
+  final double width;
   @override
   Widget build(BuildContext context) {
     return FadeInDown(
       child: Container(
-        width: screenWidth * 0.45,
-        padding: EdgeInsets.only(left: screenWidth * 0.1),
+        width: width * 0.25,
+        padding: EdgeInsets.only(left: width * 0.1),
         child: FittedBox(
           child: Text(
             title,

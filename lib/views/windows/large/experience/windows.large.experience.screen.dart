@@ -1,5 +1,5 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
 class WindowsLargeExperienceScreen extends StatefulWidget {
   @override
@@ -47,22 +47,7 @@ class _WindowsLargeExperienceScreenState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: screenHeight * 0.2),
-              FadeInDown(
-                child: Container(
-                  width: screenWidth * 0.25,
-                  padding: EdgeInsets.only(left: screenWidth * 0.1),
-                  child: FittedBox(
-                    child: Text(
-                      "Experience",
-                      style: TextStyle(
-                        fontFamily: 'PlayfairDisplay',
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              WindowsLargeSectionTitle(title: 'Experience', width: screenWidth),
               Padding(
                 padding: EdgeInsets.only(
                   left: screenWidth * 0.5,
@@ -75,10 +60,7 @@ class _WindowsLargeExperienceScreenState
                     children: [
                       Text(
                         ' Java, Postgres Programmer',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                       SizedBox(height: 20),
                       Row(
@@ -86,14 +68,11 @@ class _WindowsLargeExperienceScreenState
                         children: [
                           CircleAvatar(
                             radius: 5,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context).splashColor,
                           ),
                           Text(
                             '      Bayasys Infotech Pvt Ltd.',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
+                            style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ],
                       ),
@@ -102,14 +81,11 @@ class _WindowsLargeExperienceScreenState
                         children: [
                           CircleAvatar(
                             radius: 5,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context).splashColor,
                           ),
                           Text(
                             '      07/2019 - 09/2020',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
+                            style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ],
                       ),
@@ -129,10 +105,7 @@ class _WindowsLargeExperienceScreenState
                     children: [
                       Text(
                         'Flutter Developer',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                       SizedBox(height: 20),
                       Row(
@@ -140,14 +113,14 @@ class _WindowsLargeExperienceScreenState
                         children: [
                           CircleAvatar(
                             radius: 5,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context)
+                                .textTheme
+                                .bodyText1!
+                                .backgroundColor,
                           ),
                           Text(
                             '      Indbytes Technologies',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
+                            style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ],
                       ),
@@ -155,15 +128,17 @@ class _WindowsLargeExperienceScreenState
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           CircleAvatar(
-                            radius: 5,
-                            backgroundColor: Colors.white,
-                          ),
+                              radius: 5,
+                              backgroundColor: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1!
+                                  .backgroundColor
+
+                              // backgroundColor: Colors.white,
+                              ),
                           Text(
                             '      12/2020 - Present',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
+                            style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ],
                       ),

@@ -55,31 +55,40 @@ class _WindowsSmallProjectsScreenState
           Row(
             children: [
               SizedBox(width: screenWidth * 0.13),
-              GestureDetector(
-                onTap: () {
-                  controller.previousPage(
-                    duration: Duration(seconds: 1),
-                    curve: Curves.bounceOut,
-                  );
-                },
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.white,
-                ).showCursorOnHover,
-              ),
+              if (!viewingProj1)
+                GestureDetector(
+                  onTap: () {
+                    controller.previousPage(
+                      duration: Duration(seconds: 1),
+                      curve: Curves.bounceOut,
+                    );
+                    setState(() {
+                      viewingProj1 = true;
+                    });
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    color: Theme.of(context).splashColor,
+                  ).showCursorOnHover,
+                ),
               SizedBox(width: screenWidth * 0.13),
-              GestureDetector(
-                onTap: () {
-                  controller.nextPage(
-                    duration: Duration(seconds: 1),
-                    curve: Curves.bounceOut,
-                  );
-                },
-                child: Icon(
-                  Icons.arrow_forward_ios,
-                  color: Colors.white,
-                ).showCursorOnHover,
-              ),
+              if (viewingProj1)
+                GestureDetector(
+                  onTap: () {
+                    controller.nextPage(
+                      duration: Duration(seconds: 1),
+                      curve: Curves.bounceOut,
+                    );
+
+                    setState(() {
+                      viewingProj1 = false;
+                    });
+                  },
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Theme.of(context).splashColor,
+                  ).showCursorOnHover,
+                ),
             ],
           ),
         ],
@@ -115,22 +124,14 @@ class ProjectItem1 extends StatelessWidget {
               ),
               Text(
                 'SP Quotes App',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.headline2,
               ),
               SizedBox(height: 25),
               Container(
                 width: width * 0.5,
                 child: Text(
                   quoteStr1 + quoteStr2 + quoteStr3 + quoteStr4,
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 13,
-                    // fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
               ),
               SizedBox(height: 20),
@@ -187,22 +188,14 @@ class ProjectItem2 extends StatelessWidget {
               ),
               Text(
                 'SP Quiz',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.headline2,
               ),
               SizedBox(height: 25),
               Container(
                 width: width * 0.5,
                 child: Text(
                   quizStr1 + quizStr2 + quizStr3 + quizStr4 + quizStr5,
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 13,
-                    // fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
               ),
               SizedBox(height: 20),

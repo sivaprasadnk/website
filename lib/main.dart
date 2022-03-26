@@ -7,14 +7,13 @@ import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/views/android/home/android.home.dart';
-import 'package:spnk/views/ios/home/ios.home.screen.dart';
 import 'package:spnk/views/min_size_container.dart';
 import 'package:spnk/views/windows/large/home/windows.home.large.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.home.dart';
 import 'package:spnk/views/windows/small/home/windows.small.home.dart';
 
 void main() {
-  lockOrientation();
+  // lockOrientation();
   runApp(MyApp());
 }
 
@@ -32,33 +31,31 @@ class MyApp extends StatelessWidget {
     precacheImage(AssetImage(proPicAssetPath), context);
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<Quotes>.value(value: Quotes()),
-        ChangeNotifierProvider<DarkThemeProvider>.value(
-            value: DarkThemeProvider()),
-        ChangeNotifierProvider<RouteProvider>.value(
-            value: RouteProvider(menuSelectedCheck: false, screenName: "Home"))
+        ChangeNotifierProvider<Quotes>(create: (_) => Quotes()),
+        ChangeNotifierProvider<ThemeNotifier>(create: (_) => ThemeNotifier()),
+        ChangeNotifierProvider<RouteProvider>(
+            create: (_) =>
+                RouteProvider(menuSelectedCheck: false, screenName: "Home")),
       ],
-      child: MaterialApp(
-        scrollBehavior: MaterialScrollBehavior().copyWith(
-          dragDevices: {
-            PointerDeviceKind.mouse,
-            PointerDeviceKind.touch,
-            PointerDeviceKind.stylus,
-            PointerDeviceKind.unknown
-          },
-        ),
-        title: 'Sivaprasad NK',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          highlightColor: Colors.cyan,
-          scrollbarTheme: ScrollbarThemeData().copyWith(
-            isAlwaysShown: false,
-            thumbColor: MaterialStateProperty.all(Colors.cyan),
-          ),
-        ),
-        routes: {
-          '/': (context) => SplashScreen(),
-          IosHomeScreen.routeName: (context) => IosHomeScreen(),
+      child: Consumer<ThemeNotifier>(
+        builder: (_, themeNotifier, __) {
+          return MaterialApp(
+            scrollBehavior: MaterialScrollBehavior().copyWith(
+              dragDevices: {
+                PointerDeviceKind.mouse,
+                PointerDeviceKind.touch,
+                PointerDeviceKind.stylus,
+                PointerDeviceKind.unknown
+              },
+            ),
+            title: 'Sivaprasad NK',
+            debugShowCheckedModeBanner: false,
+            theme: themeNotifier.darkTheme ? dark : light,
+            routes: {
+              '/': (context) => SplashScreen(),
+              // IosHomeScreen.routeName: (context) => IosHomeScreen(),
+            },
+          );
         },
       ),
     );
@@ -76,7 +73,7 @@ class SplashScreen extends StatelessWidget {
     return defaultTargetPlatform == TargetPlatform.android ||
             defaultTargetPlatform == TargetPlatform.iOS
         ? AndroidHome()
-        : screenWidth > 1091
+        : screenWidth > 1121
             ? MinSize(
                 child: WindowsHomeLarge(),
                 minHeight: 734,

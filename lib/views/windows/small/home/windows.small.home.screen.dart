@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/views/windows/common/flutter_developer_container.dart';
+import 'package:spnk/views/windows/common/hi_name_text.dart';
 
 class WindowsSmallHomeScreen extends StatefulWidget {
   final bool showProPic;
@@ -46,7 +48,7 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: screenHeight * 0.15),
+          SizedBox(height: screenHeight * 0.05),
           AnimatedOpacity(
             opacity: showLottie ? 1 : 0,
             duration: Duration(milliseconds: 600),
@@ -56,7 +58,7 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
               ),
               child: Image.asset(
                 'assets/images/dash/dash1.png',
-                height: 200,
+                height: 250,
               ),
               // child: Lottie.asset(
               //   'assets/lotties/robot_hello.json',
@@ -64,7 +66,11 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
               // ),
             ),
           ),
-          HiNameContainer(showName: showName, screenWidth: screenWidth),
+          HiNameContainer(
+            showName: showName,
+            screenWidth: screenWidth,
+            leftPadding: 0,
+          ),
           SizedBox(height: 10),
           FlutterDeveloperContainer(
               showName: showName, screenWidth: screenWidth),

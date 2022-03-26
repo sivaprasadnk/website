@@ -84,13 +84,14 @@ class _WindowsMediumProjectsScreenState
                               },
                               child: Icon(
                                 Icons.arrow_back_ios,
-                                color: Colors.white,
+                                color: Theme.of(context).splashColor,
                               ).showCursorOnHover,
                             ),
                           ),
                         ),
                       if (showNextIcon)
                         Positioned.fill(
+                          right: 30,
                           child: Align(
                             alignment: Alignment.centerRight,
                             child: GestureDetector(
@@ -105,7 +106,7 @@ class _WindowsMediumProjectsScreenState
                               },
                               child: Icon(
                                 Icons.arrow_forward_ios,
-                                color: Colors.white,
+                                color: Theme.of(context).splashColor,
                               ).showCursorOnHover,
                             ),
                           ),
@@ -204,24 +205,16 @@ class ProjectItem extends StatelessWidget {
               SizedBox(height: 30),
               Text(
                 title,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.headline2,
               ),
               SizedBox(height: 20),
               Flexible(
                 child: Container(
                   // color: Colors.amber,
-                  width: width * 0.315,
+                  width: width * 0.32,
                   child: Text(
                     description,
-                    style: TextStyle(
-                      color: Colors.grey,
-                      // fontSize: 15,
-                      // fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
                 ),
               ),

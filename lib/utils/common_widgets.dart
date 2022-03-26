@@ -26,17 +26,10 @@ TextStyle quoteStyle = TextStyle(
   fontSize: 21,
 );
 
-Text nameText({
-  required Color textColor,
-}) {
+Widget nameText({required BuildContext context}) {
   return Text(
     'SP',
-    style: TextStyle(
-      fontFamily: 'PatuaOne',
-      color: textColor,
-      fontWeight: FontWeight.bold,
-      fontSize: 28.0,
-    ),
+    style: Theme.of(context).textTheme.headline2,
   );
 }
 
@@ -909,6 +902,7 @@ class WindowsLeftFooter extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: size,
+            fontFamily: 'Roboto',
             color: Colors.grey,
           ),
         ),
@@ -1032,82 +1026,6 @@ class ProPicWithBlobLottie extends StatelessWidget {
   }
 }
 
-class FlutterDeveloperContainer extends StatelessWidget {
-  const FlutterDeveloperContainer({
-    Key? key,
-    required this.showName,
-    required this.screenWidth,
-  }) : super(key: key);
-
-  final bool showName;
-  final double screenWidth;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: Duration(seconds: 1),
-      opacity: showName ? 1 : 0,
-      child: Padding(
-        padding: EdgeInsets.only(
-          top: 10,
-          left: screenWidth * 0.1,
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            FlutterLogo(
-              size: 30,
-              style: FlutterLogoStyle.markOnly,
-            ),
-            Text(
-              ' Flutter Developer from Tripunithura, Kerala .',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Colors.white,
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class HiNameContainer extends StatelessWidget {
-  const HiNameContainer({
-    Key? key,
-    required this.showName,
-    required this.screenWidth,
-  }) : super(key: key);
-
-  final bool showName;
-  final double screenWidth;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: Duration(seconds: 1),
-      opacity: showName ? 1 : 0,
-      child: Container(
-        margin: EdgeInsets.only(
-          left: screenWidth * 0.1,
-        ),
-        width: screenWidth * 0.6,
-        child: Text(
-          "Hi ,\nI 'm Sivaprasad NK .",
-          style: TextStyle(
-            fontFamily: 'PlayfairDisplay',
-            fontWeight: FontWeight.bold,
-            fontSize: 28,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class RobotLottie extends StatelessWidget {
   const RobotLottie({
     Key? key,
@@ -1128,32 +1046,6 @@ class RobotLottie extends StatelessWidget {
         child: Lottie.asset(
           'assets/lotties/robot_hello.json',
           height: 195,
-        ),
-      ),
-    );
-  }
-}
-
-class DashImage extends StatelessWidget {
-  const DashImage({
-    Key? key,
-    required this.showLottie,
-    required this.screenWidth,
-  }) : super(key: key);
-
-  final bool showLottie;
-  final double screenWidth;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: Duration(seconds: 1),
-      opacity: showLottie ? 1 : 0,
-      child: Container(
-        margin: EdgeInsets.only(left: screenWidth * 0.15),
-        child: Image.asset(
-          'assets/images/dash/dash1.png',
-          height: 250,
         ),
       ),
     );

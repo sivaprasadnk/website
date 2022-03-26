@@ -2,7 +2,6 @@ import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
-import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 
 class AndroidExperienceScreen extends StatefulWidget {
@@ -14,19 +13,8 @@ class AndroidExperienceScreen extends StatefulWidget {
 }
 
 class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
-  late Widget fbPng;
-  late Widget waPng;
-  late Widget instaPng;
-  late Widget linkedInPng;
-
   @override
   Widget build(BuildContext context) {
-    double iconSize = 30;
-    fbPng = Image.asset(fbPngAssetName, height: iconSize);
-    waPng = Image.asset(whatsappPngeAssetName, height: iconSize);
-    instaPng = Image.asset(instaPngImageName, height: iconSize);
-    linkedInPng = Image.asset(linkedInAssetName,
-        height: iconSize, color: Colors.blue[900]);
     return Stack(
       children: [
         Positioned.fill(

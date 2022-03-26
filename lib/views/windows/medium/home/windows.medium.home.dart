@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
+import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/medium/contactme/windows.medium.contactme.screen.dart';
@@ -44,7 +45,6 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
-    // var screenHeight = screenSize.height;
 
     debugPrint('..@ screenWidth @ medium : $screenWidth');
     var screen = Provider.of<RouteProvider>(context).screen.toString();
@@ -52,15 +52,27 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: const Color.fromRGBO(0, 34, 51, 1),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: const Color.fromRGBO(0, 34, 51, 1),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            nameText(textColor: Colors.white).showCursorOnHover,
+            nameText(context: context).showCursorOnHover,
             Spacer(),
+            Consumer<ThemeNotifier>(
+              builder: (_, themeNotifier, __) => SizedBox(
+                height: 50,
+                width: 50,
+                child: Switch(
+                  onChanged: (val) {
+                    themeNotifier.toggleTheme();
+                  },
+                  value: themeNotifier.darkTheme,
+                ),
+              ),
+            ),
+            SizedBox(width: 20)
           ],
         ),
       ),

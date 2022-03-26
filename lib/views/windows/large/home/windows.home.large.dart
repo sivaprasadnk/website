@@ -1,11 +1,15 @@
-import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
-import 'package:spnk/views/windows/large/contactme/contact.me.screen.dart';
+import 'package:spnk/views/windows/large/contactme/windows.large.contactme.screen.dart';
 import 'package:spnk/views/windows/large/experience/windows.large.experience.screen.dart';
 import 'package:spnk/views/windows/large/home/windows.home.large.screen.dart';
+import 'package:spnk/views/windows/large/home/windows.large.home.widgets/copyright_text.dart';
+import 'package:spnk/views/windows/large/home/windows.large.home.widgets/made_with_flutter_widget.dart';
 import 'package:spnk/views/windows/large/projects/windows.large.projects.screen.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class WindowsHomeLarge extends StatefulWidget {
   static const routeName = '/Home';
@@ -17,7 +21,6 @@ class WindowsHomeLarge extends StatefulWidget {
 class _WindowsHomeLargeState extends State<WindowsHomeLarge>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  List _isHovering = [true, false, false];
   bool homeSelected = true,
       projectHovered = false,
       contactmeSelected = false,
@@ -49,12 +52,9 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
-    // var screenHeight = screenSize.height;
     double size = 15;
     debugPrint('..@ screenWidth1 large: $screenWidth');
     debugPrint('..@ experienceSelected large: $experienceSelected');
-    // final themeProvider = Provider.of<DarkThemeProvider>(context);
-    // var screen = Provider.of<RouteProvider>(context).screen.toString();
     Duration _duration = Duration(seconds: 1);
     return DefaultTabController(
       length: 4,
@@ -64,17 +64,14 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // SizedBox(width: 20),
               CopyrightText(size: size),
               MadeWithFlutterWidget(size: size),
             ],
           ),
         ),
         extendBodyBehindAppBar: true,
-        // backgroundColor: Color.fromRGBO(206, 45, 1, 1),
-        backgroundColor: const Color.fromRGBO(0, 34, 51, 1),
         appBar: PreferredSize(
-          preferredSize: Size(screenWidth, 65),
+          preferredSize: Size(screenWidth, 75),
           child: Padding(
             padding: EdgeInsets.all(18) +
                 EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
@@ -92,14 +89,38 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                           duration: _duration,
                         );
                       },
-                      child:
-                          nameText(textColor: Colors.white).showCursorOnHover,
+                      child: nameText(context: context).showCursorOnHover,
                     ),
+                  ),
+                  Consumer<ThemeNotifier>(
+                    builder: (_, themeNotifier, __) => SizedBox(
+                      // height: 50,
+                      width: 50,
+                      child: Switch(
+                        onChanged: (val) {
+                          themeNotifier.toggleTheme();
+                        },
+                        value: themeNotifier.darkTheme,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 30,
                   ),
                   Expanded(
                     child: TabBar(
-                      indicatorColor: Colors.red,
-                      indicatorPadding: EdgeInsets.symmetric(horizontal: 25),
+                      overlayColor:
+                          MaterialStateProperty.all(Colors.transparent),
+                      indicator: RectangularIndicator(
+                        color: Color.fromRGBO(249, 139, 125, 1),
+                        paintingStyle: PaintingStyle.stroke,
+                        bottomLeftRadius: 100,
+                        bottomRightRadius: 100,
+                        topLeftRadius: 100,
+                        topRightRadius: 100,
+                      ),
+                      padding: EdgeInsets.zero,
+                      indicatorPadding: EdgeInsets.zero,
                       controller: _tabController,
                       tabs: [
                         HomeTab(
@@ -128,19 +149,13 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
-          child: Stack(
+          child: TabBarView(
+            controller: _tabController,
             children: [
-              TabBarView(
-                controller: _tabController,
-                children: [
-                  WindowsHomeLargeScreen(),
-                  WindowsLargeExperienceScreen(),
-                  WindowsLargeProjectScreen(),
-                  WindowsLargeContactMeScreen(),
-                ],
-              ),
-              // WindowsRightFooter(size: size),
-              // WindowsLeftFooter(size: size),
+              WindowsHomeLargeScreen(),
+              WindowsLargeExperienceScreen(),
+              WindowsLargeProjectScreen(),
+              WindowsLargeContactMeScreen(),
             ],
           ),
         ),
@@ -248,106 +263,17 @@ class TabItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
+      // highlightColor: Colors.transparent,
+      // splashColor: Colors.transparent,
       onTap: () => onTap.call(),
-      child: Column(
-        children: [
-          Text(
+      child: SizedBox(
+        height: 50,
+        child: Center(
+          child: Text(
             title,
-            style: TextStyle(fontFamily: 'PatuaOne', color: Colors.white),
+            style: Theme.of(context).textTheme.headline4,
           ),
-          SizedBox(height: 5),
-        ],
-      ),
-    );
-  }
-}
-
-class MadeWithFlutterWidget extends StatelessWidget {
-  const MadeWithFlutterWidget({
-    Key? key,
-    required this.size,
-  }) : super(key: key);
-
-  final double size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 20.0, bottom: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(
-            ' Made with ',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: size,
-              color: Colors.grey,
-            ),
-          ),
-          AvatarGlow(
-            glowColor: Colors.grey,
-            endRadius: 20.0,
-            duration: Duration(milliseconds: 2000),
-            repeat: true,
-            showTwoGlows: false,
-            repeatPauseDuration: Duration(milliseconds: 100),
-            child: Icon(
-              Icons.favorite,
-              color: Colors.red,
-            ),
-          ),
-          // CircleAvatar(
-          //   child: Icon(
-          //     Icons.favorite,
-          //     color: Colors.red,
-          //   ),
-          // ),
-          Text(
-            ' in ',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: size,
-              color: Colors.grey,
-            ),
-          ),
-          FlutterLogo(
-            size: size,
-            style: FlutterLogoStyle.markOnly,
-          ),
-          Text(
-            ' Flutter  ',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: size,
-              color: Colors.grey,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class CopyrightText extends StatelessWidget {
-  const CopyrightText({
-    Key? key,
-    required this.size,
-  }) : super(key: key);
-
-  final double size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20.0, bottom: 10),
-      child: Text(
-        'Copyright © 2022 Sivaprasad NK .',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: size,
-          color: Colors.grey,
         ),
       ),
     );

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/views/windows/common/dash_image.dart';
+import 'package:spnk/views/windows/common/flutter_developer_container.dart';
+import 'package:spnk/views/windows/common/hi_name_text.dart';
 
 class WindowsMediumHomeScreen extends StatefulWidget {
   @override
@@ -52,39 +55,26 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: screenHeight * 0.1),
-          // RobotLottie(showLottie: showLottie, screenWidth: screenWidth),
-          DashImageMedium(showLottie: showLottie, screenWidth: screenWidth),
-          HiNameContainer(showName: showName, screenWidth: screenWidth),
+          DashImage(
+            showLottie: showLottie,
+            leftPadding: screenWidth * 0.1,
+            size: 220,
+          ),
+          // DashImageMedium(showLottie: showLottie, screenWidth: screenWidth),
+          HiNameContainer(
+              showName: showName,
+              leftPadding: screenWidth * 0.15,
+              screenWidth: screenWidth),
+          SizedBox(height: 15),
           FlutterDeveloperContainer(
               showName: showName, screenWidth: screenWidth),
-          SizedBox(height: screenHeight * 0.05),
+          SizedBox(height: screenHeight * 0.02),
           AnimatedOpacity(
             duration: Duration(seconds: 2),
             opacity: showProPic ? 1 : 0,
             child: Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.2),
               child: ProPicWithBlobLottie(),
-              // child: ProPicMediumWithBlob(
-              //   height: screenHeight * .32,
-              //   bottomPadding: screenHeight * .02,
-              //   leftPadding: screenWidth * 0.015,
-              // ),
-              // child: Stack(
-              //   children: [
-              //     Lottie.asset(
-              //       blobLottieAssetPath,
-              //       height: 280,
-              //     ),
-              //     Padding(
-              //       padding: const EdgeInsets.only(left: 40, top: 40),
-              //       child: CircleAvatar(
-              //         radius: 100,
-              //         backgroundColor: Colors.transparent,
-              //         backgroundImage: AssetImage(proPicAssetPath),
-              //       ),
-              //     ),
-              //   ],
-              // ),
             ),
           ),
         ],

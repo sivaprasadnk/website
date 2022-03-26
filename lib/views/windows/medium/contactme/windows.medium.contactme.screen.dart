@@ -57,15 +57,12 @@ class _WindowsMediumContactMeScreenState
                   SizedBox(width: screenWidth * 0.22),
                   Icon(
                     Icons.location_on,
-                    color: Colors.white,
+                    color: Theme.of(context).splashColor,
                   ),
                   SizedBox(width: 20),
                   Text(
                     addressText,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                   // Spacer(),
                 ],
@@ -80,15 +77,12 @@ class _WindowsMediumContactMeScreenState
                 SizedBox(width: screenWidth * 0.22),
                 Icon(
                   Icons.call,
-                  color: Colors.white,
+                  color: Theme.of(context).splashColor,
                 ),
                 SizedBox(width: 20),
                 Text(
                   mobileNumberText,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
                 // Spacer(),
               ],
@@ -102,21 +96,18 @@ class _WindowsMediumContactMeScreenState
                 SizedBox(width: screenWidth * 0.22),
                 Icon(
                   Icons.email,
-                  color: Colors.white,
+                  color: Theme.of(context).splashColor,
                 ),
                 SizedBox(width: 20),
                 Text(
                   emailText,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
                 // Spacer(),
               ],
             ),
           ),
-          SizedBox(height: screenHeight * 0.13),
+          SizedBox(height: screenHeight * 0.07),
           FadeInDown(
             child: SocialMedia(showIcons: showIcons, screenWidth: screenWidth),
           ),

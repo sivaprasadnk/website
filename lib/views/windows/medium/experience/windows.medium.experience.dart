@@ -55,28 +55,18 @@ class _WindowsMediumExperienceScreenState
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        ' Java, Postgres Programmer',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
+                      Text(' Java, Postgres Programmer',
+                          style: Theme.of(context).textTheme.bodyText1),
                       SizedBox(height: 20),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           CircleAvatar(
                             radius: 5,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context).splashColor,
                           ),
-                          Text(
-                            '      Bayasys Infotech Pvt Ltd.',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
-                          ),
+                          Text('      Bayasys Infotech Pvt Ltd.',
+                              style: Theme.of(context).textTheme.bodyText1),
                         ],
                       ),
                       Row(
@@ -84,15 +74,10 @@ class _WindowsMediumExperienceScreenState
                         children: [
                           CircleAvatar(
                             radius: 5,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context).splashColor,
                           ),
-                          Text(
-                            '      07/2019 - 09/2020',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
-                          ),
+                          Text('      07/2019 - 09/2020',
+                              style: Theme.of(context).textTheme.bodyText1),
                         ],
                       ),
                     ],
@@ -114,28 +99,18 @@ class _WindowsMediumExperienceScreenState
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Flutter Developer',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
+                      Text('Flutter Developer',
+                          style: Theme.of(context).textTheme.bodyText1),
                       SizedBox(height: 20),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           CircleAvatar(
                             radius: 5,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context).splashColor,
                           ),
-                          Text(
-                            '      Indbytes Technologies',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
-                          ),
+                          Text('      Indbytes Technologies',
+                              style: Theme.of(context).textTheme.bodyText1),
                         ],
                       ),
                       Row(
@@ -143,15 +118,10 @@ class _WindowsMediumExperienceScreenState
                         children: [
                           CircleAvatar(
                             radius: 5,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context).splashColor,
                           ),
-                          Text(
-                            '      12/2020 - Present',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
-                          ),
+                          Text('      12/2020 - Present',
+                              style: Theme.of(context).textTheme.bodyText1),
                         ],
                       ),
                     ],

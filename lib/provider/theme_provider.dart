@@ -1,14 +1,175 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class DarkThemeProvider with ChangeNotifier {
-  // SharedData darkThemePreference = SharedData();
-  bool _darkTheme = false;
+ThemeData light = ThemeData(
+  brightness: Brightness.light,
+  primarySwatch: Colors.indigo,
+  splashColor: Color.fromRGBO(0, 34, 120, 1),
+  textTheme: TextTheme(
+    caption: TextStyle(
+      fontFamily: 'PlayfairDisplay',
+      fontWeight: FontWeight.bold,
+      fontSize: 30,
+      // color: Colors.teal,
+      color: Color.fromRGBO(0, 34, 120, 1),
+    ),
+    headline1: TextStyle(
+      color: Colors.black,
+      fontSize: 12,
+      fontFamily: 'PatuaOne',
+    ),
+    headline2: TextStyle(
+      fontFamily: 'PlayfairDisplay',
+      color: Color.fromRGBO(0, 34, 120, 1),
+      fontWeight: FontWeight.bold,
+      fontSize: 28.0,
+    ),
+    headline3: TextStyle(
+      fontFamily: 'PlayfairDisplay',
+      fontWeight: FontWeight.bold,
+      color: Color.fromRGBO(0, 34, 120, 1),
+    ),
+    headline4: TextStyle(
+      fontFamily: 'PlayfairDisplay',
+      fontWeight: FontWeight.bold,
+      fontSize: 15,
+      color: Color.fromRGBO(0, 34, 120, 1),
+    ),
+    bodyText1: TextStyle(
+      fontWeight: FontWeight.bold,
+      color: Color.fromRGBO(0, 34, 120, 1),
+    ),
+    bodyText2: TextStyle(
+      fontWeight: FontWeight.bold,
+      fontFamily: 'PlayfairDisplay',
+      fontSize: 13,
+      color: Color.fromRGBO(0, 34, 120, 1),
+    ),
+    // subtitle1: TextStyle(
+    //   fontWeight: FontWeight.bold,
+    //   fontFamily: 'PlayfairDisplay',
+    //   fontSize: 12,
+    //   color: Color.fromRGBO(0, 34, 200, 1),
+    // ),
+    subtitle1: TextStyle(
+      // fontFamily: 'PatuaOne',
+      color: Color.fromRGBO(0, 34, 200, 1),
+      fontWeight: FontWeight.bold,
+      fontSize: 15.0,
+    ),
+    subtitle2: TextStyle(
+      color: Color.fromRGBO(0, 34, 120, 1),
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+  scrollbarTheme: ScrollbarThemeData().copyWith(
+    isAlwaysShown: false,
+    thumbColor: MaterialStateProperty.all(Colors.cyan),
+  ),
+  buttonTheme: ButtonThemeData(
+    buttonColor: Colors.indigo,
+    textTheme: ButtonTextTheme.primary,
+  ),
+  scaffoldBackgroundColor: Color.fromRGBO(239, 239, 239, 1),
+  // scaffoldBackgroundColor: Color.fromRGBO(202, 235, 242, 1)
+  // scaffoldBackgroundColor: Color(0xfff1f1f1),
+);
 
-  bool get darkTheme => _darkTheme;
+ThemeData dark = ThemeData(
+  scaffoldBackgroundColor: Color.fromRGBO(0, 34, 51, 1),
+  splashColor: Colors.white,
+  textTheme: TextTheme(
+    subtitle1: TextStyle(
+      // fontFamily: 'PatuaOne',
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+      fontSize: 15.0,
+    ),
+    caption: TextStyle(
+      fontFamily: 'PlayfairDisplay',
+      fontWeight: FontWeight.bold,
+      fontSize: 30,
+      color: Colors.white,
+    ),
+    headline1: TextStyle(
+      color: Colors.white,
+      fontFamily: 'PatuaOne',
+      fontSize: 12,
+    ),
+    headline2: TextStyle(
+      fontFamily: 'PlayfairDisplay',
+      // fontFamily: 'PatuaOne',
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+      fontSize: 28.0,
+    ),
+    headline3: TextStyle(
+      fontFamily: 'PlayfairDisplay',
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
+    headline4: TextStyle(
+      fontFamily: 'PlayfairDisplay',
+      fontWeight: FontWeight.bold,
+      fontSize: 15,
+      color: Colors.white,
+    ),
+    // headline4: ,
+    // headline6: ,
+    bodyText1: TextStyle(
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
+    bodyText2: TextStyle(
+      fontWeight: FontWeight.bold,
+      fontFamily: 'PlayfairDisplay',
+      fontSize: 13,
+      color: Colors.white,
+    ),
+    subtitle2: TextStyle(
+      color: Colors.white,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+  primarySwatch: Colors.cyan,
+  scrollbarTheme: ScrollbarThemeData().copyWith(
+    isAlwaysShown: false,
+    thumbColor: MaterialStateProperty.all(Colors.cyan),
+  ),
+  buttonTheme: ButtonThemeData(
+    buttonColor: Colors.red,
+    textTheme: ButtonTextTheme.primary,
+  ),
+);
 
-  set darkTheme(bool value) {
-    _darkTheme = value;
-    // darkThemePreference.setDarkTheme(value);
+class ThemeNotifier extends ChangeNotifier {
+  final String key = "theme";
+  SharedPreferences? prefs;
+  late bool _darkTheme;
+
+  bool get darkTheme => _darkTheme; //Getter
+
+  ThemeNotifier() {
+    _darkTheme = true;
+    loadFromPrefs();
+  }
+
+  toggleTheme() {
+    _darkTheme = !_darkTheme;
+    saveToPrefs();
     notifyListeners();
+  }
+
+  loadFromPrefs() async {
+    prefs = await SharedPreferences.getInstance();
+    _darkTheme = prefs!.getBool(key) ?? true;
+    notifyListeners();
+  }
+
+  saveToPrefs() async {
+    prefs = await SharedPreferences.getInstance();
+    prefs!.setBool(key, darkTheme);
   }
 }
