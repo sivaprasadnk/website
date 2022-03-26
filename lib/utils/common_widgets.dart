@@ -323,7 +323,7 @@ class TitleText extends StatelessWidget {
           // fontFamily: 'PlayfairDisplay',
           // color: Colors.,
           fontWeight: FontWeight.bold,
-          // color: Colors.white,
+          color: Colors.black,
           fontSize: 20,
         ),
       ),
@@ -826,7 +826,7 @@ class AndroidRightFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned.fill(
-      bottom: 5,
+      bottom: 8,
       child: Align(
         alignment: Alignment.bottomCenter,
         child: FadeInUp(
@@ -1072,6 +1072,30 @@ class DashImageMedium extends StatelessWidget {
         child: Image.asset(
           'assets/images/dash/dash1.png',
           height: 220,
+        ),
+      ),
+    );
+  }
+}
+
+class AndroidDashImage extends StatelessWidget {
+  const AndroidDashImage({
+    Key? key,
+    required this.dashImage,
+  }) : super(key: key);
+
+  final String dashImage;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned.fill(
+      top: MediaQuery.of(context).size.height * 0.16,
+      right: -MediaQuery.of(context).size.width * 0.1,
+      child: Align(
+        alignment: Alignment.topRight,
+        child: Image.asset(
+          'assets/images/dash/$dashImage.png',
+          height: MediaQuery.of(context).size.height * 0.18,
         ),
       ),
     );

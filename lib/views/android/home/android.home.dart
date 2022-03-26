@@ -37,6 +37,21 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
           width: screenWidth,
           child: Stack(
             children: [
+              if (!menuSelectedCheck && screen == "Home")
+                Positioned.fill(
+                  top: screenHeight * 0.05,
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Image.asset(
+                      'assets/images/dash/dash1.png',
+                      height: 230,
+                    ),
+                    // child: Lottie.asset(
+                    //   'assets/lotties/robot_hello.json',
+                    //   height: 200,
+                    // ),
+                  ),
+                ),
               menuSelectedCheck
                   ? AndroidMenuScreen()
                   : screen == "Home"
@@ -48,7 +63,7 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
                                   screenHeight: screenHeight)
                               : AndroidContactMeScreen(
                                   screenHeight: screenHeight),
-              AndroidRightFooter(size: size),
+              if (menuSelectedCheck) AndroidRightFooter(size: size),
             ],
           ),
         ),

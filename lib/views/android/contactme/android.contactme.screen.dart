@@ -31,6 +31,7 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
             ),
           ),
         ),
+        AndroidDashImage(dashImage: 'dash4'),
         Padding(
           padding: const EdgeInsets.only(right: 10, top: 20),
           child: Align(

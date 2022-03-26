@@ -65,14 +65,14 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
       child: Stack(
         children: [
           Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AnimatedOpacity(
                 opacity: showLottie ? 1 : 0,
                 duration: Duration(seconds: 2),
                 child: Container(
-                  padding: EdgeInsets.only(left: screenWidth * .2, top: 50),
+                  padding: EdgeInsets.only(left: screenWidth * .2, top: 30),
                   child: Image.asset(
                     'assets/images/exp_icon.png',
                     height: 250,

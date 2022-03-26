@@ -25,17 +25,7 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
             ),
           ),
         ),
-        Positioned.fill(
-          top: 120,
-          right: -40,
-          child: Align(
-            alignment: Alignment.topRight,
-            child: Image.asset(
-              'assets/images/dash/dash2.png',
-              height: 150,
-            ),
-          ),
-        ),
+        AndroidDashImage(dashImage: 'dash2'),
         Padding(
           padding: const EdgeInsets.only(right: 10, top: 20),
           child: Align(
@@ -93,7 +83,7 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
                     case 2:
                       return DescriptionText(description: '07/2019 - 09/2020');
                     case 3:
-                      return TitleText(title: '\Lead Flutter Developer');
+                      return TitleText(title: '\Senior Flutter Developer');
                     case 4:
                       return DescriptionText(
                           description: '\nIndbytes Technologies');

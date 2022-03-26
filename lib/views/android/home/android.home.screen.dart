@@ -26,10 +26,11 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                    right: 10, top: 20, left: screenWidth * 0.8),
+                    right: 10, top: 50, left: screenWidth * 0.8),
                 child: IconButton(
                   icon: Icon(Icons.menu, color: Colors.white),
                   onPressed: () {
+                    print('.. @ here');
                     Provider.of<RouteProvider>(context, listen: false)
                         .setMenuSelected(check: true);
                   },
@@ -150,20 +151,20 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
             ],
           ),
         ),
-        Positioned.fill(
-          top: screenHeight * 0.05,
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: Image.asset(
-              'assets/images/dash/dash1.png',
-              height: 230,
-            ),
-            // child: Lottie.asset(
-            //   'assets/lotties/robot_hello.json',
-            //   height: 200,
-            // ),
-          ),
-        )
+        // Positioned.fill(
+        //   top: screenHeight * 0.05,
+        //   child: Align(
+        //     alignment: Alignment.topCenter,
+        //     child: Image.asset(
+        //       'assets/images/dash/dash1.png',
+        //       height: 230,
+        //     ),
+        //     // child: Lottie.asset(
+        //     //   'assets/lotties/robot_hello.json',
+        //     //   height: 200,
+        //     // ),
+        //   ),
+        // )
       ],
     );
   }

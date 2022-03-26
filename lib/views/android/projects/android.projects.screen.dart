@@ -56,6 +56,7 @@ class _AndroidProjectsState extends State<AndroidProjects> {
             ),
           ),
         ),
+        AndroidDashImage(dashImage: 'dash3'),
         Padding(
           padding: const EdgeInsets.only(right: 10, top: 20),
           child: Align(
