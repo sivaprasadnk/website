@@ -1090,7 +1090,8 @@ class AndroidDashImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned.fill(
       top: MediaQuery.of(context).size.height * 0.16,
-      right: -MediaQuery.of(context).size.width * 0.1,
+      right: -22,
+      // right: -MediaQuery.of(context).size.width * 0.08,
       child: Align(
         alignment: Alignment.topRight,
         child: Image.asset(
