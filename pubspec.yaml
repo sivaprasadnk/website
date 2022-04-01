@@ -30,6 +30,7 @@ dependencies:
   bordered_text: ^2.0.0
   carousel_slider: ^4.0.0
   cupertino_icons: ^1.0.2
+  day_night_switcher: ^0.2.0+1
   dio: ^4.0.0
   faded_widget: ^2.0.0
   flutter:

@@ -38,91 +38,115 @@ class _WindowsMediumContactMeScreenState
     var screenSize = MediaQuery.of(context).size;
     var screenHeight = screenSize.height;
     var screenWidth = screenSize.width;
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: screenHeight * 0.33),
-          // SectionTitle(
-          //   screenWidth: screenWidth,
-          //   title: 'Contact Me',
-          // ),
-          // SizedBox(height: screenHeight * 0.25),
-          FadeInRight(
-            child: SizedBox(
-              width: screenWidth * 0.7,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(width: screenWidth * 0.22),
-                  Icon(
-                    Icons.location_on,
-                    color: Theme.of(context).splashColor,
+    return Stack(
+      children: [
+        Container(
+          width: screenWidth * 0.78,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: screenHeight * 0.33),
+              // SectionTitle(
+              //   screenWidth: screenWidth,
+              //   title: 'Contact Me',
+              // ),
+              // SizedBox(height: screenHeight * 0.25),
+              FadeInRight(
+                child: SizedBox(
+                  width: screenWidth * 0.7,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(width: screenWidth * 0.15),
+                      Icon(
+                        Icons.location_on,
+                        color: Theme.of(context).splashColor,
+                      ),
+                      SizedBox(width: 20),
+                      Text(
+                        addressText,
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      // Spacer(),
+                    ],
                   ),
-                  SizedBox(width: 20),
-                  Text(
-                    addressText,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  // Spacer(),
-                ],
+                ),
               ),
-            ),
-          ),
-          SizedBox(height: screenHeight * 0.03),
-          FadeInRight(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(width: screenWidth * 0.22),
-                Icon(
-                  Icons.call,
-                  color: Theme.of(context).splashColor,
+              SizedBox(height: screenHeight * 0.03),
+              FadeInRight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(width: screenWidth * 0.15),
+                    Icon(
+                      Icons.call,
+                      color: Theme.of(context).splashColor,
+                    ),
+                    SizedBox(width: 20),
+                    Text(
+                      mobileNumberText,
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    // Spacer(),
+                  ],
                 ),
-                SizedBox(width: 20),
-                Text(
-                  mobileNumberText,
-                  style: Theme.of(context).textTheme.bodyText1,
+              ),
+              SizedBox(height: screenHeight * 0.03),
+              FadeInRight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(width: screenWidth * 0.15),
+                    Icon(
+                      Icons.email,
+                      color: Theme.of(context).splashColor,
+                    ),
+                    SizedBox(width: 20),
+                    Text(
+                      emailText,
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    // Spacer(),
+                  ],
                 ),
-                // Spacer(),
-              ],
-            ),
+              ),
+              SizedBox(height: screenHeight * 0.07),
+              FadeInDown(
+                child:
+                    SocialMedia(showIcons: showIcons, screenWidth: screenWidth),
+              ),
+              // Flexible(
+              //   child: AnimatedOpacity(
+              //     duration: Duration(seconds: 2),
+              //     opacity: showIcons ? 1 : 0,
+              //     child: Image.asset(
+              //       'assets/images/dash/dash4.png',
+              //       height: 250,
+              //     ),
+              //   ),
+              // ),
+            ],
           ),
-          SizedBox(height: screenHeight * 0.03),
-          FadeInRight(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(width: screenWidth * 0.22),
-                Icon(
-                  Icons.email,
-                  color: Theme.of(context).splashColor,
-                ),
-                SizedBox(width: 20),
-                Text(
-                  emailText,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-                // Spacer(),
-              ],
-            ),
-          ),
-          SizedBox(height: screenHeight * 0.07),
-          FadeInDown(
-            child: SocialMedia(showIcons: showIcons, screenWidth: screenWidth),
-          ),
-          Flexible(
+        ),
+        Positioned.fill(
+          // top: 50,
+          right: -50,
+          child: Align(
+            alignment: Alignment.bottomRight,
             child: AnimatedOpacity(
               duration: Duration(seconds: 2),
               opacity: showIcons ? 1 : 0,
-              child: Image.asset(
-                'assets/images/dash/dash4.png',
-                height: 250,
+              child: Container(
+                // color: Colors.amber,
+                child: Image.asset(
+                  'assets/images/dash/dash4.png',
+                  height: 280,
+                ),
               ),
             ),
           ),
-        ],
-      ),
+        )
+      ],
     );
   }
 }

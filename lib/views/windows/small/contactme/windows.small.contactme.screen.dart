@@ -191,7 +191,7 @@ class ContactDetailsItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(width: screenWidth * 0.22),
+          SizedBox(width: screenWidth * 0.15),
           Icon(
             icon,
             color: Theme.of(context).splashColor,

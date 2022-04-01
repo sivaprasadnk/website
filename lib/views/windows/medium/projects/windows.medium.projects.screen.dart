@@ -40,132 +40,154 @@ class _WindowsMediumProjectsScreenState
     var screenSize = MediaQuery.of(context).size;
     var screenHeight = screenSize.height;
     var screenWidth = screenSize.width;
-    return Container(
-      child: Padding(
-        padding: EdgeInsets.only(left: screenWidth * 0.08),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: screenHeight * 0.18),
-            FadeInRight(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(
+    return Stack(
+      children: [
+        Container(
+          child: Padding(
+            padding: EdgeInsets.only(left: screenWidth * 0.08),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: screenHeight * 0.18),
+                FadeInRight(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        // color: Colors.black,
-                        height: screenHeight * 0.5,
-                        width: screenWidth * 0.7,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: PageView(
-                            controller: controller,
-                            children: [
-                              SpQuotesProjectItem(width: screenWidth),
-                              SpQuizProjectItem(width: screenWidth),
-                            ],
+                      Stack(
+                        children: [
+                          Container(
+                            // color: Colors.black,
+                            height: screenHeight * 0.5,
+                            width: screenWidth * 0.7,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: PageView(
+                                controller: controller,
+                                children: [
+                                  SpQuotesProjectItem(width: screenWidth),
+                                  SpQuizProjectItem(width: screenWidth),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
+                          if (!showNextIcon)
+                            Positioned.fill(
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    controller.previousPage(
+                                      duration: Duration(seconds: 1),
+                                      curve: Curves.bounceOut,
+                                    );
+                                    setState(() {
+                                      showNextIcon = true;
+                                    });
+                                  },
+                                  child: Icon(
+                                    Icons.arrow_back_ios,
+                                    color: Theme.of(context).splashColor,
+                                  ).showCursorOnHover,
+                                ),
+                              ),
+                            ),
+                          if (showNextIcon)
+                            Positioned.fill(
+                              right: 30,
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    controller.nextPage(
+                                      duration: Duration(seconds: 1),
+                                      curve: Curves.bounceOut,
+                                    );
+                                    setState(() {
+                                      showNextIcon = false;
+                                    });
+                                  },
+                                  child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: Theme.of(context).splashColor,
+                                  ).showCursorOnHover,
+                                ),
+                              ),
+                            )
+                        ],
                       ),
-                      if (!showNextIcon)
-                        Positioned.fill(
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: GestureDetector(
-                              onTap: () {
-                                controller.previousPage(
-                                  duration: Duration(seconds: 1),
-                                  curve: Curves.bounceOut,
-                                );
-                                setState(() {
-                                  showNextIcon = true;
-                                });
-                              },
-                              child: Icon(
-                                Icons.arrow_back_ios,
-                                color: Theme.of(context).splashColor,
-                              ).showCursorOnHover,
-                            ),
-                          ),
-                        ),
-                      if (showNextIcon)
-                        Positioned.fill(
-                          right: 30,
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: GestureDetector(
-                              onTap: () {
-                                controller.nextPage(
-                                  duration: Duration(seconds: 1),
-                                  curve: Curves.bounceOut,
-                                );
-                                setState(() {
-                                  showNextIcon = false;
-                                });
-                              },
-                              child: Icon(
-                                Icons.arrow_forward_ios,
-                                color: Theme.of(context).splashColor,
-                              ).showCursorOnHover,
-                            ),
-                          ),
-                        )
                     ],
                   ),
-                ],
-              ),
+                ),
+                // Row(
+                //   children: [
+                //     if (!showNextIcon)
+                //       GestureDetector(
+                //         onTap: () {
+                //           controller.previousPage(
+                //             duration: Duration(seconds: 1),
+                //             curve: Curves.bounceOut,
+                //           );
+                //           setState(() {
+                //             showNextIcon = true;
+                //           });
+                //         },
+                //         child: Icon(
+                //           Icons.arrow_back_ios,
+                //           color: Colors.white,
+                //         ).showCursorOnHover,
+                //       ),
+                //     SizedBox(width: screenWidth * 0.13),
+                //     if (showNextIcon)
+                //       GestureDetector(
+                //         onTap: () {
+                //           controller.nextPage(
+                //             duration: Duration(seconds: 1),
+                //             curve: Curves.bounceOut,
+                //           );
+                //           setState(() {
+                //             showNextIcon = false;
+                //           });
+                //         },
+                //         child: Icon(
+                //           Icons.arrow_forward_ios,
+                //           color: Colors.white,
+                //         ).showCursorOnHover,
+                //       ),
+                //   ],
+                // ),
+                // Flexible(
+                //   child: AnimatedOpacity(
+                //     duration: Duration(seconds: 2),
+                //     opacity: showLottie ? 1 : 0,
+                //     child: Image.asset(
+                //       'assets/images/dash/dash3.png',
+                //       height: 250,
+                //     ),
+                //   ),
+                // ),
+              ],
             ),
-            // Row(
-            //   children: [
-            //     if (!showNextIcon)
-            //       GestureDetector(
-            //         onTap: () {
-            //           controller.previousPage(
-            //             duration: Duration(seconds: 1),
-            //             curve: Curves.bounceOut,
-            //           );
-            //           setState(() {
-            //             showNextIcon = true;
-            //           });
-            //         },
-            //         child: Icon(
-            //           Icons.arrow_back_ios,
-            //           color: Colors.white,
-            //         ).showCursorOnHover,
-            //       ),
-            //     SizedBox(width: screenWidth * 0.13),
-            //     if (showNextIcon)
-            //       GestureDetector(
-            //         onTap: () {
-            //           controller.nextPage(
-            //             duration: Duration(seconds: 1),
-            //             curve: Curves.bounceOut,
-            //           );
-            //           setState(() {
-            //             showNextIcon = false;
-            //           });
-            //         },
-            //         child: Icon(
-            //           Icons.arrow_forward_ios,
-            //           color: Colors.white,
-            //         ).showCursorOnHover,
-            //       ),
-            //   ],
-            // ),
-            Flexible(
-              child: AnimatedOpacity(
-                duration: Duration(seconds: 2),
-                opacity: showLottie ? 1 : 0,
+          ),
+        ),
+        Positioned.fill(
+          // top: 50,
+          right: -50,
+          child: Align(
+            alignment: Alignment.bottomRight,
+            child: AnimatedOpacity(
+              duration: Duration(seconds: 2),
+              opacity: showLottie ? 1 : 0,
+              child: Container(
+                // color: Colors.amber,
                 child: Image.asset(
                   'assets/images/dash/dash3.png',
-                  height: 250,
+                  height: 280,
                 ),
               ),
             ),
-          ],
-        ),
-      ),
+          ),
+        )
+      ],
     );
   }
 }

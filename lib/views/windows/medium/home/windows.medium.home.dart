@@ -1,3 +1,4 @@
+import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
@@ -23,24 +24,6 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
     }
   }
 
-  bool homeSelected = true,
-      projectSelected = false,
-      contactmeSelected = false,
-      menuSelected = false,
-      experienceSelected = false;
-
-  bool showProPic = false;
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration(seconds: 1)).then((value) {
-      if (mounted)
-        setState(() {
-          showProPic = true;
-        });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -51,50 +34,77 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
     double size = 15;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        automaticallyImplyLeading: false,
-        title: Row(
+      bottomNavigationBar: Padding(
+        padding:
+            EdgeInsets.symmetric(horizontal: screenWidth * 0.05, vertical: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            nameText(context: context).showCursorOnHover,
-            Spacer(),
-            Consumer<ThemeNotifier>(
-              builder: (_, themeNotifier, __) => SizedBox(
-                height: 50,
-                width: 50,
-                child: Switch(
-                  onChanged: (val) {
-                    themeNotifier.toggleTheme();
-                  },
-                  value: themeNotifier.darkTheme,
-                ),
-              ),
-            ),
-            SizedBox(width: 20)
+            WindowsLeftFooter(size: size),
+            WindowsRightFooter(size: size)
           ],
         ),
       ),
-      body: Container(
-        child: Stack(
-          children: [
-            Row(
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: Size(screenWidth, 100),
+        child: Padding(
+          padding: EdgeInsets.all(15) + EdgeInsets.only(left: 50),
+          child: SizedBox(
+            width: screenWidth,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                WindowsMediumMenu(),
-                screen == "Home"
-                    ? WindowsMediumHomeScreen()
-                    : screen == "ContactMe"
-                        ? WindowsMediumContactMeScreen()
-                        : screen == "Experience"
-                            ? WindowsMediumExperienceScreen()
-                            : screen == "MyProjects"
-                                ? WindowsMediumProjectsScreen()
-                                : Container()
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      // _tabController.animateTo(
+                      //   0,
+                      //   duration: _duration,
+                      // );
+                    },
+                    child: nameText(context: context).showCursorOnHover,
+                  ),
+                ),
+                Consumer<ThemeNotifier>(
+                  builder: (_, provider, __) {
+                    return SizedBox(
+                      height: 50,
+                      width: 75,
+                      child: DayNightSwitcher(
+                        // nightBackgroundColor: Colors.black54,
+                        // moonColor: Colors.black54,
+                        isDarkModeEnabled: provider.darkTheme,
+                        onStateChanged: (isDarkModeEnabled) {
+                          provider.toggleTheme();
+                          // setState(() {
+                          //   // this.isDarkModeEnabled = isDarkModeEnabled;
+                          // });
+                        },
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
-            WindowsRightFooter(size: size),
-            WindowsLeftFooter(size: size)
+          ),
+        ),
+      ),
+      body: SizedBox(
+        // height: screenSize.height * 0.9,
+        child: Row(
+          children: [
+            WindowsMediumMenu(),
+            screen == "Home"
+                ? WindowsMediumHomeScreen()
+                : screen == "ContactMe"
+                    ? WindowsMediumContactMeScreen()
+                    : screen == "Experience"
+                        ? WindowsMediumExperienceScreen()
+                        : screen == "MyProjects"
+                            ? WindowsMediumProjectsScreen()
+                            : Container()
           ],
         ),
       ),

@@ -17,14 +17,17 @@ class _WindowsMediumMenuState extends State<WindowsMediumMenu> {
     var screenSize = MediaQuery.of(context).size;
 
     var screenWidth = screenSize.width;
-    // var screenHeight = screenSize.height;
     return Container(
       child: Padding(
         padding: EdgeInsets.only(left: screenWidth * 0.01),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Spacer(),
+            // Spacer(),
+            SizedBox(
+              height: screenSize.height * 0.2,
+            ),
             GestureDetector(
               onTap: () {
                 Provider.of<RouteProvider>(context, listen: false)
@@ -57,7 +60,7 @@ class _WindowsMediumMenuState extends State<WindowsMediumMenu> {
               child: ContactmeMenu(),
             ),
             SizedBox(height: 20),
-            Spacer(),
+            // Spacer(),
           ],
         ),
       ),

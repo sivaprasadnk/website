@@ -11,62 +11,61 @@ class MadeWithFlutterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 20.0, bottom: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(
-            ' Made with ',
-            style: TextStyle(
-              // fontWeight: FontWeight.bold,
-              fontSize: size,
-              color: Colors.black54,
-              fontFamily: 'Roboto',
-            ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Text(
+          ' Made with ',
+          style: TextStyle(
+            // fontWeight: FontWeight.bold,
+            fontSize: size,
+            color: Colors.grey,
+            fontFamily: 'Roboto',
           ),
-          AvatarGlow(
-            glowColor: Colors.grey,
-            endRadius: 20.0,
-            duration: Duration(milliseconds: 2000),
-            repeat: true,
-            showTwoGlows: false,
-            repeatPauseDuration: Duration(milliseconds: 100),
-            child: Icon(
-              Icons.favorite,
-              color: Colors.red,
-            ),
+        ),
+        AvatarGlow(
+          glowColor: Colors.grey,
+          endRadius: 20.0,
+          duration: Duration(milliseconds: 2000),
+          repeat: true,
+          showTwoGlows: false,
+          repeatPauseDuration: Duration(milliseconds: 100),
+          child: Icon(
+            Icons.favorite,
+            color: Colors.red,
           ),
-          // CircleAvatar(
-          //   child: Icon(
-          //     Icons.favorite,
-          //     color: Colors.red,
-          //   ),
-          // ),
-          Text(
-            ' in ',
-            style: TextStyle(
-              // fontWeight: FontWeight.bold,
-              fontSize: size,
-              color: Colors.black54,
-              fontFamily: 'Roboto',
-            ),
+        ),
+        // CircleAvatar(
+        //   child: Icon(
+        //     Icons.favorite,
+        //     color: Colors.red,
+        //   ),
+        // ),
+        Text(
+          ' in ',
+          style: TextStyle(
+            // fontWeight: FontWeight.bold,
+            fontSize: size,
+            color: Colors.grey,
+
+            fontFamily: 'Roboto',
           ),
-          FlutterLogo(
-            size: size,
-            style: FlutterLogoStyle.markOnly,
+        ),
+        FlutterLogo(
+          size: size,
+          style: FlutterLogoStyle.markOnly,
+        ),
+        Text(
+          ' Flutter  ',
+          style: TextStyle(
+            // fontWeight: FontWeight.bold,
+            fontSize: size,
+            color: Colors.grey,
+
+            fontFamily: 'Roboto',
           ),
-          Text(
-            ' Flutter  ',
-            style: TextStyle(
-              // fontWeight: FontWeight.bold,
-              fontSize: size,
-              color: Colors.black54,
-              fontFamily: 'Roboto',
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

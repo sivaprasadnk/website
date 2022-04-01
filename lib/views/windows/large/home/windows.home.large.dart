@@ -1,3 +1,4 @@
+import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
@@ -37,9 +38,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
-    Future.delayed(Duration(milliseconds: 500)).then((value) {
-      setState(() {});
-    });
   }
 
   @override
@@ -54,13 +52,13 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
     var screenWidth = screenSize.width;
     double size = 15;
     debugPrint('..@ screenWidth1 large: $screenWidth');
-    debugPrint('..@ experienceSelected large: $experienceSelected');
     Duration _duration = Duration(seconds: 1);
     return DefaultTabController(
       length: 4,
       child: Scaffold(
         bottomNavigationBar: Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+          padding: EdgeInsets.symmetric(
+              horizontal: screenWidth * 0.05, vertical: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -71,7 +69,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
         ),
         extendBodyBehindAppBar: true,
         appBar: PreferredSize(
-          preferredSize: Size(screenWidth, 75),
+          preferredSize: Size(screenWidth, 90),
           child: Padding(
             padding: EdgeInsets.all(18) +
                 EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
@@ -93,16 +91,23 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                     ),
                   ),
                   Consumer<ThemeNotifier>(
-                    builder: (_, themeNotifier, __) => SizedBox(
-                      // height: 50,
-                      width: 50,
-                      child: Switch(
-                        onChanged: (val) {
-                          themeNotifier.toggleTheme();
-                        },
-                        value: themeNotifier.darkTheme,
-                      ),
-                    ),
+                    builder: (_, provider, __) {
+                      return SizedBox(
+                        height: 50,
+                        width: 75,
+                        child: DayNightSwitcher(
+                          // nightBackgroundColor: Colors.black54,
+                          // moonColor: Colors.black54,
+                          isDarkModeEnabled: provider.darkTheme,
+                          onStateChanged: (isDarkModeEnabled) {
+                            provider.toggleTheme();
+                            // setState(() {
+                            //   // this.isDarkModeEnabled = isDarkModeEnabled;
+                            // });
+                          },
+                        ),
+                      );
+                    },
                   ),
                   SizedBox(
                     width: 30,

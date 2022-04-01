@@ -75,9 +75,6 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
                         showLottie: showLottie,
                         leftPadding: screenWidth * 0.1,
                         size: 250),
-
-                    // RobotLottie(
-                    //     screenWidth: screenWidth, showLottie: showLottie),
                     HiNameContainer(
                         showName: showName,
                         leftPadding: screenWidth * 0.15,

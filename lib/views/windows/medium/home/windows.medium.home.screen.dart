@@ -50,35 +50,33 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
     // var size = screenWidth / 15;
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: screenHeight * 0.1),
-          DashImage(
-            showLottie: showLottie,
-            leftPadding: screenWidth * 0.1,
-            size: 220,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(height: screenHeight * 0.06),
+        DashImage(
+          showLottie: showLottie,
+          leftPadding: screenWidth * 0.1,
+          size: 221,
+        ),
+        // DashImageMedium(showLottie: showLottie, screenWidth: screenWidth),
+        HiNameContainer(
+            showName: showName,
+            leftPadding: screenWidth * 0.15,
+            screenWidth: screenWidth),
+        SizedBox(height: 15),
+        FlutterDeveloperContainer(showName: showName, screenWidth: screenWidth),
+        SizedBox(height: screenHeight * 0.013),
+        AnimatedOpacity(
+          duration: Duration(seconds: 2),
+          opacity: showProPic ? 1 : 0,
+          child: Padding(
+            padding: EdgeInsets.only(left: screenWidth * 0.2),
+            child: ProPicWithBlobLottie(),
           ),
-          // DashImageMedium(showLottie: showLottie, screenWidth: screenWidth),
-          HiNameContainer(
-              showName: showName,
-              leftPadding: screenWidth * 0.15,
-              screenWidth: screenWidth),
-          SizedBox(height: 15),
-          FlutterDeveloperContainer(
-              showName: showName, screenWidth: screenWidth),
-          SizedBox(height: screenHeight * 0.02),
-          AnimatedOpacity(
-            duration: Duration(seconds: 2),
-            opacity: showProPic ? 1 : 0,
-            child: Padding(
-              padding: EdgeInsets.only(left: screenWidth * 0.2),
-              child: ProPicWithBlobLottie(),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

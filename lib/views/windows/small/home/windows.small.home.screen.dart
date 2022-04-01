@@ -58,7 +58,7 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
               ),
               child: Image.asset(
                 'assets/images/dash/dash1.png',
-                height: 250,
+                height: 220,
               ),
               // child: Lottie.asset(
               //   'assets/lotties/robot_hello.json',

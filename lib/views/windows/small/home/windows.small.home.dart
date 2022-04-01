@@ -1,3 +1,4 @@
+import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
@@ -60,6 +61,16 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
     debugPrint('..@ menuSelectedCheck @ small :$menuSelectedCheck');
     return Scaffold(
       extendBodyBehindAppBar: true,
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // WindowsLeftFooter(size: size),
+            WindowsRightFooter(size: size)
+          ],
+        ),
+      ),
       // backgroundColor: const Color.fromRGBO(0, 34, 51, 1),
       appBar: AppBar(
         elevation: 0,
@@ -67,7 +78,6 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            // SizedBox(width: screenWidth * 0.1),
             GestureDetector(
               onTap: () {
                 Provider.of<RouteProvider>(context, listen: false)
@@ -79,16 +89,23 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
             ),
             Spacer(),
             Consumer<ThemeNotifier>(
-              builder: (_, themeNotifier, __) => SizedBox(
-                height: 50,
-                width: 50,
-                child: Switch(
-                  onChanged: (val) {
-                    themeNotifier.toggleTheme();
-                  },
-                  value: themeNotifier.darkTheme,
-                ),
-              ),
+              builder: (_, provider, __) {
+                return SizedBox(
+                  height: 50,
+                  width: 75,
+                  child: DayNightSwitcher(
+                    // nightBackgroundColor: Colors.black54,
+                    // moonColor: Colors.black54,
+                    isDarkModeEnabled: provider.darkTheme,
+                    onStateChanged: (isDarkModeEnabled) {
+                      provider.toggleTheme();
+                      // setState(() {
+                      //   // this.isDarkModeEnabled = isDarkModeEnabled;
+                      // });
+                    },
+                  ),
+                );
+              },
             ),
             SizedBox(
               width: 20,
@@ -139,8 +156,8 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
                                   ? WindowsSmallExperienceScreen()
                                   : SizedBox.shrink()
                   : WindowsSmallDrawer(),
-              WindowsRightFooter(size: size),
-              WindowsLeftFooter(size: size)
+              // WindowsRightFooter(size: size),
+              // WindowsLeftFooter(size: size)
             ],
           )
           // : InvalidDisplayScreen(),

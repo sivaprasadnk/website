@@ -757,62 +757,56 @@ class WindowsRightFooter extends StatelessWidget {
   final double size;
   @override
   Widget build(BuildContext context) {
-    return Positioned.fill(
-      bottom: 0,
-      child: Align(
-        alignment: Alignment.bottomRight,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(
-              ' Made with ',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: size,
-                color: Colors.grey,
-              ),
-            ),
-            AvatarGlow(
-              glowColor: Colors.grey,
-              endRadius: 20.0,
-              duration: Duration(milliseconds: 2000),
-              repeat: true,
-              showTwoGlows: false,
-              repeatPauseDuration: Duration(milliseconds: 100),
-              child: Icon(
-                Icons.favorite,
-                color: Colors.red,
-              ),
-            ),
-            // CircleAvatar(
-            //   child: Icon(
-            //     Icons.favorite,
-            //     color: Colors.red,
-            //   ),
-            // ),
-            Text(
-              ' in ',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: size,
-                color: Colors.grey,
-              ),
-            ),
-            FlutterLogo(
-              size: size,
-              style: FlutterLogoStyle.markOnly,
-            ),
-            Text(
-              ' Flutter  ',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: size,
-                color: Colors.grey,
-              ),
-            ),
-          ],
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Text(
+          ' Made with ',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: size,
+            color: Colors.grey,
+          ),
         ),
-      ),
+        AvatarGlow(
+          glowColor: Colors.grey,
+          endRadius: 20.0,
+          duration: Duration(milliseconds: 2000),
+          repeat: true,
+          showTwoGlows: false,
+          repeatPauseDuration: Duration(milliseconds: 100),
+          child: Icon(
+            Icons.favorite,
+            color: Colors.red,
+          ),
+        ),
+        // CircleAvatar(
+        //   child: Icon(
+        //     Icons.favorite,
+        //     color: Colors.red,
+        //   ),
+        // ),
+        Text(
+          ' in ',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: size,
+            color: Colors.grey,
+          ),
+        ),
+        FlutterLogo(
+          size: size,
+          style: FlutterLogoStyle.markOnly,
+        ),
+        Text(
+          ' Flutter  ',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: size,
+            color: Colors.grey,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -892,20 +886,13 @@ class WindowsLeftFooter extends StatelessWidget {
   final double size;
   @override
   Widget build(BuildContext context) {
-    return Positioned.fill(
-      bottom: 12,
-      left: 10,
-      child: Align(
-        alignment: Alignment.bottomLeft,
-        child: Text(
-          'Copyright © 2022 Sivaprasad NK .',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: size,
-            fontFamily: 'Roboto',
-            color: Colors.grey,
-          ),
-        ),
+    return Text(
+      'Copyright © 2022 Sivaprasad NK .',
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: size,
+        fontFamily: 'Roboto',
+        color: Colors.grey,
       ),
     );
   }
@@ -944,7 +931,7 @@ class SocialMedia extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(width: !isLarge ? screenWidth * 0.23 : screenWidth * 0.00),
+            SizedBox(width: !isLarge ? screenWidth * 0.15 : screenWidth * 0.00),
             GestureDetector(
               child: Container(
                 child: FaIcon(

@@ -27,12 +27,17 @@ class MinSize extends StatelessWidget {
             minWidth != null && constraints.maxWidth <= minWidth!;
         final contentWidth =
             shouldScrollHorizontal ? minWidth : constraints.maxWidth;
+        debugPrint('constraints.maxHeight => ${constraints.maxHeight}');
+        debugPrint('shouldScrollVertical => $shouldScrollVertical');
+        debugPrint('contentHeight => $contentHeight');
+        debugPrint('shouldScrollHorizontal => $shouldScrollHorizontal');
+        debugPrint('contentWidth => $contentWidth');
         return Theme(
           data: Theme.of(context).copyWith(
             highlightColor: Colors.white, //Does not work
           ),
           child: Scrollbar(
-            isAlwaysShown: false,
+            isAlwaysShown: shouldScrollVertical,
             child: SingleChildScrollView(
               physics: shouldScrollVertical
                   ? const AlwaysScrollableScrollPhysics()
