@@ -15,14 +15,14 @@ class HiNameContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       opacity: showName ? 1 : 0,
       child: Container(
         margin: EdgeInsets.only(
-          left: screenWidth * 0.12,
+          left: leftPadding,
         ),
         width: screenWidth * 0.6,
-        child: HiText(),
+        child: const HiText(),
       ),
     );
   }

@@ -15,7 +15,7 @@ class DashImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       opacity: showLottie ? 1 : 0,
       child: Container(
         margin: EdgeInsets.only(left: leftPadding),

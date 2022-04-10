@@ -25,7 +25,7 @@ class _WindowsLargeExperienceScreenState
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 1)).then((value) {
+    Future.delayed(const Duration(seconds: 1)).then((value) {
       setState(() {
         showLottie = true;
       });
@@ -36,9 +36,9 @@ class _WindowsLargeExperienceScreenState
   Widget build(BuildContext context) {
     super.build(context);
 
-    var screenSize = MediaQuery.of(context).size;
-    var screenWidth = screenSize.width;
-    var screenHeight = screenSize.height;
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
     return Stack(
       children: [
         Container(
@@ -62,7 +62,7 @@ class _WindowsLargeExperienceScreenState
                         ' Java, Postgres Programmer',
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -107,7 +107,7 @@ class _WindowsLargeExperienceScreenState
                         'Flutter Developer',
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -128,14 +128,14 @@ class _WindowsLargeExperienceScreenState
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           CircleAvatar(
-                              radius: 5,
-                              backgroundColor: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .backgroundColor
+                            radius: 5,
+                            backgroundColor: Theme.of(context)
+                                .textTheme
+                                .bodyText1!
+                                .backgroundColor,
 
-                              // backgroundColor: Colors.white,
-                              ),
+                            // backgroundColor: Colors.white,
+                          ),
                           Text(
                             '      12/2020 - Present',
                             style: Theme.of(context).textTheme.bodyText1,
@@ -155,7 +155,7 @@ class _WindowsLargeExperienceScreenState
           child: Align(
             alignment: Alignment.centerLeft,
             child: AnimatedOpacity(
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
               opacity: showLottie ? 1 : 0,
               child: Image.asset(
                 'assets/images/dash/dash2.png',

@@ -12,13 +12,13 @@ class MacOsProjectScreen extends StatefulWidget {
 class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var screenWidth = screenSize.width;
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 100,
           ),
           Padding(
@@ -26,9 +26,8 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
             child: screenWidth > 500
                 ? BorderedText(
                     strokeWidth: 4.0,
-                    strokeCap: StrokeCap.round,
                     strokeColor: Colors.teal,
-                    child: Text(
+                    child: const Text(
                       'My Projects',
                       style: TextStyle(
                         fontFamily: 'PatuaOne',
@@ -37,7 +36,7 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
                       ),
                     ),
                   )
-                : Text(
+                : const Text(
                     'My Projects',
                     style: TextStyle(
                       fontFamily: 'PatuaOne',
@@ -46,7 +45,7 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
                     ),
                   ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           SizedBox(
@@ -57,7 +56,7 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
@@ -68,7 +67,8 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
                         child: GestureDetector(
                           onTap: () {
                             launch(
-                                'https://play.google.com/store/apps/details?id=com.sptpra.spquotes');
+                              'https://play.google.com/store/apps/details?id=com.sptpra.spquotes',
+                            );
                           },
                           child: Container(
                             height: 150,
@@ -77,22 +77,22 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.teal,
                             ),
-                            child: Align(
-                              alignment: Alignment.center,
+                            child: const Align(
                               child: Text(
                                 'SP \nQuotes',
                                 style: TextStyle(
-                                    fontSize: 40,
-                                    fontFamily: 'Gugi',
-                                    color: Colors.white),
+                                  fontSize: 40,
+                                  fontFamily: 'Gugi',
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 50.0, top: 8),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 50.0, top: 8),
                       child: Text(
                         'A simple quotes listing app',
                         style: TextStyle(
@@ -105,9 +105,8 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
                   ],
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
@@ -117,7 +116,8 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
                         child: GestureDetector(
                           onTap: () {
                             launch(
-                                'https://play.google.com/store/apps/details?id=com.sptpra.spquiz');
+                              'https://play.google.com/store/apps/details?id=com.sptpra.spquiz',
+                            );
                           },
                           child: Container(
                             height: 150,
@@ -126,22 +126,22 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.teal,
                             ),
-                            child: Align(
-                              alignment: Alignment.center,
+                            child: const Align(
                               child: Text(
                                 'SP \nQuiz',
                                 style: TextStyle(
-                                    fontSize: 50,
-                                    fontFamily: 'Gugi',
-                                    color: Colors.white),
+                                  fontSize: 50,
+                                  fontFamily: 'Gugi',
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 50.0, top: 8),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 50.0, top: 8),
                       child: Text(
                         'A simple Quiz app',
                         style: TextStyle(
@@ -153,7 +153,7 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 )
               ],

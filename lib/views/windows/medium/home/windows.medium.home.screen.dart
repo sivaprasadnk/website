@@ -25,18 +25,18 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 500)).then((value) {
+    Future.delayed(const Duration(milliseconds: 500)).then((value) {
       setState(() {
         showLottie = true;
       });
     }).then((value) {
-      Future.delayed(Duration(milliseconds: 500)).then((value) {
+      Future.delayed(const Duration(milliseconds: 500)).then((value) {
         setState(() {
           showName = true;
         });
       });
     }).then((value) {
-      Future.delayed(Duration(milliseconds: 1500)).then((value) {
+      Future.delayed(const Duration(milliseconds: 1500)).then((value) {
         setState(() {
           showProPic = true;
         });
@@ -46,9 +46,9 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var screenWidth = screenSize.width;
-    var screenHeight = screenSize.height;
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
     // var size = screenWidth / 15;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,20 +62,39 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
         ),
         // DashImageMedium(showLottie: showLottie, screenWidth: screenWidth),
         HiNameContainer(
-            showName: showName,
-            leftPadding: screenWidth * 0.15,
-            screenWidth: screenWidth),
-        SizedBox(height: 15),
-        FlutterDeveloperContainer(showName: showName, screenWidth: screenWidth),
-        SizedBox(height: screenHeight * 0.013),
-        AnimatedOpacity(
-          duration: Duration(seconds: 2),
-          opacity: showProPic ? 1 : 0,
-          child: Padding(
-            padding: EdgeInsets.only(left: screenWidth * 0.2),
-            child: ProPicWithBlobLottie(),
-          ),
+          showName: showName,
+          leftPadding: screenWidth * 0.15,
+          screenWidth: screenWidth,
         ),
+        const SizedBox(height: 13),
+        FlutterDeveloperContainer(
+          showName: showName,
+          leftPadding: screenWidth * 0.15,
+          screenWidth: screenWidth,
+        ),
+        SizedBox(height: screenHeight * 0.027),
+        Row(
+          children: [
+            SizedBox(width: screenWidth * 0.2),
+            AnimatedOpacity(
+              duration: const Duration(milliseconds: 600),
+              opacity: showProPic ? 1 : 0,
+              child: ProPicMediumWithBlob(
+                height: screenHeight * 0.37,
+                bottomPadding: screenHeight * .01,
+                leftPadding: screenWidth * 0.015,
+              ),
+            ),
+          ],
+        ),
+        // AnimatedOpacity(
+        //   duration: const Duration(seconds: 2),
+        //   opacity: showProPic ? 1 : 0,
+        //   child: Padding(
+        //     padding: EdgeInsets.only(left: screenWidth * 0.2),
+        //     child: const ProPicWithBlobLottie(),
+        //   ),
+        // ),
       ],
     );
   }

@@ -10,12 +10,12 @@ class RouteProvider extends ChangeNotifier {
 
   bool get menuSelected => menuSelectedCheck;
 
-  setScreen({required String name}) {
+  void setScreen({required String name}) {
     screenName = name;
     notifyListeners();
   }
 
-  setMenuSelected({required bool check}) {
+  void setMenuSelected({required bool check}) {
     menuSelectedCheck = check;
     notifyListeners();
   }

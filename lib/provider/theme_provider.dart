@@ -4,8 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 ThemeData light = ThemeData(
   brightness: Brightness.light,
   primarySwatch: Colors.indigo,
-  splashColor: Color.fromRGBO(0, 34, 120, 1),
-  textTheme: TextTheme(
+  splashColor: const Color.fromRGBO(0, 34, 120, 1),
+  textTheme: const TextTheme(
     caption: TextStyle(
       fontFamily: 'PlayfairDisplay',
       fontWeight: FontWeight.bold,
@@ -63,23 +63,23 @@ ThemeData light = ThemeData(
       fontWeight: FontWeight.bold,
     ),
   ),
-  scrollbarTheme: ScrollbarThemeData().copyWith(
+  scrollbarTheme: const ScrollbarThemeData().copyWith(
     isAlwaysShown: false,
     thumbColor: MaterialStateProperty.all(Colors.cyan),
   ),
-  buttonTheme: ButtonThemeData(
+  buttonTheme: const ButtonThemeData(
     buttonColor: Colors.indigo,
     textTheme: ButtonTextTheme.primary,
   ),
-  scaffoldBackgroundColor: Color.fromRGBO(239, 239, 239, 1),
+  scaffoldBackgroundColor: const Color.fromRGBO(239, 239, 239, 1),
   // scaffoldBackgroundColor: Color.fromRGBO(202, 235, 242, 1)
   // scaffoldBackgroundColor: Color(0xfff1f1f1),
 );
 
 ThemeData dark = ThemeData(
-  scaffoldBackgroundColor: Color.fromRGBO(0, 34, 51, 1),
+  scaffoldBackgroundColor: const Color.fromRGBO(0, 34, 51, 1),
   splashColor: Colors.white,
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     subtitle1: TextStyle(
       // fontFamily: 'PatuaOne',
       color: Colors.white,
@@ -124,7 +124,7 @@ ThemeData dark = ThemeData(
     bodyText2: TextStyle(
       fontWeight: FontWeight.bold,
       fontFamily: 'PlayfairDisplay',
-      fontSize: 13,
+      fontSize: 15,
       color: Colors.white,
     ),
     subtitle2: TextStyle(
@@ -134,11 +134,11 @@ ThemeData dark = ThemeData(
     ),
   ),
   primarySwatch: Colors.cyan,
-  scrollbarTheme: ScrollbarThemeData().copyWith(
+  scrollbarTheme: const ScrollbarThemeData().copyWith(
     isAlwaysShown: false,
     thumbColor: MaterialStateProperty.all(Colors.cyan),
   ),
-  buttonTheme: ButtonThemeData(
+  buttonTheme: const ButtonThemeData(
     buttonColor: Colors.red,
     textTheme: ButtonTextTheme.primary,
   ),
@@ -156,19 +156,19 @@ class ThemeNotifier extends ChangeNotifier {
     loadFromPrefs();
   }
 
-  toggleTheme() {
+  void toggleTheme() {
     _darkTheme = !_darkTheme;
     saveToPrefs();
     notifyListeners();
   }
 
-  loadFromPrefs() async {
+  Future<void> loadFromPrefs() async {
     prefs = await SharedPreferences.getInstance();
     _darkTheme = prefs!.getBool(key) ?? true;
     notifyListeners();
   }
 
-  saveToPrefs() async {
+  Future<void> saveToPrefs() async {
     prefs = await SharedPreferences.getInstance();
     prefs!.setBool(key, darkTheme);
   }

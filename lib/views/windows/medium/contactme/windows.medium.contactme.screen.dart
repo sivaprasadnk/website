@@ -26,7 +26,7 @@ class _WindowsMediumContactMeScreenState
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(milliseconds: 500)).then((value) {
+    Future.delayed(const Duration(milliseconds: 500)).then((value) {
       setState(() {
         showIcons = true;
       });
@@ -35,12 +35,12 @@ class _WindowsMediumContactMeScreenState
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var screenHeight = screenSize.height;
-    var screenWidth = screenSize.width;
+    final screenSize = MediaQuery.of(context).size;
+    final screenHeight = screenSize.height;
+    final screenWidth = screenSize.width;
     return Stack(
       children: [
-        Container(
+        SizedBox(
           width: screenWidth * 0.78,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +62,7 @@ class _WindowsMediumContactMeScreenState
                         Icons.location_on,
                         color: Theme.of(context).splashColor,
                       ),
-                      SizedBox(width: 20),
+                      const SizedBox(width: 20),
                       Text(
                         addressText,
                         style: Theme.of(context).textTheme.bodyText1,
@@ -82,7 +82,7 @@ class _WindowsMediumContactMeScreenState
                       Icons.call,
                       color: Theme.of(context).splashColor,
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     Text(
                       mobileNumberText,
                       style: Theme.of(context).textTheme.bodyText1,
@@ -101,7 +101,7 @@ class _WindowsMediumContactMeScreenState
                       Icons.email,
                       color: Theme.of(context).splashColor,
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     Text(
                       emailText,
                       style: Theme.of(context).textTheme.bodyText1,
@@ -134,7 +134,7 @@ class _WindowsMediumContactMeScreenState
           child: Align(
             alignment: Alignment.bottomRight,
             child: AnimatedOpacity(
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
               opacity: showIcons ? 1 : 0,
               child: Container(
                 // color: Colors.amber,

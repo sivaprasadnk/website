@@ -25,13 +25,13 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
             ),
           ),
         ),
-        AndroidDashImage(dashImage: 'dash2'),
+        const AndroidDashImage(dashImage: 'dash2'),
         Padding(
           padding: const EdgeInsets.only(right: 10, top: 20),
           child: Align(
             alignment: Alignment.topRight,
             child: IconButton(
-              icon: Icon(Icons.menu, color: Colors.white),
+              icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
                 Provider.of<RouteProvider>(context, listen: false)
                     .setMenuSelected(check: true);
@@ -39,18 +39,17 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
             ),
           ),
         ),
-        Container(
+        SizedBox(
           height: widget.screenHeight,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
                 height: widget.screenHeight * 0.15,
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 0, left: 30),
+              const Padding(
+                padding: EdgeInsets.only(left: 30),
                 child: Text(
                   'Experience',
                   style: TextStyle(
@@ -68,27 +67,37 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
               LiveList(
                 shrinkWrap: true,
                 padding: const EdgeInsets.only(
-                    left: 16, right: 16, bottom: 10, top: 0),
-                physics: NeverScrollableScrollPhysics(),
+                  left: 16,
+                  right: 16,
+                  bottom: 10,
+                ),
+                physics: const NeverScrollableScrollPhysics(),
                 showItemInterval: const Duration(milliseconds: 50),
-                showItemDuration: const Duration(milliseconds: 150),
                 itemCount: 6,
                 itemBuilder: animationItemBuilder((index) {
                   switch (index) {
                     case 0:
-                      return TitleText(title: '\Java , Postgres Programmer');
+                      return const TitleText(
+                        title: 'Java , Postgres Programmer',
+                      );
                     case 1:
-                      return DescriptionText(
-                          description: '\nBayasys Infotech Pvt Ltd.');
+                      return const DescriptionText(
+                        description: '\nBayasys Infotech Pvt Ltd.',
+                      );
                     case 2:
-                      return DescriptionText(description: '07/2019 - 09/2020');
+                      return const DescriptionText(
+                        description: '07/2019 - 09/2020',
+                      );
                     case 3:
-                      return TitleText(title: '\Senior Flutter Developer');
+                      return const TitleText(title: 'Senior Flutter Developer');
                     case 4:
-                      return DescriptionText(
-                          description: '\nIndbytes Technologies');
+                      return const DescriptionText(
+                        description: '\nIndbytes Technologies',
+                      );
                     case 5:
-                      return DescriptionText(description: '12/2020 - Present');
+                      return const DescriptionText(
+                        description: '12/2020 - Present',
+                      );
                   }
 
                   return Container();
@@ -124,7 +133,7 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
             ).animate(animation),
             child: SlideTransition(
               position: Tween<Offset>(
-                begin: Offset(0, -0.1),
+                begin: const Offset(0, -0.1),
                 end: Offset.zero,
               ).animate(animation),
               child: Padding(
@@ -140,7 +149,7 @@ class MyPainter extends CustomPainter {
   MyPainter({required this.ctx});
   @override
   void paint(Canvas canvas, Size size) {
-    double padding = 0;
+    const double padding = 0;
     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
     final Paint paint = Paint()
       // ..color = Color.fromRGBO(7, 17, 26, 1)

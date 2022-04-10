@@ -12,7 +12,7 @@ class WindowsSmallContactMeScreen extends StatefulWidget {
 
 class _WindowsSmallContactMeScreenState
     extends State<WindowsSmallContactMeScreen> {
-  var _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void setState(VoidCallback fn) {
@@ -26,7 +26,7 @@ class _WindowsSmallContactMeScreenState
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 1)).then((value) {
+    Future.delayed(const Duration(seconds: 1)).then((value) {
       setState(() {
         showLottie = true;
         showIcons = true;
@@ -36,9 +36,9 @@ class _WindowsSmallContactMeScreenState
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var screenHeight = screenSize.height;
-    var screenWidth = screenSize.width;
+    final screenSize = MediaQuery.of(context).size;
+    final screenHeight = screenSize.height;
+    final screenWidth = screenSize.width;
     return Form(
       key: _formKey,
       child: Container(
@@ -133,14 +133,16 @@ class _WindowsSmallContactMeScreenState
             //   ),
             // ),
             ContactDetailsItem(
-                screenWidth: screenWidth,
-                icon: Icons.location_on,
-                details: addressText),
+              screenWidth: screenWidth,
+              icon: Icons.location_on,
+              details: addressText,
+            ),
             SizedBox(height: screenHeight * 0.03),
             ContactDetailsItem(
-                screenWidth: screenWidth,
-                icon: Icons.call,
-                details: mobileNumberText),
+              screenWidth: screenWidth,
+              icon: Icons.call,
+              details: mobileNumberText,
+            ),
             SizedBox(height: screenHeight * 0.03),
             ContactDetailsItem(
               screenWidth: screenWidth,
@@ -153,10 +155,10 @@ class _WindowsSmallContactMeScreenState
               showIcons: showIcons,
               screenWidth: screenWidth,
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Flexible(
               child: AnimatedOpacity(
-                duration: Duration(seconds: 2),
+                duration: const Duration(seconds: 2),
                 opacity: showIcons ? 1 : 0,
                 child: Image.asset(
                   'assets/images/dash/dash4.png',
@@ -196,12 +198,12 @@ class ContactDetailsItem extends StatelessWidget {
             icon,
             color: Theme.of(context).splashColor,
           ),
-          SizedBox(width: 20),
+          const SizedBox(width: 20),
           Text(
             details,
             style: Theme.of(context).textTheme.bodyText1,
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );

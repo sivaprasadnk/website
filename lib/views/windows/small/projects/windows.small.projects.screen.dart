@@ -19,9 +19,9 @@ class _WindowsSmallProjectsScreenState
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var screenHeight = screenSize.height;
-    var screenWidth = screenSize.width;
+    final screenSize = MediaQuery.of(context).size;
+    final screenHeight = screenSize.height;
+    final screenWidth = screenSize.width;
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +34,7 @@ class _WindowsSmallProjectsScreenState
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(width: screenWidth * 0.1),
-                Container(
+                SizedBox(
                   height: screenHeight * 0.5,
                   width: screenWidth * 0.9,
                   child: PageView(
@@ -59,7 +59,7 @@ class _WindowsSmallProjectsScreenState
                 GestureDetector(
                   onTap: () {
                     controller.previousPage(
-                      duration: Duration(seconds: 1),
+                      duration: const Duration(seconds: 1),
                       curve: Curves.bounceOut,
                     );
                     setState(() {
@@ -76,7 +76,7 @@ class _WindowsSmallProjectsScreenState
                 GestureDetector(
                   onTap: () {
                     controller.nextPage(
-                      duration: Duration(seconds: 1),
+                      duration: const Duration(seconds: 1),
                       curve: Curves.bounceOut,
                     );
 
@@ -99,15 +99,15 @@ class _WindowsSmallProjectsScreenState
 
 class ProjectItem1 extends StatelessWidget {
   final double width;
-  ProjectItem1({required this.width});
+  const ProjectItem1({required this.width});
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          padding: EdgeInsets.only(top: 10),
-          child: Image(
+          padding: const EdgeInsets.only(top: 10),
+          child: const Image(
             width: 150,
             image: AssetImage(
               'assets/images/quotesApp/screen1.png',
@@ -119,22 +119,22 @@ class ProjectItem1 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Flexible(
+              const Flexible(
                 child: SizedBox(height: 50),
               ),
               Text(
                 'SP Quotes App',
                 style: Theme.of(context).textTheme.headline2,
               ),
-              SizedBox(height: 25),
-              Container(
+              const SizedBox(height: 25),
+              SizedBox(
                 width: width * 0.5,
                 child: Text(
                   quoteStr1 + quoteStr2 + quoteStr3 + quoteStr4,
                   style: Theme.of(context).textTheme.subtitle1,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Padding(
@@ -144,7 +144,7 @@ class ProjectItem1 extends StatelessWidget {
                       url: spQuotesLink,
                     ).showCursorOnHover,
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   // QrImage(
                   //   backgroundColor: Colors.white,
                   //   data: spQuotesLink,
@@ -163,15 +163,15 @@ class ProjectItem1 extends StatelessWidget {
 
 class ProjectItem2 extends StatelessWidget {
   final double width;
-  ProjectItem2({required this.width});
+  const ProjectItem2({required this.width});
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          padding: EdgeInsets.only(top: 10),
-          child: Image(
+          padding: const EdgeInsets.only(top: 10),
+          child: const Image(
             width: 150,
             image: AssetImage(
               'assets/images/quizApp/screen2.png',
@@ -183,22 +183,22 @@ class ProjectItem2 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Flexible(
+              const Flexible(
                 child: SizedBox(height: 50),
               ),
               Text(
                 'SP Quiz',
                 style: Theme.of(context).textTheme.headline2,
               ),
-              SizedBox(height: 25),
-              Container(
+              const SizedBox(height: 25),
+              SizedBox(
                 width: width * 0.5,
                 child: Text(
                   quizStr1 + quizStr2 + quizStr3 + quizStr4 + quizStr5,
                   style: Theme.of(context).textTheme.subtitle1,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Padding(
@@ -208,7 +208,7 @@ class ProjectItem2 extends StatelessWidget {
                       url: spQuizLink,
                     ).showCursorOnHover,
                   ),
-                  SizedBox(width: 40),
+                  const SizedBox(width: 40),
                   // QrImage(
                   //   backgroundColor: Colors.white,
                   //   data: spQuizLink,

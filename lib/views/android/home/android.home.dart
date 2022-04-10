@@ -19,13 +19,13 @@ class AndroidHome extends StatefulWidget {
 class _AndroidHomeScreenState extends State<AndroidHome> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    double size = 15;
+    final screenSize = MediaQuery.of(context).size;
+    const double size = 15;
 
-    var screenWidth = screenSize.width;
-    var screenHeight = screenSize.height;
-    var screen = Provider.of<RouteProvider>(context).screen.toString();
-    var menuSelectedCheck =
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
+    final screen = Provider.of<RouteProvider>(context).screen;
+    final menuSelectedCheck =
         Provider.of<RouteProvider>(context, listen: true).menuSelected;
     debugPrint('.. @@screen => $screen ');
     debugPrint('.. @@menuSelectedCheck =>$menuSelectedCheck');
@@ -33,7 +33,7 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
       onWillPop: () async => false,
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(0, 34, 51, 1),
-        body: Container(
+        body: SizedBox(
           width: screenWidth,
           child: Stack(
             children: [
@@ -52,30 +52,24 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
                     // ),
                   ),
                 ),
-              menuSelectedCheck
-                  ? AndroidMenuScreen()
-                  : screen == "Home"
-                      ? AndroidHomeScreen()
-                      : screen == "MyProjects"
-                          ? AndroidProjects(screenHeight: screenHeight)
-                          : screen == "Experience"
-                              ? AndroidExperienceScreen(
-                                  screenHeight: screenHeight)
-                              : AndroidContactMeScreen(
-                                  screenHeight: screenHeight),
-              if (menuSelectedCheck) AndroidRightFooter(size: size),
+              if (menuSelectedCheck)
+                const AndroidMenuScreen()
+              else
+                screen == "Home"
+                    ? const AndroidHomeScreen()
+                    : screen == "MyProjects"
+                        ? AndroidProjects(screenHeight: screenHeight)
+                        : screen == "Experience"
+                            ? AndroidExperienceScreen(
+                                screenHeight: screenHeight,
+                              )
+                            : AndroidContactMeScreen(
+                                screenHeight: screenHeight,
+                              ),
+              if (menuSelectedCheck) const AndroidRightFooter(size: size),
             ],
           ),
         ),
-        // body: menuSelectedCheck
-        //     ? AndroidMenuScreen()
-        //     : screen == "Home"
-        //         ? AndroidHomeScreen()
-        //         : screen == "MyProjects"
-        //             ? AndroidProjects(screenHeight: screenHeight)
-        //             : screen == "Experience"
-        //                 ? AndroidExperienceScreen(screenHeight: screenHeight)
-        //                 : AndroidContactMeScreen(screenHeight: screenHeight),
       ),
     );
   }

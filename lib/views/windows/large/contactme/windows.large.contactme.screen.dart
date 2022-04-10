@@ -28,7 +28,7 @@ class _WindowsLargeContactMeScreenState
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 1)).then((value) {
+    Future.delayed(const Duration(seconds: 1)).then((value) {
       setState(() {
         showLottie = true;
       });
@@ -39,9 +39,9 @@ class _WindowsLargeContactMeScreenState
   Widget build(BuildContext context) {
     super.build(context);
 
-    var screenSize = MediaQuery.of(context).size;
-    var screenWidth = screenSize.width;
-    var screenHeight = screenSize.height;
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
     return Stack(
       children: [
         Container(
@@ -69,7 +69,7 @@ class _WindowsLargeContactMeScreenState
                               Icons.location_on,
                               color: Theme.of(context).splashColor,
                             ),
-                            SizedBox(width: 20),
+                            const SizedBox(width: 20),
                             Text(
                               addressText,
                               style: Theme.of(context).textTheme.bodyText1,
@@ -88,7 +88,7 @@ class _WindowsLargeContactMeScreenState
                             Icons.call,
                             color: Theme.of(context).splashColor,
                           ),
-                          SizedBox(width: 20),
+                          const SizedBox(width: 20),
                           Text(
                             mobileNumberText,
                             style: Theme.of(context).textTheme.bodyText1,
@@ -106,7 +106,7 @@ class _WindowsLargeContactMeScreenState
                             Icons.email,
                             color: Theme.of(context).splashColor,
                           ),
-                          SizedBox(width: 20),
+                          const SizedBox(width: 20),
                           Text(
                             emailText,
                             style: Theme.of(context).textTheme.bodyText1,
@@ -137,7 +137,7 @@ class _WindowsLargeContactMeScreenState
           child: Align(
             alignment: Alignment.centerLeft,
             child: AnimatedOpacity(
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
               opacity: showLottie ? 1 : 0,
               child: Image.asset(
                 'assets/images/dash/dash4.png',

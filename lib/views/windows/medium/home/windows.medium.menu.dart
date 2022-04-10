@@ -14,55 +14,53 @@ class _WindowsMediumMenuState extends State<WindowsMediumMenu> {
   bool isHovering = false;
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.of(context).size;
 
-    var screenWidth = screenSize.width;
-    return Container(
-      child: Padding(
-        padding: EdgeInsets.only(left: screenWidth * 0.01),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Spacer(),
-            SizedBox(
-              height: screenSize.height * 0.2,
-            ),
-            GestureDetector(
-              onTap: () {
-                Provider.of<RouteProvider>(context, listen: false)
-                    .setScreen(name: 'Home');
-              },
-              child: HomeMenu(),
-            ),
-            SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                Provider.of<RouteProvider>(context, listen: false)
-                    .setScreen(name: 'Experience');
-              },
-              child: ExperienceMenu(),
-            ),
-            SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                Provider.of<RouteProvider>(context, listen: false)
-                    .setScreen(name: 'MyProjects');
-              },
-              child: MyProjectsMenu(),
-            ),
-            SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                Provider.of<RouteProvider>(context, listen: false)
-                    .setScreen(name: 'ContactMe');
-              },
-              child: ContactmeMenu(),
-            ),
-            SizedBox(height: 20),
-            // Spacer(),
-          ],
-        ),
+    final screenWidth = screenSize.width;
+    return Padding(
+      padding: EdgeInsets.only(left: screenWidth * 0.01),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Spacer(),
+          SizedBox(
+            height: screenSize.height * 0.15,
+          ),
+          GestureDetector(
+            onTap: () {
+              Provider.of<RouteProvider>(context, listen: false)
+                  .setScreen(name: 'Home');
+            },
+            child: HomeMenu(),
+          ),
+          const SizedBox(height: 20),
+          GestureDetector(
+            onTap: () {
+              Provider.of<RouteProvider>(context, listen: false)
+                  .setScreen(name: 'Experience');
+            },
+            child: ExperienceMenu(),
+          ),
+          const SizedBox(height: 20),
+          GestureDetector(
+            onTap: () {
+              Provider.of<RouteProvider>(context, listen: false)
+                  .setScreen(name: 'MyProjects');
+            },
+            child: MyProjectsMenu(),
+          ),
+          const SizedBox(height: 20),
+          GestureDetector(
+            onTap: () {
+              Provider.of<RouteProvider>(context, listen: false)
+                  .setScreen(name: 'ContactMe');
+            },
+            child: ContactmeMenu(),
+          ),
+          const SizedBox(height: 20),
+          // Spacer(),
+        ],
       ),
     );
   }
@@ -71,7 +69,7 @@ class _WindowsMediumMenuState extends State<WindowsMediumMenu> {
 class HomeMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var screen = Provider.of<RouteProvider>(context).screen.toString();
+    final screen = Provider.of<RouteProvider>(context).screen;
 
     return HoverText(
       title: 'Home',
@@ -83,7 +81,7 @@ class HomeMenu extends StatelessWidget {
 class ContactmeMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var screen = Provider.of<RouteProvider>(context).screen.toString();
+    final screen = Provider.of<RouteProvider>(context).screen;
 
     return HoverText(
       title: 'Contact Me',
@@ -95,7 +93,7 @@ class ContactmeMenu extends StatelessWidget {
 class ExperienceMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var screen = Provider.of<RouteProvider>(context).screen.toString();
+    final screen = Provider.of<RouteProvider>(context).screen;
 
     return HoverText(
       title: 'Experience',
@@ -107,7 +105,7 @@ class ExperienceMenu extends StatelessWidget {
 class MyProjectsMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var screen = Provider.of<RouteProvider>(context).screen.toString();
+    final screen = Provider.of<RouteProvider>(context).screen;
 
     return HoverText(
       title: 'Projects',
@@ -119,7 +117,7 @@ class MyProjectsMenu extends StatelessWidget {
 class HoverText extends StatefulWidget {
   final String title;
   final bool isSelected;
-  HoverText({
+  const HoverText({
     required this.title,
     required this.isSelected,
   });
@@ -140,8 +138,8 @@ class _HoverTextState extends State<HoverText> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var screenWidth = screenSize.width;
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
 
     return MouseRegion(
       onEnter: (_) {
@@ -155,21 +153,21 @@ class _HoverTextState extends State<HoverText> {
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
-        width: screenWidth * 0.2,
-        height: 60,
+        duration: const Duration(milliseconds: 200),
+        width: screenWidth * 0.15,
+        height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
           border: Border.all(
             width: 2,
             color: widget.isSelected
-                ? Color.fromRGBO(249, 139, 125, 1)
+                ? const Color.fromRGBO(249, 139, 125, 1)
                 : Colors.transparent,
           ),
         ),
-        child: FittedBox(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 1, vertical: 7),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 7),
+          child: Center(
             child: Text(
               widget.title,
               style: Theme.of(context).textTheme.bodyText2,

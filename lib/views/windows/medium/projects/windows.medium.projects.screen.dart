@@ -28,7 +28,7 @@ class _WindowsMediumProjectsScreenState
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 1)).then((value) {
+    Future.delayed(const Duration(seconds: 1)).then((value) {
       setState(() {
         showLottie = true;
       });
@@ -37,9 +37,9 @@ class _WindowsMediumProjectsScreenState
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var screenHeight = screenSize.height;
-    var screenWidth = screenSize.width;
+    final screenSize = MediaQuery.of(context).size;
+    final screenHeight = screenSize.height;
+    final screenWidth = screenSize.width;
     return Stack(
       children: [
         Container(
@@ -55,7 +55,7 @@ class _WindowsMediumProjectsScreenState
                     children: [
                       Stack(
                         children: [
-                          Container(
+                          SizedBox(
                             // color: Colors.black,
                             height: screenHeight * 0.5,
                             width: screenWidth * 0.7,
@@ -77,7 +77,7 @@ class _WindowsMediumProjectsScreenState
                                 child: GestureDetector(
                                   onTap: () {
                                     controller.previousPage(
-                                      duration: Duration(seconds: 1),
+                                      duration: const Duration(seconds: 1),
                                       curve: Curves.bounceOut,
                                     );
                                     setState(() {
@@ -99,7 +99,7 @@ class _WindowsMediumProjectsScreenState
                                 child: GestureDetector(
                                   onTap: () {
                                     controller.nextPage(
-                                      duration: Duration(seconds: 1),
+                                      duration: const Duration(seconds: 1),
                                       curve: Curves.bounceOut,
                                     );
                                     setState(() {
@@ -175,7 +175,7 @@ class _WindowsMediumProjectsScreenState
           child: Align(
             alignment: Alignment.bottomRight,
             child: AnimatedOpacity(
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
               opacity: showLottie ? 1 : 0,
               child: Container(
                 // color: Colors.amber,
@@ -198,7 +198,7 @@ class ProjectItem extends StatelessWidget {
   final String assetPath;
   final String description;
   final double width;
-  ProjectItem({
+  const ProjectItem({
     required this.link,
     required this.title,
     required this.assetPath,
@@ -211,7 +211,7 @@ class ProjectItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          padding: EdgeInsets.only(top: 10),
+          padding: const EdgeInsets.only(top: 10),
           child: Image(
             width: 150,
             image: AssetImage(
@@ -224,14 +224,14 @@ class ProjectItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Text(
                 title,
                 style: Theme.of(context).textTheme.headline2,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Flexible(
-                child: Container(
+                child: SizedBox(
                   // color: Colors.amber,
                   width: width * 0.32,
                   child: Text(
@@ -240,7 +240,7 @@ class ProjectItem extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Padding(
@@ -250,7 +250,7 @@ class ProjectItem extends StatelessWidget {
                       url: link,
                     ).showCursorOnHover,
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   // QrImage(
                   //   backgroundColor: Colors.white,
                   //   data: spQuotesLink,
@@ -269,7 +269,7 @@ class ProjectItem extends StatelessWidget {
 
 class SpQuizProjectItem extends StatelessWidget {
   final double width;
-  SpQuizProjectItem({required this.width});
+  const SpQuizProjectItem({required this.width});
   @override
   Widget build(BuildContext context) {
     return ProjectItem(
@@ -284,7 +284,7 @@ class SpQuizProjectItem extends StatelessWidget {
 
 class SpQuotesProjectItem extends StatelessWidget {
   final double width;
-  SpQuotesProjectItem({required this.width});
+  const SpQuotesProjectItem({required this.width});
   @override
   Widget build(BuildContext context) {
     return ProjectItem(

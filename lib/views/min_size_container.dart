@@ -37,7 +37,8 @@ class MinSize extends StatelessWidget {
             highlightColor: Colors.white, //Does not work
           ),
           child: Scrollbar(
-            isAlwaysShown: shouldScrollVertical,
+            isAlwaysShown: false,
+            // isAlwaysShown: shouldScrollVertical,
             child: SingleChildScrollView(
               physics: shouldScrollVertical
                   ? const AlwaysScrollableScrollPhysics()

@@ -13,34 +13,26 @@ import 'package:spnk/views/windows/medium/home/windows.medium.home.dart';
 import 'package:spnk/views/windows/small/home/windows.small.home.dart';
 
 void main() {
-  // lockOrientation();
   runApp(MyApp());
-}
-
-lockOrientation() async {
-  // if (defaultTargetPlatform == TargetPlatform.android ||
-  //     defaultTargetPlatform == TargetPlatform.iOS) {
-  //   await SystemChrome.setPreferredOrientations(
-  //       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  // }
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    precacheImage(AssetImage(proPicAssetPath), context);
+    precacheImage(const AssetImage(proPicAssetPath), context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<Quotes>(create: (_) => Quotes()),
         ChangeNotifierProvider<ThemeNotifier>(create: (_) => ThemeNotifier()),
         ChangeNotifierProvider<RouteProvider>(
-            create: (_) =>
-                RouteProvider(menuSelectedCheck: false, screenName: "Home")),
+          create: (_) =>
+              RouteProvider(menuSelectedCheck: false, screenName: "Home"),
+        ),
       ],
       child: Consumer<ThemeNotifier>(
         builder: (_, themeNotifier, __) {
           return MaterialApp(
-            scrollBehavior: MaterialScrollBehavior().copyWith(
+            scrollBehavior: const MaterialScrollBehavior().copyWith(
               dragDevices: {
                 PointerDeviceKind.mouse,
                 PointerDeviceKind.touch,
@@ -52,7 +44,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: themeNotifier.darkTheme ? dark : light,
             routes: {
-              '/': (context) => SplashScreen(),
+              '/': (context) => const SplashScreen(),
               // IosHomeScreen.routeName: (context) => IosHomeScreen(),
             },
           );
@@ -67,25 +59,25 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var screenWidth = screenSize.width;
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
     // var screenHeight = screenSize.height;
     return defaultTargetPlatform == TargetPlatform.android ||
             defaultTargetPlatform == TargetPlatform.iOS
-        ? AndroidHome()
+        ? const AndroidHome()
         : screenWidth > 1121
             ? MinSize(
-                child: WindowsHomeLarge(),
                 minHeight: 734,
+                child: WindowsHomeLarge(),
               )
             : screenWidth > 695
                 ? MinSize(
-                    child: WindowsMediumHome(),
                     minHeight: 734,
+                    child: WindowsMediumHome(),
                   )
                 : MinSize(
-                    child: WindowsSmallHome(),
                     minHeight: 734,
+                    child: WindowsSmallHome(),
                   );
   }
 }

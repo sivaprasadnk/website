@@ -13,24 +13,29 @@ class Quotes extends ChangeNotifier {
   Quotes({this.author, this.content, this.id, this.length, this.tags});
 
   late Quotes _item = Quotes();
-  List<Quotes> _list = [];
+  final List<Quotes> _list = [];
 
   List<Quotes> get list => [..._list];
   Quotes get item => _item;
 
-  factory Quotes.fromRawJson(String str) => Quotes.fromJson(json.decode(str));
+  factory Quotes.fromRawJson(String str) =>
+      Quotes.fromJson(json.decode(str) as Map<String, dynamic>);
 
   factory Quotes.fromJson(Map<String, dynamic> json) => Quotes(
-        id: json["_id"],
-        tags: List<String>.from(json["tags"].map((x) => x)),
-        content: json["content"],
-        author: json["author"],
-        length: json["length"],
+        id: json["_id"].toString(),
+        // ignore: avoid_dynamic_calls
+        tags: List<String>.from(
+          // ignore: avoid_dynamic_calls
+          (json["tags"]).map((x) => x) as Iterable<dynamic>,
+        ),
+        content: json["content"].toString(),
+        author: json["author"].toString(),
+        length: json["length"] as int,
       );
   Future<void> getRandomQuote() async {
     const url = 'https://api.quotable.io/random';
     try {
-      print(':: url => $url');
+      debugPrint(':: url => $url');
       // var resp = await http.get(
       //   Uri.parse(url),
       //   headers: {
@@ -42,7 +47,7 @@ class Quotes extends ChangeNotifier {
       //     "Access-Control-Allow-Methods": "POST, OPTIONS"
       //   },
       // );
-      var resp = await Dio().get(
+      final resp = await Dio().get(
         url,
         options: Options(
           headers: {
@@ -55,37 +60,41 @@ class Quotes extends ChangeNotifier {
           },
         ),
       );
-      print(':: resp => $resp');
-      final extractedData = json.decode(resp.data);
-      Quotes loadedDetails = Quotes.fromJson(extractedData);
-      print(extractedData.toString());
+      debugPrint(':: resp => $resp');
+      final extractedData = json.decode(resp.data.toString());
+      final Quotes loadedDetails =
+          Quotes.fromJson(extractedData as Map<String, dynamic>);
+      debugPrint(extractedData.toString());
 
-      print(':: loadedDetails => ${loadedDetails.content}');
+      if (kDebugMode) {
+        debugPrint(':: loadedDetails => ${loadedDetails.content}');
+      }
       _item = loadedDetails;
       notifyListeners();
     } catch (err) {
-      print(err.toString());
+      debugPrint(err.toString());
     }
   }
 
   Future<void> getQuotesOfTag(String tag) async {
-    var url = 'https://api.quotable.io/quotes?tags=$tag';
+    final url = 'https://api.quotable.io/quotes?tags=$tag';
     try {
-      print(':: url => $url');
+      debugPrint(':: url => $url');
       final resp = await http.get(Uri.parse(url));
-      print(':: resp => $resp');
+      debugPrint(':: resp => $resp');
       final extractedData = json.decode(resp.body);
-      Quotes loadedDetails = Quotes.fromJson(extractedData);
-      print(extractedData.toString());
+      final Quotes loadedDetails =
+          Quotes.fromJson(extractedData as Map<String, dynamic>);
+      debugPrint(extractedData.toString());
 
-      print(':: loadedDetails => ${loadedDetails.content}');
+      debugPrint(':: loadedDetails => ${loadedDetails.content}');
       // _list = loadedDetails;
       _item = loadedDetails;
       notifyListeners();
     } on Exception {
-      print(' exception');
+      debugPrint(' exception');
     } catch (err) {
-      print(err.toString());
+      debugPrint(err.toString());
     }
   }
 }

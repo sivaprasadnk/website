@@ -21,7 +21,7 @@ class _WindowsMediumExperienceScreenState
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 1)).then((value) {
+    Future.delayed(const Duration(seconds: 1)).then((value) {
       setState(() {
         showLottie = true;
       });
@@ -30,12 +30,12 @@ class _WindowsMediumExperienceScreenState
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var screenHeight = screenSize.height;
-    var screenWidth = screenSize.width;
+    final screenSize = MediaQuery.of(context).size;
+    final screenHeight = screenSize.height;
+    final screenWidth = screenSize.width;
     return Stack(
       children: [
-        Container(
+        SizedBox(
           width: screenWidth * 0.78,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +46,7 @@ class _WindowsMediumExperienceScreenState
               //   title: 'Experience',
               // ),
               FadeInRight(
-                child: Container(
+                child: SizedBox(
                   width: screenWidth * 0.7,
                   child: ListTile(
                     title: Padding(
@@ -58,9 +58,11 @@ class _WindowsMediumExperienceScreenState
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(' Java, Postgres Programmer',
-                              style: Theme.of(context).textTheme.bodyText1),
-                          SizedBox(height: 20),
+                          Text(
+                            ' Java, Postgres Programmer',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          const SizedBox(height: 20),
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -68,8 +70,10 @@ class _WindowsMediumExperienceScreenState
                                 radius: 5,
                                 backgroundColor: Theme.of(context).splashColor,
                               ),
-                              Text('      Bayasys Infotech Pvt Ltd.',
-                                  style: Theme.of(context).textTheme.bodyText1),
+                              Text(
+                                '      Bayasys Infotech Pvt Ltd.',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              ),
                             ],
                           ),
                           Row(
@@ -79,8 +83,10 @@ class _WindowsMediumExperienceScreenState
                                 radius: 5,
                                 backgroundColor: Theme.of(context).splashColor,
                               ),
-                              Text('      07/2019 - 09/2020',
-                                  style: Theme.of(context).textTheme.bodyText1),
+                              Text(
+                                '      07/2019 - 09/2020',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              ),
                             ],
                           ),
                         ],
@@ -102,9 +108,11 @@ class _WindowsMediumExperienceScreenState
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Flutter Developer',
-                              style: Theme.of(context).textTheme.bodyText1),
-                          SizedBox(height: 20),
+                          Text(
+                            'Flutter Developer',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          const SizedBox(height: 20),
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -112,8 +120,10 @@ class _WindowsMediumExperienceScreenState
                                 radius: 5,
                                 backgroundColor: Theme.of(context).splashColor,
                               ),
-                              Text('      Indbytes Technologies',
-                                  style: Theme.of(context).textTheme.bodyText1),
+                              Text(
+                                '      Indbytes Technologies',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              ),
                             ],
                           ),
                           Row(
@@ -123,8 +133,10 @@ class _WindowsMediumExperienceScreenState
                                 radius: 5,
                                 backgroundColor: Theme.of(context).splashColor,
                               ),
-                              Text('      12/2020 - Present',
-                                  style: Theme.of(context).textTheme.bodyText1),
+                              Text(
+                                '      12/2020 - Present',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              ),
                             ],
                           ),
                         ],
@@ -158,7 +170,7 @@ class _WindowsMediumExperienceScreenState
           child: Align(
             alignment: Alignment.bottomRight,
             child: AnimatedOpacity(
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
               opacity: showLottie ? 1 : 0,
               child: Container(
                 // color: Colors.amber,

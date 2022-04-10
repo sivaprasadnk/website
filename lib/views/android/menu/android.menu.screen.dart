@@ -32,7 +32,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
             ).animate(animation),
             child: SlideTransition(
               position: Tween<Offset>(
-                begin: Offset(0, -0.1),
+                begin: const Offset(0, -0.1),
                 end: Offset.zero,
               ).animate(animation),
               child: Padding(
@@ -47,7 +47,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 1)).then((value) {
+    Future.delayed(const Duration(seconds: 1)).then((value) {
       setState(() {
         showLottie = true;
       });
@@ -56,11 +56,11 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var screenHeight = screenSize.height;
-    var screenWidth = screenSize.width;
-    double menuFontSize = screenWidth * 0.07;
-    return Container(
+    final screenSize = MediaQuery.of(context).size;
+    final screenHeight = screenSize.height;
+    final screenWidth = screenSize.width;
+    final double menuFontSize = screenWidth * 0.07;
+    return SizedBox(
       height: screenHeight,
       child: Stack(
         children: [
@@ -70,7 +70,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
             children: [
               AnimatedOpacity(
                 opacity: showLottie ? 1 : 0,
-                duration: Duration(seconds: 2),
+                duration: const Duration(seconds: 2),
                 child: Container(
                   padding: EdgeInsets.only(left: screenWidth * .2, top: 30),
                   child: Image.asset(
@@ -90,7 +90,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
               //     ),
               //   ),
               // ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Container(
@@ -98,7 +98,6 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                   shrinkWrap: true,
                   padding: const EdgeInsets.all(16),
                   showItemInterval: const Duration(milliseconds: 50),
-                  showItemDuration: const Duration(milliseconds: 150),
                   itemCount: 4,
                   itemBuilder: animationItemBuilder((index) {
                     switch (index) {
@@ -122,10 +121,11 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                                 title: Text(
                                   'Home',
                                   style: TextStyle(
-                                      fontFamily: 'PlayfairDisplay',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: menuFontSize,
-                                      color: Colors.white),
+                                    fontFamily: 'PlayfairDisplay',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: menuFontSize,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
@@ -152,10 +152,11 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                                 title: Text(
                                   'Contact Me',
                                   style: TextStyle(
-                                      fontFamily: 'PlayfairDisplay',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: menuFontSize,
-                                      color: Colors.white),
+                                    fontFamily: 'PlayfairDisplay',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: menuFontSize,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
@@ -167,12 +168,14 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                             padding: const EdgeInsets.only(left: 20),
                             child: ListTile(
                               onTap: () {
-                                Provider.of<RouteProvider>(context,
-                                        listen: false)
-                                    .setMenuSelected(check: false);
-                                Provider.of<RouteProvider>(context,
-                                        listen: false)
-                                    .setScreen(name: 'Experience');
+                                Provider.of<RouteProvider>(
+                                  context,
+                                  listen: false,
+                                ).setMenuSelected(check: false);
+                                Provider.of<RouteProvider>(
+                                  context,
+                                  listen: false,
+                                ).setScreen(name: 'Experience');
                               },
                               leading: Icon(
                                 Icons.work,
@@ -192,18 +195,20 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                           ),
                         );
                       case 2:
-                        return Container(
+                        return SizedBox(
                           width: screenWidth * .1,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20),
                             child: ListTile(
                               onTap: () {
-                                Provider.of<RouteProvider>(context,
-                                        listen: false)
-                                    .setMenuSelected(check: false);
-                                Provider.of<RouteProvider>(context,
-                                        listen: false)
-                                    .setScreen(name: 'MyProjects');
+                                Provider.of<RouteProvider>(
+                                  context,
+                                  listen: false,
+                                ).setMenuSelected(check: false);
+                                Provider.of<RouteProvider>(
+                                  context,
+                                  listen: false,
+                                ).setScreen(name: 'MyProjects');
                               },
                               leading: Icon(
                                 Icons.apps,
@@ -213,10 +218,11 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                               title: Text(
                                 'My Projects',
                                 style: TextStyle(
-                                    fontFamily: 'PlayfairDisplay',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: menuFontSize,
-                                    color: Colors.white),
+                                  fontFamily: 'PlayfairDisplay',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: menuFontSize,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),

@@ -1,46 +1,46 @@
-final String fbLink = 'https://www.facebook.com/sivaprasadnk.official';
+const String fbLink = 'https://www.facebook.com/sivaprasadnk.official';
 
-final String instaLink = 'https://www.instagram.com/sivaprasad_nk/';
+const String instaLink = 'https://www.instagram.com/sivaprasad_nk/';
 
-final String whatsappWebLink =
+const String whatsappWebLink =
     'https://api.whatsapp.com/send/?phone=+918086028340';
 
-final String whatsappAndroidLink = "whatsapp://send?phone=+918086028340";
+const String whatsappAndroidLink = "whatsapp://send?phone=+918086028340";
 
-final String linkedInLink = 'https://www.linkedin.com/in/sivaprasadnkofficial/';
+const String linkedInLink = 'https://www.linkedin.com/in/sivaprasadnkofficial/';
 
-final String spQuotesLink =
+const String spQuotesLink =
     'https://play.google.com/store/apps/details?id=com.sptpra.spquotes';
 
-final String spQuizLink =
+const String spQuizLink =
     'https://play.google.com/store/apps/details?id=com.sptpra.spquiz';
 
-final String welcomeMobText = 'Welcome to \n sivaprasadnk.github.io';
-final String welcomeSiteText = 'Welcome to sivaprasadnk.github.io';
+const String welcomeMobText = 'Welcome to \n sivaprasadnk.github.io';
+const String welcomeSiteText = 'Welcome to sivaprasadnk.github.io';
 
-final String quote2 =
+const String quote2 =
     '" We are what we repeatedly do. \n Excellence, then, is not an act, but a habit "';
-final String author2 = 'Aristotle';
+const String author2 = 'Aristotle';
 
-final String quote1 =
+const String quote1 =
     ' "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful."';
 
-final String author1 = 'Albert Schweitzer';
+const String author1 = 'Albert Schweitzer';
 
-final String spQuizAppDescription =
+const String spQuizAppDescription =
     "A Simple quiz app \nwith cool animations and effects";
 
-final String spQuotesAppDescription = 'A Simple Quotes listing app';
+const String spQuotesAppDescription = 'A Simple Quotes listing app';
 
-final String proPicAssetPath = 'assets/images/propic3.png';
+const String proPicAssetPath = 'assets/images/propic3.png';
 
-final String blobLottieAssetPath = 'assets/lotties/blob.json';
-final String addressText =
+const String blobLottieAssetPath = 'assets/lotties/blob.json';
+const String addressText =
     '  Prasadam, Nadama, Tripunithura, \n  Ernakulam, Kerala, India';
-final String mobileNumberText = '   +91 8086028340';
-final String emailText = '  sivaprasadnk.official@gmail.com';
+const String mobileNumberText = '   +91 8086028340';
+const String emailText = '  sivaprasadnk.official@gmail.com';
 
-final String onlineWrkLottieAssetPath = 'assets/lotties/online-work.json';
+const String onlineWrkLottieAssetPath = 'assets/lotties/online-work.json';
 String quoteStr1 =
     'A simple quotes listing app made using Flutter & a public api (quotable api).';
 String quoteStr2 =

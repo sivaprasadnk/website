@@ -31,7 +31,7 @@ class _WindowsHomeSmallDrawerState extends State<WindowsSmallDrawer> {
             ).animate(animation),
             child: SlideTransition(
               position: Tween<Offset>(
-                begin: Offset(0, -0.1),
+                begin: const Offset(0, -0.1),
                 end: Offset.zero,
               ).animate(animation),
               child: Padding(
@@ -45,62 +45,61 @@ class _WindowsHomeSmallDrawerState extends State<WindowsSmallDrawer> {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          FadeInLeftBig(
-            child: Container(
-              padding: const EdgeInsets.only(top: 30),
-              child: Image.asset(
-                'assets/images/exp_icon.png',
-                height: 250,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FadeInLeftBig(
+              child: Container(
+                padding: const EdgeInsets.only(top: 30),
+                child: Image.asset(
+                  'assets/images/exp_icon.png',
+                  height: 250,
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 25),
-          SizedBox(
-            width: 320,
-            child: LiveList(
-              shrinkWrap: true,
-              separatorBuilder: (ctx, _) => SizedBox(height: 10),
-              padding: const EdgeInsets.all(20),
-              showItemInterval: const Duration(milliseconds: 200),
-              showItemDuration: const Duration(milliseconds: 150),
-              itemCount: 4,
-              itemBuilder: animationItemBuilder((index) {
-                switch (index) {
-                  case 0:
-                    return HomeListItem();
-                  case 3:
-                    return ContactMeListItem();
-                  case 1:
-                    return ExperienceListItem();
-                  case 2:
-                    return MyProjectsListItem();
-                }
-                return Container();
-              }),
+            const SizedBox(height: 25),
+            SizedBox(
+              width: 320,
+              child: LiveList(
+                shrinkWrap: true,
+                separatorBuilder: (ctx, _) => const SizedBox(height: 10),
+                padding: const EdgeInsets.all(20),
+                showItemInterval: const Duration(milliseconds: 200),
+                itemCount: 4,
+                itemBuilder: animationItemBuilder((index) {
+                  switch (index) {
+                    case 0:
+                      return HomeListItem();
+                    case 3:
+                      return ContactMeListItem();
+                    case 1:
+                      return ExperienceListItem();
+                    case 2:
+                      return MyProjectsListItem();
+                  }
+                  return Container();
+                }),
+              ),
             ),
-          ),
-          // FadeInLeftBig(
-          //   child: Container(
-          //     padding: const EdgeInsets.only(left: 0, top: 50),
-          //     child: Image.asset(
-          //       'assets/images/exp_icon.png',
-          //       height: 250,
-          //     ),
-          //     // child: Lottie.asset(
-          //     //   'assets/lotties/mobile-app-process.json',
-          //     //   height: 250,
-          //     // ),
-          //   ),
-          // ),
-          SizedBox(
-            height: 20,
-          )
-        ],
-      )),
+            // FadeInLeftBig(
+            //   child: Container(
+            //     padding: const EdgeInsets.only(left: 0, top: 50),
+            //     child: Image.asset(
+            //       'assets/images/exp_icon.png',
+            //       height: 250,
+            //     ),
+            //     // child: Lottie.asset(
+            //     //   'assets/lotties/mobile-app-process.json',
+            //     //   height: 250,
+            //     // ),
+            //   ),
+            // ),
+            const SizedBox(
+              height: 20,
+            )
+          ],
+        ),
+      ),
     );
   }
 }
@@ -173,7 +172,7 @@ class ListItem extends StatefulWidget {
   final String title;
   final VoidCallback callback;
   final IconData icon;
-  ListItem({
+  const ListItem({
     required this.title,
     required this.callback,
     required this.icon,
@@ -205,10 +204,10 @@ class _ListItemState extends State<ListItem> {
           });
         },
         child: Padding(
-          padding: EdgeInsets.only(left: 20),
+          padding: const EdgeInsets.only(left: 20),
           child: ListTile(
             dense: true,
-            hoverColor: Color.fromRGBO(249, 139, 125, 1),
+            hoverColor: const Color.fromRGBO(249, 139, 125, 1),
             // hoverColor: Colors.transparent,
             onTap: () {
               widget.callback.call();

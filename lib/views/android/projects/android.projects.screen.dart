@@ -33,7 +33,7 @@ class _AndroidProjectsState extends State<AndroidProjects> {
             ).animate(animation),
             child: SlideTransition(
               position: Tween<Offset>(
-                begin: Offset(0, -0.1),
+                begin: const Offset(0, -0.1),
                 end: Offset.zero,
               ).animate(animation),
               child: Padding(
@@ -45,7 +45,7 @@ class _AndroidProjectsState extends State<AndroidProjects> {
 
   @override
   Widget build(BuildContext context) {
-    var screenwidth = MediaQuery.of(context).size.width;
+    final screenwidth = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         Positioned.fill(
@@ -56,13 +56,13 @@ class _AndroidProjectsState extends State<AndroidProjects> {
             ),
           ),
         ),
-        AndroidDashImage(dashImage: 'dash3'),
+        const AndroidDashImage(dashImage: 'dash3'),
         Padding(
           padding: const EdgeInsets.only(right: 10, top: 20),
           child: Align(
             alignment: Alignment.topRight,
             child: IconButton(
-              icon: Icon(Icons.menu, color: Colors.white),
+              icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
                 Provider.of<RouteProvider>(context, listen: false)
                     .setMenuSelected(check: true);
@@ -70,7 +70,7 @@ class _AndroidProjectsState extends State<AndroidProjects> {
             ),
           ),
         ),
-        Container(
+        SizedBox(
           height: widget.screenHeight,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,8 +79,8 @@ class _AndroidProjectsState extends State<AndroidProjects> {
               SizedBox(
                 height: widget.screenHeight * 0.15,
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 0, left: 30),
+              const Padding(
+                padding: EdgeInsets.only(left: 30),
                 child: Text(
                   'My Projects',
                   style: TextStyle(
@@ -98,26 +98,26 @@ class _AndroidProjectsState extends State<AndroidProjects> {
                 child: LiveList(
                   shrinkWrap: true,
                   // physics: NeverScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(0),
+                  padding: EdgeInsets.zero,
                   showItemInterval: const Duration(milliseconds: 50),
-                  showItemDuration: const Duration(milliseconds: 150),
                   itemCount: 6,
                   itemBuilder: animationItemBuilder((index) {
                     switch (index) {
                       case 0:
-                        return TitleText(title: 'SP Quotes App');
+                        return const TitleText(title: 'SP Quotes App');
                       case 1:
-                        return DescriptionText(
-                            description: spQuotesAppDescription);
+                        return const DescriptionText(
+                          description: spQuotesAppDescription,
+                        );
                       case 2:
                         return GooglePlayButton(
                           url: spQuotesLink,
                           screenWidth: screenwidth,
                         );
                       case 3:
-                        return TitleText(title: 'SP Quiz App');
+                        return const TitleText(title: 'SP Quiz App');
                       case 4:
-                        return DescriptionText(
+                        return const DescriptionText(
                           description: spQuizAppDescription,
                         );
                       case 5:
@@ -126,7 +126,7 @@ class _AndroidProjectsState extends State<AndroidProjects> {
                           url: spQuizLink,
                         );
                     }
-                    return SizedBox.shrink();
+                    return const SizedBox.shrink();
                   }),
                 ),
               ),

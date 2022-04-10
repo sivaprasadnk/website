@@ -36,24 +36,25 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 1)).then((value) {
-      if (mounted)
+    Future.delayed(const Duration(seconds: 1)).then((value) {
+      if (mounted) {
         setState(() {
           showProPic = true;
         });
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    double size = 15;
+    const double size = 15;
 
-    var screenSize = MediaQuery.of(context).size;
-    var screenWidth = screenSize.width;
-    var screenHeight = screenSize.height;
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
 
-    var screen = Provider.of<RouteProvider>(context).screen.toString();
-    var menuSelectedCheck =
+    final screen = Provider.of<RouteProvider>(context).screen;
+    final menuSelectedCheck =
         Provider.of<RouteProvider>(context, listen: true).menuSelected;
     debugPrint('..@ screenWidth @ small : $screenWidth');
     debugPrint('..@ screenHeight @ small : $screenHeight');
@@ -62,16 +63,12 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // WindowsLeftFooter(size: size),
-            WindowsRightFooter(size: size)
-          ],
+          children: const [WindowsRightFooter(size: size)],
         ),
       ),
-      // backgroundColor: const Color.fromRGBO(0, 34, 51, 1),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -87,27 +84,27 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
               },
               child: nameText(context: context).showCursorOnHover,
             ),
-            Spacer(),
+            const Spacer(),
             Consumer<ThemeNotifier>(
               builder: (_, provider, __) {
                 return SizedBox(
                   height: 50,
                   width: 75,
-                  child: DayNightSwitcher(
-                    // nightBackgroundColor: Colors.black54,
-                    // moonColor: Colors.black54,
-                    isDarkModeEnabled: provider.darkTheme,
-                    onStateChanged: (isDarkModeEnabled) {
-                      provider.toggleTheme();
-                      // setState(() {
-                      //   // this.isDarkModeEnabled = isDarkModeEnabled;
-                      // });
-                    },
+                  child: GestureDetector(
+                    onDoubleTap: () {},
+                    child: DayNightSwitcher(
+                      // nightBackgroundColor: Colors.black54,
+                      // moonColor: Colors.black54,
+                      isDarkModeEnabled: provider.darkTheme,
+                      onStateChanged: (isDarkModeEnabled) {
+                        provider.toggleTheme();
+                      },
+                    ),
                   ),
                 );
               },
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             if (!menuSelectedCheck)
@@ -136,32 +133,33 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
                   color: Theme.of(context).splashColor,
                 ).showCursorOnHover,
               ),
-            SizedBox(width: 10)
+            const SizedBox(width: 10)
           ],
         ),
       ),
-      body: Container(
-          width: screenWidth,
-          // padding: EdgeInsets.only(left: screenWidth * 0.1),
-          child: Stack(
-            children: [
-              !menuSelectedCheck
-                  ? screen == "Home"
-                      ? WindowsSmallHomeScreen(showProPic: showProPic)
-                      : screen == "ContactMe"
-                          ? WindowsSmallContactMeScreen()
-                          : screen == "MyProjects"
-                              ? WindowsSmallProjectsScreen()
-                              : screen == "Experience"
-                                  ? WindowsSmallExperienceScreen()
-                                  : SizedBox.shrink()
-                  : WindowsSmallDrawer(),
-              // WindowsRightFooter(size: size),
-              // WindowsLeftFooter(size: size)
-            ],
-          )
-          // : InvalidDisplayScreen(),
-          ),
+      body: SizedBox(
+        width: screenWidth,
+        // padding: EdgeInsets.only(left: screenWidth * 0.1),
+        child: Stack(
+          children: [
+            if (!menuSelectedCheck)
+              screen == "Home"
+                  ? WindowsSmallHomeScreen(showProPic: showProPic)
+                  : screen == "ContactMe"
+                      ? WindowsSmallContactMeScreen()
+                      : screen == "MyProjects"
+                          ? WindowsSmallProjectsScreen()
+                          : screen == "Experience"
+                              ? WindowsSmallExperienceScreen()
+                              : const SizedBox.shrink()
+            else
+              WindowsSmallDrawer(),
+            // WindowsRightFooter(size: size),
+            // WindowsLeftFooter(size: size)
+          ],
+        ),
+        // : InvalidDisplayScreen(),
+      ),
     );
   }
 }

@@ -26,12 +26,12 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var screenWidth = screenSize.width;
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
 
     debugPrint('..@ screenWidth @ medium : $screenWidth');
-    var screen = Provider.of<RouteProvider>(context).screen.toString();
-    double size = 15;
+    final screen = Provider.of<RouteProvider>(context).screen;
+    const double size = 15;
 
     return Scaffold(
       bottomNavigationBar: Padding(
@@ -39,7 +39,7 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
             EdgeInsets.symmetric(horizontal: screenWidth * 0.05, vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: const [
             WindowsLeftFooter(size: size),
             WindowsRightFooter(size: size)
           ],
@@ -49,7 +49,8 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
       appBar: PreferredSize(
         preferredSize: Size(screenWidth, 100),
         child: Padding(
-          padding: EdgeInsets.all(15) + EdgeInsets.only(left: 50),
+          padding: const EdgeInsets.all(15) +
+              const EdgeInsets.only(left: 50, right: 50),
           child: SizedBox(
             width: screenWidth,
             child: Row(
@@ -72,16 +73,14 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
                     return SizedBox(
                       height: 50,
                       width: 75,
-                      child: DayNightSwitcher(
-                        // nightBackgroundColor: Colors.black54,
-                        // moonColor: Colors.black54,
-                        isDarkModeEnabled: provider.darkTheme,
-                        onStateChanged: (isDarkModeEnabled) {
-                          provider.toggleTheme();
-                          // setState(() {
-                          //   // this.isDarkModeEnabled = isDarkModeEnabled;
-                          // });
-                        },
+                      child: GestureDetector(
+                        onDoubleTap: () {},
+                        child: DayNightSwitcher(
+                          isDarkModeEnabled: provider.darkTheme,
+                          onStateChanged: (isDarkModeEnabled) {
+                            provider.toggleTheme();
+                          },
+                        ),
                       ),
                     );
                   },
@@ -95,16 +94,17 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
         // height: screenSize.height * 0.9,
         child: Row(
           children: [
-            WindowsMediumMenu(),
-            screen == "Home"
-                ? WindowsMediumHomeScreen()
-                : screen == "ContactMe"
-                    ? WindowsMediumContactMeScreen()
-                    : screen == "Experience"
-                        ? WindowsMediumExperienceScreen()
-                        : screen == "MyProjects"
-                            ? WindowsMediumProjectsScreen()
-                            : Container()
+            const WindowsMediumMenu(),
+            if (screen == "Home")
+              WindowsMediumHomeScreen()
+            else
+              screen == "ContactMe"
+                  ? const WindowsMediumContactMeScreen()
+                  : screen == "Experience"
+                      ? WindowsMediumExperienceScreen()
+                      : screen == "MyProjects"
+                          ? const WindowsMediumProjectsScreen()
+                          : Container()
           ],
         ),
       ),

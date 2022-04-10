@@ -29,7 +29,7 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 1)).then((value) {
+    Future.delayed(const Duration(seconds: 1)).then((value) {
       setState(() {
         showLottie = true;
       });
@@ -40,9 +40,9 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
   Widget build(BuildContext context) {
     super.build(context);
 
-    var screenSize = MediaQuery.of(context).size;
-    var screenWidth = screenSize.width;
-    var screenHeight = screenSize.height;
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
     return Stack(
       children: [
         Container(
@@ -53,7 +53,9 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
               children: [
                 SizedBox(height: screenHeight * 0.2),
                 WindowsLargeSectionTitle(
-                    title: 'My Projects', width: screenWidth),
+                  title: 'My Projects',
+                  width: screenWidth,
+                ),
 
                 SizedBox(height: screenHeight * 0.1),
                 // Stack(
@@ -155,7 +157,7 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
                         GestureDetector(
                           onTap: () {
                             controller.previousPage(
-                              duration: Duration(seconds: 1),
+                              duration: const Duration(seconds: 1),
                               curve: Curves.bounceOut,
                             );
                             setState(() {
@@ -172,7 +174,7 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
                         GestureDetector(
                           onTap: () {
                             controller.nextPage(
-                              duration: Duration(seconds: 1),
+                              duration: const Duration(seconds: 1),
                               curve: Curves.bounceOut,
                             );
                             setState(() {
@@ -196,9 +198,8 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
           left: 400,
           right: -300,
           child: Align(
-            alignment: Alignment.center,
             child: AnimatedOpacity(
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
               opacity: showLottie ? 1 : 0,
               child: Image.asset(
                 'assets/images/dash/dash3.png',
@@ -218,7 +219,7 @@ class ProjectItem extends StatelessWidget {
   final String assetPath;
   final String description;
   final double width;
-  ProjectItem({
+  const ProjectItem({
     required this.link,
     required this.title,
     required this.assetPath,
@@ -231,7 +232,7 @@ class ProjectItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          padding: EdgeInsets.only(top: 10),
+          padding: const EdgeInsets.only(top: 10),
           child: Image(
             width: 150,
             image: AssetImage(
@@ -244,14 +245,14 @@ class ProjectItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Text(
                 title,
                 style: Theme.of(context).textTheme.headline2,
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Flexible(
-                child: Container(
+                child: SizedBox(
                   // color: Colors.amber,
                   width: width * 0.28,
                   child: Text(
@@ -260,7 +261,7 @@ class ProjectItem extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: WinddowsGooglePlayButton(
@@ -278,7 +279,7 @@ class ProjectItem extends StatelessWidget {
 
 class SpQuizProjectItem extends StatelessWidget {
   final double width;
-  SpQuizProjectItem({required this.width});
+  const SpQuizProjectItem({required this.width});
   @override
   Widget build(BuildContext context) {
     return ProjectItem(
@@ -293,7 +294,7 @@ class SpQuizProjectItem extends StatelessWidget {
 
 class SpQuotesProjectItem extends StatelessWidget {
   final double width;
-  SpQuotesProjectItem({required this.width});
+  const SpQuotesProjectItem({required this.width});
   @override
   Widget build(BuildContext context) {
     return ProjectItem(

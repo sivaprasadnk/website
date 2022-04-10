@@ -11,13 +11,13 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
-TextStyle authorStyle = TextStyle(
+TextStyle authorStyle = const TextStyle(
   fontWeight: FontWeight.bold,
   color: Colors.red,
   fontSize: 21,
 );
 
-TextStyle quoteStyle = TextStyle(
+TextStyle quoteStyle = const TextStyle(
   fontWeight: FontWeight.bold,
   // fontFamily: 'Vollkorn',
   decorationStyle: TextDecorationStyle.solid,
@@ -38,7 +38,7 @@ class AndroidBgCurveBackup extends CustomPainter {
   AndroidBgCurveBackup({required this.ctx});
   @override
   void paint(Canvas canvas, Size size) {
-    double padding = 0;
+    const double padding = 0;
     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
     final Paint paint = Paint()
       // ..color = Color.fromRGBO(7, 17, 26, 1)
@@ -73,7 +73,7 @@ class AndroidBgCurve extends CustomPainter {
   AndroidBgCurve({required this.ctx});
   @override
   void paint(Canvas canvas, Size size) {
-    double padding = 0;
+    const double padding = 0;
     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
     final Paint paint = Paint()
       // ..color = Color.fromRGBO(7, 17, 26, 1)
@@ -117,7 +117,7 @@ class DescriptionText extends StatelessWidget {
       child: Text(
         description,
         // 'A Quiz App with various categories ,and cool animations for each element on screen ',
-        style: TextStyle(
+        style: const TextStyle(
           // fontFamily: 'PlayfairDisplay',
           color: Colors.grey,
           fontWeight: FontWeight.bold,
@@ -144,9 +144,10 @@ class GooglePlayButton extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-              color: Colors.black,
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(10)),
+            color: Colors.black,
+            border: Border.all(color: Colors.grey),
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -158,7 +159,7 @@ class GooglePlayButton extends StatelessWidget {
                   // width: 10,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               Padding(
@@ -166,7 +167,7 @@ class GooglePlayButton extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: const [
                     Text(
                       'GET IT ON',
                       style: TextStyle(
@@ -196,8 +197,10 @@ class GooglePlayButton extends StatelessWidget {
 class WinddowsGooglePlayButton extends StatelessWidget {
   final double screenWidth;
   final String url;
-  const WinddowsGooglePlayButton(
-      {required this.screenWidth, required this.url});
+  const WinddowsGooglePlayButton({
+    required this.screenWidth,
+    required this.url,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -207,9 +210,10 @@ class WinddowsGooglePlayButton extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.black,
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(10)),
+          color: Colors.black,
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -221,7 +225,7 @@ class WinddowsGooglePlayButton extends StatelessWidget {
                 // width: 10,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
             Padding(
@@ -229,7 +233,7 @@ class WinddowsGooglePlayButton extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   Text(
                     'GET IT ON',
                     style: TextStyle(
@@ -261,7 +265,7 @@ class NameWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       'Sivaprasad NK',
       style: TextStyle(
         fontFamily: 'PatuaOne',
@@ -277,12 +281,10 @@ class ProPic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CircleAvatar(
-        radius: 100,
-        backgroundImage: AssetImage(
-          proPicAssetPath,
-        ),
+    return const CircleAvatar(
+      radius: 100,
+      backgroundImage: AssetImage(
+        proPicAssetPath,
       ),
     );
   }
@@ -293,19 +295,17 @@ class ProPicWidget extends StatelessWidget {
   const ProPicWidget({required this.radius});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CircleAvatar(
-        radius: radius,
-        backgroundColor: Colors.cyanAccent,
-        backgroundImage: AssetImage(proPicAssetPath),
-      ),
+    return CircleAvatar(
+      radius: radius,
+      backgroundColor: Colors.cyanAccent,
+      backgroundImage: const AssetImage(proPicAssetPath),
     );
   }
 }
 
 class QuoteWidget extends StatefulWidget {
   final bool showQuote;
-  QuoteWidget({required this.showQuote});
+  const QuoteWidget({required this.showQuote});
   @override
   _QuoteWidgetState createState() => _QuoteWidgetState();
 }
@@ -319,7 +319,7 @@ class TitleText extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20, top: 30),
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           // fontFamily: 'PlayfairDisplay',
           // color: Colors.,
           fontWeight: FontWeight.bold,
@@ -340,7 +340,7 @@ class Wave extends StatefulWidget {
 
 class WelcomeText extends StatelessWidget {
   final bool isMobile;
-  WelcomeText({required this.isMobile});
+  const WelcomeText({required this.isMobile});
   @override
   Widget build(BuildContext context) {
     return AnimatedTextKit(
@@ -350,13 +350,13 @@ class WelcomeText extends StatelessWidget {
           !isMobile ? welcomeSiteText : welcomeMobText,
           // : 'Welcome to \n sivaprasadnk.github.io',
           textAlign: TextAlign.center,
-          textStyle: TextStyle(
+          textStyle: const TextStyle(
             fontFamily: 'PatuaOne',
             fontSize: 35,
             color: Colors.teal,
             fontWeight: FontWeight.bold,
           ),
-          speed: Duration(
+          speed: const Duration(
             milliseconds: 115,
           ),
         )
@@ -382,23 +382,22 @@ class _QuoteWidgetState extends State<QuoteWidget> {
     time = DateTime.now();
     // var quote = time.second % 2 == 0 ? quote1 : quote2;
     // var author = time.second % 2 == 0 ? author1 : author2;
-    print('..second ==${time.second}');
+    debugPrint('..second ==${time.second}');
     return AnimatedOpacity(
       opacity: widget.showQuote ? 1 : 0,
-      duration: Duration(seconds: 3),
+      duration: const Duration(seconds: 3),
       child: Container(
-        padding: EdgeInsets.all(30),
+        padding: const EdgeInsets.all(30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SelectableText(
-              "$quote1",
-              toolbarOptions: ToolbarOptions(copy: true, selectAll: true),
+              quote1,
+              toolbarOptions: const ToolbarOptions(copy: true, selectAll: true),
               textAlign: TextAlign.center,
               style: quoteStyle,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
@@ -407,7 +406,7 @@ class _QuoteWidgetState extends State<QuoteWidget> {
               textAlign: TextAlign.right,
               style: authorStyle,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
           ],
@@ -435,7 +434,7 @@ class _WaveState extends State<Wave> {
           //  heightPercentages: [0.25, 0.26, 0.28, 0.31],
           durations: [35000, 19440, 10800, 6000],
           heightPercentages: [0.65, 0.63, 0.65, 0.60],
-          blur: MaskFilter.blur(BlurStyle.solid, 10),
+          blur: const MaskFilter.blur(BlurStyle.solid, 10),
           gradientBegin: Alignment.bottomLeft,
           gradientEnd: Alignment.topRight,
         ),
@@ -452,7 +451,7 @@ class _WaveState extends State<Wave> {
         //   5000,
         // ],
         waveAmplitude: 0,
-        size: Size(
+        size: const Size(
           double.infinity,
           double.infinity,
         ),
@@ -463,7 +462,7 @@ class _WaveState extends State<Wave> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 500)).then((value) {
+    Future.delayed(const Duration(milliseconds: 500)).then((value) {
       setState(() {
         showWave = true;
       });
@@ -476,7 +475,7 @@ class AndroidHomeBgCurve extends CustomPainter {
   AndroidHomeBgCurve({required this.ctx});
   @override
   void paint(Canvas canvas, Size size) {
-    double padding = 0;
+    const double padding = 0;
     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
     final Paint paint = Paint()
       ..color = Colors.white
@@ -510,10 +509,10 @@ class WindowsHomeBgCurve extends CustomPainter {
   WindowsHomeBgCurve({required this.ctx});
   @override
   void paint(Canvas canvas, Size size) {
-    double padding = 20;
+    const double padding = 20;
     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
     final Paint paint = Paint()
-      ..color = Color.fromRGBO(4, 139, 168, 1)
+      ..color = const Color.fromRGBO(4, 139, 168, 1)
       ..style = PaintingStyle.fill
       ..strokeJoin = StrokeJoin.bevel
       // ..strokeJoin
@@ -524,7 +523,7 @@ class WindowsHomeBgCurve extends CustomPainter {
     final h = size.height;
     final w = size.width;
 
-    final y = h / 2;
+    // final y = h / 2;
     final x = w / 2;
     // path.addRRect(RRect.fromLTRBR(
     //   h - padding,
@@ -557,7 +556,7 @@ class WindowsExpBgCurve extends CustomPainter {
   WindowsExpBgCurve({required this.ctx});
   @override
   void paint(Canvas canvas, Size size) {
-    double padding = 0;
+    const double padding = 0;
     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
     final Paint paint = Paint()
       // ..color = Colors.teal
@@ -597,7 +596,7 @@ class _ProPicWithBlobState extends State<ProPicLargeWithBlob> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 500)).then((value) {
+    Future.delayed(const Duration(milliseconds: 500)).then((value) {
       setState(() {
         showProPicWithBlob = true;
       });
@@ -606,29 +605,25 @@ class _ProPicWithBlobState extends State<ProPicLargeWithBlob> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: AnimatedOpacity(
-        duration: Duration(milliseconds: 900),
-        opacity: showProPicWithBlob ? 1 : 0,
-        child: Container(
-          child: Blob.fromID(
-            id: ['16-7-5840'],
-            styles: BlobStyles(
-              color: Colors.cyanAccent.shade700,
-            ),
-            size: 300,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                bottom: 25,
-                left: 5,
-                right: 5,
-                // top: 10,
-              ),
-              child: Image.asset(
-                'assets/images/propiccc.png',
-                height: 300,
-              ),
-            ),
+    return AnimatedOpacity(
+      duration: const Duration(milliseconds: 900),
+      opacity: showProPicWithBlob ? 1 : 0,
+      child: Blob.fromID(
+        id: const ['16-7-5840'],
+        styles: BlobStyles(
+          color: Colors.cyanAccent.shade700,
+        ),
+        size: 300,
+        child: Padding(
+          padding: const EdgeInsets.only(
+            bottom: 25,
+            left: 5,
+            right: 5,
+            // top: 10,
+          ),
+          child: Image.asset(
+            'assets/images/propiccc.png',
+            height: 300,
           ),
         ),
       ),
@@ -640,10 +635,11 @@ class ProPicMediumWithBlob extends StatefulWidget {
   final double height;
   final double leftPadding;
   final double bottomPadding;
-  ProPicMediumWithBlob(
-      {required this.height,
-      required this.bottomPadding,
-      required this.leftPadding});
+  const ProPicMediumWithBlob({
+    required this.height,
+    required this.bottomPadding,
+    required this.leftPadding,
+  });
 
   @override
   _ProPicMediumWithBlobState createState() => _ProPicMediumWithBlobState();
@@ -654,7 +650,7 @@ class _ProPicMediumWithBlobState extends State<ProPicMediumWithBlob> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 500)).then((value) {
+    Future.delayed(const Duration(milliseconds: 500)).then((value) {
       setState(() {
         showProPicWithBlob = true;
       });
@@ -663,29 +659,25 @@ class _ProPicMediumWithBlobState extends State<ProPicMediumWithBlob> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: AnimatedOpacity(
-        duration: Duration(milliseconds: 900),
-        opacity: showProPicWithBlob ? 1 : 0,
-        child: Container(
-          child: Blob.fromID(
-            id: ['16-7-5840'],
-            styles: BlobStyles(
-              color: Colors.cyanAccent.shade700,
-            ),
-            size: widget.height,
-            child: Padding(
-              padding: EdgeInsets.only(
-                bottom: widget.bottomPadding,
-                left: widget.leftPadding,
-                right: 15,
-                // top: 10,
-              ),
-              child: Image.asset(
-                'assets/images/propiccc.png',
-                // height: widget.height * .4,
-              ),
-            ),
+    return AnimatedOpacity(
+      duration: const Duration(milliseconds: 900),
+      opacity: showProPicWithBlob ? 1 : 0,
+      child: Blob.fromID(
+        id: const ['16-7-5840'],
+        styles: BlobStyles(
+          color: Colors.cyanAccent.shade700,
+        ),
+        size: widget.height,
+        child: Padding(
+          padding: EdgeInsets.only(
+            bottom: widget.bottomPadding,
+            left: widget.leftPadding,
+            right: 15,
+            // top: 10,
+          ),
+          child: Image.asset(
+            'assets/images/propiccc.png',
+            // height: widget.height * .4,
           ),
         ),
       ),
@@ -704,45 +696,41 @@ class WindowsLargeRightFooter extends StatelessWidget {
       right: 20,
       child: Align(
         alignment: Alignment.bottomRight,
-        child: Container(
-          // color: Colors.grey,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                ' Made with ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size,
-                  color: Colors.grey,
-                ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              ' Made with ',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: size,
+                color: Colors.grey,
               ),
-              Icon(
-                Icons.favorite,
-                color: Colors.red,
+            ),
+            const Icon(
+              Icons.favorite,
+              color: Colors.red,
+            ),
+            Text(
+              ' in ',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: size,
+                color: Colors.grey,
               ),
-              Text(
-                ' in ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size,
-                  color: Colors.grey,
-                ),
+            ),
+            FlutterLogo(
+              size: size,
+            ),
+            Text(
+              ' Flutter  ',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: size,
+                color: Colors.grey,
               ),
-              FlutterLogo(
-                size: size,
-                style: FlutterLogoStyle.markOnly,
-              ),
-              Text(
-                ' Flutter  ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -768,13 +756,10 @@ class WindowsRightFooter extends StatelessWidget {
             color: Colors.grey,
           ),
         ),
-        AvatarGlow(
+        const AvatarGlow(
           glowColor: Colors.grey,
           endRadius: 20.0,
-          duration: Duration(milliseconds: 2000),
-          repeat: true,
           showTwoGlows: false,
-          repeatPauseDuration: Duration(milliseconds: 100),
           child: Icon(
             Icons.favorite,
             color: Colors.red,
@@ -796,7 +781,6 @@ class WindowsRightFooter extends StatelessWidget {
         ),
         FlutterLogo(
           size: size,
-          style: FlutterLogoStyle.markOnly,
         ),
         Text(
           ' Flutter  ',
@@ -835,13 +819,10 @@ class AndroidRightFooter extends StatelessWidget {
                   color: Colors.grey,
                 ),
               ),
-              AvatarGlow(
+              const AvatarGlow(
                 glowColor: Colors.grey,
                 endRadius: 20.0,
-                duration: Duration(milliseconds: 2000),
-                repeat: true,
                 showTwoGlows: false,
-                repeatPauseDuration: Duration(milliseconds: 100),
                 child: Icon(
                   Icons.favorite,
                   color: Colors.red,
@@ -863,7 +844,6 @@ class AndroidRightFooter extends StatelessWidget {
               ),
               FlutterLogo(
                 size: size,
-                style: FlutterLogoStyle.markOnly,
               ),
               Text(
                 ' Flutter  ',
@@ -903,9 +883,7 @@ class NameLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('SP'),
-    );
+    return const Text('SP');
   }
 }
 
@@ -923,68 +901,63 @@ class SocialMedia extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    double iconSize = size == null ? 35 : size as double;
-    return Container(
-      child: AnimatedOpacity(
-        duration: Duration(milliseconds: 900),
-        opacity: showIcons ? 1 : 0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(width: !isLarge ? screenWidth * 0.15 : screenWidth * 0.00),
-            GestureDetector(
-              child: Container(
-                child: FaIcon(
-                  FontAwesomeIcons.facebook,
-                  color: Colors.blue,
-                  size: iconSize,
-                ),
-              ),
-              onTap: () {
-                launch(fbLink);
-              },
-            ).showCursorOnHover,
-            SizedBox(
-              width: 15,
+    final double iconSize = size == null ? 35 : size as double;
+    return AnimatedOpacity(
+      duration: const Duration(milliseconds: 900),
+      opacity: showIcons ? 1 : 0,
+      child: Row(
+        children: [
+          SizedBox(width: !isLarge ? screenWidth * 0.15 : screenWidth * 0.00),
+          GestureDetector(
+            child: FaIcon(
+              FontAwesomeIcons.facebook,
+              color: Colors.blue,
+              size: iconSize,
             ),
-            GestureDetector(
-              child: FaIcon(
-                FontAwesomeIcons.instagram,
-                color: Colors.orange,
-                size: iconSize,
-              ),
-              onTap: () {
-                launch(instaLink);
-              },
-            ).showCursorOnHover,
-            SizedBox(
-              width: 15,
+            onTap: () {
+              launch(fbLink);
+            },
+          ).showCursorOnHover,
+          const SizedBox(
+            width: 15,
+          ),
+          GestureDetector(
+            child: FaIcon(
+              FontAwesomeIcons.instagram,
+              color: Colors.orange,
+              size: iconSize,
             ),
-            GestureDetector(
-              child: FaIcon(
-                FontAwesomeIcons.whatsapp,
-                size: iconSize,
-                color: Colors.green,
-              ),
-              onTap: () {
-                launch(whatsappWebLink);
-              },
-            ).showCursorOnHover,
-            SizedBox(
-              width: 15,
+            onTap: () {
+              launch(instaLink);
+            },
+          ).showCursorOnHover,
+          const SizedBox(
+            width: 15,
+          ),
+          GestureDetector(
+            child: FaIcon(
+              FontAwesomeIcons.whatsapp,
+              size: iconSize,
+              color: Colors.green,
             ),
-            GestureDetector(
-              child: FaIcon(
-                FontAwesomeIcons.linkedin,
-                size: iconSize,
-                color: Colors.blue,
-              ),
-              onTap: () {
-                launch(linkedInLink);
-              },
-            ).showCursorOnHover,
-          ],
-        ),
+            onTap: () {
+              launch(whatsappWebLink);
+            },
+          ).showCursorOnHover,
+          const SizedBox(
+            width: 15,
+          ),
+          GestureDetector(
+            child: FaIcon(
+              FontAwesomeIcons.linkedin,
+              size: iconSize,
+              color: Colors.blue,
+            ),
+            onTap: () {
+              launch(linkedInLink);
+            },
+          ).showCursorOnHover,
+        ],
       ),
     );
   }
@@ -1000,8 +973,8 @@ class ProPicWithBlobLottie extends StatelessWidget {
     return Stack(
       children: [
         Lottie.asset(blobLottieAssetPath, height: 280),
-        Padding(
-          padding: const EdgeInsets.all(40.0),
+        const Padding(
+          padding: EdgeInsets.all(40.0),
           child: CircleAvatar(
             radius: 95,
             backgroundColor: Colors.transparent,
@@ -1026,7 +999,7 @@ class RobotLottie extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       opacity: showLottie ? 1 : 0,
       child: Container(
         margin: EdgeInsets.only(left: screenWidth * 0.15),
@@ -1052,7 +1025,7 @@ class DashImageMedium extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       opacity: showLottie ? 1 : 0,
       child: Container(
         margin: EdgeInsets.only(left: screenWidth * 0.12),

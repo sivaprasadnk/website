@@ -1,6 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+// import 'autos'
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
@@ -22,10 +24,6 @@ class WindowsHomeLarge extends StatefulWidget {
 class _WindowsHomeLargeState extends State<WindowsHomeLarge>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  bool homeSelected = true,
-      projectHovered = false,
-      contactmeSelected = false,
-      experienceSelected = false;
 
   @override
   void setState(VoidCallback fn) {
@@ -48,20 +46,22 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var screenWidth = screenSize.width;
-    double size = 15;
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    const double size = 15;
     debugPrint('..@ screenWidth1 large: $screenWidth');
-    Duration _duration = Duration(seconds: 1);
+    const Duration _duration = Duration(seconds: 1);
     return DefaultTabController(
       length: 4,
       child: Scaffold(
         bottomNavigationBar: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: screenWidth * 0.05, vertical: 10),
+            horizontal: screenWidth * 0.03,
+            vertical: 10,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: const [
               CopyrightText(size: size),
               MadeWithFlutterWidget(size: size),
             ],
@@ -71,45 +71,44 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
         appBar: PreferredSize(
           preferredSize: Size(screenWidth, 90),
           child: Padding(
-            padding: EdgeInsets.all(18) +
-                EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+            padding: const EdgeInsets.all(16) +
+                EdgeInsets.symmetric(horizontal: screenWidth * 0.025),
             child: SizedBox(
-              width: screenWidth,
+              // width: screenWidth,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        _tabController.animateTo(
-                          0,
-                          duration: _duration,
-                        );
-                      },
-                      child: nameText(context: context).showCursorOnHover,
-                    ),
+                  GestureDetector(
+                    onTap: () {
+                      _tabController.animateTo(
+                        0,
+                        duration: _duration,
+                      );
+                    },
+                    child: nameText(context: context).showCursorOnHover,
                   ),
+                  const Spacer(),
                   Consumer<ThemeNotifier>(
                     builder: (_, provider, __) {
                       return SizedBox(
                         height: 50,
                         width: 75,
-                        child: DayNightSwitcher(
-                          // nightBackgroundColor: Colors.black54,
-                          // moonColor: Colors.black54,
-                          isDarkModeEnabled: provider.darkTheme,
-                          onStateChanged: (isDarkModeEnabled) {
-                            provider.toggleTheme();
-                            // setState(() {
-                            //   // this.isDarkModeEnabled = isDarkModeEnabled;
-                            // });
-                          },
+                        child: GestureDetector(
+                          onDoubleTap: () {},
+                          child: DayNightSwitcher(
+                            // nightBackgroundColor: Colors.black54,
+                            // moonColor: Colors.black54,
+                            isDarkModeEnabled: provider.darkTheme,
+                            onStateChanged: (isDarkModeEnabled) {
+                              provider.toggleTheme();
+                            },
+                          ),
                         ),
                       );
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 30,
                   ),
                   Expanded(
@@ -117,7 +116,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                       overlayColor:
                           MaterialStateProperty.all(Colors.transparent),
                       indicator: RectangularIndicator(
-                        color: Color.fromRGBO(249, 139, 125, 1),
+                        color: const Color.fromRGBO(249, 139, 125, 1),
                         paintingStyle: PaintingStyle.stroke,
                         bottomLeftRadius: 100,
                         bottomRightRadius: 100,
@@ -125,7 +124,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                         topRightRadius: 100,
                       ),
                       padding: EdgeInsets.zero,
-                      indicatorPadding: EdgeInsets.zero,
                       controller: _tabController,
                       tabs: [
                         HomeTab(
@@ -172,20 +170,18 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
 class HomeTab extends StatelessWidget {
   final TabController tabController;
   final Duration duration;
-  HomeTab({
+  const HomeTab({
     required this.tabController,
     required this.duration,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: TabItem(
-        onTap: () {
-          tabController.animateTo(0, duration: duration);
-        },
-        title: 'Home',
-      ),
+    return TabItem(
+      onTap: () {
+        tabController.animateTo(0, duration: duration);
+      },
+      title: 'Home',
     );
   }
 }
@@ -193,20 +189,18 @@ class HomeTab extends StatelessWidget {
 class ProjectsTab extends StatelessWidget {
   final TabController tabController;
   final Duration duration;
-  ProjectsTab({
+  const ProjectsTab({
     required this.tabController,
     required this.duration,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: TabItem(
-        onTap: () {
-          tabController.animateTo(2, duration: duration);
-        },
-        title: 'Projects',
-      ),
+    return TabItem(
+      onTap: () {
+        tabController.animateTo(2, duration: duration);
+      },
+      title: 'Projects',
     );
   }
 }
@@ -214,20 +208,18 @@ class ProjectsTab extends StatelessWidget {
 class ContactMeTab extends StatelessWidget {
   final TabController tabController;
   final Duration duration;
-  ContactMeTab({
+  const ContactMeTab({
     required this.tabController,
     required this.duration,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: TabItem(
-        onTap: () {
-          tabController.animateTo(3, duration: duration);
-        },
-        title: 'Contact Me',
-      ),
+    return TabItem(
+      onTap: () {
+        tabController.animateTo(3, duration: duration);
+      },
+      title: 'Contact Me',
     );
   }
 }
@@ -235,33 +227,31 @@ class ContactMeTab extends StatelessWidget {
 class ExperienceTab extends StatelessWidget {
   final TabController tabController;
   final Duration duration;
-  ExperienceTab({
+  const ExperienceTab({
     required this.tabController,
     required this.duration,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: TabItem(
-        onTap: () {
-          tabController.animateTo(1,
-              duration: duration, curve: Curves.decelerate);
-        },
-        title: 'Experience',
-      ),
+    return TabItem(
+      onTap: () {
+        tabController.animateTo(
+          1,
+          duration: duration,
+          curve: Curves.decelerate,
+        );
+      },
+      title: 'Experience',
     );
   }
 }
 
 class TabItem extends StatelessWidget {
   const TabItem({
-    Key? key,
-    required String title,
-    required VoidCallback onTap,
-  })  : onTap = onTap,
-        title = title,
-        super(key: key);
+    required this.title,
+    required this.onTap,
+  });
 
   final VoidCallback onTap;
   final String title;
@@ -273,9 +263,10 @@ class TabItem extends StatelessWidget {
       // splashColor: Colors.transparent,
       onTap: () => onTap.call(),
       child: SizedBox(
-        height: 50,
+        height: 40,
+        width: 100,
         child: Center(
-          child: Text(
+          child: AutoSizeText(
             title,
             style: Theme.of(context).textTheme.headline4,
           ),

@@ -23,13 +23,10 @@ class MadeWithFlutterWidget extends StatelessWidget {
             fontFamily: 'Roboto',
           ),
         ),
-        AvatarGlow(
+        const AvatarGlow(
           glowColor: Colors.grey,
           endRadius: 20.0,
-          duration: Duration(milliseconds: 2000),
-          repeat: true,
           showTwoGlows: false,
-          repeatPauseDuration: Duration(milliseconds: 100),
           child: Icon(
             Icons.favorite,
             color: Colors.red,
@@ -53,7 +50,6 @@ class MadeWithFlutterWidget extends StatelessWidget {
         ),
         FlutterLogo(
           size: size,
-          style: FlutterLogoStyle.markOnly,
         ),
         Text(
           ' Flutter  ',

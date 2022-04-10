@@ -14,7 +14,7 @@ class ProPic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flexible(
-      child: Container(
+      child: SizedBox(
         width: screenWidth / 1.8,
         child: Column(
           children: [
@@ -25,12 +25,12 @@ class ProPic extends StatelessWidget {
             // ProPicLargeWithBlob()
             AnimatedOpacity(
               opacity: showPic ? 1 : 0,
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               child: Stack(
                 children: [
                   Lottie.asset(blobLottieAssetPath, height: 350),
-                  Padding(
-                    padding: const EdgeInsets.all(60.0),
+                  const Padding(
+                    padding: EdgeInsets.all(60.0),
                     child: CircleAvatar(
                       radius: 115,
                       backgroundColor: Colors.transparent,

@@ -15,8 +15,8 @@ class AndroidContactMeScreen extends StatefulWidget {
 class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    var menuSelectedCheck =
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final menuSelectedCheck =
         Provider.of<RouteProvider>(context, listen: true).menuSelected;
     debugPrint('...@@456 @menu menuSelectedCheck..$menuSelectedCheck');
 
@@ -31,13 +31,13 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
             ),
           ),
         ),
-        AndroidDashImage(dashImage: 'dash4'),
+        const AndroidDashImage(dashImage: 'dash4'),
         Padding(
           padding: const EdgeInsets.only(right: 10, top: 20),
           child: Align(
             alignment: Alignment.topRight,
             child: IconButton(
-              icon: Icon(Icons.menu, color: Colors.white),
+              icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
                 Provider.of<RouteProvider>(context, listen: false)
                     .setMenuSelected(check: true);
@@ -45,17 +45,16 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
             ),
           ),
         ),
-        Container(
+        SizedBox(
           height: widget.screenHeight,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
                 height: widget.screenHeight * 0.15,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 30),
                 child: Text(
                   'Contact Me',
@@ -74,30 +73,36 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
                 child: LiveList(
                   shrinkWrap: true,
                   padding: const EdgeInsets.only(
-                      left: 16, right: 16, bottom: 5, top: 0),
+                    left: 16,
+                    right: 16,
+                    bottom: 5,
+                  ),
                   // physics: NeverScrollableScrollPhysics(),
                   showItemInterval: const Duration(milliseconds: 50),
-                  showItemDuration: const Duration(milliseconds: 150),
                   itemCount: 8,
                   itemBuilder: animationItemBuilder((index) {
                     switch (index) {
                       case 0:
-                        return TitleText(title: 'Address');
+                        return const TitleText(title: 'Address');
                       case 1:
-                        return DescriptionText(
-                            description:
-                                'Prasadam, Nadama, \nTripunithura, Ernakulam, Kerala .');
+                        return const DescriptionText(
+                          description:
+                              'Prasadam, Nadama, \nTripunithura, Ernakulam, Kerala .',
+                        );
                       case 2:
-                        return TitleText(title: 'Mobile');
+                        return const TitleText(title: 'Mobile');
                       case 3:
-                        return DescriptionText(description: '+91 8086028340');
+                        return const DescriptionText(
+                          description: '+91 8086028340',
+                        );
                       case 4:
-                        return TitleText(title: 'E-mail');
+                        return const TitleText(title: 'E-mail');
                       case 5:
-                        return DescriptionText(
-                            description: 'sivaprasadnk.official@gmail.com');
+                        return const DescriptionText(
+                          description: 'sivaprasadnk.official@gmail.com',
+                        );
                       case 6:
-                        return TitleText(title: 'Social Media');
+                        return const TitleText(title: 'Social Media');
                       case 7:
                         return Padding(
                           padding: const EdgeInsets.only(top: 15, left: 40),
@@ -151,7 +156,7 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
                           //   ],
                         );
                       case 8:
-                        return SizedBox(
+                        return const SizedBox(
                           height: 300,
                         );
                       //  case 7: return DescriptionText(description: description)
@@ -191,7 +196,7 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
             ).animate(animation),
             child: SlideTransition(
               position: Tween<Offset>(
-                begin: Offset(0, -0.1),
+                begin: const Offset(0, -0.1),
                 end: Offset.zero,
               ).animate(animation),
               child: Padding(
@@ -207,10 +212,10 @@ class MyPainter extends CustomPainter {
   MyPainter({required this.ctx});
   @override
   void paint(Canvas canvas, Size size) {
-    double padding = 0;
+    const double padding = 0;
     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
     final Paint paint = Paint()
-      ..color = Color.fromRGBO(7, 17, 26, 1)
+      ..color = const Color.fromRGBO(7, 17, 26, 1)
       ..style = PaintingStyle.fill
       ..strokeWidth = 5.0;
 
