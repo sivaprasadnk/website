@@ -226,10 +226,10 @@ class WinddowsGooglePlayButton extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: 5,
+              width: 1,
             ),
             Padding(
-              padding: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.only(top: 5, left: 5),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -242,12 +242,15 @@ class WinddowsGooglePlayButton extends StatelessWidget {
                       fontSize: 10,
                     ),
                   ),
-                  Text(
-                    'Google Play',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 21,
+                  Padding(
+                    padding: EdgeInsets.only(right: 8, bottom: 8),
+                    child: Text(
+                      'Google Play',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 21,
+                      ),
                     ),
                   ),
                 ],

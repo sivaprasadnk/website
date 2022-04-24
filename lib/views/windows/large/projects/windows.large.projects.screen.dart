@@ -45,152 +45,150 @@ class _WindowsLargeProjectScreenState extends State<WindowsLargeProjectScreen>
     final screenHeight = screenSize.height;
     return Stack(
       children: [
-        Container(
-          child: Padding(
-            padding: EdgeInsets.only(left: screenWidth * 0.02),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: screenHeight * 0.2),
-                WindowsLargeSectionTitle(
-                  title: 'My Projects',
-                  width: screenWidth,
-                ),
+        Padding(
+          padding: EdgeInsets.only(left: screenWidth * 0.02),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: screenHeight * 0.2),
+              WindowsLargeSectionTitle(
+                title: 'My Projects',
+                width: screenWidth,
+              ),
 
-                SizedBox(height: screenHeight * 0.1),
-                // Stack(
-                //   children: [
-                //     Container(
-                //       // color: Colors.black,
-                //       height: screenHeight * 0.5,
-                //       width: screenWidth * 0.9,
-                //       padding: EdgeInsets.only(left: screenWidth * 0.1),
-                //       child: PageView(
-                //         controller: controller,
-                //         children: [
-                //           SpQuotesProjectItem(width: screenWidth),
-                //           SpQuizProjectItem(width: screenWidth),
-                //         ],
-                //       ),
-                //     ),
-                //     if (showNextIcon)
-                //       Positioned.fill(
-                //         right: screenWidth * 0.05,
-                //         child: Align(
-                //           alignment: Alignment.bottomCenter,
-                //           child: GestureDetector(
-                //             onTap: () {
-                //               controller.nextPage(
-                //                 duration: Duration(seconds: 1),
-                //                 curve: Curves.bounceOut,
-                //               );
-                //               setState(() {
-                //                 showNextIcon = false;
-                //               });
-                //             },
-                //             child: CircleAvatar(
-                //               backgroundColor: Colors.grey,
-                //               child: Icon(
-                //                 Icons.arrow_forward_ios,
-                //                 color: Colors.black,
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //       ),
-                //     if (!showNextIcon)
-                //       Positioned.fill(
-                //         child: Align(
-                //           alignment: Alignment.centerLeft,
-                //           child: GestureDetector(
-                //             onTap: () {
-                //               controller.previousPage(
-                //                 duration: Duration(seconds: 1),
-                //                 curve: Curves.bounceOut,
-                //               );
-                //               setState(() {
-                //                 showNextIcon = true;
-                //               });
-                //             },
-                //             child: CircleAvatar(
-                //               backgroundColor: Colors.grey,
-                //               child: Icon(
-                //                 Icons.arrow_back_ios_new,
-                //                 color: Colors.black,
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //       ),
-                //   ],
-                // ),
+              SizedBox(height: screenHeight * 0.1),
+              // Stack(
+              //   children: [
+              //     Container(
+              //       // color: Colors.black,
+              //       height: screenHeight * 0.5,
+              //       width: screenWidth * 0.9,
+              //       padding: EdgeInsets.only(left: screenWidth * 0.1),
+              //       child: PageView(
+              //         controller: controller,
+              //         children: [
+              //           SpQuotesProjectItem(width: screenWidth),
+              //           SpQuizProjectItem(width: screenWidth),
+              //         ],
+              //       ),
+              //     ),
+              //     if (showNextIcon)
+              //       Positioned.fill(
+              //         right: screenWidth * 0.05,
+              //         child: Align(
+              //           alignment: Alignment.bottomCenter,
+              //           child: GestureDetector(
+              //             onTap: () {
+              //               controller.nextPage(
+              //                 duration: Duration(seconds: 1),
+              //                 curve: Curves.bounceOut,
+              //               );
+              //               setState(() {
+              //                 showNextIcon = false;
+              //               });
+              //             },
+              //             child: CircleAvatar(
+              //               backgroundColor: Colors.grey,
+              //               child: Icon(
+              //                 Icons.arrow_forward_ios,
+              //                 color: Colors.black,
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //     if (!showNextIcon)
+              //       Positioned.fill(
+              //         child: Align(
+              //           alignment: Alignment.centerLeft,
+              //           child: GestureDetector(
+              //             onTap: () {
+              //               controller.previousPage(
+              //                 duration: Duration(seconds: 1),
+              //                 curve: Curves.bounceOut,
+              //               );
+              //               setState(() {
+              //                 showNextIcon = true;
+              //               });
+              //             },
+              //             child: CircleAvatar(
+              //               backgroundColor: Colors.grey,
+              //               child: Icon(
+              //                 Icons.arrow_back_ios_new,
+              //                 color: Colors.black,
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //   ],
+              // ),
 
-                Row(
-                  children: [
-                    Container(
-                      // color: Colors.black,
-                      height: screenHeight * 0.5,
-                      width: screenWidth * 0.6,
-                      padding: EdgeInsets.only(left: screenWidth * 0.1),
-                      child: PageView(
-                        controller: controller,
-                        children: [
-                          SpQuotesProjectItem(width: screenWidth),
-                          SpQuizProjectItem(width: screenWidth),
-                        ],
-                      ),
+              Row(
+                children: [
+                  Container(
+                    // color: Colors.black,
+                    height: screenHeight * 0.5,
+                    width: screenWidth * 0.6,
+                    padding: EdgeInsets.only(left: screenWidth * 0.1),
+                    child: PageView(
+                      controller: controller,
+                      children: [
+                        SpQuotesProjectItem(width: screenWidth),
+                        SpQuizProjectItem(width: screenWidth),
+                      ],
                     ),
-                    // Container(
-                    //   color: Colors.black,
-                    //   child: Lottie.asset(
-                    //     'assets/lotties/astronaut-laptop.json',
-                    //     height: 280,
-                    //   ),
-                    // )
+                  ),
+                  // Container(
+                  //   color: Colors.black,
+                  //   child: Lottie.asset(
+                  //     'assets/lotties/astronaut-laptop.json',
+                  //     height: 280,
+                  //   ),
+                  // )
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: screenWidth * 0.1),
+                child: Row(
+                  children: [
+                    if (!showNextIcon)
+                      GestureDetector(
+                        onTap: () {
+                          controller.previousPage(
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.bounceOut,
+                          );
+                          setState(() {
+                            showNextIcon = true;
+                          });
+                        },
+                        child: Icon(
+                          Icons.arrow_back_ios,
+                          color: Theme.of(context).splashColor,
+                        ).showCursorOnHover,
+                      ),
+                    SizedBox(width: screenWidth * 0.13),
+                    if (showNextIcon)
+                      GestureDetector(
+                        onTap: () {
+                          controller.nextPage(
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.bounceOut,
+                          );
+                          setState(() {
+                            showNextIcon = false;
+                          });
+                        },
+                        child: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Theme.of(context).splashColor,
+                        ).showCursorOnHover,
+                      ),
                   ],
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: screenWidth * 0.1),
-                  child: Row(
-                    children: [
-                      if (!showNextIcon)
-                        GestureDetector(
-                          onTap: () {
-                            controller.previousPage(
-                              duration: const Duration(seconds: 1),
-                              curve: Curves.bounceOut,
-                            );
-                            setState(() {
-                              showNextIcon = true;
-                            });
-                          },
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            color: Theme.of(context).splashColor,
-                          ).showCursorOnHover,
-                        ),
-                      SizedBox(width: screenWidth * 0.13),
-                      if (showNextIcon)
-                        GestureDetector(
-                          onTap: () {
-                            controller.nextPage(
-                              duration: const Duration(seconds: 1),
-                              curve: Curves.bounceOut,
-                            );
-                            setState(() {
-                              showNextIcon = false;
-                            });
-                          },
-                          child: Icon(
-                            Icons.arrow_forward_ios,
-                            color: Theme.of(context).splashColor,
-                          ).showCursorOnHover,
-                        ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         Positioned.fill(

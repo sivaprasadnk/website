@@ -41,6 +41,11 @@ const String mobileNumberText = '   +91 8086028340';
 const String emailText = '  sivaprasadnk.official@gmail.com';
 
 const String onlineWrkLottieAssetPath = 'assets/lotties/online-work.json';
+
+String quotesAppStr1 =
+    'Quotes listing app using a public api \nand  Glassmorphism UI';
+String quotesAppStr2 = '\nSave to gallery, sharing options available';
+
 String quoteStr1 =
     'A simple quotes listing app made using Flutter & a public api (quotable api).';
 String quoteStr2 =
@@ -50,11 +55,12 @@ String quoteStr4 = '\nSave to gallery , and sharing option also available. ';
 String quizStr1 = 'A simple Quiz app using Flutter and Firebase,';
 String quizStr2 = ' with various categories of subjects to learn facts.';
 String quizStr3 =
-    ' Attractive ui with light / dark mode with various color themes.';
+    ' Quiz App with light / dark mode with \n various  color themes.';
 String quizStr4 =
-    '\nFavorite / unfavorite option available to view favorite questions later easily';
+    '\nFavorite / unfavorite option available to view favorite questions';
 String quizStr5 =
     '\nAdmin session enables to add, edit , delete questions without using Firebase console.';
+// String quizStr6 = 'Questions organised '
 
 String str1 =
     'Consequat pariatur et sunt nostrud id incididunt Lorem sit laboris adipisicing occaecat duis.';
@@ -71,3 +77,7 @@ String str5 =
 String str6 = "Consequat nulla ad deserunt qui eiusmod aute veniam.";
 String str7 =
     "  Aute minim elit dolor occaecat dolore et ullamco aute amet laborum in.";
+
+String quizImageAssetPath = 'assets/images/quizApp/design1.png';
+
+String quotesAppImageAssetPath = 'assets/images/quotesApp/screen2.png';

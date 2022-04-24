@@ -11,7 +11,7 @@ import 'package:spnk/views/windows/large/experience/windows.large.experience.scr
 import 'package:spnk/views/windows/large/home/windows.home.large.screen.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/copyright_text.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/made_with_flutter_widget.dart';
-import 'package:spnk/views/windows/large/projects/windows.large.projects.screen.dart';
+import 'package:spnk/views/windows/large/projects/projects.screen.new.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class WindowsHomeLarge extends StatefulWidget {
@@ -157,7 +157,8 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
             children: [
               WindowsHomeLargeScreen(),
               WindowsLargeExperienceScreen(),
-              WindowsLargeProjectScreen(),
+              // WindowsLargeProjectScreen(),
+              const ProjectsScreenNew(),
               WindowsLargeContactMeScreen(),
             ],
           ),
