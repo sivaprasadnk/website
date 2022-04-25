@@ -15,6 +15,8 @@ class ImageContainer extends StatelessWidget {
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(10),
+          topRight: Radius.circular(10),
+          bottomRight: Radius.circular(10),
           bottomLeft: Radius.circular(10),
         ),
         // color: Color.fromARGB(255, 129, 144, 157),
@@ -24,6 +26,8 @@ class ImageContainer extends StatelessWidget {
       child: ClipRRect(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(10),
+          topRight: Radius.circular(10),
+          bottomRight: Radius.circular(10),
           bottomLeft: Radius.circular(10),
         ),
         child: Image.asset(

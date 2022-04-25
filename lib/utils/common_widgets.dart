@@ -221,7 +221,7 @@ class WinddowsGooglePlayButton extends StatelessWidget {
               padding: const EdgeInsets.all(5.0),
               child: Image.asset(
                 'assets/images/google-play.png',
-                height: 40,
+                height: 35,
                 // width: 10,
               ),
             ),

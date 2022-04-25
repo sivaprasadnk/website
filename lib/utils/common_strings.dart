@@ -57,7 +57,7 @@ String quizStr2 = ' with various categories of subjects to learn facts.';
 String quizStr3 =
     ' Quiz App with light / dark mode with \n various  color themes.';
 String quizStr4 =
-    '\nFavorite / unfavorite option available to view favorite questions';
+    'Favorite / unfavorite option available to\nview favorite questions';
 String quizStr5 =
     '\nAdmin session enables to add, edit , delete questions without using Firebase console.';
 // String quizStr6 = 'Questions organised '

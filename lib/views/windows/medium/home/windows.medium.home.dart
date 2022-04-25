@@ -9,7 +9,7 @@ import 'package:spnk/views/windows/medium/contactme/windows.medium.contactme.scr
 import 'package:spnk/views/windows/medium/experience/windows.medium.experience.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.home.screen.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.menu.dart';
-import 'package:spnk/views/windows/medium/projects/windows.medium.projects.screen.dart';
+import 'package:spnk/views/windows/medium/projects/projects.medium.new.dart';
 
 class WindowsMediumHome extends StatefulWidget {
   @override
@@ -103,7 +103,7 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
                   : screen == "Experience"
                       ? WindowsMediumExperienceScreen()
                       : screen == "MyProjects"
-                          ? const WindowsMediumProjectsScreen()
+                          ? const ProjectsMediumNew()
                           : Container()
           ],
         ),

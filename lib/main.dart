@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:spnk/provider/image.provider.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
@@ -20,10 +21,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     precacheImage(const AssetImage(proPicAssetPath), context);
+    precacheImage(const AssetImage('assets/images/mesh1.jpg'), context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<Quotes>(create: (_) => Quotes()),
         ChangeNotifierProvider<ThemeNotifier>(create: (_) => ThemeNotifier()),
+        ChangeNotifierProvider<ImageHoverProvider>(
+          create: (_) => ImageHoverProvider(),
+        ),
         ChangeNotifierProvider<RouteProvider>(
           create: (_) =>
               RouteProvider(menuSelectedCheck: false, screenName: "Home"),
