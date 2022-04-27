@@ -9,7 +9,7 @@ import 'package:spnk/views/windows/small/contactme/windows.small.contactme.scree
 import 'package:spnk/views/windows/small/experience/windows.small.experience.screen.dart';
 import 'package:spnk/views/windows/small/home/windows.small.drawer.dart';
 import 'package:spnk/views/windows/small/home/windows.small.home.screen.dart';
-import 'package:spnk/views/windows/small/projects/windows.small.projects.screen.dart';
+import 'package:spnk/views/windows/small/projects/projects.screen.small.dart';
 
 class WindowsSmallHome extends StatefulWidget {
   static const routeName = '/HomeSmall';
@@ -148,7 +148,7 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
                   : screen == "ContactMe"
                       ? WindowsSmallContactMeScreen()
                       : screen == "MyProjects"
-                          ? WindowsSmallProjectsScreen()
+                          ? const ProjectsScreenSmall()
                           : screen == "Experience"
                               ? WindowsSmallExperienceScreen()
                               : const SizedBox.shrink()

@@ -1,9 +1,10 @@
-import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
-import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/views/windows/hover_extensions.dart';
+import 'package:spnk/views/windows/small/projects/quizApp/quiz.app.item.small.dart';
+import 'package:spnk/views/windows/small/projects/quotesApp/quotes.app.item.dart';
 
 class AndroidProjects extends StatefulWidget {
   final double screenHeight;
@@ -13,6 +14,10 @@ class AndroidProjects extends StatefulWidget {
 }
 
 class _AndroidProjectsState extends State<AndroidProjects> {
+  PageController controller = PageController();
+
+  bool showNextIcon = true;
+
   Widget Function(
     BuildContext context,
     int index,
@@ -45,7 +50,8 @@ class _AndroidProjectsState extends State<AndroidProjects> {
 
   @override
   Widget build(BuildContext context) {
-    final screenwidth = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Stack(
       children: [
         Positioned.fill(
@@ -92,44 +98,106 @@ class _AndroidProjectsState extends State<AndroidProjects> {
                 ),
               ),
               SizedBox(
-                height: widget.screenHeight * 0.12,
+                height: widget.screenHeight * 0.18,
               ),
-              SingleChildScrollView(
-                child: LiveList(
-                  shrinkWrap: true,
-                  // physics: NeverScrollableScrollPhysics(),
-                  padding: EdgeInsets.zero,
-                  showItemInterval: const Duration(milliseconds: 50),
-                  itemCount: 6,
-                  itemBuilder: animationItemBuilder((index) {
-                    switch (index) {
-                      case 0:
-                        return const TitleText(title: 'SP Quotes App');
-                      case 1:
-                        return const DescriptionText(
-                          description: spQuotesAppDescription,
-                        );
-                      case 2:
-                        return GooglePlayButton(
-                          url: spQuotesLink,
-                          screenWidth: screenwidth,
-                        );
-                      case 3:
-                        return const TitleText(title: 'SP Quiz App');
-                      case 4:
-                        return const DescriptionText(
-                          description: spQuizAppDescription,
-                        );
-                      case 5:
-                        return GooglePlayButton(
-                          screenWidth: screenwidth,
-                          url: spQuizLink,
-                        );
-                    }
-                    return const SizedBox.shrink();
-                  }),
-                ),
+              Stack(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: screenWidth * 0.05),
+                    child: SizedBox(
+                      height: screenHeight * 0.5,
+                      width: screenWidth * 0.8,
+                      child: PageView(
+                        controller: controller,
+                        children: const [
+                          QuizAppItemSmall(),
+                          QuotesAppItemSmall(),
+                        ],
+                      ),
+                    ),
+                  ),
+                  if (!showNextIcon)
+                    Positioned.fill(
+                      left: screenWidth * 0.2,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: GestureDetector(
+                          onTap: () {
+                            controller.previousPage(
+                              duration: const Duration(seconds: 1),
+                              curve: Curves.bounceOut,
+                            );
+                            setState(() {
+                              showNextIcon = true;
+                            });
+                          },
+                          child: const Icon(
+                            Icons.arrow_back_ios,
+                            // color: Theme.of(context).splashColor,
+                          ).showCursorOnHover,
+                        ),
+                      ),
+                    ),
+                  if (showNextIcon)
+                    Positioned.fill(
+                      left: 300,
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: GestureDetector(
+                          onTap: () {
+                            controller.nextPage(
+                              duration: const Duration(seconds: 1),
+                              curve: Curves.bounceOut,
+                            );
+                            setState(() {
+                              showNextIcon = false;
+                            });
+                          },
+                          child: Icon(
+                            Icons.arrow_forward_ios,
+                            color: Theme.of(context).splashColor,
+                          ).showCursorOnHover,
+                        ),
+                      ),
+                    ),
+                ],
               ),
+              // SingleChildScrollView(
+              //   child: LiveList(
+              //     shrinkWrap: true,
+              //     // physics: NeverScrollableScrollPhysics(),
+              //     padding: EdgeInsets.zero,
+              //     showItemInterval: const Duration(milliseconds: 50),
+              //     itemCount: 6,
+              //     itemBuilder: animationItemBuilder((index) {
+              //       switch (index) {
+              //         case 0:
+              //           return const TitleText(title: 'SP Quotes App');
+              //         case 1:
+              //           return const DescriptionText(
+              //             description: spQuotesAppDescription,
+              //           );
+              //         case 2:
+              //           return GooglePlayButton(
+              //             url: spQuotesLink,
+              //             screenWidth: screenwidth,
+              //           );
+              //         case 3:
+              //           return const TitleText(title: 'SP Quiz App');
+              //         case 4:
+              //           return const DescriptionText(
+              //             description: spQuizAppDescription,
+              //           );
+              //         case 5:
+              //           return GooglePlayButton(
+              //             screenWidth: screenwidth,
+              //             url: spQuizLink,
+              //           );
+              //       }
+              //       return const SizedBox.shrink();
+              //     }),
+              //   ),
+              // ),
               SizedBox(
                 height: widget.screenHeight * 0.08,
               ),

@@ -21,7 +21,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     precacheImage(const AssetImage(proPicAssetPath), context);
+    precacheImage(const AssetImage('assets/images/propiccc'), context);
     precacheImage(const AssetImage('assets/images/mesh1.jpg'), context);
+    precacheImage(const AssetImage('assets/images/dash/dash1.png'), context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<Quotes>(create: (_) => Quotes()),
