@@ -1,6 +1,7 @@
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:spnk/provider/dialog_provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
@@ -22,6 +23,21 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
     if (mounted) {
       super.setState(fn);
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      final status =
+          Provider.of<DialogProvider>(context, listen: false).dialogIsOpen;
+      if (status) {
+        Provider.of<DialogProvider>(context, listen: false)
+            .updateDialogOpenStatus(status: false);
+
+        Navigator.of(context).pop();
+      } else {}
+    });
   }
 
   @override
@@ -93,6 +109,7 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
       body: SizedBox(
         // height: screenSize.height * 0.9,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const WindowsMediumMenu(),
             if (screen == "Home")

@@ -49,6 +49,10 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
+    // const mobileWidth = 392;
+    const mobileHeigth = 804;
+    // final widthFactor = screenWidth / mobileWidth;
+    final heightFactor = screenHeight / mobileHeigth;
     // var size = screenWidth / 15;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,13 +70,13 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
           leftPadding: screenWidth * 0.15,
           screenWidth: screenWidth,
         ),
-        const SizedBox(height: 13),
+        SizedBox(height: heightFactor * 11),
         FlutterDeveloperContainer(
           showName: showName,
           leftPadding: screenWidth * 0.15,
           screenWidth: screenWidth,
         ),
-        SizedBox(height: screenHeight * 0.027),
+        SizedBox(height: screenHeight * 0.025),
         Row(
           children: [
             SizedBox(width: screenWidth * 0.2),
@@ -80,9 +84,10 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
               duration: const Duration(milliseconds: 600),
               opacity: showProPic ? 1 : 0,
               child: ProPicMediumWithBlob(
-                height: screenHeight * 0.37,
-                bottomPadding: screenHeight * .01,
-                leftPadding: screenWidth * 0.015,
+                height: heightFactor * 302,
+                // bottomPadding: heightFactor * 5,
+                // leftPadding: widthFactor * 8,
+                // leftPadding: screenWidth * 0.015,
               ),
             ),
           ],

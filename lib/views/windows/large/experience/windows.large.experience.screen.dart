@@ -47,7 +47,9 @@ class _WindowsLargeExperienceScreenState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: screenHeight * 0.2),
-              WindowsLargeSectionTitle(title: 'Experience', width: screenWidth),
+              const WindowsLargeSectionTitle(
+                title: 'Experience',
+              ),
               Padding(
                 padding: EdgeInsets.only(
                   left: screenWidth * 0.5,

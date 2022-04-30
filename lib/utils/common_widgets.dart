@@ -636,12 +636,12 @@ class _ProPicWithBlobState extends State<ProPicLargeWithBlob> {
 
 class ProPicMediumWithBlob extends StatefulWidget {
   final double height;
-  final double leftPadding;
-  final double bottomPadding;
+  // final double leftPadding;
+  // final double bottomPadding;
   const ProPicMediumWithBlob({
     required this.height,
-    required this.bottomPadding,
-    required this.leftPadding,
+    // required this.bottomPadding,
+    // required this.leftPadding,
   });
 
   @override
@@ -654,9 +654,11 @@ class _ProPicMediumWithBlobState extends State<ProPicMediumWithBlob> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(milliseconds: 500)).then((value) {
-      setState(() {
-        showProPicWithBlob = true;
-      });
+      if (mounted) {
+        setState(() {
+          showProPicWithBlob = true;
+        });
+      }
     });
   }
 
@@ -665,25 +667,30 @@ class _ProPicMediumWithBlobState extends State<ProPicMediumWithBlob> {
     return AnimatedOpacity(
       duration: const Duration(milliseconds: 900),
       opacity: showProPicWithBlob ? 1 : 0,
-      child: Blob.fromID(
-        id: const ['16-7-5840'],
-        styles: BlobStyles(
-          color: Colors.cyanAccent.shade700,
-        ),
-        size: widget.height,
-        child: Padding(
-          padding: EdgeInsets.only(
-            bottom: widget.bottomPadding,
-            left: widget.leftPadding,
-            right: 15,
-            // top: 10,
-          ),
-          child: Image.asset(
-            'assets/images/propiccc.png',
-            // height: widget.height * .4,
-          ),
-        ),
+      child: Image.asset(
+        'assets/images/picWithBlob.png',
+        // height: 350,
+        width: widget.height,
       ),
+      // child: Blob.fromID(
+      //   id: const ['16-7-5840'],
+      //   styles: BlobStyles(
+      //     color: Colors.cyanAccent.shade700,
+      //   ),
+      //   size: widget.height,
+      //   child: Padding(
+      //     padding: EdgeInsets.only(
+      //       bottom: widget.bottomPadding,
+      //       left: widget.leftPadding,
+      //       right: 15,
+      //       // top: 10,
+      //     ),
+      //     child: Image.asset(
+      //       'assets/images/propiccc.png',
+      //       height: widget.height,
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

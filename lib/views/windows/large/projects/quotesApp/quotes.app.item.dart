@@ -37,10 +37,12 @@ class QuotesAppDetailsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DetailsContainer(
-      desc1: quotesAppStr1,
-      desc2: quotesAppStr2,
+      desc1: quotesAppStr1Large,
+      desc2: quotesAppStr2Large,
+      tools2: 'Public api',
       link: spQuotesLink,
       title: 'SP Quotes App',
+      isWeb: false,
     );
   }
 }

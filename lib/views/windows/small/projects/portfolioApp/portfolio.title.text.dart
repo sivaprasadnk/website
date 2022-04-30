@@ -1,18 +1,18 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/dialog_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
-import 'package:spnk/views/windows/medium/projects/app.details/google.play.button.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/text.container.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/view.more.small.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class QuizTitleTextSmall extends StatelessWidget {
-  const QuizTitleTextSmall({Key? key}) : super(key: key);
+class PortfolioTitleTextSmall extends StatelessWidget {
+  const PortfolioTitleTextSmall({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class QuizTitleTextSmall extends StatelessWidget {
         padding: const EdgeInsets.only(left: 20),
         child: Row(
           children: [
-            const ProjectTitle(title: 'SP Quiz App'),
+            const ProjectTitle(title: 'Portfolio website'),
             const Expanded(
               child: Text(""),
             ),
@@ -37,10 +37,10 @@ class QuizTitleTextSmall extends StatelessWidget {
                     return Dialog(
                       backgroundColor: Colors.transparent,
                       child: DetailsContainer(
-                        desc1: quizStr3,
-                        desc2: quizStr4,
-                        link: spQuizLink,
-                        title: 'SP Quiz App',
+                        desc1: websiteStr1,
+                        desc2: websiteStr2,
+                        link: websiteLink,
+                        title: 'Portfolio Website',
                       ),
                     );
                   },
@@ -78,8 +78,6 @@ class DetailsContainer extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    final screenWidth = screenSize.width;
     return Stack(
       children: [
         Container(
@@ -144,29 +142,6 @@ class DetailsContainer extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(3),
-                          color: Colors.yellow,
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 5,
-                            vertical: 3,
-                          ),
-                          child: Text(
-                            'Firebase',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w800,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -201,12 +176,9 @@ class DetailsContainer extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, top: 10, right: 20),
-                child: GooglePlayButton(
-                  screenWidth: screenWidth * 0.4,
-                  url: link,
-                ).showCursorOnHover,
+              const Padding(
+                padding: EdgeInsets.only(left: 20, top: 10, right: 20),
+                child: VisitLinkContainer(),
               ),
               const SizedBox(
                 height: 10,
@@ -243,72 +215,54 @@ class DetailsContainer extends StatelessWidget {
   }
 }
 
-class WinddowsGooglePlayButton extends StatelessWidget {
-  final double screenWidth;
-  final String url;
-  const WinddowsGooglePlayButton({
-    required this.screenWidth,
-    required this.url,
-  });
+class VisitLinkContainer extends StatelessWidget {
+  const VisitLinkContainer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        launch(url);
+        launch(websiteLink);
       },
       child: Container(
-        height: 50,
+        // height: 50,
+        margin: const EdgeInsets.only(left: 20, top: 10, right: 20),
         decoration: BoxDecoration(
           color: Colors.black,
           border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Image.asset(
-                'assets/images/google-play.png',
-                height: 31,
-                // width: 10,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              FaIcon(
+                FontAwesomeIcons.externalLinkAlt,
+                color: Colors.white,
               ),
-            ),
-            const SizedBox(
-              width: 1,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 5, left: 5),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    'GET IT ON',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 10,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 8, bottom: 5),
-                    child: Text(
-                      'Google Play',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ),
-                ],
+              SizedBox(
+                width: 1,
               ),
-            )
-          ],
+              Padding(
+                padding: EdgeInsets.only(top: 1, left: 5),
+                child: Text(
+                  'Click here to visit',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 15,
+              ),
+            ],
+          ),
         ),
-      ),
+      ).showCursorOnHover,
     );
   }
 }

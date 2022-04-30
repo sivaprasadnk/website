@@ -6,19 +6,28 @@ import 'package:spnk/provider/dialog_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/medium/projects/app.details/google.play.button.dart';
+import 'package:spnk/views/windows/medium/projects/view.more.container.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/text.container.dart';
-import 'package:spnk/views/windows/small/projects/app.summary/view.more.small.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class QuizTitleTextSmall extends StatelessWidget {
-  const QuizTitleTextSmall({Key? key}) : super(key: key);
+class QuizTitleText extends StatefulWidget {
+  const QuizTitleText({
+    Key? key,
+  }) : super(key: key);
 
+  @override
+  State<QuizTitleText> createState() => _QuizTitleTextState();
+}
+
+class _QuizTitleTextState extends State<QuizTitleText> {
   @override
   Widget build(BuildContext context) {
     return const TextContainer().blurred(
       overlay: Padding(
-        padding: const EdgeInsets.only(left: 20),
+        padding: const EdgeInsets.only(
+          left: 20,
+        ),
         child: Row(
           children: [
             const ProjectTitle(title: 'SP Quiz App'),
@@ -33,7 +42,7 @@ class QuizTitleTextSmall extends StatelessWidget {
                 showAnimatedDialog(
                   context: context,
                   barrierDismissible: false,
-                  builder: (BuildContext context) {
+                  builder: (BuildContext context1) {
                     return Dialog(
                       backgroundColor: Colors.transparent,
                       child: DetailsContainer(
@@ -49,7 +58,7 @@ class QuizTitleTextSmall extends StatelessWidget {
                   duration: const Duration(seconds: 1),
                 );
               },
-              child: const ViewMoreContainerSmall(),
+              child: const ViewMoreContainer(),
             ),
           ],
         ),
@@ -57,6 +66,8 @@ class QuizTitleTextSmall extends StatelessWidget {
       colorOpacity: 0.3,
       alignment: Alignment.topLeft,
       borderRadius: const BorderRadius.only(
+        // topLeft: Radius.circular(10),
+        // topRight: Radius.circular(10),
         bottomRight: Radius.circular(10),
         bottomLeft: Radius.circular(10),
       ),

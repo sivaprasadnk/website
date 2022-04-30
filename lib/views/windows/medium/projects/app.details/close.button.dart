@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:spnk/provider/dialog_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 
-class CloseButton extends StatelessWidget {
-  const CloseButton({Key? key}) : super(key: key);
+class DialogCloseButton extends StatelessWidget {
+  const DialogCloseButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +14,8 @@ class CloseButton extends StatelessWidget {
         alignment: Alignment.topRight,
         child: GestureDetector(
           onTap: () {
+            Provider.of<DialogProvider>(context, listen: false)
+                .updateDialogOpenStatus(status: false);
             Navigator.pop(context);
           },
           child: Container(

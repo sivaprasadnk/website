@@ -1,10 +1,12 @@
+// ignore_for_file: prefer_final_fields
+
 import 'package:flutter/cupertino.dart';
 
 class RouteProvider extends ChangeNotifier {
   String screenName = "Home";
   bool menuSelectedCheck = false;
 
-  RouteProvider({required this.screenName, required this.menuSelectedCheck});
+  // RouteProvider({required this.screenName, required this.menuSelectedCheck});
 
   String get screen => screenName;
 

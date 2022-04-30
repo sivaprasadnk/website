@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/views/windows/hover_extensions.dart';
+import 'package:provider/provider.dart';
+import 'package:spnk/provider/page.provider.dart';
+import 'package:spnk/views/windows/medium/projects/app.summary/next.icon.dart';
+import 'package:spnk/views/windows/medium/projects/app.summary/prev.icon.dart';
+import 'package:spnk/views/windows/small/projects/portfolioApp/portfolio.app.item.small.dart';
 import 'package:spnk/views/windows/small/projects/quizApp/quiz.app.item.small.dart';
 import 'package:spnk/views/windows/small/projects/quotesApp/quotes.app.item.dart';
 // import 'package:spnk/views/windows/medium/projects/quizApp/quiz.app.item.medium.dart';
@@ -29,67 +33,47 @@ class _ProjectsScreenSmallState extends State<ProjectsScreenSmall> {
         SizedBox(height: screenHeight * 0.13),
         SectionTitle(screenWidth: screenWidth, title: 'My Projects'),
         SizedBox(height: screenHeight * 0.1),
-        Stack(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: screenWidth * 0.07),
-              child: SizedBox(
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Column(
+            children: [
+              SizedBox(
                 height: screenHeight * 0.5,
-                width: screenWidth * 0.6,
+                width: 380,
                 child: PageView(
                   controller: controller,
+                  onPageChanged: (pageIndex) {
+                    Provider.of<PageProvider>(context, listen: false)
+                        .updatePage(pageIndex.toDouble());
+                  },
                   children: const [
                     QuizAppItemSmall(),
                     QuotesAppItemSmall(),
+                    PortfolioAppItemSmall(),
                   ],
                 ),
               ),
-            ),
-            if (!showNextIcon)
-              Positioned.fill(
-                left: screenWidth * 0.15,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: GestureDetector(
-                    onTap: () {
-                      controller.previousPage(
-                        duration: const Duration(seconds: 1),
-                        curve: Curves.bounceOut,
-                      );
-                      setState(() {
-                        showNextIcon = true;
-                      });
-                    },
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      color: Theme.of(context).splashColor,
-                    ).showCursorOnHover,
-                  ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: 300,
+                child: Row(
+                  children: [
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    PrevIcon(controller: controller),
+                    const Spacer(),
+                    NextIcon(controller: controller),
+                    const SizedBox(
+                      width: 40,
+                    ),
+                  ],
                 ),
               ),
-            if (showNextIcon)
-              Positioned.fill(
-                // left: 300,
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: GestureDetector(
-                    onTap: () {
-                      controller.nextPage(
-                        duration: const Duration(seconds: 1),
-                        curve: Curves.bounceOut,
-                      );
-                      setState(() {
-                        showNextIcon = false;
-                      });
-                    },
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Theme.of(context).splashColor,
-                    ).showCursorOnHover,
-                  ),
-                ),
-              ),
-          ],
+            ],
+          ),
         ),
       ],
     );

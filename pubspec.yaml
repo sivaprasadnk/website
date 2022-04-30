@@ -30,11 +30,12 @@ dependencies:
   blobs: ^2.0.0
   blur: ^3.1.0
   bordered_text: ^2.0.0
-  carousel_slider: ^4.0.0
+  carousel_slider: ^4.1.1
   cupertino_icons: ^1.0.2
   day_night_switcher: ^0.2.0+1
   dio: ^4.0.0
   faded_widget: ^2.0.0
+  flip_card: ^0.6.0
   flutter:
     sdk: flutter
   flutter_animated_dialog: ^2.0.1
@@ -88,6 +89,7 @@ flutter:
     - assets/images/quizApp/
     - assets/images/quotesApp/
     - assets/images/social-media/
+    - assets/images/website/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

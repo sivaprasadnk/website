@@ -1,6 +1,7 @@
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:spnk/provider/dialog_provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
@@ -37,13 +38,20 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 1)).then((value) {
-      if (mounted) {
-        setState(() {
-          showProPic = true;
-        });
-      }
+      debugPrint('.. @@ small init state');
+      final status =
+          Provider.of<DialogProvider>(context, listen: false).dialogIsOpen;
+      debugPrint('.. @@ small init state status : $status');
+
+      if (status) {
+        Provider.of<DialogProvider>(context, listen: false)
+            .updateDialogOpenStatus(status: false);
+        Navigator.of(context).pop();
+      } else {}
     });
   }
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +69,7 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
     debugPrint('..@ screen @ small :$screen');
     debugPrint('..@ menuSelectedCheck @ small :$menuSelectedCheck');
     return Scaffold(
+      key: _scaffoldKey,
       extendBodyBehindAppBar: true,
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),

@@ -12,6 +12,8 @@ const String linkedInLink = 'https://www.linkedin.com/in/sivaprasadnkofficial/';
 const String spQuotesLink =
     'https://play.google.com/store/apps/details?id=com.sptpra.spquotes';
 
+const String websiteLink = 'https://sivaprasadnk.github.io/#/';
+
 const String spQuizLink =
     'https://play.google.com/store/apps/details?id=com.sptpra.spquiz';
 
@@ -42,10 +44,22 @@ const String emailText = '  sivaprasadnk.official@gmail.com';
 
 const String onlineWrkLottieAssetPath = 'assets/lotties/online-work.json';
 
-String quotesAppStr1 =
-    'Quotes listing app using a public api \nand  Glassmorphism UI';
-String quotesAppStr2 = '\nSave to gallery, sharing options available';
+///
+String quotesAppStr1Large =
+    'Quotes listing app using a public \napi and  Glassmorphism UI';
+String quotesAppStr2Large = '\nSave to gallery, sharing options available';
 
+///
+///
+String quotesAppStr1 =
+    'Quotes listing app using a public api \n and  Glassmorphism UI';
+String quotesAppStr2 = '\nSave to gallery, sharing options available';
+String websiteStr1 =
+    'Personal portfolio website using Flutter web\nto showcase my Flutter skills';
+String websiteStr2 = '\nResponsive design for every screensize';
+String websiteStr1Large =
+    'Personal portfolio website using Flutter web to showcase \nmy Flutter skills';
+String websiteStr2Large = '\nResponsive design for every screensize';
 String quoteStr1 =
     'A simple quotes listing app made using Flutter & a public api (quotable api).';
 String quoteStr2 =
@@ -55,7 +69,7 @@ String quoteStr4 = '\nSave to gallery , and sharing option also available. ';
 String quizStr1 = 'A simple Quiz app using Flutter and Firebase,';
 String quizStr2 = ' with various categories of subjects to learn facts.';
 String quizStr3 =
-    ' Quiz App with light / dark mode with \n various  color themes.';
+    ' Quiz App with light / dark mode \nwith various  color themes.';
 String quizStr4 =
     'Favorite / unfavorite option available to\nview favorite questions';
 String quizStr5 =
@@ -81,3 +95,4 @@ String str7 =
 String quizImageAssetPath = 'assets/images/quizApp/design1.png';
 
 String quotesAppImageAssetPath = 'assets/images/quotesApp/screen2.png';
+String websiteImageAssetPath = "assets/images/website/screen3.png";

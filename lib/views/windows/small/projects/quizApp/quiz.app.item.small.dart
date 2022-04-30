@@ -33,9 +33,9 @@ class _QuizImageContainerState extends State<QuizImageContainer> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        ImageContainer(imagePath: quizImageAssetPath),
+        ImageContainerSmall(imagePath: quizImageAssetPath),
         const Positioned.fill(
-          left: 45,
+          left: 20,
           bottom: -2,
           child: Align(
             alignment: Alignment.bottomLeft,

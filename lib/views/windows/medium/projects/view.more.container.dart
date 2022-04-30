@@ -7,7 +7,7 @@ class ViewMoreContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 8),
+      margin: const EdgeInsets.only(top: 8, right: 10),
       decoration: BoxDecoration(
         color: const Color.fromRGBO(0, 34, 120, 1),
         borderRadius: BorderRadius.circular(5),

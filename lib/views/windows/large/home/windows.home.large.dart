@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:spnk/provider/dialog_provider.dart';
 // import 'autos'
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
@@ -36,6 +37,25 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      debugPrint('.. @@ large init state');
+
+      final status =
+          Provider.of<DialogProvider>(context, listen: false).dialogIsOpen;
+      debugPrint('.. @@ small init state status : $status');
+
+      if (status) {
+        Provider.of<DialogProvider>(context, listen: false)
+            .updateDialogOpenStatus(status: false);
+        Navigator.of(context).pop();
+      } else {}
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    // dependOnInheritedWidgetOfExactType(){}
+    super.didChangeDependencies();
   }
 
   @override
@@ -69,7 +89,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
         ),
         extendBodyBehindAppBar: true,
         appBar: PreferredSize(
-          preferredSize: Size(screenWidth, 90),
+          preferredSize: Size(screenWidth * 0.9, 90),
           child: Padding(
             padding: const EdgeInsets.all(16) +
                 EdgeInsets.symmetric(horizontal: screenWidth * 0.025),
@@ -151,7 +171,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
           child: TabBarView(
             controller: _tabController,
             children: [

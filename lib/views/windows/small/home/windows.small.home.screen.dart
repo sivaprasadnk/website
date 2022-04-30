@@ -42,8 +42,10 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
+    const mobileWidth = 392;
+    final widthFactor = screenWidth / mobileWidth;
     // var size = screenWidth / 11;
-
+    debugPrint('  screenWidth : $screenWidth');
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -85,8 +87,8 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
               opacity: showProPic ? 1 : 0,
               child: ProPicMediumWithBlob(
                 height: screenHeight * 0.35,
-                bottomPadding: screenHeight * .018,
-                leftPadding: screenWidth * 0.03,
+                // bottomPadding: screenHeight * .018,
+                // leftPadding: widthFactor * 10,
               ),
               // child: Padding(
               //   padding: EdgeInsets.only(left: screenWidth * 0.2),

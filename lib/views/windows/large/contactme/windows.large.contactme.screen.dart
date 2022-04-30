@@ -50,7 +50,9 @@ class _WindowsLargeContactMeScreenState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: screenHeight * 0.2),
-              WindowsLargeSectionTitle(title: 'Contact Me', width: screenWidth),
+              const WindowsLargeSectionTitle(
+                title: 'Contact Me',
+              ),
               Padding(
                 padding: EdgeInsets.only(
                   left: screenWidth * 0.5,

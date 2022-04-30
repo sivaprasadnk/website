@@ -1,37 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/views/windows/medium/projects/app.summary/image.container.dart';
 import 'package:spnk/views/windows/medium/projects/quotesApp/quotes.title.text.dart';
+import 'package:spnk/views/windows/small/projects/app.summary/image.container.dart';
 
 class QuotesAppItemMedium extends StatelessWidget {
-  const QuotesAppItemMedium({Key? key}) : super(key: key);
+  const QuotesAppItemMedium({
+    Key? key,
+    // required this.pageIndex,
+    // required this.controller,
+  }) : super(key: key);
+  // final double pageIndex;
+  // final PageController controller;
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    final screenHeight = screenSize.height;
-    return SizedBox(
-      height: screenHeight * 0.5,
-      child: const QuotesAppImageContainer(),
+    // final screenSize = MediaQuery.of(context).size;
+    // final screenHeight = screenSize.height;
+    return const SizedBox(
+      // height: screenHeight * 0.5,
+      child: QuotesAppImageContainer(
+          // pageIndex: controller.page!,
+          // controller: controller,
+          ),
     );
   }
 }
 
 class QuotesAppImageContainer extends StatelessWidget {
-  const QuotesAppImageContainer({Key? key}) : super(key: key);
-
+  const QuotesAppImageContainer({
+    Key? key,
+    // required this.pageIndex,
+    // required this.controller,
+  }) : super(key: key);
+  // final double pageIndex;
+  // final PageController controller;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        ImageContainer(imagePath: quotesAppImageAssetPath),
+        ImageContainerSmall(imagePath: quotesAppImageAssetPath),
         const Positioned.fill(
-          left: 50,
+          left: 20,
           child: Align(
             alignment: Alignment.bottomLeft,
             child: QuotesTitleText(),
           ),
-        )
+        ),
       ],
     );
   }

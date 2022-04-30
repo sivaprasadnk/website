@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
+import 'package:spnk/views/windows/medium/projects/portfolioApp/portfolio.title.text.dart';
 
 class DetailsContainer extends StatelessWidget {
   const DetailsContainer({
@@ -9,17 +10,22 @@ class DetailsContainer extends StatelessWidget {
     required this.desc2,
     required this.link,
     required this.title,
+    required this.tools2,
+    required this.isWeb,
   }) : super(key: key);
   final String desc1;
   final String desc2;
+  final String tools2;
   final String link;
   final String title;
+  final bool isWeb;
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     return Container(
-      width: 400,
+      // width: screenWidt,
+      width: 280,
       // padding: const EdgeInsets.only(right: 30),
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -70,29 +76,30 @@ class DetailsContainer extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(3),
-                      color: Colors.yellow,
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 5,
-                        vertical: 3,
+                if (tools2.trim().isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(3),
+                        color: Colors.yellow,
                       ),
-                      child: Text(
-                        'Firebase',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w800,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 5,
+                          vertical: 3,
+                        ),
+                        child: Text(
+                          tools2,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w800,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
           ),
@@ -110,6 +117,9 @@ class DetailsContainer extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(
+            height: 10,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Text(
@@ -122,14 +132,20 @@ class DetailsContainer extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 50,
+            height: 30,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20, top: 10, right: 20),
-            child: WinddowsGooglePlayButton(
-              screenWidth: screenWidth * 0.4,
-              url: link,
-            ).showCursorOnHover,
+            padding: EdgeInsets.only(
+              left: 10,
+              top: 10,
+              right: !isWeb ? 20 : 0,
+            ),
+            child: !isWeb
+                ? WinddowsGooglePlayButton(
+                    screenWidth: screenWidth * 0.4,
+                    url: link,
+                  ).showCursorOnHover
+                : const VisitLinkContainer(),
           )
         ],
       ),

@@ -1,8 +1,12 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:provider/provider.dart';
+import 'package:spnk/provider/dialog_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/views/windows/small/projects/app.details/details.container.dart';
+import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
+import 'package:spnk/views/windows/small/projects/app.summary/text.container.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/view.more.small.dart';
 
 class QuotesTitleTextSmall extends StatelessWidget {
@@ -10,32 +14,20 @@ class QuotesTitleTextSmall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 50,
-      width: 360,
-    ).blurred(
+    return const TextContainer().blurred(
       overlay: Padding(
         padding: const EdgeInsets.only(left: 20),
         child: Row(
           children: [
-            const Text(
-              'SP Quotes App',
-              style: TextStyle(
-                fontFamily: 'PlayfairDisplay',
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 25.0,
-              ),
-            ),
-            const Flexible(
-              child: SizedBox(
-                width: 50,
-              ),
+            const ProjectTitle(title: 'SP Quotes App'),
+            const Expanded(
+              child: Text(""),
             ),
             GestureDetector(
               onTap: () {
-                // Provider.of<ImageHoverProvider>(context, listen: false)
-                //     .toggleHovered();
+                Provider.of<DialogProvider>(context, listen: false)
+                    .updateDialogOpenStatus(status: true);
+
                 showAnimatedDialog(
                   context: context,
                   barrierDismissible: false,

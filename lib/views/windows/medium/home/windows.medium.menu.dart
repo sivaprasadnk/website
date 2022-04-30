@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:spnk/provider/page.provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 
@@ -14,18 +15,16 @@ class _WindowsMediumMenuState extends State<WindowsMediumMenu> {
   bool isHovering = false;
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-
-    final screenWidth = screenSize.width;
+    // final screenWidth = screenSize.width;
     return Padding(
-      padding: EdgeInsets.only(left: screenWidth * 0.01),
+      padding: const EdgeInsets.only(left: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           // Spacer(),
-          SizedBox(
-            height: screenSize.height * 0.15,
+          const SizedBox(
+            height: 250,
           ),
           GestureDetector(
             onTap: () {
@@ -47,6 +46,7 @@ class _WindowsMediumMenuState extends State<WindowsMediumMenu> {
             onTap: () {
               Provider.of<RouteProvider>(context, listen: false)
                   .setScreen(name: 'MyProjects');
+              Provider.of<PageProvider>(context, listen: false).updatePage(0);
             },
             child: MyProjectsMenu(),
           ),
@@ -138,9 +138,6 @@ class _HoverTextState extends State<HoverText> {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    final screenWidth = screenSize.width;
-
     return MouseRegion(
       onEnter: (_) {
         setState(() {
@@ -154,9 +151,10 @@ class _HoverTextState extends State<HoverText> {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        width: screenWidth * 0.15,
+        width: 120,
         height: 50,
         decoration: BoxDecoration(
+          // color: Colors.blue,
           borderRadius: BorderRadius.circular(30),
           border: Border.all(
             width: 2,

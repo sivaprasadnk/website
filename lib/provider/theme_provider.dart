@@ -27,12 +27,19 @@ ThemeData light = ThemeData(
     headline3: TextStyle(
       fontFamily: 'PlayfairDisplay',
       fontWeight: FontWeight.bold,
+      fontSize: 30,
       color: Color.fromRGBO(0, 34, 120, 1),
     ),
     headline4: TextStyle(
       fontFamily: 'PlayfairDisplay',
       fontWeight: FontWeight.bold,
       fontSize: 15,
+      color: Color.fromRGBO(0, 34, 120, 1),
+    ),
+    headline6: TextStyle(
+      fontFamily: 'PlayfairDisplay',
+      fontWeight: FontWeight.bold,
+      fontSize: 35,
       color: Color.fromRGBO(0, 34, 120, 1),
     ),
     bodyText1: TextStyle(
@@ -105,6 +112,7 @@ ThemeData dark = ThemeData(
       fontSize: 28.0,
     ),
     headline3: TextStyle(
+      fontSize: 30,
       fontFamily: 'PlayfairDisplay',
       fontWeight: FontWeight.bold,
       color: Colors.white,
@@ -116,7 +124,12 @@ ThemeData dark = ThemeData(
       color: Colors.white,
     ),
     // headline4: ,
-    // headline6: ,
+    headline6: TextStyle(
+      fontSize: 35,
+      fontFamily: 'PlayfairDisplay',
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
     bodyText1: TextStyle(
       fontWeight: FontWeight.bold,
       color: Colors.white,

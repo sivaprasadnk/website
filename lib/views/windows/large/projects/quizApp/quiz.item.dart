@@ -39,8 +39,10 @@ class QuizDetailsContainer extends StatelessWidget {
     return DetailsContainer(
       desc1: quizStr3,
       desc2: quizStr4,
+      tools2: 'Firebase',
       link: spQuizLink,
       title: 'SP Quiz App',
+      isWeb: false,
     );
   }
 }

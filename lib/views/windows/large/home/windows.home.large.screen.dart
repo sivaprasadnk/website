@@ -55,6 +55,10 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
+    const mobileWidth = 392;
+    const mobileHeigth = 804;
+    // final widthFactor = screenWidth / mobileWidth;
+    final heightFactor = screenHeight / mobileHeigth;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -91,13 +95,21 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
         Column(
           children: [
             SizedBox(
-              height: screenHeight * 0.3,
+              height: screenHeight * 0.2,
             ),
-            ProPicMediumWithBlob(
-              height: screenHeight * 0.4,
-              bottomPadding: screenHeight * .02,
-              leftPadding: screenWidth * 0.01,
+            Flexible(
+              child: ProPicMediumWithBlob(
+                height: heightFactor * 380,
+                // bottomPadding: heightFactor * 0,
+                // leftPadding: widthFactor * 8,
+                // leftPadding: screenWidth * 0.015,
+              ),
             ),
+            // ProPicMediumWithBlob(
+            //   height: screenHeight * 0.4,
+            //   bottomPadding: screenHeight * .02,
+            //   leftPadding: screenWidth * 0.01,
+            // ),
           ],
         ),
         // ProPic(screenWidth: screenWidth, showPic: showProPic)

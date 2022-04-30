@@ -100,8 +100,8 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                 padding: EdgeInsets.only(left: screenWidth * 0.15),
                 child: ProPicMediumWithBlob(
                   height: screenHeight * 0.3,
-                  bottomPadding: screenHeight * .02,
-                  leftPadding: screenWidth * 0.02,
+                  // bottomPadding: screenHeight * .02,
+                  // leftPadding: screenWidth * 0.02,
                 ),
                 // child: Stack(
                 //   children: [
