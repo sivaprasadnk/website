@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/views/android/projects/portfolioApp/portfolio.app.item.small.dart';
+import 'package:spnk/views/android/projects/quizApp/quiz.app.item.small.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
-import 'package:spnk/views/windows/small/projects/portfolioApp/portfolio.app.item.small.dart';
-import 'package:spnk/views/windows/small/projects/quizApp/quiz.app.item.small.dart';
+// import 'package:spnk/views/windows/small/projects/quizApp/quiz.app.item.small.dart';
 import 'package:spnk/views/windows/small/projects/quotesApp/quotes.app.item.dart';
 
 class AndroidProjects extends StatefulWidget {
@@ -104,56 +105,64 @@ class _AndroidProjectsState extends State<AndroidProjects> {
               ),
               Column(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: screenWidth * 0.08),
-                    child: SizedBox(
-                      height: screenHeight * 0.5,
-                      width: screenWidth * 0.8,
-                      child: PageView(
-                        onPageChanged: (pageIndex) {
-                          setState(() {
-                            showPrevIcon = pageIndex != 0;
-                            showNextIcon = pageIndex != 2;
-                          });
-                        },
-                        controller: controller,
-                        children: const [
-                          QuizAppItemSmall(),
-                          QuotesAppItemSmall(),
-                          PortfolioAppItemSmall()
-                        ],
-                      ),
+                  SizedBox(
+                    height: screenHeight * 0.5,
+                    width: screenWidth * 0.8,
+                    child: PageView(
+                      onPageChanged: (pageIndex) {
+                        setState(() {
+                          showPrevIcon = pageIndex != 0;
+                          showNextIcon = pageIndex != 2;
+                        });
+                      },
+                      controller: controller,
+                      children: const [
+                        QuizAppItemMobile(),
+                        QuotesAppItemSmall(),
+                        PortfolioAppItemMobile()
+                      ],
                     ),
                   ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      if (showPrevIcon)
-                        GestureDetector(
-                          onTap: () {
-                            controller.previousPage(
-                              duration: const Duration(seconds: 1),
-                              curve: Curves.bounceOut,
-                            );
-                          },
-                          child: const Icon(
-                            Icons.arrow_back_ios,
-                            // color: Theme.of(context).splashColor,
-                          ).showCursorOnHover,
+                      GestureDetector(
+                        onTap: () {
+                          controller.previousPage(
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.bounceOut,
+                          );
+                        },
+                        child: SizedBox(
+                          height: 10,
+                          width: 10,
+                          child: showPrevIcon
+                              ? const Icon(
+                                  Icons.arrow_back_ios,
+                                ).showCursorOnHover
+                              : const SizedBox.shrink(),
                         ),
-                      if (showNextIcon)
-                        GestureDetector(
-                          onTap: () {
-                            controller.nextPage(
-                              duration: const Duration(seconds: 1),
-                              curve: Curves.bounceOut,
-                            );
-                          },
-                          child: Icon(
-                            Icons.arrow_forward_ios,
-                            color: Theme.of(context).splashColor,
-                          ).showCursorOnHover,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          controller.nextPage(
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.bounceOut,
+                          );
+                        },
+                        child: SizedBox(
+                          height: 10,
+                          width: 10,
+                          child: showNextIcon
+                              ? const Icon(
+                                  Icons.arrow_forward_ios,
+                                ).showCursorOnHover
+                              : const SizedBox.shrink(),
                         ),
+                      ),
                     ],
                   ),
                 ],
