@@ -95,4 +95,4 @@ String str7 =
 String quizImageAssetPath = 'assets/images/quizApp/design1.png';
 
 String quotesAppImageAssetPath = 'assets/images/quotesApp/screen2.png';
-String websiteImageAssetPath = "assets/images/website/screen3.png";
+String websiteImageAssetPath = "assets/images/website/screen4.png";

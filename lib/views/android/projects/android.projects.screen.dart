@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
+import 'package:spnk/views/windows/small/projects/portfolioApp/portfolio.app.item.small.dart';
 import 'package:spnk/views/windows/small/projects/quizApp/quiz.app.item.small.dart';
 import 'package:spnk/views/windows/small/projects/quotesApp/quotes.app.item.dart';
 
@@ -17,6 +18,7 @@ class _AndroidProjectsState extends State<AndroidProjects> {
   PageController controller = PageController();
 
   bool showNextIcon = true;
+  bool showPrevIcon = false;
 
   Widget Function(
     BuildContext context,
@@ -100,66 +102,60 @@ class _AndroidProjectsState extends State<AndroidProjects> {
               SizedBox(
                 height: widget.screenHeight * 0.18,
               ),
-              Stack(
+              Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: screenWidth * 0.05),
+                    padding: EdgeInsets.only(left: screenWidth * 0.08),
                     child: SizedBox(
                       height: screenHeight * 0.5,
                       width: screenWidth * 0.8,
                       child: PageView(
+                        onPageChanged: (pageIndex) {
+                          setState(() {
+                            showPrevIcon = pageIndex != 0;
+                            showNextIcon = pageIndex != 2;
+                          });
+                        },
                         controller: controller,
                         children: const [
                           QuizAppItemSmall(),
                           QuotesAppItemSmall(),
+                          PortfolioAppItemSmall()
                         ],
                       ),
                     ),
                   ),
-                  if (!showNextIcon)
-                    Positioned.fill(
-                      left: screenWidth * 0.2,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: GestureDetector(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (showPrevIcon)
+                        GestureDetector(
                           onTap: () {
                             controller.previousPage(
                               duration: const Duration(seconds: 1),
                               curve: Curves.bounceOut,
                             );
-                            setState(() {
-                              showNextIcon = true;
-                            });
                           },
                           child: const Icon(
                             Icons.arrow_back_ios,
                             // color: Theme.of(context).splashColor,
                           ).showCursorOnHover,
                         ),
-                      ),
-                    ),
-                  if (showNextIcon)
-                    Positioned.fill(
-                      left: 300,
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: GestureDetector(
+                      if (showNextIcon)
+                        GestureDetector(
                           onTap: () {
                             controller.nextPage(
                               duration: const Duration(seconds: 1),
                               curve: Curves.bounceOut,
                             );
-                            setState(() {
-                              showNextIcon = false;
-                            });
                           },
                           child: Icon(
                             Icons.arrow_forward_ios,
                             color: Theme.of(context).splashColor,
                           ).showCursorOnHover,
                         ),
-                      ),
-                    ),
+                    ],
+                  ),
                 ],
               ),
               // SingleChildScrollView(

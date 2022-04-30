@@ -226,7 +226,7 @@ class VisitLinkContainer extends StatelessWidget {
       },
       child: Container(
         // height: 50,
-        margin: const EdgeInsets.only(left: 20, top: 10, right: 20),
+        margin: const EdgeInsets.only(left: 20, top: 4, right: 20),
         decoration: BoxDecoration(
           color: Colors.black,
           border: Border.all(color: Colors.grey),
