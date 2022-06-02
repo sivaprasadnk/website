@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 ThemeData light = ThemeData(
   brightness: Brightness.light,
   primarySwatch: Colors.indigo,
-  splashColor: const Color.fromRGBO(0, 34, 120, 1),
+  splashColor: const Color(0xFF002278),
   textTheme: const TextTheme(
     caption: TextStyle(
       fontFamily: 'PlayfairDisplay',

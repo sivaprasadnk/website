@@ -16,22 +16,47 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="My Portfolio website">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="spnk">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <meta name="apple-mobile-web-app-title" content="Sivaprasad NK">
+  <link rel="apple-touch-icon" href="icons/propic.png">
 
-  <title>spnk</title>
+  <title>Sivaprasad NK</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      background-color: rgb(0, 34, 51);
+        /* background-image: url('mesh1.jpg'); */
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .loader {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
 </head>
 
 <body id="app-container">
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
+    <div class="centered">
+      <div class="loader">
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_j1uvfzu5.json"  background="transparent"  speed="1"   loop  autoplay></lottie-player>
+      </div>
+    </div>     
   <script>
 
     var serviceWorkerVersion = null;
