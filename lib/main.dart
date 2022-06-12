@@ -76,8 +76,8 @@ class SplashScreen extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     // var screenHeight = screenSize.height;
-    return defaultTargetPlatform != TargetPlatform.android ||
-            defaultTargetPlatform != TargetPlatform.iOS
+    return defaultTargetPlatform == TargetPlatform.android ||
+            defaultTargetPlatform == TargetPlatform.iOS
         ? const AndroidHome()
         : screenWidth > 1121
             ? MinSize(
