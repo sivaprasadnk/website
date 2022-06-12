@@ -14,6 +14,9 @@ import 'package:spnk/views/windows/large/home/windows.home.large.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.home.dart';
 import 'package:spnk/views/windows/small/home/windows.small.home.dart';
 
+// lottie https://assets1.lottiefiles.com/packages/lf20_j1uvfzu5.json
+
+// https://assets8.lottiefiles.com/packages/lf20_zGHcl0.json
 void main() {
   runApp(MyApp());
 }
@@ -73,8 +76,8 @@ class SplashScreen extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     // var screenHeight = screenSize.height;
-    return defaultTargetPlatform == TargetPlatform.android ||
-            defaultTargetPlatform == TargetPlatform.iOS
+    return defaultTargetPlatform != TargetPlatform.android ||
+            defaultTargetPlatform != TargetPlatform.iOS
         ? const AndroidHome()
         : screenWidth > 1121
             ? MinSize(

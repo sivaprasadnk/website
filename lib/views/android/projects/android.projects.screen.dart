@@ -8,6 +8,8 @@ import 'package:spnk/views/windows/hover_extensions.dart';
 // import 'package:spnk/views/windows/small/projects/quizApp/quiz.app.item.small.dart';
 import 'package:spnk/views/windows/small/projects/quotesApp/quotes.app.item.dart';
 
+import '../../../utils/common_strings.dart';
+
 class AndroidProjects extends StatefulWidget {
   final double screenHeight;
   const AndroidProjects({required this.screenHeight});
@@ -88,12 +90,12 @@ class _AndroidProjectsState extends State<AndroidProjects> {
               SizedBox(
                 height: widget.screenHeight * 0.15,
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 30),
+              Padding(
+                padding: const EdgeInsets.only(left: 30),
                 child: Text(
                   'My Projects',
                   style: TextStyle(
-                    fontFamily: 'PlayfairDisplay',
+                    fontFamily: kFontFamily2,
                     fontWeight: FontWeight.bold,
                     fontSize: 35,
                     color: Colors.white,

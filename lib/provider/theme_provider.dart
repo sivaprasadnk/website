@@ -1,72 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spnk/utils/common_strings.dart';
 
 ThemeData light = ThemeData(
   brightness: Brightness.light,
   primarySwatch: Colors.indigo,
   splashColor: const Color(0xFF002278),
-  textTheme: const TextTheme(
+  textTheme: TextTheme(
     caption: TextStyle(
-      fontFamily: 'PlayfairDisplay',
+      fontFamily: kFontFamily2,
       fontWeight: FontWeight.bold,
       fontSize: 30,
       // color: Colors.teal,
-      color: Color.fromRGBO(0, 34, 120, 1),
+      color: const Color.fromRGBO(0, 34, 120, 1),
     ),
-    headline1: TextStyle(
+    headline1: const TextStyle(
       color: Colors.black,
       fontSize: 12,
       fontFamily: 'PatuaOne',
     ),
     headline2: TextStyle(
-      fontFamily: 'PlayfairDisplay',
-      color: Color.fromRGBO(0, 34, 120, 1),
+      fontFamily: kFontFamily2,
+      color: const Color.fromRGBO(0, 34, 120, 1),
       fontWeight: FontWeight.bold,
       fontSize: 28.0,
     ),
     headline3: TextStyle(
-      fontFamily: 'PlayfairDisplay',
+      fontFamily: kFontFamily2,
       fontWeight: FontWeight.bold,
       fontSize: 30,
-      color: Color.fromRGBO(0, 34, 120, 1),
+      color: const Color.fromRGBO(0, 34, 120, 1),
     ),
     headline4: TextStyle(
-      fontFamily: 'PlayfairDisplay',
+      fontFamily: kFontFamily2,
       fontWeight: FontWeight.bold,
       fontSize: 15,
-      color: Color.fromRGBO(0, 34, 120, 1),
+      color: const Color.fromRGBO(0, 34, 120, 1),
     ),
     headline6: TextStyle(
-      fontFamily: 'PlayfairDisplay',
+      fontFamily: kFontFamily2,
       fontWeight: FontWeight.bold,
       fontSize: 35,
-      color: Color.fromRGBO(0, 34, 120, 1),
+      color: const Color.fromRGBO(0, 34, 120, 1),
     ),
     bodyText1: TextStyle(
+      fontSize: 21,
       fontWeight: FontWeight.bold,
-      color: Color.fromRGBO(0, 34, 120, 1),
+      fontFamily: kFontFamily2,
+      color: const Color.fromRGBO(0, 34, 120, 1),
     ),
     bodyText2: TextStyle(
       fontWeight: FontWeight.bold,
-      fontFamily: 'PlayfairDisplay',
+      fontFamily: kFontFamily2,
       fontSize: 13,
-      color: Color.fromRGBO(0, 34, 120, 1),
+      color: const Color.fromRGBO(0, 34, 120, 1),
     ),
     // subtitle1: TextStyle(
     //   fontWeight: FontWeight.bold,
-    //   fontFamily: 'PlayfairDisplay',
+    //   fontFamily: kFontFamily2,
     //   fontSize: 12,
     //   color: Color.fromRGBO(0, 34, 200, 1),
     // ),
-    subtitle1: TextStyle(
+    subtitle1: const TextStyle(
       // fontFamily: 'PatuaOne',
       color: Color.fromRGBO(0, 34, 200, 1),
       fontWeight: FontWeight.bold,
       fontSize: 15.0,
     ),
     subtitle2: TextStyle(
-      color: Color.fromRGBO(0, 34, 120, 1),
+      color: const Color.fromRGBO(0, 34, 120, 1),
       fontSize: 20,
+      fontFamily: kFontFamily2,
       fontWeight: FontWeight.bold,
     ),
   ),
@@ -86,26 +90,25 @@ ThemeData light = ThemeData(
 ThemeData dark = ThemeData(
   scaffoldBackgroundColor: const Color.fromRGBO(0, 34, 51, 1),
   splashColor: Colors.white,
-  textTheme: const TextTheme(
-    subtitle1: TextStyle(
-      // fontFamily: 'PatuaOne',
+  textTheme: TextTheme(
+    subtitle1: const TextStyle(
       color: Colors.white,
       fontWeight: FontWeight.bold,
       fontSize: 15.0,
     ),
     caption: TextStyle(
-      fontFamily: 'PlayfairDisplay',
+      fontFamily: kFontFamily2,
       fontWeight: FontWeight.bold,
       fontSize: 30,
       color: Colors.white,
     ),
-    headline1: TextStyle(
+    headline1: const TextStyle(
       color: Colors.white,
       fontFamily: 'PatuaOne',
       fontSize: 12,
     ),
     headline2: TextStyle(
-      fontFamily: 'PlayfairDisplay',
+      fontFamily: kFontFamily2,
       // fontFamily: 'PatuaOne',
       color: Colors.white,
       fontWeight: FontWeight.bold,
@@ -113,12 +116,12 @@ ThemeData dark = ThemeData(
     ),
     headline3: TextStyle(
       fontSize: 30,
-      fontFamily: 'PlayfairDisplay',
+      fontFamily: kFontFamily2,
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
     headline4: TextStyle(
-      fontFamily: 'PlayfairDisplay',
+      fontFamily: kFontFamily2,
       fontWeight: FontWeight.bold,
       fontSize: 15,
       color: Colors.white,
@@ -126,23 +129,26 @@ ThemeData dark = ThemeData(
     // headline4: ,
     headline6: TextStyle(
       fontSize: 35,
-      fontFamily: 'PlayfairDisplay',
+      fontFamily: kFontFamily2,
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
     bodyText1: TextStyle(
       fontWeight: FontWeight.bold,
       color: Colors.white,
+      fontSize: 21,
+      fontFamily: kFontFamily2,
     ),
     bodyText2: TextStyle(
       fontWeight: FontWeight.bold,
-      fontFamily: 'PlayfairDisplay',
+      fontFamily: kFontFamily2,
       fontSize: 15,
       color: Colors.white,
     ),
     subtitle2: TextStyle(
       color: Colors.white,
-      fontSize: 20,
+      fontSize: 21,
+      fontFamily: kFontFamily2,
       fontWeight: FontWeight.bold,
     ),
   ),

@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 
+import '../../../utils/common_strings.dart';
+
 class AndroidContactMeScreen extends StatefulWidget {
   final double screenHeight;
   const AndroidContactMeScreen({required this.screenHeight});
@@ -54,12 +56,12 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
               SizedBox(
                 height: widget.screenHeight * 0.15,
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 30),
+              Padding(
+                padding: const EdgeInsets.only(left: 30),
                 child: Text(
                   'Contact Me',
                   style: TextStyle(
-                    fontFamily: 'PlayfairDisplay',
+                    fontFamily: kFontFamily2,
                     fontWeight: FontWeight.bold,
                     fontSize: 35,
                     color: Colors.white,

@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
+import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 
 class AndroidHomeScreen extends StatefulWidget {
@@ -43,11 +44,11 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
               child: FadeInDown(
                 child: SizedBox(
                   width: screenWidth * 0.7,
-                  child: const FittedBox(
+                  child: FittedBox(
                     child: Text(
                       "Hi , \nI 'm Sivaprasad NK .",
                       style: TextStyle(
-                        fontFamily: 'PlayfairDisplay',
+                        fontFamily: kFontFamily2,
                         fontWeight: FontWeight.bold,
                         fontSize: 40,
                         color: Colors.white,
@@ -65,8 +66,8 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                   children: [
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
-                      children: const [
-                        FlutterLogo(
+                      children: [
+                        const FlutterLogo(
                           size: 30,
                         ),
                         Text(
@@ -74,19 +75,19 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
-                            // fontSize: size / 2.8,
+                            fontFamily: kFontFamily2,
                             color: Colors.white,
                           ),
                         )
                       ],
                     ),
                     const SizedBox(height: 5),
-                    const Text(
+                    Text(
                       ' Tripunithura, Kerala .',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        // fontSize: size / 2.8,
+                        fontFamily: kFontFamily2,
                         color: Colors.white,
                       ),
                     )
