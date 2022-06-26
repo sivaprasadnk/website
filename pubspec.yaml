@@ -123,6 +123,9 @@ flutter:
     - family: Rajdhani
       fonts:
         - asset: assets/fonts/Rajdhani-Regular.ttf
+    - family: Zina
+      fonts:
+        - asset: assets/fonts/Zina-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

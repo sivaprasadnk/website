@@ -24,7 +24,7 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
 
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
-    final screen = Provider.of<RouteProvider>(context).screen;
+    final screen = Provider.of<RouteProvider>(context).selectedSCreen;
     final menuSelectedCheck =
         Provider.of<RouteProvider>(context, listen: true).menuSelected;
     debugPrint('.. @@screen => $screen ');
@@ -37,7 +37,7 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
           width: screenWidth,
           child: Stack(
             children: [
-              if (!menuSelectedCheck && screen == "Home")
+              if (!menuSelectedCheck && screen ==Screen.home)
                 Positioned.fill(
                   top: screenHeight * 0.05,
                   child: Align(
@@ -46,20 +46,16 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
                       'assets/images/dash/dash1.png',
                       height: 230,
                     ),
-                    // child: Lottie.asset(
-                    //   'assets/lotties/robot_hello.json',
-                    //   height: 200,
-                    // ),
                   ),
                 ),
               if (menuSelectedCheck)
                 const AndroidMenuScreen()
               else
-                screen == "Home"
+                screen == Screen.home
                     ? const AndroidHomeScreen()
-                    : screen == "MyProjects"
+                    : screen == Screen.projects
                         ? AndroidProjects(screenHeight: screenHeight)
-                        : screen == "Experience"
+                        : screen ==Screen.experience
                             ? AndroidExperienceScreen(
                                 screenHeight: screenHeight,
                               )

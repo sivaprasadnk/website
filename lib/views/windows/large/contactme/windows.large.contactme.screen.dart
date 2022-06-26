@@ -117,16 +117,16 @@ class _WindowsLargeContactMeScreenState
                       ),
                     ),
                     SizedBox(height: screenHeight * 0.07),
-                    FadeInDown(
-                      child: Padding(
-                        padding: EdgeInsets.only(left: screenWidth * 0.0),
-                        child: SocialMedia(
-                          screenWidth: screenWidth,
-                          showIcons: true,
-                          isLarge: true,
-                        ),
-                      ),
-                    )
+                    // FadeInDown(
+                    //   child: Padding(
+                    //     padding: EdgeInsets.only(left: screenWidth * 0.0),
+                    //     child: SocialMedia(
+                    //       screenWidth: screenWidth,
+                    //       showIcons: true,
+                    //       isLarge: true,
+                    //     ),
+                    //   ),
+                    // )
                   ],
                 ),
               ),

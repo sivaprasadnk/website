@@ -37,6 +37,11 @@ ThemeData light = ThemeData(
       fontSize: 15,
       color: const Color.fromRGBO(0, 34, 120, 1),
     ),
+    headline5: const TextStyle(
+      fontFamily: 'Zina',
+      fontSize: 50,
+      color: Color.fromRGBO(0, 34, 120, 1),
+    ),
     headline6: TextStyle(
       fontFamily: kFontFamily2,
       fontWeight: FontWeight.bold,
@@ -52,7 +57,7 @@ ThemeData light = ThemeData(
     bodyText2: TextStyle(
       fontWeight: FontWeight.bold,
       fontFamily: kFontFamily2,
-      fontSize: 13,
+      fontSize: 18,
       color: const Color.fromRGBO(0, 34, 120, 1),
     ),
     // subtitle1: TextStyle(
@@ -69,7 +74,7 @@ ThemeData light = ThemeData(
     ),
     subtitle2: TextStyle(
       color: const Color.fromRGBO(0, 34, 120, 1),
-      fontSize: 20,
+      fontSize: 21,
       fontFamily: kFontFamily2,
       fontWeight: FontWeight.bold,
     ),
@@ -88,6 +93,7 @@ ThemeData light = ThemeData(
 );
 
 ThemeData dark = ThemeData(
+  brightness: Brightness.dark,
   scaffoldBackgroundColor: const Color.fromRGBO(0, 34, 51, 1),
   splashColor: Colors.white,
   textTheme: TextTheme(
@@ -126,6 +132,12 @@ ThemeData dark = ThemeData(
       fontSize: 15,
       color: Colors.white,
     ),
+    headline5: const TextStyle(
+      fontFamily: 'Zina',
+      // fontWeight: FontWeight.bold,
+      fontSize: 50,
+      color: Colors.white,
+    ),
     // headline4: ,
     headline6: TextStyle(
       fontSize: 35,
@@ -142,7 +154,7 @@ ThemeData dark = ThemeData(
     bodyText2: TextStyle(
       fontWeight: FontWeight.bold,
       fontFamily: kFontFamily2,
-      fontSize: 15,
+      fontSize: 18,
       color: Colors.white,
     ),
     subtitle2: TextStyle(

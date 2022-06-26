@@ -44,61 +44,59 @@ class _WindowsHomeSmallDrawerState extends State<WindowsSmallDrawer> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FadeInLeftBig(
-              child: Container(
-                padding: const EdgeInsets.only(top: 30),
-                child: Image.asset(
-                  'assets/images/exp_icon.png',
-                  height: 250,
-                ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FadeInLeftBig(
+            child: Container(
+              padding: const EdgeInsets.only(top: 30),
+              child: Image.asset(
+                'assets/images/exp_icon.png',
+                height: 250,
               ),
             ),
-            const SizedBox(height: 25),
-            SizedBox(
-              width: 320,
-              child: LiveList(
-                shrinkWrap: true,
-                separatorBuilder: (ctx, _) => const SizedBox(height: 10),
-                padding: const EdgeInsets.all(20),
-                showItemInterval: const Duration(milliseconds: 200),
-                itemCount: 4,
-                itemBuilder: animationItemBuilder((index) {
-                  switch (index) {
-                    case 0:
-                      return HomeListItem();
-                    case 3:
-                      return ContactMeListItem();
-                    case 1:
-                      return ExperienceListItem();
-                    case 2:
-                      return MyProjectsListItem();
-                  }
-                  return Container();
-                }),
-              ),
+          ),
+          const SizedBox(height: 25),
+          SizedBox(
+            width: 320,
+            child: LiveList(
+              shrinkWrap: true,
+              separatorBuilder: (ctx, _) => const SizedBox(height: 10),
+              padding: const EdgeInsets.all(20),
+              showItemInterval: const Duration(milliseconds: 200),
+              itemCount: 4,
+              itemBuilder: animationItemBuilder((index) {
+                switch (index) {
+                  case 0:
+                    return HomeListItem();
+                  case 3:
+                    return ContactMeListItem();
+                  case 1:
+                    return ExperienceListItem();
+                  case 2:
+                    return MyProjectsListItem();
+                }
+                return Container();
+              }),
             ),
-            // FadeInLeftBig(
-            //   child: Container(
-            //     padding: const EdgeInsets.only(left: 0, top: 50),
-            //     child: Image.asset(
-            //       'assets/images/exp_icon.png',
-            //       height: 250,
-            //     ),
-            //     // child: Lottie.asset(
-            //     //   'assets/lotties/mobile-app-process.json',
-            //     //   height: 250,
-            //     // ),
-            //   ),
-            // ),
-            const SizedBox(
-              height: 20,
-            )
-          ],
-        ),
+          ),
+          // FadeInLeftBig(
+          //   child: Container(
+          //     padding: const EdgeInsets.only(left: 0, top: 50),
+          //     child: Image.asset(
+          //       'assets/images/exp_icon.png',
+          //       height: 250,
+          //     ),
+          //     // child: Lottie.asset(
+          //     //   'assets/lotties/mobile-app-process.json',
+          //     //   height: 250,
+          //     // ),
+          //   ),
+          // ),
+          const SizedBox(
+            height: 20,
+          )
+        ],
       ),
     );
   }
@@ -113,7 +111,7 @@ class HomeListItem extends StatelessWidget {
         Provider.of<RouteProvider>(context, listen: false)
             .setMenuSelected(check: false);
         Provider.of<RouteProvider>(context, listen: false)
-            .setScreen(name: 'Home');
+            .setScreen(name: Screen.home);
       },
       icon: Icons.home,
     );
@@ -129,7 +127,7 @@ class ContactMeListItem extends StatelessWidget {
         Provider.of<RouteProvider>(context, listen: false)
             .setMenuSelected(check: false);
         Provider.of<RouteProvider>(context, listen: false)
-            .setScreen(name: 'ContactMe');
+            .setScreen(name:Screen.contactMe);
       },
       icon: Icons.call,
     );
@@ -145,7 +143,7 @@ class ExperienceListItem extends StatelessWidget {
         Provider.of<RouteProvider>(context, listen: false)
             .setMenuSelected(check: false);
         Provider.of<RouteProvider>(context, listen: false)
-            .setScreen(name: 'Experience');
+            .setScreen(name: Screen.experience);
       },
       icon: Icons.work,
     );
@@ -161,7 +159,7 @@ class MyProjectsListItem extends StatelessWidget {
         Provider.of<RouteProvider>(context, listen: false)
             .setMenuSelected(check: false);
         Provider.of<RouteProvider>(context, listen: false)
-            .setScreen(name: 'MyProjects');
+            .setScreen(name: Screen.projects);
       },
       icon: Icons.apps,
     );

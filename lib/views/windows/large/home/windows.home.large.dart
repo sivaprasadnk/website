@@ -1,9 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/dialog_provider.dart';
-// import 'autos'
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
@@ -12,8 +10,13 @@ import 'package:spnk/views/windows/large/experience/windows.large.experience.scr
 import 'package:spnk/views/windows/large/home/windows.home.large.screen.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/copyright_text.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/made_with_flutter_widget.dart';
+import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/contact.me.tab.dart';
+import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/experience.tab.dart';
+import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/home.tab.dart';
 import 'package:spnk/views/windows/large/projects/projects.screen.new.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
+
+import 'windows.large.home.widgets/tab.list/projects.tab.dart';
 
 class WindowsHomeLarge extends StatefulWidget {
   static const routeName = '/Home';
@@ -38,11 +41,8 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      debugPrint('.. @@ large init state');
-
       final status =
           Provider.of<DialogProvider>(context, listen: false).dialogIsOpen;
-      debugPrint('.. @@ small init state status : $status');
 
       if (status) {
         Provider.of<DialogProvider>(context, listen: false)
@@ -54,7 +54,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
 
   @override
   void didChangeDependencies() {
-    // dependOnInheritedWidgetOfExactType(){}
     super.didChangeDependencies();
   }
 
@@ -92,9 +91,8 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
           preferredSize: Size(screenWidth * 0.9, 90),
           child: Padding(
             padding: const EdgeInsets.all(16) +
-                EdgeInsets.symmetric(horizontal: screenWidth * 0.025),
+                const EdgeInsets.symmetric(horizontal: 20),
             child: SizedBox(
-              // width: screenWidth,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,8 +115,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                         child: GestureDetector(
                           onDoubleTap: () {},
                           child: DayNightSwitcher(
-                            // nightBackgroundColor: Colors.black54,
-                            // moonColor: Colors.black54,
                             isDarkModeEnabled: provider.darkTheme,
                             onStateChanged: (isDarkModeEnabled) {
                               provider.toggleTheme();
@@ -132,37 +128,41 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                     width: 30,
                   ),
                   Expanded(
-                    child: TabBar(
-                      overlayColor:
-                          MaterialStateProperty.all(Colors.transparent),
-                      indicator: RectangularIndicator(
-                        color: const Color.fromRGBO(249, 139, 125, 1),
-                        paintingStyle: PaintingStyle.stroke,
-                        bottomLeftRadius: 100,
-                        bottomRightRadius: 100,
-                        topLeftRadius: 100,
-                        topRightRadius: 100,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TabBar(
+                        overlayColor:
+                            MaterialStateProperty.all(Colors.transparent),
+                        indicator: RectangularIndicator(
+                          color: Colors.cyan,
+                          // color: const Color.fromRGBO(249, 139, 125, 1),
+                          paintingStyle: PaintingStyle.stroke,
+                          bottomLeftRadius: 100,
+                          bottomRightRadius: 100,
+                          topLeftRadius: 100,
+                          topRightRadius: 100,
+                        ),
+                        padding: EdgeInsets.zero,
+                        controller: _tabController,
+                        tabs: [
+                          HomeTab(
+                            tabController: _tabController,
+                            duration: _duration,
+                          ),
+                          ExperienceTab(
+                            tabController: _tabController,
+                            duration: _duration,
+                          ),
+                          ProjectsTab(
+                            tabController: _tabController,
+                            duration: _duration,
+                          ),
+                          ContactMeTab(
+                            tabController: _tabController,
+                            duration: _duration,
+                          ),
+                        ],
                       ),
-                      padding: EdgeInsets.zero,
-                      controller: _tabController,
-                      tabs: [
-                        HomeTab(
-                          tabController: _tabController,
-                          duration: _duration,
-                        ),
-                        ExperienceTab(
-                          tabController: _tabController,
-                          duration: _duration,
-                        ),
-                        ProjectsTab(
-                          tabController: _tabController,
-                          duration: _duration,
-                        ),
-                        ContactMeTab(
-                          tabController: _tabController,
-                          duration: _duration,
-                        ),
-                      ],
                     ),
                   ),
                 ],
@@ -177,119 +177,9 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
             children: [
               WindowsHomeLargeScreen(),
               WindowsLargeExperienceScreen(),
-              // WindowsLargeProjectScreen(),
               const ProjectsScreenNew(),
               WindowsLargeContactMeScreen(),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class HomeTab extends StatelessWidget {
-  final TabController tabController;
-  final Duration duration;
-  const HomeTab({
-    required this.tabController,
-    required this.duration,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TabItem(
-      onTap: () {
-        tabController.animateTo(0, duration: duration);
-      },
-      title: 'Home',
-    );
-  }
-}
-
-class ProjectsTab extends StatelessWidget {
-  final TabController tabController;
-  final Duration duration;
-  const ProjectsTab({
-    required this.tabController,
-    required this.duration,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TabItem(
-      onTap: () {
-        tabController.animateTo(2, duration: duration);
-      },
-      title: 'Projects',
-    );
-  }
-}
-
-class ContactMeTab extends StatelessWidget {
-  final TabController tabController;
-  final Duration duration;
-  const ContactMeTab({
-    required this.tabController,
-    required this.duration,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TabItem(
-      onTap: () {
-        tabController.animateTo(3, duration: duration);
-      },
-      title: 'Contact Me',
-    );
-  }
-}
-
-class ExperienceTab extends StatelessWidget {
-  final TabController tabController;
-  final Duration duration;
-  const ExperienceTab({
-    required this.tabController,
-    required this.duration,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TabItem(
-      onTap: () {
-        tabController.animateTo(
-          1,
-          duration: duration,
-          curve: Curves.decelerate,
-        );
-      },
-      title: 'Experience',
-    );
-  }
-}
-
-class TabItem extends StatelessWidget {
-  const TabItem({
-    required this.title,
-    required this.onTap,
-  });
-
-  final VoidCallback onTap;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      // highlightColor: Colors.transparent,
-      // splashColor: Colors.transparent,
-      onTap: () => onTap.call(),
-      child: SizedBox(
-        height: 40,
-        width: 100,
-        child: Center(
-          child: AutoSizeText(
-            title,
-            style: Theme.of(context).textTheme.headline4,
           ),
         ),
       ),

@@ -3,6 +3,7 @@ import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/common/dash_image.dart';
 import 'package:spnk/views/windows/common/flutter_developer_container.dart';
 import 'package:spnk/views/windows/common/hi_name_text.dart';
+import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
 
 class WindowsMediumHomeScreen extends StatefulWidget {
   @override
@@ -54,6 +55,7 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
     // final widthFactor = screenWidth / mobileWidth;
     final heightFactor = screenHeight / mobileHeigth;
     // var size = screenWidth / 15;
+    final leftPadding = screenWidth * 0.09;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -61,45 +63,40 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
         SizedBox(height: screenHeight * 0.06),
         DashImage(
           showLottie: showLottie,
-          leftPadding: screenWidth * 0.1,
+          leftPadding: leftPadding,
           size: 221,
         ),
         // DashImageMedium(showLottie: showLottie, screenWidth: screenWidth),
         HiNameContainer(
           showName: showName,
-          leftPadding: screenWidth * 0.15,
+          leftPadding: leftPadding,
           screenWidth: screenWidth,
         ),
         SizedBox(height: heightFactor * 11),
         FlutterDeveloperContainer(
           showName: showName,
-          leftPadding: screenWidth * 0.15,
+          leftPadding: leftPadding,
           screenWidth: screenWidth,
         ),
         SizedBox(height: screenHeight * 0.025),
         Row(
           children: [
-            SizedBox(width: screenWidth * 0.2),
+            SizedBox(width: leftPadding),
             AnimatedOpacity(
               duration: const Duration(milliseconds: 600),
               opacity: showProPic ? 1 : 0,
-              child: ProPicMediumWithBlob(
-                height: heightFactor * 302,
-                // bottomPadding: heightFactor * 5,
-                // leftPadding: widthFactor * 8,
-                // leftPadding: screenWidth * 0.015,
+              child: Row(
+                children: [
+                  const SocialMediaIconsList(),
+                  const SizedBox(width: 50),
+                  ProPicMediumWithBlob(
+                    height: heightFactor * 302,
+                  ),
+                ],
               ),
             ),
           ],
         ),
-        // AnimatedOpacity(
-        //   duration: const Duration(seconds: 2),
-        //   opacity: showProPic ? 1 : 0,
-        //   child: Padding(
-        //     padding: EdgeInsets.only(left: screenWidth * 0.2),
-        //     child: const ProPicWithBlobLottie(),
-        //   ),
-        // ),
       ],
     );
   }

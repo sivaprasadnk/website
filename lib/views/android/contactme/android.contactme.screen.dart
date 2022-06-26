@@ -81,7 +81,7 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
                   ),
                   // physics: NeverScrollableScrollPhysics(),
                   showItemInterval: const Duration(milliseconds: 50),
-                  itemCount: 8,
+                  itemCount: 7,
                   itemBuilder: animationItemBuilder((index) {
                     switch (index) {
                       case 0:
@@ -103,65 +103,22 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
                         return const DescriptionText(
                           description: 'sivaprasadnk.official@gmail.com',
                         );
+                      // case 6:
+                      //   return const TitleText(title: 'Social Media');
+                      // case 7:
+                      //   return Padding(
+                      //     padding: const EdgeInsets.only(top: 15, left: 40),
+                      //     child: SocialMedia(
+                      //       screenWidth: screenWidth,
+                      //       showIcons: true,
+                      //       isLarge: true,
+                      //       size: 30,
+                      //     ),
+                      //   );
                       case 6:
-                        return const TitleText(title: 'Social Media');
-                      case 7:
-                        return Padding(
-                          padding: const EdgeInsets.only(top: 15, left: 40),
-                          child: SocialMedia(
-                            screenWidth: screenWidth,
-                            showIcons: true,
-                            isLarge: true,
-                            size: 30,
-                          ),
-                          // child: Row(
-                          //   mainAxisAlignment: MainAxisAlignment.start,
-                          //   children: [
-                          //     GestureDetector(
-                          //       child: fbPng,
-                          //       onTap: () {
-                          //         launch(fbLink);
-                          //       },
-                          //     ),
-                          //     SizedBox(
-                          //       width: 15,
-                          //     ),
-                          //     GestureDetector(
-                          //       child: instaPng,
-                          //       onTap: () {
-                          //         launch(instaLink);
-                          //       },
-                          //     ),
-                          //     SizedBox(
-                          //       width: 15,
-                          //     ),
-                          //     GestureDetector(
-                          //       child: waPng,
-                          //       onTap: () {
-                          //         if (defaultTargetPlatform ==
-                          //             TargetPlatform.iOS) {
-                          //           launch(whatsappWebLink);
-                          //         } else {
-                          //           launch(whatsappAndroidLink);
-                          //         }
-                          //       },
-                          //     ),
-                          //     SizedBox(
-                          //       width: 15,
-                          //     ),
-                          //     GestureDetector(
-                          //       child: linkedInPng,
-                          //       onTap: () {
-                          //         launch(linkedInLink);
-                          //       },
-                          //     ),
-                          //   ],
-                        );
-                      case 8:
                         return const SizedBox(
                           height: 300,
                         );
-                      //  case 7: return DescriptionText(description: description)
                     }
 
                     return Container();

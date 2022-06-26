@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/common/dash_image.dart';
 import 'package:spnk/views/windows/common/flutter_developer_container.dart';
 import 'package:spnk/views/windows/common/hi_name_text.dart';
+
+import 'windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
+
+// import 'windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
 
 class WindowsHomeLargeScreen extends StatefulWidget {
   @override
@@ -55,18 +58,17 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
-    const mobileWidth = 392;
     const mobileHeigth = 804;
-    // final widthFactor = screenWidth / mobileWidth;
     final heightFactor = screenHeight / mobileHeigth;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SocialMediaIconsList(),
         AnimatedOpacity(
           opacity: showName ? 1 : 0,
           duration: const Duration(milliseconds: 900),
           child: SizedBox(
-            width: screenWidth / 1.6,
+            width: screenWidth / 1.7,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,46 +102,11 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
             Flexible(
               child: ProPicMediumWithBlob(
                 height: heightFactor * 380,
-                // bottomPadding: heightFactor * 0,
-                // leftPadding: widthFactor * 8,
-                // leftPadding: screenWidth * 0.015,
               ),
             ),
-            // ProPicMediumWithBlob(
-            //   height: screenHeight * 0.4,
-            //   bottomPadding: screenHeight * .02,
-            //   leftPadding: screenWidth * 0.01,
-            // ),
           ],
         ),
-        // ProPic(screenWidth: screenWidth, showPic: showProPic)
       ],
-    );
-  }
-}
-
-class RobotLottie extends StatelessWidget {
-  const RobotLottie({
-    Key? key,
-    required this.screenWidth,
-    required this.showLottie,
-  }) : super(key: key);
-
-  final double screenWidth;
-  final bool showLottie;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: screenWidth * .23),
-      child: AnimatedOpacity(
-        duration: const Duration(seconds: 1),
-        opacity: showLottie ? 1 : 0,
-        child: Lottie.asset(
-          'assets/lotties/robot_hello.json',
-          height: 200,
-        ),
-      ),
     );
   }
 }

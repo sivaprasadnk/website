@@ -24,8 +24,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // precacheImage(const AssetImage(proPicAssetPath), context);
-    // precacheImage(const AssetImage('assets/images/propiccc'), context);
     precacheImage(const AssetImage('assets/images/mesh1.jpg'), context);
     precacheImage(const AssetImage('assets/images/dash/dash1.png'), context);
     return MultiProvider(
@@ -76,8 +74,8 @@ class SplashScreen extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     // var screenHeight = screenSize.height;
-    return defaultTargetPlatform == TargetPlatform.android ||
-            defaultTargetPlatform == TargetPlatform.iOS
+    return defaultTargetPlatform != TargetPlatform.android ||
+            defaultTargetPlatform != TargetPlatform.iOS
         ? const AndroidHome()
         : screenWidth > 1121
             ? MinSize(

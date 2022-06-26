@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
 
 class AndroidHomeScreen extends StatefulWidget {
   const AndroidHomeScreen({Key? key}) : super(key: key);
@@ -27,7 +28,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
             Padding(
               padding: EdgeInsets.only(
                 right: 10,
-                top: 50,
+                top: 20,
                 left: screenWidth * 0.8,
               ),
               child: IconButton(
@@ -98,48 +99,25 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
             SizedBox(height: screenHeight * 0.05),
             Flexible(
               child: Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.15),
-                child: ProPicMediumWithBlob(
-                  height: screenHeight * 0.3,
-                  // bottomPadding: screenHeight * .02,
-                  // leftPadding: screenWidth * 0.02,
+                padding: EdgeInsets.only(left: screenWidth * 0.1),
+                child: Row(
+                  children: [
+                    const SocialMediaIconsList(
+                      isMobile: true,
+                    ),
+                    SizedBox(
+                      width: screenWidth * 0.1,
+                    ),
+                    ProPicMediumWithBlob(
+                      height: screenHeight * 0.3,
+                    ),
+                  ],
                 ),
-                // child: Stack(
-                //   children: [
-                //     Image.asset(
-                //       'assets/images/blob1.png',
-                //       height: screenHeight * 0.4,
-                //     ),
-                //     Positioned.fill(
-                //       bottom: 10,
-                //       right: 15,
-                //       child: Align(
-                //         alignment: Alignment.center,
-                //         child: ProPicWidget(
-                //           radius: screenWidth * 0.25,
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
               ),
-            )
+            ),
+            SizedBox(height: screenHeight * 0.05),
           ],
         ),
-        // Positioned.fill(
-        //   top: screenHeight * 0.05,
-        //   child: Align(
-        //     alignment: Alignment.topCenter,
-        //     child: Image.asset(
-        //       'assets/images/dash/dash1.png',
-        //       height: 230,
-        //     ),
-        //     // child: Lottie.asset(
-        //     //   'assets/lotties/robot_hello.json',
-        //     //   height: 200,
-        //     // ),
-        //   ),
-        // )
       ],
     );
   }

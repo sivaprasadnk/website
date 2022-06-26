@@ -151,10 +151,10 @@ class _WindowsSmallContactMeScreenState
             ),
             SizedBox(height: screenHeight * 0.03),
 
-            SocialMedia(
-              showIcons: showIcons,
-              screenWidth: screenWidth,
-            ),
+            // SocialMedia(
+            //   showIcons: showIcons,
+            //   screenWidth: screenWidth,
+            // ),
             const SizedBox(height: 50),
             Flexible(
               child: AnimatedOpacity(

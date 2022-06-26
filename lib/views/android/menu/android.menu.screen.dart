@@ -1,8 +1,10 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
-import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/views/android/menu/menu.widgets/menu.image.dart';
+import 'package:spnk/views/android/menu/menu.widgets/menu.item.dart';
 
 class AndroidMenuScreen extends StatefulWidget {
   const AndroidMenuScreen({Key? key}) : super(key: key);
@@ -44,7 +46,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
           );
 
   bool showLottie = false;
-  var rightPos;
+  // var rightPos;
   @override
   void initState() {
     super.initState();
@@ -60,7 +62,8 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
-    final double menuFontSize = screenWidth * 0.07;
+    // final double menuFontSize = screenWidth * 0.07;
+    final provider = Provider.of<RouteProvider>(context, listen: false);
     return SizedBox(
       height: screenHeight,
       child: Stack(
@@ -69,28 +72,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AnimatedOpacity(
-                opacity: showLottie ? 1 : 0,
-                duration: const Duration(seconds: 2),
-                child: Container(
-                  padding: EdgeInsets.only(left: screenWidth * .2, top: 30),
-                  child: Image.asset(
-                    'assets/images/exp_icon.png',
-                    height: 250,
-                  ),
-                ),
-              ),
-              // FadeInLeftBig(
-              //   child: Container(
-              //     padding: const EdgeInsets.only(left: 36),
-              //     child: CircleAvatar(
-              //       radius: screenWidth * 0.25,
-              //       backgroundImage: AssetImage(
-              //         proPicAssetPath,
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              MenuImage(showLottie: showLottie, screenWidth: screenWidth),
               const SizedBox(
                 height: 25,
               ),
@@ -104,127 +86,45 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                     case 0:
                       return GestureDetector(
                         onTap: () {
-                          Provider.of<RouteProvider>(context, listen: false)
-                              .setMenuSelected(check: false);
-                          Provider.of<RouteProvider>(context, listen: false)
-                              .setScreen(name: 'Home');
+                          provider.setMenuSelected(check: false);
+                          provider.setScreen(name: Screen.home);
                         },
-                        child: Container(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: ListTile(
-                              leading: Icon(
-                                Icons.home,
-                                color: Colors.white,
-                                size: menuFontSize,
-                              ),
-                              title: Text(
-                                'Home',
-                                style: TextStyle(
-                                  fontFamily: kFontFamily2,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: menuFontSize,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
+                        child: const AndroidMenuItem(
+                          icon: FontAwesomeIcons.home,
+                          title: 'Home',
                         ),
                       );
                     case 3:
                       return GestureDetector(
                         onTap: () {
-                          debugPrint('...@@123');
-                          Provider.of<RouteProvider>(context, listen: false)
-                              .setMenuSelected(check: false);
-                          Provider.of<RouteProvider>(context, listen: false)
-                              .setScreen(name: 'ContactMe');
+                          provider.setMenuSelected(check: false);
+                          provider.setScreen(name: Screen.contactMe);
                         },
-                        child: Container(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: ListTile(
-                              leading: Icon(
-                                Icons.call,
-                                color: Colors.white,
-                                size: menuFontSize,
-                              ),
-                              title: Text(
-                                'Contact Me',
-                                style: TextStyle(
-                                  fontFamily: kFontFamily2,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: menuFontSize,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
+                        child: const AndroidMenuItem(
+                          icon: Icons.call,
+                          title: 'Contact',
                         ),
                       );
                     case 1:
-                      return Container(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: ListTile(
-                            onTap: () {
-                              Provider.of<RouteProvider>(
-                                context,
-                                listen: false,
-                              ).setMenuSelected(check: false);
-                              Provider.of<RouteProvider>(
-                                context,
-                                listen: false,
-                              ).setScreen(name: 'Experience');
-                            },
-                            leading: Icon(
-                              Icons.work,
-                              color: Colors.white,
-                              size: menuFontSize,
-                            ),
-                            title: Text(
-                              'Experience',
-                              style: TextStyle(
-                                fontFamily: kFontFamily2,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: menuFontSize,
-                              ),
-                            ),
-                          ),
+                      return GestureDetector(
+                        onTap: () {
+                          provider.setMenuSelected(check: false);
+                          provider.setScreen(name: Screen.experience);
+                        },
+                        child: const AndroidMenuItem(
+                          icon: Icons.work,
+                          title: 'Experience',
                         ),
                       );
                     case 2:
-                      return SizedBox(
-                        width: screenWidth * .1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: ListTile(
-                            onTap: () {
-                              Provider.of<RouteProvider>(
-                                context,
-                                listen: false,
-                              ).setMenuSelected(check: false);
-                              Provider.of<RouteProvider>(
-                                context,
-                                listen: false,
-                              ).setScreen(name: 'MyProjects');
-                            },
-                            leading: Icon(
-                              Icons.apps,
-                              color: Colors.white,
-                              size: menuFontSize,
-                            ),
-                            title: Text(
-                              'My Projects',
-                              style: TextStyle(
-                                fontFamily: kFontFamily2,
-                                fontWeight: FontWeight.bold,
-                                fontSize: menuFontSize,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
+                      return GestureDetector(
+                        onTap: () {
+                          provider.setMenuSelected(check: false);
+                          provider.setScreen(name: Screen.projects);
+                        },
+                        child: const AndroidMenuItem(
+                          icon: Icons.apps,
+                          title: 'Projects',
                         ),
                       );
                   }

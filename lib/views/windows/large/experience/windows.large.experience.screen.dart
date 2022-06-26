@@ -39,6 +39,11 @@ class _WindowsLargeExperienceScreenState
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
+    var textStyle = Theme.of(context).textTheme.bodyText1;
+    var bulletPoint = CircleAvatar(
+      radius: 5,
+      backgroundColor: Theme.of(context).splashColor,
+    );
     return Stack(
       children: [
         Container(
@@ -62,32 +67,26 @@ class _WindowsLargeExperienceScreenState
                     children: [
                       Text(
                         ' Java, Postgres Programmer',
-                        style: Theme.of(context).textTheme.bodyText1,
+                        style: textStyle,
                       ),
                       const SizedBox(height: 20),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          CircleAvatar(
-                            radius: 5,
-                            backgroundColor: Theme.of(context).splashColor,
-                          ),
+                          bulletPoint,
                           Text(
                             '      Bayasys Infotech Pvt Ltd.',
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: textStyle,
                           ),
                         ],
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          CircleAvatar(
-                            radius: 5,
-                            backgroundColor: Theme.of(context).splashColor,
-                          ),
+                          bulletPoint,
                           Text(
                             '      07/2019 - 09/2020',
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: textStyle,
                           ),
                         ],
                       ),
@@ -107,40 +106,26 @@ class _WindowsLargeExperienceScreenState
                     children: [
                       Text(
                         'Flutter Developer',
-                        style: Theme.of(context).textTheme.bodyText1,
+                        style: textStyle,
                       ),
                       const SizedBox(height: 20),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          CircleAvatar(
-                            radius: 5,
-                            backgroundColor: Theme.of(context)
-                                .textTheme
-                                .bodyText1!
-                                .backgroundColor,
-                          ),
+                         bulletPoint,
                           Text(
                             '      Indbytes Technologies',
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: textStyle,
                           ),
                         ],
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          CircleAvatar(
-                            radius: 5,
-                            backgroundColor: Theme.of(context)
-                                .textTheme
-                                .bodyText1!
-                                .backgroundColor,
-
-                            // backgroundColor: Colors.white,
-                          ),
+                          bulletPoint,
                           Text(
                             '      12/2020 - Present',
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: textStyle,
                           ),
                         ],
                       ),

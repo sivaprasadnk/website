@@ -45,12 +45,7 @@ class _WindowsMediumContactMeScreenState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: screenHeight * 0.33),
-              // SectionTitle(
-              //   screenWidth: screenWidth,
-              //   title: 'Contact Me',
-              // ),
-              // SizedBox(height: screenHeight * 0.25),
+              SizedBox(height: screenHeight * 0.3),
               FadeInRight(
                 child: SizedBox(
                   width: screenWidth * 0.7,
@@ -67,7 +62,6 @@ class _WindowsMediumContactMeScreenState
                         addressText,
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
-                      // Spacer(),
                     ],
                   ),
                 ),
@@ -111,20 +105,11 @@ class _WindowsMediumContactMeScreenState
                 ),
               ),
               SizedBox(height: screenHeight * 0.07),
-              FadeInDown(
-                child:
-                    SocialMedia(showIcons: showIcons, screenWidth: screenWidth),
-              ),
-              // Flexible(
-              //   child: AnimatedOpacity(
-              //     duration: Duration(seconds: 2),
-              //     opacity: showIcons ? 1 : 0,
-              //     child: Image.asset(
-              //       'assets/images/dash/dash4.png',
-              //       height: 250,
-              //     ),
-              //   ),
+              // FadeInDown(
+              //   child:
+              //       SocialMedia(showIcons: showIcons, screenWidth: screenWidth),
               // ),
+              // 
             ],
           ),
         ),

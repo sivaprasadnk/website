@@ -2,18 +2,19 @@
 
 import 'package:flutter/cupertino.dart';
 
+enum Screen { home, contactMe, projects, experience }
+
 class RouteProvider extends ChangeNotifier {
-  String screenName = "Home";
+  Screen _selectedScreen = Screen.home;
+  Screen get selectedSCreen => _selectedScreen;
+
   bool menuSelectedCheck = false;
 
-  // RouteProvider({required this.screenName, required this.menuSelectedCheck});
-
-  String get screen => screenName;
 
   bool get menuSelected => menuSelectedCheck;
 
-  void setScreen({required String name}) {
-    screenName = name;
+  void setScreen({required Screen name}) {
+    _selectedScreen = name;
     notifyListeners();
   }
 

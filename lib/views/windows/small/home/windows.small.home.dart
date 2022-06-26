@@ -20,11 +20,7 @@ class WindowsSmallHome extends StatefulWidget {
 }
 
 class _WindowsSmallHomeState extends State<WindowsSmallHome> {
-  bool homeSelected = true,
-      projectSelected = false,
-      contactmeSelected = false,
-      menuSelected = false,
-      experienceSelected = false;
+  
 
   @override
   void setState(VoidCallback fn) {
@@ -61,7 +57,7 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
 
-    final screen = Provider.of<RouteProvider>(context).screen;
+    final screen = Provider.of<RouteProvider>(context).selectedSCreen;
     final menuSelectedCheck =
         Provider.of<RouteProvider>(context, listen: true).menuSelected;
     debugPrint('..@ screenWidth @ small : $screenWidth');
@@ -78,20 +74,22 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
           children: const [WindowsRightFooter(size: size)],
         ),
       ),
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        automaticallyImplyLeading: false,
-        title: Row(
+      appBar: PreferredSize(
+        preferredSize: Size(screenWidth, 80),
+
+        child: Row(
           children: [
             GestureDetector(
               onTap: () {
                 Provider.of<RouteProvider>(context, listen: false)
                     .setMenuSelected(check: false);
                 Provider.of<RouteProvider>(context, listen: false)
-                    .setScreen(name: 'Home');
+                    .setScreen(name: Screen.home);
               },
-              child: nameText(context: context).showCursorOnHover,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 36, top: 18),
+                child: nameText(context: context).showCursorOnHover,
+              ),
             ),
             const Spacer(),
             Consumer<ThemeNotifier>(
@@ -102,8 +100,6 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
                   child: GestureDetector(
                     onDoubleTap: () {},
                     child: DayNightSwitcher(
-                      // nightBackgroundColor: Colors.black54,
-                      // moonColor: Colors.black54,
                       isDarkModeEnabled: provider.darkTheme,
                       onStateChanged: (isDarkModeEnabled) {
                         provider.toggleTheme();
@@ -122,7 +118,7 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
                   Provider.of<RouteProvider>(context, listen: false)
                       .setMenuSelected(check: true);
                   Provider.of<RouteProvider>(context, listen: false)
-                      .setScreen(name: 'Home');
+                      .setScreen(name:Screen.home);
                 },
                 child: Icon(
                   Icons.menu,
@@ -135,7 +131,7 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
                   Provider.of<RouteProvider>(context, listen: false)
                       .setMenuSelected(check: false);
                   Provider.of<RouteProvider>(context, listen: false)
-                      .setScreen(name: 'Home');
+                      .setScreen(name: Screen.home);
                 },
                 child: Icon(
                   Icons.close,
@@ -148,26 +144,22 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
       ),
       body: SizedBox(
         width: screenWidth,
-        // padding: EdgeInsets.only(left: screenWidth * 0.1),
         child: Stack(
           children: [
             if (!menuSelectedCheck)
-              screen == "Home"
+              screen == Screen.home
                   ? WindowsSmallHomeScreen(showProPic: showProPic)
-                  : screen == "ContactMe"
+                  : screen == Screen.contactMe
                       ? WindowsSmallContactMeScreen()
-                      : screen == "MyProjects"
+                      : screen == Screen.projects
                           ? const ProjectsScreenSmall()
-                          : screen == "Experience"
+                          : screen == Screen.experience
                               ? WindowsSmallExperienceScreen()
                               : const SizedBox.shrink()
             else
               WindowsSmallDrawer(),
-            // WindowsRightFooter(size: size),
-            // WindowsLeftFooter(size: size)
           ],
         ),
-        // : InvalidDisplayScreen(),
       ),
     );
   }

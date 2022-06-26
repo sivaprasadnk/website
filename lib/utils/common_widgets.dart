@@ -29,7 +29,7 @@ TextStyle quoteStyle = const TextStyle(
 Widget nameText({required BuildContext context}) {
   return Text(
     'SP',
-    style: Theme.of(context).textTheme.headline2,
+    style: Theme.of(context).textTheme.headline5,
   );
 }
 

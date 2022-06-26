@@ -46,7 +46,7 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
     final screenWidth = screenSize.width;
 
     debugPrint('..@ screenWidth @ medium : $screenWidth');
-    final screen = Provider.of<RouteProvider>(context).screen;
+    final screen = Provider.of<RouteProvider>(context).selectedSCreen;
     const double size = 15;
 
     return Scaffold(
@@ -65,8 +65,8 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
       appBar: PreferredSize(
         preferredSize: Size(screenWidth, 100),
         child: Padding(
-          padding: const EdgeInsets.all(15) +
-              const EdgeInsets.only(left: 50, right: 50),
+          padding: const EdgeInsets.all(16) +
+              const EdgeInsets.only(left: 20, right: 20),
           child: SizedBox(
             width: screenWidth,
             child: Row(
@@ -107,19 +107,18 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
         ),
       ),
       body: SizedBox(
-        // height: screenSize.height * 0.9,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const WindowsMediumMenu(),
-            if (screen == "Home")
+            if (screen == Screen.home)
               WindowsMediumHomeScreen()
             else
-              screen == "ContactMe"
+              screen == Screen.contactMe
                   ? const WindowsMediumContactMeScreen()
-                  : screen == "Experience"
+                  : screen == Screen.experience
                       ? WindowsMediumExperienceScreen()
-                      : screen == "MyProjects"
+                      : screen == Screen.projects
                           ? const ProjectsMediumNew()
                           : Container()
           ],
