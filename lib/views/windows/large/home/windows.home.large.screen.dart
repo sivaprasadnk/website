@@ -60,7 +60,7 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
     final screenHeight = screenSize.height;
     const mobileHeigth = 804;
     final heightFactor = screenHeight / mobileHeigth;
-    return Row(
+    return Row( 
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SocialMediaIconsList(),
