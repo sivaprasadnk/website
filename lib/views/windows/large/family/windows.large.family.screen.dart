@@ -74,7 +74,7 @@ class _WindowsLargeFamilyScreenState extends State<WindowsLargeFamilyScreen>
                         children: [
                           bulletPoint,
                           Text(
-                            '      Kunhiraman P (LIC Agent).',
+                            '      Kunhiraman P ( LIC Agent ).',
                             style: textStyle,
                           ),
                         ],
@@ -103,7 +103,7 @@ class _WindowsLargeFamilyScreenState extends State<WindowsLargeFamilyScreen>
                         children: [
                           bulletPoint,
                           Text(
-                            '      Nirmala NK ( Peon, High Court of Kerala)',
+                            '      Nirmala NK ( Peon, High Court of Kerala )',
                             style: textStyle,
                           ),
                         ],
@@ -132,7 +132,7 @@ class _WindowsLargeFamilyScreenState extends State<WindowsLargeFamilyScreen>
                         children: [
                           bulletPoint,
                           Text(
-                            '      Vishnuprasad NK (Final year LLB Student)',
+                            '      Vishnuprasad NK ( Final year LLB Student )',
                             style: textStyle,
                           ),
                         ],

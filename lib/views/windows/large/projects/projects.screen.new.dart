@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 import 'package:spnk/views/windows/large/projects/quizApp/quiz.item.dart';
@@ -21,13 +22,10 @@ class _ProjectsScreenNewState extends State<ProjectsScreenNew> {
   bool showPrevIcon = false;
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    final screenWidth = screenSize.width;
-    final screenHeight = screenSize.height;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: screenHeight * 0.2),
+        SizedBox(height: context.screenHeight * 0.2),
         const WindowsLargeSectionTitle(
           title: 'My Projects',
         ),
@@ -35,8 +33,8 @@ class _ProjectsScreenNewState extends State<ProjectsScreenNew> {
           height: 50,
         ),
         SizedBox(
-          width: screenWidth * 0.9,
-          height: screenHeight * 0.5,
+          width: context.screenWidth * 0.9,
+          height: context.screenHeight * 0.5,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -62,7 +60,7 @@ class _ProjectsScreenNewState extends State<ProjectsScreenNew> {
                 ),
               ),
               SizedBox(
-                height: screenHeight * 0.5,
+                height: context.screenHeight * 0.5,
                 width: 800,
                 child: PageView(
                   onPageChanged: (page) {

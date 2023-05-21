@@ -59,17 +59,14 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    final screenWidth = screenSize.width;
     const double size = 15;
-    debugPrint('..@ screenWidth1 large: $screenWidth');
     const Duration _duration = Duration(seconds: 1);
     return DefaultTabController(
       length: 5,
       child: Scaffold(
         bottomNavigationBar: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: screenWidth * 0.03,
+            horizontal: context.screenWidth * 0.03,
             vertical: 10,
           ),
           child: Row(
@@ -82,7 +79,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
         ),
         extendBodyBehindAppBar: true,
         appBar: PreferredSize(
-          preferredSize: Size(screenWidth * 0.9, 90),
+          preferredSize: Size(context.screenWidth * 0.9, 90),
           child: Padding(
             padding: const EdgeInsets.all(16) +
                 const EdgeInsets.symmetric(horizontal: 20),
@@ -168,7 +165,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
+          padding: EdgeInsets.symmetric(horizontal: context.screenWidth * 0.02),
           child: TabBarView(
             controller: _tabController,
             children: [

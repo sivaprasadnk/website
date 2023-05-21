@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
 class WindowsLargeExperienceScreen extends StatefulWidget {
@@ -36,9 +37,6 @@ class _WindowsLargeExperienceScreenState
   Widget build(BuildContext context) {
     super.build(context);
 
-    final screenSize = MediaQuery.of(context).size;
-    final screenWidth = screenSize.width;
-    final screenHeight = screenSize.height;
     final textStyle = Theme.of(context).textTheme.bodyLarge;
     final bulletPoint = CircleAvatar(
       radius: 5,
@@ -47,18 +45,18 @@ class _WindowsLargeExperienceScreenState
     return Stack(
       children: [
         Container(
-          padding: EdgeInsets.only(left: screenWidth * 0.02),
+          padding: EdgeInsets.only(left: context.screenWidth * 0.02),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: screenHeight * 0.2),
+              SizedBox(height: context.screenHeight * 0.2),
               const WindowsLargeSectionTitle(
                 title: 'Experience',
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  left: screenWidth * 0.5,
-                  top: screenHeight * .1,
+                  left: context.screenWidth * 0.5,
+                  top: context.screenHeight * .1,
                 ),
                 child: ListTile(
                   title: Column(
@@ -96,8 +94,8 @@ class _WindowsLargeExperienceScreenState
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  left: screenWidth * 0.5,
-                  top: screenHeight * .05,
+                  left: context.screenWidth * 0.5,
+                  top: context.screenHeight * .05,
                 ),
                 child: ListTile(
                   title: Column(
@@ -135,8 +133,8 @@ class _WindowsLargeExperienceScreenState
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  left: screenWidth * 0.5,
-                  top: screenHeight * .05,
+                  left: context.screenWidth * 0.5,
+                  top: context.screenHeight * .05,
                 ),
                 child: ListTile(
                   title: Column(
@@ -177,7 +175,7 @@ class _WindowsLargeExperienceScreenState
         ),
         Positioned.fill(
           top: 100,
-          left: screenWidth * 0.0,
+          left: context.screenWidth * 0.0,
           child: Align(
             alignment: Alignment.centerLeft,
             child: AnimatedOpacity(

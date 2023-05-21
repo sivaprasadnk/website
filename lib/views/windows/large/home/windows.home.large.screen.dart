@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/common/dash_image.dart';
 import 'package:spnk/views/windows/common/flutter_developer_container.dart';
 import 'package:spnk/views/windows/common/hi_name_text.dart';
-
-import 'windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
+import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
 
 // import 'windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
 
@@ -55,11 +55,8 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final screenSize = MediaQuery.of(context).size;
-    final screenWidth = screenSize.width;
-    final screenHeight = screenSize.height;
-    const mobileHeigth = 804;
-    final heightFactor = screenHeight / mobileHeigth;
+    final screenWidth = context.screenWidth;
+    final heightFactor = context.screenHeight / 804;
     return Row( 
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -73,7 +70,7 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: screenHeight * 0.12),
+                SizedBox(height: context.screenHeight * 0.12),
                 DashImage(
                   showLottie: showLottie,
                   leftPadding: screenWidth * 0.1,
@@ -97,7 +94,7 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
         Column(
           children: [
             SizedBox(
-              height: screenHeight * 0.2,
+              height: context.screenHeight * 0.2,
             ),
             Flexible(
               child: ProPicMediumWithBlob(

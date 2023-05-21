@@ -8,6 +8,7 @@ import 'package:spnk/provider/page.provider.dart';
 import 'package:spnk/provider/quotes/quotes.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/android/home/android.home.dart';
 import 'package:spnk/views/min_size_container.dart';
 import 'package:spnk/views/windows/large/home/windows.home.large.dart';
@@ -71,18 +72,15 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    final screenWidth = screenSize.width;
-    // var screenHeight = screenSize.height;
     return defaultTargetPlatform == TargetPlatform.android ||
             defaultTargetPlatform == TargetPlatform.iOS
         ? const AndroidHome()
-        : screenWidth > 1121
+        : context.screenWidth > 1121
             ? MinSize(
                 minHeight: 734,
                 child: WindowsHomeLarge(),
               )
-            : screenWidth > 695
+            : context.screenWidth > 695
                 ? MinSize(
                     minHeight: 734,
                     child: WindowsMediumHome(),
