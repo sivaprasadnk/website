@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/menu.item.dart';
 
-class ContactmeMenu extends StatelessWidget {
+class FamilyMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final screen = Provider.of<RouteProvider>(context).selectedSCreen;
+    final screen = context.routeProvider.selectedSCreen;
 
     return CustomMenuItem(
-      title: 'Contact Me',
-      isSelected: screen == Screen.contactMe,
+      title: 'Family',
+      isSelected: screen == Screen.family,
     );
   }
 }

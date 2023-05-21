@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
-class WindowsLargeExperienceScreen extends StatefulWidget {
+class WindowsLargeFamilyScreen extends StatefulWidget {
   @override
-  _WindowsLargeExperienceScreenState createState() =>
-      _WindowsLargeExperienceScreenState();
+  _WindowsLargeFamilyScreenState createState() =>
+      _WindowsLargeFamilyScreenState();
 }
 
-class _WindowsLargeExperienceScreenState
-    extends State<WindowsLargeExperienceScreen>
+class _WindowsLargeFamilyScreenState extends State<WindowsLargeFamilyScreen>
     with AutomaticKeepAliveClientMixin {
   bool showLottie = false;
 
@@ -53,7 +52,7 @@ class _WindowsLargeExperienceScreenState
             children: [
               SizedBox(height: screenHeight * 0.2),
               const WindowsLargeSectionTitle(
-                title: 'Experience',
+                title: 'Family',
               ),
               Padding(
                 padding: EdgeInsets.only(
@@ -66,7 +65,7 @@ class _WindowsLargeExperienceScreenState
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        ' Java, Postgres Programmer',
+                        ' Father',
                         style: textStyle,
                       ),
                       const SizedBox(height: 20),
@@ -75,17 +74,7 @@ class _WindowsLargeExperienceScreenState
                         children: [
                           bulletPoint,
                           Text(
-                            '      Bayasys Infotech Pvt Ltd.',
-                            style: textStyle,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          bulletPoint,
-                          Text(
-                            '      07/2019 - 09/2020',
+                            '      Kunhiraman P (LIC Agent).',
                             style: textStyle,
                           ),
                         ],
@@ -105,7 +94,7 @@ class _WindowsLargeExperienceScreenState
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Flutter Developer',
+                        'Mother',
                         style: textStyle,
                       ),
                       const SizedBox(height: 20),
@@ -114,17 +103,7 @@ class _WindowsLargeExperienceScreenState
                         children: [
                           bulletPoint,
                           Text(
-                            '      Indbytes Technologies',
-                            style: textStyle,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          bulletPoint,
-                          Text(
-                            '      12/2020 - 05/2023',
+                            '      Nirmala NK ( Peon, High Court of Kerala)',
                             style: textStyle,
                           ),
                         ],
@@ -144,7 +123,7 @@ class _WindowsLargeExperienceScreenState
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Senior Mobile app Developer',
+                        'Elder Brother',
                         style: textStyle,
                       ),
                       const SizedBox(height: 20),
@@ -153,17 +132,7 @@ class _WindowsLargeExperienceScreenState
                         children: [
                           bulletPoint,
                           Text(
-                            '      Invenics Services India Pvt Ltd',
-                            style: textStyle,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          bulletPoint,
-                          Text(
-                            '      05/2023 - Present',
+                            '      Vishnuprasad NK (Final year LLB Student)',
                             style: textStyle,
                           ),
                         ],

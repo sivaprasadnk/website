@@ -1,13 +1,14 @@
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:spnk/provider/dialog_provider.dart';
 import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/medium/contactme/windows.medium.contactme.screen.dart';
 import 'package:spnk/views/windows/medium/experience/windows.medium.experience.dart';
+import 'package:spnk/views/windows/medium/family/windows.medium.family.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.home.screen.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.menu.dart';
 import 'package:spnk/views/windows/medium/projects/projects.medium.new.dart';
@@ -28,15 +29,13 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      final status =
-          Provider.of<DialogProvider>(context, listen: false).dialogIsOpen;
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final status = context.dialogProvider.dialogIsOpen;
       if (status) {
-        Provider.of<DialogProvider>(context, listen: false)
-            .updateDialogOpenStatus(status: false);
+        context.dialogProvider.updateDialogOpenStatus(status: false);
 
-        Navigator.of(context).pop();
-      } else {}
+        context.pop();
+      }
     });
   }
 
@@ -46,7 +45,6 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
     final screenWidth = screenSize.width;
 
     debugPrint('..@ screenWidth @ medium : $screenWidth');
-    final screen = Provider.of<RouteProvider>(context).selectedSCreen;
     const double size = 15;
 
     return Scaffold(
@@ -106,23 +104,31 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
           ),
         ),
       ),
-      body: SizedBox(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const WindowsMediumMenu(),
-            if (screen == Screen.home)
-              WindowsMediumHomeScreen()
-            else
-              screen == Screen.contactMe
-                  ? const WindowsMediumContactMeScreen()
-                  : screen == Screen.experience
-                      ? WindowsMediumExperienceScreen()
-                      : screen == Screen.projects
-                          ? const ProjectsMediumNew()
-                          : Container()
-          ],
-        ),
+      body: Consumer<RouteProvider>(
+        builder: (_, provider, __) {
+          final screen = provider.selectedSCreen;
+
+          return SizedBox(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const WindowsMediumMenu(),
+                if (screen == Screen.home)
+                  WindowsMediumHomeScreen()
+                else
+                  screen == Screen.contactMe
+                      ? const WindowsMediumContactMeScreen()
+                      : screen == Screen.experience
+                          ? WindowsMediumExperienceScreen()
+                          : screen == Screen.projects
+                              ? const ProjectsMediumNew()
+                              : screen == Screen.family
+                                  ? WindowsMediumFamilyScreen()
+                                  : const SizedBox.shrink()
+              ],
+            ),
+          );
+        },
       ),
     );
   }

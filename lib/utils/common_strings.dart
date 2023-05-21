@@ -1,6 +1,6 @@
 const String fbLink = 'https://www.facebook.com/sivaprasadnk.official';
 
-const String instaLink = 'https://www.instagram.com/sivaprasad_nk/';
+const String instaLink = 'https://www.instagram.com/sivaprasadnk.dev/';
 
 const String whatsappWebLink =
     // 'https://api.whatsapp.com/send/?phone=+918086028340';

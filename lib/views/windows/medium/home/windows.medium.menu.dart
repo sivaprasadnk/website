@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/page.provider.dart';
 import 'package:spnk/provider/route_provider.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/contact.me.menu.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/experience.menu.dart';
+import 'package:spnk/views/windows/medium/home/menu.widgets/family.menu.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/home.menu.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/projects.menu.dart';
 
@@ -18,7 +20,7 @@ class _WindowsMediumMenuState extends State<WindowsMediumMenu> {
   bool isHovering = false;
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<RouteProvider>(context, listen: false);
+    final provider = context.routeProvider;
     return Padding(
       padding: const EdgeInsets.only(left: 20),
       child: Column(
@@ -33,6 +35,13 @@ class _WindowsMediumMenuState extends State<WindowsMediumMenu> {
               provider.setScreen(name: Screen.home);
             },
             child: HomeMenu(),
+          ),
+          const SizedBox(height: 20),
+          GestureDetector(
+            onTap: () {
+              provider.setScreen(name: Screen.family);
+            },
+            child: FamilyMenu(),
           ),
           const SizedBox(height: 20),
           GestureDetector(

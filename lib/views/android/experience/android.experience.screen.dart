@@ -2,9 +2,8 @@ import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/route_provider.dart';
+import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-
-import '../../../utils/common_strings.dart';
 
 class AndroidExperienceScreen extends StatefulWidget {
   final double screenHeight;
@@ -75,7 +74,7 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
                 ),
                 physics: const NeverScrollableScrollPhysics(),
                 showItemInterval: const Duration(milliseconds: 50),
-                itemCount: 6,
+                itemCount: 9,
                 itemBuilder: animationItemBuilder((index) {
                   switch (index) {
                     case 0:
@@ -91,14 +90,26 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
                         description: '07/2019 - 09/2020',
                       );
                     case 3:
-                      return const TitleText(title: 'Senior Flutter Developer');
+                      return const TitleText(title: 'Flutter Developer');
                     case 4:
                       return const DescriptionText(
                         description: '\nIndbytes Technologies',
                       );
                     case 5:
                       return const DescriptionText(
-                        description: '12/2020 - Present',
+                        description: '12/2020 - 05/2023',
+                      );
+                    case 6:
+                      return const TitleText(
+                        title: 'Senior Mobile app Developer',
+                      );
+                    case 7:
+                      return const DescriptionText(
+                        description: '\nInvenics Services India Pvt Ltd',
+                      );
+                    case 8:
+                      return const DescriptionText(
+                        description: '05/2023 - Present',
                       );
                   }
 

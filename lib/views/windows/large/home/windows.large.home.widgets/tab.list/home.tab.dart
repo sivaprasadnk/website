@@ -13,7 +13,6 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabItem(
       tabController: tabController,
-
       onTap: () {
         tabController.animateTo(0, duration: duration);
       },

@@ -1,22 +1,23 @@
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:spnk/provider/dialog_provider.dart';
 import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/large/contactme/windows.large.contactme.screen.dart';
 import 'package:spnk/views/windows/large/experience/windows.large.experience.screen.dart';
+import 'package:spnk/views/windows/large/family/windows.large.family.screen.dart';
 import 'package:spnk/views/windows/large/home/windows.home.large.screen.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/copyright_text.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/made_with_flutter_widget.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/contact.me.tab.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/experience.tab.dart';
+import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/family.tab.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/home.tab.dart';
+import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/projects.tab.dart';
 import 'package:spnk/views/windows/large/projects/projects.screen.new.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-
-import 'windows.large.home.widgets/tab.list/projects.tab.dart';
 
 class WindowsHomeLarge extends StatefulWidget {
   static const routeName = '/Home';
@@ -39,22 +40,15 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      final status =
-          Provider.of<DialogProvider>(context, listen: false).dialogIsOpen;
+    _tabController = TabController(length: 5, vsync: this);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final status = context.dialogProvider.dialogIsOpen;
 
       if (status) {
-        Provider.of<DialogProvider>(context, listen: false)
-            .updateDialogOpenStatus(status: false);
-        Navigator.of(context).pop();
-      } else {}
+        context.dialogProvider.updateDialogOpenStatus(status: false);
+        context.pop();
+      }
     });
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
   }
 
   @override
@@ -71,7 +65,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
     debugPrint('..@ screenWidth1 large: $screenWidth');
     const Duration _duration = Duration(seconds: 1);
     return DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         bottomNavigationBar: Padding(
           padding: EdgeInsets.symmetric(
@@ -135,7 +129,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                             MaterialStateProperty.all(Colors.transparent),
                         indicator: RectangularIndicator(
                           color: Colors.cyan,
-                          // color: const Color.fromRGBO(249, 139, 125, 1),
                           paintingStyle: PaintingStyle.stroke,
                           bottomLeftRadius: 100,
                           bottomRightRadius: 100,
@@ -146,6 +139,10 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                         controller: _tabController,
                         tabs: [
                           HomeTab(
+                            tabController: _tabController,
+                            duration: _duration,
+                          ),
+                          FamilyTab(
                             tabController: _tabController,
                             duration: _duration,
                           ),
@@ -176,6 +173,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
             controller: _tabController,
             children: [
               WindowsHomeLargeScreen(),
+              WindowsLargeFamilyScreen(),
               WindowsLargeExperienceScreen(),
               const ProjectsScreenNew(),
               WindowsLargeContactMeScreen(),

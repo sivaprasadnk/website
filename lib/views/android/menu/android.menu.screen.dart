@@ -89,7 +89,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                           provider.setMenuSelected(check: false);
                           provider.setScreen(name: Screen.home);
                         },
-                        child: const AndroidMenuItem(
+                        child: const AndroidCustomMenuItem(
                           icon: FontAwesomeIcons.home,
                           title: 'Home',
                         ),
@@ -100,7 +100,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                           provider.setMenuSelected(check: false);
                           provider.setScreen(name: Screen.contactMe);
                         },
-                        child: const AndroidMenuItem(
+                        child: const AndroidCustomMenuItem(
                           icon: Icons.call,
                           title: 'Contact',
                         ),
@@ -111,7 +111,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                           provider.setMenuSelected(check: false);
                           provider.setScreen(name: Screen.experience);
                         },
-                        child: const AndroidMenuItem(
+                        child: const AndroidCustomMenuItem(
                           icon: Icons.work,
                           title: 'Experience',
                         ),
@@ -122,7 +122,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                           provider.setMenuSelected(check: false);
                           provider.setScreen(name: Screen.projects);
                         },
-                        child: const AndroidMenuItem(
+                        child: const AndroidCustomMenuItem(
                           icon: Icons.apps,
                           title: 'Projects',
                         ),

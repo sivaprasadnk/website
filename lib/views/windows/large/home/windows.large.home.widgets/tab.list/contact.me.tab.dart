@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/tab.item.dart';
 
-
-
 class ContactMeTab extends StatelessWidget {
   final TabController tabController;
   final Duration duration;
@@ -15,12 +13,12 @@ class ContactMeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabItem(
       onTap: () {
-        tabController.animateTo(3, duration: duration);
+        tabController.animateTo(4, duration: duration);
       },
-      isSelected: tabController.index == 3 ,
+      isSelected: tabController.index == 4,
       title: 'Contact Me',
       tabController: tabController,
-      index: 3,
+      index: 4,
     );
   }
 }

@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 
-class MenuItem extends StatefulWidget {
+class CustomMenuItem extends StatefulWidget {
   final String title;
   final bool isSelected;
-  const MenuItem({
+  const CustomMenuItem({
     required this.isSelected,
     required this.title,
   });
 
   @override
-  State<MenuItem> createState() => _MenuItemState();
+  State<CustomMenuItem> createState() => _CustomMenuItemState();
 }
 
-class _MenuItemState extends State<MenuItem> {
+class _CustomMenuItemState extends State<CustomMenuItem> {
   bool isHovering = false;
 
   @override

@@ -36,26 +36,22 @@ class MinSize extends StatelessWidget {
           data: Theme.of(context).copyWith(
             highlightColor: Colors.white, //Does not work
           ),
-          child: Scrollbar(
-            isAlwaysShown: false,
-            // isAlwaysShown: shouldScrollVertical,
-            child: SingleChildScrollView(
-              physics: shouldScrollVertical
-                  ? const AlwaysScrollableScrollPhysics()
-                  : const NeverScrollableScrollPhysics(),
-              child: Scrollbar(
-                isAlwaysShown: shouldScrollHorizontal,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  physics: shouldScrollHorizontal
-                      ? const AlwaysScrollableScrollPhysics()
-                      : const NeverScrollableScrollPhysics(),
-                  child: UnconstrainedBox(
-                    child: SizedBox(
-                      height: contentHeight,
-                      width: contentWidth,
-                      child: child,
-                    ),
+          child: SingleChildScrollView(
+            physics: shouldScrollVertical
+                ? const AlwaysScrollableScrollPhysics()
+                : const NeverScrollableScrollPhysics(),
+            child: Scrollbar(
+              thumbVisibility: shouldScrollHorizontal,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                physics: shouldScrollHorizontal
+                    ? const AlwaysScrollableScrollPhysics()
+                    : const NeverScrollableScrollPhysics(),
+                child: UnconstrainedBox(
+                  child: SizedBox(
+                    height: contentHeight,
+                    width: contentWidth,
+                    child: child,
                   ),
                 ),
               ),

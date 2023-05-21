@@ -1,11 +1,8 @@
 import 'package:auto_animated/auto_animated.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:spnk/provider/route_provider.dart';
+import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-
-import '../../../utils/common_strings.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 
 class AndroidContactMeScreen extends StatefulWidget {
   final double screenHeight;
@@ -17,9 +14,7 @@ class AndroidContactMeScreen extends StatefulWidget {
 class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final menuSelectedCheck =
-        Provider.of<RouteProvider>(context, listen: true).menuSelected;
+    final menuSelectedCheck = context.routeProvider.menuSelected;
     debugPrint('...@@456 @menu menuSelectedCheck..$menuSelectedCheck');
 
     return Stack(
@@ -41,8 +36,7 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
             child: IconButton(
               icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
-                Provider.of<RouteProvider>(context, listen: false)
-                    .setMenuSelected(check: true);
+                context.routeProvider.setMenuSelected(check: true);
               },
             ),
           ),

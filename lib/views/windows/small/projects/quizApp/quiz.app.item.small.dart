@@ -34,10 +34,10 @@ class _QuizImageContainerState extends State<QuizImageContainer> {
     return Stack(
       children: [
         ImageContainerSmall(imagePath: quizImageAssetPath),
-        const Positioned.fill(
+        Positioned.fill(
           left: 20,
           bottom: -2,
-          child: Align(
+          child: const Align(
             alignment: Alignment.bottomLeft,
             child: QuizTitleTextSmall(),
           ),

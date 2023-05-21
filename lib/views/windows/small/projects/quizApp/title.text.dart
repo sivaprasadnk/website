@@ -22,8 +22,8 @@ class QuizTitleTextSmall extends StatelessWidget {
         child: Row(
           children: [
             const ProjectTitle(title: 'SP Quiz App'),
-            const Expanded(
-              child: Text(""),
+            Expanded(
+              child: const Text(""),
             ),
             GestureDetector(
               onTap: () {

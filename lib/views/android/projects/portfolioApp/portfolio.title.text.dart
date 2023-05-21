@@ -22,8 +22,8 @@ class PortfolioTitleTextMobile extends StatelessWidget {
         child: Row(
           children: [
             const ProjectTitle(title: 'Portfolio website'),
-            const Expanded(
-              child: Text(""),
+            Expanded(
+              child: const Text(""),
             ),
             GestureDetector(
               onTap: () {

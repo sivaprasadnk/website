@@ -20,8 +20,8 @@ class QuotesTitleText extends StatelessWidget {
         child: Row(
           children: [
             const ProjectTitle(title: 'SP Quotes App'),
-            const Expanded(
-              child: Text(""),
+            Expanded(
+              child: const Text(""),
             ),
             GestureDetector(
               onTap: () {

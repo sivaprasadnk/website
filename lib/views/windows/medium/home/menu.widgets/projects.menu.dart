@@ -8,7 +8,7 @@ class MyProjectsMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final screen = Provider.of<RouteProvider>(context).selectedSCreen;
 
-    return MenuItem(
+    return CustomMenuItem(
       title: 'Projects',
       isSelected: screen == Screen.projects,
     );

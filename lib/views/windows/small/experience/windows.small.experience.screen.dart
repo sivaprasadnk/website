@@ -54,7 +54,7 @@ class _WindowsSmallExperienceScreenState
                   children: [
                     Text(
                       ' Java, Postgres Programmer',
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     const SizedBox(height: 20),
                     Row(
@@ -66,7 +66,7 @@ class _WindowsSmallExperienceScreenState
                         ),
                         Text(
                           '      Bayasys Infotech Pvt Ltd.',
-                          style: Theme.of(context).textTheme.bodyText1,
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ],
                     ),
@@ -79,7 +79,7 @@ class _WindowsSmallExperienceScreenState
                         ),
                         Text(
                           '      07/2019 - 09/2020',
-                          style: Theme.of(context).textTheme.bodyText1,
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ],
                     ),
@@ -103,7 +103,7 @@ class _WindowsSmallExperienceScreenState
                   children: [
                     Text(
                       'Flutter Developer',
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     const SizedBox(height: 20),
                     Row(
@@ -115,7 +115,7 @@ class _WindowsSmallExperienceScreenState
                         ),
                         Text(
                           '      Indbytes Technologies',
-                          style: Theme.of(context).textTheme.bodyText1,
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ],
                     ),
@@ -127,8 +127,57 @@ class _WindowsSmallExperienceScreenState
                           backgroundColor: Theme.of(context).splashColor,
                         ),
                         Text(
-                          '      12/2020 - Present',
-                          style: Theme.of(context).textTheme.bodyText1,
+                          '      12/2020 - 05/2023',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+        FadeInRight(
+          child: SizedBox(
+            child: ListTile(
+              title: Padding(
+                padding: EdgeInsets.only(
+                  left: screenWidth * 0.2,
+                  top: screenHeight * .1,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Senior Mobile app Developer',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CircleAvatar(
+                          radius: 5,
+                          backgroundColor: Theme.of(context).splashColor,
+                        ),
+                        Text(
+                          '      Invenics Services India Pvt Ltd',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CircleAvatar(
+                          radius: 5,
+                          backgroundColor: Theme.of(context).splashColor,
+                        ),
+                        Text(
+                          '      05/2023 - Present',
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ],
                     ),

@@ -1,14 +1,13 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
-class WindowsMediumExperienceScreen extends StatefulWidget {
+class WindowsMediumFamilyScreen extends StatefulWidget {
   @override
-  _WindowsMediumExperienceScreenState createState() =>
-      _WindowsMediumExperienceScreenState();
+  _WindowsMediumFamilyScreenState createState() =>
+      _WindowsMediumFamilyScreenState();
 }
 
-class _WindowsMediumExperienceScreenState
-    extends State<WindowsMediumExperienceScreen> {
+class _WindowsMediumFamilyScreenState extends State<WindowsMediumFamilyScreen> {
   bool showLottie = false;
 
   @override
@@ -41,17 +40,13 @@ class _WindowsMediumExperienceScreenState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: screenHeight * 0.13),
-              // SectionTitle(
-              //   screenWidth: screenWidth,
-              //   title: 'Experience',
-              // ),
               FadeInRight(
                 child: SizedBox(
                   width: screenWidth * 0.7,
                   child: ListTile(
                     title: Padding(
                       padding: EdgeInsets.only(
-                        left: screenWidth * 0.2,
+                        left: screenWidth * 0.1,
                         top: screenHeight * .1,
                       ),
                       child: Column(
@@ -59,7 +54,7 @@ class _WindowsMediumExperienceScreenState
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            ' Java, Postgres Programmer',
+                            ' Father',
                             style: Theme.of(context).textTheme.bodyLarge,
                           ),
                           const SizedBox(height: 20),
@@ -71,20 +66,7 @@ class _WindowsMediumExperienceScreenState
                                 backgroundColor: Theme.of(context).splashColor,
                               ),
                               Text(
-                                '      Bayasys Infotech Pvt Ltd.',
-                                style: Theme.of(context).textTheme.bodyLarge,
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              CircleAvatar(
-                                radius: 5,
-                                backgroundColor: Theme.of(context).splashColor,
-                              ),
-                              Text(
-                                '      07/2019 - 09/2020',
+                                '      Kunhiraman P ( LIC Agent ).',
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                             ],
@@ -101,7 +83,7 @@ class _WindowsMediumExperienceScreenState
                   child: ListTile(
                     title: Padding(
                       padding: EdgeInsets.only(
-                        left: screenWidth * 0.2,
+                        left: screenWidth * 0.1,
                         top: screenHeight * .1,
                       ),
                       child: Column(
@@ -109,7 +91,7 @@ class _WindowsMediumExperienceScreenState
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Flutter Developer',
+                            'Mother',
                             style: Theme.of(context).textTheme.bodyLarge,
                           ),
                           const SizedBox(height: 20),
@@ -121,20 +103,7 @@ class _WindowsMediumExperienceScreenState
                                 backgroundColor: Theme.of(context).splashColor,
                               ),
                               Text(
-                                '      Indbytes Technologies',
-                                style: Theme.of(context).textTheme.bodyLarge,
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              CircleAvatar(
-                                radius: 5,
-                                backgroundColor: Theme.of(context).splashColor,
-                              ),
-                              Text(
-                                '      12/2020 - 05/2023',
+                                '      Nirmala NK ( Peon, High Court of Kerala)',
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                             ],
@@ -151,7 +120,7 @@ class _WindowsMediumExperienceScreenState
                   child: ListTile(
                     title: Padding(
                       padding: EdgeInsets.only(
-                        left: screenWidth * 0.2,
+                        left: screenWidth * 0.1,
                         top: screenHeight * .1,
                       ),
                       child: Column(
@@ -159,7 +128,7 @@ class _WindowsMediumExperienceScreenState
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Senior Mobile app Developer',
+                            'Elder Brother',
                             style: Theme.of(context).textTheme.bodyLarge,
                           ),
                           const SizedBox(height: 20),
@@ -171,20 +140,7 @@ class _WindowsMediumExperienceScreenState
                                 backgroundColor: Theme.of(context).splashColor,
                               ),
                               Text(
-                                '      Invenics Services India Pvt Ltd',
-                                style: Theme.of(context).textTheme.bodyLarge,
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              CircleAvatar(
-                                radius: 5,
-                                backgroundColor: Theme.of(context).splashColor,
-                              ),
-                              Text(
-                                '      05/2023 - Present',
+                                '      Vishnuprasad NK (Final year LLB Student)',
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                             ],
@@ -195,23 +151,6 @@ class _WindowsMediumExperienceScreenState
                   ),
                 ),
               ),
-              // Flexible(
-              //   child: AnimatedOpacity(
-              //     duration: Duration(seconds: 2),
-              //     opacity: showLottie ? 1 : 0,
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.end,
-              //       children: [
-              //         Spacer(),
-              //         // SizedBox(width: 500),
-              //         Image.asset(
-              //           'assets/images/dash/dash2.png',
-              //           height: 280,
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),
@@ -222,12 +161,9 @@ class _WindowsMediumExperienceScreenState
             child: AnimatedOpacity(
               duration: const Duration(seconds: 2),
               opacity: showLottie ? 1 : 0,
-              child: Container(
-                // color: Colors.amber,
-                child: Image.asset(
-                  'assets/images/dash/dash2.png',
-                  height: 280,
-                ),
+              child: Image.asset(
+                'assets/images/dash/dash2.png',
+                height: 280,
               ),
             ),
           ),

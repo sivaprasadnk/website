@@ -29,9 +29,9 @@ class PortfolioImageContainer extends StatelessWidget {
           imagePath: websiteImageAssetPath,
           isWeb: true,
         ),
-        const Positioned.fill(
+        Positioned.fill(
           left: 20,
-          child: Align(
+          child: const Align(
             alignment: Alignment.bottomLeft,
             child: PortfolioTitleText(),
           ),

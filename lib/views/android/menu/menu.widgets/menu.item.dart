@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
 
-class AndroidMenuItem extends StatelessWidget {
-  const AndroidMenuItem({Key? key, required this.title, required this.icon}) : super(key: key);
+class AndroidCustomMenuItem extends StatelessWidget {
+  const AndroidCustomMenuItem(
+      {Key? key, required this.title, required this.icon})
+      : super(key: key);
 
   final String title;
   final IconData icon;
@@ -18,7 +20,7 @@ class AndroidMenuItem extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20),
       child: ListTile(
         leading: Icon(
-         icon,
+          icon,
           color: Colors.white,
           size: menuFontSize,
         ),

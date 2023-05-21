@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/tab.item.dart';
 
-class ExperienceTab extends StatelessWidget {
+class FamilyTab extends StatelessWidget {
   final TabController tabController;
   final Duration duration;
-  const ExperienceTab({
+  const FamilyTab({
     required this.tabController,
     required this.duration,
   });
@@ -12,17 +12,13 @@ class ExperienceTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabItem(
-      onTap: () {
-        tabController.animateTo(
-          2,
-          duration: duration,
-          curve: Curves.decelerate,
-        );
-      },
       tabController: tabController,
-      isSelected: tabController.index == 2,
-      title: 'Experience',
-      index: 2,
+      onTap: () {
+        tabController.animateTo(1, duration: duration);
+      },
+      isSelected: tabController.index == 1,
+      title: 'Family',
+      index: 1,
     );
   }
 }
