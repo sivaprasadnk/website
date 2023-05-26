@@ -4,6 +4,7 @@ import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/contactme/android.contactme.screen.dart';
 import 'package:spnk/views/android/experience/android.experience.screen.dart';
+import 'package:spnk/views/android/family/android.family.screen.dart';
 import 'package:spnk/views/android/home/android.home.screen.dart';
 import 'package:spnk/views/android/menu/android.menu.screen.dart';
 import 'package:spnk/views/android/projects/android.projects.screen.dart';
@@ -26,7 +27,7 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
     final screenHeight = screenSize.height;
     final screen = Provider.of<RouteProvider>(context).selectedSCreen;
     final menuSelectedCheck =
-        Provider.of<RouteProvider>(context, listen: true).menuSelected;
+        Provider.of<RouteProvider>(context).menuSelected;
     debugPrint('.. @@screen => $screen ');
     debugPrint('.. @@menuSelectedCheck =>$menuSelectedCheck');
     return WillPopScope(
@@ -59,7 +60,11 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
                             ? AndroidExperienceScreen(
                                 screenHeight: screenHeight,
                               )
-                            : AndroidContactMeScreen(
+                            : screen == Screen.family
+                                ? AndroidFamilyScreen(
+                                    screenHeight: screenHeight,
+                                  )
+                                : AndroidContactMeScreen(
                                 screenHeight: screenHeight,
                               ),
               if (menuSelectedCheck) const AndroidRightFooter(size: size),

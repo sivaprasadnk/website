@@ -80,7 +80,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                 shrinkWrap: true,
                 padding: const EdgeInsets.all(16),
                 showItemInterval: const Duration(milliseconds: 50),
-                itemCount: 4,
+                itemCount: 5,
                 itemBuilder: animationItemBuilder((index) {
                   switch (index) {
                     case 0:
@@ -94,18 +94,19 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                           title: 'Home',
                         ),
                       );
-                    case 3:
+                    case 1:
                       return GestureDetector(
                         onTap: () {
                           provider.setMenuSelected(check: false);
-                          provider.setScreen(name: Screen.contactMe);
+                          provider.setScreen(name: Screen.family);
                         },
                         child: const AndroidCustomMenuItem(
-                          icon: Icons.call,
-                          title: 'Contact',
+                          icon: Icons.family_restroom,
+                          title: 'Family',
                         ),
                       );
-                    case 1:
+
+                    case 2:
                       return GestureDetector(
                         onTap: () {
                           provider.setMenuSelected(check: false);
@@ -116,7 +117,8 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                           title: 'Experience',
                         ),
                       );
-                    case 2:
+                      
+                    case 3:
                       return GestureDetector(
                         onTap: () {
                           provider.setMenuSelected(check: false);
@@ -125,6 +127,17 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                         child: const AndroidCustomMenuItem(
                           icon: Icons.apps,
                           title: 'Projects',
+                        ),
+                      );
+                    case 4:
+                      return GestureDetector(
+                        onTap: () {
+                          provider.setMenuSelected(check: false);
+                          provider.setScreen(name: Screen.contactMe);
+                        },
+                        child: const AndroidCustomMenuItem(
+                          icon: Icons.call,
+                          title: 'Contact',
                         ),
                       );
                   }
