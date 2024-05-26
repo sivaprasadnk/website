@@ -8,7 +8,6 @@ import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/medium/contactme/windows.medium.contactme.screen.dart';
 import 'package:spnk/views/windows/medium/experience/windows.medium.experience.dart';
-import 'package:spnk/views/windows/medium/family/windows.medium.family.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.home.screen.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.menu.dart';
 import 'package:spnk/views/windows/medium/projects/projects.medium.new.dart';
@@ -51,9 +50,9 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
       bottomNavigationBar: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: screenWidth * 0.05, vertical: 10),
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             WindowsLeftFooter(size: size),
             WindowsRightFooter(size: size)
           ],
@@ -122,8 +121,6 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
                           ? WindowsMediumExperienceScreen()
                           : screen == Screen.projects
                               ? const ProjectsMediumNew()
-                              : screen == Screen.family
-                                  ? WindowsMediumFamilyScreen()
                                   : const SizedBox.shrink()
               ],
             ),

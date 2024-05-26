@@ -7,7 +7,6 @@ import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/large/contactme/windows.large.contactme.screen.dart';
 import 'package:spnk/views/windows/large/experience/windows.large.experience.screen.dart';
-import 'package:spnk/views/windows/large/family/windows.large.family.screen.dart';
 import 'package:spnk/views/windows/large/home/windows.home.large.screen.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/copyright_text.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/made_with_flutter_widget.dart';
@@ -69,9 +68,9 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
             horizontal: context.screenWidth * 0.03,
             vertical: 10,
           ),
-          child: Row(
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               CopyrightText(size: size),
               MadeWithFlutterWidget(size: size),
             ],
@@ -170,7 +169,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
             controller: _tabController,
             children: [
               WindowsHomeLargeScreen(),
-              WindowsLargeFamilyScreen(),
               WindowsLargeExperienceScreen(),
               const ProjectsScreenNew(),
               WindowsLargeContactMeScreen(),

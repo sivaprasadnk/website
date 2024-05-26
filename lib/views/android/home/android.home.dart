@@ -4,7 +4,6 @@ import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/contactme/android.contactme.screen.dart';
 import 'package:spnk/views/android/experience/android.experience.screen.dart';
-import 'package:spnk/views/android/family/android.family.screen.dart';
 import 'package:spnk/views/android/home/android.home.screen.dart';
 import 'package:spnk/views/android/menu/android.menu.screen.dart';
 import 'package:spnk/views/android/projects/android.projects.screen.dart';
@@ -26,8 +25,7 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
     final screen = Provider.of<RouteProvider>(context).selectedSCreen;
-    final menuSelectedCheck =
-        Provider.of<RouteProvider>(context).menuSelected;
+    final menuSelectedCheck = Provider.of<RouteProvider>(context).menuSelected;
     debugPrint('.. @@screen => $screen ');
     debugPrint('.. @@menuSelectedCheck =>$menuSelectedCheck');
     return WillPopScope(
@@ -38,7 +36,7 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
           width: screenWidth,
           child: Stack(
             children: [
-              if (!menuSelectedCheck && screen ==Screen.home)
+              if (!menuSelectedCheck && screen == Screen.home)
                 Positioned.fill(
                   top: screenHeight * 0.05,
                   child: Align(
@@ -56,15 +54,11 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
                     ? const AndroidHomeScreen()
                     : screen == Screen.projects
                         ? AndroidProjects(screenHeight: screenHeight)
-                        : screen ==Screen.experience
+                        : screen == Screen.experience
                             ? AndroidExperienceScreen(
                                 screenHeight: screenHeight,
                               )
-                            : screen == Screen.family
-                                ? AndroidFamilyScreen(
-                                    screenHeight: screenHeight,
-                                  )
-                                : AndroidContactMeScreen(
+                            : AndroidContactMeScreen(
                                 screenHeight: screenHeight,
                               ),
               if (menuSelectedCheck) const AndroidRightFooter(size: size),
