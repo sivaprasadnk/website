@@ -12,7 +12,6 @@ import 'package:spnk/views/windows/large/home/windows.large.home.widgets/copyrig
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/made_with_flutter_widget.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/contact.me.tab.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/experience.tab.dart';
-import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/family.tab.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/home.tab.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/projects.tab.dart';
 import 'package:spnk/views/windows/large/projects/projects.screen.new.dart';
@@ -39,7 +38,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       final status = context.dialogProvider.dialogIsOpen;
 
@@ -135,10 +134,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                         controller: _tabController,
                         tabs: [
                           HomeTab(
-                            tabController: _tabController,
-                            duration: _duration,
-                          ),
-                          FamilyTab(
                             tabController: _tabController,
                             duration: _duration,
                           ),

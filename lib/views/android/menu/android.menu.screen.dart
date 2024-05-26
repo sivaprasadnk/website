@@ -80,7 +80,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                 shrinkWrap: true,
                 padding: const EdgeInsets.all(16),
                 showItemInterval: const Duration(milliseconds: 50),
-                itemCount: 5,
+                itemCount: 4,
                 itemBuilder: animationItemBuilder((index) {
                   switch (index) {
                     case 0:
@@ -98,18 +98,6 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                       return GestureDetector(
                         onTap: () {
                           provider.setMenuSelected(check: false);
-                          provider.setScreen(name: Screen.family);
-                        },
-                        child: const AndroidCustomMenuItem(
-                          icon: Icons.family_restroom,
-                          title: 'Family',
-                        ),
-                      );
-
-                    case 2:
-                      return GestureDetector(
-                        onTap: () {
-                          provider.setMenuSelected(check: false);
                           provider.setScreen(name: Screen.experience);
                         },
                         child: const AndroidCustomMenuItem(
@@ -118,7 +106,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                         ),
                       );
                       
-                    case 3:
+                    case 2:
                       return GestureDetector(
                         onTap: () {
                           provider.setMenuSelected(check: false);
@@ -129,7 +117,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
                           title: 'Projects',
                         ),
                       );
-                    case 4:
+                    case 3:
                       return GestureDetector(
                         onTap: () {
                           provider.setMenuSelected(check: false);
