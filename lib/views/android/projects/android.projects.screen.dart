@@ -5,6 +5,7 @@ import 'package:spnk/domain/project_entity.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/provider/menu_provider.dart';
+import 'package:spnk/views/provider/route_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/image.container.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
@@ -71,13 +72,19 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
         ),
         const AndroidDashImage(dashImage: 'dash3'),
         Padding(
-          padding: const EdgeInsets.only(right: 10, top: 20),
+          padding: EdgeInsets.only(
+            right: 10,
+            top: 20,
+            left: screenWidth * 0.8,
+          ),
           child: Align(
             alignment: Alignment.topRight,
             child: IconButton(
               icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
                 ref.read(menuNotifierProvider.notifier).menuSelected = false;
+                ref.read(routeNotifierProvider.notifier).selectedScreen =
+                    Screen.home;
               },
             ),
           ),

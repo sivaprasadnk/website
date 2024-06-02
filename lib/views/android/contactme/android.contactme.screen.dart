@@ -6,6 +6,7 @@ import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/provider/menu_provider.dart';
+import 'package:spnk/views/provider/route_provider.dart';
 
 class AndroidContactMeScreen extends ConsumerWidget {
   // final double screenHeight;
@@ -26,13 +27,19 @@ class AndroidContactMeScreen extends ConsumerWidget {
         ),
         const AndroidDashImage(dashImage: 'dash4'),
         Padding(
-          padding: const EdgeInsets.only(right: 10, top: 20),
+          padding: EdgeInsets.only(
+            right: 10,
+            top: 20,
+            left: context.screenWidth * 0.8,
+          ),
           child: Align(
             alignment: Alignment.topRight,
             child: IconButton(
               icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
                 ref.read(menuNotifierProvider.notifier).menuSelected = false;
+                ref.read(routeNotifierProvider.notifier).selectedScreen =
+                    Screen.home;
               },
             ),
           ),
