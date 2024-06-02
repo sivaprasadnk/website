@@ -1,8 +1,9 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:spnk/entity/project_entity.dart';
-import 'package:spnk/views/provider/page.provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:provider/provider.dart';
+import 'package:spnk/domain/project_entity.dart';
+import 'package:spnk/views/provider/page_provider.dart';
 import 'package:spnk/views/windows/medium/projects/app.summary/next.icon.dart';
 import 'package:spnk/views/windows/medium/projects/app.summary/prev.icon.dart';
 import 'package:spnk/views/windows/medium/projects/view.more.container.dart';
@@ -11,18 +12,11 @@ import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart
 import 'package:spnk/views/windows/small/projects/app.summary/text.container.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ProjectsPage extends StatefulWidget {
-  const ProjectsPage({Key? key}) : super(key: key);
+class ProjectsPage extends ConsumerWidget {
+  final PageController controller = PageController();
 
   @override
-  State<ProjectsPage> createState() => _ProjectsPageState();
-}
-
-class _ProjectsPageState extends State<ProjectsPage> {
-  PageController controller = PageController();
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = screenSize.height;
     // final screenWidth = screenSize.width;
@@ -34,8 +28,8 @@ class _ProjectsPageState extends State<ProjectsPage> {
           width: 450,
           child: PageView(
             onPageChanged: (pageIndex) {
-              Provider.of<PageProvider>(context, listen: false)
-                  .updatePage(pageIndex.toDouble());
+              ref.read(pageIndexProvider.notifier).pageIndex =
+                  pageIndex.toDouble();
             },
             controller: controller,
             children: projectList.map((project) {

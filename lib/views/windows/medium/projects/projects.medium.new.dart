@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/views/windows/medium/projects/projects.page.dart';
 
-class ProjectsMediumNew extends StatefulWidget {
-  const ProjectsMediumNew({Key? key}) : super(key: key);
-
-  @override
-  State<ProjectsMediumNew> createState() => _ProjectsMediumNewState();
-}
-
-class _ProjectsMediumNewState extends State<ProjectsMediumNew> {
+// ignore: must_be_immutable
+class ProjectsMediumNew extends ConsumerWidget {
   PageController controller = PageController();
 
   bool showNextIcon = true;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
@@ -22,11 +17,11 @@ class _ProjectsMediumNewState extends State<ProjectsMediumNew> {
       padding: EdgeInsets.only(left: screenWidth * 0.08),
       child: SizedBox(
         height: screenHeight * 0.9,
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: 200),
+            const SizedBox(height: 200),
             ProjectsPage(),
           ],
         ),

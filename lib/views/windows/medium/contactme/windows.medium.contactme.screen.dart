@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/entity/contact_entity.dart';
+import 'package:spnk/domain/contact_entity.dart';
 
 class WindowsMediumContactMeScreen extends StatefulWidget {
   const WindowsMediumContactMeScreen({Key? key}) : super(key: key);

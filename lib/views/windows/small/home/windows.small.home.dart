@@ -1,9 +1,10 @@
-import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:provider/provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/views/provider/menu_provider.dart';
 import 'package:spnk/views/provider/route_provider.dart';
-import 'package:spnk/views/provider/theme_provider.dart';
+import 'package:spnk/views/windows/common/theme_switch.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/small/contactme/windows.small.contactme.screen.dart';
 import 'package:spnk/views/windows/small/experience/windows.small.experience.screen.dart';
@@ -11,16 +12,14 @@ import 'package:spnk/views/windows/small/home/windows.small.drawer.dart';
 import 'package:spnk/views/windows/small/home/windows.small.home.screen.dart';
 import 'package:spnk/views/windows/small/projects/projects.screen.small.dart';
 
-class WindowsSmallHome extends StatefulWidget {
+class WindowsSmallHome extends ConsumerStatefulWidget {
   static const routeName = '/HomeSmall';
 
   @override
   _WindowsSmallHomeState createState() => _WindowsSmallHomeState();
 }
 
-class _WindowsSmallHomeState extends State<WindowsSmallHome> {
-  
-
+class _WindowsSmallHomeState extends ConsumerState<WindowsSmallHome> {
   @override
   void setState(VoidCallback fn) {
     if (mounted) {
@@ -29,7 +28,6 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
   }
 
   bool showProPic = false;
- 
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -41,9 +39,8 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
 
-    final screen = Provider.of<RouteProvider>(context).selectedSCreen;
-    final menuSelectedCheck =
-        Provider.of<RouteProvider>(context).menuSelected;
+    final screen = ref.watch(routeNotifierProvider);
+    final menuSelectedCheck = ref.watch(menuNotifierProvider);
     debugPrint('..@ screenWidth @ small : $screenWidth');
     debugPrint('..@ screenHeight @ small : $screenHeight');
     debugPrint('..@ screen @ small :$screen');
@@ -55,20 +52,20 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
         padding: EdgeInsets.symmetric(vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [WindowsRightFooter(size: size)],
+          children: [
+            WindowsRightFooter(size: size),
+          ],
         ),
       ),
       appBar: PreferredSize(
         preferredSize: Size(screenWidth, 80),
-
         child: Row(
           children: [
             GestureDetector(
               onTap: () {
-                Provider.of<RouteProvider>(context, listen: false)
-                    .setMenuSelected(check: false);
-                Provider.of<RouteProvider>(context, listen: false)
-                    .setScreen(name: Screen.home);
+                ref.read(menuNotifierProvider.notifier).menuSelected = false;
+                ref.read(routeNotifierProvider.notifier).selectedScreen =
+                    Screen.home;
               },
               child: Padding(
                 padding: const EdgeInsets.only(left: 36, top: 18),
@@ -76,33 +73,16 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
               ),
             ),
             const Spacer(),
-            Consumer<ThemeNotifier>(
-              builder: (_, provider, __) {
-                return SizedBox(
-                  height: 50,
-                  width: 75,
-                  child: GestureDetector(
-                    onDoubleTap: () {},
-                    child: DayNightSwitcher(
-                      isDarkModeEnabled: provider.darkTheme,
-                      onStateChanged: (isDarkModeEnabled) {
-                        provider.toggleTheme();
-                      },
-                    ),
-                  ),
-                );
-              },
-            ),
+            const ThemeSwitch(),
             const SizedBox(
               width: 20,
             ),
             if (!menuSelectedCheck)
               GestureDetector(
                 onTap: () {
-                  Provider.of<RouteProvider>(context, listen: false)
-                      .setMenuSelected(check: true);
-                  Provider.of<RouteProvider>(context, listen: false)
-                      .setScreen(name:Screen.home);
+                  ref.read(menuNotifierProvider.notifier).menuSelected = true;
+                  ref.read(routeNotifierProvider.notifier).selectedScreen =
+                      Screen.home;
                 },
                 child: Icon(
                   Icons.menu,
@@ -112,10 +92,9 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
             else
               GestureDetector(
                 onTap: () {
-                  Provider.of<RouteProvider>(context, listen: false)
-                      .setMenuSelected(check: false);
-                  Provider.of<RouteProvider>(context, listen: false)
-                      .setScreen(name: Screen.home);
+                  ref.read(menuNotifierProvider.notifier).menuSelected = false;
+                  ref.read(routeNotifierProvider.notifier).selectedScreen =
+                      Screen.home;
                 },
                 child: Icon(
                   Icons.close,

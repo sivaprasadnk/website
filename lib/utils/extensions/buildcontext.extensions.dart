@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:spnk/views/provider/route_provider.dart';
+// import 'package:provider/provider.dart';
 
 extension BuiltContextExt on BuildContext {
 
@@ -9,5 +8,5 @@ extension BuiltContextExt on BuildContext {
   double get screenWidth => MediaQuery.of(this).size.width;
   double get screenHeight => MediaQuery.of(this).size.height;
 
-  RouteProvider get routeProvider => Provider.of<RouteProvider>(this);
+  // RouteProvider get routeProvider => Provider.of<RouteProvider>(this);
 }

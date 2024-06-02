@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/views/provider/route_provider.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/menu.item.dart';
 
-class HomeMenu extends StatelessWidget {
+class HomeMenu extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
-    final screen = context.routeProvider.selectedSCreen;
+  Widget build(BuildContext context, WidgetRef ref) {
+    // final screen = context.routeProvider.selectedSCreen;
 
     return CustomMenuItem(
       title: 'Home',
-      isSelected: screen == Screen.home,
+      isSelected: ref.watch(routeNotifierProvider) == Screen.home,
     );
   }
 }

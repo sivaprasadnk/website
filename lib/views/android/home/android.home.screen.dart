@@ -1,21 +1,14 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/views/provider/menu_provider.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
 
-class AndroidHomeScreen extends StatefulWidget {
-  const AndroidHomeScreen({Key? key}) : super(key: key);
-
+class AndroidHomeScreen extends ConsumerWidget {
   @override
-  _AndroidHomeScreenState createState() => _AndroidHomeScreenState();
-}
-
-class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final screenSize = MediaQuery.of(context).size;
 
     final screenWidth = screenSize.width;
@@ -34,8 +27,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
               child: IconButton(
                 icon: const Icon(Icons.menu, color: Colors.white),
                 onPressed: () {
-                  Provider.of<RouteProvider>(context, listen: false)
-                      .setMenuSelected(check: true);
+                  ref.read(menuNotifierProvider.notifier).menuSelected = true;
                 },
               ),
             ),

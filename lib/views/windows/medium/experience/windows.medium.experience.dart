@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/entity/experience_entity.dart';
+import 'package:spnk/domain/experience_entity.dart';
 
 class WindowsMediumExperienceScreen extends StatefulWidget {
   @override

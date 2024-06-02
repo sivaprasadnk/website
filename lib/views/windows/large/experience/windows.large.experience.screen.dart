@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/entity/experience_entity.dart';
+import 'package:spnk/domain/experience_entity.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 

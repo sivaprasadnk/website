@@ -1,10 +1,10 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:spnk/entity/project_entity.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/domain/project_entity.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/views/provider/menu_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/image.container.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
@@ -12,14 +12,14 @@ import 'package:spnk/views/windows/small/projects/app.summary/text.container.dar
 import 'package:spnk/views/windows/small/projects/app.summary/view.more.small.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class AndroidProjects extends StatefulWidget {
+class AndroidProjects extends ConsumerStatefulWidget {
   final double screenHeight;
   const AndroidProjects({required this.screenHeight});
   @override
   _AndroidProjectsState createState() => _AndroidProjectsState();
 }
 
-class _AndroidProjectsState extends State<AndroidProjects> {
+class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
   PageController controller = PageController();
 
   bool showNextIcon = true;
@@ -77,8 +77,7 @@ class _AndroidProjectsState extends State<AndroidProjects> {
             child: IconButton(
               icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
-                Provider.of<RouteProvider>(context, listen: false)
-                    .setMenuSelected(check: true);
+                ref.read(menuNotifierProvider.notifier).menuSelected = false;
               },
             ),
           ),

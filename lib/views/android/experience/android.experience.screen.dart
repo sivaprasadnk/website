@@ -1,22 +1,16 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:spnk/entity/experience_entity.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/domain/experience_entity.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/views/provider/menu_provider.dart';
 
-class AndroidExperienceScreen extends StatefulWidget {
-  final double screenHeight;
-  const AndroidExperienceScreen({required this.screenHeight});
-  @override
-  _AndroidExperienceScreenState createState() =>
-      _AndroidExperienceScreenState();
-}
+class AndroidExperienceScreen extends ConsumerWidget {
 
-class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Stack(
       children: [
         Positioned.fill(
@@ -35,20 +29,19 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
             child: IconButton(
               icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
-                Provider.of<RouteProvider>(context, listen: false)
-                    .setMenuSelected(check: true);
+                ref.read(menuNotifierProvider.notifier).menuSelected = false;
               },
             ),
           ),
         ),
         SizedBox(
-          height: widget.screenHeight,
+          height: context.screenHeight,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                height: widget.screenHeight * 0.15,
+                height: context.screenHeight * 0.15,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 30),
@@ -64,7 +57,7 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
               ),
               // Spacer(),
               SizedBox(
-                height: widget.screenHeight * 0.12,
+                height: context.screenHeight * 0.12,
               ),
               LiveList(
                 shrinkWrap: true,
@@ -96,7 +89,7 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
                 }),
               ),
               SizedBox(
-                height: widget.screenHeight * 0.08,
+                height: context.screenHeight * 0.08,
               ),
             ],
           ),

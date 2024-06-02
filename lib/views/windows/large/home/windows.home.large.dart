@@ -1,9 +1,7 @@
-import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
-import 'package:spnk/views/provider/theme_provider.dart';
+import 'package:spnk/views/windows/common/theme_switch.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/large/contactme/windows.large.contactme.screen.dart';
 import 'package:spnk/views/windows/large/experience/windows.large.experience.screen.dart';
@@ -89,23 +87,24 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                     child: nameText(context: context).showCursorOnHover,
                   ),
                   const Spacer(),
-                  Consumer<ThemeNotifier>(
-                    builder: (_, provider, __) {
-                      return SizedBox(
-                        height: 50,
-                        width: 75,
-                        child: GestureDetector(
-                          onDoubleTap: () {},
-                          child: DayNightSwitcher(
-                            isDarkModeEnabled: provider.darkTheme,
-                            onStateChanged: (isDarkModeEnabled) {
-                              provider.toggleTheme();
-                            },
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+                  const ThemeSwitch(),
+                  // Consumer<ThemeNotifier>(
+                  //   builder: (_, provider, __) {
+                  //     return SizedBox(
+                  //       height: 50,
+                  //       width: 75,
+                  //       child: GestureDetector(
+                  //         onDoubleTap: () {},
+                  //         child: DayNightSwitcher(
+                  //           isDarkModeEnabled: provider.darkTheme,
+                  //           onStateChanged: (isDarkModeEnabled) {
+                  //             provider.toggleTheme();
+                  //           },
+                  //         ),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
                   const SizedBox(
                     width: 30,
                   ),

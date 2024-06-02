@@ -1,35 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/contactme/android.contactme.screen.dart';
 import 'package:spnk/views/android/experience/android.experience.screen.dart';
 import 'package:spnk/views/android/home/android.home.screen.dart';
 import 'package:spnk/views/android/menu/android.menu.screen.dart';
 import 'package:spnk/views/android/projects/android.projects.screen.dart';
+import 'package:spnk/views/provider/menu_provider.dart';
 import 'package:spnk/views/provider/route_provider.dart';
 
-class AndroidHome extends StatefulWidget {
+class AndroidHome extends ConsumerWidget {
   static const routeName = '/AndroidHome';
   const AndroidHome({Key? key}) : super(key: key);
 
   @override
-  _AndroidHomeScreenState createState() => _AndroidHomeScreenState();
-}
-
-class _AndroidHomeScreenState extends State<AndroidHome> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final screenSize = MediaQuery.of(context).size;
     const double size = 15;
 
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
-    final screen = Provider.of<RouteProvider>(context).selectedSCreen;
-    final menuSelectedCheck = Provider.of<RouteProvider>(context).menuSelected;
+    // final screen = Provider.of<RouteProvider>(context).selectedSCreen;
+    final screen = ref.watch(routeNotifierProvider);
+    // final menuSelectedCheck = Provider.of<RouteProvider>(context).menuSelected;
+    final menuSelectedCheck = ref.watch(menuNotifierProvider);
     debugPrint('.. @@screen => $screen ');
     debugPrint('.. @@menuSelectedCheck =>$menuSelectedCheck');
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
+      // onWillPop: () async => false,
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(0, 34, 51, 1),
         body: SizedBox(
@@ -51,16 +50,12 @@ class _AndroidHomeScreenState extends State<AndroidHome> {
                 const AndroidMenuScreen()
               else
                 screen == Screen.home
-                    ? const AndroidHomeScreen()
+                    ? AndroidHomeScreen()
                     : screen == Screen.projects
                         ? AndroidProjects(screenHeight: screenHeight)
                         : screen == Screen.experience
-                            ? AndroidExperienceScreen(
-                                screenHeight: screenHeight,
-                              )
-                            : AndroidContactMeScreen(
-                                screenHeight: screenHeight,
-                              ),
+                            ? AndroidExperienceScreen()
+                            : AndroidContactMeScreen(),
               if (menuSelectedCheck) const AndroidRightFooter(size: size),
             ],
           ),

@@ -1,23 +1,18 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/entity/contact_entity.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/domain/contact_entity.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/views/provider/menu_provider.dart';
 
-class AndroidContactMeScreen extends StatefulWidget {
-  final double screenHeight;
-  const AndroidContactMeScreen({required this.screenHeight});
+class AndroidContactMeScreen extends ConsumerWidget {
+  // final double screenHeight;
   @override
-  _AndroidContactMeScreenState createState() => _AndroidContactMeScreenState();
-}
-
-class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
-  @override
-  Widget build(BuildContext context) {
-    final menuSelectedCheck = context.routeProvider.menuSelected;
-    debugPrint('...@@456 @menu menuSelectedCheck..$menuSelectedCheck');
-
+  Widget build(BuildContext context, WidgetRef ref) {
+    // final menuSelectedCheck = context.routeProvider.menuSelected;
+    // var screenHeight = context.screenHeight;
     return Stack(
       // mainAxisSize: MainAxisSize.min,
       children: [
@@ -37,19 +32,19 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
             child: IconButton(
               icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
-                context.routeProvider.setMenuSelected(check: true);
+                ref.read(menuNotifierProvider.notifier).menuSelected = false;
               },
             ),
           ),
         ),
         SizedBox(
-          height: widget.screenHeight,
+          height: context.screenHeight,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                height: widget.screenHeight * 0.15,
+                height: context.screenHeight * 0.15,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 30),
@@ -64,7 +59,7 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
                 ),
               ),
               SizedBox(
-                height: widget.screenHeight * 0.12,
+                height: context.screenHeight * 0.12,
               ),
               SingleChildScrollView(
                 child: LiveList(
@@ -92,7 +87,7 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
                 ),
               ),
               SizedBox(
-                height: widget.screenHeight * 0.08,
+                height: context.screenHeight * 0.08,
               ),
             ],
           ),

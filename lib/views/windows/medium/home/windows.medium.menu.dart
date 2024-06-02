@@ -1,25 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:spnk/views/provider/page.provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/views/provider/page_provider.dart';
 import 'package:spnk/views/provider/route_provider.dart';
-import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/contact.me.menu.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/experience.menu.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/home.menu.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/projects.menu.dart';
 
-class WindowsMediumMenu extends StatefulWidget {
-  const WindowsMediumMenu({Key? key}) : super(key: key);
-
+class WindowsMediumMenu extends ConsumerWidget {
   @override
-  _WindowsMediumMenuState createState() => _WindowsMediumMenuState();
-}
-
-class _WindowsMediumMenuState extends State<WindowsMediumMenu> {
-  bool isHovering = false;
-  @override
-  Widget build(BuildContext context) {
-    final provider = context.routeProvider;
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.only(left: 20),
       child: Column(
@@ -31,29 +21,34 @@ class _WindowsMediumMenuState extends State<WindowsMediumMenu> {
           ),
           GestureDetector(
             onTap: () {
-              provider.setScreen(name: Screen.home);
+              ref.read(routeNotifierProvider.notifier).selectedScreen =
+                  Screen.home;
             },
             child: HomeMenu(),
           ),
           const SizedBox(height: 20),
           GestureDetector(
             onTap: () {
-              provider.setScreen(name: Screen.experience);
+              ref.read(routeNotifierProvider.notifier).selectedScreen =
+                  Screen.experience;
             },
             child: ExperienceMenu(),
           ),
           const SizedBox(height: 20),
           GestureDetector(
             onTap: () {
-              provider.setScreen(name: Screen.projects);
-              Provider.of<PageProvider>(context, listen: false).updatePage(0);
+              ref.read(routeNotifierProvider.notifier).selectedScreen =
+                  Screen.projects;
+
+              ref.read(pageIndexProvider.notifier).pageIndex = 0;
             },
             child: MyProjectsMenu(),
           ),
           const SizedBox(height: 20),
           GestureDetector(
             onTap: () {
-              provider.setScreen(name: Screen.contactMe);
+              ref.read(routeNotifierProvider.notifier).selectedScreen =
+                  Screen.contactMe;
             },
             child: ContactmeMenu(),
           ),
