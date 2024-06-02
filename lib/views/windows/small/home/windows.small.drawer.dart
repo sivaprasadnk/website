@@ -213,12 +213,12 @@ class _ListItemState extends State<ListItem> {
             },
             leading: Icon(
               widget.icon,
-              color: Theme.of(context).textTheme.caption!.color,
+              color: Theme.of(context).textTheme.displaySmall!.color,
               // color: isHovering ? Colors.cyanAccent : Colors.white,
             ),
             title: Text(
               widget.title,
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(context).textTheme.displaySmall,
               // style: TextStyle(
               //   fontFamily: 'PlayfairDisplay',
               //   color: isHovering ? Colors.cyanAccent : Colors.white,

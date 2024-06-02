@@ -1,6 +1,6 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+// import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/dialog_provider.dart';
@@ -30,24 +30,24 @@ class PortfolioTitleTextSmall extends StatelessWidget {
                 Provider.of<DialogProvider>(context, listen: false)
                     .updateDialogOpenStatus(status: true);
 
-                showAnimatedDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  builder: (BuildContext context) {
-                    return Dialog(
-                      backgroundColor: Colors.transparent,
-                      child: DetailsContainer(
-                        desc1: websiteStr1,
-                        desc2: websiteStr2,
-                        link: websiteLink,
-                        title: 'Portfolio Website',
-                      ),
-                    );
-                  },
-                  animationType: DialogTransitionType.size,
-                  curve: Curves.fastOutSlowIn,
-                  duration: const Duration(seconds: 1),
-                );
+                // showAnimatedDialog(
+                //   context: context,
+                //   barrierDismissible: false,
+                //   builder: (BuildContext context) {
+                //     return Dialog(
+                //       backgroundColor: Colors.transparent,
+                //       child: DetailsContainer(
+                //         desc1: websiteStr1,
+                //         desc2: websiteStr2,
+                //         link: websiteLink,
+                //         title: 'Portfolio Website',
+                //       ),
+                //     );
+                //   },
+                //   animationType: DialogTransitionType.size,
+                //   curve: Curves.fastOutSlowIn,
+                //   duration: const Duration(seconds: 1),
+                // );
               },
               child: const ViewMoreContainerSmall(),
             ),

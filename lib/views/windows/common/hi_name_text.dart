@@ -37,7 +37,7 @@ class HiText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       "Hi,\nI'm Sivaprasad NK .",
-      style: Theme.of(context).textTheme.caption,
+      style: Theme.of(context).textTheme.displayMedium,
     );
   }
 }

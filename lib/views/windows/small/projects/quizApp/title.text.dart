@@ -1,9 +1,8 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+// import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/dialog_provider.dart';
-import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/medium/projects/app.details/google.play.button.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
@@ -22,32 +21,32 @@ class QuizTitleTextSmall extends StatelessWidget {
         child: Row(
           children: [
             const ProjectTitle(title: 'SP Quiz App'),
-            Expanded(
-              child: const Text(""),
+            const Expanded(
+              child: Text(""),
             ),
             GestureDetector(
               onTap: () {
                 Provider.of<DialogProvider>(context, listen: false)
                     .updateDialogOpenStatus(status: true);
 
-                showAnimatedDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  builder: (BuildContext context) {
-                    return Dialog(
-                      backgroundColor: Colors.transparent,
-                      child: DetailsContainer(
-                        desc1: quizStr3,
-                        desc2: quizStr4,
-                        link: spQuizLink,
-                        title: 'SP Quiz App',
-                      ),
-                    );
-                  },
-                  animationType: DialogTransitionType.size,
-                  curve: Curves.fastOutSlowIn,
-                  duration: const Duration(seconds: 1),
-                );
+                // showAnimatedDialog(
+                //   context: context,
+                //   barrierDismissible: false,
+                //   builder: (BuildContext context) {
+                //     return Dialog(
+                //       backgroundColor: Colors.transparent,
+                //       child: DetailsContainer(
+                //         desc1: quizStr3,
+                //         desc2: quizStr4,
+                //         link: spQuizLink,
+                //         title: 'SP Quiz App',
+                //       ),
+                //     );
+                //   },
+                //   animationType: DialogTransitionType.size,
+                //   curve: Curves.fastOutSlowIn,
+                //   duration: const Duration(seconds: 1),
+                // );
               },
               child: const ViewMoreContainerSmall(),
             ),
@@ -278,12 +277,12 @@ class WinddowsGooglePlayButton extends StatelessWidget {
             const SizedBox(
               width: 1,
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 5, left: 5),
+            const Padding(
+              padding: EdgeInsets.only(top: 5, left: 5),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     'GET IT ON',
                     style: TextStyle(

@@ -13,7 +13,7 @@ class ContactMeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabItem(
       onTap: () {
-        tabController.animateTo(4, duration: duration);
+        tabController.animateTo(3, duration: duration);
       },
       isSelected: tabController.index == 4,
       title: 'Contact Me',

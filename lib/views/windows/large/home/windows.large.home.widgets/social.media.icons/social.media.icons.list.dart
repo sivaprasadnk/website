@@ -54,6 +54,13 @@ class SocialMediaIconsList extends StatelessWidget {
               iconColor: normalColor,
               isMobile: isMobile,
             ),
+            const SizedBox(height: spacing),
+            SocialMediaIconItem(
+              icon: FontAwesomeIcons.github,
+              url: githubLink,
+              iconColor: normalColor,
+              isMobile: isMobile,
+            ),
           ],
         ),
       ),

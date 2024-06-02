@@ -1,6 +1,6 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+// import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:spnk/provider/dialog_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
@@ -28,24 +28,24 @@ class QuotesTitleTextSmall extends StatelessWidget {
                 Provider.of<DialogProvider>(context, listen: false)
                     .updateDialogOpenStatus(status: true);
 
-                showAnimatedDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  builder: (BuildContext context) {
-                    return Dialog(
-                      backgroundColor: Colors.transparent,
-                      child: DetailsContainer(
-                        desc1: quotesAppStr1,
-                        desc2: quotesAppStr2,
-                        link: spQuotesLink,
-                        title: 'SP Quotes App',
-                      ),
-                    );
-                  },
-                  animationType: DialogTransitionType.size,
-                  curve: Curves.fastOutSlowIn,
-                  duration: const Duration(seconds: 1),
-                );
+                // showAnimatedDialog(
+                //   context: context,
+                //   barrierDismissible: false,
+                //   builder: (BuildContext context) {
+                //     return Dialog(
+                //       backgroundColor: Colors.transparent,
+                //       child: DetailsContainer(
+                //         desc1: quotesAppStr1,
+                //         desc2: quotesAppStr2,
+                //         link: spQuotesLink,
+                //         title: 'SP Quotes App',
+                //       ),
+                //     );
+                //   },
+                //   animationType: DialogTransitionType.size,
+                //   curve: Curves.fastOutSlowIn,
+                //   duration: const Duration(seconds: 1),
+                // );
               },
               child: const ViewMoreContainerSmall(),
             ),

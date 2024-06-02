@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/utils/common_widgets.dart';
 
 class WindowsMediumContactMeScreen extends StatefulWidget {
   const WindowsMediumContactMeScreen({Key? key}) : super(key: key);
@@ -60,7 +59,7 @@ class _WindowsMediumContactMeScreenState
                       const SizedBox(width: 20),
                       Text(
                         addressText,
-                        style: Theme.of(context).textTheme.bodyText1,
+                        style: Theme.of(context).textTheme.displaySmall,
                       ),
                     ],
                   ),
@@ -79,7 +78,7 @@ class _WindowsMediumContactMeScreenState
                     const SizedBox(width: 20),
                     Text(
                       mobileNumberText,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
                     // Spacer(),
                   ],
@@ -98,7 +97,7 @@ class _WindowsMediumContactMeScreenState
                     const SizedBox(width: 20),
                     Text(
                       emailText,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
                     // Spacer(),
                   ],

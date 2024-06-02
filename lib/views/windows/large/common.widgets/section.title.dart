@@ -17,7 +17,7 @@ class WindowsLargeSectionTitle extends StatelessWidget {
         padding: const EdgeInsets.only(left: 150),
         child: AutoSizeText(
           title,
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.displayMedium,
         ),
       ),
     );

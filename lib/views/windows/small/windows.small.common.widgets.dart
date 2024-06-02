@@ -17,7 +17,7 @@ class SectionTitle extends StatelessWidget {
         padding: EdgeInsets.only(left: screenWidth * 0.1),
         child: Text(
           title,
-          style: Theme.of(context).textTheme.headline3,
+          style: Theme.of(context).textTheme.displayMedium,
         ),
       ),
     );

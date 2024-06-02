@@ -29,7 +29,7 @@ TextStyle quoteStyle = const TextStyle(
 Widget nameText({required BuildContext context}) {
   return Text(
     'SP',
-    style: Theme.of(context).textTheme.headline5,
+    style: Theme.of(context).textTheme.displayLarge,
   );
 }
 
@@ -162,12 +162,12 @@ class GooglePlayButton extends StatelessWidget {
               const SizedBox(
                 width: 5,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 8),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'GET IT ON',
                       style: TextStyle(
@@ -228,12 +228,12 @@ class WinddowsGooglePlayButton extends StatelessWidget {
             const SizedBox(
               width: 1,
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 5, left: 5),
+            const Padding(
+              padding: EdgeInsets.only(top: 5, left: 5),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     'GET IT ON',
                     style: TextStyle(
@@ -961,10 +961,23 @@ class SocialMedia extends StatelessWidget {
             child: FaIcon(
               FontAwesomeIcons.linkedin,
               size: iconSize,
-              color: Colors.blue,
+              color: Colors.black,
             ),
             onTap: () {
               launch(linkedInLink);
+            },
+          ).showCursorOnHover,
+          const SizedBox(
+            width: 15,
+          ),
+          GestureDetector(
+            child: FaIcon(
+              FontAwesomeIcons.github,
+              size: iconSize,
+              color: Colors.blue,
+            ),
+            onTap: () {
+              launch(githubLink);
             },
           ).showCursorOnHover,
         ],

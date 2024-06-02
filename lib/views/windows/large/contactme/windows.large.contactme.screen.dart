@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
 class WindowsLargeContactMeScreen extends StatefulWidget {
@@ -74,7 +73,7 @@ class _WindowsLargeContactMeScreenState
                             const SizedBox(width: 20),
                             Text(
                               addressText,
-                              style: Theme.of(context).textTheme.bodyText1,
+                              style: Theme.of(context).textTheme.displaySmall,
                             ),
                           ],
                         ),
@@ -93,7 +92,7 @@ class _WindowsLargeContactMeScreenState
                           const SizedBox(width: 20),
                           Text(
                             mobileNumberText,
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: Theme.of(context).textTheme.displaySmall,
                           ),
                         ],
                       ),
@@ -111,7 +110,7 @@ class _WindowsLargeContactMeScreenState
                           const SizedBox(width: 20),
                           Text(
                             emailText,
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: Theme.of(context).textTheme.displaySmall,
                           ),
                         ],
                       ),

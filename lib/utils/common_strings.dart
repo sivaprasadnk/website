@@ -9,6 +9,7 @@ const String whatsappWebLink =
 const String whatsappAndroidLink = "whatsapp://send?phone=+918086028340";
 
 const String linkedInLink = 'https://www.linkedin.com/in/sivaprasadnkofficial/';
+const String githubLink = 'https://github.com/sivaprasadnk/';
 
 const String spQuotesLink =
     'https://play.google.com/store/apps/details?id=com.sptpra.spquotes';

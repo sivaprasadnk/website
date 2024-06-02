@@ -13,7 +13,7 @@ class ProjectsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabItem(
       onTap: () {
-        tabController.animateTo(3, duration: duration);
+        tabController.animateTo(2, duration: duration);
       },
       tabController: tabController,
       isSelected: tabController.index == 3,

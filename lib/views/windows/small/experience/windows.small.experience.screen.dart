@@ -39,7 +39,7 @@ class _WindowsSmallExperienceScreenState
       children: [
         SizedBox(height: screenHeight * 0.13),
         SectionTitle(screenWidth: screenWidth, title: 'Experience'),
-        SizedBox(height: screenHeight * 0.13),
+        SizedBox(height: screenHeight * 0.12),
         FadeInRight(
           child: SizedBox(
             // width: screenWidth * 0.7,
@@ -54,7 +54,7 @@ class _WindowsSmallExperienceScreenState
                   children: [
                     Text(
                       ' Java, Postgres Programmer',
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
                     const SizedBox(height: 20),
                     Row(
@@ -66,7 +66,7 @@ class _WindowsSmallExperienceScreenState
                         ),
                         Text(
                           '      Bayasys Infotech Pvt Ltd.',
-                          style: Theme.of(context).textTheme.bodyLarge,
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ],
                     ),
@@ -79,7 +79,7 @@ class _WindowsSmallExperienceScreenState
                         ),
                         Text(
                           '      07/2019 - 09/2020',
-                          style: Theme.of(context).textTheme.bodyLarge,
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ],
                     ),
@@ -95,7 +95,7 @@ class _WindowsSmallExperienceScreenState
               title: Padding(
                 padding: EdgeInsets.only(
                   left: screenWidth * 0.2,
-                  top: screenHeight * .1,
+                  top: screenHeight * .05,
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -103,7 +103,7 @@ class _WindowsSmallExperienceScreenState
                   children: [
                     Text(
                       'Flutter Developer',
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
                     const SizedBox(height: 20),
                     Row(
@@ -115,7 +115,7 @@ class _WindowsSmallExperienceScreenState
                         ),
                         Text(
                           '      Indbytes Technologies',
-                          style: Theme.of(context).textTheme.bodyLarge,
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ],
                     ),
@@ -128,7 +128,7 @@ class _WindowsSmallExperienceScreenState
                         ),
                         Text(
                           '      12/2020 - 05/2023',
-                          style: Theme.of(context).textTheme.bodyLarge,
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ],
                     ),
@@ -144,7 +144,7 @@ class _WindowsSmallExperienceScreenState
               title: Padding(
                 padding: EdgeInsets.only(
                   left: screenWidth * 0.2,
-                  top: screenHeight * .1,
+                  top: screenHeight * .05,
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -152,7 +152,7 @@ class _WindowsSmallExperienceScreenState
                   children: [
                     Text(
                       'Senior Mobile app Developer',
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
                     const SizedBox(height: 20),
                     Row(
@@ -164,7 +164,7 @@ class _WindowsSmallExperienceScreenState
                         ),
                         Text(
                           '      Invenics Services India Pvt Ltd',
-                          style: Theme.of(context).textTheme.bodyLarge,
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ],
                     ),
@@ -177,7 +177,7 @@ class _WindowsSmallExperienceScreenState
                         ),
                         Text(
                           '      05/2023 - Present',
-                          style: Theme.of(context).textTheme.bodyLarge,
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ],
                     ),

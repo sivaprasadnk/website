@@ -21,9 +21,9 @@ class FlutterDeveloperContainer extends StatelessWidget {
         margin: EdgeInsets.only(
           left: leftPadding,
         ),
-        child: Row(
+        child: const Row(
           crossAxisAlignment: CrossAxisAlignment.end,
-          children: const [
+          children: [
             FlutterLogo(
               size: 30,
             ),
@@ -44,7 +44,7 @@ class FlutterDeveloperText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       ' Flutter Developer from Tripunithura, Kerala .',
-      style: Theme.of(context).textTheme.subtitle2,
+      style: Theme.of(context).textTheme.displaySmall,
     );
   }
 }

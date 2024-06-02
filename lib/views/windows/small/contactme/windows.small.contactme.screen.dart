@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 
 class WindowsSmallContactMeScreen extends StatefulWidget {
@@ -201,7 +200,7 @@ class ContactDetailsItem extends StatelessWidget {
           const SizedBox(width: 20),
           Text(
             details,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.displaySmall,
           ),
           const Spacer(),
         ],

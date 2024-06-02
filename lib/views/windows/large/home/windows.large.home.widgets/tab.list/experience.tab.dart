@@ -14,7 +14,7 @@ class ExperienceTab extends StatelessWidget {
     return TabItem(
       onTap: () {
         tabController.animateTo(
-          2,
+          1,
           duration: duration,
           curve: Curves.decelerate,
         );

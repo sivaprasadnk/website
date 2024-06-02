@@ -37,7 +37,7 @@ class _WindowsLargeExperienceScreenState
   Widget build(BuildContext context) {
     super.build(context);
 
-    final textStyle = Theme.of(context).textTheme.bodyLarge;
+    final textStyle = Theme.of(context).textTheme.displaySmall;
     final bulletPoint = CircleAvatar(
       radius: 5,
       backgroundColor: Theme.of(context).splashColor,

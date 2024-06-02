@@ -121,7 +121,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                       padding: const EdgeInsets.all(8.0),
                       child: TabBar(
                         overlayColor:
-                            MaterialStateProperty.all(Colors.transparent),
+                            WidgetStateProperty.all(Colors.transparent),
                         indicator: RectangularIndicator(
                           color: Colors.cyan,
                           paintingStyle: PaintingStyle.stroke,
