@@ -15,7 +15,7 @@ class ViewMoreContainer extends StatelessWidget {
       child: const Padding(
         padding: EdgeInsets.all(8.0),
         child: Text(
-          'View More',
+          'View',
           style: TextStyle(
             color: Colors.white,
             fontSize: 12,

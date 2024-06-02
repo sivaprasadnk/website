@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:spnk/provider/page.provider.dart';
+import 'package:spnk/views/provider/page.provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 
 class PrevIcon extends StatelessWidget {

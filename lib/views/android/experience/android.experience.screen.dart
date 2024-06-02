@@ -1,9 +1,9 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/views/provider/route_provider.dart';
 
 class AndroidExperienceScreen extends StatefulWidget {
   final double screenHeight;
@@ -93,7 +93,7 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
                       return const TitleText(title: 'Flutter Developer');
                     case 4:
                       return const DescriptionText(
-                        description: '\nIndbytes Technologies',
+                        description: '\nIndbytes Technologies Pvt Ltd',
                       );
                     case 5:
                       return const DescriptionText(
@@ -101,7 +101,7 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
                       );
                     case 6:
                       return const TitleText(
-                        title: 'Senior Mobile app Developer',
+                        title: 'Consultant Mobile app Developer',
                       );
                     case 7:
                       return const DescriptionText(

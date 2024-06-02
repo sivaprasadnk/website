@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/entity/contact_entity.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
 class WindowsLargeContactMeScreen extends StatefulWidget {
@@ -55,78 +55,35 @@ class _WindowsLargeContactMeScreenState
               Padding(
                 padding: EdgeInsets.only(
                   left: screenWidth * 0.5,
-                  top: screenHeight * .1,
+                  top: screenHeight * .15,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    FadeInRight(
-                      child: SizedBox(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.location_on,
-                              color: Theme.of(context).splashColor,
-                            ),
-                            const SizedBox(width: 20),
-                            Text(
-                              addressText,
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
-                          ],
+                  children: contactList.map((e) {
+                    return Padding(
+                      padding: EdgeInsets.only(bottom: screenHeight * 0.03),
+                      child: FadeInRight(
+                        child: SizedBox(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                e.icon,
+                                color: Theme.of(context).splashColor,
+                              ),
+                              const SizedBox(width: 20),
+                              Text(
+                                e.details,
+                                style: Theme.of(context).textTheme.displaySmall,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: screenHeight * 0.03),
-                    FadeInRight(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.call,
-                            color: Theme.of(context).splashColor,
-                          ),
-                          const SizedBox(width: 20),
-                          Text(
-                            mobileNumberText,
-                            style: Theme.of(context).textTheme.displaySmall,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: screenHeight * 0.03),
-                    FadeInRight(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.email,
-                            color: Theme.of(context).splashColor,
-                          ),
-                          const SizedBox(width: 20),
-                          Text(
-                            emailText,
-                            style: Theme.of(context).textTheme.displaySmall,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: screenHeight * 0.07),
-                    // FadeInDown(
-                    //   child: Padding(
-                    //     padding: EdgeInsets.only(left: screenWidth * 0.0),
-                    //     child: SocialMedia(
-                    //       screenWidth: screenWidth,
-                    //       showIcons: true,
-                    //       isLarge: true,
-                    //     ),
-                    //   ),
-                    // )
-                  ],
+                    );
+                  }).toList(),
+
                 ),
               ),
             ],

@@ -27,9 +27,9 @@ class QuotesAppImageContainer extends StatelessWidget {
     return Stack(
       children: [
         ImageContainerSmall(imagePath: quotesAppImageAssetPath),
-        Positioned.fill(
+        const Positioned.fill(
           left: 20,
-          child: const Align(
+          child: Align(
             alignment: Alignment.bottomLeft,
             child: QuotesTitleTextSmall(),
           ),

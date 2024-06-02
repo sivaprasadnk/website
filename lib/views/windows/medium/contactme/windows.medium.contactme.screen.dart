@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/entity/contact_entity.dart';
 
 class WindowsMediumContactMeScreen extends StatefulWidget {
   const WindowsMediumContactMeScreen({Key? key}) : super(key: key);
@@ -41,75 +41,36 @@ class _WindowsMediumContactMeScreenState
       children: [
         SizedBox(
           width: screenWidth * 0.78,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: screenHeight * 0.3),
-              FadeInRight(
-                child: SizedBox(
-                  width: screenWidth * 0.7,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(width: screenWidth * 0.15),
-                      Icon(
-                        Icons.location_on,
-                        color: Theme.of(context).splashColor,
+          child: Padding(
+            padding: EdgeInsets.only(top: screenHeight * 0.3),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: contactList.map((e) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 30),
+                  child: FadeInRight(
+                    child: SizedBox(
+                      width: screenWidth * 0.7,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(width: screenWidth * 0.15),
+                          Icon(
+                            e.icon,
+                            color: Theme.of(context).splashColor,
+                          ),
+                          const SizedBox(width: 20),
+                          Text(
+                            e.details,
+                            style: Theme.of(context).textTheme.displaySmall,
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 20),
-                      Text(
-                        addressText,
-                        style: Theme.of(context).textTheme.displaySmall,
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.03),
-              FadeInRight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(width: screenWidth * 0.15),
-                    Icon(
-                      Icons.call,
-                      color: Theme.of(context).splashColor,
-                    ),
-                    const SizedBox(width: 20),
-                    Text(
-                      mobileNumberText,
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    // Spacer(),
-                  ],
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.03),
-              FadeInRight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(width: screenWidth * 0.15),
-                    Icon(
-                      Icons.email,
-                      color: Theme.of(context).splashColor,
-                    ),
-                    const SizedBox(width: 20),
-                    Text(
-                      emailText,
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    // Spacer(),
-                  ],
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.07),
-              // FadeInDown(
-              //   child:
-              //       SocialMedia(showIcons: showIcons, screenWidth: screenWidth),
-              // ),
-              // 
-            ],
+                );
+              }).toList(),
+            ),
           ),
         ),
         Positioned.fill(
@@ -120,12 +81,9 @@ class _WindowsMediumContactMeScreenState
             child: AnimatedOpacity(
               duration: const Duration(seconds: 2),
               opacity: showIcons ? 1 : 0,
-              child: Container(
-                // color: Colors.amber,
-                child: Image.asset(
-                  'assets/images/dash/dash4.png',
-                  height: 280,
-                ),
+              child: Image.asset(
+                'assets/images/dash/dash4.png',
+                height: 280,
               ),
             ),
           ),

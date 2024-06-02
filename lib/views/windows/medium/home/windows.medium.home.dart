@@ -1,10 +1,9 @@
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:spnk/provider/route_provider.dart';
-import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/views/provider/theme_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/medium/contactme/windows.medium.contactme.screen.dart';
 import 'package:spnk/views/windows/medium/experience/windows.medium.experience.dart';
@@ -25,18 +24,7 @@ class _WindowsMediumHomeState extends State<WindowsMediumHome> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      final status = context.dialogProvider.dialogIsOpen;
-      if (status) {
-        context.dialogProvider.updateDialogOpenStatus(status: false);
 
-        context.pop();
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

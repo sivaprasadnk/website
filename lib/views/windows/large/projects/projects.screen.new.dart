@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/entity/project_entity.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
-import 'package:spnk/views/windows/large/projects/quizApp/quiz.item.dart';
-import 'package:spnk/views/windows/large/projects/quotesApp/quotes.app.item.dart';
-import 'package:spnk/views/windows/large/projects/website/website.app.item.dart';
+import 'package:spnk/views/windows/large/projects/details.container.dart';
+import 'package:spnk/views/windows/large/projects/image.container.dart';
 
 class ProjectsScreenNew extends StatefulWidget {
   const ProjectsScreenNew({Key? key}) : super(key: key);
@@ -70,11 +70,28 @@ class _ProjectsScreenNewState extends State<ProjectsScreenNew> {
                     });
                   },
                   controller: controller,
-                  children: const [
-                    QuizAppItem(),
-                    QuotesAppItem(),
-                    WebSiteAppItem()
-                  ],
+                  children: projectList.map((project) {
+                    return SizedBox(
+                      height: context.screenHeight * 0.5,
+                      child: Row(
+                        children: [
+                          ImageContainer(
+                            imagePath: project.bgAssetPath,
+                            isWeb: project.isWeb,
+                          ),
+                          DetailsContainer(
+                            desc1: project.descList.first,
+                            desc2: project.descList.last,
+                            tools1: project.techStackList.first,
+                            tools2: project.techStackList.last,
+                            link: project.url,
+                            title: project.projName,
+                            isWeb: project.isWeb,
+                          ),
+                        ],
+                      ),
+                    );
+                  }).toList(),
                 ),
               ),
               if (showNextIcon)

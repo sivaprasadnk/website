@@ -38,7 +38,7 @@ ThemeData light = ThemeData(
     displaySmall: TextStyle(
       fontFamily: kFontFamily2,
       fontWeight: FontWeight.bold,
-      fontSize: 24,
+      fontSize: 20,
       color: const Color.fromRGBO(0, 34, 120, 1),
     ),
     // headline4: TextStyle(

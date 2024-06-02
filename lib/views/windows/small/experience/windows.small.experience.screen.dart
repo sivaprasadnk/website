@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:spnk/entity/experience_entity.dart';
 import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 
 class WindowsSmallExperienceScreen extends StatefulWidget {
@@ -40,153 +41,200 @@ class _WindowsSmallExperienceScreenState
         SizedBox(height: screenHeight * 0.13),
         SectionTitle(screenWidth: screenWidth, title: 'Experience'),
         SizedBox(height: screenHeight * 0.12),
-        FadeInRight(
-          child: SizedBox(
-            // width: screenWidth * 0.7,
-            child: ListTile(
-              title: Padding(
-                padding: EdgeInsets.only(
-                  left: screenWidth * 0.2,
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      ' Java, Postgres Programmer',
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CircleAvatar(
-                          radius: 5,
-                          backgroundColor: Theme.of(context).splashColor,
-                        ),
-                        Text(
-                          '      Bayasys Infotech Pvt Ltd.',
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CircleAvatar(
-                          radius: 5,
-                          backgroundColor: Theme.of(context).splashColor,
-                        ),
-                        Text(
-                          '      07/2019 - 09/2020',
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-        FadeInRight(
-          child: SizedBox(
-            child: ListTile(
-              title: Padding(
-                padding: EdgeInsets.only(
-                  left: screenWidth * 0.2,
-                  top: screenHeight * .05,
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Flutter Developer',
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CircleAvatar(
-                          radius: 5,
-                          backgroundColor: Theme.of(context).splashColor,
-                        ),
-                        Text(
-                          '      Indbytes Technologies',
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CircleAvatar(
-                          radius: 5,
-                          backgroundColor: Theme.of(context).splashColor,
-                        ),
-                        Text(
-                          '      12/2020 - 05/2023',
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                      ],
-                    ),
-                  ],
+        Column(
+          children: expList.map((e) {
+            return FadeInRight(
+              child: ListTile(
+                title: Padding(
+                  padding: EdgeInsets.only(
+                    left: screenWidth * 0.2,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        ' ${e.title}',
+                        style: Theme.of(context).textTheme.displaySmall,
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          CircleAvatar(
+                            radius: 5,
+                            backgroundColor: Theme.of(context).splashColor,
+                          ),
+                          Text(
+                            '      ${e.orgName}',
+                            style: Theme.of(context).textTheme.displaySmall,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          CircleAvatar(
+                            radius: 5,
+                            backgroundColor: Theme.of(context).splashColor,
+                          ),
+                          Text(
+                            '      ${e.startDate} - ${e.endDate}',
+                            style: Theme.of(context).textTheme.displaySmall,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ),
+            );
+          }).toList(),
         ),
-        FadeInRight(
-          child: SizedBox(
-            child: ListTile(
-              title: Padding(
-                padding: EdgeInsets.only(
-                  left: screenWidth * 0.2,
-                  top: screenHeight * .05,
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Senior Mobile app Developer',
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CircleAvatar(
-                          radius: 5,
-                          backgroundColor: Theme.of(context).splashColor,
-                        ),
-                        Text(
-                          '      Invenics Services India Pvt Ltd',
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CircleAvatar(
-                          radius: 5,
-                          backgroundColor: Theme.of(context).splashColor,
-                        ),
-                        Text(
-                          '      05/2023 - Present',
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
+        // FadeInRight(
+        //   child: ListTile(
+        //     title: Padding(
+        //       padding: EdgeInsets.only(
+        //         left: screenWidth * 0.2,
+        //       ),
+        //       child: Column(
+        //         mainAxisSize: MainAxisSize.min,
+        //         crossAxisAlignment: CrossAxisAlignment.start,
+        //         children: [
+        //           Text(
+        //             ' Java, Postgres Programmer',
+        //             style: Theme.of(context).textTheme.displaySmall,
+        //           ),
+        //           const SizedBox(height: 20),
+        //           Row(
+        //             mainAxisSize: MainAxisSize.min,
+        //             children: [
+        //               CircleAvatar(
+        //                 radius: 5,
+        //                 backgroundColor: Theme.of(context).splashColor,
+        //               ),
+        //               Text(
+        //                 '      Bayasys Infotech Pvt Ltd.',
+        //                 style: Theme.of(context).textTheme.displaySmall,
+        //               ),
+        //             ],
+        //           ),
+        //           Row(
+        //             mainAxisSize: MainAxisSize.min,
+        //             children: [
+        //               CircleAvatar(
+        //                 radius: 5,
+        //                 backgroundColor: Theme.of(context).splashColor,
+        //               ),
+        //               Text(
+        //                 '      07/2019 - 09/2020',
+        //                 style: Theme.of(context).textTheme.displaySmall,
+        //               ),
+        //             ],
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        // FadeInRight(
+        //   child: SizedBox(
+        //     child: ListTile(
+        //       title: Padding(
+        //         padding: EdgeInsets.only(
+        //           left: screenWidth * 0.2,
+        //           top: screenHeight * .05,
+        //         ),
+        //         child: Column(
+        //           mainAxisSize: MainAxisSize.min,
+        //           crossAxisAlignment: CrossAxisAlignment.start,
+        //           children: [
+        //             Text(
+        //               'Flutter Developer',
+        //               style: Theme.of(context).textTheme.displaySmall,
+        //             ),
+        //             const SizedBox(height: 20),
+        //             Row(
+        //               mainAxisSize: MainAxisSize.min,
+        //               children: [
+        //                 CircleAvatar(
+        //                   radius: 5,
+        //                   backgroundColor: Theme.of(context).splashColor,
+        //                 ),
+        //                 Text(
+        //                   '      Indbytes Technologies Pvt Ltd',
+        //                   style: Theme.of(context).textTheme.displaySmall,
+        //                 ),
+        //               ],
+        //             ),
+        //             Row(
+        //               mainAxisSize: MainAxisSize.min,
+        //               children: [
+        //                 CircleAvatar(
+        //                   radius: 5,
+        //                   backgroundColor: Theme.of(context).splashColor,
+        //                 ),
+        //                 Text(
+        //                   '      12/2020 - 05/2023',
+        //                   style: Theme.of(context).textTheme.displaySmall,
+        //                 ),
+        //               ],
+        //             ),
+        //           ],
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        // FadeInRight(
+        //   child: SizedBox(
+        //     child: ListTile(
+        //       title: Padding(
+        //         padding: EdgeInsets.only(
+        //           left: screenWidth * 0.2,
+        //           top: screenHeight * .05,
+        //         ),
+        //         child: Column(
+        //           mainAxisSize: MainAxisSize.min,
+        //           crossAxisAlignment: CrossAxisAlignment.start,
+        //           children: [
+        //             Text(
+        //               'Consultant Mobile app Developer',
+        //               style: Theme.of(context).textTheme.displaySmall,
+        //             ),
+        //             const SizedBox(height: 20),
+        //             Row(
+        //               mainAxisSize: MainAxisSize.min,
+        //               children: [
+        //                 CircleAvatar(
+        //                   radius: 5,
+        //                   backgroundColor: Theme.of(context).splashColor,
+        //                 ),
+        //                 Text(
+        //                   '      Invenics Services India Pvt Ltd',
+        //                   style: Theme.of(context).textTheme.displaySmall,
+        //                 ),
+        //               ],
+        //             ),
+        //             Row(
+        //               mainAxisSize: MainAxisSize.min,
+        //               children: [
+        //                 CircleAvatar(
+        //                   radius: 5,
+        //                   backgroundColor: Theme.of(context).splashColor,
+        //                 ),
+        //                 Text(
+        //                   '      05/2023 - Present',
+        //                   style: Theme.of(context).textTheme.displaySmall,
+        //                 ),
+        //               ],
+        //             ),
+        //           ],
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
         Flexible(
           child: AnimatedOpacity(
             duration: const Duration(seconds: 2),

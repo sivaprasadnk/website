@@ -1,13 +1,12 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:provider/provider.dart';
-import 'package:spnk/provider/dialog_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/views/windows/small/projects/app.details/details.container.dart';
+// import 'package:spnk/views/windows/small/projects/app.details/details.container.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/text.container.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/view.more.small.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class QuotesTitleTextSmall extends StatelessWidget {
   const QuotesTitleTextSmall({Key? key}) : super(key: key);
@@ -20,32 +19,12 @@ class QuotesTitleTextSmall extends StatelessWidget {
         child: Row(
           children: [
             const ProjectTitle(title: 'SP Quotes App'),
-            Expanded(
-              child: const Text(""),
+            const Expanded(
+              child: Text(""),
             ),
             GestureDetector(
-              onTap: () {
-                Provider.of<DialogProvider>(context, listen: false)
-                    .updateDialogOpenStatus(status: true);
-
-                // showAnimatedDialog(
-                //   context: context,
-                //   barrierDismissible: false,
-                //   builder: (BuildContext context) {
-                //     return Dialog(
-                //       backgroundColor: Colors.transparent,
-                //       child: DetailsContainer(
-                //         desc1: quotesAppStr1,
-                //         desc2: quotesAppStr2,
-                //         link: spQuotesLink,
-                //         title: 'SP Quotes App',
-                //       ),
-                //     );
-                //   },
-                //   animationType: DialogTransitionType.size,
-                //   curve: Curves.fastOutSlowIn,
-                //   duration: const Duration(seconds: 1),
-                // );
+              onTap: () async {
+                await launchUrl(Uri.parse(spQuotesLink));
               },
               child: const ViewMoreContainerSmall(),
             ),

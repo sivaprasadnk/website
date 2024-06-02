@@ -22,10 +22,10 @@ class _ProjectsMediumNewState extends State<ProjectsMediumNew> {
       padding: EdgeInsets.only(left: screenWidth * 0.08),
       child: SizedBox(
         height: screenHeight * 0.9,
-        child: Column(
+        child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
-          children: const [
+          children: [
             SizedBox(height: 200),
             ProjectsPage(),
           ],

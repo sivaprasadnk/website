@@ -2,8 +2,6 @@ import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
-import 'package:spnk/provider/dialog_provider.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
@@ -21,33 +19,13 @@ class PortfolioTitleTextMobile extends StatelessWidget {
         padding: const EdgeInsets.only(left: 5),
         child: Row(
           children: [
-            const ProjectTitle(title: 'Portfolio website'),
-            Expanded(
-              child: const Text(""),
+            const ProjectTitle(title: 'Portfolio WebApp'),
+            const Expanded(
+              child: Text(""),
             ),
             GestureDetector(
-              onTap: () {
-                Provider.of<DialogProvider>(context, listen: false)
-                    .updateDialogOpenStatus(status: true);
-
-                // showAnimatedDialog(
-                //   context: context,
-                //   barrierDismissible: false,
-                //   builder: (BuildContext context) {
-                //     return Dialog(
-                //       backgroundColor: Colors.transparent,
-                //       child: DetailsContainer(
-                //         desc1: websiteStr1,
-                //         desc2: websiteStr2,
-                //         link: websiteLink,
-                //         title: 'Portfolio Website',
-                //       ),
-                //     );
-                //   },
-                //   animationType: DialogTransitionType.size,
-                //   curve: Curves.fastOutSlowIn,
-                //   duration: const Duration(seconds: 1),
-                // );
+              onTap: () async {
+                await launchUrl(Uri.parse(websiteLink));
               },
               child: const ViewMoreContainerSmall(),
             ),
@@ -123,7 +101,7 @@ class DetailsContainer extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
+                      child: DecoratedBox(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(3),
                           color: Colors.blue,
@@ -234,12 +212,12 @@ class VisitLinkContainer extends StatelessWidget {
           border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
-            children: const [
+            children: [
               FaIcon(
                 FontAwesomeIcons.externalLinkAlt,
                 color: Colors.white,

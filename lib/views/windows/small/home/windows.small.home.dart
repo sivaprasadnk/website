@@ -1,10 +1,9 @@
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:spnk/provider/dialog_provider.dart';
-import 'package:spnk/provider/route_provider.dart';
-import 'package:spnk/provider/theme_provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/views/provider/theme_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/small/contactme/windows.small.contactme.screen.dart';
 import 'package:spnk/views/windows/small/experience/windows.small.experience.screen.dart';
@@ -30,22 +29,7 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
   }
 
   bool showProPic = false;
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(seconds: 1)).then((value) {
-      debugPrint('.. @@ small init state');
-      final status =
-          Provider.of<DialogProvider>(context, listen: false).dialogIsOpen;
-      debugPrint('.. @@ small init state status : $status');
-
-      if (status) {
-        Provider.of<DialogProvider>(context, listen: false)
-            .updateDialogOpenStatus(status: false);
-        Navigator.of(context).pop();
-      } else {}
-    });
-  }
+ 
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -59,7 +43,7 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
 
     final screen = Provider.of<RouteProvider>(context).selectedSCreen;
     final menuSelectedCheck =
-        Provider.of<RouteProvider>(context, listen: true).menuSelected;
+        Provider.of<RouteProvider>(context).menuSelected;
     debugPrint('..@ screenWidth @ small : $screenWidth');
     debugPrint('..@ screenHeight @ small : $screenHeight');
     debugPrint('..@ screen @ small :$screen');
@@ -67,11 +51,11 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
     return Scaffold(
       key: _scaffoldKey,
       extendBodyBehindAppBar: true,
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+      bottomNavigationBar: const Padding(
+        padding: EdgeInsets.symmetric(vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [WindowsRightFooter(size: size)],
+          children: [WindowsRightFooter(size: size)],
         ),
       ),
       appBar: PreferredSize(

@@ -2,9 +2,9 @@ import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:spnk/provider/route_provider.dart';
 import 'package:spnk/views/android/menu/menu.widgets/menu.image.dart';
 import 'package:spnk/views/android/menu/menu.widgets/menu.item.dart';
+import 'package:spnk/views/provider/route_provider.dart';
 
 class AndroidMenuScreen extends StatefulWidget {
   const AndroidMenuScreen({Key? key}) : super(key: key);

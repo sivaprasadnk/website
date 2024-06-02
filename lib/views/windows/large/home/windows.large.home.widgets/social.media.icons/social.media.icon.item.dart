@@ -49,7 +49,7 @@ class _SocialMediaIconItemState extends State<SocialMediaIconItem> {
         size: 30,
       ),
       onTap: () {
-        launch(widget.url);
+        launchUrl(Uri.parse(widget.url));
       },
     ).showCursorOnHover;
   }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
-import 'package:spnk/views/windows/medium/projects/portfolioApp/portfolio.title.text.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailsContainer extends StatelessWidget {
   const DetailsContainer({
@@ -10,11 +12,13 @@ class DetailsContainer extends StatelessWidget {
     required this.desc2,
     required this.link,
     required this.title,
+    required this.tools1,
     required this.tools2,
     required this.isWeb,
   }) : super(key: key);
   final String desc1;
   final String desc2;
+  final String tools1;
   final String tools2;
   final String link;
   final String title;
@@ -55,19 +59,19 @@ class DetailsContainer extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
+                  child: DecoratedBox(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(3),
                       color: Colors.blue,
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 5,
                         vertical: 3,
                       ),
                       child: Text(
-                        'Flutter',
-                        style: TextStyle(
+                        tools1,
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 13,
                           fontWeight: FontWeight.w800,
@@ -79,7 +83,7 @@ class DetailsContainer extends StatelessWidget {
                 if (tools2.trim().isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
+                    child: DecoratedBox(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(3),
                         color: Colors.yellow,
@@ -149,6 +153,59 @@ class DetailsContainer extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class VisitLinkContainer extends StatelessWidget {
+  const VisitLinkContainer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        launchUrl(Uri.parse(websiteLink));
+        // launch(websiteLink);
+      },
+      child: Container(
+        // height: 50,
+        margin: const EdgeInsets.only(left: 5, top: 10, right: 20),
+        decoration: BoxDecoration(
+          color: Colors.black,
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              FaIcon(
+                FontAwesomeIcons.externalLinkAlt,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 1,
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 1, left: 5),
+                child: Text(
+                  'Click here to visit',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 15,
+              ),
+            ],
+          ),
+        ),
+      ).showCursorOnHover,
     );
   }
 }

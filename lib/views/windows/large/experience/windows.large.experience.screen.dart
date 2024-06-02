@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/entity/experience_entity.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
@@ -53,123 +54,52 @@ class _WindowsLargeExperienceScreenState
               const WindowsLargeSectionTitle(
                 title: 'Experience',
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: context.screenWidth * 0.5,
-                  top: context.screenHeight * .1,
-                ),
-                child: ListTile(
-                  title: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        ' Java, Postgres Programmer',
-                        style: textStyle,
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
+              Column(
+                children: expList.map((exp) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      left: context.screenWidth * 0.5,
+                      top: context.screenHeight * .05,
+                    ),
+                    child: ListTile(
+                      title: Column(
                         mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          bulletPoint,
                           Text(
-                            '      Bayasys Infotech Pvt Ltd.',
+                            " ${exp.title}",
+                            // ' Java, Postgres Programmer',
                             style: textStyle,
+                          ),
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              bulletPoint,
+                              Text(
+                                // '      Bayasys Infotech Pvt Ltd.',
+                                '      ${exp.orgName}',
+                                style: textStyle,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              bulletPoint,
+                              Text(
+                                '      ${exp.startDate} - ${exp.endDate}',
+                                style: textStyle,
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          bulletPoint,
-                          Text(
-                            '      07/2019 - 09/2020',
-                            style: textStyle,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: context.screenWidth * 0.5,
-                  top: context.screenHeight * .05,
-                ),
-                child: ListTile(
-                  title: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Flutter Developer',
-                        style: textStyle,
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          bulletPoint,
-                          Text(
-                            '      Indbytes Technologies',
-                            style: textStyle,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          bulletPoint,
-                          Text(
-                            '      12/2020 - 05/2023',
-                            style: textStyle,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: context.screenWidth * 0.5,
-                  top: context.screenHeight * .05,
-                ),
-                child: ListTile(
-                  title: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Senior Mobile app Developer',
-                        style: textStyle,
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          bulletPoint,
-                          Text(
-                            '      Invenics Services India Pvt Ltd',
-                            style: textStyle,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          bulletPoint,
-                          Text(
-                            '      05/2023 - Present',
-                            style: textStyle,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+                    ),
+                  );
+                }).toList(),
+              )
+
             ],
           ),
         ),

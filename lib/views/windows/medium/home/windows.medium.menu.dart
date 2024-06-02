@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:spnk/provider/page.provider.dart';
-import 'package:spnk/provider/route_provider.dart';
+import 'package:spnk/views/provider/page.provider.dart';
+import 'package:spnk/views/provider/route_provider.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/contact.me.menu.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/experience.menu.dart';

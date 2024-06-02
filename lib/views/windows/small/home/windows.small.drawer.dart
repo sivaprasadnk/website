@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:spnk/provider/route_provider.dart';
+import 'package:spnk/views/provider/route_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 
 class WindowsSmallDrawer extends StatefulWidget {
