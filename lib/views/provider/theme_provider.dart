@@ -217,7 +217,7 @@ class ThemeNotifier extends ChangeNotifier {
 
   Future<void> loadFromPrefs() async {
     // prefs = await SharedPreferences.getInstance();
-    _darkTheme = false;
+    _darkTheme = true;
     notifyListeners();
   }
 

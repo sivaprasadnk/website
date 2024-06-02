@@ -1,6 +1,7 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:spnk/entity/experience_entity.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/provider/route_provider.dart';
@@ -74,46 +75,24 @@ class _AndroidExperienceScreenState extends State<AndroidExperienceScreen> {
                 ),
                 physics: const NeverScrollableScrollPhysics(),
                 showItemInterval: const Duration(milliseconds: 50),
-                itemCount: 9,
+                itemCount: expList.length,
                 itemBuilder: animationItemBuilder((index) {
-                  switch (index) {
-                    case 0:
-                      return const TitleText(
-                        title: 'Java , Postgres Programmer',
-                      );
-                    case 1:
-                      return const DescriptionText(
-                        description: '\nBayasys Infotech Pvt Ltd.',
-                      );
-                    case 2:
-                      return const DescriptionText(
-                        description: '07/2019 - 09/2020',
-                      );
-                    case 3:
-                      return const TitleText(title: 'Flutter Developer');
-                    case 4:
-                      return const DescriptionText(
-                        description: '\nIndbytes Technologies Pvt Ltd',
-                      );
-                    case 5:
-                      return const DescriptionText(
-                        description: '12/2020 - 05/2023',
-                      );
-                    case 6:
-                      return const TitleText(
-                        title: 'Consultant Mobile app Developer',
-                      );
-                    case 7:
-                      return const DescriptionText(
-                        description: '\nInvenics Services India Pvt Ltd',
-                      );
-                    case 8:
-                      return const DescriptionText(
-                        description: '05/2023 - Present',
-                      );
-                  }
-
-                  return Container();
+                  final item =
+                      expList.firstWhere((element) => element.order == index);
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TitleText(
+                        title: item.title,
+                      ),
+                      DescriptionText(
+                        description: item.orgName,
+                      ),
+                      DescriptionText(
+                        description: "${item.startDate} - ${item.endDate}",
+                      ),
+                    ],
+                  );
                 }),
               ),
               SizedBox(

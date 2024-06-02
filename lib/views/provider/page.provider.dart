@@ -8,7 +8,6 @@ class PageProvider extends ChangeNotifier {
     pagee = pageIndex;
     showPrevIconn = pageIndex != 0;
     showNextIconn = pageIndex != 2;
-    debugPrint('.. @@page.. $pagee');
     notifyListeners();
   }
 
@@ -23,14 +22,4 @@ class PageProvider extends ChangeNotifier {
     showPrevIconn = showPrev!;
     notifyListeners();
   }
-
-  // void updatePrev({bool? showPrev}) {
-  //   showPrevIconn = showPrev!;
-  //   notifyListeners();
-  // }
-
-  // void updateNext({bool? showNext}) {
-  //   showNextIconn = showNext!;
-  //   notifyListeners();
-  // }
 }

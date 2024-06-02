@@ -1,14 +1,16 @@
+import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:spnk/entity/project_entity.dart';
+import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/views/android/projects/portfolioApp/portfolio.app.item.small.dart';
-import 'package:spnk/views/android/projects/quizApp/quiz.app.item.small.dart';
 import 'package:spnk/views/provider/route_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
-// import 'package:spnk/views/windows/small/projects/quizApp/quiz.app.item.small.dart';
-import 'package:spnk/views/windows/small/projects/quotesApp/quotes.app.item.dart';
-
-import '../../../utils/common_strings.dart';
+import 'package:spnk/views/windows/small/projects/app.summary/image.container.dart';
+import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
+import 'package:spnk/views/windows/small/projects/app.summary/text.container.dart';
+import 'package:spnk/views/windows/small/projects/app.summary/view.more.small.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AndroidProjects extends StatefulWidget {
   final double screenHeight;
@@ -118,11 +120,58 @@ class _AndroidProjectsState extends State<AndroidProjects> {
                         });
                       },
                       controller: controller,
-                      children: const [
-                        QuizAppItemMobile(),
-                        QuotesAppItemSmall(),
-                        PortfolioAppItemMobile()
-                      ],
+                      children: projectList.map((project) {
+                        return SizedBox(
+                          height: screenHeight * 0.5,
+                          child: Stack(
+                            children: [
+                              ImageContainerSmall(
+                                imagePath: project.bgAssetPath,
+                              ),
+                              Positioned.fill(
+                                left: 20,
+                                bottom: -2,
+                                child: Align(
+                                  alignment: Alignment.bottomLeft,
+                                  child: const TextContainer().blurred(
+                                    overlay: Padding(
+                                      padding: const EdgeInsets.only(left: 20),
+                                      child: Row(
+                                        children: [
+                                          ProjectTitle(title: project.projName),
+                                          const Expanded(
+                                            child: Text(""),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () async {
+                                              await launchUrl(
+                                                Uri.parse(spQuizLink),
+                                              );
+                                            },
+                                            child:
+                                                const ViewMoreContainerSmall(),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    colorOpacity: 0.3,
+                                    alignment: Alignment.topLeft,
+                                    borderRadius: const BorderRadius.only(
+                                      bottomRight: Radius.circular(10),
+                                      bottomLeft: Radius.circular(10),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                      // children: const [
+                      //   QuizAppItemMobile(),
+                      //   QuotesAppItemSmall(),
+                      //   PortfolioAppItemMobile()
+                      // ],
                     ),
                   ),
                   const SizedBox(

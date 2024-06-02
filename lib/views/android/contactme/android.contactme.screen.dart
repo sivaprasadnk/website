@@ -1,5 +1,6 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
+import 'package:spnk/entity/contact_entity.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
@@ -73,49 +74,20 @@ class _AndroidContactMeScreenState extends State<AndroidContactMeScreen> {
                     right: 16,
                     bottom: 5,
                   ),
-                  // physics: NeverScrollableScrollPhysics(),
                   showItemInterval: const Duration(milliseconds: 50),
-                  itemCount: 7,
+                  itemCount: contactList.length,
                   itemBuilder: animationItemBuilder((index) {
-                    switch (index) {
-                      case 0:
-                        return const TitleText(title: 'Address');
-                      case 1:
-                        return const DescriptionText(
-                          description:
-                              'Prasadam, Nadama, \nTripunithura, Ernakulam, Kerala .',
-                        );
-                      case 2:
-                        return const TitleText(title: 'Mobile');
-                      case 3:
-                        return const DescriptionText(
-                          description: '+91 8086028340',
-                        );
-                      case 4:
-                        return const TitleText(title: 'E-mail');
-                      case 5:
-                        return const DescriptionText(
-                          description: 'sivaprasadnk.official@gmail.com',
-                        );
-                      // case 6:
-                      //   return const TitleText(title: 'Social Media');
-                      // case 7:
-                      //   return Padding(
-                      //     padding: const EdgeInsets.only(top: 15, left: 40),
-                      //     child: SocialMedia(
-                      //       screenWidth: screenWidth,
-                      //       showIcons: true,
-                      //       isLarge: true,
-                      //       size: 30,
-                      //     ),
-                      //   );
-                      case 6:
-                        return const SizedBox(
-                          height: 300,
-                        );
-                    }
-
-                    return Container();
+                    final item = contactList
+                        .firstWhere((element) => element.index == index);
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TitleText(title: item.title),
+                        DescriptionText(
+                          description: item.details,
+                        )
+                      ],
+                    );
                   }),
                 ),
               ),
