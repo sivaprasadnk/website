@@ -54,6 +54,7 @@ dependencies:
   provider: ^5.0.0
   qr_flutter: ^4.0.0
   # shared_preferences: ^2.0.13
+  riverpod: ^2.5.1
   tab_indicator_styler: ^2.0.0
   transition: ^2.0.2
   universal_html: ^2.0.8
