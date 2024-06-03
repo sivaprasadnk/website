@@ -97,7 +97,7 @@ class _WindowsHomeSmallDrawerState extends State<WindowsSmallDrawer> {
           // ),
           const SizedBox(
             height: 20,
-          )
+          ),
         ],
       ),
     );
@@ -127,7 +127,6 @@ class ContactMeListItem extends ConsumerWidget {
         ref.read(menuNotifierProvider.notifier).menuSelected = false;
         ref.read(routeNotifierProvider.notifier).selectedScreen =
             Screen.contactMe;
-
       },
       icon: Icons.call,
     );
@@ -183,12 +182,18 @@ class _ListItemState extends State<ListItem> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+
+    const hoverColor = Colors.cyan;
+    final normalColor =
+        isDarkTheme ? Colors.white : const Color.fromRGBO(0, 34, 120, 1);
     return Theme(
       data: ThemeData(
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
       ),
       child: MouseRegion(
+        opaque: false,
         onEnter: (_) {
           setState(() {
             isHovering = true;
@@ -203,20 +208,22 @@ class _ListItemState extends State<ListItem> {
           padding: const EdgeInsets.only(left: 20),
           child: ListTile(
             dense: true,
-            hoverColor: const Color.fromRGBO(249, 139, 125, 1),
-            // hoverColor: Colors.transparent,
+            // hoverColor: const Color.fromRGBO(249, 139, 125, 1),
+            hoverColor: Colors.transparent,
             onTap: () {
               widget.callback.call();
               setState(() {});
             },
             leading: Icon(
               widget.icon,
-              color: Theme.of(context).textTheme.displaySmall!.color,
+              color: !isHovering ? normalColor : hoverColor,
               // color: isHovering ? Colors.cyanAccent : Colors.white,
             ),
             title: Text(
               widget.title,
-              style: Theme.of(context).textTheme.displaySmall,
+              style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                    color: !isHovering ? normalColor : hoverColor,
+                  ),
               // style: TextStyle(
               //   fontFamily: 'PlayfairDisplay',
               //   color: isHovering ? Colors.cyanAccent : Colors.white,

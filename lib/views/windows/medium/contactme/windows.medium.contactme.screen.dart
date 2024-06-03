@@ -1,17 +1,18 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/domain/contact_entity.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/views/provider/data_provider.dart';
 
-class WindowsMediumContactMeScreen extends StatefulWidget {
+class WindowsMediumContactMeScreen extends ConsumerStatefulWidget {
   const WindowsMediumContactMeScreen({Key? key}) : super(key: key);
 
   @override
-  State<WindowsMediumContactMeScreen> createState() =>
+  ConsumerState<WindowsMediumContactMeScreen> createState() =>
       _WindowsMediumContactMeScreenState();
 }
 
 class _WindowsMediumContactMeScreenState
-    extends State<WindowsMediumContactMeScreen> {
+    extends ConsumerState<WindowsMediumContactMeScreen> {
   bool showIcons = false;
 
   @override
@@ -37,6 +38,8 @@ class _WindowsMediumContactMeScreenState
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
+    final contactList = ref.watch(contactProvider);
+
     return Stack(
       children: [
         SizedBox(
@@ -87,7 +90,7 @@ class _WindowsMediumContactMeScreenState
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

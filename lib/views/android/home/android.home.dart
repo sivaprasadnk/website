@@ -52,7 +52,7 @@ class AndroidHome extends ConsumerWidget {
                 screen == Screen.home
                     ? AndroidHomeScreen()
                     : screen == Screen.projects
-                        ? AndroidProjects(screenHeight: screenHeight)
+                        ? const AndroidProjects()
                         : screen == Screen.experience
                             ? AndroidExperienceScreen()
                             : AndroidContactMeScreen(),

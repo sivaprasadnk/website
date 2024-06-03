@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/domain/project_entity.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/views/provider/data_provider.dart';
+import 'package:spnk/views/provider/page_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 import 'package:spnk/views/windows/large/projects/details.container.dart';
 import 'package:spnk/views/windows/large/projects/image.container.dart';
 
-class ProjectsScreenNew extends StatefulWidget {
-  const ProjectsScreenNew({Key? key}) : super(key: key);
+// ignore: must_be_immutable
+class ProjectsScreenNew extends ConsumerWidget {
+  ProjectsScreenNew({Key? key}) : super(key: key);
 
-  @override
-  State<ProjectsScreenNew> createState() => _ProjectsScreenNewState();
-}
-
-class _ProjectsScreenNewState extends State<ProjectsScreenNew> {
   ///
   PageController controller = PageController();
 
   ///
-  bool showNextIcon = true;
-  bool showPrevIcon = false;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final pageIndex = ref.watch(pageIndexProvider);
+    final projects = ref.watch(projectProvider);
+    final showNextIcon = pageIndex < projects.length - 1;
+    final showPrevIcon = pageIndex != 0;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -41,36 +41,34 @@ class _ProjectsScreenNewState extends State<ProjectsScreenNew> {
               const SizedBox(
                 width: 150,
               ),
-              GestureDetector(
-                onTap: () {
-                  controller.previousPage(
-                    duration: const Duration(seconds: 1),
-                    curve: Curves.bounceOut,
-                  );
-                },
-                child: SizedBox(
-                  height: 20,
-                  width: 20,
-                  child: showPrevIcon
-                      ? Icon(
-                          Icons.arrow_back_ios,
-                          color: Theme.of(context).splashColor,
-                        ).showCursorOnHover
-                      : const SizedBox.shrink(),
+              if (showPrevIcon)
+                GestureDetector(
+                  onTap: () {
+                    controller.previousPage(
+                      duration: const Duration(seconds: 1),
+                      curve: Curves.bounceOut,
+                    );
+                  },
+                  child: SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      color: Theme.of(context).splashColor,
+                    ).showCursorOnHover
+                        ,
+                  ),
                 ),
-              ),
               SizedBox(
                 height: context.screenHeight * 0.5,
                 width: 800,
                 child: PageView(
                   onPageChanged: (page) {
-                    setState(() {
-                      showPrevIcon = page != 0;
-                      showNextIcon = page != 2;
-                    });
+                    ref.read(pageIndexProvider.notifier).pageIndex =
+                        page.toDouble();
                   },
                   controller: controller,
-                  children: projectList.map((project) {
+                  children: projects.map((project) {
                     return SizedBox(
                       height: context.screenHeight * 0.5,
                       child: Row(
@@ -105,17 +103,15 @@ class _ProjectsScreenNewState extends State<ProjectsScreenNew> {
                   child: SizedBox(
                     height: 20,
                     width: 20,
-                    child: showNextIcon
-                        ? Icon(
-                            Icons.arrow_forward_ios,
-                            color: Theme.of(context).splashColor,
-                          ).showCursorOnHover
-                        : const SizedBox.shrink(),
+                    child: Icon(
+                      Icons.arrow_forward_ios,
+                      color: Theme.of(context).splashColor,
+                    ).showCursorOnHover,
                   ),
                 ),
             ],
           ),
-        )
+        ),
       ],
     );
   }

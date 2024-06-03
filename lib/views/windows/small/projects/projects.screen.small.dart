@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:provider/provider.dart';
 import 'package:spnk/data/project_model.dart';
-import 'package:spnk/domain/project_entity.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/provider/page_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/medium/projects/app.summary/next.icon.dart';
@@ -31,9 +32,13 @@ class _ProjectsScreenSmallState extends ConsumerState<ProjectsScreenSmall> {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    final screenHeight = screenSize.height;
-    final screenWidth = screenSize.width;
+    final screenHeight = context.screenHeight;
+    final screenWidth = context.screenWidth;
+    final pageIndex = ref.watch(pageIndexProvider);
+    final projects = ref.watch(projectProvider);
+    final showNextIcon = pageIndex < projects.length - 1;
+    final showPrevIcon = pageIndex != 0;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -53,18 +58,13 @@ class _ProjectsScreenSmallState extends ConsumerState<ProjectsScreenSmall> {
                     ref.read(pageIndexProvider.notifier).pageIndex =
                         pageIndex.toDouble();
                   },
-                  children: projectList.map((proj) {
+                  children: projects.map((proj) {
                     return ProjectItemSmall(
                       screenHeight: screenHeight,
                       screenWidth: screenWidth,
                       project: proj,
                     );
                   }).toList(),
-                  // children: const [
-                  //   QuizAppItemSmall(),
-                  //   QuotesAppItemSmall(),
-                  //   PortfolioAppItemSmall(),
-                  // ],
                 ),
               ),
               const SizedBox(
@@ -77,9 +77,9 @@ class _ProjectsScreenSmallState extends ConsumerState<ProjectsScreenSmall> {
                     const SizedBox(
                       width: 10,
                     ),
-                    PrevIcon(controller: controller),
+                    if (showPrevIcon) PrevIcon(controller: controller),
                     const Spacer(),
-                    NextIcon(controller: controller),
+                    if (showNextIcon) NextIcon(controller: controller),
                     const SizedBox(
                       width: 40,
                     ),

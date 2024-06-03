@@ -1,8 +1,8 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:provider/provider.dart';
-import 'package:spnk/domain/project_entity.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/provider/page_provider.dart';
 import 'package:spnk/views/windows/medium/projects/app.summary/next.icon.dart';
 import 'package:spnk/views/windows/medium/projects/app.summary/prev.icon.dart';
@@ -17,12 +17,14 @@ class ProjectsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final screenSize = MediaQuery.of(context).size;
-    final screenHeight = screenSize.height;
-    // final screenWidth = screenSize.width;
+    final screenHeight = context.screenHeight;
+    final pageIndex = ref.watch(pageIndexProvider);
+    final projects = ref.watch(projectProvider);
+    final showNextIcon = pageIndex < projects.length - 1;
+    final showPrevIcon = pageIndex != 0;
     return Row(
       children: [
-        PrevIcon(controller: controller),
+        if (showPrevIcon) PrevIcon(controller: controller),
         SizedBox(
           height: screenHeight * 0.5,
           width: 450,
@@ -32,7 +34,7 @@ class ProjectsPage extends ConsumerWidget {
                   pageIndex.toDouble();
             },
             controller: controller,
-            children: projectList.map((project) {
+            children: projects.map((project) {
               return Stack(
                 children: [
                   ImageContainerSmall(
@@ -77,7 +79,7 @@ class ProjectsPage extends ConsumerWidget {
             }).toList(),
           ),
         ),
-        NextIcon(controller: controller),
+        if (showNextIcon) NextIcon(controller: controller),
       ],
     );
   }

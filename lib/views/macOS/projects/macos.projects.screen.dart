@@ -1,4 +1,4 @@
-import 'package:bordered_text/bordered_text.dart';
+// import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -24,16 +24,12 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: screenWidth > 500
-                ? BorderedText(
-                    strokeWidth: 4.0,
-                    strokeColor: Colors.teal,
-                    child: const Text(
+                ? const Text(
                       'My Projects',
                       style: TextStyle(
                         fontFamily: 'PatuaOne',
                         color: Colors.white,
                         fontSize: 21.0,
-                      ),
                     ),
                   )
                 : const Text(
@@ -155,10 +151,10 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
                 ),
                 const SizedBox(
                   width: 20,
-                )
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/views/windows/common/name_text.dart';
 import 'package:spnk/views/windows/common/theme_switch.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/large/contactme/windows.large.contactme.screen.dart';
@@ -112,10 +112,13 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TabBar(
+                        dividerColor: Colors.transparent,
+                        indicatorColor: Colors.transparent,
                         overlayColor:
                             WidgetStateProperty.all(Colors.transparent),
                         indicator: RectangularIndicator(
                           color: Colors.cyan,
+                          strokeWidth: 0,
                           paintingStyle: PaintingStyle.stroke,
                           bottomLeftRadius: 100,
                           bottomRightRadius: 100,
@@ -157,7 +160,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
             children: [
               WindowsHomeLargeScreen(),
               WindowsLargeExperienceScreen(),
-              const ProjectsScreenNew(),
+              ProjectsScreenNew(),
               WindowsLargeContactMeScreen(),
             ],
           ),

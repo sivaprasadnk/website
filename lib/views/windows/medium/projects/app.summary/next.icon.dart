@@ -9,30 +9,21 @@ class NextIcon extends ConsumerWidget {
   final PageController controller;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pageIndex = ref.watch(pageIndexProvider);
     return GestureDetector(
       onTap: () {
-        if (pageIndex != 2) {
           controller.nextPage(
             duration: const Duration(seconds: 1),
             curve: Curves.bounceOut,
-          );
-        }
+        );
         ref.read(pageIndexProvider.notifier).pageIndex = controller.page! + 1;
-        // provider.updatePage(controller.page! + 1);
       },
       child: SizedBox(
         height: 20,
         width: 20,
-        child: pageIndex != 2
-            ? Icon(
+        child: Icon(
                 Icons.arrow_forward_ios,
                 color: Theme.of(context).primaryColor,
-                // color: provider.showNextIcon
-                //     ? Theme.of(context).splashColor
-                //     : Theme.of(context).primaryColor,
-              ).showCursorOnHover
-            : const SizedBox.shrink(),
+        ).showCursorOnHover,
       ),
     );
   }

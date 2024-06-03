@@ -1,19 +1,19 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:spnk/domain/contact_entity.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/views/android/android_bg_curve.dart';
+import 'package:spnk/views/android/description_text.dart';
+import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/provider/menu_provider.dart';
 import 'package:spnk/views/provider/route_provider.dart';
 
 class AndroidContactMeScreen extends ConsumerWidget {
-  // final double screenHeight;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final menuSelectedCheck = context.routeProvider.menuSelected;
-    // var screenHeight = context.screenHeight;
+    final contactList = ref.watch(contactProvider);
     return Stack(
       // mainAxisSize: MainAxisSize.min,
       children: [
@@ -87,7 +87,7 @@ class AndroidContactMeScreen extends ConsumerWidget {
                         TitleText(title: item.title),
                         DescriptionText(
                           description: item.details,
-                        )
+                        ),
                       ],
                     );
                   }),

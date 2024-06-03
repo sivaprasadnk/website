@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/provider/menu_provider.dart';
 import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/views/windows/common/name_text.dart';
 import 'package:spnk/views/windows/common/theme_switch.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/small/contactme/windows.small.contactme.screen.dart';
@@ -101,7 +102,7 @@ class _WindowsSmallHomeState extends ConsumerState<WindowsSmallHome> {
                   color: Theme.of(context).splashColor,
                 ).showCursorOnHover,
               ),
-            const SizedBox(width: 10)
+            const SizedBox(width: 10),
           ],
         ),
       ),

@@ -1,10 +1,13 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:spnk/domain/project_entity.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/views/android/android_bg_curve.dart';
+import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/provider/menu_provider.dart';
+import 'package:spnk/views/provider/page_provider.dart';
 import 'package:spnk/views/provider/route_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/image.container.dart';
@@ -14,17 +17,13 @@ import 'package:spnk/views/windows/small/projects/app.summary/view.more.small.da
 import 'package:url_launcher/url_launcher.dart';
 
 class AndroidProjects extends ConsumerStatefulWidget {
-  final double screenHeight;
-  const AndroidProjects({required this.screenHeight});
+  const AndroidProjects();
   @override
   _AndroidProjectsState createState() => _AndroidProjectsState();
 }
 
 class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
   PageController controller = PageController();
-
-  bool showNextIcon = true;
-  bool showPrevIcon = false;
 
   Widget Function(
     BuildContext context,
@@ -58,8 +57,13 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = context.screenWidth;
+    final screenHeight = context.screenHeight;
+    final pageIndex = ref.watch(pageIndexProvider);
+    final projects = ref.watch(projectProvider);
+    final showNextIcon = pageIndex < projects.length - 1;
+    final showPrevIcon = pageIndex != 0;
+
     return Stack(
       children: [
         Positioned.fill(
@@ -90,13 +94,13 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
           ),
         ),
         SizedBox(
-          height: widget.screenHeight,
+          height: context.screenHeight,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                height: widget.screenHeight * 0.15,
+                height: context.screenHeight * 0.15,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 30),
@@ -111,7 +115,7 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
                 ),
               ),
               SizedBox(
-                height: widget.screenHeight * 0.18,
+                height: context.screenHeight * 0.18,
               ),
               Column(
                 children: [
@@ -120,13 +124,11 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
                     width: screenWidth * 0.8,
                     child: PageView(
                       onPageChanged: (pageIndex) {
-                        setState(() {
-                          showPrevIcon = pageIndex != 0;
-                          showNextIcon = pageIndex != 2;
-                        });
+                        ref.read(pageIndexProvider.notifier).pageIndex =
+                            pageIndex.toDouble();
                       },
                       controller: controller,
-                      children: projectList.map((project) {
+                      children: ref.watch(projectProvider).map((project) {
                         return SizedBox(
                           height: screenHeight * 0.5,
                           child: Stack(
@@ -173,11 +175,6 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
                           ),
                         );
                       }).toList(),
-                      // children: const [
-                      //   QuizAppItemMobile(),
-                      //   QuotesAppItemSmall(),
-                      //   PortfolioAppItemMobile()
-                      // ],
                     ),
                   ),
                   const SizedBox(
@@ -186,82 +183,54 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          controller.previousPage(
-                            duration: const Duration(seconds: 1),
-                            curve: Curves.bounceOut,
-                          );
-                        },
-                        child: SizedBox(
+                      if (showPrevIcon)
+                        GestureDetector(
+                          onTap: () {
+                            controller.previousPage(
+                              duration: const Duration(seconds: 1),
+                              curve: Curves.bounceOut,
+                            );
+                          },
+                          child: SizedBox(
+                            height: 10,
+                            width: 10,
+                            child: const Icon(
+                              Icons.arrow_back_ios,
+                            ).showCursorOnHover,
+                          ),
+                        )
+                      else
+                        const SizedBox(
                           height: 10,
                           width: 10,
-                          child: showPrevIcon
-                              ? const Icon(
-                                  Icons.arrow_back_ios,
-                                ).showCursorOnHover
-                              : const SizedBox.shrink(),
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          controller.nextPage(
-                            duration: const Duration(seconds: 1),
-                            curve: Curves.bounceOut,
-                          );
-                        },
-                        child: SizedBox(
+                      if (showNextIcon)
+                        GestureDetector(
+                          onTap: () {
+                            controller.nextPage(
+                              duration: const Duration(seconds: 1),
+                              curve: Curves.bounceOut,
+                            );
+                          },
+                          child: SizedBox(
+                            height: 10,
+                            width: 10,
+                            child: const Icon(
+                              Icons.arrow_forward_ios,
+                            ).showCursorOnHover,
+                          ),
+                        )
+                      else
+                        const SizedBox(
                           height: 10,
                           width: 10,
-                          child: showNextIcon
-                              ? const Icon(
-                                  Icons.arrow_forward_ios,
-                                ).showCursorOnHover
-                              : const SizedBox.shrink(),
                         ),
-                      ),
                     ],
                   ),
                 ],
               ),
-              // SingleChildScrollView(
-              //   child: LiveList(
-              //     shrinkWrap: true,
-              //     // physics: NeverScrollableScrollPhysics(),
-              //     padding: EdgeInsets.zero,
-              //     showItemInterval: const Duration(milliseconds: 50),
-              //     itemCount: 6,
-              //     itemBuilder: animationItemBuilder((index) {
-              //       switch (index) {
-              //         case 0:
-              //           return const TitleText(title: 'SP Quotes App');
-              //         case 1:
-              //           return const DescriptionText(
-              //             description: spQuotesAppDescription,
-              //           );
-              //         case 2:
-              //           return GooglePlayButton(
-              //             url: spQuotesLink,
-              //             screenWidth: screenwidth,
-              //           );
-              //         case 3:
-              //           return const TitleText(title: 'SP Quiz App');
-              //         case 4:
-              //           return const DescriptionText(
-              //             description: spQuizAppDescription,
-              //           );
-              //         case 5:
-              //           return GooglePlayButton(
-              //             screenWidth: screenwidth,
-              //             url: spQuizLink,
-              //           );
-              //       }
-              //       return const SizedBox.shrink();
-              //     }),
-              //   ),
-              // ),
               SizedBox(
-                height: widget.screenHeight * 0.08,
+                height: context.screenHeight * 0.08,
               ),
             ],
           ),

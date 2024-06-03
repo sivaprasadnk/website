@@ -9,17 +9,17 @@ class PrevIcon extends ConsumerWidget {
   final PageController controller;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pageIndex = ref.watch(pageIndexProvider);
+    // final pageIndex = ref.watch(pageIndexProvider);
 
     return GestureDetector(
       onTap: () {
         debugPrint('.. @@@');
-        if (pageIndex != 0) {
+        // if (pageIndex != 0) {
           controller.previousPage(
             duration: const Duration(seconds: 1),
             curve: Curves.bounceOut,
           );
-        }
+        // }
         ref.read(pageIndexProvider.notifier).pageIndex = controller.page! - 1;
         // provider.updatePage(controller.page! - 1);
       },

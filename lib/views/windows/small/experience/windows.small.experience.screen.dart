@@ -1,16 +1,17 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/domain/experience_entity.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 
-class WindowsSmallExperienceScreen extends StatefulWidget {
+class WindowsSmallExperienceScreen extends ConsumerStatefulWidget {
   @override
-  State<WindowsSmallExperienceScreen> createState() =>
+  ConsumerState<WindowsSmallExperienceScreen> createState() =>
       _WindowsSmallExperienceScreenState();
 }
 
 class _WindowsSmallExperienceScreenState
-    extends State<WindowsSmallExperienceScreen> {
+    extends ConsumerState<WindowsSmallExperienceScreen> {
   bool showLottie = false;
 
   @override
@@ -35,6 +36,8 @@ class _WindowsSmallExperienceScreenState
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
+    final expList = ref.watch(experienceProvider);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

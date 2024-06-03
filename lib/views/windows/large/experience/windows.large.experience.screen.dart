@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/domain/experience_entity.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
-class WindowsLargeExperienceScreen extends StatefulWidget {
+class WindowsLargeExperienceScreen extends ConsumerStatefulWidget {
   @override
   _WindowsLargeExperienceScreenState createState() =>
       _WindowsLargeExperienceScreenState();
 }
 
 class _WindowsLargeExperienceScreenState
-    extends State<WindowsLargeExperienceScreen>
+    extends ConsumerState<WindowsLargeExperienceScreen>
     with AutomaticKeepAliveClientMixin {
   bool showLottie = false;
 
@@ -43,6 +44,8 @@ class _WindowsLargeExperienceScreenState
       radius: 5,
       backgroundColor: Theme.of(context).splashColor,
     );
+    final expList = ref.watch(experienceProvider);
+
     return Stack(
       children: [
         Container(
@@ -98,7 +101,7 @@ class _WindowsLargeExperienceScreenState
                     ),
                   );
                 }).toList(),
-              )
+              ),
 
             ],
           ),
@@ -117,7 +120,7 @@ class _WindowsLargeExperienceScreenState
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

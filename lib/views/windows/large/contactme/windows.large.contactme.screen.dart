@@ -1,16 +1,17 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/domain/contact_entity.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
-class WindowsLargeContactMeScreen extends StatefulWidget {
+class WindowsLargeContactMeScreen extends ConsumerStatefulWidget {
   @override
   _WindowsLargeContactMeScreenState createState() =>
       _WindowsLargeContactMeScreenState();
 }
 
 class _WindowsLargeContactMeScreenState
-    extends State<WindowsLargeContactMeScreen>
+    extends ConsumerState<WindowsLargeContactMeScreen>
     with AutomaticKeepAliveClientMixin {
   bool showLottie = false;
 
@@ -41,6 +42,8 @@ class _WindowsLargeContactMeScreenState
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
+    final contactList = ref.watch(contactProvider);
+
     return Stack(
       children: [
         Container(
@@ -103,7 +106,7 @@ class _WindowsLargeContactMeScreenState
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

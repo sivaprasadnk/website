@@ -1,133 +1,11 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:avatar_glow/avatar_glow.dart';
-import 'package:blobs/blobs.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:wave/config.dart';
-import 'package:wave/wave.dart';
 
-TextStyle authorStyle = const TextStyle(
-  fontWeight: FontWeight.bold,
-  color: Colors.red,
-  fontSize: 21,
-);
 
-TextStyle quoteStyle = const TextStyle(
-  fontWeight: FontWeight.bold,
-  // fontFamily: 'Vollkorn',
-  decorationStyle: TextDecorationStyle.solid,
-  fontStyle: FontStyle.italic,
-  color: Colors.teal,
-  fontSize: 21,
-);
-
-Widget nameText({required BuildContext context}) {
-  return Text(
-    'SP',
-    style: Theme.of(context).textTheme.displayLarge,
-  );
-}
-
-class AndroidBgCurveBackup extends CustomPainter {
-  final BuildContext ctx;
-  AndroidBgCurveBackup({required this.ctx});
-  @override
-  void paint(Canvas canvas, Size size) {
-    const double padding = 0;
-    // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
-    final Paint paint = Paint()
-      // ..color = Color.fromRGBO(7, 17, 26, 1)
-      ..color = Colors.white
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 5.0;
-
-    final Path path = Path();
-
-    final h = size.height;
-    final w = size.width;
-
-    final y = h / 2;
-    // final x = w / 2;
-
-    path.moveTo(0, h - padding);
-    path.lineTo(0, h * 0.33);
-    path.quadraticBezierTo(w * 0.25, h * 0.26, w * 0.5, h * 0.33);
-    path.quadraticBezierTo(w * 0.75, h * 0.40, w, h * 0.33);
-    path.lineTo(w - padding, y);
-    path.lineTo(w - padding, h - padding);
-    path.close();
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => true;
-}
-
-class AndroidBgCurve extends CustomPainter {
-  final BuildContext ctx;
-  AndroidBgCurve({required this.ctx});
-  @override
-  void paint(Canvas canvas, Size size) {
-    const double padding = 0;
-    // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
-    final Paint paint = Paint()
-      // ..color = Color.fromRGBO(7, 17, 26, 1)
-      ..color = Colors.white
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 5.0;
-
-    final Path path = Path();
-
-    final h = size.height;
-    final w = size.width;
-
-    final y = h / 2;
-    // final x = w / 2;
-
-    path.moveTo(0, h - padding);
-    path.lineTo(0, h * 0.3);
-    path.quadraticBezierTo(w * 0.25, h * 0.23, w * 0.5, h * 0.3);
-    path.quadraticBezierTo(w * 0.75, h * 0.37, w, h * 0.3);
-    path.lineTo(w - padding, y);
-    path.lineTo(w - padding, h - padding);
-    path.close();
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => true;
-}
-
-class DescriptionText extends StatelessWidget {
-  final String description;
-  const DescriptionText({required this.description});
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 40,
-        top: 5,
-        right: 30,
-      ),
-      child: Text(
-        description,
-        // 'A Quiz App with various categories ,and cool animations for each element on screen ',
-        style: const TextStyle(
-          // fontFamily: 'PlayfairDisplay',
-          color: Colors.grey,
-          fontWeight: FontWeight.bold,
-          fontSize: 15,
-          // color: Colors.white
-        ),
-      ),
-    );
-  }
-}
 
 class GooglePlayButton extends StatelessWidget {
   final double screenWidth;
@@ -142,7 +20,7 @@ class GooglePlayButton extends StatelessWidget {
         onTap: () {
           launch(url);
         },
-        child: Container(
+        child: DecoratedBox(
           decoration: BoxDecoration(
             color: Colors.black,
             border: Border.all(color: Colors.grey),
@@ -185,7 +63,7 @@ class GooglePlayButton extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -208,7 +86,7 @@ class WinddowsGooglePlayButton extends StatelessWidget {
       onTap: () {
         launch(url);
       },
-      child: Container(
+      child: DecoratedBox(
         decoration: BoxDecoration(
           color: Colors.black,
           border: Border.all(color: Colors.grey),
@@ -255,7 +133,7 @@ class WinddowsGooglePlayButton extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -263,55 +141,9 @@ class WinddowsGooglePlayButton extends StatelessWidget {
   }
 }
 
-class NameWidget extends StatelessWidget {
-  const NameWidget({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return const Text(
-      'Sivaprasad NK',
-      style: TextStyle(
-        fontFamily: 'PatuaOne',
-        color: Colors.white,
-        fontSize: 21.0,
-      ),
-    );
-  }
-}
 
-class ProPic extends StatelessWidget {
-  const ProPic({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return const CircleAvatar(
-      radius: 100,
-      backgroundImage: AssetImage(
-        proPicAssetPath,
-      ),
-    );
-  }
-}
-
-class ProPicWidget extends StatelessWidget {
-  final double radius;
-  const ProPicWidget({required this.radius});
-  @override
-  Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: radius,
-      backgroundColor: Colors.cyanAccent,
-      backgroundImage: const AssetImage(proPicAssetPath),
-    );
-  }
-}
-
-class QuoteWidget extends StatefulWidget {
-  final bool showQuote;
-  const QuoteWidget({required this.showQuote});
-  @override
-  _QuoteWidgetState createState() => _QuoteWidgetState();
-}
 
 class TitleText extends StatelessWidget {
   final String title;
@@ -334,305 +166,9 @@ class TitleText extends StatelessWidget {
   }
 }
 
-class Wave extends StatefulWidget {
-  const Wave({Key? key}) : super(key: key);
 
-  @override
-  _WaveState createState() => _WaveState();
-}
 
-class WelcomeText extends StatelessWidget {
-  final bool isMobile;
-  const WelcomeText({required this.isMobile});
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedTextKit(
-      isRepeatingAnimation: false,
-      animatedTexts: [
-        TypewriterAnimatedText(
-          !isMobile ? welcomeSiteText : welcomeMobText,
-          // : 'Welcome to \n sivaprasadnk.github.io',
-          textAlign: TextAlign.center,
-          textStyle: const TextStyle(
-            fontFamily: 'PatuaOne',
-            fontSize: 35,
-            color: Colors.teal,
-            fontWeight: FontWeight.bold,
-          ),
-          speed: const Duration(
-            milliseconds: 115,
-          ),
-        )
-      ],
-    );
-    // return Text(
-    //   isMobile ? welcomeMobText : welcomeSiteText,
-    //   textAlign: TextAlign.center,
-    //   style: TextStyle(
-    //     fontFamily: 'PatuaOne',
-    //     color: Colors.teal,
-    //     fontWeight: FontWeight.bold,
-    //     fontSize: 35,
-    //   ),
-    // );
-  }
-}
 
-class _QuoteWidgetState extends State<QuoteWidget> {
-  DateTime time = DateTime.now();
-  @override
-  Widget build(BuildContext context) {
-    time = DateTime.now();
-    // var quote = time.second % 2 == 0 ? quote1 : quote2;
-    // var author = time.second % 2 == 0 ? author1 : author2;
-    debugPrint('..second ==${time.second}');
-    return AnimatedOpacity(
-      opacity: widget.showQuote ? 1 : 0,
-      duration: const Duration(seconds: 3),
-      child: Container(
-        padding: const EdgeInsets.all(30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SelectableText(
-              quote1,
-              toolbarOptions: const ToolbarOptions(copy: true, selectAll: true),
-              textAlign: TextAlign.center,
-              style: quoteStyle,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              ' - $author1',
-              maxLines: 2,
-              textAlign: TextAlign.right,
-              style: authorStyle,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _WaveState extends State<Wave> {
-  bool showWave = false;
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: WaveWidget(
-        config: CustomConfig(
-          gradients: [
-            [Colors.blueAccent, Colors.blueAccent],
-            [Colors.blueAccent, Colors.blueAccent],
-            [Colors.blue, Colors.blue],
-            [Colors.blue, Colors.blue]
-          ],
-          //  heightPercentages: [0.25, 0.26, 0.28, 0.31],
-          durations: [35000, 19440, 10800, 6000],
-          heightPercentages: [0.65, 0.63, 0.65, 0.60],
-          blur: const MaskFilter.blur(BlurStyle.solid, 10),
-          gradientBegin: Alignment.bottomLeft,
-          gradientEnd: Alignment.topRight,
-        ),
-        // color: [
-        //   Colors.white70,
-        //   Colors.white54,
-        //   Colors.white30,
-        //   Colors.white24,
-        // ],
-        // durations: [
-        //   32000,
-        //   21000,
-        //   18000,
-        //   5000,
-        // ],
-        waveAmplitude: 0,
-        size: const Size(
-          double.infinity,
-          double.infinity,
-        ),
-      ),
-    );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(milliseconds: 500)).then((value) {
-      setState(() {
-        showWave = true;
-      });
-    });
-  }
-}
-
-class AndroidHomeBgCurve extends CustomPainter {
-  final BuildContext ctx;
-  AndroidHomeBgCurve({required this.ctx});
-  @override
-  void paint(Canvas canvas, Size size) {
-    const double padding = 0;
-    // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
-    final Paint paint = Paint()
-      ..color = Colors.white
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 5.0;
-
-    final Path path = Path();
-
-    final h = size.height;
-    final w = size.width;
-
-    final y = h / 2;
-    // final x = w / 2;
-    // path.
-    path.moveTo(0, h - padding);
-    path.lineTo(0, h * 0.65);
-    path.quadraticBezierTo(w * 0.29, h * 0.65, w * 0.5, h * 0.8);
-    path.quadraticBezierTo(w * 0.73, h * 0.94, w, h * 0.84);
-    path.lineTo(w - padding, y);
-    path.lineTo(w - padding, h - padding);
-    path.close();
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => true;
-}
-
-class WindowsHomeBgCurve extends CustomPainter {
-  final BuildContext ctx;
-  WindowsHomeBgCurve({required this.ctx});
-  @override
-  void paint(Canvas canvas, Size size) {
-    const double padding = 20;
-    // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
-    final Paint paint = Paint()
-      ..color = const Color.fromRGBO(4, 139, 168, 1)
-      ..style = PaintingStyle.fill
-      ..strokeJoin = StrokeJoin.bevel
-      // ..strokeJoin
-      ..strokeWidth = 5.0;
-
-    final Path path = Path();
-
-    final h = size.height;
-    final w = size.width;
-
-    // final y = h / 2;
-    final x = w / 2;
-    // path.addRRect(RRect.fromLTRBR(
-    //   h - padding,
-    //   h * 0.65,
-    //   10 * padding,
-    //   h - padding,
-    //   Radius.circular(10),
-    // ));
-    path.moveTo(x, h - padding);
-    path.lineTo(x, h * 0.65);
-    path.quadraticBezierTo(x, h * 0.6, x + 60, h * 0.55);
-    path.lineTo(w - 5 * padding, 2 * padding + 100);
-    path.lineTo(w - padding, padding + 100);
-    // path.quadraticBezierTo(
-    //     w - padding, 10 * padding, w - padding, 10 * padding);
-    path.lineTo(w - padding, 10 * padding);
-    // // path.lineTo(w - padding, padding);
-    path.lineTo(w - padding, h - padding);
-    path.close();
-    // canvas.clipRRect(rrect)
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => true;
-}
-
-class WindowsExpBgCurve extends CustomPainter {
-  final BuildContext ctx;
-  WindowsExpBgCurve({required this.ctx});
-  @override
-  void paint(Canvas canvas, Size size) {
-    const double padding = 0;
-    // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
-    final Paint paint = Paint()
-      // ..color = Colors.teal
-      ..color = Colors.white
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 5.0;
-
-    final Path path = Path();
-
-    final h = size.height;
-    final w = size.width;
-
-    final y = h / 2;
-    path.moveTo(0, h - padding);
-    path.lineTo(0, h * 0.74);
-    path.quadraticBezierTo(w * 0.29, h * 0.55, w * 0.5, h * 0.7);
-    path.quadraticBezierTo(w * 0.73, h * 0.84, w, h * 0.74);
-    path.lineTo(w - padding, y);
-    path.lineTo(w - padding, h - padding);
-    path.close();
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => true;
-}
-
-class ProPicLargeWithBlob extends StatefulWidget {
-  const ProPicLargeWithBlob({Key? key}) : super(key: key);
-
-  @override
-  _ProPicWithBlobState createState() => _ProPicWithBlobState();
-}
-
-class _ProPicWithBlobState extends State<ProPicLargeWithBlob> {
-  bool showProPicWithBlob = false;
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(milliseconds: 500)).then((value) {
-      setState(() {
-        showProPicWithBlob = true;
-      });
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: const Duration(milliseconds: 900),
-      opacity: showProPicWithBlob ? 1 : 0,
-      child: Blob.fromID(
-        id: const ['16-7-5840'],
-        styles: BlobStyles(
-          color: Colors.cyanAccent.shade700,
-        ),
-        size: 300,
-        child: Padding(
-          padding: const EdgeInsets.only(
-            bottom: 25,
-            left: 5,
-            right: 5,
-            // top: 10,
-          ),
-          child: Image.asset(
-            'assets/images/propiccc.png',
-            height: 300,
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class ProPicMediumWithBlob extends StatefulWidget {
   final double height;
@@ -691,58 +227,6 @@ class _ProPicMediumWithBlobState extends State<ProPicMediumWithBlob> {
       //     ),
       //   ),
       // ),
-    );
-  }
-}
-
-class WindowsLargeRightFooter extends StatelessWidget {
-  const WindowsLargeRightFooter({Key? key, required this.size})
-      : super(key: key);
-  final double size;
-  @override
-  Widget build(BuildContext context) {
-    return Positioned.fill(
-      bottom: 10,
-      right: 20,
-      child: Align(
-        alignment: Alignment.bottomRight,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(
-              ' Made with ',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: size,
-                color: Colors.grey,
-              ),
-            ),
-            const Icon(
-              Icons.favorite,
-              color: Colors.red,
-            ),
-            Text(
-              ' in ',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: size,
-                color: Colors.grey,
-              ),
-            ),
-            FlutterLogo(
-              size: size,
-            ),
-            Text(
-              ' Flutter  ',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: size,
-                color: Colors.grey,
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
@@ -897,94 +381,6 @@ class NameLogo extends StatelessWidget {
   }
 }
 
-class SocialMedia extends StatelessWidget {
-  final bool showIcons;
-  final double screenWidth;
-  final bool isLarge;
-  final double? size;
-
-  const SocialMedia({
-    required this.showIcons,
-    required this.screenWidth,
-    this.size,
-    this.isLarge = false,
-  });
-  @override
-  Widget build(BuildContext context) {
-    final double iconSize = size == null ? 35 : size as double;
-    return AnimatedOpacity(
-      duration: const Duration(milliseconds: 900),
-      opacity: showIcons ? 1 : 0,
-      child: Row(
-        children: [
-          SizedBox(width: !isLarge ? screenWidth * 0.15 : screenWidth * 0.00),
-          GestureDetector(
-            child: FaIcon(
-              FontAwesomeIcons.facebook,
-              color: Colors.blue,
-              size: iconSize,
-            ),
-            onTap: () {
-              launch(fbLink);
-            },
-          ).showCursorOnHover,
-          const SizedBox(
-            width: 15,
-          ),
-          GestureDetector(
-            child: FaIcon(
-              FontAwesomeIcons.instagram,
-              color: Colors.orange,
-              size: iconSize,
-            ),
-            onTap: () {
-              launch(instaLink);
-            },
-          ).showCursorOnHover,
-          const SizedBox(
-            width: 15,
-          ),
-          GestureDetector(
-            child: FaIcon(
-              FontAwesomeIcons.whatsapp,
-              size: iconSize,
-              color: Colors.green,
-            ),
-            onTap: () {
-              launch(whatsappWebLink);
-            },
-          ).showCursorOnHover,
-          const SizedBox(
-            width: 15,
-          ),
-          GestureDetector(
-            child: FaIcon(
-              FontAwesomeIcons.linkedin,
-              size: iconSize,
-              color: Colors.black,
-            ),
-            onTap: () {
-              launch(linkedInLink);
-            },
-          ).showCursorOnHover,
-          const SizedBox(
-            width: 15,
-          ),
-          GestureDetector(
-            child: FaIcon(
-              FontAwesomeIcons.github,
-              size: iconSize,
-              color: Colors.blue,
-            ),
-            onTap: () {
-              launch(githubLink);
-            },
-          ).showCursorOnHover,
-        ],
-      ),
-    );
-  }
-}
 
 class ProPicWithBlobLottie extends StatelessWidget {
   const ProPicWithBlobLottie({

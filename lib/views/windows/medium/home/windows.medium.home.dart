@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:provider/provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/views/windows/common/name_text.dart';
 import 'package:spnk/views/windows/common/theme_switch.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/medium/contactme/windows.medium.contactme.screen.dart';
@@ -27,7 +28,7 @@ class WindowsMediumHome extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             WindowsLeftFooter(size: size),
-            WindowsRightFooter(size: size)
+            WindowsRightFooter(size: size),
           ],
         ),
       ),
@@ -69,7 +70,7 @@ class WindowsMediumHome extends ConsumerWidget {
                       ? WindowsMediumExperienceScreen()
                       : screen == Screen.projects
                           ? ProjectsMediumNew()
-                          : const SizedBox.shrink()
+                          : const SizedBox.shrink(),
           ],
         ),
       ),

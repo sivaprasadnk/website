@@ -15,27 +15,27 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+6
+version: 2.0.0+6
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   animate_do: ^2.0.0
-  animated_text_kit: ^4.2.1
-  animations: ^2.0.1
+  # animated_text_kit: ^4.2.1
+  # animations: ^2.0.1
   auto_animated: ^3.0.0
   auto_size_text: ^3.0.0
   avatar_glow: ^2.0.2
-  blobs: ^2.0.0
+  # blobs: ^2.0.0
   blur: ^3.1.0
-  bordered_text: ^2.0.0
-  carousel_slider: ^4.1.1
+  # bordered_text: ^2.0.0
+  # carousel_slider: ^4.1.1
   cupertino_icons: ^1.0.2
   day_night_switcher: ^0.2.0+1
   # dio: ^4.0.0
-  faded_widget: ^2.0.0
-  flip_card: ^0.6.0
+  # faded_widget: ^2.0.0
+  # flip_card: ^0.6.0
   flutter:
     sdk: flutter
   # flutter_animated_dialog: ^2.0.1
@@ -44,23 +44,23 @@ dependencies:
   flutter_riverpod: ^2.5.1
   flutter_svg: ^0.22.0
   font_awesome_flutter: ^9.2.0
-  gradients: ^0.1.1+1
-  hovering: ^1.0.4
+  # gradients: ^0.1.1+1
+  # hovering: ^1.0.4
   # http: ^0.13.3
-  infinite_carousel: ^1.0.2
+  # infinite_carousel: ^1.0.2
   lint: ^1.8.2
   lottie: ^1.0.1
-  mouse_parallax: ^1.1.0
-  page_view_indicators: ^2.0.0
+  # mouse_parallax: ^1.1.0
+  # page_view_indicators: ^2.0.0
   # provider: ^5.0.0
   # qr_flutter: ^4.0.0
   # shared_preferences: ^2.0.13
   riverpod: ^2.5.1
   tab_indicator_styler: ^2.0.0
-  transition: ^2.0.2
+  # transition: ^2.0.2
   universal_html: ^2.0.8
   url_launcher: ^6.0.6
-  wave: ^0.2.0
+  # wave: ^0.2.0
 
 flutter_icons:
   android: "launcher_icon"

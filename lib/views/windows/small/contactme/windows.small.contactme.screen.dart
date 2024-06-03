@@ -1,16 +1,17 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/domain/contact_entity.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 
-class WindowsSmallContactMeScreen extends StatefulWidget {
+class WindowsSmallContactMeScreen extends ConsumerStatefulWidget {
   @override
-  State<WindowsSmallContactMeScreen> createState() =>
+  ConsumerState<WindowsSmallContactMeScreen> createState() =>
       _WindowsSmallContactMeScreenState();
 }
 
 class _WindowsSmallContactMeScreenState
-    extends State<WindowsSmallContactMeScreen> {
+    extends ConsumerState<WindowsSmallContactMeScreen> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -38,6 +39,8 @@ class _WindowsSmallContactMeScreenState
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
+    final contactList = ref.watch(contactProvider);
+
     return Form(
       key: _formKey,
       child: Column(
