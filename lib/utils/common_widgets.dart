@@ -361,7 +361,7 @@ class WindowsLeftFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Copyright © 2022 Sivaprasad NK .',
+      'Copyright © 2024 Sivaprasad NK .',
       style: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: size,
