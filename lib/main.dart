@@ -10,6 +10,7 @@ import 'package:spnk/views/min_size_container.dart';
 import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/provider/page_index_controller.dart';
 import 'package:spnk/views/provider/route_controller.dart';
+import 'package:spnk/views/provider/theme_provider.dart';
 import 'package:spnk/views/windows/large/home/windows.home.large.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.home.dart';
 import 'package:spnk/views/windows/small/home/windows.small.home.dart';
@@ -24,6 +25,8 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.put(ThemeController());
+
     precacheImage(const AssetImage('assets/images/mesh1.jpg'), context);
     precacheImage(const AssetImage('assets/images/dash/dash1.png'), context);
     // final darktheme = ref.watch(themeNotifierProvider);
@@ -40,6 +43,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,
+      themeMode:
+          themeController.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
       routes: {
         '/': (context) => const SplashScreen(),
         // IosHomeScreen.routeName: (context) => IosHomeScreen(),
