@@ -54,6 +54,7 @@ class ProjectsScreenNew extends StatelessWidget {
                           duration: const Duration(seconds: 1),
                           curve: Curves.bounceOut,
                         );
+                        pageIndexController.pageIndex.value -= 1;
                       },
                       child: SizedBox(
                         height: 20,
