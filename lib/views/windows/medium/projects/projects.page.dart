@@ -1,9 +1,7 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/domain/project_entity.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
-import 'package:spnk/views/provider/data_provider.dart';
-import 'package:spnk/views/provider/page_provider.dart';
 import 'package:spnk/views/windows/medium/projects/app.summary/next.icon.dart';
 import 'package:spnk/views/windows/medium/projects/app.summary/prev.icon.dart';
 import 'package:spnk/views/windows/medium/projects/view.more.container.dart';
@@ -12,16 +10,16 @@ import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart
 import 'package:spnk/views/windows/small/projects/app.summary/text.container.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ProjectsPage extends ConsumerWidget {
+class ProjectsPage extends StatelessWidget {
   final PageController controller = PageController();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final screenHeight = context.screenHeight;
-    final pageIndex = ref.watch(pageIndexProvider);
-    final projects = ref.watch(projectProvider);
+    const pageIndex = 0;
+    final projects = projectList;
     final showNextIcon = pageIndex < projects.length - 1;
-    final showPrevIcon = pageIndex != 0;
+    const showPrevIcon = pageIndex != 0;
     return Row(
       children: [
         if (showPrevIcon) PrevIcon(controller: controller),
@@ -30,8 +28,8 @@ class ProjectsPage extends ConsumerWidget {
           width: 450,
           child: PageView(
             onPageChanged: (pageIndex) {
-              ref.read(pageIndexProvider.notifier).pageIndex =
-                  pageIndex.toDouble();
+              // ref.read(pageIndexProvider.notifier).pageIndex =
+              //     pageIndex.toDouble();
             },
             controller: controller,
             children: projects.map((project) {

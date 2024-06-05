@@ -1,11 +1,9 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:provider/provider.dart';
 import 'package:spnk/data/project_model.dart';
+import 'package:spnk/domain/project_entity.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
-import 'package:spnk/views/provider/data_provider.dart';
-import 'package:spnk/views/provider/page_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/medium/projects/app.summary/next.icon.dart';
 import 'package:spnk/views/windows/medium/projects/app.summary/prev.icon.dart';
@@ -17,15 +15,15 @@ import 'package:spnk/views/windows/small/projects/app.summary/text.container.dar
 import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ProjectsScreenSmall extends ConsumerStatefulWidget {
+class ProjectsScreenSmall extends StatefulWidget {
   const ProjectsScreenSmall({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<ProjectsScreenSmall> createState() =>
+  State<ProjectsScreenSmall> createState() =>
       _ProjectsScreenSmallState();
 }
 
-class _ProjectsScreenSmallState extends ConsumerState<ProjectsScreenSmall> {
+class _ProjectsScreenSmallState extends State<ProjectsScreenSmall> {
   PageController controller = PageController();
 
   bool showNextIcon = true;
@@ -34,10 +32,11 @@ class _ProjectsScreenSmallState extends ConsumerState<ProjectsScreenSmall> {
   Widget build(BuildContext context) {
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
-    final pageIndex = ref.watch(pageIndexProvider);
-    final projects = ref.watch(projectProvider);
+    const pageIndex = 0;
+    // final projects = ref.watch(projectProvider);
+    final projects = projectList;
     final showNextIcon = pageIndex < projects.length - 1;
-    final showPrevIcon = pageIndex != 0;
+    const showPrevIcon = pageIndex != 0;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,8 +54,8 @@ class _ProjectsScreenSmallState extends ConsumerState<ProjectsScreenSmall> {
                 child: PageView(
                   controller: controller,
                   onPageChanged: (pageIndex) {
-                    ref.read(pageIndexProvider.notifier).pageIndex =
-                        pageIndex.toDouble();
+                    // ref.read(pageIndexProvider.notifier).pageIndex =
+                    //     pageIndex.toDouble();
                   },
                   children: projects.map((proj) {
                     return ProjectItemSmall(

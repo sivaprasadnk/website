@@ -1,19 +1,16 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/domain/experience_entity.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/android/android_bg_curve.dart';
 import 'package:spnk/views/android/description_text.dart';
-import 'package:spnk/views/provider/data_provider.dart';
-import 'package:spnk/views/provider/menu_provider.dart';
-import 'package:spnk/views/provider/route_provider.dart';
 
-class AndroidExperienceScreen extends ConsumerWidget {
+class AndroidExperienceScreen extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final expList = ref.watch(experienceProvider);
+  Widget build(BuildContext context) {
+    final expList = experienceList;
     return Stack(
       children: [
         Positioned.fill(
@@ -36,9 +33,9 @@ class AndroidExperienceScreen extends ConsumerWidget {
             child: IconButton(
               icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
-                ref.read(menuNotifierProvider.notifier).menuSelected = false;
-                ref.read(routeNotifierProvider.notifier).selectedScreen =
-                    Screen.home;
+                // ref.read(menuNotifierProvider.notifier).menuSelected = false;
+                // ref.read(routeNotifierProvider.notifier).selectedScreen =
+                //     Screen.home;
               },
             ),
           ),

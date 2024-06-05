@@ -1,10 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:spnk/views/provider/menu_provider.dart';
-// import 'package:provider/provider.dart';
-import 'package:spnk/views/provider/route_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 
 class WindowsSmallDrawer extends StatefulWidget {
@@ -104,59 +100,59 @@ class _WindowsHomeSmallDrawerState extends State<WindowsSmallDrawer> {
   }
 }
 
-class HomeListItem extends ConsumerWidget {
+class HomeListItem extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return ListItem(
       title: 'Home',
       callback: () {
-        ref.read(menuNotifierProvider.notifier).menuSelected = false;
-        ref.read(routeNotifierProvider.notifier).selectedScreen = Screen.home;
+        // ref.read(menuNotifierProvider.notifier).menuSelected = false;
+        // ref.read(routeNotifierProvider.notifier).selectedScreen = Screen.home;
       },
       icon: Icons.home,
     );
   }
 }
 
-class ContactMeListItem extends ConsumerWidget {
+class ContactMeListItem extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return ListItem(
       title: 'Contact Me',
       callback: () {
-        ref.read(menuNotifierProvider.notifier).menuSelected = false;
-        ref.read(routeNotifierProvider.notifier).selectedScreen =
-            Screen.contactMe;
+        // ref.read(menuNotifierProvider.notifier).menuSelected = false;
+        // ref.read(routeNotifierProvider.notifier).selectedScreen =
+        //     Screen.contactMe;
       },
       icon: Icons.call,
     );
   }
 }
 
-class ExperienceListItem extends ConsumerWidget {
+class ExperienceListItem extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return ListItem(
       title: 'Experience',
       callback: () {
-        ref.read(menuNotifierProvider.notifier).menuSelected = false;
-        ref.read(routeNotifierProvider.notifier).selectedScreen =
-            Screen.experience;
+        // ref.read(menuNotifierProvider.notifier).menuSelected = false;
+        // ref.read(routeNotifierProvider.notifier).selectedScreen =
+        //     Screen.experience;
       },
       icon: Icons.work,
     );
   }
 }
 
-class MyProjectsListItem extends ConsumerWidget {
+class MyProjectsListItem extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return ListItem(
       title: 'Projects',
       callback: () {
-        ref.read(menuNotifierProvider.notifier).menuSelected = false;
-        ref.read(routeNotifierProvider.notifier).selectedScreen =
-            Screen.projects;
+        // ref.read(menuNotifierProvider.notifier).menuSelected = false;
+        // ref.read(routeNotifierProvider.notifier).selectedScreen =
+        //     Screen.projects;
       },
       icon: Icons.apps,
     );

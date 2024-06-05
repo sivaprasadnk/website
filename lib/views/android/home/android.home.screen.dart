@@ -1,14 +1,12 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/views/provider/menu_provider.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
 
-class AndroidHomeScreen extends ConsumerWidget {
+class AndroidHomeScreen extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
     final screenWidth = screenSize.width;
@@ -27,7 +25,7 @@ class AndroidHomeScreen extends ConsumerWidget {
               child: IconButton(
                 icon: const Icon(Icons.menu, color: Colors.white),
                 onPressed: () {
-                  ref.read(menuNotifierProvider.notifier).menuSelected = true;
+                  // ref.read(menuNotifierProvider.notifier).menuSelected = true;
                 },
               ),
             ),
@@ -71,7 +69,7 @@ class AndroidHomeScreen extends ConsumerWidget {
                             fontFamily: kFontFamily2,
                             color: Colors.white,
                           ),
-                        )
+                        ),
                       ],
                     ),
                     const SizedBox(height: 5),
@@ -83,7 +81,7 @@ class AndroidHomeScreen extends ConsumerWidget {
                         fontFamily: kFontFamily2,
                         color: Colors.white,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -1,6 +1,6 @@
 import 'package:spnk/data/experience_model.dart';
 
-List<ExperienceModel> expList = [
+List<ExperienceModel> experienceList = [
   ExperienceModel(
     title: 'Java, Postgres Programmer Trainee',
     order: 0,

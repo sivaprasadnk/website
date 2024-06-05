@@ -1,14 +1,12 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/android/android_bg_curve.dart';
 import 'package:spnk/views/provider/data_provider.dart';
-import 'package:spnk/views/provider/menu_provider.dart';
-import 'package:spnk/views/provider/page_provider.dart';
-import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/views/provider/page_index_controller.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/image.container.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
@@ -16,13 +14,13 @@ import 'package:spnk/views/windows/small/projects/app.summary/text.container.dar
 import 'package:spnk/views/windows/small/projects/app.summary/view.more.small.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class AndroidProjects extends ConsumerStatefulWidget {
+class AndroidProjects extends StatefulWidget {
   const AndroidProjects();
   @override
   _AndroidProjectsState createState() => _AndroidProjectsState();
 }
 
-class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
+class _AndroidProjectsState extends State<AndroidProjects> {
   PageController controller = PageController();
 
   Widget Function(
@@ -55,12 +53,15 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
             ),
           );
 
+  DataController dataController = Get.find<DataController>();
+  PageIndexController pageIndexController = Get.find<PageIndexController>();
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = context.screenWidth;
     final screenHeight = context.screenHeight;
-    final pageIndex = ref.watch(pageIndexProvider);
-    final projects = ref.watch(projectProvider);
+    final pageIndex = pageIndexController.pageIndex.value;
+    final projects = dataController.projects;
     final showNextIcon = pageIndex < projects.length - 1;
     final showPrevIcon = pageIndex != 0;
 
@@ -86,9 +87,9 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
             child: IconButton(
               icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
-                ref.read(menuNotifierProvider.notifier).menuSelected = false;
-                ref.read(routeNotifierProvider.notifier).selectedScreen =
-                    Screen.home;
+                // ref.read(menuNotifierProvider.notifier).menuSelected = false;
+                // ref.read(routeNotifierProvider.notifier).selectedScreen =
+                //     Screen.home;
               },
             ),
           ),
@@ -124,11 +125,11 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
                     width: screenWidth * 0.8,
                     child: PageView(
                       onPageChanged: (pageIndex) {
-                        ref.read(pageIndexProvider.notifier).pageIndex =
-                            pageIndex.toDouble();
+                        // ref.read(pageIndexProvider.notifier).pageIndex =
+                        //     pageIndex.toDouble();
                       },
                       controller: controller,
-                      children: ref.watch(projectProvider).map((project) {
+                      children: projects.map((project) {
                         return SizedBox(
                           height: screenHeight * 0.5,
                           child: Stack(

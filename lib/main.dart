@@ -1,12 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
+//
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/utils/themes.dart';
 import 'package:spnk/views/android/home/android.home.dart';
 import 'package:spnk/views/min_size_container.dart';
-import 'package:spnk/views/provider/theme_provider.dart';
+import 'package:spnk/views/provider/data_provider.dart';
+import 'package:spnk/views/provider/page_index_controller.dart';
+import 'package:spnk/views/provider/route_controller.dart';
 import 'package:spnk/views/windows/large/home/windows.home.large.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.home.dart';
 import 'package:spnk/views/windows/small/home/windows.small.home.dart';
@@ -15,27 +18,28 @@ import 'package:spnk/views/windows/small/home/windows.small.home.dart';
 
 // https://assets8.lottiefiles.com/packages/lf20_zGHcl0.json
 void main() {
-  runApp(ProviderScope(child: MyApp()));
+  runApp(MyApp());
 }
 
-class MyApp extends ConsumerWidget {
+class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     precacheImage(const AssetImage('assets/images/mesh1.jpg'), context);
     precacheImage(const AssetImage('assets/images/dash/dash1.png'), context);
-    final darktheme = ref.watch(themeNotifierProvider);
-    return MaterialApp(
+    // final darktheme = ref.watch(themeNotifierProvider);
+    return GetMaterialApp(
       scrollBehavior: const MaterialScrollBehavior().copyWith(
         dragDevices: {
           PointerDeviceKind.mouse,
           PointerDeviceKind.touch,
           PointerDeviceKind.stylus,
-          PointerDeviceKind.unknown
+          PointerDeviceKind.unknown,
         },
       ),
       title: 'Sivaprasad NK',
       debugShowCheckedModeBanner: false,
-      theme: darktheme ? dark : light,
+      theme: lightTheme,
+      darkTheme: darkTheme,
       routes: {
         '/': (context) => const SplashScreen(),
         // IosHomeScreen.routeName: (context) => IosHomeScreen(),
@@ -52,9 +56,14 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final routeController = Get.put(RouteController());
+    final pageController = Get.put(PageController());
+    final pageIndexController = Get.put(PageIndexController());
+    final dataController = Get.put(DataController());
+    final menuController = Get.put(MenuController());
     return defaultTargetPlatform == TargetPlatform.android ||
             defaultTargetPlatform == TargetPlatform.iOS
-        ? const AndroidHome()
+        ? AndroidHome()
         : context.screenWidth > 1121
             ? MinSize(
                 minHeight: 734,

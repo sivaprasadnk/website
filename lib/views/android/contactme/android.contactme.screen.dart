@@ -1,19 +1,16 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/domain/contact_entity.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/android/android_bg_curve.dart';
 import 'package:spnk/views/android/description_text.dart';
-import 'package:spnk/views/provider/data_provider.dart';
-import 'package:spnk/views/provider/menu_provider.dart';
-import 'package:spnk/views/provider/route_provider.dart';
 
-class AndroidContactMeScreen extends ConsumerWidget {
+class AndroidContactMeScreen extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final contactList = ref.watch(contactProvider);
+  Widget build(BuildContext context) {
+    // final contactList = ref.watch(contactProvider);
     return Stack(
       // mainAxisSize: MainAxisSize.min,
       children: [
@@ -37,9 +34,9 @@ class AndroidContactMeScreen extends ConsumerWidget {
             child: IconButton(
               icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {
-                ref.read(menuNotifierProvider.notifier).menuSelected = false;
-                ref.read(routeNotifierProvider.notifier).selectedScreen =
-                    Screen.home;
+                // ref.read(menuNotifierProvider.notifier).menuSelected = false;
+                // ref.read(routeNotifierProvider.notifier).selectedScreen =
+                //     Screen.home;
               },
             ),
           ),

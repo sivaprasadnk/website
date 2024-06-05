@@ -1,16 +1,15 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:spnk/views/provider/data_provider.dart';
+import 'package:spnk/domain/experience_entity.dart';
 
-class WindowsMediumExperienceScreen extends ConsumerStatefulWidget {
+class WindowsMediumExperienceScreen extends StatefulWidget {
   @override
   _WindowsMediumExperienceScreenState createState() =>
       _WindowsMediumExperienceScreenState();
 }
 
 class _WindowsMediumExperienceScreenState
-    extends ConsumerState<WindowsMediumExperienceScreen> {
+    extends State<WindowsMediumExperienceScreen> {
   bool showLottie = false;
 
   @override
@@ -35,7 +34,7 @@ class _WindowsMediumExperienceScreenState
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
-    final expList = ref.watch(experienceProvider);
+    final expList = experienceList;
 
     return Stack(
       children: [

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
 
-ThemeData light = ThemeData(
+ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primarySwatch: Colors.indigo,
   splashColor: const Color(0xFF002278),
@@ -52,7 +52,7 @@ ThemeData light = ThemeData(
   scaffoldBackgroundColor: const Color.fromRGBO(239, 239, 239, 1),
 );
 
-ThemeData dark = ThemeData(
+ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   scaffoldBackgroundColor: const Color.fromRGBO(0, 34, 51, 1),
   splashColor: Colors.white,

@@ -1,20 +1,17 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:spnk/views/android/menu/menu.widgets/menu.image.dart';
 import 'package:spnk/views/android/menu/menu.widgets/menu.item.dart';
-import 'package:spnk/views/provider/menu_provider.dart';
-import 'package:spnk/views/provider/route_provider.dart';
 
-class AndroidMenuScreen extends ConsumerStatefulWidget {
+class AndroidMenuScreen extends StatefulWidget {
   const AndroidMenuScreen({Key? key}) : super(key: key);
 
   @override
   _AndroidMenuScreenState createState() => _AndroidMenuScreenState();
 }
 
-class _AndroidMenuScreenState extends ConsumerState<AndroidMenuScreen>
+class _AndroidMenuScreenState extends State<AndroidMenuScreen>
     with SingleTickerProviderStateMixin {
   Widget Function(
     BuildContext context,
@@ -85,11 +82,11 @@ class _AndroidMenuScreenState extends ConsumerState<AndroidMenuScreen>
                     case 0:
                       return GestureDetector(
                         onTap: () {
-                          ref.read(menuNotifierProvider.notifier).menuSelected =
-                              false;
-                          ref
-                              .read(routeNotifierProvider.notifier)
-                              .selectedScreen = Screen.home;
+                          // ref.read(menuNotifierProvider.notifier).menuSelected =
+                          //     false;
+                          // ref
+                          //     .read(routeNotifierProvider.notifier)
+                          //     .selectedScreen = Screen.home;
                         },
                         child: const AndroidCustomMenuItem(
                           icon: FontAwesomeIcons.home,
@@ -99,11 +96,11 @@ class _AndroidMenuScreenState extends ConsumerState<AndroidMenuScreen>
                     case 1:
                       return GestureDetector(
                         onTap: () {
-                          ref.read(menuNotifierProvider.notifier).menuSelected =
-                              false;
-                          ref
-                              .read(routeNotifierProvider.notifier)
-                              .selectedScreen = Screen.experience;
+                          // ref.read(menuNotifierProvider.notifier).menuSelected =
+                          //     false;
+                          // ref
+                          //     .read(routeNotifierProvider.notifier)
+                          //     .selectedScreen = Screen.experience;
                         },
                         child: const AndroidCustomMenuItem(
                           icon: Icons.work,
@@ -114,11 +111,11 @@ class _AndroidMenuScreenState extends ConsumerState<AndroidMenuScreen>
                     case 2:
                       return GestureDetector(
                         onTap: () {
-                          ref.read(menuNotifierProvider.notifier).menuSelected =
-                              false;
-                          ref
-                              .read(routeNotifierProvider.notifier)
-                              .selectedScreen = Screen.projects;
+                          // ref.read(menuNotifierProvider.notifier).menuSelected =
+                          //     false;
+                          // ref
+                          //     .read(routeNotifierProvider.notifier)
+                          //     .selectedScreen = Screen.projects;
                         },
                         child: const AndroidCustomMenuItem(
                           icon: Icons.apps,
@@ -128,11 +125,11 @@ class _AndroidMenuScreenState extends ConsumerState<AndroidMenuScreen>
                     case 3:
                       return GestureDetector(
                         onTap: () {
-                          ref.read(menuNotifierProvider.notifier).menuSelected =
-                              false;
-                          ref
-                              .read(routeNotifierProvider.notifier)
-                              .selectedScreen = Screen.contactMe;
+                          // ref.read(menuNotifierProvider.notifier).menuSelected =
+                          //     false;
+                          // ref
+                          //     .read(routeNotifierProvider.notifier)
+                          //     .selectedScreen = Screen.contactMe;
                         },
                         child: const AndroidCustomMenuItem(
                           icon: Icons.call,
@@ -145,7 +142,7 @@ class _AndroidMenuScreenState extends ConsumerState<AndroidMenuScreen>
               ),
               SizedBox(
                 height: screenHeight * 0.15,
-              )
+              ),
             ],
           ),
         ],

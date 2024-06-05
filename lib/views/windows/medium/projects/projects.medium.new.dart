@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:spnk/views/windows/medium/projects/projects.page.dart';
 
 // ignore: must_be_immutable
-class ProjectsMediumNew extends ConsumerWidget {
+class ProjectsMediumNew extends StatelessWidget {
   PageController controller = PageController();
 
   bool showNextIcon = true;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;

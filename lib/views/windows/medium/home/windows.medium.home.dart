@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 // import 'package:provider/provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/utils/screen_type.dart';
+import 'package:spnk/views/provider/route_controller.dart';
 import 'package:spnk/views/windows/common/name_text.dart';
 import 'package:spnk/views/windows/common/theme_switch.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
@@ -12,14 +13,14 @@ import 'package:spnk/views/windows/medium/home/windows.medium.home.screen.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.menu.dart';
 import 'package:spnk/views/windows/medium/projects/projects.medium.new.dart';
 
-class WindowsMediumHome extends ConsumerWidget {
+class WindowsMediumHome extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
 
     const double size = 15;
-    final screen = ref.watch(routeNotifierProvider);
+    // final screen = ref.watch(routeNotifierProvider);
     return Scaffold(
       bottomNavigationBar: Padding(
         padding:
@@ -56,23 +57,26 @@ class WindowsMediumHome extends ConsumerWidget {
           ),
         ),
       ),
-      body: SizedBox(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            WindowsMediumMenu(),
-            if (screen == Screen.home)
-              WindowsMediumHomeScreen()
-            else
-              screen == Screen.contactMe
-                  ? const WindowsMediumContactMeScreen()
-                  : screen == Screen.experience
-                      ? WindowsMediumExperienceScreen()
-                      : screen == Screen.projects
-                          ? ProjectsMediumNew()
-                          : const SizedBox.shrink(),
-          ],
-        ),
+      body: GetX<RouteController>(
+        builder: (controller) {
+          final screen = controller.selectedScreen.value;
+          return Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              WindowsMediumMenu(),
+              if (screen == Screen.home)
+                WindowsMediumHomeScreen()
+              else
+                screen == Screen.contactMe
+                    ? const WindowsMediumContactMeScreen()
+                    : screen == Screen.experience
+                        ? WindowsMediumExperienceScreen()
+                        : screen == Screen.projects
+                            ? ProjectsMediumNew()
+                            : const SizedBox.shrink(),
+            ],
+          );
+        },
       ),
     );
   }

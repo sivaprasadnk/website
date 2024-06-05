@@ -1,23 +1,18 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
+import 'package:spnk/utils/screen_type.dart';
 
-enum Screen { home, contactMe, projects, experience }
+class RouteController extends GetxController {
+  Rx<Screen> selectedScreen = Screen.home.obs;
+  // Screen get selectedScreen => Screen.home.obs;
 
-class RouteNotifier extends Notifier<Screen> {
-  @override
-  Screen build() {
-    return Screen.home;
+  void updateScreen(Screen newVaue) {
+    selectedScreen.value = newVaue;
   }
-
-  Screen get selectedScreen => state;
-
-  set selectedScreen(Screen name) {
-    state = name;
-  }
+  // set selectedScreen(Screen name) {
+  //   selectedScreen = name;
+  // }
 }
 
-final routeNotifierProvider = NotifierProvider<RouteNotifier, Screen>(() {
-  return RouteNotifier();
-});
 
 
 // // ignore_for_file: prefer_final_fields

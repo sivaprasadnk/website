@@ -1,16 +1,14 @@
-import 'package:riverpod/riverpod.dart';
+import 'package:get/get.dart';
+import 'package:spnk/data/contact_model.dart';
+import 'package:spnk/data/experience_model.dart';
+import 'package:spnk/data/project_model.dart';
 import 'package:spnk/domain/contact_entity.dart';
 import 'package:spnk/domain/experience_entity.dart';
 import 'package:spnk/domain/project_entity.dart';
 
-final contactProvider = Provider((ref) {
-  return contactList;
-});
+class DataController extends GetxController {
 
-final experienceProvider = Provider((ref) {
-  return expList;
-});
-
-final projectProvider = Provider((ref) {
-  return projectList;
-});
+  RxList<ContactModel> get contacts => contactList.obs;
+  RxList<ProjectModel> get projects => projectList.obs;
+  RxList<ExperienceModel> get experiences => experienceList.obs;
+}

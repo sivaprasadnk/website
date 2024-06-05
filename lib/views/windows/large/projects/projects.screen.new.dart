@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/provider/data_provider.dart';
-import 'package:spnk/views/provider/page_provider.dart';
+import 'package:spnk/views/provider/page_index_controller.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 import 'package:spnk/views/windows/large/projects/details.container.dart';
 import 'package:spnk/views/windows/large/projects/image.container.dart';
 
 // ignore: must_be_immutable
-class ProjectsScreenNew extends ConsumerWidget {
+class ProjectsScreenNew extends StatelessWidget {
   ProjectsScreenNew({Key? key}) : super(key: key);
 
   ///
   PageController controller = PageController();
+  DataController dataController = Get.find<DataController>();
+  PageIndexController pageIndexController = Get.find<PageIndexController>();
 
   ///
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final pageIndex = ref.watch(pageIndexProvider);
-    final projects = ref.watch(projectProvider);
+  Widget build(BuildContext context) {
+    // final pageIndex = ref.watch(pageIndexProvider);
+    final projects = dataController.projects;
+    final pageIndex = pageIndexController.pageIndex.value;
+
     final showNextIcon = pageIndex < projects.length - 1;
     final showPrevIcon = pageIndex != 0;
     return Column(
@@ -55,8 +59,7 @@ class ProjectsScreenNew extends ConsumerWidget {
                     child: Icon(
                       Icons.arrow_back_ios,
                       color: Theme.of(context).splashColor,
-                    ).showCursorOnHover
-                        ,
+                    ).showCursorOnHover,
                   ),
                 ),
               SizedBox(
@@ -64,8 +67,8 @@ class ProjectsScreenNew extends ConsumerWidget {
                 width: 800,
                 child: PageView(
                   onPageChanged: (page) {
-                    ref.read(pageIndexProvider.notifier).pageIndex =
-                        page.toDouble();
+                    // ref.read(pageIndexProvider.notifier).pageIndex =
+                    //     page.toDouble();
                   },
                   controller: controller,
                   children: projects.map((project) {
@@ -111,6 +114,7 @@ class ProjectsScreenNew extends ConsumerWidget {
                 ),
             ],
           ),
+            
         ),
       ],
     );
