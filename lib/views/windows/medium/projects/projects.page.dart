@@ -31,7 +31,7 @@ class ProjectsPage extends ConsumerWidget {
           child: PageView(
             onPageChanged: (pageIndex) {
               ref.read(pageIndexProvider.notifier).pageIndex =
-                  pageIndex.toDouble();
+                  pageIndex;
             },
             controller: controller,
             children: projects.map((project) {

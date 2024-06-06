@@ -1,18 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PageIndexProvider extends Notifier<double> {
+class PageIndexProvider extends Notifier<int> {
   @override
-  double build() {
+  int build() {
     return 0;
   }
 
-  double get pageIndex => state;
+  int get pageIndex => state;
 
-  set pageIndex(double value) {
+  set pageIndex(int value) {
     state = value;
   }
 }
 
-final pageIndexProvider = NotifierProvider<PageIndexProvider, double>(() {
+final pageIndexProvider = NotifierProvider<PageIndexProvider, int>(() {
   return PageIndexProvider();
 });

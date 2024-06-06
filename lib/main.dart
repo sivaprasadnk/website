@@ -30,7 +30,7 @@ class MyApp extends ConsumerWidget {
           PointerDeviceKind.mouse,
           PointerDeviceKind.touch,
           PointerDeviceKind.stylus,
-          PointerDeviceKind.unknown
+          PointerDeviceKind.unknown,
         },
       ),
       title: 'Sivaprasad NK',

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/views/provider/menu_provider.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
 
 class AndroidHomeScreen extends ConsumerWidget {
@@ -18,19 +17,7 @@ class AndroidHomeScreen extends ConsumerWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.only(
-                right: 10,
-                top: 20,
-                left: screenWidth * 0.8,
-              ),
-              child: IconButton(
-                icon: const Icon(Icons.menu, color: Colors.white),
-                onPressed: () {
-                  ref.read(menuNotifierProvider.notifier).menuSelected = true;
-                },
-              ),
-            ),
+            
             SizedBox(height: screenHeight * 0.23),
             Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.1),
@@ -71,7 +58,7 @@ class AndroidHomeScreen extends ConsumerWidget {
                             fontFamily: kFontFamily2,
                             color: Colors.white,
                           ),
-                        )
+                        ),
                       ],
                     ),
                     const SizedBox(height: 5),
@@ -83,7 +70,7 @@ class AndroidHomeScreen extends ConsumerWidget {
                         fontFamily: kFontFamily2,
                         color: Colors.white,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

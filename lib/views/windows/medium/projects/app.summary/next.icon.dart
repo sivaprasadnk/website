@@ -15,7 +15,8 @@ class NextIcon extends ConsumerWidget {
             duration: const Duration(seconds: 1),
             curve: Curves.bounceOut,
         );
-        ref.read(pageIndexProvider.notifier).pageIndex = controller.page! + 1;
+        ref.read(pageIndexProvider.notifier).pageIndex =
+            (controller.page! + 1).toInt();
       },
       child: SizedBox(
         height: 20,

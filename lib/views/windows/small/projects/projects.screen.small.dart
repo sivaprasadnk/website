@@ -56,7 +56,7 @@ class _ProjectsScreenSmallState extends ConsumerState<ProjectsScreenSmall> {
                   controller: controller,
                   onPageChanged: (pageIndex) {
                     ref.read(pageIndexProvider.notifier).pageIndex =
-                        pageIndex.toDouble();
+                        pageIndex;
                   },
                   children: projects.map((proj) {
                     return ProjectItemSmall(

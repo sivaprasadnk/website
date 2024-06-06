@@ -28,9 +28,25 @@ class AndroidHome extends ConsumerWidget {
     debugPrint('.. @@menuSelectedCheck =>$menuSelectedCheck');
     return PopScope(
       canPop: false,
-      // onWillPop: () async => false,
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(0, 34, 51, 1),
+        appBar: AppBar(
+          actions: [
+            Padding(
+              padding: EdgeInsets.only(
+                right: 10,
+                top: 20,
+                left: screenWidth * 0.8,
+              ),
+              child: IconButton(
+                icon: const Icon(Icons.menu, color: Colors.white),
+                onPressed: () {
+                  ref.read(menuNotifierProvider.notifier).menuSelected = true;
+                },
+              ),
+            ),
+          ],
+        ),
         body: SizedBox(
           width: screenWidth,
           child: Stack(

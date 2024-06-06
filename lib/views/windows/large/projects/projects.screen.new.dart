@@ -65,7 +65,7 @@ class ProjectsScreenNew extends ConsumerWidget {
                 child: PageView(
                   onPageChanged: (page) {
                     ref.read(pageIndexProvider.notifier).pageIndex =
-                        page.toDouble();
+                        page;
                   },
                   controller: controller,
                   children: projects.map((project) {

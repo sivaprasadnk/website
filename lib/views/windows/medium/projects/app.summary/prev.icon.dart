@@ -20,7 +20,8 @@ class PrevIcon extends ConsumerWidget {
             curve: Curves.bounceOut,
           );
         // }
-        ref.read(pageIndexProvider.notifier).pageIndex = controller.page! - 1;
+        ref.read(pageIndexProvider.notifier).pageIndex =
+            (controller.page! - 1).toInt();
         // provider.updatePage(controller.page! - 1);
       },
       child: SizedBox(

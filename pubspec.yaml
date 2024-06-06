@@ -1,3 +1,5 @@
+# flutter build web --wasm --no-tree-shake-icons
+
 name: spnk
 description: Sivaprasad NK's portfolio
 

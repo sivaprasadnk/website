@@ -125,7 +125,7 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
                     child: PageView(
                       onPageChanged: (pageIndex) {
                         ref.read(pageIndexProvider.notifier).pageIndex =
-                            pageIndex.toDouble();
+                            pageIndex;
                       },
                       controller: controller,
                       children: ref.watch(projectProvider).map((project) {
@@ -135,6 +135,7 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
                             children: [
                               ImageContainerSmall(
                                 imagePath: project.bgAssetPath,
+                                isWeb: project.isWeb,
                               ),
                               Positioned.fill(
                                 left: 20,
@@ -153,7 +154,7 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
                                           GestureDetector(
                                             onTap: () async {
                                               await launchUrl(
-                                                Uri.parse(spQuizLink),
+                                                Uri.parse(project.url),
                                               );
                                             },
                                             child:
