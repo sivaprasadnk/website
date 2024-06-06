@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 
 class ViewMoreContainerSmall extends StatelessWidget {
@@ -16,21 +17,21 @@ class ViewMoreContainerSmall extends StatelessWidget {
       ),
       child: Center(
         child: screenWidth > 600
-            ? const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8),
+            ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Text(
                   'View More',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: kWhiteColor,
                     fontSize: 12,
                   ),
                 ),
               )
-            : const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8),
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Icon(
                   Icons.info,
-                  color: Colors.white,
+                  color: kWhiteColor,
                 ),
               ),
       ),

@@ -77,7 +77,7 @@
 //                 child: Align(
 //                   alignment: Alignment.topRight,
 //                   child: IconButton(
-//                     icon: Icon(Icons.menu, color: Colors.white),
+//                     icon: Icon(Icons.menu, color: kWhiteColor),
 //                     onPressed: () {
 //                       Provider.of<RouteProvider>(context, listen: false)
 //                           .setMenuSelected(check: true);
@@ -122,7 +122,7 @@
 //                                               fontFamily: 'PlayfairDisplay',
 //                                               fontWeight: FontWeight.bold,
 //                                               fontSize: 40,
-//                                               color: Colors.white),
+//                                               color: kWhiteColor),
 //                                         ),
 //                                       ),
 //                                     ),
@@ -140,7 +140,7 @@
 //                                           "\nFlutter Developer from \nTripunithura, Kerala .",
 //                                           style: TextStyle(
 //                                             fontWeight: FontWeight.bold,
-//                                             color: Colors.white,
+//                                             color: kWhiteColor,
 //                                             fontSize: 23,
 //                                           ),
 //                                         ),

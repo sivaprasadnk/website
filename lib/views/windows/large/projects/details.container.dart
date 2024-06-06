@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
@@ -45,9 +46,9 @@ class DetailsContainer extends StatelessWidget {
             padding: const EdgeInsets.only(left: 30, top: 20),
             child: Text(
               title,
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'PlayfairDisplay',
-                color: Colors.white,
+                color: kWhiteColor,
                 fontWeight: FontWeight.bold,
                 fontSize: 28.0,
               ),
@@ -114,8 +115,8 @@ class DetailsContainer extends StatelessWidget {
             padding: const EdgeInsets.only(left: 20, top: 10, right: 20),
             child: Text(
               desc1,
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: kWhiteColor,
                 fontSize: 15,
                 fontWeight: FontWeight.w100,
               ),
@@ -128,8 +129,8 @@ class DetailsContainer extends StatelessWidget {
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Text(
               desc2,
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: kWhiteColor,
                 fontSize: 15,
                 fontWeight: FontWeight.w100,
               ),
@@ -150,7 +151,7 @@ class DetailsContainer extends StatelessWidget {
                     url: link,
                   ).showCursorOnHover
                 : const VisitLinkContainer(),
-          )
+          ),
         ],
       ),
     );
@@ -172,34 +173,34 @@ class VisitLinkContainer extends StatelessWidget {
         margin: const EdgeInsets.only(left: 5, top: 10, right: 20),
         decoration: BoxDecoration(
           color: Colors.black,
-          border: Border.all(color: Colors.grey),
+          border: Border.all(color: kGreyColor),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               FaIcon(
                 FontAwesomeIcons.externalLinkAlt,
-                color: Colors.white,
+                color: kWhiteColor,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 1,
               ),
               Padding(
-                padding: EdgeInsets.only(top: 1, left: 5),
+                padding: const EdgeInsets.only(top: 1, left: 5),
                 child: Text(
                   'Click here to visit',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: kWhiteColor,
                     fontWeight: FontWeight.w800,
                     fontSize: 20,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 15,
               ),
             ],

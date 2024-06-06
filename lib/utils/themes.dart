@@ -1,7 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_strings.dart';
 
-ThemeData light = ThemeData(
+ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primarySwatch: Colors.indigo,
   splashColor: const Color(0xFF002278),
@@ -12,13 +13,13 @@ ThemeData light = ThemeData(
       color: Color.fromRGBO(0, 34, 120, 1),
     ),
     displayMedium: TextStyle(
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 30,
       color: const Color.fromRGBO(0, 34, 120, 1),
     ),
     displaySmall: TextStyle(
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 20,
       color: const Color.fromRGBO(0, 34, 120, 1),
@@ -29,7 +30,7 @@ ThemeData light = ThemeData(
       color: Color.fromRGBO(0, 34, 120, 1),
     ),
     titleLarge: TextStyle(
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 35,
       color: const Color.fromRGBO(0, 34, 120, 1),
@@ -37,7 +38,7 @@ ThemeData light = ThemeData(
     bodyLarge: TextStyle(
       fontSize: 21,
       fontWeight: FontWeight.bold,
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       color: const Color.fromRGBO(0, 34, 120, 1),
     ),
   ),
@@ -52,7 +53,7 @@ ThemeData light = ThemeData(
   scaffoldBackgroundColor: const Color.fromRGBO(239, 239, 239, 1),
 );
 
-ThemeData dark = ThemeData(
+ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   scaffoldBackgroundColor: const Color.fromRGBO(0, 34, 51, 1),
   splashColor: Colors.white,
@@ -63,13 +64,13 @@ ThemeData dark = ThemeData(
       color: Colors.white,
     ),
     displayMedium: TextStyle(
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 30,
       color: Colors.white,
     ),
     displaySmall: TextStyle(
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 20,
       color: Colors.white,
@@ -81,7 +82,7 @@ ThemeData dark = ThemeData(
     ),
     titleLarge: TextStyle(
       fontSize: 35,
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
@@ -89,7 +90,7 @@ ThemeData dark = ThemeData(
       fontWeight: FontWeight.bold,
       color: Colors.white,
       fontSize: 21,
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
     ),
   ),
   primarySwatch: Colors.cyan,

@@ -2,6 +2,7 @@ import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
@@ -179,15 +180,15 @@ class DetailsContainer extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: Colors.red,
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.close,
                   size: 18,
-                  color: Colors.white,
+                  color: kWhiteColor,
                 ).showCursorOnHover,
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -207,34 +208,34 @@ class VisitLinkContainer extends StatelessWidget {
         margin: const EdgeInsets.only(left: 20, top: 4, right: 20),
         decoration: BoxDecoration(
           color: Colors.black,
-          border: Border.all(color: Colors.grey),
+          border: Border.all(color: kGreyColor),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               FaIcon(
                 FontAwesomeIcons.externalLinkAlt,
-                color: Colors.white,
+                color: kWhiteColor,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 1,
               ),
               Padding(
-                padding: EdgeInsets.only(top: 1, left: 5),
+                padding: const EdgeInsets.only(top: 1, left: 5),
                 child: Text(
                   'Click here to visit',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: kWhiteColor,
                     fontWeight: FontWeight.w800,
                     fontSize: 20,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 15,
               ),
             ],

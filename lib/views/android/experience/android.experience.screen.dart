@@ -1,74 +1,33 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
-import 'package:spnk/views/android/android_bg_curve.dart';
 import 'package:spnk/views/android/description_text.dart';
 import 'package:spnk/views/provider/data_provider.dart';
-import 'package:spnk/views/provider/menu_provider.dart';
-import 'package:spnk/views/provider/route_provider.dart';
 
 class AndroidExperienceScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final expList = ref.watch(experienceProvider);
-    return Stack(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Positioned.fill(
-          child: Align(
-            child: CustomPaint(
-              painter: AndroidBgCurve(ctx: context),
-              child: Container(),
+        Padding(
+          padding: const EdgeInsets.only(left: 30),
+          child: Text(
+            'Experience',
+            style: TextStyle(
+              fontFamily: kRajdhaniFontFamily,
+              fontWeight: FontWeight.bold,
+              fontSize: 35,
+              color: Colors.white,
             ),
           ),
         ),
         const AndroidDashImage(dashImage: 'dash2'),
-        Padding(
-          padding: EdgeInsets.only(
-            right: 10,
-            top: 20,
-            left: context.screenWidth * 0.8,
-          ),
-          child: Align(
-            alignment: Alignment.topRight,
-            child: IconButton(
-              icon: const Icon(Icons.menu, color: Colors.white),
-              onPressed: () {
-                ref.read(menuNotifierProvider.notifier).menuSelected = false;
-                ref.read(routeNotifierProvider.notifier).selectedScreen =
-                    Screen.home;
-              },
-            ),
-          ),
-        ),
-        SizedBox(
-          height: context.screenHeight,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                height: context.screenHeight * 0.15,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30),
-                child: Text(
-                  'Experience',
-                  style: TextStyle(
-                    fontFamily: kFontFamily2,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 35,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              // Spacer(),
-              SizedBox(
-                height: context.screenHeight * 0.12,
-              ),
-              LiveList(
+        LiveList(
                 shrinkWrap: true,
                 padding: const EdgeInsets.only(
                   left: 16,
@@ -97,12 +56,7 @@ class AndroidExperienceScreen extends ConsumerWidget {
                   );
                 }),
               ),
-              SizedBox(
-                height: context.screenHeight * 0.08,
-              ),
-            ],
-          ),
-        ),
+        
       ],
     );
   }
@@ -147,7 +101,7 @@ class MyPainter extends CustomPainter {
     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
     final Paint paint = Paint()
       // ..color = Color.fromRGBO(7, 17, 26, 1)
-      ..color = Colors.white
+      ..color = kWhiteColor
       ..style = PaintingStyle.fill
       ..strokeWidth = 5.0;
 

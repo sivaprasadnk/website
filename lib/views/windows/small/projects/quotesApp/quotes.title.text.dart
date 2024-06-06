@@ -210,7 +210,7 @@ class QuotesTitleTextSmall extends StatelessWidget {
 //                 child: const Icon(
 //                   Icons.close,
 //                   size: 18,
-//                   color: Colors.white,
+//                   color: kWhiteColor,
 //                 ).showCursorOnHover,
 //               ),
 //             ),

@@ -60,7 +60,7 @@
 //                             'My Projects',
 //                             style: TextStyle(
 //                               fontFamily: 'PatuaOne',
-//                               color: Colors.white,
+//                               color: kWhiteColor,
 //                               fontSize: 21.0,
 //                             ),
 //                           ),
@@ -110,7 +110,7 @@
 //                                   style: TextStyle(
 //                                     fontSize: i == 0 ? 40 : 55,
 //                                     fontFamily: 'Gugi',
-//                                     color: Colors.white,
+//                                     color: kWhiteColor,
 //                                   ),
 //                                 ),
 //                               ),

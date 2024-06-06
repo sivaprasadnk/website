@@ -2,6 +2,8 @@ import 'package:animate_do/animate_do.dart';
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/utils/common_colors.dart';
+import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/provider/menu_provider.dart';
 // import 'package:provider/provider.dart';
 import 'package:spnk/views/provider/route_provider.dart';
@@ -186,11 +188,11 @@ class _ListItemState extends State<ListItem> {
 
     const hoverColor = Colors.cyan;
     final normalColor =
-        isDarkTheme ? Colors.white : const Color.fromRGBO(0, 34, 120, 1);
+        isDarkTheme ? kWhiteColor : const Color.fromRGBO(0, 34, 120, 1);
     return Theme(
       data: ThemeData(
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
+        splashColor: kTransparentColor,
+        highlightColor: kTransparentColor,
       ),
       child: MouseRegion(
         opaque: false,
@@ -209,7 +211,7 @@ class _ListItemState extends State<ListItem> {
           child: ListTile(
             dense: true,
             // hoverColor: const Color.fromRGBO(249, 139, 125, 1),
-            hoverColor: Colors.transparent,
+            hoverColor: kTransparentColor,
             onTap: () {
               widget.callback.call();
               setState(() {});
@@ -217,7 +219,7 @@ class _ListItemState extends State<ListItem> {
             leading: Icon(
               widget.icon,
               color: !isHovering ? normalColor : hoverColor,
-              // color: isHovering ? Colors.cyanAccent : Colors.white,
+              // color: isHovering ? Colors.cyanAccent : kWhiteColor,
             ),
             title: Text(
               widget.title,
@@ -226,7 +228,7 @@ class _ListItemState extends State<ListItem> {
                   ),
               // style: TextStyle(
               //   fontFamily: 'PlayfairDisplay',
-              //   color: isHovering ? Colors.cyanAccent : Colors.white,
+              //   color: isHovering ? Colors.cyanAccent : kWhiteColor,
               //   fontWeight: FontWeight.bold,
               //   fontSize: 30,
               // ),

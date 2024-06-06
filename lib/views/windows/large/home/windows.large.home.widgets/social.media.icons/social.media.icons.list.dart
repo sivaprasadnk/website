@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icon.item.dart';
 
@@ -17,52 +18,49 @@ class SocialMediaIconsList extends StatelessWidget {
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
 
     final normalColor = isMobile
-        ? Colors.white
+        ? kWhiteColor
         : isDarkTheme
-            ? Colors.white
+            ? kWhiteColor
             : const Color.fromRGBO(0, 34, 120, 1);
-    return Padding(
-      padding: const EdgeInsets.only(left: 20),
-      child: FadeInRight(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SocialMediaIconItem(
-              icon: FontAwesomeIcons.facebook,
-              url: fbLink,
-              iconColor: Colors.white,
-              isMobile: isMobile,
-            ),
-            const SizedBox(height: spacing),
-            SocialMediaIconItem(
-              icon: FontAwesomeIcons.instagram,
-              url: instaLink,
-              iconColor: Colors.white,
-              isMobile: isMobile,
-            ),
-            const SizedBox(height: spacing),
-            SocialMediaIconItem(
-              icon: FontAwesomeIcons.whatsapp,
-              url: whatsappWebLink,
-              iconColor: Colors.white,
-              isMobile: isMobile,
-            ),
-            const SizedBox(height: spacing),
-            SocialMediaIconItem(
-              icon: FontAwesomeIcons.linkedin,
-              url: linkedInLink,
-              iconColor: normalColor,
-              isMobile: isMobile,
-            ),
-            const SizedBox(height: spacing),
-            SocialMediaIconItem(
-              icon: FontAwesomeIcons.github,
-              url: githubLink,
-              iconColor: normalColor,
-              isMobile: isMobile,
-            ),
-          ],
-        ),
+    return FadeInRight(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SocialMediaIconItem(
+            icon: FontAwesomeIcons.facebook,
+            url: fbLink,
+            iconColor: kWhiteColor,
+            isMobile: isMobile,
+          ),
+          const SizedBox(height: spacing),
+          SocialMediaIconItem(
+            icon: FontAwesomeIcons.instagram,
+            url: instaLink,
+            iconColor: kWhiteColor,
+            isMobile: isMobile,
+          ),
+          const SizedBox(height: spacing),
+          SocialMediaIconItem(
+            icon: FontAwesomeIcons.whatsapp,
+            url: whatsappWebLink,
+            iconColor: kWhiteColor,
+            isMobile: isMobile,
+          ),
+          const SizedBox(height: spacing),
+          SocialMediaIconItem(
+            icon: FontAwesomeIcons.linkedin,
+            url: linkedInLink,
+            iconColor: normalColor,
+            isMobile: isMobile,
+          ),
+          const SizedBox(height: spacing),
+          SocialMediaIconItem(
+            icon: FontAwesomeIcons.github,
+            url: githubLink,
+            iconColor: normalColor,
+            isMobile: isMobile,
+          ),
+        ],
       ),
     );
   }

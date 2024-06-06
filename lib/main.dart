@@ -12,8 +12,8 @@ import 'package:spnk/views/windows/medium/home/windows.medium.home.dart';
 import 'package:spnk/views/windows/small/home/windows.small.home.dart';
 
 // lottie https://assets1.lottiefiles.com/packages/lf20_j1uvfzu5.json
-
 // https://assets8.lottiefiles.com/packages/lf20_zGHcl0.json
+
 void main() {
   runApp(ProviderScope(child: MyApp()));
 }
@@ -23,7 +23,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     precacheImage(const AssetImage('assets/images/mesh1.jpg'), context);
     precacheImage(const AssetImage('assets/images/dash/dash1.png'), context);
-    final darktheme = ref.watch(themeNotifierProvider);
+    final isDarktheme = ref.watch(themeNotifierProvider);
     return MaterialApp(
       scrollBehavior: const MaterialScrollBehavior().copyWith(
         dragDevices: {
@@ -35,17 +35,13 @@ class MyApp extends ConsumerWidget {
       ),
       title: 'Sivaprasad NK',
       debugShowCheckedModeBanner: false,
-      theme: darktheme ? dark : light,
+      theme: isDarktheme ? darkTheme : lightTheme,
       routes: {
         '/': (context) => const SplashScreen(),
-        // IosHomeScreen.routeName: (context) => IosHomeScreen(),
       },
     );
   }
 }
-
-/// note8 screenWidth : 392.72727272727275
-/// note8 screenHeight  : 803.6363636363636
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);

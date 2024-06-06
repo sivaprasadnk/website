@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 
 class AndroidCustomMenuItem extends StatelessWidget {
   const AndroidCustomMenuItem(
-      {Key? key, required this.title, required this.icon})
+      {
+    Key? key,
+    required this.title,
+    required this.icon,
+  })
       : super(key: key);
 
   final String title;
@@ -21,16 +26,16 @@ class AndroidCustomMenuItem extends StatelessWidget {
       child: ListTile(
         leading: Icon(
           icon,
-          color: Colors.white,
+          color: kWhiteColor,
           size: menuFontSize,
         ),
         title: Text(
           title,
           style: TextStyle(
-            fontFamily: kFontFamily2,
+            fontFamily: kRajdhaniFontFamily,
             fontWeight: FontWeight.bold,
             fontSize: menuFontSize,
-            color: Colors.white,
+            color: kWhiteColor,
           ),
         ),
       ),

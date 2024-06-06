@@ -82,7 +82,7 @@
 //                           projectSelected = false;
 //                         });
 //                       },
-//                       child: nameText(textColor: Colors.white),
+//                       child: nameText(textColor: kWhiteColor),
 //                     ),
 //                   ),
 //                   Expanded(
@@ -120,7 +120,7 @@
 //                             fontFamily: 'PatuaOne',
 //                             color: _isHovering[0]
 //                                 ? Colors.blue.shade200
-//                                 : Colors.white,
+//                                 : kWhiteColor,
 //                           ),
 //                         ),
 //                         SizedBox(height: 5),
@@ -133,7 +133,7 @@
 //                           child: Container(
 //                             height: 2,
 //                             width: 40,
-//                             color: Colors.white,
+//                             color: kWhiteColor,
 //                           ),
 //                         )
 //                       ],
@@ -165,7 +165,7 @@
 //                             fontFamily: 'PatuaOne',
 //                             color: _isHovering[1]
 //                                 ? Colors.blue.shade200
-//                                 : Colors.white,
+//                                 : kWhiteColor,
 //                           ),
 //                         ),
 //                         SizedBox(height: 5),
@@ -178,7 +178,7 @@
 //                           child: Container(
 //                             height: 2,
 //                             width: 40,
-//                             color: Colors.white,
+//                             color: kWhiteColor,
 //                           ),
 //                         )
 //                       ],
@@ -218,7 +218,7 @@
 //                                         strokeCap: StrokeCap.round,
 //                                         strokeColor: Colors.teal,
 //                                         child:
-//                                             nameText(textColor: Colors.white))),
+//                                             nameText(textColor: kWhiteColor))),
 //                                 SizedBox(height: 20),
 //                                 Row(
 //                                   mainAxisAlignment: MainAxisAlignment.center,

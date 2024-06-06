@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 
 class ViewMoreContainer extends StatelessWidget {
@@ -12,12 +13,12 @@ class ViewMoreContainer extends StatelessWidget {
         color: const Color.fromRGBO(0, 34, 120, 1),
         borderRadius: BorderRadius.circular(5),
       ),
-      child: const Padding(
-        padding: EdgeInsets.all(8.0),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Text(
           'View',
           style: TextStyle(
-            color: Colors.white,
+            color: kWhiteColor,
             fontSize: 12,
           ),
         ),

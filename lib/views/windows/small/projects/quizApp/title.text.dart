@@ -1,5 +1,6 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 // import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
@@ -206,15 +207,15 @@ class DetailsContainer extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: Colors.red,
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.close,
                   size: 18,
-                  color: Colors.white,
+                  color: kWhiteColor,
                 ).showCursorOnHover,
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -238,7 +239,7 @@ class WinddowsGooglePlayButton extends StatelessWidget {
         height: 50,
         decoration: BoxDecoration(
           color: Colors.black,
-          border: Border.all(color: Colors.grey),
+          border: Border.all(color: kGreyColor),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
@@ -255,8 +256,8 @@ class WinddowsGooglePlayButton extends StatelessWidget {
             const SizedBox(
               width: 1,
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 5, left: 5),
+            Padding(
+              padding: const EdgeInsets.only(top: 5, left: 5),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -264,17 +265,17 @@ class WinddowsGooglePlayButton extends StatelessWidget {
                   Text(
                     'GET IT ON',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: kWhiteColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 10,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(right: 8, bottom: 5),
+                    padding: const EdgeInsets.only(right: 8, bottom: 5),
                     child: Text(
                       'Google Play',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: kWhiteColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
                       ),
@@ -282,7 +283,7 @@ class WinddowsGooglePlayButton extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

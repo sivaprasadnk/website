@@ -99,5 +99,5 @@ String quizImageAssetPath = 'assets/images/quizApp/design1.png';
 String quotesAppImageAssetPath = 'assets/images/quotesApp/screen2.png';
 String websiteImageAssetPath = "assets/images/website/screen4.png";
 
-String kFontFamily1 = 'PlayfairDisplay';
-String kFontFamily2 = 'Rajdhani';
+String kPlayfairDisplayFontFamily = 'PlayfairDisplay';
+String kRajdhaniFontFamily = 'Rajdhani';

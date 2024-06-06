@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 
 class CloseButtonSmall extends StatelessWidget {
@@ -21,10 +22,10 @@ class CloseButtonSmall extends StatelessWidget {
               shape: BoxShape.circle,
               color: Colors.red,
             ),
-            child: const Icon(
+            child: Icon(
               Icons.close,
               size: 18,
-              color: Colors.white,
+              color: kWhiteColor,
             ).showCursorOnHover,
           ),
         ),

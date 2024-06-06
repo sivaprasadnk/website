@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 
 class TabItem extends StatefulWidget {
@@ -30,11 +31,11 @@ class _TabItemState extends State<TabItem> {
     final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     const hoverColor = Colors.cyan;
     final normalColor =
-        !isDarkTheme ? const Color.fromRGBO(0, 34, 120, 1) : Colors.white;
+        !isDarkTheme ? const Color.fromRGBO(0, 34, 120, 1) : kWhiteColor;
     return MouseRegion(
-      // hoverColor: Colors.transparent,
-      // splashColor: Colors.transparent,
-      // highlightColor: Colors.transparent,
+      // hoverColor: kTransparentColor,
+      // splashColor: kTransparentColor,
+      // highlightColor: kTransparentColor,
       onEnter: (_) {
         setState(() {
           isHovering = true;
@@ -55,12 +56,12 @@ class _TabItemState extends State<TabItem> {
             child: AutoSizeText(
               widget.title,
               style: TextStyle(
-                fontFamily: kFontFamily2,
+                fontFamily: kRajdhaniFontFamily,
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
                 // color: !isDarkTheme
                 //     ? const Color.fromRGBO(0, 34, 120, 1)
-                //     : Colors.white
+                //     : kWhiteColor
                 color: widget.tabController.index == widget.index
                     ? normalColor
                     : isHovering

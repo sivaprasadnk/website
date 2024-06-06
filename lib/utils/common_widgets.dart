@@ -2,7 +2,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -23,7 +25,7 @@ class GooglePlayButton extends StatelessWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: Colors.black,
-            border: Border.all(color: Colors.grey),
+            border: Border.all(color: kGreyColor),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Row(
@@ -40,8 +42,8 @@ class GooglePlayButton extends StatelessWidget {
               const SizedBox(
                 width: 5,
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 8),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,14 +51,14 @@ class GooglePlayButton extends StatelessWidget {
                     Text(
                       'GET IT ON',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: kWhiteColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       'Google Play',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: kWhiteColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 23,
                       ),
@@ -89,7 +91,7 @@ class WinddowsGooglePlayButton extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: Colors.black,
-          border: Border.all(color: Colors.grey),
+          border: Border.all(color: kGreyColor),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
@@ -106,8 +108,8 @@ class WinddowsGooglePlayButton extends StatelessWidget {
             const SizedBox(
               width: 1,
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 5, left: 5),
+            Padding(
+              padding: const EdgeInsets.only(top: 5, left: 5),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,17 +117,17 @@ class WinddowsGooglePlayButton extends StatelessWidget {
                   Text(
                     'GET IT ON',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: kWhiteColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 10,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(right: 8, bottom: 8),
+                    padding: const EdgeInsets.only(right: 8, bottom: 8),
                     child: Text(
                       'Google Play',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: kWhiteColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 21,
                       ),
@@ -154,11 +156,10 @@ class TitleText extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20, top: 30),
       child: Text(
         title,
-        style: const TextStyle(
-          // fontFamily: 'PlayfairDisplay',
-          // color: Colors.,
+        style: TextStyle(
+          fontFamily: kRajdhaniFontFamily,
           fontWeight: FontWeight.bold,
-          color: Colors.black,
+          color: kWhiteColor,
           fontSize: 20,
         ),
       ),
@@ -247,14 +248,14 @@ class WindowsRightFooter extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: size,
-            color: Colors.grey,
+            color: kGreyColor,
           ),
         ),
-        const AvatarGlow(
-          glowColor: Colors.grey,
+        AvatarGlow(
+          glowColor: kGreyColor,
           endRadius: 20.0,
           showTwoGlows: false,
-          child: Icon(
+          child: const Icon(
             Icons.favorite,
             color: Colors.red,
           ),
@@ -270,7 +271,7 @@ class WindowsRightFooter extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: size,
-            color: Colors.grey,
+            color: kGreyColor,
           ),
         ),
         FlutterLogo(
@@ -281,7 +282,7 @@ class WindowsRightFooter extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: size,
-            color: Colors.grey,
+            color: kGreyColor,
           ),
         ),
       ],
@@ -292,64 +293,58 @@ class WindowsRightFooter extends StatelessWidget {
 class AndroidRightFooter extends StatelessWidget {
   const AndroidRightFooter({
     Key? key,
-    required this.size,
+    this.size = 15,
   }) : super(key: key);
   final double size;
   @override
   Widget build(BuildContext context) {
-    return Positioned.fill(
-      bottom: 8,
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: FadeInUp(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                ' Made with ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size,
-                  color: Colors.grey,
-                ),
-              ),
-              const AvatarGlow(
-                glowColor: Colors.grey,
-                endRadius: 20.0,
-                showTwoGlows: false,
-                child: Icon(
-                  Icons.favorite,
-                  color: Colors.red,
-                ),
-              ),
-              // CircleAvatar(
-              //   child: Icon(
-              //     Icons.favorite,
-              //     color: Colors.red,
-              //   ),
-              // ),
-              Text(
-                ' in ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size,
-                  color: Colors.grey,
-                ),
-              ),
-              FlutterLogo(
-                size: size,
-              ),
-              Text(
-                ' Flutter  ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
+    return FadeInUp(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            ' Made with ',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: size,
+              color: kGreyColor,
+            ),
           ),
-        ),
+          AvatarGlow(
+            glowColor: kGreyColor,
+            endRadius: 20.0,
+            showTwoGlows: false,
+            child: const Icon(
+              Icons.favorite,
+              color: Colors.red,
+            ),
+          ),
+          // CircleAvatar(
+          //   child: Icon(
+          //     Icons.favorite,
+          //     color: Colors.red,
+          //   ),
+          // ),
+          Text(
+            ' in ',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: size,
+              color: kGreyColor,
+            ),
+          ),
+          FlutterLogo(
+            size: size,
+          ),
+          Text(
+            ' Flutter  ',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: size,
+              color: kGreyColor,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -366,7 +361,7 @@ class WindowsLeftFooter extends StatelessWidget {
         fontWeight: FontWeight.bold,
         fontSize: size,
         fontFamily: 'Roboto',
-        color: Colors.grey,
+        color: kGreyColor,
       ),
     );
   }
@@ -392,12 +387,12 @@ class ProPicWithBlobLottie extends StatelessWidget {
     return Stack(
       children: [
         Lottie.asset(blobLottieAssetPath, height: 280),
-        const Padding(
-          padding: EdgeInsets.all(40.0),
+        Padding(
+          padding: const EdgeInsets.all(40.0),
           child: CircleAvatar(
             radius: 95,
-            backgroundColor: Colors.transparent,
-            backgroundImage: AssetImage(proPicAssetPath),
+            backgroundColor: kTransparentColor,
+            backgroundImage: const AssetImage(proPicAssetPath),
           ),
         ),
       ],
@@ -464,20 +459,15 @@ class AndroidDashImage extends StatelessWidget {
   }) : super(key: key);
 
   final String dashImage;
-
   @override
   Widget build(BuildContext context) {
-    return Positioned.fill(
-      top: MediaQuery.of(context).size.height * 0.16,
-      right: -22,
-      // right: -MediaQuery.of(context).size.width * 0.08,
-      child: Align(
-        alignment: Alignment.topRight,
-        child: Image.asset(
-          'assets/images/dash/$dashImage.png',
-          height: MediaQuery.of(context).size.height * 0.18,
-        ),
+    return Align(
+      alignment: Alignment.topRight,
+      child: Image.asset(
+        'assets/images/dash/$dashImage.png',
+        height: context.screenHeight * 0.18,
       ),
     );
   }
+
 }

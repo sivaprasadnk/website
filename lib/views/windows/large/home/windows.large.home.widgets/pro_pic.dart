@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 
 class ProPic extends StatelessWidget {
@@ -29,12 +30,12 @@ class ProPic extends StatelessWidget {
               child: Stack(
                 children: [
                   Lottie.asset(blobLottieAssetPath, height: 350),
-                  const Padding(
-                    padding: EdgeInsets.all(60.0),
+                  Padding(
+                    padding: const EdgeInsets.all(60.0),
                     child: CircleAvatar(
                       radius: 115,
-                      backgroundColor: Colors.transparent,
-                      backgroundImage: AssetImage(proPicAssetPath),
+                      backgroundColor: kTransparentColor,
+                      backgroundImage: const AssetImage(proPicAssetPath),
                     ),
                   ),
                 ],

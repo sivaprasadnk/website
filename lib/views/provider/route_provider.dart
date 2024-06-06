@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/utils/screen_type.dart';
 
-enum Screen { home, contactMe, projects, experience }
 
 class RouteNotifier extends Notifier<Screen> {
   @override

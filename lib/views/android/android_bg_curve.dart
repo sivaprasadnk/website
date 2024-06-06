@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 
 class AndroidBgCurve extends CustomPainter {
   final BuildContext ctx;
@@ -9,7 +10,7 @@ class AndroidBgCurve extends CustomPainter {
     // final theme = Provider.of<ThemeNotifier>(ctx, listen: false);
     final Paint paint = Paint()
       // ..color = Color.fromRGBO(7, 17, 26, 1)
-      ..color = Colors.white
+      ..color = kWhiteColor
       ..style = PaintingStyle.fill
       ..strokeWidth = 5.0;
 

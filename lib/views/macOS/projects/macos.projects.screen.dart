@@ -1,5 +1,6 @@
 // import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MacOsProjectScreen extends StatefulWidget {
@@ -24,11 +25,11 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: screenWidth > 500
-                ? const Text(
+                ? Text(
                       'My Projects',
                       style: TextStyle(
                         fontFamily: 'PatuaOne',
-                        color: Colors.white,
+                      color: kWhiteColor,
                         fontSize: 21.0,
                     ),
                   )
@@ -73,13 +74,13 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.teal,
                             ),
-                            child: const Align(
+                            child: Align(
                               child: Text(
                                 'SP \nQuotes',
                                 style: TextStyle(
                                   fontSize: 40,
                                   fontFamily: 'Gugi',
-                                  color: Colors.white,
+                                  color: kWhiteColor,
                                 ),
                               ),
                             ),
@@ -122,13 +123,13 @@ class _MacOsProjectScreenState extends State<MacOsProjectScreen> {
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.teal,
                             ),
-                            child: const Align(
+                            child: Align(
                               child: Text(
                                 'SP \nQuiz',
                                 style: TextStyle(
                                   fontSize: 50,
                                   fontFamily: 'Gugi',
-                                  color: Colors.white,
+                                  color: kWhiteColor,
                                 ),
                               ),
                             ),

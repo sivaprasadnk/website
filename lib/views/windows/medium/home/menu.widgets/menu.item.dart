@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 
@@ -30,7 +31,7 @@ class _CustomMenuItemState extends State<CustomMenuItem> {
     const hoverColor = Colors.cyan;
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final normalColor =
-        isDarkTheme ? Colors.white : const Color.fromRGBO(0, 34, 120, 1);
+        isDarkTheme ? kWhiteColor : const Color.fromRGBO(0, 34, 120, 1);
     return MouseRegion(
       onEnter: (_) {
         setState(() {
@@ -50,7 +51,7 @@ class _CustomMenuItemState extends State<CustomMenuItem> {
           borderRadius: BorderRadius.circular(30),
           border: Border.all(
             width: 2,
-            color: widget.isSelected ? hoverColor : Colors.transparent,
+            color: widget.isSelected ? hoverColor : kTransparentColor,
           ),
         ),
         child: Padding(
@@ -60,14 +61,14 @@ class _CustomMenuItemState extends State<CustomMenuItem> {
               widget.title,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontFamily: kFontFamily2,
+                fontFamily: kRajdhaniFontFamily,
                 fontSize: 18,
                 color: widget.isSelected
                     ? normalColor
                     : !isHovering
                         ? normalColor
                         : hoverColor,
-                // color: !widget.isSelected? isHovering? hoverColor: isDarkTheme? Colors.white: const Color.fromRGBO(0, 34, 120, 1),
+                // color: !widget.isSelected? isHovering? hoverColor: isDarkTheme? kWhiteColor: const Color.fromRGBO(0, 34, 120, 1),
               ),
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 
 class CopyrightText extends StatelessWidget {
   const CopyrightText({
@@ -16,7 +17,7 @@ class CopyrightText extends StatelessWidget {
         fontWeight: FontWeight.bold,
         fontFamily: 'Roboto',
         fontSize: size,
-        color: Colors.grey,
+        color: kGreyColor,
       ),
     );
   }

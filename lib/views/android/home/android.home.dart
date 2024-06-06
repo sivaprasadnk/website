@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/android/contactme/android.contactme.screen.dart';
 import 'package:spnk/views/android/experience/android.experience.screen.dart';
 import 'package:spnk/views/android/home/android.home.screen.dart';
@@ -16,13 +18,9 @@ class AndroidHome extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screenSize = MediaQuery.of(context).size;
-    const double size = 15;
 
     final screenWidth = screenSize.width;
-    final screenHeight = screenSize.height;
-    // final screen = Provider.of<RouteProvider>(context).selectedSCreen;
     final screen = ref.watch(routeNotifierProvider);
-    // final menuSelectedCheck = Provider.of<RouteProvider>(context).menuSelected;
     final menuSelectedCheck = ref.watch(menuNotifierProvider);
     debugPrint('.. @@screen => $screen ');
     debugPrint('.. @@menuSelectedCheck =>$menuSelectedCheck');
@@ -30,7 +28,10 @@ class AndroidHome extends ConsumerWidget {
       canPop: false,
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(0, 34, 51, 1),
+        bottomNavigationBar: const AndroidRightFooter(),
+        extendBody: true,
         appBar: AppBar(
+          backgroundColor: kTransparentColor,
           actions: [
             Padding(
               padding: EdgeInsets.only(
@@ -38,41 +39,40 @@ class AndroidHome extends ConsumerWidget {
                 top: 20,
                 left: screenWidth * 0.8,
               ),
-              child: IconButton(
-                icon: const Icon(Icons.menu, color: Colors.white),
-                onPressed: () {
-                  ref.read(menuNotifierProvider.notifier).menuSelected = true;
-                },
-              ),
+              child: screen == Screen.menu
+                  ? IconButton(
+                      icon: Icon(Icons.close, color: kWhiteColor),
+                      onPressed: () {
+                        ref.read(menuNotifierProvider.notifier).menuSelected =
+                            false;
+                        ref
+                            .read(routeNotifierProvider.notifier)
+                            .selectedScreen = Screen.home;
+                      },
+                    )
+                  : IconButton(
+                      icon: Icon(Icons.menu, color: kWhiteColor),
+                      onPressed: () {
+                        ref.read(menuNotifierProvider.notifier).menuSelected =
+                            true;
+                        ref
+                            .read(routeNotifierProvider.notifier)
+                            .selectedScreen = Screen.menu;
+                      },
+                    ),
             ),
           ],
         ),
         body: SizedBox(
           width: screenWidth,
-          child: Stack(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              if (!menuSelectedCheck && screen == Screen.home)
-                Positioned.fill(
-                  top: screenHeight * 0.05,
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Image.asset(
-                      'assets/images/dash/dash1.png',
-                      height: 230,
-                    ),
-                  ),
-                ),
-              if (menuSelectedCheck)
-                const AndroidMenuScreen()
-              else
-                screen == Screen.home
-                    ? AndroidHomeScreen()
-                    : screen == Screen.projects
-                        ? const AndroidProjects()
-                        : screen == Screen.experience
-                            ? AndroidExperienceScreen()
-                            : AndroidContactMeScreen(),
-              if (menuSelectedCheck) const AndroidRightFooter(size: size),
+              if (screen == Screen.home) AndroidHomeScreen(),
+              if (screen == Screen.menu) const AndroidMenuScreen(),
+              if (screen == Screen.projects) const AndroidProjects(),
+              if (screen == Screen.experience) AndroidExperienceScreen(),
+              if (screen == Screen.contactMe) AndroidContactMeScreen(),
             ],
           ),
         ),

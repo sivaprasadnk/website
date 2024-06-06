@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GooglePlayButton extends StatelessWidget {
@@ -20,7 +21,7 @@ class GooglePlayButton extends StatelessWidget {
         margin: const EdgeInsets.only(left: 20, top: 10, right: 20),
         decoration: BoxDecoration(
           color: Colors.black,
-          border: Border.all(color: Colors.grey),
+          border: Border.all(color: kGreyColor),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
@@ -42,21 +43,21 @@ class GooglePlayButton extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     'GET IT ON',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: kWhiteColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 10,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(right: 8, bottom: 5),
+                    padding: const EdgeInsets.only(right: 8, bottom: 5),
                     child: Text(
                       'Google Play',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: kWhiteColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
                       ),
@@ -64,7 +65,7 @@ class GooglePlayButton extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

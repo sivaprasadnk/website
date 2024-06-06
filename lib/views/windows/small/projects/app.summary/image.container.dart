@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 
 class ImageContainerSmall extends StatelessWidget {
   const ImageContainerSmall({
@@ -22,7 +23,7 @@ class ImageContainerSmall extends StatelessWidget {
           bottomLeft: Radius.circular(10),
         ),
         color:
-            isWeb ? const Color.fromRGBO(155, 101, 101, 1) : Colors.transparent,
+            isWeb ? const Color.fromRGBO(155, 101, 101, 1) : kTransparentColor,
         // color: Color.fromARGB(255, 129, 144, 157),
       ),
       height: screenHeight * 0.71,

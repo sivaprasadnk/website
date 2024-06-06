@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/common/name_text.dart';
 import 'package:spnk/views/windows/common/theme_switch.dart';
@@ -112,10 +113,10 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TabBar(
-                        dividerColor: Colors.transparent,
-                        indicatorColor: Colors.transparent,
+                        dividerColor: kTransparentColor,
+                        indicatorColor: kTransparentColor,
                         overlayColor:
-                            WidgetStateProperty.all(Colors.transparent),
+                            WidgetStateProperty.all(kTransparentColor),
                         indicator: RectangularIndicator(
                           color: Colors.cyan,
                           strokeWidth: 0,

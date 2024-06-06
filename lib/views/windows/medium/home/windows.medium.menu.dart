@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/provider/page_provider.dart';
 import 'package:spnk/views/provider/route_provider.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/contact.me.menu.dart';

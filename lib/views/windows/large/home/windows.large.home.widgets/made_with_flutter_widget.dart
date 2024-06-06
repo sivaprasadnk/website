@@ -1,5 +1,6 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 
 class MadeWithFlutterWidget extends StatelessWidget {
   const MadeWithFlutterWidget({
@@ -19,15 +20,15 @@ class MadeWithFlutterWidget extends StatelessWidget {
           style: TextStyle(
             // fontWeight: FontWeight.bold,
             fontSize: size,
-            color: Colors.grey,
+            color: kGreyColor,
             fontFamily: 'Roboto',
           ),
         ),
-        const AvatarGlow(
-          glowColor: Colors.grey,
+        AvatarGlow(
+          glowColor: kGreyColor,
           endRadius: 20.0,
           showTwoGlows: false,
-          child: Icon(
+          child: const Icon(
             Icons.favorite,
             color: Colors.red,
           ),
@@ -43,7 +44,7 @@ class MadeWithFlutterWidget extends StatelessWidget {
           style: TextStyle(
             // fontWeight: FontWeight.bold,
             fontSize: size,
-            color: Colors.grey,
+            color: kGreyColor,
 
             fontFamily: 'Roboto',
           ),
@@ -56,7 +57,7 @@ class MadeWithFlutterWidget extends StatelessWidget {
           style: TextStyle(
             // fontWeight: FontWeight.bold,
             fontSize: size,
-            color: Colors.grey,
+            color: kGreyColor,
 
             fontFamily: 'Roboto',
           ),

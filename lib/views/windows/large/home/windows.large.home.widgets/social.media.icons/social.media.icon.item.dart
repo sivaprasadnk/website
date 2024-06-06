@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,9 +30,9 @@ class _SocialMediaIconItemState extends State<SocialMediaIconItem> {
   Widget build(BuildContext context) {
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return InkWell(
-      hoverColor: Colors.transparent,
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
+      hoverColor: kTransparentColor,
+      splashColor: kTransparentColor,
+      highlightColor: kTransparentColor,
       onHover: (val) {
         setState(() {
           isHovering = val;
@@ -40,11 +41,11 @@ class _SocialMediaIconItemState extends State<SocialMediaIconItem> {
       child: FaIcon(
         widget.icon,
         color: widget.isMobile
-            ? Colors.white
+            ? kWhiteColor
             : isHovering
                 ? Colors.cyan
                 : isDarkTheme
-                    ? Colors.white
+                    ? kWhiteColor
                     : const Color.fromRGBO(0, 34, 120, 1),
         size: 30,
       ),

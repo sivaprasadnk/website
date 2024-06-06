@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_colors.dart';
 
 class MinSize extends StatelessWidget {
   const MinSize({
@@ -34,7 +35,7 @@ class MinSize extends StatelessWidget {
         debugPrint('contentWidth => $contentWidth');
         return Theme(
           data: Theme.of(context).copyWith(
-            highlightColor: Colors.white, //Does not work
+            highlightColor: kWhiteColor, //Does not work
           ),
           child: SingleChildScrollView(
             physics: shouldScrollVertical
