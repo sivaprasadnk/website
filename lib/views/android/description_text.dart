@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/common_strings.dart';
 
 class DescriptionText extends StatelessWidget {
   final String description;
@@ -7,15 +8,14 @@ class DescriptionText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: 40,
+        left: 20,
         top: 5,
         right: 30,
       ),
       child: Text(
         description,
-        // 'A Quiz App with various categories ,and cool animations for each element on screen ',
-        style: const TextStyle(
-          // fontFamily: 'PlayfairDisplay',
+        style: TextStyle(
+          fontFamily: kRajdhaniFontFamily,
           color: Colors.grey,
           fontWeight: FontWeight.bold,
           fontSize: 15,

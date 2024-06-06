@@ -1,8 +1,11 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/android/menu/menu.widgets/menu.image.dart';
 import 'package:spnk/views/android/menu/menu.widgets/menu.item.dart';
+import 'package:spnk/views/provider/route_controller.dart';
 
 class AndroidMenuScreen extends StatefulWidget {
   const AndroidMenuScreen({Key? key}) : super(key: key);
@@ -58,95 +61,74 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
-    return SizedBox(
-      height: screenHeight,
-      child: Stack(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              MenuImage(showLottie: showLottie, screenWidth: screenWidth),
-              const SizedBox(
-                height: 25,
-              ),
-              LiveList(
-                shrinkWrap: true,
-                padding: const EdgeInsets.all(16),
-                showItemInterval: const Duration(milliseconds: 50),
-                itemCount: 4,
-                itemBuilder: animationItemBuilder((index) {
-                  switch (index) {
-                    case 0:
-                      return GestureDetector(
-                        onTap: () {
-                          // ref.read(menuNotifierProvider.notifier).menuSelected =
-                          //     false;
-                          // ref
-                          //     .read(routeNotifierProvider.notifier)
-                          //     .selectedScreen = Screen.home;
-                        },
-                        child: const AndroidCustomMenuItem(
-                          icon: FontAwesomeIcons.home,
-                          title: 'Home',
-                        ),
-                      );
-                    case 1:
-                      return GestureDetector(
-                        onTap: () {
-                          // ref.read(menuNotifierProvider.notifier).menuSelected =
-                          //     false;
-                          // ref
-                          //     .read(routeNotifierProvider.notifier)
-                          //     .selectedScreen = Screen.experience;
-                        },
-                        child: const AndroidCustomMenuItem(
-                          icon: Icons.work,
-                          title: 'Experience',
-                        ),
-                      );
 
-                    case 2:
-                      return GestureDetector(
-                        onTap: () {
-                          // ref.read(menuNotifierProvider.notifier).menuSelected =
-                          //     false;
-                          // ref
-                          //     .read(routeNotifierProvider.notifier)
-                          //     .selectedScreen = Screen.projects;
-                        },
-                        child: const AndroidCustomMenuItem(
-                          icon: Icons.apps,
-                          title: 'Projects',
-                        ),
-                      );
-                    case 3:
-                      return GestureDetector(
-                        onTap: () {
-                          // ref.read(menuNotifierProvider.notifier).menuSelected =
-                          //     false;
-                          // ref
-                          //     .read(routeNotifierProvider.notifier)
-                          //     .selectedScreen = Screen.contactMe;
-                        },
-                        child: const AndroidCustomMenuItem(
-                          icon: Icons.call,
-                          title: 'Contact',
-                        ),
-                      );
-                  }
-                  return Container();
-                }),
-              ),
-              SizedBox(
-                height: screenHeight * 0.15,
-              ),
-            ],
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        MenuImage(showLottie: showLottie, screenWidth: screenWidth),
+        const SizedBox(
+          height: 25,
+        ),
+        GetBuilder<RouteController>(
+          builder: (controller) {
+            return LiveList(
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(16),
+              showItemInterval: const Duration(milliseconds: 50),
+              itemCount: 4,
+              itemBuilder: animationItemBuilder((index) {
+                switch (index) {
+                  case 0:
+                    return GestureDetector(
+                      onTap: () {
+                        controller.updateScreen(Screen.home);
+                      },
+                      child: const AndroidCustomMenuItem(
+                        icon: FontAwesomeIcons.home,
+                        title: 'Home',
+                      ),
+                    );
+                  case 1:
+                    return GestureDetector(
+                      onTap: () {
+                        controller.updateScreen(Screen.experience);
+                      },
+                      child: const AndroidCustomMenuItem(
+                        icon: Icons.work,
+                        title: 'Experience',
+                      ),
+                    );
+
+                  case 2:
+                    return GestureDetector(
+                      onTap: () {
+                        controller.updateScreen(Screen.projects);
+                      },
+                      child: const AndroidCustomMenuItem(
+                        icon: Icons.apps,
+                        title: 'Projects',
+                      ),
+                    );
+                  case 3:
+                    return GestureDetector(
+                      onTap: () {
+                        controller.updateScreen(Screen.contactMe);
+                      },
+                      child: const AndroidCustomMenuItem(
+                        icon: Icons.call,
+                        title: 'Contact',
+                      ),
+                    );
+                }
+                return Container();
+              }),
+            );
+          },
+        ),
+      ],
     );
   }
 }

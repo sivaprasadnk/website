@@ -66,7 +66,7 @@ class _CustomMenuItemState extends State<CustomMenuItem> {
                   widget.title,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontFamily: kFontFamily2,
+                    fontFamily: kRajdhaniFontFamily,
                     fontSize: 18,
                     color: isSelected
                         ? normalColor

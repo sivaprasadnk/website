@@ -12,13 +12,13 @@ ThemeData lightTheme = ThemeData(
       color: Color.fromRGBO(0, 34, 120, 1),
     ),
     displayMedium: TextStyle(
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 30,
       color: const Color.fromRGBO(0, 34, 120, 1),
     ),
     displaySmall: TextStyle(
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 20,
       color: const Color.fromRGBO(0, 34, 120, 1),
@@ -29,7 +29,7 @@ ThemeData lightTheme = ThemeData(
       color: Color.fromRGBO(0, 34, 120, 1),
     ),
     titleLarge: TextStyle(
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 35,
       color: const Color.fromRGBO(0, 34, 120, 1),
@@ -37,7 +37,7 @@ ThemeData lightTheme = ThemeData(
     bodyLarge: TextStyle(
       fontSize: 21,
       fontWeight: FontWeight.bold,
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       color: const Color.fromRGBO(0, 34, 120, 1),
     ),
   ),
@@ -63,13 +63,13 @@ ThemeData darkTheme = ThemeData(
       color: Colors.white,
     ),
     displayMedium: TextStyle(
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 30,
       color: Colors.white,
     ),
     displaySmall: TextStyle(
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 20,
       color: Colors.white,
@@ -81,7 +81,7 @@ ThemeData darkTheme = ThemeData(
     ),
     titleLarge: TextStyle(
       fontSize: 35,
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
@@ -89,7 +89,7 @@ ThemeData darkTheme = ThemeData(
       fontWeight: FontWeight.bold,
       color: Colors.white,
       fontSize: 21,
-      fontFamily: kFontFamily2,
+      fontFamily: kRajdhaniFontFamily,
     ),
   ),
   primarySwatch: Colors.cyan,

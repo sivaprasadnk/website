@@ -3,74 +3,10 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
-
-class GooglePlayButton extends StatelessWidget {
-  final double screenWidth;
-  final String url;
-  const GooglePlayButton({required this.screenWidth, required this.url});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 40, right: screenWidth * 0.29, top: 20),
-      child: GestureDetector(
-        onTap: () {
-          launch(url);
-        },
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: Colors.black,
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'assets/images/google-play.png',
-                  height: 50,
-                  // width: 10,
-                ),
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 8),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'GET IT ON',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'Google Play',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 23,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class WinddowsGooglePlayButton extends StatelessWidget {
   final double screenWidth;
@@ -154,11 +90,10 @@ class TitleText extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20, top: 30),
       child: Text(
         title,
-        style: const TextStyle(
-          // fontFamily: 'PlayfairDisplay',
-          // color: Colors.,
+        style: TextStyle(
+          fontFamily: kRajdhaniFontFamily,
           fontWeight: FontWeight.bold,
-          color: Colors.black,
+          color: Colors.white,
           fontSize: 20,
         ),
       ),
@@ -292,64 +227,50 @@ class WindowsRightFooter extends StatelessWidget {
 class AndroidRightFooter extends StatelessWidget {
   const AndroidRightFooter({
     Key? key,
-    required this.size,
   }) : super(key: key);
-  final double size;
   @override
   Widget build(BuildContext context) {
-    return Positioned.fill(
-      bottom: 8,
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: FadeInUp(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                ' Made with ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size,
-                  color: Colors.grey,
-                ),
-              ),
-              const AvatarGlow(
-                glowColor: Colors.grey,
-                endRadius: 20.0,
-                showTwoGlows: false,
-                child: Icon(
-                  Icons.favorite,
-                  color: Colors.red,
-                ),
-              ),
-              // CircleAvatar(
-              //   child: Icon(
-              //     Icons.favorite,
-              //     color: Colors.red,
-              //   ),
-              // ),
-              Text(
-                ' in ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size,
-                  color: Colors.grey,
-                ),
-              ),
-              FlutterLogo(
-                size: size,
-              ),
-              Text(
-                ' Flutter  ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
+    return FadeInUp(
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            ' Made with ',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
+              color: Colors.grey,
+            ),
           ),
-        ),
+          AvatarGlow(
+            glowColor: Colors.grey,
+            endRadius: 20.0,
+            showTwoGlows: false,
+            child: Icon(
+              Icons.favorite,
+              color: Colors.red,
+            ),
+          ),
+          Text(
+            ' in ',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
+              color: Colors.grey,
+            ),
+          ),
+          FlutterLogo(
+            size: 15,
+          ),
+          Text(
+            ' Flutter  ',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
+              color: Colors.grey,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -467,16 +388,11 @@ class AndroidDashImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned.fill(
-      top: MediaQuery.of(context).size.height * 0.16,
-      right: -22,
-      // right: -MediaQuery.of(context).size.width * 0.08,
-      child: Align(
-        alignment: Alignment.topRight,
-        child: Image.asset(
-          'assets/images/dash/$dashImage.png',
-          height: MediaQuery.of(context).size.height * 0.18,
-        ),
+    return Align(
+      alignment: Alignment.topRight,
+      child: Image.asset(
+        'assets/images/dash/$dashImage.png',
+        height: context.screenHeight * 0.18,
       ),
     );
   }

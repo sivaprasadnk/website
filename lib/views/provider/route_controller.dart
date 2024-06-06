@@ -7,6 +7,7 @@ class RouteController extends GetxController {
 
   void updateScreen(Screen newVaue) {
     selectedScreen.value = newVaue;
+    update();
   }
   // set selectedScreen(Screen name) {
   //   selectedScreen = name;

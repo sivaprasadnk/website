@@ -3,102 +3,64 @@ import 'package:flutter/material.dart';
 import 'package:spnk/domain/experience_entity.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
-import 'package:spnk/views/android/android_bg_curve.dart';
 import 'package:spnk/views/android/description_text.dart';
 
 class AndroidExperienceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final expList = experienceList;
-    return Stack(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Positioned.fill(
-          child: Align(
-            child: CustomPaint(
-              painter: AndroidBgCurve(ctx: context),
-              child: Container(),
-            ),
-          ),
-        ),
-        const AndroidDashImage(dashImage: 'dash2'),
         Padding(
-          padding: EdgeInsets.only(
-            right: 10,
-            top: 20,
-            left: context.screenWidth * 0.8,
-          ),
-          child: Align(
-            alignment: Alignment.topRight,
-            child: IconButton(
-              icon: const Icon(Icons.menu, color: Colors.white),
-              onPressed: () {
-                // ref.read(menuNotifierProvider.notifier).menuSelected = false;
-                // ref.read(routeNotifierProvider.notifier).selectedScreen =
-                //     Screen.home;
-              },
+          padding: const EdgeInsets.only(left: 30),
+          child: Text(
+            'Experience',
+            style: TextStyle(
+              fontFamily: kRajdhaniFontFamily,
+              fontWeight: FontWeight.bold,
+              fontSize: 35,
+              color: Colors.white,
             ),
           ),
         ),
-        SizedBox(
-          height: context.screenHeight,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                height: context.screenHeight * 0.15,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30),
-                child: Text(
-                  'Experience',
-                  style: TextStyle(
-                    fontFamily: kFontFamily2,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 35,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              // Spacer(),
-              SizedBox(
-                height: context.screenHeight * 0.12,
-              ),
-              LiveList(
-                shrinkWrap: true,
-                padding: const EdgeInsets.only(
-                  left: 16,
-                  right: 16,
-                  bottom: 10,
-                ),
-                physics: const NeverScrollableScrollPhysics(),
-                showItemInterval: const Duration(milliseconds: 50),
-                itemCount: expList.length,
-                itemBuilder: animationItemBuilder((index) {
-                  final item =
-                      expList.firstWhere((element) => element.order == index);
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TitleText(
-                        title: item.title,
-                      ),
-                      DescriptionText(
-                        description: item.orgName,
-                      ),
-                      DescriptionText(
-                        description: "${item.startDate} - ${item.endDate}",
-                      ),
-                    ],
-                  );
-                }),
-              ),
-              SizedBox(
-                height: context.screenHeight * 0.08,
-              ),
-            ],
+        // Align(
+        //   child: CustomPaint(
+        //     painter: AndroidBgCurve(ctx: context),
+        //     size: const Size(300, 300),
+        //     child: Container(),
+        //   ),
+        // ),
+        const AndroidDashImage(dashImage: 'dash2'),
+        //
+        LiveList(
+          shrinkWrap: true,
+          padding: const EdgeInsets.only(
+            left: 16,
+            right: 16,
+            bottom: 10,
           ),
+          physics: const NeverScrollableScrollPhysics(),
+          showItemInterval: const Duration(milliseconds: 50),
+          itemCount: expList.length,
+          itemBuilder: animationItemBuilder((index) {
+            final item =
+                expList.firstWhere((element) => element.order == index);
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TitleText(
+                  title: item.title,
+                ),
+                DescriptionText(
+                  description: item.orgName,
+                ),
+                DescriptionText(
+                  description: "${item.startDate} - ${item.endDate}",
+                ),
+              ],
+            );
+          }),
         ),
       ],
     );

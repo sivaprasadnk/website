@@ -12,7 +12,6 @@ class AndroidCustomMenuItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
     final double menuFontSize = screenWidth * 0.07;
 
@@ -27,7 +26,7 @@ class AndroidCustomMenuItem extends StatelessWidget {
         title: Text(
           title,
           style: TextStyle(
-            fontFamily: kFontFamily2,
+            fontFamily: kRajdhaniFontFamily,
             fontWeight: FontWeight.bold,
             fontSize: menuFontSize,
             color: Colors.white,

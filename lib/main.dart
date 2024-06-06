@@ -15,9 +15,6 @@ import 'package:spnk/views/windows/large/home/windows.home.large.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.home.dart';
 import 'package:spnk/views/windows/small/home/windows.small.home.dart';
 
-// lottie https://assets1.lottiefiles.com/packages/lf20_j1uvfzu5.json
-
-// https://assets8.lottiefiles.com/packages/lf20_zGHcl0.json
 void main() {
   runApp(MyApp());
 }
@@ -61,14 +58,14 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final routeController = Get.put(RouteController());
-    final pageController = Get.put(PageController());
-    final pageIndexController = Get.put(PageIndexController());
-    final dataController = Get.put(DataController());
-    final menuController = Get.put(MenuController());
+    Get.put(RouteController());
+    Get.put(PageController());
+    Get.put(PageIndexController());
+    Get.put(DataController());
+    // Get.put(HomeController());
     return defaultTargetPlatform == TargetPlatform.android ||
             defaultTargetPlatform == TargetPlatform.iOS
-        ? AndroidHome()
+        ? const AndroidHome()
         : context.screenWidth > 1121
             ? MinSize(
                 minHeight: 734,

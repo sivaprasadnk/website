@@ -1,68 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spnk/utils/common_widgets.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/android/contactme/android.contactme.screen.dart';
 import 'package:spnk/views/android/experience/android.experience.screen.dart';
 import 'package:spnk/views/android/home/android.home.screen.dart';
 import 'package:spnk/views/android/menu/android.menu.screen.dart';
+import 'package:spnk/views/android/menu/menu.widgets/menu_icon.dart';
 import 'package:spnk/views/android/projects/android.projects.screen.dart';
-import 'package:spnk/views/provider/menu_controller.dart' as menu;
 import 'package:spnk/views/provider/route_controller.dart';
 
 class AndroidHome extends StatelessWidget {
   static const routeName = '/AndroidHome';
-  AndroidHome({Key? key}) : super(key: key);
-  RouteController routeController = Get.find<RouteController>();
+  const AndroidHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    const double size = 15;
-
-    final screenWidth = screenSize.width;
-    final screenHeight = screenSize.height;
-    // final screen = Provider.of<RouteProvider>(context).selectedSCreen;
-    final screen = routeController.selectedScreen.value;
-    // final menuSelectedCheck = Provider.of<RouteProvider>(context).menuSelected;
-    // final menuSelectedCheck = menuController.;
-    debugPrint('.. @@screen => $screen ');
-    // debugPrint('.. @@menuSelectedCheck =>$menuSelectedCheck');
-    return PopScope(
-      canPop: false,
-      // onWillPop: () async => false,
-      child: Scaffold(
-        backgroundColor: const Color.fromRGBO(0, 34, 51, 1),
-        body: SizedBox(
-          width: screenWidth,
-          child: GetX<menu.MenuController>(
+    final screenWidth = context.screenWidth;
+    return SafeArea(
+      bottom: false,
+      child: PopScope(
+        canPop: false,
+        child: Scaffold(
+          backgroundColor: const Color.fromRGBO(0, 34, 51, 1),
+          bottomNavigationBar: GetBuilder<RouteController>(
             builder: (controller) {
-              final menuSelectedCheck = controller.menuSelected;
-              return Stack(
-                children: [
-                  if (!menuSelectedCheck && screen == Screen.home)
-                    Positioned.fill(
-                      top: screenHeight * 0.05,
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: Image.asset(
-                          'assets/images/dash/dash1.png',
-                          height: 230,
-                        ),
-                      ),
-                    ),
-                  if (menuSelectedCheck)
-                    const AndroidMenuScreen()
-                  else
-                    screen == Screen.home
-                        ? AndroidHomeScreen()
-                        : screen == Screen.projects
-                            ? const AndroidProjects()
-                            : screen == Screen.experience
-                                ? AndroidExperienceScreen()
-                                : AndroidContactMeScreen(),
-                  if (menuSelectedCheck) const AndroidRightFooter(size: size),
-                ],
+              if (controller.selectedScreen.value == Screen.menu) {
+                return const AndroidRightFooter();
+              }
+              return const SizedBox.shrink();
+            },
+          ),
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            actions: const [
+              AndroidMenuIcon(),
+            ],
+          ),
+          // endDrawer: const AndroidMenuIcon(),
+          body: GetBuilder<RouteController>(
+            builder: (controller) {
+              final screen = controller.selectedScreen.value;
+              return SizedBox(
+                width: screenWidth,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (screen == Screen.home) AndroidHomeScreen(),
+                    if (screen == Screen.menu) const AndroidMenuScreen(),
+                    if (screen == Screen.projects) const AndroidProjects(),
+                    if (screen == Screen.experience) AndroidExperienceScreen(),
+                    if (screen == Screen.contactMe) AndroidContactMeScreen(),
+                    // if (screen == Screen.menu) const s,
+                  ],
+                ),
               );
             },
           ),

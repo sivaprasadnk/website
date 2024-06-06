@@ -1,10 +1,10 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:spnk/data/project_model.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
-import 'package:spnk/views/android/android_bg_curve.dart';
 import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/provider/page_index_controller.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
@@ -61,188 +61,183 @@ class _AndroidProjectsState extends State<AndroidProjects> {
     final screenHeight = context.screenHeight;
     final projects = dataController.projects;
 
-    return Stack(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Positioned.fill(
-          child: Align(
-            child: CustomPaint(
-              painter: AndroidBgCurve(ctx: context),
-              child: Container(),
+        // Positioned.fill(
+        //   child: Align(
+        //     child: CustomPaint(
+        //       painter: AndroidBgCurve(ctx: context),
+        //       child: Container(),
+        //     ),
+        //   ),
+        // ),
+        Padding(
+          padding: const EdgeInsets.only(left: 30),
+          child: Text(
+            'My Projects',
+            style: TextStyle(
+              fontFamily: kRajdhaniFontFamily,
+              fontWeight: FontWeight.bold,
+              fontSize: 35,
+              color: Colors.white,
             ),
           ),
         ),
         const AndroidDashImage(dashImage: 'dash3'),
-        Padding(
-          padding: EdgeInsets.only(
-            right: 10,
-            top: 20,
-            left: screenWidth * 0.8,
-          ),
-          child: Align(
-            alignment: Alignment.topRight,
-            child: IconButton(
-              icon: const Icon(Icons.menu, color: Colors.white),
-              onPressed: () {
-                // ref.read(menuNotifierProvider.notifier).menuSelected = false;
-                // ref.read(routeNotifierProvider.notifier).selectedScreen =
-                //     Screen.home;
-              },
-            ),
-          ),
+        const SizedBox(
+          height: 50,
         ),
-        SizedBox(
-          height: context.screenHeight,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                height: context.screenHeight * 0.15,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30),
-                child: Text(
-                  'My Projects',
-                  style: TextStyle(
-                    fontFamily: kFontFamily2,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 35,
-                    color: Colors.white,
+        GetBuilder<PageIndexController>(
+          builder: (pageIndexController) {
+            final pageIndex = pageIndexController.pageIndex.value;
+
+            final showNextIcon = pageIndex < projects.length - 1;
+            final showPrevIcon = pageIndex != 0;
+            return Column(
+              children: [
+                SizedBox(
+                  height: screenHeight * 0.4,
+                  width: screenWidth * 0.8,
+                  child: PageView(
+                    onPageChanged: (pageIndex) {
+                      debugPrint("krjbkejrcb");
+
+                      pageIndexController.updatePageIndex(pageIndex);
+                    },
+                    controller: controller,
+                    children: projects.map((project) {
+                      return ProjectItem(
+                        screenHeight: screenHeight,
+                        project: project,
+                      );
+                    }).toList(),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: context.screenHeight * 0.18,
-              ),
-              GetX<PageIndexController>(
-                builder: (pageIndexController) {
-                  final pageIndex = pageIndexController.pageIndex.value;
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    if (showPrevIcon)
+                      GestureDetector(
+                        onTap: () async {
+                          debugPrint("previousPage");
 
-                  final showNextIcon = pageIndex < projects.length - 1;
-                  final showPrevIcon = pageIndex != 0;
-                  return Column(
-                    children: [
-                      SizedBox(
-                        height: screenHeight * 0.5,
-                        width: screenWidth * 0.8,
-                        child: PageView(
-                          onPageChanged: (pageIndex) {
-                            pageIndexController.pageIndex.value = pageIndex;
-                          },
-                          controller: controller,
-                          children: projects.map((project) {
-                            return SizedBox(
-                              height: screenHeight * 0.5,
-                              child: Stack(
-                                children: [
-                                  ImageContainerSmall(
-                                    imagePath: project.bgAssetPath,
-                                  ),
-                                  Positioned.fill(
-                                    left: 20,
-                                    bottom: -2,
-                                    child: Align(
-                                      alignment: Alignment.bottomLeft,
-                                      child: const TextContainer().blurred(
-                                        overlay: Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 20),
-                                          child: Row(
-                                            children: [
-                                              ProjectTitle(
-                                                title: project.projName,
-                                              ),
-                                              const Expanded(
-                                                child: Text(""),
-                                              ),
-                                              GestureDetector(
-                                                onTap: () async {
-                                                  await launchUrl(
-                                                    Uri.parse(spQuizLink),
-                                                  );
-                                                },
-                                                child:
-                                                    const ViewMoreContainerSmall(),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        colorOpacity: 0.3,
-                                        alignment: Alignment.topLeft,
-                                        borderRadius: const BorderRadius.only(
-                                          bottomRight: Radius.circular(10),
-                                          bottomLeft: Radius.circular(10),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          }).toList(),
+                          await controller.previousPage(
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.bounceOut,
+                          );
+                          pageIndexController.updatePageIndex(pageIndex - 1);
+                        },
+                        child: SizedBox(
+                          height: 10,
+                          width: 10,
+                          child: const Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.white,
+                          ).showCursorOnHover,
                         ),
-                      ),
+                      )
+                    else
                       const SizedBox(
                         height: 10,
+                        width: 10,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          if (showPrevIcon)
-                            GestureDetector(
-                              onTap: () {
-                                controller.previousPage(
-                                  duration: const Duration(seconds: 1),
-                                  curve: Curves.bounceOut,
-                                );
-                              },
-                              child: SizedBox(
-                                height: 10,
-                                width: 10,
-                                child: const Icon(
-                                  Icons.arrow_back_ios,
-                                ).showCursorOnHover,
-                              ),
-                            )
-                          else
-                            const SizedBox(
-                              height: 10,
-                              width: 10,
-                            ),
-                          if (showNextIcon)
-                            GestureDetector(
-                              onTap: () {
-                                controller.nextPage(
-                                  duration: const Duration(seconds: 1),
-                                  curve: Curves.bounceOut,
-                                );
-                              },
-                              child: SizedBox(
-                                height: 10,
-                                width: 10,
-                                child: const Icon(
-                                  Icons.arrow_forward_ios,
-                                ).showCursorOnHover,
-                              ),
-                            )
-                          else
-                            const SizedBox(
-                              height: 10,
-                              width: 10,
-                            ),
-                        ],
+                    if (showNextIcon)
+                      GestureDetector(
+                        onTap: () async {
+                          debugPrint("nextPage");
+                          await controller.nextPage(
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.bounceOut,
+                          );
+                          pageIndexController.updatePageIndex(pageIndex + 1);
+                        },
+                        child: SizedBox(
+                          height: 10,
+                          width: 10,
+                          child: const Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.white,
+                          ).showCursorOnHover,
+                        ),
+                      )
+                    else
+                      const SizedBox(
+                        height: 10,
+                        width: 10,
                       ),
-                    ],
-                  );
-                },
-              ),
-              SizedBox(
-                height: context.screenHeight * 0.08,
-              ),
-            ],
-          ),
+                  ],
+                ),
+              ],
+            );
+          },
         ),
       ],
+    );
+  }
+}
+
+class ProjectItem extends StatelessWidget {
+  const ProjectItem({
+    Key? key,
+    required this.screenHeight,
+    required this.project,
+  }) : super(key: key);
+
+  final double screenHeight;
+  final ProjectModel project;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: screenHeight * 0.5,
+      child: Stack(
+        children: [
+          ImageContainerSmall(
+            imagePath: project.bgAssetPath,
+            isWeb: project.isWeb,
+          ),
+          Positioned.fill(
+            left: 20,
+            bottom: -2,
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child: const TextContainer().blurred(
+                overlay: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Row(
+                    children: [
+                      ProjectTitle(
+                        title: project.projName,
+                      ),
+                      const Expanded(
+                        child: Text(""),
+                      ),
+                      GestureDetector(
+                        onTap: () async {
+                          await launchUrl(
+                            Uri.parse(project.url),
+                          );
+                        },
+                        child: const ViewMoreContainerSmall(),
+                      ),
+                    ],
+                  ),
+                ),
+                colorOpacity: 0.3,
+                alignment: Alignment.topLeft,
+                borderRadius: const BorderRadius.only(
+                  bottomRight: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

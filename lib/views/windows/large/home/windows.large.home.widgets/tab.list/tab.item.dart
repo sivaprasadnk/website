@@ -55,7 +55,7 @@ class _TabItemState extends State<TabItem> {
             child: AutoSizeText(
               widget.title,
               style: TextStyle(
-                fontFamily: kFontFamily2,
+                fontFamily: kRajdhaniFontFamily,
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
                 // color: !isDarkTheme

@@ -5,5 +5,6 @@ class PageIndexController extends GetxController {
 
   void updatePageIndex(int newValue) {
     pageIndex.value = newValue;
+    update();
   }
 }

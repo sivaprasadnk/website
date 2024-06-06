@@ -3,99 +3,60 @@ import 'package:flutter/material.dart';
 import 'package:spnk/domain/contact_entity.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
-import 'package:spnk/views/android/android_bg_curve.dart';
 import 'package:spnk/views/android/description_text.dart';
 
 class AndroidContactMeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // final contactList = ref.watch(contactProvider);
-    return Stack(
-      // mainAxisSize: MainAxisSize.min,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Positioned.fill(
-          child: Align(
-            child: CustomPaint(
-              painter: AndroidBgCurve(ctx: context),
-              child: Container(),
+        // Positioned.fill(
+        //   child: Align(
+        //     child: CustomPaint(
+        //       painter: AndroidBgCurve(ctx: context),
+        //       child: Container(),
+        //     ),
+        //   ),
+        // ),
+        Padding(
+          padding: const EdgeInsets.only(left: 30),
+          child: Text(
+            'Contact Me',
+            style: TextStyle(
+              fontFamily: kRajdhaniFontFamily,
+              fontWeight: FontWeight.bold,
+              fontSize: 35,
+              color: Colors.white,
             ),
           ),
         ),
         const AndroidDashImage(dashImage: 'dash4'),
-        Padding(
-          padding: EdgeInsets.only(
-            right: 10,
-            top: 20,
-            left: context.screenWidth * 0.8,
-          ),
-          child: Align(
-            alignment: Alignment.topRight,
-            child: IconButton(
-              icon: const Icon(Icons.menu, color: Colors.white),
-              onPressed: () {
-                // ref.read(menuNotifierProvider.notifier).menuSelected = false;
-                // ref.read(routeNotifierProvider.notifier).selectedScreen =
-                //     Screen.home;
-              },
+        SingleChildScrollView(
+          child: LiveList(
+            shrinkWrap: true,
+            padding: const EdgeInsets.only(
+              left: 16,
+              right: 16,
+              bottom: 5,
             ),
-          ),
-        ),
-        SizedBox(
-          height: context.screenHeight,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                height: context.screenHeight * 0.15,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30),
-                child: Text(
-                  'Contact Me',
-                  style: TextStyle(
-                    fontFamily: kFontFamily2,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 35,
-                    color: Colors.white,
+            showItemInterval: const Duration(milliseconds: 50),
+            itemCount: contactList.length,
+            itemBuilder: animationItemBuilder((index) {
+              final item =
+                  contactList.firstWhere((element) => element.index == index);
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TitleText(title: item.title),
+                  DescriptionText(
+                    description: item.details,
                   ),
-                ),
-              ),
-              SizedBox(
-                height: context.screenHeight * 0.12,
-              ),
-              SingleChildScrollView(
-                child: LiveList(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    bottom: 5,
-                  ),
-                  showItemInterval: const Duration(milliseconds: 50),
-                  itemCount: contactList.length,
-                  itemBuilder: animationItemBuilder((index) {
-                    final item = contactList
-                        .firstWhere((element) => element.index == index);
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TitleText(title: item.title),
-                        DescriptionText(
-                          description: item.details,
-                        ),
-                      ],
-                    );
-                  }),
-                ),
-              ),
-              SizedBox(
-                height: context.screenHeight * 0.08,
-              ),
-            ],
+                ],
+              );
+            }),
           ),
-        ),
+        ),  
       ],
     );
   }
