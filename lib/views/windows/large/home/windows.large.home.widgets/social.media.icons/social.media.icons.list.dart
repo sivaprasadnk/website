@@ -21,7 +21,7 @@ class SocialMediaIconsList extends StatelessWidget {
         ? kWhiteColor
         : isDarkTheme
             ? kWhiteColor
-            : const Color.fromRGBO(0, 34, 120, 1);
+            : kPrimaryBlueColor;
     return FadeInRight(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -12,7 +12,7 @@ class ViewMoreContainerSmall extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 5, right: 5, bottom: 8),
       decoration: BoxDecoration(
-        color: const Color.fromRGBO(0, 34, 120, 1),
+        color: kPrimaryBlueColor,
         borderRadius: BorderRadius.circular(5),
       ),
       child: Center(

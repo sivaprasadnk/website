@@ -188,7 +188,7 @@ class _ListItemState extends State<ListItem> {
 
     const hoverColor = Colors.cyan;
     final normalColor =
-        isDarkTheme ? kWhiteColor : const Color.fromRGBO(0, 34, 120, 1);
+        isDarkTheme ? kWhiteColor : kPrimaryBlueColor;
     return Theme(
       data: ThemeData(
         splashColor: kTransparentColor,

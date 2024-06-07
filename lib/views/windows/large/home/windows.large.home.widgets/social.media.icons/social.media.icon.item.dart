@@ -46,7 +46,7 @@ class _SocialMediaIconItemState extends State<SocialMediaIconItem> {
                 ? Colors.cyan
                 : isDarkTheme
                     ? kWhiteColor
-                    : const Color.fromRGBO(0, 34, 120, 1),
+                    : kPrimaryBlueColor,
         size: 30,
       ),
       onTap: () {

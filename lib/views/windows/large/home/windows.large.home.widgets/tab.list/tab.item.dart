@@ -31,7 +31,7 @@ class _TabItemState extends State<TabItem> {
     final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     const hoverColor = Colors.cyan;
     final normalColor =
-        !isDarkTheme ? const Color.fromRGBO(0, 34, 120, 1) : kWhiteColor;
+        !isDarkTheme ? kPrimaryBlueColor : kWhiteColor;
     return MouseRegion(
       // hoverColor: kTransparentColor,
       // splashColor: kTransparentColor,
@@ -60,7 +60,7 @@ class _TabItemState extends State<TabItem> {
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
                 // color: !isDarkTheme
-                //     ? const Color.fromRGBO(0, 34, 120, 1)
+                //     ? const kPrimaryBlueColor
                 //     : kWhiteColor
                 color: widget.tabController.index == widget.index
                     ? normalColor
