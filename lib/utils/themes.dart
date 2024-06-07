@@ -57,47 +57,47 @@ ThemeData lightTheme = ThemeData(
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   scaffoldBackgroundColor: const Color.fromRGBO(0, 34, 51, 1),
-  splashColor: Colors.white,
+  splashColor: kWhiteColor,
   textTheme: TextTheme(
-    displayLarge: const TextStyle(
+    displayLarge: TextStyle(
       fontFamily: 'Zina',
       fontSize: 50,
-      color: Colors.white,
+      color: kWhiteColor,
     ),
     displayMedium: TextStyle(
       fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 30,
-      color: Colors.white,
+      color: kWhiteColor,
     ),
     displaySmall: TextStyle(
       fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 20,
-      color: Colors.white,
+      color: kWhiteColor,
     ),
-    headlineSmall: const TextStyle(
+    headlineSmall: TextStyle(
       fontFamily: 'Zina',
       fontSize: 50,
-      color: Colors.white,
+      color: kWhiteColor,
     ),
     titleLarge: TextStyle(
       fontSize: 35,
       fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
-      color: Colors.white,
+      color: kWhiteColor,
     ),
     bodyLarge: TextStyle(
       fontWeight: FontWeight.bold,
-      color: Colors.white,
+      color: kWhiteColor,
       fontSize: 21,
       fontFamily: kRajdhaniFontFamily,
     ),
   ),
-  primarySwatch: Colors.cyan,
+  primarySwatch: kMaterialCyanColor,
   scrollbarTheme: const ScrollbarThemeData().copyWith(
     thumbVisibility: const WidgetStatePropertyAll(false),
-    thumbColor: WidgetStateProperty.all(Colors.cyan),
+    thumbColor: WidgetStateProperty.all(kCyanColor),
   ),
   buttonTheme: const ButtonThemeData(
     buttonColor: Colors.red,
