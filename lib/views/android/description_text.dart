@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_colors.dart';
+import 'package:spnk/utils/common_strings.dart';
 
 class DescriptionText extends StatelessWidget {
   final String description;
@@ -14,13 +15,11 @@ class DescriptionText extends StatelessWidget {
       ),
       child: Text(
         description,
-        // 'A Quiz App with various categories ,and cool animations for each element on screen ',
         style: TextStyle(
-          // fontFamily: 'PlayfairDisplay',
+          fontFamily: kRajdhaniFontFamily,
           color: kGreyColor,
           fontWeight: FontWeight.bold,
           fontSize: 15,
-          // color: kWhiteColor
         ),
       ),
     );
