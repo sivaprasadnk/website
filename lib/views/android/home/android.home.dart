@@ -38,7 +38,6 @@ class AndroidHome extends StatelessWidget {
               AndroidMenuIcon(),
             ],
           ),
-          // endDrawer: const AndroidMenuIcon(),
           body: GetBuilder<RouteController>(
             builder: (controller) {
               final screen = controller.selectedScreen.value;

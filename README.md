@@ -1,4 +1,4 @@
-# My Portfolio WebApp ( https://sivaprasadnk.dev/ )
+# My Portfolio WebApp ( https://lovely-lamington-132fca.netlify.app// )
 
 Made using Flutter.
 
@@ -8,9 +8,9 @@ Light / Dark Theme available.
 
 Clean Architecture.
 
-Riverpod state-management.
+GetX state-management.
 
-Hosted in GitHub Pages and custom domain from Hostinger.in
+Hosted in Netlify
 
 ![sivaprasadnk dev_ (2)](https://github.com/sivaprasadnk/website/assets/75713903/c3ee9440-b7c0-49d5-9c33-639bbbe2519b)
 
