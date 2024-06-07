@@ -33,7 +33,6 @@ class _CustomMenuItemState extends ConsumerState<CustomMenuItem> {
     const hoverColor = Colors.cyan;
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final normalColor = isDarkTheme ? kWhiteColor : kPrimaryBlueColor;
-    // var selected = ref.watch(routeNotifierProvider);
     return MouseRegion(
       onEnter: (_) {
         setState(() {
