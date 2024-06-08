@@ -19,7 +19,6 @@ class ProjectsScreenNew extends StatelessWidget {
   ///
   @override
   Widget build(BuildContext context) {
-    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -63,12 +62,16 @@ class ProjectsScreenNew extends StatelessWidget {
                     width: 800,
                     child: PageView(
                       onPageChanged: (page) {
-                        if (page == state.projectList.length - 1) {
-                          context.read<ProjectBloc>().add(ToggleNextIcon());
-                        }
-                        if (page == 0) {
-                          context.read<ProjectBloc>().add(TogglePrevIcon());
-                        }
+                        context.read<ProjectBloc>().add(
+                              ShowNextIcon(
+                                showNext: page < state.projectList.length - 1,
+                              ),
+                            );
+                        context.read<ProjectBloc>().add(
+                              ShowPrevIcon(
+                                showPrev: page > 0,
+                              ),
+                            );
                       },
                       controller: controller,
                       children: state.projectList.map((project) {

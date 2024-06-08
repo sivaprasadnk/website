@@ -48,12 +48,16 @@ class ProjectsScreenSmall extends StatelessWidget {
                     child: PageView(
                       controller: controller,
                       onPageChanged: (page) {
-                        if (page == state.projectList.length - 1) {
-                          context.read<ProjectBloc>().add(ToggleNextIcon());
-                        }
-                        if (page == 0) {
-                          context.read<ProjectBloc>().add(TogglePrevIcon());
-                        }
+                        context.read<ProjectBloc>().add(
+                              ShowNextIcon(
+                                showNext: page < state.projectList.length - 1,
+                              ),
+                            );
+                        context.read<ProjectBloc>().add(
+                              ShowPrevIcon(
+                                showPrev: page > 0,
+                              ),
+                            );
                       },
                       children: state.projectList.map((proj) {
                         return ProjectItemSmall(

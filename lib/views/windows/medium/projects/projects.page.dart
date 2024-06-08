@@ -29,12 +29,16 @@ class ProjectsPage extends StatelessWidget {
               width: 450,
               child: PageView(
                 onPageChanged: (page) {
-                  if (page == state.projectList.length - 1) {
-                    context.read<ProjectBloc>().add(ToggleNextIcon());
-                  }
-                  if (page == 0) {
-                    context.read<ProjectBloc>().add(TogglePrevIcon());
-                  }
+                  context.read<ProjectBloc>().add(
+                        ShowNextIcon(
+                          showNext: page < state.projectList.length - 1,
+                        ),
+                      );
+                  context.read<ProjectBloc>().add(
+                        ShowPrevIcon(
+                          showPrev: page > 0,
+                        ),
+                      );
                 },
                 controller: controller,
                 children: state.projectList.map((project) {

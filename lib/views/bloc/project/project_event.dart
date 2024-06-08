@@ -4,6 +4,12 @@ abstract class ProjectEvent {
 
 class GetProjects extends ProjectEvent {}
 
-class TogglePrevIcon extends ProjectEvent {}
+class ShowPrevIcon extends ProjectEvent {
+  final bool showPrev;
+  ShowPrevIcon({this.showPrev = false});
+}
 
-class ToggleNextIcon extends ProjectEvent {}
+class ShowNextIcon extends ProjectEvent {
+  final bool showNext;
+  ShowNextIcon({this.showNext = true});
+}

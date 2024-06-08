@@ -6,19 +6,19 @@ import 'package:spnk/views/bloc/project/project_state.dart';
 class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
   ProjectBloc() : super(const ProjectState()) {
     on<GetProjects>(_getProjects);
-    on<ToggleNextIcon>(_toggleNextIcon);
-    on<TogglePrevIcon>(_togglePrevIcon);
+    on<ShowNextIcon>(_showNextIcon);
+    on<ShowPrevIcon>(_showPrevIcon);
   }
 
   void _getProjects(GetProjects event, Emitter<ProjectState> emit) {
     emit(state.copyWith(list: projectList));
   }
 
-  void _toggleNextIcon(ToggleNextIcon event, Emitter<ProjectState> emit) {
-    emit(state.copyWith(showNext: !state.showNextIcon));
+  void _showNextIcon(ShowNextIcon event, Emitter<ProjectState> emit) {
+    emit(state.copyWith(showNext: event.showNext));
   }
 
-  void _togglePrevIcon(TogglePrevIcon event, Emitter<ProjectState> emit) {
-    emit(state.copyWith(showPrev: !state.showPrevIcon));
+  void _showPrevIcon(ShowPrevIcon event, Emitter<ProjectState> emit) {
+    emit(state.copyWith(showPrev: event.showPrev));
   }
 }
