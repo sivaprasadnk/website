@@ -1,17 +1,16 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
-class WindowsLargeContactMeScreen extends ConsumerStatefulWidget {
+class WindowsLargeContactMeScreen extends StatefulWidget {
   @override
   _WindowsLargeContactMeScreenState createState() =>
       _WindowsLargeContactMeScreenState();
 }
 
 class _WindowsLargeContactMeScreenState
-    extends ConsumerState<WindowsLargeContactMeScreen>
+    extends State<WindowsLargeContactMeScreen>
     with AutomaticKeepAliveClientMixin {
   bool showLottie = false;
 

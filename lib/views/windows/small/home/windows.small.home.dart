@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:provider/provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/screen_type.dart';
@@ -14,14 +13,14 @@ import 'package:spnk/views/windows/small/home/windows.small.drawer.dart';
 import 'package:spnk/views/windows/small/home/windows.small.home.screen.dart';
 import 'package:spnk/views/windows/small/projects/projects.screen.small.dart';
 
-class WindowsSmallHome extends ConsumerStatefulWidget {
+class WindowsSmallHome extends StatefulWidget {
   static const routeName = '/HomeSmall';
 
   @override
   _WindowsSmallHomeState createState() => _WindowsSmallHomeState();
 }
 
-class _WindowsSmallHomeState extends ConsumerState<WindowsSmallHome> {
+class _WindowsSmallHomeState extends State<WindowsSmallHome> {
   @override
   void setState(VoidCallback fn) {
     if (mounted) {

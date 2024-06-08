@@ -1,15 +1,14 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/description_text.dart';
 import 'package:spnk/views/provider/data_provider.dart';
 
-class AndroidExperienceScreen extends ConsumerWidget {
+class AndroidExperienceScreen extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final expList = ref.watch(experienceProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

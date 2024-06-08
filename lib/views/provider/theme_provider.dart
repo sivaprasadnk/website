@@ -1,18 +1,18 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+// 
 
-class ThemeNotifier extends Notifier<bool> {
+// class ThemeNotifier extends Notifier<bool> {
 
 
-  void toggleTheme() {
-    state = !state;
-  }
+//   void toggleTheme() {
+//     state = !state;
+//   }
 
-  @override
-  bool build() {
-    return true;
-  }
-}
+//   @override
+//   bool build() {
+//     return true;
+//   }
+// }
 
-final themeNotifierProvider = NotifierProvider<ThemeNotifier, bool>(() {
-  return ThemeNotifier();
-});
+// final themeNotifierProvider = NotifierProvider<ThemeNotifier, bool>(() {
+//   return ThemeNotifier();
+// });

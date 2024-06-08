@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/screen_type.dart';
@@ -11,12 +10,12 @@ import 'package:spnk/views/android/projects/android.projects.screen.dart';
 import 'package:spnk/views/provider/menu_provider.dart';
 import 'package:spnk/views/provider/route_provider.dart';
 
-class AndroidHome extends ConsumerWidget {
+class AndroidHome extends StatelessWidget {
   static const routeName = '/AndroidHome';
   const AndroidHome({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
     final screenWidth = screenSize.width;

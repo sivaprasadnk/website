@@ -1,6 +1,5 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/android/menu/menu.widgets/menu.image.dart';
@@ -8,14 +7,14 @@ import 'package:spnk/views/android/menu/menu.widgets/menu.item.dart';
 import 'package:spnk/views/provider/menu_provider.dart';
 import 'package:spnk/views/provider/route_provider.dart';
 
-class AndroidMenuScreen extends ConsumerStatefulWidget {
+class AndroidMenuScreen extends StatefulWidget {
   const AndroidMenuScreen({Key? key}) : super(key: key);
 
   @override
   _AndroidMenuScreenState createState() => _AndroidMenuScreenState();
 }
 
-class _AndroidMenuScreenState extends ConsumerState<AndroidMenuScreen>
+class _AndroidMenuScreenState extends State<AndroidMenuScreen>
     with SingleTickerProviderStateMixin {
   Widget Function(
     BuildContext context,

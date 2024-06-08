@@ -1,18 +1,17 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/views/provider/data_provider.dart';
 
-class WindowsMediumContactMeScreen extends ConsumerStatefulWidget {
+class WindowsMediumContactMeScreen extends StatefulWidget {
   const WindowsMediumContactMeScreen({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<WindowsMediumContactMeScreen> createState() =>
+  State<WindowsMediumContactMeScreen> createState() =>
       _WindowsMediumContactMeScreenState();
 }
 
 class _WindowsMediumContactMeScreenState
-    extends ConsumerState<WindowsMediumContactMeScreen> {
+    extends State<WindowsMediumContactMeScreen> {
   bool showIcons = false;
 
   @override

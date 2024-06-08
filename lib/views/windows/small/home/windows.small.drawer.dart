@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/provider/menu_provider.dart';
@@ -106,9 +105,9 @@ class _WindowsHomeSmallDrawerState extends State<WindowsSmallDrawer> {
   }
 }
 
-class HomeListItem extends ConsumerWidget {
+class HomeListItem extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return ListItem(
       title: 'Home',
       callback: () {
@@ -120,9 +119,9 @@ class HomeListItem extends ConsumerWidget {
   }
 }
 
-class ContactMeListItem extends ConsumerWidget {
+class ContactMeListItem extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return ListItem(
       title: 'Contact Me',
       callback: () {
@@ -135,9 +134,9 @@ class ContactMeListItem extends ConsumerWidget {
   }
 }
 
-class ExperienceListItem extends ConsumerWidget {
+class ExperienceListItem extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return ListItem(
       title: 'Experience',
       callback: () {
@@ -150,9 +149,9 @@ class ExperienceListItem extends ConsumerWidget {
   }
 }
 
-class MyProjectsListItem extends ConsumerWidget {
+class MyProjectsListItem extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return ListItem(
       title: 'Projects',
       callback: () {

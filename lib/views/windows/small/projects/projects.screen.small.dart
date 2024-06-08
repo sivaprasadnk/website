@@ -1,12 +1,13 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:provider/provider.dart';
 import 'package:spnk/data/project_model.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
-import 'package:spnk/views/provider/data_provider.dart';
-import 'package:spnk/views/provider/page_provider.dart';
+import 'package:spnk/views/bloc/project/project_bloc.dart';
+import 'package:spnk/views/bloc/project/project_event.dart';
+import 'package:spnk/views/bloc/project/project_state.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/medium/projects/app.summary/next.icon.dart';
 import 'package:spnk/views/windows/medium/projects/app.summary/prev.icon.dart';
@@ -18,27 +19,16 @@ import 'package:spnk/views/windows/small/projects/app.summary/text.container.dar
 import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ProjectsScreenSmall extends ConsumerStatefulWidget {
-  const ProjectsScreenSmall({Key? key}) : super(key: key);
+class ProjectsScreenSmall extends StatelessWidget {
+  ProjectsScreenSmall({Key? key}) : super(key: key);
 
-  @override
-  ConsumerState<ProjectsScreenSmall> createState() =>
-      _ProjectsScreenSmallState();
-}
-
-class _ProjectsScreenSmallState extends ConsumerState<ProjectsScreenSmall> {
   PageController controller = PageController();
 
-  bool showNextIcon = true;
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
-    final pageIndex = ref.watch(pageIndexProvider);
-    final projects = ref.watch(projectProvider);
-    final showNextIcon = pageIndex < projects.length - 1;
-    final showPrevIcon = pageIndex != 0;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,49 +36,59 @@ class _ProjectsScreenSmallState extends ConsumerState<ProjectsScreenSmall> {
         SizedBox(height: screenHeight * 0.13),
         SectionTitle(screenWidth: screenWidth, title: 'My Projects'),
         SizedBox(height: screenHeight * 0.1),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            children: [
-              SizedBox(
-                height: screenHeight * 0.5,
-                width: 380,
-                child: PageView(
-                  controller: controller,
-                  onPageChanged: (pageIndex) {
-                    ref.read(pageIndexProvider.notifier).pageIndex =
-                        pageIndex;
-                  },
-                  children: projects.map((proj) {
-                    return ProjectItemSmall(
-                      screenHeight: screenHeight,
-                      screenWidth: screenWidth,
-                      project: proj,
-                    );
-                  }).toList(),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                width: 300,
-                child: Row(
-                  children: [
-                    const SizedBox(
-                      width: 10,
+        BlocBuilder<ProjectBloc, ProjectState>(
+          builder: (context, state) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: screenHeight * 0.5,
+                    width: 380,
+                    child: PageView(
+                      controller: controller,
+                      onPageChanged: (page) {
+                        if (page == state.projectList.length - 1) {
+                          context.read<ProjectBloc>().add(ToggleNextIcon());
+                        }
+                        if (page == 0) {
+                          context.read<ProjectBloc>().add(TogglePrevIcon());
+                        }
+                      },
+                      children: state.projectList.map((proj) {
+                        return ProjectItemSmall(
+                          screenHeight: screenHeight,
+                          screenWidth: screenWidth,
+                          project: proj,
+                        );
+                      }).toList(),
                     ),
-                    if (showPrevIcon) PrevIcon(controller: controller),
-                    const Spacer(),
-                    if (showNextIcon) NextIcon(controller: controller),
-                    const SizedBox(
-                      width: 40,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: 300,
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        if (state.showPrevIcon)
+                          PrevIcon(controller: controller),
+                        const Spacer(),
+                        if (state.showNextIcon)
+                          NextIcon(controller: controller),
+                        const SizedBox(
+                          width: 40,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            );
+          },
         ),
       ],
     );

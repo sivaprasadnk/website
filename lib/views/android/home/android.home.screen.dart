@@ -97,9 +97,9 @@ class AndroidHomeScreen extends StatelessWidget {
     );
   }
 }
-// class AndroidHomeScreen extends ConsumerWidget {
+// class AndroidHomeScreen extends StatelessWidget {
 //   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
+//   Widget build(BuildContext context) {
 //     final screenSize = MediaQuery.of(context).size;
 
 //     final screenWidth = screenSize.width;

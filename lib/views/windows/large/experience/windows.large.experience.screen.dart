@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
-class WindowsLargeExperienceScreen extends ConsumerStatefulWidget {
+class WindowsLargeExperienceScreen extends StatefulWidget {
   @override
   _WindowsLargeExperienceScreenState createState() =>
       _WindowsLargeExperienceScreenState();
 }
 
 class _WindowsLargeExperienceScreenState
-    extends ConsumerState<WindowsLargeExperienceScreen>
+    extends State<WindowsLargeExperienceScreen>
     with AutomaticKeepAliveClientMixin {
   bool showLottie = false;
 

@@ -1,17 +1,16 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 
-class WindowsSmallExperienceScreen extends ConsumerStatefulWidget {
+class WindowsSmallExperienceScreen extends StatefulWidget {
   @override
-  ConsumerState<WindowsSmallExperienceScreen> createState() =>
+  State<WindowsSmallExperienceScreen> createState() =>
       _WindowsSmallExperienceScreenState();
 }
 
 class _WindowsSmallExperienceScreenState
-    extends ConsumerState<WindowsSmallExperienceScreen> {
+    extends State<WindowsSmallExperienceScreen> {
   bool showLottie = false;
 
   @override

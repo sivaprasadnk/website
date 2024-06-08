@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/provider/route_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 
-class CustomMenuItem extends ConsumerStatefulWidget {
+class CustomMenuItem extends StatefulWidget {
   final String title;
   final Screen screen;
   const CustomMenuItem({
@@ -15,10 +14,10 @@ class CustomMenuItem extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<CustomMenuItem> createState() => _CustomMenuItemState();
+  State<CustomMenuItem> createState() => _CustomMenuItemState();
 }
 
-class _CustomMenuItemState extends ConsumerState<CustomMenuItem> {
+class _CustomMenuItemState extends State<CustomMenuItem> {
   bool isHovering = false;
 
   @override

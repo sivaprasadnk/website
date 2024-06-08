@@ -1,12 +1,13 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
-import 'package:spnk/views/provider/data_provider.dart';
-import 'package:spnk/views/provider/page_provider.dart';
+import 'package:spnk/views/bloc/project/project_bloc.dart';
+import 'package:spnk/views/bloc/project/project_event.dart';
+import 'package:spnk/views/bloc/project/project_state.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/image.container.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
@@ -14,13 +15,13 @@ import 'package:spnk/views/windows/small/projects/app.summary/text.container.dar
 import 'package:spnk/views/windows/small/projects/app.summary/view.more.small.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class AndroidProjects extends ConsumerStatefulWidget {
+class AndroidProjects extends StatefulWidget {
   const AndroidProjects();
   @override
   _AndroidProjectsState createState() => _AndroidProjectsState();
 }
 
-class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
+class _AndroidProjectsState extends State<AndroidProjects> {
   PageController controller = PageController();
 
   Widget Function(
@@ -57,10 +58,6 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
   Widget build(BuildContext context) {
     final screenWidth = context.screenWidth;
     final screenHeight = context.screenHeight;
-    final pageIndex = ref.watch(pageIndexProvider);
-    final projects = ref.watch(projectProvider);
-    final showNextIcon = pageIndex < projects.length - 1;
-    final showPrevIcon = pageIndex != 0;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,116 +75,125 @@ class _AndroidProjectsState extends ConsumerState<AndroidProjects> {
           ),
         ),
         const AndroidDashImage(dashImage: 'dash3'),
-        Column(
-          children: [
-            SizedBox(
-              height: screenHeight * 0.5,
-              width: screenWidth * 0.8,
-              child: PageView(
-                onPageChanged: (pageIndex) {
-                  ref.read(pageIndexProvider.notifier).pageIndex = pageIndex;
-                },
-                controller: controller,
-                children: ref.watch(projectProvider).map((project) {
-                  return SizedBox(
-                    height: screenHeight * 0.5,
-                    child: Stack(
-                      children: [
-                        ImageContainerSmall(
-                          imagePath: project.bgAssetPath,
-                          isWeb: project.isWeb,
-                        ),
-                        Positioned.fill(
-                          left: 20,
-                          bottom: -2,
-                          child: Align(
-                            alignment: Alignment.bottomLeft,
-                            child: const TextContainer().blurred(
-                              overlay: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Row(
-                                  children: [
-                                    ProjectTitle(title: project.projName),
-                                    const Expanded(
-                                      child: Text(""),
+        BlocBuilder<ProjectBloc, ProjectState>(
+          builder: (context, state) {
+            return Column(
+              children: [
+                SizedBox(
+                  height: screenHeight * 0.5,
+                  width: screenWidth * 0.8,
+                  child: PageView(
+                    onPageChanged: (page) {
+                      if (page == state.projectList.length - 1) {
+                        context.read<ProjectBloc>().add(ToggleNextIcon());
+                      }
+                      if (page == 0) {
+                        context.read<ProjectBloc>().add(TogglePrevIcon());
+                      }
+                    },
+                    controller: controller,
+                    children: state.projectList.map((project) {
+                      return SizedBox(
+                        height: screenHeight * 0.5,
+                        child: Stack(
+                          children: [
+                            ImageContainerSmall(
+                              imagePath: project.bgAssetPath,
+                              isWeb: project.isWeb,
+                            ),
+                            Positioned.fill(
+                              left: 20,
+                              bottom: -2,
+                              child: Align(
+                                alignment: Alignment.bottomLeft,
+                                child: const TextContainer().blurred(
+                                  overlay: Padding(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: Row(
+                                      children: [
+                                        ProjectTitle(title: project.projName),
+                                        const Expanded(
+                                          child: Text(""),
+                                        ),
+                                        GestureDetector(
+                                          onTap: () async {
+                                            await launchUrl(
+                                              Uri.parse(project.url),
+                                            );
+                                          },
+                                          child: const ViewMoreContainerSmall(),
+                                        ),
+                                      ],
                                     ),
-                                    GestureDetector(
-                                      onTap: () async {
-                                        await launchUrl(
-                                          Uri.parse(project.url),
-                                        );
-                                      },
-                                      child: const ViewMoreContainerSmall(),
-                                    ),
-                                  ],
+                                  ),
+                                  colorOpacity: 0.3,
+                                  alignment: Alignment.topLeft,
+                                  borderRadius: const BorderRadius.only(
+                                    bottomRight: Radius.circular(10),
+                                    bottomLeft: Radius.circular(10),
+                                  ),
                                 ),
                               ),
-                              colorOpacity: 0.3,
-                              alignment: Alignment.topLeft,
-                              borderRadius: const BorderRadius.only(
-                                bottomRight: Radius.circular(10),
-                                bottomLeft: Radius.circular(10),
-                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                if (showPrevIcon)
-                  GestureDetector(
-                    onTap: () {
-                      controller.previousPage(
-                        duration: const Duration(seconds: 1),
-                        curve: Curves.bounceOut,
                       );
-                    },
-                    child: SizedBox(
-                      height: 10,
-                      width: 10,
-                      child: const Icon(
-                        Icons.arrow_back_ios,
-                      ).showCursorOnHover,
-                    ),
-                  )
-                else
-                  const SizedBox(
-                    height: 10,
-                    width: 10,
+                    }).toList(),
                   ),
-                if (showNextIcon)
-                  GestureDetector(
-                    onTap: () {
-                      controller.nextPage(
-                        duration: const Duration(seconds: 1),
-                        curve: Curves.bounceOut,
-                      );
-                    },
-                    child: SizedBox(
-                      height: 10,
-                      width: 10,
-                      child: const Icon(
-                        Icons.arrow_forward_ios,
-                      ).showCursorOnHover,
-                    ),
-                  )
-                else
-                  const SizedBox(
-                    height: 10,
-                    width: 10,
-                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    if (state.showPrevIcon)
+                      GestureDetector(
+                        onTap: () {
+                          controller.previousPage(
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.bounceOut,
+                          );
+                        },
+                        child: SizedBox(
+                          height: 10,
+                          width: 10,
+                          child: const Icon(
+                            Icons.arrow_back_ios,
+                          ).showCursorOnHover,
+                        ),
+                      )
+                    else
+                      const SizedBox(
+                        height: 10,
+                        width: 10,
+                      ),
+                    if (state.showNextIcon)
+                      GestureDetector(
+                        onTap: () {
+                          controller.nextPage(
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.bounceOut,
+                          );
+                        },
+                        child: SizedBox(
+                          height: 10,
+                          width: 10,
+                          child: const Icon(
+                            Icons.arrow_forward_ios,
+                          ).showCursorOnHover,
+                        ),
+                      )
+                    else
+                      const SizedBox(
+                        height: 10,
+                        width: 10,
+                      ),
+                  ],
+                ),
               ],
-            ),
-          ],
+            );
+          },
         ),
       ],
     );

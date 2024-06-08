@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:provider/provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/screen_type.dart';
@@ -13,9 +12,9 @@ import 'package:spnk/views/windows/medium/home/windows.medium.home.screen.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.menu.dart';
 import 'package:spnk/views/windows/medium/projects/projects.medium.new.dart';
 
-class WindowsMediumHome extends ConsumerWidget {
+class WindowsMediumHome extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
 

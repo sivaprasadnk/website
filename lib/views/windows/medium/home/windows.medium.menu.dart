@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/provider/page_provider.dart';
 import 'package:spnk/views/provider/route_provider.dart';
@@ -8,9 +7,9 @@ import 'package:spnk/views/windows/medium/home/menu.widgets/experience.menu.dart
 import 'package:spnk/views/windows/medium/home/menu.widgets/home.menu.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/projects.menu.dart';
 
-class WindowsMediumMenu extends ConsumerWidget {
+class WindowsMediumMenu extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 20),
       child: Column(

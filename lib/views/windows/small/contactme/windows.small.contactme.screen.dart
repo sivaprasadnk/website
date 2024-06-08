@@ -1,17 +1,16 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spnk/views/provider/data_provider.dart';
 import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 
-class WindowsSmallContactMeScreen extends ConsumerStatefulWidget {
+class WindowsSmallContactMeScreen extends StatefulWidget {
   @override
-  ConsumerState<WindowsSmallContactMeScreen> createState() =>
+  State<WindowsSmallContactMeScreen> createState() =>
       _WindowsSmallContactMeScreenState();
 }
 
 class _WindowsSmallContactMeScreenState
-    extends ConsumerState<WindowsSmallContactMeScreen> {
+    extends State<WindowsSmallContactMeScreen> {
   final _formKey = GlobalKey<FormState>();
 
   @override
