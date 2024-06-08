@@ -1,11 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/screen_type.dart';
-import 'package:spnk/views/provider/menu_provider.dart';
-// import 'package:provider/provider.dart';
-import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
+import 'package:spnk/views/bloc/screen_details/screen_event.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 
 class WindowsSmallDrawer extends StatefulWidget {
@@ -111,8 +111,7 @@ class HomeListItem extends StatelessWidget {
     return ListItem(
       title: 'Home',
       callback: () {
-        ref.read(menuNotifierProvider.notifier).menuSelected = false;
-        ref.read(routeNotifierProvider.notifier).selectedScreen = Screen.home;
+        context.read<ScreenBloc>().add(UpdateScreen());
       },
       icon: Icons.home,
     );
@@ -125,9 +124,7 @@ class ContactMeListItem extends StatelessWidget {
     return ListItem(
       title: 'Contact Me',
       callback: () {
-        ref.read(menuNotifierProvider.notifier).menuSelected = false;
-        ref.read(routeNotifierProvider.notifier).selectedScreen =
-            Screen.contactMe;
+        context.read<ScreenBloc>().add(UpdateScreen(screen: Screen.contactMe));
       },
       icon: Icons.call,
     );
@@ -140,9 +137,7 @@ class ExperienceListItem extends StatelessWidget {
     return ListItem(
       title: 'Experience',
       callback: () {
-        ref.read(menuNotifierProvider.notifier).menuSelected = false;
-        ref.read(routeNotifierProvider.notifier).selectedScreen =
-            Screen.experience;
+        context.read<ScreenBloc>().add(UpdateScreen(screen: Screen.experience));
       },
       icon: Icons.work,
     );
@@ -155,9 +150,7 @@ class MyProjectsListItem extends StatelessWidget {
     return ListItem(
       title: 'Projects',
       callback: () {
-        ref.read(menuNotifierProvider.notifier).menuSelected = false;
-        ref.read(routeNotifierProvider.notifier).selectedScreen =
-            Screen.projects;
+        context.read<ScreenBloc>().add(UpdateScreen(screen: Screen.projects));
       },
       icon: Icons.apps,
     );
@@ -186,8 +179,7 @@ class _ListItemState extends State<ListItem> {
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
 
     const hoverColor = Colors.cyan;
-    final normalColor =
-        isDarkTheme ? kWhiteColor : kPrimaryBlueColor;
+    final normalColor = isDarkTheme ? kWhiteColor : kPrimaryBlueColor;
     return Theme(
       data: ThemeData(
         splashColor: kTransparentColor,

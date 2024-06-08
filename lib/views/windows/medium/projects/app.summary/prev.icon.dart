@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-import 'package:spnk/views/provider/page_provider.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 
 class PrevIcon extends StatelessWidget {
@@ -19,8 +17,8 @@ class PrevIcon extends StatelessWidget {
             curve: Curves.bounceOut,
           );
         // }
-        ref.read(pageIndexProvider.notifier).pageIndex =
-            (controller.page! - 1).toInt();
+        // ref.read(pageIndexProvider.notifier).pageIndex =
+        //     (controller.page! - 1).toInt();
         // provider.updatePage(controller.page! - 1);
       },
       child: SizedBox(

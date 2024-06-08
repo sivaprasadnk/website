@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:provider/provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/screen_type.dart';
-import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
 import 'package:spnk/views/windows/common/name_text.dart';
 import 'package:spnk/views/windows/common/theme_switch.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
@@ -17,9 +18,8 @@ class WindowsMediumHome extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
-
+    final screen = context.read<ScreenBloc>().state.selectedScreen;
     const double size = 15;
-    final screen = ref.watch(routeNotifierProvider);
     return Scaffold(
       bottomNavigationBar: Padding(
         padding:

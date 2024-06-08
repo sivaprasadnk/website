@@ -1,11 +1,12 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/android/menu/menu.widgets/menu.image.dart';
 import 'package:spnk/views/android/menu/menu.widgets/menu.item.dart';
-import 'package:spnk/views/provider/menu_provider.dart';
-import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
+import 'package:spnk/views/bloc/screen_details/screen_event.dart';
 
 class AndroidMenuScreen extends StatefulWidget {
   const AndroidMenuScreen({Key? key}) : super(key: key);
@@ -81,10 +82,7 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
               case 0:
                 return GestureDetector(
                   onTap: () {
-                    ref.read(menuNotifierProvider.notifier).menuSelected =
-                        false;
-                    ref.read(routeNotifierProvider.notifier).selectedScreen =
-                        Screen.home;
+                    context.read<ScreenBloc>().add(UpdateScreen());
                   },
                   child: const AndroidCustomMenuItem(
                     icon: FontAwesomeIcons.home,
@@ -94,10 +92,9 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
               case 1:
                 return GestureDetector(
                   onTap: () {
-                    ref.read(menuNotifierProvider.notifier).menuSelected =
-                        false;
-                    ref.read(routeNotifierProvider.notifier).selectedScreen =
-                        Screen.experience;
+                    context
+                        .read<ScreenBloc>()
+                        .add(UpdateScreen(screen: Screen.experience));
                   },
                   child: const AndroidCustomMenuItem(
                     icon: Icons.work,
@@ -108,10 +105,9 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
               case 2:
                 return GestureDetector(
                   onTap: () {
-                    ref.read(menuNotifierProvider.notifier).menuSelected =
-                        false;
-                    ref.read(routeNotifierProvider.notifier).selectedScreen =
-                        Screen.projects;
+                    context
+                        .read<ScreenBloc>()
+                        .add(UpdateScreen(screen: Screen.projects));
                   },
                   child: const AndroidCustomMenuItem(
                     icon: Icons.apps,
@@ -121,10 +117,9 @@ class _AndroidMenuScreenState extends State<AndroidMenuScreen>
               case 3:
                 return GestureDetector(
                   onTap: () {
-                    ref.read(menuNotifierProvider.notifier).menuSelected =
-                        false;
-                    ref.read(routeNotifierProvider.notifier).selectedScreen =
-                        Screen.contactMe;
+                    context
+                        .read<ScreenBloc>()
+                        .add(UpdateScreen(screen: Screen.contactMe));
                   },
                   child: const AndroidCustomMenuItem(
                     icon: Icons.call,

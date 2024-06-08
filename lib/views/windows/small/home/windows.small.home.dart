@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:provider/provider.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/screen_type.dart';
-import 'package:spnk/views/provider/menu_provider.dart';
-import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
+import 'package:spnk/views/bloc/screen_details/screen_event.dart';
 import 'package:spnk/views/windows/common/name_text.dart';
 import 'package:spnk/views/windows/common/theme_switch.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
@@ -40,8 +41,10 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
 
-    final screen = ref.watch(routeNotifierProvider);
-    final menuSelectedCheck = ref.watch(menuNotifierProvider);
+    // final screen = ref.watch(routeNotifierProvider);
+    final screen = context.read<ScreenBloc>().state.selectedScreen;
+
+    final menuSelectedCheck = screen == Screen.menu;
     debugPrint('..@ screenWidth @ small : $screenWidth');
     debugPrint('..@ screenHeight @ small : $screenHeight');
     debugPrint('..@ screen @ small :$screen');
@@ -64,9 +67,9 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
           children: [
             GestureDetector(
               onTap: () {
-                ref.read(menuNotifierProvider.notifier).menuSelected = false;
-                ref.read(routeNotifierProvider.notifier).selectedScreen =
-                    Screen.home;
+                // ref.read(menuNotifierProvider.notifier).menuSelected = false;
+                // ref.read(routeNotifierProvider.notifier).selectedScreen =
+                //     Screen.home;
               },
               child: Padding(
                 padding: const EdgeInsets.only(left: 36, top: 18),
@@ -81,9 +84,9 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
             if (!menuSelectedCheck)
               GestureDetector(
                 onTap: () {
-                  ref.read(menuNotifierProvider.notifier).menuSelected = true;
-                  ref.read(routeNotifierProvider.notifier).selectedScreen =
-                      Screen.home;
+                  context
+                      .read<ScreenBloc>()
+                      .add(UpdateScreen(screen: Screen.menu));
                 },
                 child: Icon(
                   Icons.menu,
@@ -93,9 +96,7 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
             else
               GestureDetector(
                 onTap: () {
-                  ref.read(menuNotifierProvider.notifier).menuSelected = false;
-                  ref.read(routeNotifierProvider.notifier).selectedScreen =
-                      Screen.home;
+                  context.read<ScreenBloc>().add(UpdateScreen());
                 },
                 child: Icon(
                   Icons.close,
@@ -116,7 +117,7 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
                   : screen == Screen.contactMe
                       ? WindowsSmallContactMeScreen()
                       : screen == Screen.projects
-                          ? const ProjectsScreenSmall()
+                          ? ProjectsScreenSmall()
                           : screen == Screen.experience
                               ? WindowsSmallExperienceScreen()
                               : const SizedBox.shrink()

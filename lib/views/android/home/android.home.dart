@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/screen_type.dart';
@@ -7,8 +8,8 @@ import 'package:spnk/views/android/experience/android.experience.screen.dart';
 import 'package:spnk/views/android/home/android.home.screen.dart';
 import 'package:spnk/views/android/menu/android.menu.screen.dart';
 import 'package:spnk/views/android/projects/android.projects.screen.dart';
-import 'package:spnk/views/provider/menu_provider.dart';
-import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
+import 'package:spnk/views/bloc/screen_details/screen_event.dart';
 
 class AndroidHome extends StatelessWidget {
   static const routeName = '/AndroidHome';
@@ -19,8 +20,10 @@ class AndroidHome extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
 
     final screenWidth = screenSize.width;
-    final screen = ref.watch(routeNotifierProvider);
-    final menuSelectedCheck = ref.watch(menuNotifierProvider);
+    // final screen = ref.watch(routeNotifierProvider);
+    final screen = context.read<ScreenBloc>().state.selectedScreen;
+
+    final menuSelectedCheck = screen == Screen.menu;
     debugPrint('.. @@screen => $screen ');
     debugPrint('.. @@menuSelectedCheck =>$menuSelectedCheck');
     return PopScope(
@@ -42,21 +45,16 @@ class AndroidHome extends StatelessWidget {
                   ? IconButton(
                       icon: Icon(Icons.close, color: kWhiteColor),
                       onPressed: () {
-                        ref.read(menuNotifierProvider.notifier).menuSelected =
-                            false;
-                        ref
-                            .read(routeNotifierProvider.notifier)
-                            .selectedScreen = Screen.home;
+                        context.read<ScreenBloc>().add(UpdateScreen());
                       },
                     )
                   : IconButton(
                       icon: Icon(Icons.menu, color: kWhiteColor),
                       onPressed: () {
-                        ref.read(menuNotifierProvider.notifier).menuSelected =
-                            true;
-                        ref
-                            .read(routeNotifierProvider.notifier)
-                            .selectedScreen = Screen.menu;
+                        context
+                            .read<ScreenBloc>()
+                            .add(UpdateScreen(screen: Screen.menu));
+
                       },
                     ),
             ),

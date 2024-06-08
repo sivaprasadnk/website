@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/screen_type.dart';
-import 'package:spnk/views/provider/page_provider.dart';
-import 'package:spnk/views/provider/route_provider.dart';
+import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
+import 'package:spnk/views/bloc/screen_details/screen_event.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/contact.me.menu.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/experience.menu.dart';
 import 'package:spnk/views/windows/medium/home/menu.widgets/home.menu.dart';
@@ -21,34 +22,35 @@ class WindowsMediumMenu extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              ref.read(routeNotifierProvider.notifier).selectedScreen =
-                  Screen.home;
+              context.read<ScreenBloc>().add(UpdateScreen());
             },
             child: HomeMenu(),
           ),
           const SizedBox(height: 20),
           GestureDetector(
             onTap: () {
-              ref.read(routeNotifierProvider.notifier).selectedScreen =
-                  Screen.experience;
+              context
+                  .read<ScreenBloc>()
+                  .add(UpdateScreen(screen: Screen.experience));
             },
             child: ExperienceMenu(),
           ),
           const SizedBox(height: 20),
           GestureDetector(
             onTap: () {
-              ref.read(routeNotifierProvider.notifier).selectedScreen =
-                  Screen.projects;
-
-              ref.read(pageIndexProvider.notifier).pageIndex = 0;
+              context
+                  .read<ScreenBloc>()
+                  .add(UpdateScreen(screen: Screen.projects));
             },
             child: MyProjectsMenu(),
           ),
           const SizedBox(height: 20),
           GestureDetector(
             onTap: () {
-              ref.read(routeNotifierProvider.notifier).selectedScreen =
-                  Screen.contactMe;
+              
+              context
+                  .read<ScreenBloc>()
+                  .add(UpdateScreen(screen: Screen.contactMe));
             },
             child: ContactmeMenu(),
           ),
