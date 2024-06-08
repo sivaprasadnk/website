@@ -1,6 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/views/provider/data_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/views/bloc/contact_details/contact_details_bloc.dart';
+import 'package:spnk/views/bloc/contact_details/contact_details_state.dart';
 import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 
 class WindowsSmallContactMeScreen extends StatefulWidget {
@@ -35,10 +38,8 @@ class _WindowsSmallContactMeScreenState
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    final screenHeight = screenSize.height;
-    final screenWidth = screenSize.width;
-    final contactList = ref.watch(contactProvider);
+    final screenHeight = context.screenHeight;
+    final screenWidth = context.screenWidth;
 
     return Form(
       key: _formKey,
@@ -48,17 +49,21 @@ class _WindowsSmallContactMeScreenState
           SizedBox(height: screenHeight * 0.13),
           SectionTitle(screenWidth: screenWidth, title: 'Contact Me'),
           SizedBox(height: screenHeight * 0.13),
-          Column(
-            children: contactList
-                .map(
-                  (e) => ContactDetailsItem(
-                    screenWidth: screenWidth,
-                    screenHeight: screenHeight,
-                    icon: e.icon,
-                    details: e.details,
-                  ),
-                )
-                .toList(),
+          BlocBuilder<ContactDetailsBloc, ContactDetailsState>(
+            builder: (context, state) {
+              return Column(
+                children: state.contactDetailList
+                    .map(
+                      (e) => ContactDetailsItem(
+                        screenWidth: screenWidth,
+                        screenHeight: screenHeight,
+                        icon: e.icon,
+                        details: e.details,
+                      ),
+                    )
+                    .toList(),
+              );
+            },
           ),
           const SizedBox(height: 50),
           Flexible(

@@ -1,6 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/views/provider/data_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/views/bloc/contact_details/contact_details_bloc.dart';
+import 'package:spnk/views/bloc/contact_details/contact_details_state.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
 class WindowsLargeContactMeScreen extends StatefulWidget {
@@ -38,10 +41,8 @@ class _WindowsLargeContactMeScreenState
   Widget build(BuildContext context) {
     super.build(context);
 
-    final screenSize = MediaQuery.of(context).size;
-    final screenWidth = screenSize.width;
-    final screenHeight = screenSize.height;
-    final contactList = ref.watch(contactProvider);
+    final screenWidth = context.screenWidth;
+    final screenHeight = context.screenHeight;
 
     return Stack(
       children: [
@@ -54,39 +55,44 @@ class _WindowsLargeContactMeScreenState
               const WindowsLargeSectionTitle(
                 title: 'Contact Me',
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: screenWidth * 0.5,
-                  top: screenHeight * .15,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: contactList.map((e) {
-                    return Padding(
-                      padding: EdgeInsets.only(bottom: screenHeight * 0.03),
-                      child: FadeInRight(
-                        child: SizedBox(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                e.icon,
-                                color: Theme.of(context).splashColor,
+              BlocBuilder<ContactDetailsBloc, ContactDetailsState>(
+                builder: (context, state) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      left: screenWidth * 0.5,
+                      top: screenHeight * .15,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: state.contactDetailList.map((e) {
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: screenHeight * 0.03),
+                          child: FadeInRight(
+                            child: SizedBox(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    e.icon,
+                                    color: Theme.of(context).splashColor,
+                                  ),
+                                  const SizedBox(width: 20),
+                                  Text(
+                                    e.details,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displaySmall,
+                                  ),
+                                ],
                               ),
-                              const SizedBox(width: 20),
-                              Text(
-                                e.details,
-                                style: Theme.of(context).textTheme.displaySmall,
-                              ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-
-                ),
+                        );
+                      }).toList(),
+                    ),
+                  );
+                },
               ),
             ],
           ),

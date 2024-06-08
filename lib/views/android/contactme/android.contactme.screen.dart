@@ -1,15 +1,16 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/description_text.dart';
-import 'package:spnk/views/provider/data_provider.dart';
+import 'package:spnk/views/bloc/contact_details/contact_details_bloc.dart';
+import 'package:spnk/views/bloc/contact_details/contact_details_state.dart';
 
 class AndroidContactMeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final contactList = ref.watch(contactProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26,30 +27,34 @@ class AndroidContactMeScreen extends StatelessWidget {
           ),
         ),
         const AndroidDashImage(dashImage: 'dash4'),
-        SingleChildScrollView(
-          child: LiveList(
-            shrinkWrap: true,
-            padding: const EdgeInsets.only(
-              left: 16,
-              right: 16,
-              bottom: 5,
-            ),
-            showItemInterval: const Duration(milliseconds: 50),
-            itemCount: contactList.length,
-            itemBuilder: animationItemBuilder((index) {
-              final item =
-                  contactList.firstWhere((element) => element.index == index);
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TitleText(title: item.title),
-                  DescriptionText(
-                    description: item.details,
-                  ),
-                ],
-              );
-            }),
-          ),
+        BlocBuilder<ContactDetailsBloc, ContactDetailsState>(
+          builder: (context, state) {
+            return SingleChildScrollView(
+              child: LiveList(
+                shrinkWrap: true,
+                padding: const EdgeInsets.only(
+                  left: 16,
+                  right: 16,
+                  bottom: 5,
+                ),
+                showItemInterval: const Duration(milliseconds: 50),
+                itemCount: state.contactDetailList.length,
+                itemBuilder: animationItemBuilder((index) {
+                  final item = state.contactDetailList
+                      .firstWhere((element) => element.index == index);
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TitleText(title: item.title),
+                      DescriptionText(
+                        description: item.details,
+                      ),
+                    ],
+                  );
+                }),
+              ),
+            );
+          },
         ),
       ],
     );
