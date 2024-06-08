@@ -1,6 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/views/provider/data_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spnk/views/bloc/experience/exp_details_bloc.dart';
+import 'package:spnk/views/bloc/experience/exp_details_state.dart';
 import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 
 class WindowsSmallExperienceScreen extends StatefulWidget {
@@ -35,7 +37,6 @@ class _WindowsSmallExperienceScreenState
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
-    final expList = ref.watch(experienceProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,55 +44,59 @@ class _WindowsSmallExperienceScreenState
         SizedBox(height: screenHeight * 0.13),
         SectionTitle(screenWidth: screenWidth, title: 'Experience'),
         SizedBox(height: screenHeight * 0.12),
-        Column(
-          children: expList.map((e) {
-            return FadeInRight(
-              child: ListTile(
-                title: Padding(
-                  padding: EdgeInsets.only(
-                    left: screenWidth * 0.2,
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        ' ${e.title}',
-                        style: Theme.of(context).textTheme.displaySmall,
+        BlocBuilder<ExpDetailsBloc, ExpDetailsState>(
+          builder: (context, state) {
+            return Column(
+              children: state.expList.map((e) {
+                return FadeInRight(
+                  child: ListTile(
+                    title: Padding(
+                      padding: EdgeInsets.only(
+                        left: screenWidth * 0.2,
                       ),
-                      const SizedBox(height: 20),
-                      Row(
+                      child: Column(
                         mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CircleAvatar(
-                            radius: 5,
-                            backgroundColor: Theme.of(context).splashColor,
-                          ),
                           Text(
-                            '      ${e.orgName}',
+                            ' ${e.title}',
                             style: Theme.of(context).textTheme.displaySmall,
+                          ),
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CircleAvatar(
+                                radius: 5,
+                                backgroundColor: Theme.of(context).splashColor,
+                              ),
+                              Text(
+                                '      ${e.orgName}',
+                                style: Theme.of(context).textTheme.displaySmall,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CircleAvatar(
+                                radius: 5,
+                                backgroundColor: Theme.of(context).splashColor,
+                              ),
+                              Text(
+                                '      ${e.startDate} - ${e.endDate}',
+                                style: Theme.of(context).textTheme.displaySmall,
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          CircleAvatar(
-                            radius: 5,
-                            backgroundColor: Theme.of(context).splashColor,
-                          ),
-                          Text(
-                            '      ${e.startDate} - ${e.endDate}',
-                            style: Theme.of(context).textTheme.displaySmall,
-                          ),
-                        ],
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
+                );
+              }).toList(),
             );
-          }).toList(),
+          },
         ),
         // FadeInRight(
         //   child: ListTile(

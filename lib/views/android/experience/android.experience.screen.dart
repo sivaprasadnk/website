@@ -1,15 +1,16 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/android/description_text.dart';
-import 'package:spnk/views/provider/data_provider.dart';
+import 'package:spnk/views/bloc/experience/exp_details_bloc.dart';
+import 'package:spnk/views/bloc/experience/exp_details_state.dart';
 
 class AndroidExperienceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final expList = ref.watch(experienceProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26,36 +27,40 @@ class AndroidExperienceScreen extends StatelessWidget {
           ),
         ),
         const AndroidDashImage(dashImage: 'dash2'),
-        LiveList(
-                shrinkWrap: true,
-                padding: const EdgeInsets.only(
-                  left: 16,
-                  right: 16,
-                  bottom: 10,
-                ),
-                physics: const NeverScrollableScrollPhysics(),
-                showItemInterval: const Duration(milliseconds: 50),
-                itemCount: expList.length,
-                itemBuilder: animationItemBuilder((index) {
-                  final item =
-                      expList.firstWhere((element) => element.order == index);
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TitleText(
-                        title: item.title,
-                      ),
-                      DescriptionText(
-                        description: item.orgName,
-                      ),
-                      DescriptionText(
-                        description: "${item.startDate} - ${item.endDate}",
-                      ),
-                    ],
-                  );
-                }),
+        BlocBuilder<ExpDetailsBloc, ExpDetailsState>(
+          builder: (context, state) {
+            return LiveList(
+              shrinkWrap: true,
+              padding: const EdgeInsets.only(
+                left: 16,
+                right: 16,
+                bottom: 10,
               ),
-        
+              physics: const NeverScrollableScrollPhysics(),
+              showItemInterval: const Duration(milliseconds: 50),
+              itemCount: state.expList.length,
+              itemBuilder: animationItemBuilder((index) {
+                final item =
+                    state.expList
+                    .firstWhere((element) => element.order == index);
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TitleText(
+                      title: item.title,
+                    ),
+                    DescriptionText(
+                      description: item.orgName,
+                    ),
+                    DescriptionText(
+                      description: "${item.startDate} - ${item.endDate}",
+                    ),
+                  ],
+                );
+              }),
+            );
+          },
+        ),
       ],
     );
   }

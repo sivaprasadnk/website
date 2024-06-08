@@ -1,6 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/views/provider/data_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spnk/views/bloc/experience/exp_details_bloc.dart';
+import 'package:spnk/views/bloc/experience/exp_details_state.dart';
 
 class WindowsMediumExperienceScreen extends StatefulWidget {
   @override
@@ -34,7 +36,6 @@ class _WindowsMediumExperienceScreenState
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
-    final expList = ref.watch(experienceProvider);
 
     return Stack(
       children: [
@@ -42,62 +43,68 @@ class _WindowsMediumExperienceScreenState
           padding: EdgeInsets.only(top: screenHeight * 0.13),
           child: SizedBox(
             width: screenWidth * 0.78,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: expList.map((exp) {
-                return FadeInRight(
-                  child: SizedBox(
-                    width: screenWidth * 0.7,
-                    child: ListTile(
-                      title: Padding(
-                        padding: EdgeInsets.only(
-                          left: screenWidth * 0.2,
-                          top: screenHeight * .05,
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              ' ${exp.title}',
-                              style: Theme.of(context).textTheme.bodyLarge,
+            child: BlocBuilder<ExpDetailsBloc, ExpDetailsState>(
+              builder: (context, state) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: state.expList.map((exp) {
+                    return FadeInRight(
+                      child: SizedBox(
+                        width: screenWidth * 0.7,
+                        child: ListTile(
+                          title: Padding(
+                            padding: EdgeInsets.only(
+                              left: screenWidth * 0.2,
+                              top: screenHeight * .05,
                             ),
-                            const SizedBox(height: 20),
-                            Row(
+                            child: Column(
                               mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                CircleAvatar(
-                                  radius: 5,
-                                  backgroundColor:
-                                      Theme.of(context).splashColor,
-                                ),
                                 Text(
-                                  '      ${exp.orgName}',
+                                  ' ${exp.title}',
                                   style: Theme.of(context).textTheme.bodyLarge,
+                                ),
+                                const SizedBox(height: 20),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 5,
+                                      backgroundColor:
+                                          Theme.of(context).splashColor,
+                                    ),
+                                    Text(
+                                      '      ${exp.orgName}',
+                                      style:
+                                          Theme.of(context).textTheme.bodyLarge,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 5,
+                                      backgroundColor:
+                                          Theme.of(context).splashColor,
+                                    ),
+                                    Text(
+                                      '      ${exp.startDate} - ${exp.endDate}',
+                                      style:
+                                          Theme.of(context).textTheme.bodyLarge,
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                CircleAvatar(
-                                  radius: 5,
-                                  backgroundColor:
-                                      Theme.of(context).splashColor,
-                                ),
-                                Text(
-                                  '      ${exp.startDate} - ${exp.endDate}',
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                              ],
-                            ),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
+                    );
+                  }).toList(),
                 );
-              }).toList(),
+              },
             ),
           ),
         ),

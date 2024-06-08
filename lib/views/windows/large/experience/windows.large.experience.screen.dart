@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
-import 'package:spnk/views/provider/data_provider.dart';
+import 'package:spnk/views/bloc/experience/exp_details_bloc.dart';
+import 'package:spnk/views/bloc/experience/exp_details_state.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
 class WindowsLargeExperienceScreen extends StatefulWidget {
@@ -43,7 +45,6 @@ class _WindowsLargeExperienceScreenState
       radius: 5,
       backgroundColor: Theme.of(context).splashColor,
     );
-    final expList = ref.watch(experienceProvider);
 
     return Stack(
       children: [
@@ -56,52 +57,53 @@ class _WindowsLargeExperienceScreenState
               const WindowsLargeSectionTitle(
                 title: 'Experience',
               ),
-              Column(
-                children: expList.map((exp) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                      left: context.screenWidth * 0.5,
-                      top: context.screenHeight * .05,
-                    ),
-                    child: ListTile(
-                      title: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            " ${exp.title}",
-                            // ' Java, Postgres Programmer',
-                            style: textStyle,
-                          ),
-                          const SizedBox(height: 20),
-                          Row(
+              BlocBuilder<ExpDetailsBloc, ExpDetailsState>(
+                builder: (context, state) {
+                  return Column(
+                    children: state.expList.map((exp) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                          left: context.screenWidth * 0.5,
+                          top: context.screenHeight * .05,
+                        ),
+                        child: ListTile(
+                          title: Column(
                             mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              bulletPoint,
                               Text(
-                                // '      Bayasys Infotech Pvt Ltd.',
-                                '      ${exp.orgName}',
+                                " ${exp.title}",
                                 style: textStyle,
+                              ),
+                              const SizedBox(height: 20),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  bulletPoint,
+                                  Text(
+                                    '      ${exp.orgName}',
+                                    style: textStyle,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  bulletPoint,
+                                  Text(
+                                    '      ${exp.startDate} - ${exp.endDate}',
+                                    style: textStyle,
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              bulletPoint,
-                              Text(
-                                '      ${exp.startDate} - ${exp.endDate}',
-                                style: textStyle,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                        ),
+                      );
+                    }).toList(),
                   );
-                }).toList(),
+                },
               ),
-
             ],
           ),
         ),
