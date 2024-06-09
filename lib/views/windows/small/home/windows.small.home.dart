@@ -5,6 +5,7 @@ import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
 import 'package:spnk/views/bloc/screen_details/screen_event.dart';
+import 'package:spnk/views/bloc/screen_details/screen_state.dart';
 import 'package:spnk/views/windows/common/name_text.dart';
 import 'package:spnk/views/windows/common/theme_switch.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
@@ -39,16 +40,6 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
 
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
-    final screenHeight = screenSize.height;
-
-    // final screen = ref.watch(routeNotifierProvider);
-    final screen = context.read<ScreenBloc>().state.selectedScreen;
-
-    final menuSelectedCheck = screen == Screen.menu;
-    debugPrint('..@ screenWidth @ small : $screenWidth');
-    debugPrint('..@ screenHeight @ small : $screenHeight');
-    debugPrint('..@ screen @ small :$screen');
-    debugPrint('..@ menuSelectedCheck @ small :$menuSelectedCheck');
     return Scaffold(
       key: _scaffoldKey,
       extendBodyBehindAppBar: true,
@@ -81,50 +72,60 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
             const SizedBox(
               width: 20,
             ),
-            if (!menuSelectedCheck)
-              GestureDetector(
-                onTap: () {
-                  context
-                      .read<ScreenBloc>()
-                      .add(UpdateScreen(screen: Screen.menu));
-                },
-                child: Icon(
-                  Icons.menu,
-                  color: Theme.of(context).splashColor,
-                ).showCursorOnHover,
-              )
-            else
-              GestureDetector(
-                onTap: () {
-                  context.read<ScreenBloc>().add(UpdateScreen());
-                },
-                child: Icon(
-                  Icons.close,
-                  color: Theme.of(context).splashColor,
-                ).showCursorOnHover,
-              ),
+            BlocBuilder<ScreenBloc, ScreenState>(
+              builder: (context, state) {
+                return state.selectedScreen == Screen.home
+                    ? GestureDetector(
+                        onTap: () {
+                          context
+                              .read<ScreenBloc>()
+                              .add(UpdateScreen(screen: Screen.menu));
+                        },
+                        child: Icon(
+                          Icons.menu,
+                          color: Theme.of(context).splashColor,
+                        ).showCursorOnHover,
+                      )
+                    : GestureDetector(
+                        onTap: () {
+                          context.read<ScreenBloc>().add(UpdateScreen());
+                        },
+                        child: Icon(
+                          Icons.close,
+                          color: Theme.of(context).splashColor,
+                        ).showCursorOnHover,
+                      );
+              },
+            ),
             const SizedBox(width: 10),
           ],
         ),
       ),
-      body: SizedBox(
-        width: screenWidth,
-        child: Stack(
-          children: [
-            if (!menuSelectedCheck)
-              screen == Screen.home
-                  ? WindowsSmallHomeScreen(showProPic: showProPic)
-                  : screen == Screen.contactMe
-                      ? WindowsSmallContactMeScreen()
-                      : screen == Screen.projects
-                          ? ProjectsScreenSmall()
-                          : screen == Screen.experience
-                              ? WindowsSmallExperienceScreen()
-                              : const SizedBox.shrink()
-            else
-              WindowsSmallDrawer(),
-          ],
-        ),
+      body: BlocBuilder<ScreenBloc, ScreenState>(
+        builder: (context, state) {
+          final screen = context.read<ScreenBloc>().state.selectedScreen;
+
+          final menuSelectedCheck = screen == Screen.menu;
+          return SizedBox(
+            width: screenWidth,
+            child: Stack(
+              children: [
+                if (!menuSelectedCheck)
+                  screen == Screen.home
+                      ? WindowsSmallHomeScreen(showProPic: showProPic)
+                      : screen == Screen.contactMe
+                          ? WindowsSmallContactMeScreen()
+                          : screen == Screen.projects
+                              ? ProjectsScreenSmall()
+                              : screen == Screen.experience
+                                  ? WindowsSmallExperienceScreen()
+                                  : const SizedBox.shrink()
+                else
+                  WindowsSmallDrawer(),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
