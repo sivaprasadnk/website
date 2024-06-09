@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
+import 'package:spnk/views/bloc/screen_details/screen_state.dart';
 import 'package:spnk/views/windows/common/name_text.dart';
 import 'package:spnk/views/windows/common/theme_switch.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
@@ -18,7 +19,6 @@ class WindowsMediumHome extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
-    final screen = context.read<ScreenBloc>().state.selectedScreen;
     const double size = 15;
     return Scaffold(
       bottomNavigationBar: Padding(
@@ -56,23 +56,26 @@ class WindowsMediumHome extends StatelessWidget {
           ),
         ),
       ),
-      body: SizedBox(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            WindowsMediumMenu(),
-            if (screen == Screen.home)
-              WindowsMediumHomeScreen()
-            else
-              screen == Screen.contactMe
-                  ? const WindowsMediumContactMeScreen()
-                  : screen == Screen.experience
-                      ? WindowsMediumExperienceScreen()
-                      : screen == Screen.projects
-                          ? ProjectsMediumNew()
-                          : const SizedBox.shrink(),
-          ],
-        ),
+      body: BlocBuilder<ScreenBloc, ScreenState>(
+        builder: (context, state) {
+          final screen = state.selectedScreen;
+          return Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              WindowsMediumMenu(),
+              if (screen == Screen.home)
+                WindowsMediumHomeScreen()
+              else
+                screen == Screen.contactMe
+                    ? const WindowsMediumContactMeScreen()
+                    : screen == Screen.experience
+                        ? WindowsMediumExperienceScreen()
+                        : screen == Screen.projects
+                            ? ProjectsMediumNew()
+                            : const SizedBox.shrink(),
+            ],
+          );
+        },
       ),
     );
   }

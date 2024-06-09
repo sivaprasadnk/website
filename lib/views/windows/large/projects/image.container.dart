@@ -6,10 +6,8 @@ class ImageContainer extends StatelessWidget {
     Key? key,
     required this.imagePath,
     this.isWeb = false,
-    this.imageFit = BoxFit.cover,
   }) : super(key: key);
   final String imagePath;
-  final BoxFit imageFit;
   final bool isWeb;
   @override
   Widget build(BuildContext context) {
@@ -34,7 +32,7 @@ class ImageContainer extends StatelessWidget {
         ),
         child: Image.asset(
           imagePath,
-          fit: imageFit,
+          fit: isWeb ? BoxFit.fitWidth : BoxFit.cover,
         ),
       ),
     );

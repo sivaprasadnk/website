@@ -87,10 +87,7 @@ class SplashScreen extends StatelessWidget {
             defaultTargetPlatform == TargetPlatform.iOS
         ? const AndroidHome()
         : context.screenWidth > 1121
-            ? MinSize(
-                minHeight: 734,
-                child: WindowsHomeLarge(),
-              )
+            ? WindowsHomeLarge()
             : context.screenWidth > 695
                 ? MinSize(
                     minHeight: 734,
