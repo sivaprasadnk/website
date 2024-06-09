@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/common/exp_details_list_view.dart';
-import 'package:spnk/views/windows/common/exp_screen_image.dart';
+import 'package:spnk/views/windows/common/screen_image.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
 class WindowsLargeExperienceScreen extends StatefulWidget {
@@ -44,9 +44,10 @@ class _WindowsLargeExperienceScreenState
         Positioned.fill(
           top: 100,
           left: context.screenWidth * 0.0,
-          child: const ExpScreenImage(
+          child: const ScreenImage(
             alignment: Alignment.centerLeft,
             height: 350,
+            imagePath: 'assets/images/dash/dash2.png',
           ),
         ),
       ],

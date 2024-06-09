@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/common/contact_details_list_view.dart';
-import 'package:spnk/views/windows/common/contact_screen_image.dart';
+import 'package:spnk/views/windows/common/screen_image.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
 class WindowsLargeContactMeScreen extends StatelessWidget {
@@ -35,9 +35,10 @@ class WindowsLargeContactMeScreen extends StatelessWidget {
         Positioned.fill(
           top: 100,
           left: screenWidth * 0.0,
-          child: const ContactScreenImage(
+          child: const ScreenImage(
             alignment: Alignment.centerLeft,
             height: 350,
+            imagePath: 'assets/images/dash/dash4.png',
           ),
         ),
       ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/views/windows/common/exp_details_list_view.dart';
-import 'package:spnk/views/windows/common/exp_screen_image.dart';
+import 'package:spnk/views/windows/common/screen_image.dart';
 import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 
 class WindowsSmallExperienceScreen extends StatelessWidget {
@@ -24,9 +24,10 @@ class WindowsSmallExperienceScreen extends StatelessWidget {
           ),
         ),
         const Flexible(
-          child: ExpScreenImage(
+          child: ScreenImage(
             alignment: Alignment.bottomRight,
             height: 280,
+            imagePath: 'assets/images/dash/dash2.png',
           ),
         ),
       ],

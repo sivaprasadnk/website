@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/common/contact_details_list_view.dart';
-import 'package:spnk/views/windows/common/contact_screen_image.dart';
+import 'package:spnk/views/windows/common/screen_image.dart';
 
 class WindowsMediumContactMeScreen extends StatelessWidget {
   const WindowsMediumContactMeScreen({Key? key}) : super(key: key);
@@ -26,9 +26,10 @@ class WindowsMediumContactMeScreen extends StatelessWidget {
         ),
         const Positioned.fill(
           right: -50,
-          child: ContactScreenImage(
+          child: ScreenImage(
             alignment: Alignment.bottomRight,
             height: 280,
+            imagePath: 'assets/images/dash/dash4.png',
           ),
         ),
       ],
