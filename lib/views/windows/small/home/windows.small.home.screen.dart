@@ -14,6 +14,15 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
   bool showLottie = false;
   bool showName = false;
   bool showProPic = false;
+
+
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -27,6 +36,7 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
           showName = true;
         });
       }).then((value) {
+
         Future.delayed(const Duration(milliseconds: 500)).then((value) {
           setState(() {
             showProPic = true;
@@ -42,24 +52,11 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: screenHeight * 0.08),
-        AnimatedOpacity(
-          opacity: showLottie ? 1 : 0,
-          duration: const Duration(milliseconds: 600),
-          child: Container(
-            margin: EdgeInsets.only(
-              left: screenWidth * 0,
-            ),
-            child: Image.asset(
-              'assets/images/dash/dash1.png',
-              height: 190,
-            ),
-          ),
-        ),
-        const IntroText(
-          leftPadding: 30,
+        IntroText(
+          leftPadding: screenWidth * .2,
+          topPadding: screenHeight * 0.08,
+          imageHeight: 190,
         ),
         SizedBox(height: screenHeight * 0.05),
         Row(

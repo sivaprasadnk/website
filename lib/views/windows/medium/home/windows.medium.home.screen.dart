@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/views/windows/common/dash_image.dart';
 import 'package:spnk/views/windows/common/intro_text.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
 
@@ -59,28 +58,12 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(height: screenHeight * 0.06),
-        DashImage(
-          showLottie: showLottie,
-          leftPadding: leftPadding,
-          size: 221,
-        ),
         IntroText(
           leftPadding: leftPadding,
           splitText: false,
+          topPadding: screenHeight * .06,
+          imageHeight: 221,
         ),
-        // DashImageMedium(showLottie: showLottie, screenWidth: screenWidth),
-        // HiNameContainer(
-        //   showName: showName,
-        //   leftPadding: leftPadding,
-        //   screenWidth: screenWidth,
-        // ),
-        // SizedBox(height: heightFactor * 11),
-        // FlutterDeveloperContainer(
-        //   showName: showName,
-        //   leftPadding: leftPadding,
-        //   screenWidth: screenWidth,
-        // ),
         SizedBox(height: screenHeight * 0.025),
         Row(
           children: [

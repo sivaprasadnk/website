@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
-import 'package:spnk/views/windows/common/dash_image.dart';
 import 'package:spnk/views/windows/common/intro_text.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
 
@@ -15,7 +14,6 @@ class WindowsHomeLargeScreen extends StatefulWidget {
 class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
     with AutomaticKeepAliveClientMixin {
   bool showName = false;
-  bool showProPic = false;
   bool showLottie = false;
 
   @override
@@ -41,12 +39,6 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
         setState(() {
           showName = true;
         });
-      }).then((value) {
-        Future.delayed(const Duration(seconds: 1)).then((value) {
-          setState(() {
-            showProPic = true;
-          });
-        });
       });
     });
   }
@@ -60,38 +52,20 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SocialMediaIconsList(),
-        AnimatedOpacity(
-          opacity: showName ? 1 : 0,
-          duration: const Duration(milliseconds: 900),
-          child: SizedBox(
-            width: screenWidth / 1.7,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: context.screenHeight * 0.12),
-                DashImage(
-                  showLottie: showLottie,
-                  leftPadding: screenWidth * 0.1,
-                  size: 250,
-                ),
-                IntroText(
-                  leftPadding: screenWidth * 0.15,
-                  splitText: false,
-                ),
-                // HiNameContainer(
-                //   showName: showName,
-                //   leftPadding: screenWidth * 0.15,
-                //   screenWidth: screenWidth,
-                // ),
-                // const SizedBox(height: 20),
-                // FlutterDeveloperContainer(
-                //   showName: showName,
-                //   screenWidth: screenWidth,
-                //   leftPadding: screenWidth * 0.15,
-                // ),
-              ],
-            ),
+        SizedBox(
+          width: screenWidth / 1.7,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IntroText(
+                topPadding: context.screenHeight * 0.12,
+                leftPadding: screenWidth * 0.15,
+                splitText: false,
+                imageHeight: 250,
+
+              ),
+            ],
           ),
         ),
         Column(
