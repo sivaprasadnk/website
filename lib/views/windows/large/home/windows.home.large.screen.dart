@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/common/dash_image.dart';
-import 'package:spnk/views/windows/common/flutter_developer_container.dart';
-import 'package:spnk/views/windows/common/hi_name_text.dart';
+import 'package:spnk/views/windows/common/intro_text.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
 
 // import 'windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
@@ -76,17 +75,21 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
                   leftPadding: screenWidth * 0.1,
                   size: 250,
                 ),
-                HiNameContainer(
-                  showName: showName,
+                IntroText(
                   leftPadding: screenWidth * 0.15,
-                  screenWidth: screenWidth,
+                  splitText: false,
                 ),
-                const SizedBox(height: 20),
-                FlutterDeveloperContainer(
-                  showName: showName,
-                  screenWidth: screenWidth,
-                  leftPadding: screenWidth * 0.15,
-                ),
+                // HiNameContainer(
+                //   showName: showName,
+                //   leftPadding: screenWidth * 0.15,
+                //   screenWidth: screenWidth,
+                // ),
+                // const SizedBox(height: 20),
+                // FlutterDeveloperContainer(
+                //   showName: showName,
+                //   screenWidth: screenWidth,
+                //   leftPadding: screenWidth * 0.15,
+                // ),
               ],
             ),
           ),

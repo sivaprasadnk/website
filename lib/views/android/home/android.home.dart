@@ -20,12 +20,8 @@ class AndroidHome extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
 
     final screenWidth = screenSize.width;
-    // final screen = ref.watch(routeNotifierProvider);
     final screen = context.read<ScreenBloc>().state.selectedScreen;
 
-    final menuSelectedCheck = screen == Screen.menu;
-    debugPrint('.. @@screen => $screen ');
-    debugPrint('.. @@menuSelectedCheck =>$menuSelectedCheck');
     return PopScope(
       canPop: false,
       child: Scaffold(

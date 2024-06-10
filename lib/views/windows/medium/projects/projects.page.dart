@@ -23,70 +23,87 @@ class ProjectsPage extends StatelessWidget {
       builder: (context, state) {
         return Row(
           children: [
-            if (state.showPrevIcon) PrevIcon(controller: controller),
+            if (state.showPrevIcon)
+              PrevIcon(controller: controller)
+            else
+              const SizedBox(
+                height: 20,
+                width: 20,
+              ),
             SizedBox(
               height: screenHeight * 0.5,
               width: 450,
-              child: PageView(
-                onPageChanged: (page) {
-                  context.read<ProjectBloc>().add(
-                        ShowNextIcon(
-                          showNext: page < state.projectList.length - 1,
+              child: Center(
+                child: PageView(
+                  onPageChanged: (page) {
+                    context.read<ProjectBloc>().add(
+                          ShowNextIcon(
+                            showNext: page < state.projectList.length - 1,
+                          ),
+                        );
+                    context.read<ProjectBloc>().add(
+                          ShowPrevIcon(
+                            showPrev: page > 0,
+                          ),
+                        );
+                  },
+                  controller: controller,
+                  children: state.projectList.map((project) {
+                    return Stack(
+                      alignment: Alignment.topCenter,
+                      children: [
+                        ImageContainerSmall(
+                          imagePath: project.bgAssetPath,
+                          isWeb: project.isWeb,
                         ),
-                      );
-                  context.read<ProjectBloc>().add(
-                        ShowPrevIcon(
-                          showPrev: page > 0,
-                        ),
-                      );
-                },
-                controller: controller,
-                children: state.projectList.map((project) {
-                  return Stack(
-                    children: [
-                      ImageContainerSmall(
-                        imagePath: project.bgAssetPath,
-                        isWeb: project.isWeb,
-                      ),
-                      Positioned.fill(
-                        left: 20,
-                        child: Align(
-                          alignment: Alignment.bottomLeft,
-                          child: const TextContainer().blurred(
-                            overlay: Padding(
-                              padding: const EdgeInsets.only(
-                                left: 20,
+                        Positioned.fill(
+                          left: 20,
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: const TextContainer().blurred(
+                              overlay: Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 20,
+                                ),
+                                child: Row(
+                                  children: [
+                                    ProjectTitle(title: project.projName),
+                                    const Expanded(
+                                      child: Text(""),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () async {
+                                        await launchUrl(
+                                          Uri.parse(project.url),
+                                        );
+                                      },
+                                      child: const ViewMoreContainer(),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              child: Row(
-                                children: [
-                                  ProjectTitle(title: project.projName),
-                                  const Expanded(
-                                    child: Text(""),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () async {
-                                      await launchUrl(Uri.parse(project.url));
-                                    },
-                                    child: const ViewMoreContainer(),
-                                  ),
-                                ],
+                              colorOpacity: 0.3,
+                              alignment: Alignment.topLeft,
+                              borderRadius: const BorderRadius.only(
+                                bottomRight: Radius.circular(10),
+                                bottomLeft: Radius.circular(10),
                               ),
-                            ),
-                            colorOpacity: 0.3,
-                            alignment: Alignment.topLeft,
-                            borderRadius: const BorderRadius.only(
-                              bottomRight: Radius.circular(10),
-                              bottomLeft: Radius.circular(10),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  );
-                }).toList(),
+                      ],
+                    );
+                  }).toList(),
+                ),
               ),
             ),
-            if (state.showNextIcon) NextIcon(controller: controller),
+            if (state.showNextIcon)
+              NextIcon(controller: controller)
+            else
+              const SizedBox(
+                height: 20,
+                width: 20,
+              ),
           ],
         );
       },

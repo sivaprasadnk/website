@@ -14,6 +14,7 @@ import 'package:spnk/views/windows/medium/projects/app.summary/prev.icon.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/image.container.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/text.container.dart';
+import 'package:spnk/views/windows/small/screen_title.dart';
 // import 'package:spnk/views/windows/medium/projects/quizApp/quiz.app.item.medium.dart';
 // import 'package:spnk/views/windows/medium/projects/quotesApp/quotes.app.item.dart';
 import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
@@ -33,8 +34,8 @@ class ProjectsScreenSmall extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: screenHeight * 0.13),
-        SectionTitle(screenWidth: screenWidth, title: 'My Projects'),
+        // SizedBox(height: screenHeight * 0.13),
+        const ScreenTitle(title: 'My Projects'),
         SizedBox(height: screenHeight * 0.1),
         BlocBuilder<ProjectBloc, ProjectState>(
           builder: (context, state) {
@@ -116,6 +117,7 @@ class ProjectItemSmall extends StatelessWidget {
     return SizedBox(
       height: screenHeight * 0.5,
       child: Stack(
+        alignment: Alignment.center,
         children: [
           ImageContainerSmall(
             imagePath: project.bgAssetPath,
@@ -125,7 +127,7 @@ class ProjectItemSmall extends StatelessWidget {
             left: 20,
             bottom: -2,
             child: Align(
-              alignment: Alignment.bottomLeft,
+              alignment: Alignment.bottomCenter,
               child: const TextContainer().blurred(
                 overlay: Padding(
                   padding: const EdgeInsets.only(left: 20),

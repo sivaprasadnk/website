@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/views/windows/common/flutter_developer_container.dart';
-import 'package:spnk/views/windows/common/hi_name_text.dart';
-import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
+import 'package:spnk/views/windows/common/intro_text.dart';
 
 class WindowsSmallHomeScreen extends StatefulWidget {
   final bool showProPic;
@@ -46,7 +44,7 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: screenHeight * 0.05),
+        SizedBox(height: screenHeight * 0.08),
         AnimatedOpacity(
           opacity: showLottie ? 1 : 0,
           duration: const Duration(milliseconds: 600),
@@ -56,26 +54,18 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
             ),
             child: Image.asset(
               'assets/images/dash/dash1.png',
-              height: 220,
+              height: 190,
             ),
           ),
         ),
-        HiNameContainer(
-          showName: showName,
-          screenWidth: screenWidth,
-          leftPadding: 50,
-        ),
-        const SizedBox(height: 10),
-        FlutterDeveloperContainer(
-          showName: showName,
-          leftPadding: 50,
-          screenWidth: screenWidth,
+        const IntroText(
+          leftPadding: 30,
         ),
         SizedBox(height: screenHeight * 0.05),
         Row(
           children: [
             SizedBox(width: screenWidth * 0.05),
-            const SocialMediaIconsList(),
+            // const SocialMediaIconsList(),
             SizedBox(width: screenWidth * 0.12),
             AnimatedOpacity(
               duration: const Duration(seconds: 2),

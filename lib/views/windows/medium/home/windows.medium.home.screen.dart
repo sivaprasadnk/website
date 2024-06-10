@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/common/dash_image.dart';
-import 'package:spnk/views/windows/common/flutter_developer_container.dart';
-import 'package:spnk/views/windows/common/hi_name_text.dart';
+import 'package:spnk/views/windows/common/intro_text.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
 
 class WindowsMediumHomeScreen extends StatefulWidget {
@@ -66,18 +65,22 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
           leftPadding: leftPadding,
           size: 221,
         ),
+        IntroText(
+          leftPadding: leftPadding,
+          splitText: false,
+        ),
         // DashImageMedium(showLottie: showLottie, screenWidth: screenWidth),
-        HiNameContainer(
-          showName: showName,
-          leftPadding: leftPadding,
-          screenWidth: screenWidth,
-        ),
-        SizedBox(height: heightFactor * 11),
-        FlutterDeveloperContainer(
-          showName: showName,
-          leftPadding: leftPadding,
-          screenWidth: screenWidth,
-        ),
+        // HiNameContainer(
+        //   showName: showName,
+        //   leftPadding: leftPadding,
+        //   screenWidth: screenWidth,
+        // ),
+        // SizedBox(height: heightFactor * 11),
+        // FlutterDeveloperContainer(
+        //   showName: showName,
+        //   leftPadding: leftPadding,
+        //   screenWidth: screenWidth,
+        // ),
         SizedBox(height: screenHeight * 0.025),
         Row(
           children: [

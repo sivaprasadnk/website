@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/windows/common/contact_details_list_view.dart';
 import 'package:spnk/views/windows/common/screen_image.dart';
-import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
+import 'package:spnk/views/windows/small/screen_title.dart';
 
 class WindowsSmallContactMeScreen extends StatelessWidget {
  
@@ -14,9 +14,8 @@ class WindowsSmallContactMeScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: screenHeight * 0.13),
-        SectionTitle(screenWidth: screenWidth, title: 'Contact Me'),
-        SizedBox(height: screenHeight * 0.13),
+        const ScreenTitle(title: 'Contact Me'),
+        SizedBox(height: screenHeight * 0.05),
         ContactDetailsListView(
           padding: EdgeInsets.only(
             left: screenWidth * 0.15,

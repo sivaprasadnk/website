@@ -21,7 +21,6 @@ class DashImage extends StatelessWidget {
         margin: EdgeInsets.only(left: leftPadding),
         child: Image.asset(
           'assets/images/dash/dash1.png',
-          // height: 250,
           height: size,
         ),
       ),

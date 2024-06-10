@@ -217,12 +217,6 @@ class _ListItemState extends State<ListItem> {
               style: Theme.of(context).textTheme.displaySmall!.copyWith(
                     color: !isHovering ? normalColor : hoverColor,
                   ),
-              // style: TextStyle(
-              //   fontFamily: 'PlayfairDisplay',
-              //   color: isHovering ? Colors.cyanAccent : kWhiteColor,
-              //   fontWeight: FontWeight.bold,
-              //   fontSize: 30,
-              // ),
             ),
           ).showCursorOnHover,
         ),

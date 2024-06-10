@@ -8,19 +8,17 @@ class NextIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-          controller.nextPage(
-            duration: const Duration(seconds: 1),
-            curve: Curves.bounceOut,
+        controller.nextPage(
+          duration: const Duration(seconds: 1),
+          curve: Curves.bounceOut,
         );
-        // ref.read(pageIndexProvider.notifier).pageIndex =
-        //     (controller.page! + 1).toInt();
       },
       child: SizedBox(
         height: 20,
         width: 20,
         child: Icon(
-                Icons.arrow_forward_ios,
-                color: Theme.of(context).primaryColor,
+          Icons.arrow_forward_ios,
+          color: Theme.of(context).splashColor,
         ).showCursorOnHover,
       ),
     );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/views/windows/common/exp_details_list_view.dart';
-import 'package:spnk/views/windows/common/screen_image.dart';
-import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
+import 'package:spnk/views/windows/small/screen_title.dart';
 
 class WindowsSmallExperienceScreen extends StatelessWidget {
  
@@ -14,22 +13,21 @@ class WindowsSmallExperienceScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: screenHeight * 0.13),
-        SectionTitle(screenWidth: screenWidth, title: 'Experience'),
-        SizedBox(height: screenHeight * 0.12),
+        const ScreenTitle(title: 'Experience'),
+        SizedBox(height: screenHeight * 0.05),
         ExpDetailsListView(
           padding: EdgeInsets.only(
             left: screenWidth * 0.15,
             top: screenHeight * .05,
           ),
         ),
-        const Flexible(
-          child: ScreenImage(
-            alignment: Alignment.bottomRight,
-            height: 280,
-            imagePath: 'assets/images/dash/dash2.png',
-          ),
-        ),
+        // const Flexible(
+        //   child: ScreenImage(
+        //     alignment: Alignment.bottomRight,
+        //     height: 280,
+        //     imagePath: 'assets/images/dash/dash2.png',
+        //   ),
+        // ),
       ],
     );
   }

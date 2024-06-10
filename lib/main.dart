@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/utils/themes.dart';
-import 'package:spnk/views/android/home/android.home.dart';
 import 'package:spnk/views/bloc/contact_details/contact_details_bloc.dart';
 import 'package:spnk/views/bloc/contact_details/contact_details_event.dart';
 import 'package:spnk/views/bloc/experience/exp_details_bloc.dart';
@@ -66,6 +65,7 @@ class MyApp extends StatelessWidget {
               },
             ),
             title: 'Sivaprasad NK',
+            
             debugShowCheckedModeBanner: false,
             theme: state.isDarkTheme ? darkTheme : lightTheme,
             routes: {
@@ -85,7 +85,8 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return defaultTargetPlatform == TargetPlatform.android ||
             defaultTargetPlatform == TargetPlatform.iOS
-        ? const AndroidHome()
+        // ? const AndroidHome()
+        ? WindowsSmallHome()
         : context.screenWidth > 1121
             ? WindowsHomeLarge()
             : context.screenWidth > 695
