@@ -3,7 +3,7 @@ import 'package:spnk/views/bloc/theme_switch/theme_event.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_state.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  ThemeBloc() : super(const ThemeState()) {
+  ThemeBloc() : super(ThemeState()) {
     on<ToggleTheme>(_toggleTheme);
   }
 

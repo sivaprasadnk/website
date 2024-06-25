@@ -89,23 +89,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                   ),
                   const Spacer(),
                   const ThemeSwitch(),
-                  // Consumer<ThemeNotifier>(
-                  //   builder: (_, provider, __) {
-                  //     return SizedBox(
-                  //       height: 50,
-                  //       width: 75,
-                  //       child: GestureDetector(
-                  //         onDoubleTap: () {},
-                  //         child: DayNightSwitcher(
-                  //           isDarkModeEnabled: provider.darkTheme,
-                  //           onStateChanged: (isDarkModeEnabled) {
-                  //             provider.toggleTheme();
-                  //           },
-                  //         ),
-                  //       ),
-                  //     );
-                  //   },
-                  // ),
                   const SizedBox(
                     width: 30,
                   ),

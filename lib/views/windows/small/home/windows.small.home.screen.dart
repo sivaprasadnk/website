@@ -11,10 +11,7 @@ class WindowsSmallHomeScreen extends StatefulWidget {
 }
 
 class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
-  bool showLottie = false;
-  bool showName = false;
   bool showProPic = false;
-
 
   @override
   void setState(VoidCallback fn) {
@@ -28,20 +25,7 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
     super.initState();
     Future.delayed(const Duration(milliseconds: 500)).then((value) {
       setState(() {
-        showLottie = true;
-      });
-    }).then((value) {
-      Future.delayed(const Duration(milliseconds: 500)).then((value) {
-        setState(() {
-          showName = true;
-        });
-      }).then((value) {
-
-        Future.delayed(const Duration(milliseconds: 500)).then((value) {
-          setState(() {
-            showProPic = true;
-          });
-        });
+        showProPic = true;
       });
     });
   }
