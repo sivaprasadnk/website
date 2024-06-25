@@ -58,9 +58,6 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
           children: [
             GestureDetector(
               onTap: () {
-                // ref.read(menuNotifierProvider.notifier).menuSelected = false;
-                // ref.read(routeNotifierProvider.notifier).selectedScreen =
-                //     Screen.home;
               },
               child: Padding(
                 padding: const EdgeInsets.only(left: 36, top: 18),
