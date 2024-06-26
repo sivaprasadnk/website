@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/views/windows/common/intro_text.dart';
-import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icons.list.dart';
 
 class WindowsMediumHomeScreen extends StatefulWidget {
   @override
@@ -10,8 +9,6 @@ class WindowsMediumHomeScreen extends StatefulWidget {
 }
 
 class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
-  bool showLottie = false;
-  bool showName = false;
   bool showProPic = false;
 
   @override
@@ -24,21 +21,9 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 500)).then((value) {
-      setState(() {
-        showLottie = true;
-      });
-    }).then((value) {
-      Future.delayed(const Duration(milliseconds: 500)).then((value) {
+    Future.delayed(const Duration(milliseconds: 1500)).then((value) {
         setState(() {
-          showName = true;
-        });
-      });
-    }).then((value) {
-      Future.delayed(const Duration(milliseconds: 1500)).then((value) {
-        setState(() {
-          showProPic = true;
-        });
+        showProPic = true;
       });
     });
   }
@@ -60,9 +45,9 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
       children: [
         IntroText(
           leftPadding: leftPadding,
-          splitText: false,
           topPadding: screenHeight * .06,
           imageHeight: 221,
+          showImage: false,
         ),
         SizedBox(height: screenHeight * 0.025),
         Row(
@@ -73,10 +58,10 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
               opacity: showProPic ? 1 : 0,
               child: Row(
                 children: [
-                  const SocialMediaIconsList(),
-                  const SizedBox(width: 50),
+                  // const SocialMediaIconsList(),
+                  // const SizedBox(width: 50),
                   ProPicMediumWithBlob(
-                    height: heightFactor * 302,
+                    width: heightFactor * 302,
                   ),
                 ],
               ),

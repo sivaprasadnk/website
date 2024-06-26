@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/tab.item.dart';
 
 class ExperienceTab extends StatelessWidget {
@@ -12,6 +13,7 @@ class ExperienceTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabItem(
+      screen: Screen.experience,
       onTap: () {
         tabController.animateTo(
           1,
@@ -20,9 +22,8 @@ class ExperienceTab extends StatelessWidget {
         );
       },
       tabController: tabController,
-      isSelected: tabController.index == 2,
       title: 'Experience',
-      index: 2,
+      // index: 2,
     );
   }
 }

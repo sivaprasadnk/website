@@ -171,63 +171,22 @@ class TitleText extends StatelessWidget {
 
 
 
-class ProPicMediumWithBlob extends StatefulWidget {
-  final double height;
-  // final double leftPadding;
-  // final double bottomPadding;
+class ProPicMediumWithBlob extends StatelessWidget {
+  final double width;
   const ProPicMediumWithBlob({
-    required this.height,
-    // required this.bottomPadding,
-    // required this.leftPadding,
+    required this.width,
   });
-
-  @override
-  _ProPicMediumWithBlobState createState() => _ProPicMediumWithBlobState();
-}
-
-class _ProPicMediumWithBlobState extends State<ProPicMediumWithBlob> {
-  bool showProPicWithBlob = false;
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(milliseconds: 500)).then((value) {
-      if (mounted) {
-        setState(() {
-          showProPicWithBlob = true;
-        });
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
       duration: const Duration(milliseconds: 900),
-      opacity: showProPicWithBlob ? 1 : 0,
+      opacity: 1,
       child: Image.asset(
         'assets/images/picWithBlob.png',
         // height: 350,
-        width: widget.height,
+        width: width,
       ),
-      // child: Blob.fromID(
-      //   id: const ['16-7-5840'],
-      //   styles: BlobStyles(
-      //     color: Colors.cyanAccent.shade700,
-      //   ),
-      //   size: widget.height,
-      //   child: Padding(
-      //     padding: EdgeInsets.only(
-      //       bottom: widget.bottomPadding,
-      //       left: widget.leftPadding,
-      //       right: 15,
-      //       // top: 10,
-      //     ),
-      //     child: Image.asset(
-      //       'assets/images/propiccc.png',
-      //       height: widget.height,
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

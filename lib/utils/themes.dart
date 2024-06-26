@@ -47,17 +47,25 @@ ThemeData lightTheme = ThemeData(
     thumbVisibility: const WidgetStatePropertyAll(false),
     thumbColor: WidgetStateProperty.all(Colors.cyan),
   ),
-  buttonTheme: const ButtonThemeData(
-    buttonColor: Colors.indigo,
+  buttonTheme: ButtonThemeData(
+    buttonColor: kPrimaryBlueColor,
     textTheme: ButtonTextTheme.primary,
   ),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Color.fromRGBO(239, 239, 239, 1),
+  ),
   scaffoldBackgroundColor: const Color.fromRGBO(239, 239, 239, 1),
+  primaryColor: kPrimaryBlueColor,
 );
 
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   scaffoldBackgroundColor: const Color.fromRGBO(0, 34, 51, 1),
+  primaryColor: const Color.fromRGBO(239, 239, 239, 1),
   splashColor: kWhiteColor,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Color.fromRGBO(0, 34, 51, 1),
+  ),
   textTheme: TextTheme(
     displayLarge: TextStyle(
       fontFamily: 'Zina',
@@ -103,4 +111,5 @@ ThemeData darkTheme = ThemeData(
     buttonColor: Colors.red,
     textTheme: ButtonTextTheme.primary,
   ),
+
 );

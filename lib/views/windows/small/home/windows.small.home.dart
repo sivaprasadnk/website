@@ -6,7 +6,7 @@ import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
 import 'package:spnk/views/bloc/screen_details/screen_event.dart';
 import 'package:spnk/views/bloc/screen_details/screen_state.dart';
-import 'package:spnk/views/windows/common/name_text.dart';
+import 'package:spnk/views/windows/common/logo_text.dart';
 import 'package:spnk/views/windows/common/theme_switch.dart';
 import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/small/contactme/windows.small.contactme.screen.dart';
@@ -56,12 +56,10 @@ class _WindowsSmallHomeState extends State<WindowsSmallHome> {
         preferredSize: Size(screenWidth, 80),
         child: Row(
           children: [
-            GestureDetector(
-              onTap: () {
-              },
-              child: Padding(
-                padding: const EdgeInsets.only(left: 36, top: 18),
-                child: nameText(context: context).showCursorOnHover,
+            Padding(
+              padding: const EdgeInsets.only(left: 36, top: 18),
+              child: LogoText(
+                onTap: () {},
               ),
             ),
             const Spacer(),

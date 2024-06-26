@@ -52,7 +52,7 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
               duration: const Duration(seconds: 2),
               opacity: showProPic ? 1 : 0,
               child: ProPicMediumWithBlob(
-                height: screenHeight * 0.35,
+                width: screenHeight * 0.35,
               ),
             ),
           ],

@@ -15,7 +15,6 @@ import 'package:spnk/views/bloc/theme_switch/theme_bloc.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_state.dart';
 import 'package:spnk/views/min_size_container.dart';
 import 'package:spnk/views/windows/large/home/windows.home.large.dart';
-import 'package:spnk/views/windows/medium/home/windows.medium.home.dart';
 import 'package:spnk/views/windows/small/home/windows.small.home.dart';
 
 // lottie https://assets1.lottiefiles.com/packages/lf20_j1uvfzu5.json
@@ -92,7 +91,7 @@ class SplashScreen extends StatelessWidget {
             : context.screenWidth > 695
                 ? MinSize(
                     minHeight: 734,
-                    child: WindowsMediumHome(),
+                    child: WindowsHomeLarge(),
                   )
                 : MinSize(
                     minHeight: 734,

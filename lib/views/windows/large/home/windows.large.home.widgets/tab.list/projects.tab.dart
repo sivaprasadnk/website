@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/tab.item.dart';
 
 class ProjectsTab extends StatelessWidget {
@@ -12,13 +13,13 @@ class ProjectsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabItem(
+      screen: Screen.projects,
       onTap: () {
         tabController.animateTo(2, duration: duration);
       },
       tabController: tabController,
-      isSelected: tabController.index == 3,
       title: 'Projects',
-      index: 3,
+      // index: 3,
     );
   }
 }

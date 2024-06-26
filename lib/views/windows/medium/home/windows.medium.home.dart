@@ -5,9 +5,8 @@ import 'package:spnk/utils/common_widgets.dart';
 import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
 import 'package:spnk/views/bloc/screen_details/screen_state.dart';
-import 'package:spnk/views/windows/common/name_text.dart';
+import 'package:spnk/views/windows/common/logo_text.dart';
 import 'package:spnk/views/windows/common/theme_switch.dart';
-import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/medium/contactme/windows.medium.contactme.screen.dart';
 import 'package:spnk/views/windows/medium/experience/windows.medium.experience.dart';
 import 'package:spnk/views/windows/medium/home/windows.medium.home.screen.dart';
@@ -45,9 +44,8 @@ class WindowsMediumHome extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  child: GestureDetector(
+                  child: LogoText(
                     onTap: () {},
-                    child: nameText(context: context).showCursorOnHover,
                   ),
                 ),
                 const ThemeSwitch(),

@@ -5,3 +5,9 @@ enum Screen {
   experience,
   menu,
 }
+
+// extension ScreenExt on Screen{
+//   int get screenIndex{
+//     switch()
+//   }
+// }

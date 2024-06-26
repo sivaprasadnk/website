@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/tab.item.dart';
 
 class ContactMeTab extends StatelessWidget {
@@ -12,13 +13,13 @@ class ContactMeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabItem(
+      screen: Screen.contactMe,
       onTap: () {
         tabController.animateTo(3, duration: duration);
       },
-      isSelected: tabController.index == 4,
       title: 'Contact Me',
       tabController: tabController,
-      index: 4,
+      // index: 4,
     );
   }
 }

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
-import 'package:spnk/views/windows/common/name_text.dart';
+import 'package:spnk/views/windows/common/logo_text.dart';
 import 'package:spnk/views/windows/common/theme_switch.dart';
-import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/large/contactme/windows.large.contactme.screen.dart';
 import 'package:spnk/views/windows/large/experience/windows.large.experience.screen.dart';
 import 'package:spnk/views/windows/large/home/windows.home.large.screen.dart';
@@ -14,7 +12,6 @@ import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.lis
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/home.tab.dart';
 import 'package:spnk/views/windows/large/home/windows.large.home.widgets/tab.list/projects.tab.dart';
 import 'package:spnk/views/windows/large/projects/projects.screen.new.dart';
-import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class WindowsHomeLarge extends StatefulWidget {
   static const routeName = '/Home';
@@ -38,7 +35,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
-    
   }
 
   @override
@@ -73,67 +69,37 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
           child: Padding(
             padding: const EdgeInsets.all(16) +
                 const EdgeInsets.symmetric(horizontal: 20),
-            child: SizedBox(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      _tabController.animateTo(
-                        0,
-                        duration: duration,
-                      );
-                    },
-                    child: nameText(context: context).showCursorOnHover,
-                  ),
-                  const Spacer(),
-                  const ThemeSwitch(),
-                  const SizedBox(
-                    width: 30,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TabBar(
-                        dividerColor: kTransparentColor,
-                        indicatorColor: kTransparentColor,
-                        overlayColor:
-                            WidgetStateProperty.all(kTransparentColor),
-                        indicator: RectangularIndicator(
-                          color: Colors.cyan,
-                          strokeWidth: 0,
-                          paintingStyle: PaintingStyle.stroke,
-                          bottomLeftRadius: 100,
-                          bottomRightRadius: 100,
-                          topLeftRadius: 100,
-                          topRightRadius: 100,
-                        ),
-                        padding: EdgeInsets.zero,
-                        controller: _tabController,
-                        tabs: [
-                          HomeTab(
-                            tabController: _tabController,
-                            duration: duration,
-                          ),
-                          ExperienceTab(
-                            tabController: _tabController,
-                            duration: duration,
-                          ),
-                          ProjectsTab(
-                            tabController: _tabController,
-                            duration: duration,
-                          ),
-                          ContactMeTab(
-                            tabController: _tabController,
-                            duration: duration,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+            child: AppBar(
+              title: LogoText(
+                onTap: () {
+                  _tabController.animateTo(
+                    0,
+                    duration: duration,
+                  );
+                },
               ),
+              actions: [
+                const ThemeSwitch(),
+                const SizedBox(
+                  width: 30,
+                ),
+                HomeTab(
+                  tabController: _tabController,
+                  duration: duration,
+                ),
+                ExperienceTab(
+                  tabController: _tabController,
+                  duration: duration,
+                ),
+                ProjectsTab(
+                  tabController: _tabController,
+                  duration: duration,
+                ),
+                ContactMeTab(
+                  tabController: _tabController,
+                  duration: duration,
+                ),
+              ],
             ),
           ),
         ),
