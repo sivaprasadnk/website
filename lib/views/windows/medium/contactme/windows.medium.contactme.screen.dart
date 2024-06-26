@@ -24,11 +24,13 @@ class WindowsMediumContactMeScreen extends StatelessWidget {
           ),
           
         ),
-        const Positioned.fill(
+        Positioned.fill(
           right: -50,
           child: ScreenImage(
             alignment: Alignment.bottomRight,
             height: 280,
+            width: context.screenWidth * 0.3,
+
             imagePath: 'assets/images/dash/dash4.png',
           ),
         ),

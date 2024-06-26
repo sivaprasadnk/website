@@ -41,6 +41,8 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
           leftPadding: screenWidth * .2,
           topPadding: screenHeight * 0.08,
           imageHeight: 190,
+          imageWidth: screenWidth * 0.2,
+
         ),
         SizedBox(height: screenHeight * 0.05),
         Row(

@@ -7,11 +7,13 @@ class IntroText extends StatelessWidget {
     required this.leftPadding,
     required this.topPadding,
     required this.imageHeight,
+    required this.imageWidth,
     this.showImage = true,
   }) : super(key: key);
   final double leftPadding;
   final double topPadding;
   final double imageHeight;
+  final double imageWidth;
   final bool showImage;
 
   @override
@@ -23,21 +25,16 @@ class IntroText extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (showImage)
-            Flexible(
-              child: FutureBuilder(
-                future: Future.delayed(const Duration(milliseconds: 100)),
-                builder: (context, snapshot) {
-                  return AnimatedOpacity(
-                    duration: const Duration(milliseconds: 500),
-                    opacity: snapshot.connectionState == ConnectionState.done
-                        ? 1
-                        : 0,
-                    child: Image.asset(
-                      'assets/images/dash/dash1.png',
-                      height: imageHeight,
-                    ),
-                  );
-                },
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: imageWidth,
+                minWidth: imageWidth * 0.1,
+              ),
+              // color: Colors.amber,
+              child: Image.asset(
+                'assets/images/dash/dash1.png',
+                // height: imageHeight,
+                width: imageWidth,
               ),
             )
           else

@@ -25,6 +25,7 @@ class ProjectsScreenNew extends StatelessWidget {
         SizedBox(height: context.screenHeight * 0.2),
         const WindowsLargeSectionTitle(
           title: 'My Projects',
+          // leftPadding: 0,
         ),
         const SizedBox(
           height: 50,

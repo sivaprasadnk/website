@@ -30,35 +30,31 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
     debugPrint("@@ with :$screenWidth");
     // final heightFactor = context.screenHeight / 804;
     final leftPadding = screenWidth * .1;
-    return Padding(
-      padding: EdgeInsets.only(top: context.screenHeight * 0.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          // const SocialMediaIconsList(),
-          SizedBox(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                IntroText(
-                  topPadding: 0,
-                  // topPadding: ,
-                  leftPadding: leftPadding,
-                  imageHeight: 250,
-                ),
-                DownloadCvBtn(
-                  leftPadding: leftPadding,
-                  topPadding: 30,
-                ),
-              ],
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // const SocialMediaIconsList(),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            IntroText(
+              topPadding: 0,
+              leftPadding: leftPadding,
+              imageHeight: 250,
+              imageWidth: screenWidth * .4,
             ),
-          ),
-          ProPicMediumWithBlob(
-            width: screenWidth * 0.3,
-          ),
-        ],
-      ),
+            DownloadCvBtn(
+              leftPadding: leftPadding,
+              topPadding: 30,
+            ),
+          ],
+        ),
+        ProPicMediumWithBlob(
+          width: screenWidth * 0.28,
+        ),
+      ],
     );
   }
 }

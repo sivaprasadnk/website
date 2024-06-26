@@ -5,11 +5,13 @@ class ScreenImage extends StatefulWidget {
     Key? key,
     required this.alignment,
     required this.height,
+    required this.width,
     required this.imagePath,
   }) : super(key: key);
 
   final AlignmentGeometry alignment;
   final double height;
+  final double width;
   final String imagePath;
 
   @override
@@ -22,7 +24,7 @@ class _ScreenImageState extends State<ScreenImage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 1)).then((value) {
+    Future.delayed(const Duration(milliseconds: 500)).then((value) {
       setState(() {
         showLottie = true;
       });
@@ -34,12 +36,18 @@ class _ScreenImageState extends State<ScreenImage> {
     return Align(
       alignment: widget.alignment,
       child: AnimatedOpacity(
-        duration: const Duration(seconds: 2),
+        duration: const Duration(seconds: 1),
         opacity: showLottie ? 1 : 0,
-        child: Image.asset(
-          widget.imagePath,
-          // 'assets/images/dash/dash2.png',
-          height: widget.height,
+        child: Container(
+          // color: Colors.black26,
+          width: widget.width,
+          constraints: const BoxConstraints(
+            maxWidth: 400,
+            minWidth: 250,
+          ),
+          child: Image.asset(
+            widget.imagePath,
+          ),
         ),
       ),
     );

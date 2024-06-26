@@ -22,10 +22,12 @@ class WindowsSmallContactMeScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 50),
-        const Flexible(
+        Flexible(
           child: ScreenImage(
             alignment: Alignment.center,
             height: 250,
+            width: context.screenWidth * 0.3,
+
             imagePath: 'assets/images/dash/dash4.png',
           ),
         ),

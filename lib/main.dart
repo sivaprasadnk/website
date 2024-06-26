@@ -64,7 +64,6 @@ class MyApp extends StatelessWidget {
               },
             ),
             title: 'Sivaprasad NK',
-            
             debugShowCheckedModeBanner: false,
             theme: state.isDarkTheme ? darkTheme : lightTheme,
             routes: {
@@ -86,16 +85,14 @@ class SplashScreen extends StatelessWidget {
             defaultTargetPlatform == TargetPlatform.iOS
         // ? const AndroidHome()
         ? WindowsSmallHome()
-        : context.screenWidth > 1121
-            ? WindowsHomeLarge()
-            : context.screenWidth > 695
-                ? MinSize(
-                    minHeight: 734,
-                    child: WindowsHomeLarge(),
-                  )
-                : MinSize(
-                    minHeight: 734,
-                    child: WindowsSmallHome(),
-                  );
+        : context.screenWidth > 695
+            ? MinSize(
+                minHeight: 734,
+                child: WindowsHomeLarge(),
+              )
+            : MinSize(
+                minHeight: 734,
+                child: WindowsSmallHome(),
+              );
   }
 }

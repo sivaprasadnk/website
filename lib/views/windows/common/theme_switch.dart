@@ -1,4 +1,3 @@
-import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_bloc.dart';
@@ -18,12 +17,18 @@ class ThemeSwitch extends StatelessWidget {
           width: 75,
           child: GestureDetector(
             onDoubleTap: () {},
-            child: DayNightSwitcher(
-              isDarkModeEnabled: state.isDarkTheme,
-              onStateChanged: (isDarkModeEnabled) {
-                context.read<ThemeBloc>().add(ToggleTheme());
-              },
-            ),
+            onTap: () {
+              context.read<ThemeBloc>().add(ToggleTheme());
+            },
+            child: !state.isDarkTheme
+                ? const Icon(Icons.dark_mode)
+                : const Icon(Icons.light_mode),
+            // child: DayNightSwitcher(
+            //   isDarkModeEnabled: state.isDarkTheme,
+            //   onStateChanged: (isDarkModeEnabled) {
+            //     context.read<ThemeBloc>().add(ToggleTheme());
+            //   },
+            // ),
           ),
         );
       },

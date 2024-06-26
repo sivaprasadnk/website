@@ -47,6 +47,7 @@ class _WindowsMediumHomeScreenState extends State<WindowsMediumHomeScreen> {
           leftPadding: leftPadding,
           topPadding: screenHeight * .06,
           imageHeight: 221,
+          imageWidth: screenWidth * 0.7,
           showImage: false,
         ),
         SizedBox(height: screenHeight * 0.025),

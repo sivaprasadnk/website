@@ -6,14 +6,14 @@ class WindowsLargeSectionTitle extends StatelessWidget {
   const WindowsLargeSectionTitle({
     Key? key,
     required this.title,
+    // required this.leftPadding,
   }) : super(key: key);
-
+  // final double leftPadding;
   final String title;
   @override
   Widget build(BuildContext context) {
     return FadeInDown(
       child: Container(
-        // width: width * 0.5,
         padding: const EdgeInsets.only(left: 150),
         child: AutoSizeText(
           title,
