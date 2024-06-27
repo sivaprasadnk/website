@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/views/windows/common/shadow_container.dart';
 import 'package:universal_html/html.dart' as html;
 
 extension HoverExtensions on Widget {
@@ -9,7 +10,12 @@ extension HoverExtensions on Widget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: this,
-      // onHover: (event)=> event.,
+    );
+  }
+
+  Widget get addShadowOnHover {
+    return ShadowContainer(
+      child: this,
     );
   }
 }

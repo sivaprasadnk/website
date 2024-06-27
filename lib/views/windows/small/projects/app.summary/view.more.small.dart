@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_colors.dart';
-import 'package:spnk/views/windows/hover_extensions.dart';
+import 'package:spnk/utils/extensions/widget_extensions.dart';
 
 class ViewMoreContainerSmall extends StatelessWidget {
   const ViewMoreContainerSmall({Key? key}) : super(key: key);

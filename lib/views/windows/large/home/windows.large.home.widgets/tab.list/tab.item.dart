@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/utils/extensions/widget_extensions.dart';
 import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
 import 'package:spnk/views/bloc/screen_details/screen_event.dart';
 import 'package:spnk/views/bloc/screen_details/screen_state.dart';
-import 'package:spnk/views/windows/hover_extensions.dart';
 // import 'package:universal_html/html.dart';
 
 class TabItem extends StatefulWidget {

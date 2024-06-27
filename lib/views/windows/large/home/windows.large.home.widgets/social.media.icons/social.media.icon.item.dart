@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:spnk/utils/common_colors.dart';
-import 'package:spnk/views/windows/hover_extensions.dart';
+import 'package:spnk/utils/extensions/widget_extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SocialMediaIconItem extends StatefulWidget {

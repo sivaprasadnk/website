@@ -5,19 +5,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/data/project_model.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/utils/extensions/widget_extensions.dart';
 import 'package:spnk/views/bloc/project/project_bloc.dart';
 import 'package:spnk/views/bloc/project/project_event.dart';
 import 'package:spnk/views/bloc/project/project_state.dart';
-import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/medium/projects/app.summary/next.icon.dart';
 import 'package:spnk/views/windows/medium/projects/app.summary/prev.icon.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/image.container.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/project.title.dart';
 import 'package:spnk/views/windows/small/projects/app.summary/text.container.dart';
 import 'package:spnk/views/windows/small/screen_title.dart';
-// import 'package:spnk/views/windows/medium/projects/quizApp/quiz.app.item.medium.dart';
-// import 'package:spnk/views/windows/medium/projects/quotesApp/quotes.app.item.dart';
-import 'package:spnk/views/windows/small/windows.small.common.widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProjectsScreenSmall extends StatelessWidget {

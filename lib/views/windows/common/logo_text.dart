@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/views/windows/hover_extensions.dart';
+import 'package:spnk/utils/extensions/widget_extensions.dart';
 
 class LogoText extends StatelessWidget {
   const LogoText({Key? key, required this.onTap}) : super(key: key);

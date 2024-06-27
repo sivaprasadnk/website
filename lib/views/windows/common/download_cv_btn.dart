@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/views/windows/hover_extensions.dart';
+import 'package:spnk/utils/extensions/widget_extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DownloadCvBtn extends StatelessWidget {
@@ -21,11 +21,7 @@ class DownloadCvBtn extends StatelessWidget {
       },
       child: Container(
         height: 50,
-        width: 200,
-        margin: EdgeInsets.only(
-          left: leftPadding,
-          top: topPadding,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 50),
         color: Theme.of(context).primaryColor,
         child: Center(
           child: Text(
@@ -36,6 +32,6 @@ class DownloadCvBtn extends StatelessWidget {
           ),
         ),
       ),
-    ).showCursorOnHover;
+    ).showCursorOnHover.addShadowOnHover;
   }
 }

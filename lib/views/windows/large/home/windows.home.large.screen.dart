@@ -35,21 +35,25 @@ class _WindowsHomeLargeScreenState extends State<WindowsHomeLargeScreen>
       mainAxisSize: MainAxisSize.min,
       children: [
         // const SocialMediaIconsList(),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            IntroText(
-              topPadding: 0,
-              leftPadding: leftPadding,
-              imageHeight: 250,
-              imageWidth: screenWidth * .4,
-            ),
-            DownloadCvBtn(
-              leftPadding: leftPadding,
-              topPadding: 30,
-            ),
-          ],
+        Padding(
+          padding: EdgeInsets.only(left: leftPadding),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IntroText(
+                topPadding: 0,
+                leftPadding: 0,
+                imageHeight: 250,
+                imageWidth: screenWidth * .4,
+              ),
+              const SizedBox(height: 30),
+              const DownloadCvBtn(
+                leftPadding: 0,
+                topPadding: 0,
+              ),
+            ],
+          ),
         ),
         ProPicMediumWithBlob(
           width: screenWidth * 0.28,

@@ -7,67 +7,64 @@ import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
 class GooglePlayButton extends StatelessWidget {
-  final double screenWidth;
   final String url;
-  const GooglePlayButton({required this.screenWidth, required this.url});
+  const GooglePlayButton({required this.url});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 40, right: screenWidth * 0.29, top: 20),
-      child: GestureDetector(
-        onTap: () {
-          launch(url);
-        },
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: Colors.black,
-            border: Border.all(color: kGreyColor),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'assets/images/google-play.png',
-                  height: 50,
-                  // width: 10,
-                ),
+    return GestureDetector(
+      onTap: () async {
+        await launchUrl(Uri.parse(url));
+        // launch(url);
+      },
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: Colors.black,
+          border: Border.all(color: kGreyColor),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8, top: 8, bottom: 8),
+              child: Image.asset(
+                'assets/images/google-play.png',
+                height: 40,
+                // width: 10,
               ),
-              const SizedBox(
-                width: 5,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'GET IT ON',
-                      style: TextStyle(
-                        color: kWhiteColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+            ),
+            const SizedBox(
+              width: 5,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 3) +
+                  const EdgeInsets.only(right: 13),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'GET IT ON',
+                    style: TextStyle(
+                      color: kWhiteColor,
+                      fontWeight: FontWeight.w200,
+                      fontSize: 10,
                     ),
-                    Text(
-                      'Google Play',
-                      style: TextStyle(
-                        color: kWhiteColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 23,
-                      ),
+                  ),
+                  Text(
+                    'Google Play',
+                    style: TextStyle(
+                      color: kWhiteColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -143,10 +140,6 @@ class WinddowsGooglePlayButton extends StatelessWidget {
   }
 }
 
-
-
-
-
 class TitleText extends StatelessWidget {
   final String title;
   const TitleText({required this.title});
@@ -166,10 +159,6 @@ class TitleText extends StatelessWidget {
     );
   }
 }
-
-
-
-
 
 class ProPicMediumWithBlob extends StatelessWidget {
   final double width;
@@ -335,7 +324,6 @@ class NameLogo extends StatelessWidget {
   }
 }
 
-
 class ProPicWithBlobLottie extends StatelessWidget {
   const ProPicWithBlobLottie({
     Key? key,
@@ -428,5 +416,4 @@ class AndroidDashImage extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 
-class IntroText extends StatelessWidget {
+class IntroText extends StatefulWidget {
   const IntroText({
     Key? key,
     required this.leftPadding,
@@ -17,29 +17,63 @@ class IntroText extends StatelessWidget {
   final bool showImage;
 
   @override
+  State<IntroText> createState() => _IntroTextState();
+}
+
+class _IntroTextState extends State<IntroText> {
+  bool show = false;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        show = true;
+      });
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: leftPadding, top: topPadding),
+      padding:
+          EdgeInsets.only(left: widget.leftPadding, top: widget.topPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (showImage)
-            ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: imageWidth,
-                minWidth: imageWidth * 0.1,
-              ),
-              // color: Colors.amber,
-              child: Image.asset(
-                'assets/images/dash/dash1.png',
-                // height: imageHeight,
-                width: imageWidth,
-              ),
+          if (widget.showImage)
+            AnimatedSwitcher(
+              duration: const Duration(seconds: 1),
+              child: show
+                  ? AnimatedOpacity(
+                      duration: const Duration(seconds: 1),
+                      opacity: show ? 1 : 0,
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxWidth: widget.imageWidth,
+                          minWidth: widget.imageWidth * 0.1,
+                        ),
+                        // color: Colors.amber,
+                        child: Image.asset(
+                          'assets/images/dash/dash1.png',
+                          frameBuilder:
+                              (context, child, frame, wasSynchronouslyLoaded) {
+                            return child;
+                          },
+                          height: widget.imageHeight,
+                          width: widget.imageWidth,
+                        ),
+                      ),
+                    )
+                  : SizedBox(
+                      height: widget.imageHeight,
+                    ),
             )
           else
             SizedBox(
-              height: imageHeight,
+              height: widget.imageHeight,
             ),
           Text(
             "Hi,\nI 'm Sivaprasad NK .",

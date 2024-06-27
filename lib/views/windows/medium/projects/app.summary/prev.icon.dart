@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/views/windows/hover_extensions.dart';
+import 'package:spnk/utils/extensions/widget_extensions.dart';
 
 class PrevIcon extends StatelessWidget {
   const PrevIcon({Key? key, required this.controller}) : super(key: key);

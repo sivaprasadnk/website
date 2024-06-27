@@ -7,7 +7,7 @@ enum Screen {
 }
 
 // extension ScreenExt on Screen{
-//   int get screenIndex{
-//     switch()
+//   Screen get screenType{
+    
 //   }
 // }

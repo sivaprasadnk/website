@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/utils/extensions/widget_extensions.dart';
 import 'package:spnk/views/bloc/project/project_bloc.dart';
 import 'package:spnk/views/bloc/project/project_event.dart';
 import 'package:spnk/views/bloc/project/project_state.dart';
-import 'package:spnk/views/windows/hover_extensions.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 import 'package:spnk/views/windows/large/projects/details.container.dart';
 import 'package:spnk/views/windows/large/projects/image.container.dart';

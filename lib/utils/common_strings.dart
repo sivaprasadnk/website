@@ -47,21 +47,18 @@ const String emailText = '  sivaprasadnk.official@gmail.com';
 const String onlineWrkLottieAssetPath = 'assets/lotties/online-work.json';
 
 ///
-String quotesAppStr1Large =
-    'Quotes listing app using a public \napi and  Glassmorphism UI';
-String quotesAppStr2Large = '\nSave to gallery, sharing options available';
+String quotesAppStr1Large = 'Quotes listing app with Glassmorphism UI';
+String quotesAppStr2Large = 'Save to gallery, sharing options available';
 
 ///
 ///
 String quotesAppStr1 =
     'Quotes listing app using a public api \n and  Glassmorphism UI';
 String quotesAppStr2 = '\nSave to gallery, sharing options available';
-String websiteStr1 =
-    'Personal portfolio website using Flutter web\nto showcase my Flutter skills';
+String websiteStr1 = 'Personal portfolio website';
 String websiteStr2 = '\nResponsive design for every screensize';
-String websiteStr1Large =
-    'Personal portfolio website using Flutter web to showcase \nmy Flutter skills';
-String websiteStr2Large = '\nResponsive design for every screensize';
+String websiteStr1Large = 'Personal portfolio website';
+String websiteStr2Large = 'Responsive design for every screensize';
 String quoteStr1 =
     'A simple quotes listing app made using Flutter & a public api (quotable api).';
 String quoteStr2 =
@@ -71,9 +68,8 @@ String quoteStr4 = '\nSave to gallery , and sharing option also available. ';
 String quizStr1 = 'A simple Quiz app using Flutter and Firebase,';
 String quizStr2 = ' with various categories of subjects to learn facts.';
 String quizStr3 =
-    ' Quiz App with light / dark mode \nwith various  color themes.';
-String quizStr4 =
-    'Mark as Favorite option available';
+    'Quiz App with light / dark mode \nwith various  color themes.';
+String quizStr4 = 'Mark as Favorite option available';
 String quizStr5 =
     '\nAdmin session enables to add, edit , delete questions without using Firebase console.';
 // String quizStr6 = 'Questions organised '
