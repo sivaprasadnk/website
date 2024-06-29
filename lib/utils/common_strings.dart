@@ -59,6 +59,7 @@ String websiteStr1 = 'Personal portfolio website';
 String websiteStr2 = '\nResponsive design for every screensize';
 String websiteStr1Large = 'Personal portfolio website';
 String websiteStr2Large = 'Responsive design for every screensize';
+String websiteStr3Large = 'Light / Dark theme';
 String quoteStr1 =
     'A simple quotes listing app made using Flutter & a public api (quotable api).';
 String quoteStr2 =

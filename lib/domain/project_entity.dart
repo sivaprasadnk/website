@@ -40,6 +40,7 @@ List<ProjectModel> projectList = [
     descList: [
       websiteStr1Large,
       websiteStr2Large,
+      websiteStr3Large,
     ],
     url: websiteLink,
     isWeb: true,
