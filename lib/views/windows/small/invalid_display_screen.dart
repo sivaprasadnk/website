@@ -6,15 +6,18 @@ class InvalidDisplayScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text(
-          'Please increase the window size to view contents ',
-          style: TextStyle(
-            color: kWhiteColor,
+    return StreamBuilder<Object>(
+      stream: null,
+      builder: (context, snapshot) {
+        return Center(
+          child: Text(
+            'Please increase the window size to view contents ',
+            style: TextStyle(
+              color: kWhiteColor,
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

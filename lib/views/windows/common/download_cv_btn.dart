@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/utils/extensions/widget_extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -26,8 +27,8 @@ class DownloadCvBtn extends StatelessWidget {
         child: Center(
           child: Text(
             "Download CV",
-            style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                  color: Theme.of(context).scaffoldBackgroundColor,
+            style: context.displaySmall.copyWith(
+              color: context.scaffoldColor,
                 ),
           ),
         ),

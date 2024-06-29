@@ -35,7 +35,7 @@ class ContactDetailsListView extends StatelessWidget {
                         const SizedBox(width: 20),
                         Text(
                           e.details,
-                          style: Theme.of(context).textTheme.displaySmall,
+                          style: context.displaySmall,
                         ),
                       ],
                     ),

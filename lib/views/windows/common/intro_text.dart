@@ -92,7 +92,7 @@ class _IntroTextState extends State<IntroText> {
                   width: context.screenWidth * 0.4,
                   child: Text(
                     'Flutter Developer and Fitness Enthusiast from Tripunithura, Kerala .',
-                    style: Theme.of(context).textTheme.displaySmall,
+                    style: context.displaySmall,
                   ),
                 ),
               ),

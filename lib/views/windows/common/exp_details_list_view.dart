@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/bloc/experience/exp_details_bloc.dart';
 import 'package:spnk/views/bloc/experience/exp_details_state.dart';
 
@@ -11,7 +12,7 @@ class ExpDetailsListView extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.displaySmall;
+    final textStyle = context.displaySmall;
     final bulletPoint = CircleAvatar(
       radius: 5,
       backgroundColor: Theme.of(context).splashColor,
