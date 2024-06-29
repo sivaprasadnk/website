@@ -42,7 +42,8 @@ class MinSize extends StatelessWidget {
                 ? const AlwaysScrollableScrollPhysics()
                 : const NeverScrollableScrollPhysics(),
             child: Scrollbar(
-              thumbVisibility: shouldScrollHorizontal,
+              // thumbVisibility: shouldScrollHorizontal,
+              thumbVisibility: false,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 physics: shouldScrollHorizontal

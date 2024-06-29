@@ -5,15 +5,16 @@ import 'package:spnk/utils/common_colors.dart';
 class MadeWithFlutterWidget extends StatelessWidget {
   const MadeWithFlutterWidget({
     Key? key,
+    this.mainAxisAlignment = MainAxisAlignment.end,
     required this.size,
   }) : super(key: key);
-
+  final MainAxisAlignment mainAxisAlignment;
   final double size;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: mainAxisAlignment,
       children: [
         Text(
           ' Made with ',

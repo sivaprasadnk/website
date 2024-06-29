@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/extensions/context_extension.dart';
-import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
+import 'package:spnk/views/screens/section.title.dart';
 
 class ScreenSection extends StatefulWidget {
   const ScreenSection({

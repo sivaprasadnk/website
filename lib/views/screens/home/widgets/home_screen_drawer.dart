@@ -94,7 +94,7 @@ class ContactMeListItem extends StatelessWidget {
       title: 'Contact Me',
       callback: () {
         Navigator.pop(context);
-        // context.read<ScreenBloc>().add(UpdateScreen(screen: Screen.contactMe));
+        context.read<ScreenBloc>().add(UpdateScreen(screen: Screen.contactMe));
       },
       icon: Icons.call,
     );
@@ -107,6 +107,7 @@ class ExperienceListItem extends StatelessWidget {
     return ListItem(
       title: 'Experience',
       callback: () {
+        Navigator.pop(context);
         context.read<ScreenBloc>().add(UpdateScreen(screen: Screen.experience));
       },
       icon: Icons.work,
@@ -172,7 +173,6 @@ class _ListItemState extends State<ListItem> {
           padding: const EdgeInsets.only(left: 20),
           child: ListTile(
             dense: true,
-            // hoverColor: const Color.fromRGBO(249, 139, 125, 1),
             hoverColor: kTransparentColor,
             onTap: () {
               widget.callback.call();
@@ -181,7 +181,6 @@ class _ListItemState extends State<ListItem> {
             leading: Icon(
               widget.icon,
               color: !isHovering ? normalColor : hoverColor,
-              // color: isHovering ? Colors.cyanAccent : kWhiteColor,
             ),
             title: Text(
               widget.title,

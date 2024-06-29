@@ -6,12 +6,14 @@ import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
 import 'package:spnk/views/bloc/screen_details/screen_event.dart';
 import 'package:spnk/views/bloc/screen_details/screen_state.dart';
+import 'package:spnk/views/screens/contact_me/contact_me_screen.dart';
 import 'package:spnk/views/screens/experience/experience_screen.dart';
 import 'package:spnk/views/screens/home/home_screen_large.dart';
 import 'package:spnk/views/screens/home/home_screen_small.dart';
 import 'package:spnk/views/screens/home/widgets/bottom_navbar.dart';
 import 'package:spnk/views/screens/home/widgets/home_screen_drawer.dart';
 import 'package:spnk/views/screens/home/widgets/logo_text.dart';
+import 'package:spnk/views/screens/home/widgets/made_with_flutter_widget.dart';
 import 'package:spnk/views/screens/home/widgets/menu_icon.dart';
 import 'package:spnk/views/screens/home/widgets/tab.list/contact.me.tab.dart';
 import 'package:spnk/views/screens/home/widgets/tab.list/experience.tab.dart';
@@ -19,7 +21,6 @@ import 'package:spnk/views/screens/home/widgets/tab.list/home.tab.dart';
 import 'package:spnk/views/screens/home/widgets/tab.list/projects.tab.dart';
 import 'package:spnk/views/screens/home/widgets/theme_switch.dart';
 import 'package:spnk/views/screens/projects/projects_screen.dart';
-import 'package:spnk/views/windows/large/contactme/windows.large.contactme.screen.dart';
 
 class WindowsHomeLarge extends StatefulWidget {
   static const routeName = '/Home';
@@ -99,7 +100,10 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
     }
     return Scaffold(
       bottomNavigationBar: context.isMobileDevice
-          ? const SizedBox.shrink()
+          ? const MadeWithFlutterWidget(
+              size: 15,
+              mainAxisAlignment: MainAxisAlignment.center,
+            )
           : const BottomNavbar(),
       extendBodyBehindAppBar: true,
       endDrawer: const HomeScreenDrawer(),
@@ -129,8 +133,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                   case Screen.home:
                     return const HomeScreenSmall();
                   case Screen.contactMe:
-                    // TODO: Handle this case.
-                    break;
+                    return ContactMeScreen();
                   case Screen.projects:
                     return ProjectsScreen();
                   case Screen.experience:
@@ -138,7 +141,6 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                   case Screen.menu:
                     return const SizedBox.shrink();
                 }
-                return const HomeScreenSmall();
               },
             )
           : Padding(
@@ -150,7 +152,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                   HomeScreenLarge(),
                   ExperienceScreen(),
                   ProjectsScreen(),
-                  WindowsLargeContactMeScreen(),
+                  ContactMeScreen(),
                 ],
               ),
             ),

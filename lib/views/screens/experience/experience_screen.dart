@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/views/screens/experience/exp_details_list_view.dart';
-import 'package:spnk/views/windows/large/common.widgets/screen_section.dart';
+import 'package:spnk/views/screens/screen_section.dart';
 
 class ExperienceScreen extends StatelessWidget {
   @override
