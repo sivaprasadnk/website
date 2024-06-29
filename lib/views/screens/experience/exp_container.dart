@@ -14,8 +14,8 @@ class ExpContainer extends StatelessWidget {
     return AnimatedContainer(
       margin: const EdgeInsets.only(right: 20, bottom: 20),
       duration: const Duration(milliseconds: 200),
-      width: 400,
-      height: 300,
+      width: 360,
+      height: 280,
       decoration: BoxDecoration(
         color: context.scaffoldColor,
         border: Border.all(
@@ -43,10 +43,10 @@ class ExpContainer extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const SizedBox(width: 10),
+                // const SizedBox(width: 10),
                 Text(
                   experience.orgName,
-                  style: context.displaySmall,
+                  style: context.bodyMedium,
                 ),
               ],
             ),
@@ -58,7 +58,7 @@ class ExpContainer extends StatelessWidget {
               children: [
                 Text(
                   "${experience.startDate} - ${experience.endDate}",
-                  style: context.displaySmall.copyWith(
+                  style: context.bodyMedium.copyWith(
                     fontStyle: FontStyle.italic,
                   ),
                 ),
@@ -73,7 +73,7 @@ class ExpContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: experience.detailsList.map((desc) {
                 return Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 8, left: 8),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -81,7 +81,7 @@ class ExpContainer extends StatelessWidget {
                       const SizedBox(width: 10),
                       Text(
                         desc,
-                        style: context.displaySmall,
+                        style: context.bodyMedium,
                       ),
                     ],
                   ),

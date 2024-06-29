@@ -6,6 +6,7 @@ import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
 import 'package:spnk/views/bloc/screen_details/screen_event.dart';
 import 'package:spnk/views/bloc/screen_details/screen_state.dart';
+import 'package:spnk/views/screens/experience/experience_screen.dart';
 import 'package:spnk/views/screens/home/home_screen_large.dart';
 import 'package:spnk/views/screens/home/home_screen_small.dart';
 import 'package:spnk/views/screens/home/widgets/bottom_navbar.dart';
@@ -19,7 +20,6 @@ import 'package:spnk/views/screens/home/widgets/tab.list/projects.tab.dart';
 import 'package:spnk/views/screens/home/widgets/theme_switch.dart';
 import 'package:spnk/views/screens/projects/projects_screen.dart';
 import 'package:spnk/views/windows/large/contactme/windows.large.contactme.screen.dart';
-import 'package:spnk/views/windows/large/experience/windows.large.experience.screen.dart';
 
 class WindowsHomeLarge extends StatefulWidget {
   static const routeName = '/Home';
@@ -134,11 +134,9 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                   case Screen.projects:
                     return ProjectsScreen();
                   case Screen.experience:
-                    // TODO: Handle this case.
-                    break;
+                    return ExperienceScreen();
                   case Screen.menu:
-                    // TODO: Handle this case.
-                    break;
+                    return const SizedBox.shrink();
                 }
                 return const HomeScreenSmall();
               },
@@ -150,7 +148,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                 controller: _tabController,
                 children: [
                   HomeScreenLarge(),
-                  WindowsLargeExperienceScreen(),
+                  ExperienceScreen(),
                   ProjectsScreen(),
                   WindowsLargeContactMeScreen(),
                 ],
