@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
 import 'package:spnk/views/bloc/experience/exp_details_bloc.dart';
 import 'package:spnk/views/bloc/experience/exp_details_state.dart';
+import 'package:spnk/views/windows/common/exp_container.dart';
 
 class ExpDetailsListView extends StatelessWidget {
   const ExpDetailsListView({
@@ -12,54 +12,28 @@ class ExpDetailsListView extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   @override
   Widget build(BuildContext context) {
-    final textStyle = context.displaySmall;
-    final bulletPoint = CircleAvatar(
-      radius: 5,
-      backgroundColor: Theme.of(context).splashColor,
-    );
 
     return BlocBuilder<ExpDetailsBloc, ExpDetailsState>(
       builder: (context, state) {
-        return Column(
-          children: state.expList.map((exp) {
-            return Padding(
-              padding: padding,
-              child: ListTile(
-                title: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      exp.title,
-                      style: textStyle,
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        bulletPoint,
-                        Text(
-                          '      ${exp.orgName}',
-                          style: textStyle,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        bulletPoint,
-                        Text(
-                          '      ${exp.startDate} - ${exp.endDate}',
-                          style: textStyle,
-                        ),
-                      ],
-                    ),
-                  ],
+        return SizedBox(
+          height: 350,
+          child: ScrollConfiguration(
+            behavior:
+                ScrollConfiguration.of(context).copyWith(scrollbars: false),
+            child: SingleChildScrollView(
+              child: Scrollbar(
+                child: Wrap(
+                  children: state.expList.map((exp) {
+                    return ExpContainer(
+                      experience: exp,
+                    );
+                  }).toList(),
                 ),
               ),
-            );
-          }).toList(),
+            ),
+          ),
         );
+
       },
     );
   }

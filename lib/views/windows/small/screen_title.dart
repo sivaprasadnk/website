@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/utils/extensions/context_extension.dart';
 
 class ScreenTitle extends StatelessWidget {
   const ScreenTitle({Key? key, required this.title}) : super(key: key);

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/utils/extensions/context_extension.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GooglePlayButton extends StatelessWidget {
@@ -83,7 +83,7 @@ class WinddowsGooglePlayButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        launch(url);
+        // launch(url);
       },
       child: DecoratedBox(
         decoration: BoxDecoration(
@@ -160,25 +160,24 @@ class TitleText extends StatelessWidget {
   }
 }
 
-class ProPicMediumWithBlob extends StatelessWidget {
-  final double width;
-  const ProPicMediumWithBlob({
-    required this.width,
-  });
+// class ProPicMediumWithBlob extends StatelessWidget {
+//   final double width;
+//   const ProPicMediumWithBlob({
+//     required this.width,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: const Duration(milliseconds: 900),
-      opacity: 1,
-      child: Image.asset(
-        'assets/images/picWithBlob.png',
-        // height: 350,
-        width: width,
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return AnimatedOpacity(
+//       duration: const Duration(milliseconds: 900),
+//       opacity: 1,
+//       child: Image.asset(
+//         'assets/images/picWithBlob.png',
+//         width: width,
+//       ),
+//     );
+//   }
+// }
 
 class WindowsRightFooter extends StatelessWidget {
   const WindowsRightFooter({

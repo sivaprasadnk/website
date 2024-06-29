@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/utils/common_widgets.dart';
-import 'package:spnk/views/windows/common/intro_text.dart';
+import 'package:spnk/views/screens/home/widgets/intro_text.dart';
+import 'package:spnk/views/screens/home/widgets/profile_pic.dart';
 
 class WindowsSmallHomeScreen extends StatefulWidget {
   final bool showProPic;
@@ -53,7 +53,7 @@ class _WindowsSmallHomeScreenState extends State<WindowsSmallHomeScreen> {
             AnimatedOpacity(
               duration: const Duration(seconds: 2),
               opacity: showProPic ? 1 : 0,
-              child: ProPicMediumWithBlob(
+              child: ProfilePic(
                 width: screenHeight * 0.35,
               ),
             ),

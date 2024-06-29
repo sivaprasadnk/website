@@ -13,6 +13,9 @@ ThemeData lightTheme = ThemeData(
     buttonColor: kPrimaryBlueColor,
     textTheme: ButtonTextTheme.primary,
   ),
+  drawerTheme: const DrawerThemeData(
+    backgroundColor: Color.fromRGBO(239, 239, 239, 1),
+  ),
   primaryColor: kPrimaryBlueColor,
   primarySwatch: Colors.indigo,
   scaffoldBackgroundColor: const Color.fromRGBO(239, 239, 239, 1),
@@ -27,6 +30,18 @@ ThemeData lightTheme = ThemeData(
       fontSize: 21,
       fontWeight: FontWeight.bold,
       fontFamily: kRajdhaniFontFamily,
+      color: kPrimaryBlueColor,
+    ),
+    bodyMedium: TextStyle(
+      fontWeight: FontWeight.bold,
+      color: kPrimaryBlueColor,
+      fontSize: 18,
+      fontFamily: kRajdhaniFontFamily,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: kRajdhaniFontFamily,
+      fontWeight: FontWeight.bold,
+      fontSize: 15,
       color: kPrimaryBlueColor,
     ),
     displayLarge: TextStyle(
@@ -69,6 +84,9 @@ ThemeData darkTheme = ThemeData(
     buttonColor: Colors.red,
     textTheme: ButtonTextTheme.primary,
   ),
+  drawerTheme: const DrawerThemeData(
+    backgroundColor: Color.fromRGBO(0, 34, 51, 1),
+  ),
   primaryColor: const Color.fromRGBO(239, 239, 239, 1),
   primarySwatch: kMaterialCyanColor,
   scaffoldBackgroundColor: const Color.fromRGBO(0, 34, 51, 1),
@@ -84,6 +102,18 @@ ThemeData darkTheme = ThemeData(
       color: kWhiteColor,
       fontSize: 21,
       fontFamily: kRajdhaniFontFamily,
+    ),
+    bodyMedium: TextStyle(
+      fontWeight: FontWeight.bold,
+      color: kWhiteColor,
+      fontSize: 18,
+      fontFamily: kRajdhaniFontFamily,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: kRajdhaniFontFamily,
+      fontWeight: FontWeight.bold,
+      fontSize: 15,
+      color: kWhiteColor,
     ),
     displayLarge: TextStyle(
       fontFamily: 'Zina',

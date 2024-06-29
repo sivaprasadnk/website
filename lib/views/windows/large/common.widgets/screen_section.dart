@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spnk/utils/extensions/context_extension.dart';
 import 'package:spnk/views/windows/large/common.widgets/section.title.dart';
 
 class ScreenSection extends StatefulWidget {
@@ -24,11 +25,10 @@ class _ScreenSectionState extends State<ScreenSection>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    // final width = context.screenWidth;
-    // double leftPadding = width > 710 ? width * .02 : 0;
-    const double leftPadding = 150;
+    double leftPadding = 150;
+    leftPadding = context.screenWidth * 0.1;
     return Container(
-      padding: const EdgeInsets.only(left: leftPadding),
+      padding: EdgeInsets.only(left: context.isLargeDevice ? leftPadding : 30),
       child: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Column(
@@ -37,7 +37,7 @@ class _ScreenSectionState extends State<ScreenSection>
             WindowsLargeSectionTitle(
               title: widget.title,
             ),
-            const SizedBox(height: 50),
+            SizedBox(height: context.isMobileDevice ? 50 : 75),
             widget.details,
           ],
         ),

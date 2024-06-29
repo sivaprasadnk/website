@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/utils/extensions/context_extension.dart';
 import 'package:spnk/views/windows/common/contact_details_list_view.dart';
 import 'package:spnk/views/windows/common/screen_image.dart';
 import 'package:spnk/views/windows/small/screen_title.dart';

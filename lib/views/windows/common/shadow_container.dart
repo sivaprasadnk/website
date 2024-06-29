@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/utils/extensions/buildcontext.extensions.dart';
+import 'package:spnk/utils/extensions/context_extension.dart';
 
 class ShadowContainer extends StatefulWidget {
   const ShadowContainer({Key? key, required this.child}) : super(key: key);

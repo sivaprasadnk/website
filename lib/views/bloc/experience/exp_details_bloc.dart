@@ -9,6 +9,8 @@ class ExpDetailsBloc extends Bloc<ExpDetailsEvent, ExpDetailsState> {
   }
 
   void _getExpDetails(GetExpDetails event, Emitter<ExpDetailsState> emit) {
-    emit(state.copyWith(list: expList));
+    final list = expList;
+    list.sort((a, b) => b.order.compareTo(a.order));
+    emit(state.copyWith(list: list));
   }
 }
