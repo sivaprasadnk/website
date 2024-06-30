@@ -1,10 +1,9 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/extensions/context_extension.dart';
-import 'package:spnk/utils/extensions/string_extensions.dart';
 import 'package:spnk/views/bloc/contact_details/contact_details_bloc.dart';
 import 'package:spnk/views/bloc/contact_details/contact_details_state.dart';
+import 'package:spnk/views/screens/contact_me/contact_item.dart';
 
 class ContactDetailsListView extends StatelessWidget {
   const ContactDetailsListView({
@@ -19,33 +18,13 @@ class ContactDetailsListView extends StatelessWidget {
           height: context.isLargeDevice ? 460 : 480,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: state.contactDetailList.map((e) {
-              return FadeInRight(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 25,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        e.iconName.iconFromString,
-                        color: Theme.of(context).splashColor,
-                      ),
-                      const SizedBox(width: 20),
-                      Text(
-                        e.details,
-                        style: context.displaySmall,
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            }).toList(),
+            children: state.contactDetailList.map(
+              (e) {
+                return ContactItem(contactDetails: e);
+              },
+            ).toList(),
           ),
         );
-
       },
     );
   }

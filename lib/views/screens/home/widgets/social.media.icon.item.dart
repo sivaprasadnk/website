@@ -6,12 +6,12 @@ import 'package:url_launcher/url_launcher.dart';
 
 class SocialMediaIconItem extends StatefulWidget {
   const SocialMediaIconItem({
-    Key? key,
+    super.key,
     required this.icon,
     required this.url,
     required this.iconColor,
     required this.isMobile,
-  }) : super(key: key);
+  });
 
   final IconData icon;
   final String url;

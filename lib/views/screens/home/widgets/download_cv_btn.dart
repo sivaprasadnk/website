@@ -5,8 +5,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class DownloadCvBtn extends StatelessWidget {
   const DownloadCvBtn({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +14,7 @@ class DownloadCvBtn extends StatelessWidget {
       onTap: () async {
         await launchUrl(
           Uri.parse('https://sivaprasadnk.dev/resume.pdf'),
+          // webOnlyWindowName: '_blank',
         );
       },
       child: Container(

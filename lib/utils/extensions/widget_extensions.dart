@@ -18,4 +18,8 @@ extension HoverExtensions on Widget {
       child: this,
     );
   }
+
+  // Widget get changeColorOnHover(Color color) {
+  //   return HoverContainer(child: this);
+  // }
 }

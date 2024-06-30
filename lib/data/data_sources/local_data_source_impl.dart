@@ -58,18 +58,25 @@ class LocalDataSourceImpl implements LocalDataSource {
         iconName: 'home',
         title: 'Address',
         index: 0,
+        type: 'location',
+        link:
+            'https://www.google.com/maps/search/?api=1&query=9.9482885,76.3480163',
       ),
       ContactDetailsModel(
         details: mobileNumberText,
         iconName: 'call',
         title: 'Mobile',
         index: 1,
+        type: 'mobile',
+        link: whatsappWebLink,
       ),
       ContactDetailsModel(
         details: emailText,
         iconName: 'email',
         title: 'Email ',
         index: 2,
+        type: 'email',
+        link: 'mailto:$emailText',
       ),
     ];
   }

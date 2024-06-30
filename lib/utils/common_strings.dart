@@ -30,7 +30,7 @@ const String author1 = 'Albert Schweitzer';
 
 const String addressText =
     '  Prasadam, Nadama, Tripunithura, \n  Ernakulam, Kerala, India';
-const String mobileNumberText = '   +91 8086028340';
+const String mobileNumberText = '  +91 8086028340';
 const String emailText = '  sivaprasadnk.official@gmail.com';
 
 // const String onlineWrkLottieAssetPath = 'assets/lotties/online-work.json';

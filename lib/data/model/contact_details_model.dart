@@ -6,5 +6,7 @@ class ContactDetailsModel extends ContactDetails {
     required super.details,
     required super.iconName,
     required super.index,
+    required super.type,
+    required super.link,
   });
 }
