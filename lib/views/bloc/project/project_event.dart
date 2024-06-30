@@ -2,7 +2,7 @@ abstract class ProjectEvent {
   const ProjectEvent();
 }
 
-class GetProjects extends ProjectEvent {}
+class FetchProjects extends ProjectEvent {}
 
 class ShowPrevIcon extends ProjectEvent {
   final bool showPrev;

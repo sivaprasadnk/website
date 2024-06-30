@@ -1,17 +1,19 @@
 import 'package:bloc/bloc.dart';
-import 'package:spnk/domain/project_entity.dart';
+import 'package:spnk/domain/use_case/get_project_details.dart';
 import 'package:spnk/views/bloc/project/project_event.dart';
 import 'package:spnk/views/bloc/project/project_state.dart';
 
 class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
-  ProjectBloc() : super(const ProjectState()) {
-    on<GetProjects>(_getProjects);
+  final GetProjectDetails getProjectDetails;
+  ProjectBloc(this.getProjectDetails) : super(const ProjectState()) {
+    on<FetchProjects>(_getProjects);
     on<ShowNextIcon>(_showNextIcon);
     on<ShowPrevIcon>(_showPrevIcon);
   }
 
-  void _getProjects(GetProjects event, Emitter<ProjectState> emit) {
-    emit(state.copyWith(list: projectList));
+  void _getProjects(FetchProjects event, Emitter<ProjectState> emit) {
+    final list = getProjectDetails.call();
+    emit(state.copyWith(list: list));
   }
 
   void _showNextIcon(ShowNextIcon event, Emitter<ProjectState> emit) {

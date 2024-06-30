@@ -2,13 +2,14 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/extensions/context_extension.dart';
+import 'package:spnk/utils/extensions/string_extensions.dart';
 import 'package:spnk/views/bloc/contact_details/contact_details_bloc.dart';
 import 'package:spnk/views/bloc/contact_details/contact_details_state.dart';
 
 class ContactDetailsListView extends StatelessWidget {
   const ContactDetailsListView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ContactDetailsBloc, ContactDetailsState>(
@@ -29,7 +30,7 @@ class ContactDetailsListView extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(
-                        e.icon,
+                        e.iconName.iconFromString,
                         color: Theme.of(context).splashColor,
                       ),
                       const SizedBox(width: 20),

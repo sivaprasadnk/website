@@ -1,11 +1,11 @@
-class ProjectModel {
+class ProjectDetails {
   String projName;
   List<String> techStackList;
   List<String> descList;
   String bgAssetPath;
   String url;
   bool isWeb;
-  ProjectModel({
+  ProjectDetails({
     required this.projName,
     required this.techStackList,
     required this.descList,

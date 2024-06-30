@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'package:spnk/data/project_model.dart';
+import 'package:spnk/domain/entity/project_details.dart';
 
 class ProjectState extends Equatable {
-  final List<ProjectModel> projectList;
+  final List<ProjectDetails> projectList;
   final bool showNextIcon;
   final bool showPrevIcon;
 
@@ -13,7 +13,7 @@ class ProjectState extends Equatable {
   });
 
   ProjectState copyWith({
-    List<ProjectModel>? list,
+    List<ProjectDetails>? list,
     bool? showNext,
     bool? showPrev,
   }) {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/data/experience_model.dart';
+import 'package:spnk/domain/entity/experience_details.dart';
 import 'package:spnk/utils/extensions/context_extension.dart';
 
 class ExpContainer extends StatelessWidget {
-  const ExpContainer({Key? key, required this.experience}) : super(key: key);
-  final ExperienceModel experience;
+  const ExpContainer({super.key, required this.experience});
+  final ExperienceDetails experience;
   @override
   Widget build(BuildContext context) {
     final bulletPoint = CircleAvatar(

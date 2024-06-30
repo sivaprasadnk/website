@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/data/project_model.dart';
+import 'package:spnk/domain/entity/project_details.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/extensions/context_extension.dart';
 import 'package:spnk/utils/extensions/widget_extensions.dart';
@@ -7,11 +7,11 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ProjectContainer extends StatefulWidget {
   const ProjectContainer({
-    Key? key,
+    super.key,
     required this.project,
-  }) : super(key: key);
+  });
 
-  final ProjectModel project;
+  final ProjectDetails project;
 
   @override
   State<ProjectContainer> createState() => _ProjectContainerState();

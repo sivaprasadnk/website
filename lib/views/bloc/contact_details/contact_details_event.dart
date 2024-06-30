@@ -2,4 +2,4 @@ abstract class ContactDetailsEvent {
   const ContactDetailsEvent();
 }
 
-class GetContactDetails extends ContactDetailsEvent {}
+class FetchContactDetails extends ContactDetailsEvent {}

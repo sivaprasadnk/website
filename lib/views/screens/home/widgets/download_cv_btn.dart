@@ -19,16 +19,23 @@ class DownloadCvBtn extends StatelessWidget {
       child: Container(
         height: 50,
         padding: const EdgeInsets.symmetric(
-          horizontal: 50,
+          horizontal: 45,
         ),
         color: context.primaryColor,
-        child: Center(
-          child: Text(
-            "Download CV",
-            style: context.displaySmall.copyWith(
+        child: Row(
+          children: [
+            Text(
+              "Download CV",
+              style: context.displaySmall.copyWith(
+                color: context.scaffoldColor,
+              ),
+            ),
+            const SizedBox(width: 15),
+            Icon(
+              Icons.download,
               color: context.scaffoldColor,
             ),
-          ),
+          ],
         ),
       ),
     ).showCursorOnHover.addShadowOnHover;

@@ -2,4 +2,4 @@ abstract class ExpDetailsEvent {
   const ExpDetailsEvent();
 }
 
-class GetExpDetails extends ExpDetailsEvent {}
+class FetchExpDetails extends ExpDetailsEvent {}

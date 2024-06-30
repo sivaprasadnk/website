@@ -1,14 +1,12 @@
-import 'package:flutter/material.dart';
-
-class ContactDetailsModel {
-  IconData icon;
+class ContactDetails {
+  String iconName;
   String details;
   String title;
   int index;
-  ContactDetailsModel({
+  ContactDetails({
     required this.title,
     required this.details,
-    required this.icon,
+    required this.iconName,
     required this.index,
   });
 }

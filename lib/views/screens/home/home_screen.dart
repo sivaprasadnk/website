@@ -13,7 +13,6 @@ import 'package:spnk/views/screens/home/home_screen_small.dart';
 import 'package:spnk/views/screens/home/widgets/bottom_navbar.dart';
 import 'package:spnk/views/screens/home/widgets/home_screen_drawer.dart';
 import 'package:spnk/views/screens/home/widgets/logo_text.dart';
-import 'package:spnk/views/screens/home/widgets/made_with_flutter_widget.dart';
 import 'package:spnk/views/screens/home/widgets/menu_icon.dart';
 import 'package:spnk/views/screens/home/widgets/tab.list/contact.me.tab.dart';
 import 'package:spnk/views/screens/home/widgets/tab.list/experience.tab.dart';
@@ -99,12 +98,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
       ];
     }
     return Scaffold(
-      bottomNavigationBar: context.isMobileDevice
-          ? const MadeWithFlutterWidget(
-              size: 15,
-              mainAxisAlignment: MainAxisAlignment.center,
-            )
-          : const BottomNavbar(),
+      bottomNavigationBar: const BottomNavbar(),
       extendBodyBehindAppBar: true,
       extendBody: true,
       endDrawer: const HomeScreenDrawer(),

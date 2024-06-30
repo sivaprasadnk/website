@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
-import 'package:spnk/data/contact_model.dart';
+import 'package:spnk/domain/entity/contact_details.dart';
 
 class ContactDetailsState extends Equatable {
-  final List<ContactDetailsModel> contactDetailList;
+  final List<ContactDetails> contactDetailList;
 
   const ContactDetailsState({
     this.contactDetailList = const [],
   });
 
-  ContactDetailsState copyWith({List<ContactDetailsModel>? details}) {
+  ContactDetailsState copyWith({List<ContactDetails>? details}) {
     return ContactDetailsState(
       contactDetailList: details ?? contactDetailList,
     );
