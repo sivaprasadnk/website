@@ -47,6 +47,7 @@ String websiteStr1 = 'Personal portfolio website';
 String websiteStr2 = 'Responsive design for every screensize';
 String websiteStr3 = 'Light / Dark theme';
 String websiteStr4 = 'Bloc State Management';
+String websiteStr5 = 'Clean Architecture';
 
 String quizStr1 =
     'Quiz App with light / dark mode \nwith various  color themes.';

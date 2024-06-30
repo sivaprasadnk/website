@@ -102,6 +102,7 @@ class LocalDataSourceImpl implements LocalDataSource {
         descList: [
           quotesAppStr1,
           quotesAppStr2,
+          quotesAppStr3,
         ],
         url: spQuotesLink,
         isWeb: false,
@@ -117,6 +118,8 @@ class LocalDataSourceImpl implements LocalDataSource {
           websiteStr1,
           websiteStr2,
           websiteStr3,
+          websiteStr4,
+          websiteStr5,
         ],
         url: websiteLink,
         isWeb: true,
