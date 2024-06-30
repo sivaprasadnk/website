@@ -14,7 +14,8 @@ class ContactDetailsListView extends StatelessWidget {
     return BlocBuilder<ContactDetailsBloc, ContactDetailsState>(
       builder: (_, state) {
         return SizedBox(
-          height: context.isLargeDevice ? 460 : context.screenHeight - 200,
+          // height: context.isLargeDevice ? 460 : context.screenHeight - 200,
+          height: context.isLargeDevice ? 460 : 480,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: state.contactDetailList.map((e) {

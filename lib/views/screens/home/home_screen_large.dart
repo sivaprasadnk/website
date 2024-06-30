@@ -4,6 +4,7 @@ import 'package:spnk/utils/int_constants.dart';
 import 'package:spnk/views/screens/home/widgets/download_cv_btn.dart';
 import 'package:spnk/views/screens/home/widgets/intro_text.dart';
 import 'package:spnk/views/screens/home/widgets/profile_pic.dart';
+import 'package:spnk/views/screens/home/widgets/social.media.icons.list.dart';
 
 class HomeScreenLarge extends StatefulWidget {
   @override
@@ -32,7 +33,7 @@ class _HomeScreenLargeState extends State<HomeScreenLarge>
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       mainAxisSize: MainAxisSize.min,
       children: [
-        // const SocialMediaIconsList(),
+        const SocialMediaIconsList(),
         Padding(
           padding: EdgeInsets.only(left: leftPadding),
           child: Column(

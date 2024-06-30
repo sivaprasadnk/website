@@ -106,6 +106,7 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
             )
           : const BottomNavbar(),
       extendBodyBehindAppBar: true,
+      extendBody: true,
       endDrawer: const HomeScreenDrawer(),
       appBar: PreferredSize(
         preferredSize: Size(context.screenWidth * 0.9, 90),
@@ -119,6 +120,8 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                     0,
                     duration: duration,
                   );
+                } else {
+                  context.read<ScreenBloc>().add(UpdateScreen());
                 }
               },
             ),

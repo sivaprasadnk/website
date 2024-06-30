@@ -14,8 +14,10 @@ class ExpContainer extends StatelessWidget {
     return AnimatedContainer(
       margin: const EdgeInsets.only(right: 20, bottom: 20),
       duration: const Duration(milliseconds: 200),
-      width: 360,
-      height: 280,
+      // width: 360,
+      // height: 280,
+      width: 350,
+      height: 260,
       decoration: BoxDecoration(
         color: context.scaffoldColor,
         border: Border.all(
@@ -89,8 +91,8 @@ class ExpContainer extends StatelessWidget {
               }).toList(),
             ),
           ),
-          const Spacer(),
-          const SizedBox(height: 5),
+          // const Spacer(),
+          // const SizedBox(height: 5),
         ],
       ),
     );

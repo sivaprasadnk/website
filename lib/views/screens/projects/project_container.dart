@@ -139,7 +139,7 @@ class _ProjectContainerState extends State<ProjectContainer> {
                               ),
                               const SizedBox(width: 10),
                               Icon(
-                                Icons.arrow_right_alt,
+                                Icons.arrow_outward_rounded,
                                 color: context.primaryColor,
                               ),
                             ],

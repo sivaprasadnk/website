@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/views/windows/common/shadow_container.dart';
+import 'package:spnk/views/screens/home/widgets/shadow_container.dart';
 import 'package:universal_html/html.dart' as html;
 
 extension HoverExtensions on Widget {

@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/extensions/context_extension.dart';
@@ -297,22 +296,22 @@ class AndroidRightFooter extends StatelessWidget {
   }
 }
 
-class WindowsLeftFooter extends StatelessWidget {
-  const WindowsLeftFooter({Key? key, required this.size}) : super(key: key);
-  final double size;
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'Copyright © 2024 Sivaprasad NK .',
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: size,
-        fontFamily: 'Roboto',
-        color: kGreyColor,
-      ),
-    );
-  }
-}
+// class WindowsLeftFooter extends StatelessWidget {
+//   const WindowsLeftFooter({Key? key, required this.size}) : super(key: key);
+//   final double size;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Text(
+//       'Copyright © 2024 Sivaprasad NK .',
+//       style: TextStyle(
+//         fontWeight: FontWeight.bold,
+//         fontSize: size,
+//         fontFamily: 'Roboto',
+//         color: kGreyColor,
+//       ),
+//     );
+//   }
+// }
 
 class NameLogo extends StatelessWidget {
   const NameLogo({Key? key}) : super(key: key);
@@ -323,80 +322,80 @@ class NameLogo extends StatelessWidget {
   }
 }
 
-class ProPicWithBlobLottie extends StatelessWidget {
-  const ProPicWithBlobLottie({
-    Key? key,
-  }) : super(key: key);
+// class ProPicWithBlobLottie extends StatelessWidget {
+//   const ProPicWithBlobLottie({
+//     Key? key,
+//   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Lottie.asset(blobLottieAssetPath, height: 280),
-        Padding(
-          padding: const EdgeInsets.all(40.0),
-          child: CircleAvatar(
-            radius: 95,
-            backgroundColor: kTransparentColor,
-            backgroundImage: const AssetImage(proPicAssetPath),
-          ),
-        ),
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Stack(
+//       children: [
+//         Lottie.asset(blobLottieAssetPath, height: 280),
+//         Padding(
+//           padding: const EdgeInsets.all(40.0),
+//           child: CircleAvatar(
+//             radius: 95,
+//             backgroundColor: kTransparentColor,
+//             backgroundImage: const AssetImage(proPicAssetPath),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
 
-class RobotLottie extends StatelessWidget {
-  const RobotLottie({
-    Key? key,
-    required this.showLottie,
-    required this.screenWidth,
-  }) : super(key: key);
+// class RobotLottie extends StatelessWidget {
+//   const RobotLottie({
+//     Key? key,
+//     required this.showLottie,
+//     required this.screenWidth,
+//   }) : super(key: key);
 
-  final bool showLottie;
-  final double screenWidth;
+//   final bool showLottie;
+//   final double screenWidth;
 
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: const Duration(seconds: 1),
-      opacity: showLottie ? 1 : 0,
-      child: Container(
-        margin: EdgeInsets.only(left: screenWidth * 0.15),
-        child: Lottie.asset(
-          'assets/lotties/robot_hello.json',
-          height: 195,
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return AnimatedOpacity(
+//       duration: const Duration(seconds: 1),
+//       opacity: showLottie ? 1 : 0,
+//       child: Container(
+//         margin: EdgeInsets.only(left: screenWidth * 0.15),
+//         child: Lottie.asset(
+//           'assets/lotties/robot_hello.json',
+//           height: 195,
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-class DashImageMedium extends StatelessWidget {
-  const DashImageMedium({
-    Key? key,
-    required this.showLottie,
-    required this.screenWidth,
-  }) : super(key: key);
+// class DashImageMedium extends StatelessWidget {
+//   const DashImageMedium({
+//     Key? key,
+//     required this.showLottie,
+//     required this.screenWidth,
+//   }) : super(key: key);
 
-  final bool showLottie;
-  final double screenWidth;
+//   final bool showLottie;
+//   final double screenWidth;
 
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: const Duration(seconds: 1),
-      opacity: showLottie ? 1 : 0,
-      child: Container(
-        margin: EdgeInsets.only(left: screenWidth * 0.12),
-        child: Image.asset(
-          'assets/images/dash/dash1.png',
-          height: 220,
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return AnimatedOpacity(
+//       duration: const Duration(seconds: 1),
+//       opacity: showLottie ? 1 : 0,
+//       child: Container(
+//         margin: EdgeInsets.only(left: screenWidth * 0.12),
+//         child: Image.asset(
+//           'assets/images/dash/dash1.png',
+//           height: 220,
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class AndroidDashImage extends StatelessWidget {
   const AndroidDashImage({

@@ -19,9 +19,6 @@ const String websiteLink = 'https://sivaprasadnk.github.io/#/';
 const String spQuizLink =
     'https://play.google.com/store/apps/details?id=com.sptpra.spquiz';
 
-const String welcomeMobText = 'Welcome to \n sivaprasadnk.github.io';
-const String welcomeSiteText = 'Welcome to sivaprasadnk.github.io';
-
 const String quote2 =
     '" We are what we repeatedly do. \n Excellence, then, is not an act, but a habit "';
 const String author2 = 'Aristotle';
@@ -31,68 +28,46 @@ const String quote1 =
 
 const String author1 = 'Albert Schweitzer';
 
-const String spQuizAppDescription =
-    "A Simple quiz app \nwith cool animations and effects";
-
-const String spQuotesAppDescription = 'A Simple Quotes listing app';
-
-const String proPicAssetPath = 'assets/images/propic3.png';
-
-const String blobLottieAssetPath = 'assets/lotties/blob.json';
 const String addressText =
     '  Prasadam, Nadama, Tripunithura, \n  Ernakulam, Kerala, India';
 const String mobileNumberText = '   +91 8086028340';
 const String emailText = '  sivaprasadnk.official@gmail.com';
 
-const String onlineWrkLottieAssetPath = 'assets/lotties/online-work.json';
+// const String onlineWrkLottieAssetPath = 'assets/lotties/online-work.json';
 
 ///
-String quotesAppStr1Large = 'Quotes listing app with Glassmorphism UI';
-String quotesAppStr2Large = 'Save to gallery, sharing options available';
+String quotesAppStr1 = 'Quotes listing app with Glassmorphism UI';
+String quotesAppStr2 = 'Save to gallery, sharing options available';
+String quotesAppStr3 = 'Provider State Management';
 
 ///
 ///
-String quotesAppStr1 =
-    'Quotes listing app using a public api \n and  Glassmorphism UI';
-String quotesAppStr2 = '\nSave to gallery, sharing options available';
+
 String websiteStr1 = 'Personal portfolio website';
-String websiteStr2 = '\nResponsive design for every screensize';
-String websiteStr1Large = 'Personal portfolio website';
-String websiteStr2Large = 'Responsive design for every screensize';
-String websiteStr3Large = 'Light / Dark theme';
-String quoteStr1 =
-    'A simple quotes listing app made using Flutter & a public api (quotable api).';
-String quoteStr2 =
-    '\nVarious tags (wisdom, friendship, etc.) listing avaialble to view associated quotes.';
-String quoteStr3 = '\nQuotes can also viewed according to authors ';
-String quoteStr4 = '\nSave to gallery , and sharing option also available. ';
-String quizStr1 = 'A simple Quiz app using Flutter and Firebase,';
-String quizStr2 = ' with various categories of subjects to learn facts.';
-String quizStr3 =
-    'Quiz App with light / dark mode \nwith various  color themes.';
-String quizStr4 = 'Mark as Favorite option available';
-String quizStr5 =
-    '\nAdmin session enables to add, edit , delete questions without using Firebase console.';
-// String quizStr6 = 'Questions organised '
+String websiteStr2 = 'Responsive design for every screensize';
+String websiteStr3 = 'Light / Dark theme';
+String websiteStr4 = 'Bloc State Management';
 
+String quizStr1 =
+    'Quiz App with light / dark mode \nwith various  color themes.';
+String quizStr2 = 'Mark as Favorite option available';
+String quizStr3 = 'Provider State-Management';
+
+/// random strings
 String str1 =
     'Consequat pariatur et sunt nostrud id incididunt Lorem sit laboris adipisicing occaecat duis.';
 String str2 =
     "Nulla est culpa officia commodo reprehenderit nulla commodo Lorem eiusmod non dolor labore tempor.";
 String str3 =
     ' Proident irure reprehenderit amet est id quis commodo qui quis ullamco incididunt minim enim incididunt. ';
-
 String str4 = 'Mollit velit elit aliqua qui anim eu ullamco cupidatat.';
-
 String str5 =
     " Tempor sunt laboris aliqua mollit ea do eiusmod sit ad esse aliquip ea.";
-
 String str6 = "Consequat nulla ad deserunt qui eiusmod aute veniam.";
 String str7 =
     "  Aute minim elit dolor occaecat dolore et ullamco aute amet laborum in.";
 
 String quizImageAssetPath = 'assets/images/quizApp/design1.png';
-
 String quotesAppImageAssetPath = 'assets/images/quotesApp/screen2.png';
 String websiteImageAssetPath = "assets/images/website/screen4.png";
 

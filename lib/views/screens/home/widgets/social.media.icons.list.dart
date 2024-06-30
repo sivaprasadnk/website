@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/common_strings.dart';
-import 'package:spnk/views/windows/large/home/windows.large.home.widgets/social.media.icons/social.media.icon.item.dart';
+import 'package:spnk/utils/extensions/context_extension.dart';
+import 'package:spnk/views/screens/home/widgets/social.media.icon.item.dart';
 
 class SocialMediaIconsList extends StatelessWidget {
   const SocialMediaIconsList({
@@ -22,9 +23,9 @@ class SocialMediaIconsList extends StatelessWidget {
         : isDarkTheme
             ? kWhiteColor
             : kPrimaryBlueColor;
-    return FadeInRight(
+    return FadeInUp(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           SocialMediaIconItem(
             icon: FontAwesomeIcons.facebook,
@@ -59,6 +60,15 @@ class SocialMediaIconsList extends StatelessWidget {
             url: githubLink,
             iconColor: normalColor,
             isMobile: isMobile,
+          ),
+          const SizedBox(height: spacing),
+          Container(
+            width: 3,
+            height: 200,
+            decoration: BoxDecoration(
+              color: context.primaryColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
         ],
       ),

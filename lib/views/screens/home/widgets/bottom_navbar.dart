@@ -11,13 +11,18 @@ class BottomNavbar extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: context.screenWidth * 0.03,
-        vertical: 10,
+        vertical: 5,
       ),
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: const Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.end,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CopyrightText(size: 15),
-          MadeWithFlutterWidget(size: 15),
+          MadeWithFlutterWidget(
+            size: 15,
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
         ],
       ),
     );

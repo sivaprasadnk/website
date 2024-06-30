@@ -47,7 +47,7 @@ class _SocialMediaIconItemState extends State<SocialMediaIconItem> {
                 : isDarkTheme
                     ? kWhiteColor
                     : kPrimaryBlueColor,
-        size: 30,
+        size: 25,
       ),
       onTap: () {
         launchUrl(Uri.parse(widget.url));
