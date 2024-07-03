@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/screen_type.dart';
-import 'package:spnk/views/screens/home/widgets/tab.list/tab.item.dart';
+import 'package:spnk/views/screens/home/widgets/tab.item.dart';
 
 class HomeTab extends StatelessWidget {
   final TabController tabController;
@@ -15,9 +15,9 @@ class HomeTab extends StatelessWidget {
     return TabItem(
       screen: Screen.home,
       tabController: tabController,
-      onTap: () {
-        tabController.animateTo(0, duration: duration);
-      },
+      // onTap: () {
+      //   tabController.animateTo(0, duration: duration);
+      // },
       title: 'Home',
       // index: 0,
     );

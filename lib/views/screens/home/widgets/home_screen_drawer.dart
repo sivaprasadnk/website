@@ -12,7 +12,7 @@ import 'package:spnk/views/screens/animation_item_builder.dart';
 import 'package:spnk/views/screens/home/widgets/copyright_text.dart';
 
 class HomeScreenDrawer extends StatelessWidget {
-  const HomeScreenDrawer({Key? key}) : super(key: key);
+  const HomeScreenDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,19 +52,20 @@ class HomeScreenDrawer extends StatelessWidget {
               separatorBuilder: (ctx, _) => const SizedBox(height: 10),
               padding: const EdgeInsets.all(20),
               showItemInterval: const Duration(milliseconds: 200),
-              itemCount: 4,
+              itemCount: Screen.values.length,
               itemBuilder: animationItemBuilder((index) {
-                switch (index) {
-                  case 0:
-                    return HomeListItem();
-                  case 3:
-                    return ContactMeListItem();
-                  case 1:
-                    return ExperienceListItem();
-                  case 2:
-                    return MyProjectsListItem();
-                }
-                return Container();
+                final screen = Screen.values[index];
+                return ListItem(
+                  title: screen.menuName,
+                  callback: () {
+                    Navigator.pop(context);
+                    context
+                        .read<ScreenBloc>()
+                        .add(UpdateScreen(screen: screen));
+                  },
+                  icon: screen.icon,
+                );
+
               }),
             ),
           ),
@@ -73,62 +74,6 @@ class HomeScreenDrawer extends StatelessWidget {
           const SizedBox(height: 15),
         ],
       ),
-    );
-  }
-}
-
-class HomeListItem extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListItem(
-      title: 'Home',
-      callback: () {
-        Navigator.pop(context);
-        context.read<ScreenBloc>().add(UpdateScreen());
-      },
-      icon: Icons.home,
-    );
-  }
-}
-
-class ContactMeListItem extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListItem(
-      title: 'Contact Me',
-      callback: () {
-        Navigator.pop(context);
-        context.read<ScreenBloc>().add(UpdateScreen(screen: Screen.contactMe));
-      },
-      icon: Icons.call,
-    );
-  }
-}
-
-class ExperienceListItem extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListItem(
-      title: 'Experience',
-      callback: () {
-        Navigator.pop(context);
-        context.read<ScreenBloc>().add(UpdateScreen(screen: Screen.experience));
-      },
-      icon: Icons.work,
-    );
-  }
-}
-
-class MyProjectsListItem extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListItem(
-      title: 'Projects',
-      callback: () {
-        Navigator.pop(context);
-        context.read<ScreenBloc>().add(UpdateScreen(screen: Screen.projects));
-      },
-      icon: Icons.apps,
     );
   }
 }

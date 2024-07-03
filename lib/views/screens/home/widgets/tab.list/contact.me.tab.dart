@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/screen_type.dart';
-import 'package:spnk/views/screens/home/widgets/tab.list/tab.item.dart';
+import 'package:spnk/views/screens/home/widgets/tab.item.dart';
 
 class ContactMeTab extends StatelessWidget {
   final TabController tabController;
@@ -14,9 +14,9 @@ class ContactMeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabItem(
       screen: Screen.contactMe,
-      onTap: () {
-        tabController.animateTo(3, duration: duration);
-      },
+      // onTap: () {
+      //   tabController.animateTo(4, duration: duration);
+      // },
       title: 'Contact Me',
       tabController: tabController,
       // index: 4,

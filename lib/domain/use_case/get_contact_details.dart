@@ -1,8 +1,8 @@
-import 'package:spnk/data/repository/repository_impl.dart';
 import 'package:spnk/domain/entity/contact_details.dart';
+import 'package:spnk/domain/repository/repository.dart';
 
 class GetContactDetails {
-  final RepositoryImpl repository;
+  final Repository repository;
   GetContactDetails({
     required this.repository,
   });

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/screen_type.dart';
-import 'package:spnk/views/screens/home/widgets/tab.list/tab.item.dart';
+import 'package:spnk/views/screens/home/widgets/tab.item.dart';
 
 class ExperienceTab extends StatelessWidget {
   final TabController tabController;
@@ -14,13 +14,13 @@ class ExperienceTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabItem(
       screen: Screen.experience,
-      onTap: () {
-        tabController.animateTo(
-          1,
-          duration: duration,
-          curve: Curves.decelerate,
-        );
-      },
+      // onTap: () {
+      //   tabController.animateTo(
+      //     2,
+      //     duration: duration,
+      //     curve: Curves.decelerate,
+      //   );
+      // },
       tabController: tabController,
       title: 'Experience',
       // index: 2,

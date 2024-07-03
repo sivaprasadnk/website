@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/data/data_sources/local_data_source_impl.dart';
 import 'package:spnk/data/repository/repository_impl.dart';
+import 'package:spnk/domain/use_case/get_about_me.dart';
 import 'package:spnk/domain/use_case/get_contact_details.dart';
 import 'package:spnk/domain/use_case/get_exp_details.dart';
 import 'package:spnk/domain/use_case/get_project_details.dart';
 import 'package:spnk/utils/themes.dart';
+import 'package:spnk/views/bloc/about_me/about_me_bloc.dart';
+import 'package:spnk/views/bloc/about_me/about_me_event.dart';
 import 'package:spnk/views/bloc/contact_details/contact_details_bloc.dart';
 import 'package:spnk/views/bloc/contact_details/contact_details_event.dart';
 import 'package:spnk/views/bloc/experience/exp_details_bloc.dart';
@@ -34,6 +37,8 @@ class MyApp extends StatelessWidget {
         GetContactDetails(repository: repositoryImpl);
 
     final GetExpDetails getExpDetails = GetExpDetails(repositoryImpl);
+    final GetAboutMe getAboutMe = GetAboutMe(repositoryImpl);
+
     final GetProjectDetails getProjectDetails =
         GetProjectDetails(repository: repositoryImpl);
 
@@ -42,6 +47,12 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ScreenBloc>(create: (_) => ScreenBloc()),
+        BlocProvider<AboutMeBloc>(
+          create: (_) => AboutMeBloc(getAboutMe)
+            ..add(
+              FetchAboutMe(),
+            ),
+        ),
         BlocProvider<ExpDetailsBloc>(
           create: (_) => ExpDetailsBloc(getExpDetails)
             ..add(

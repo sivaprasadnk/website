@@ -13,14 +13,12 @@ import 'package:spnk/views/bloc/screen_details/screen_state.dart';
 class TabItem extends StatefulWidget {
   const TabItem({
     required this.title,
-    required this.onTap,
     required this.tabController,
     required this.screen,
   });
 
   final TabController tabController;
 
-  final VoidCallback onTap;
   final String title;
   final Screen screen;
 
@@ -57,7 +55,11 @@ class _TabItemState extends State<TabItem> {
                   context
                       .read<ScreenBloc>()
                       .add(UpdateScreen(screen: widget.screen));
-                  widget.onTap.call();
+                  widget.tabController.animateTo(
+                    widget.screen.index,
+                    duration: const Duration(seconds: 1),
+                  );
+                  // widget.onTap.call();
                   setState(() {});
                 },
                 child: SizedBox(
@@ -68,7 +70,7 @@ class _TabItemState extends State<TabItem> {
                       widget.title,
                       style: context.displaySmall.copyWith(
                         fontSize: 15,
-                        color: widget.tabController.index == widget.screen.index
+                        color: state.selectedScreen.index == widget.screen.index
                             ? normalColor
                             : isHovering
                                 ? hoverColor
@@ -81,7 +83,7 @@ class _TabItemState extends State<TabItem> {
 
               // if (state.selectedScreen.index == widget.screen.index)
               AnimatedContainer(
-                duration: const Duration(milliseconds: 500),
+                duration: const Duration(seconds: 1),
                 height: 2,
                 decoration: BoxDecoration(
                   color: normalColor,

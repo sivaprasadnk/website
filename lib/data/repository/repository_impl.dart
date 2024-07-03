@@ -1,4 +1,5 @@
 import 'package:spnk/data/data_sources/local_data_source.dart';
+import 'package:spnk/domain/entity/about_me_details.dart';
 import 'package:spnk/domain/entity/contact_details.dart';
 import 'package:spnk/domain/entity/experience_details.dart';
 import 'package:spnk/domain/entity/project_details.dart';
@@ -22,5 +23,10 @@ class RepositoryImpl implements Repository {
   @override
   List<ProjectDetails> getProjectDetails() {
     return localDataSource.getProjectDetails();
+  }
+  
+  @override
+  AboutMeDetails getAboutMe() {
+    return localDataSource.getAboutMe();
   }
 }
