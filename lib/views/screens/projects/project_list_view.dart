@@ -7,16 +7,16 @@ import 'package:spnk/views/screens/projects/project_container.dart';
 
 class ProjectListView extends StatelessWidget {
   const ProjectListView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProjectBloc, ProjectState>(
       builder: (context, state) {
         return SizedBox(
-          // height: context.isLargeDevice ? 460 : context.screenHeight - 200,
-          height: context.isLargeDevice ? 460 : 480,
+          height: context.isLargeDevice ? 460 : context.screenHeight - 200,
+          // height: context.isLargeDevice ? 460 : 480,
           child: ScrollConfiguration(
             behavior:
                 ScrollConfiguration.of(context).copyWith(scrollbars: false),

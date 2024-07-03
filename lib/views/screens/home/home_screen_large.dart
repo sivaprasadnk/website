@@ -33,7 +33,7 @@ class _HomeScreenLargeState extends State<HomeScreenLarge>
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       mainAxisSize: MainAxisSize.min,
       children: [
-        const SocialMediaIconsList(),
+        // const SocialMediaIconsList(),
         Padding(
           padding: EdgeInsets.only(left: leftPadding),
           child: Column(
@@ -48,6 +48,18 @@ class _HomeScreenLargeState extends State<HomeScreenLarge>
               ),
               const SizedBox(height: 30),
               const DownloadCvBtn(),
+              const SizedBox(height: 15),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    "Follow me ",
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                  const SizedBox(width: 10),
+                  const SocialMediaIconsList(),
+                ],
+              ),
             ],
           ),
         ),

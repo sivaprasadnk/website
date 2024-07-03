@@ -7,27 +7,36 @@ import 'package:spnk/views/screens/experience/exp_container.dart';
 
 class ExpDetailsListView extends StatelessWidget {
   const ExpDetailsListView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ExpDetailsBloc, ExpDetailsState>(
       builder: (context, state) {
         return SizedBox(
           // height: context.isLargeDevice ? 460 : context.screenHeight - 200,
-          height: context.isLargeDevice ? 460 : 480,
+          height: context.isLargeDevice ? 460 : context.screenHeight - 200,
           child: ScrollConfiguration(
             behavior:
                 ScrollConfiguration.of(context).copyWith(scrollbars: false),
             child: SingleChildScrollView(
               child: Scrollbar(
-                child: Wrap(
-                  children: state.expList.map((exp) {
-                    return ExpContainer(
-                      experience: exp,
-                    );
-                  }).toList(),
-                ),
+                child: context.isLargeDevice
+                    ? Wrap(
+                        children: state.expList.map((exp) {
+                          return ExpContainer(
+                            experience: exp,
+                          );
+                        }).toList(),
+                      )
+                    : Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: state.expList.map((exp) {
+                          return ExpContainer(
+                            experience: exp,
+                          );
+                        }).toList(),
+                      ),
               ),
             ),
           ),

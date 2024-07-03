@@ -44,7 +44,9 @@ class _ProjectContainerState extends State<ProjectContainer> {
               children: [
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
-                  width: 350,
+                  // width: 350,
+                  width: context.isLargeDevice ? 350 : double.infinity,
+
                   height: 265,
                   decoration: BoxDecoration(
                     color: context.scaffoldColor,

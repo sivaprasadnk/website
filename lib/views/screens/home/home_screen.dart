@@ -103,9 +103,9 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
       extendBody: true,
       endDrawer: const HomeScreenDrawer(),
       appBar: PreferredSize(
-        preferredSize: Size(context.screenWidth * 0.9, 90),
+        preferredSize: Size(context.screenWidth * 0.8, 65),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           child: AppBar(
             title: LogoText(
               onTap: () {

@@ -5,15 +5,18 @@ import 'package:spnk/utils/extensions/context_extension.dart';
 
 class WindowsLargeSectionTitle extends StatelessWidget {
   const WindowsLargeSectionTitle({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+  });
   final String title;
   @override
   Widget build(BuildContext context) {
     return FadeInDown(
       child: Container(
-        padding: EdgeInsets.only(top: context.screenHeight * 0.15),
+        padding: EdgeInsets.only(
+          top: context.isLargeDevice ? context.screenHeight * 0.15 : 100,
+          bottom: context.isLargeDevice ? 75 : 40,
+        ),
         child: AutoSizeText(
           title,
           style: context.displayMedium,

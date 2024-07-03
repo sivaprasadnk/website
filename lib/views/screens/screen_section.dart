@@ -4,11 +4,11 @@ import 'package:spnk/views/screens/section.title.dart';
 
 class ScreenSection extends StatefulWidget {
   const ScreenSection({
-    Key? key,
+    super.key,
     required this.title,
     required this.details,
     required this.imageName,
-  }) : super(key: key);
+  });
   final String title;
   final Widget details;
   final String imageName;
@@ -28,7 +28,7 @@ class _ScreenSectionState extends State<ScreenSection>
     double leftPadding = 150;
     leftPadding = context.screenWidth * 0.1;
     return Container(
-      padding: EdgeInsets.only(left: context.isLargeDevice ? leftPadding : 30),
+      padding: EdgeInsets.only(left: context.isLargeDevice ? leftPadding : 20),
       child: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Column(
@@ -37,7 +37,7 @@ class _ScreenSectionState extends State<ScreenSection>
             WindowsLargeSectionTitle(
               title: widget.title,
             ),
-            SizedBox(height: context.isMobileDevice ? 50 : 75),
+            // SizedBox(height: context.isMobileDevice ? 40 : 75),
             widget.details,
           ],
         ),

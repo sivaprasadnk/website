@@ -1,10 +1,12 @@
+import 'package:flutter/foundation.dart';
+
 const String fbLink = 'https://www.facebook.com/sivaprasadnk.official';
 
 const String instaLink = 'https://www.instagram.com/sivaprasadnk.dev/';
 
-const String whatsappWebLink =
-    // 'https://api.whatsapp.com/send/?phone=+918086028340';
-    "https://web.whatsapp.com/send?phone=918086028340";
+String whatsappWebLink = defaultTargetPlatform == TargetPlatform.android
+    ? whatsappAndroidLink
+    : "https://web.whatsapp.com/send?phone=918086028340";
 
 const String whatsappAndroidLink = "whatsapp://send?phone=+918086028340";
 

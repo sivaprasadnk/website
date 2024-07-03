@@ -40,7 +40,7 @@ class LocalDataSourceImpl implements LocalDataSource {
         detailsList: [
           'Flutter Team Lead',
           'App Flavoring',
-          'Offline caching',
+          'Offline caching using Hive DB',
           'Push Notifications',
         ],
         orgName: 'Invenics Services India Pvt Ltd',
