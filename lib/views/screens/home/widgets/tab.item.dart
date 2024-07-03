@@ -34,6 +34,8 @@ class _TabItemState extends State<TabItem> {
     final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final hoverColor = kCyanColor;
     final normalColor = !isDarkTheme ? kPrimaryBlueColor : kWhiteColor;
+    final currentIdx = widget.tabController.index;
+
     return MouseRegion(
       onEnter: (_) {
         setState(() {
@@ -45,44 +47,44 @@ class _TabItemState extends State<TabItem> {
           isHovering = false;
         });
       },
-      child: BlocBuilder<ScreenBloc, ScreenState>(
-        builder: (context, state) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  context
-                      .read<ScreenBloc>()
-                      .add(UpdateScreen(screen: widget.screen));
-                  widget.tabController.animateTo(
-                    widget.screen.index,
-                    duration: const Duration(seconds: 1),
-                  );
-                  // widget.onTap.call();
-                  setState(() {});
-                },
-                child: SizedBox(
-                  height: 40,
-                  width: 100,
-                  child: Center(
-                    child: AutoSizeText(
-                      widget.title,
-                      style: context.displaySmall.copyWith(
-                        fontSize: 15,
-                        color: state.selectedScreen.index == widget.screen.index
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          GestureDetector(
+            onTap: () {
+              context
+                  .read<ScreenBloc>()
+                  .add(UpdateScreen(screen: widget.screen));
+              widget.tabController.animateTo(
+                widget.screen.index,
+                duration: const Duration(seconds: 1),
+              );
+              // widget.onTap.call();
+              // setState(() {});
+            },
+            child: SizedBox(
+              height: 40,
+              width: 100,
+              child: Center(
+                child: AutoSizeText(
+                  widget.title,
+                  style: context.displaySmall.copyWith(
+                    fontSize: 15,
+                    color: currentIdx == widget.screen.index
                             ? normalColor
                             : isHovering
                                 ? hoverColor
                                 : normalColor,
-                      ),
-                    ),
                   ),
                 ),
               ),
-
-              // if (state.selectedScreen.index == widget.screen.index)
-              AnimatedContainer(
+            ),
+          ),
+      
+          BlocBuilder<ScreenBloc, ScreenState>(
+            builder: (context, state) {
+              // final sc = state.selectedScreen.index;
+              return AnimatedContainer(
                 duration: const Duration(seconds: 1),
                 height: 2,
                 decoration: BoxDecoration(
@@ -91,11 +93,11 @@ class _TabItemState extends State<TabItem> {
                 ),
                 width:
                     state.selectedScreen.index == widget.screen.index ? 100 : 0,
-              ),
-            ],
-          );
-        },
-      ),
-    ).showCursorOnHover;
+              );
+            },
+          ),
+        ],
+      ).showCursorOnHover,
+    );
   }
 }

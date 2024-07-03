@@ -5,8 +5,10 @@ extension IntExt on int {
     if (this == 0) {
       return Screen.home;
     } else if (this == 1) {
-      return Screen.experience;
+      return Screen.aboutMe;
     } else if (this == 2) {
+      return Screen.experience;
+    } else if (this == 3) {
       return Screen.projects;
     } else {
       return Screen.contactMe;
