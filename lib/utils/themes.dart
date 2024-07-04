@@ -9,8 +9,8 @@ ThemeData lightTheme = ThemeData(
     backgroundColor: Color.fromRGBO(239, 239, 239, 1),
   ),
   brightness: Brightness.light,
-  buttonTheme: ButtonThemeData(
-    buttonColor: kPrimaryBlueColor,
+  buttonTheme: const ButtonThemeData(
+    buttonColor: Color.fromRGBO(0, 34, 120, 1),
     textTheme: ButtonTextTheme.primary,
   ),
   drawerTheme: const DrawerThemeData(

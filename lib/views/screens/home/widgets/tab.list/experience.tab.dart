@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/screen_type.dart';
-import 'package:spnk/views/screens/home/widgets/tab.item.dart';
+import 'package:spnk/views/screens/home/widgets/tab_item.dart';
 
 class ExperienceTab extends StatelessWidget {
   final TabController tabController;

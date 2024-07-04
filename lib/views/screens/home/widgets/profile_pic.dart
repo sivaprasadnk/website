@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 
 class ProfilePic extends StatelessWidget {
-  const ProfilePic({Key? key, required this.width}) : super(key: key);
+  const ProfilePic({super.key, required this.width});
   final double width;
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _delayedOpacityChange(),
-      builder: (context, snapshot) {
-        return AnimatedOpacity(
-          duration: const Duration(milliseconds: 900),
-          opacity: snapshot.connectionState == ConnectionState.done ? 1 : 0,
-          child: Image.asset(
-            'assets/images/picWithBlob.png',
-            width: width,
-          ),
-        );
-      },
+    return AnimatedOpacity(
+      duration: const Duration(milliseconds: 900),
+      opacity: 1,
+      child: Image.asset(
+        'assets/images/picWithBlob.png',
+        width: width,
+      ),
     );
   }
 

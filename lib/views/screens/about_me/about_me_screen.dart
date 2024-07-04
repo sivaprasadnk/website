@@ -14,18 +14,23 @@ class AboutMeScreen extends StatelessWidget {
       title: 'About Me',
       details: BlocBuilder<AboutMeBloc, AboutMeState>(
         builder: (context, state) {
-          return SizedBox(
-            width: context.isLargeDevice ? 600 : double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                right: 20,
+          return Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                width: context.isLargeDevice ? 600 : double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    right: 20,
+                  ),
+                  child: Text(
+                    state.content,
+                    textAlign: TextAlign.justify,
+                    style: context.displaySmall,
+                  ),
+                ),
               ),
-              child: Text(
-                state.content,
-                textAlign: TextAlign.justify,
-                style: context.displaySmall,
-              ),
-            ),
+            ],
           );
         },
       ),

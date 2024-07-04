@@ -71,21 +71,20 @@ class _TabItemState extends State<TabItem> {
                   style: context.displaySmall.copyWith(
                     fontSize: 15,
                     color: currentIdx == widget.screen.index
-                            ? normalColor
-                            : isHovering
-                                ? hoverColor
-                                : normalColor,
+                        ? normalColor
+                        : isHovering
+                            ? hoverColor
+                            : normalColor,
                   ),
                 ),
               ),
             ),
           ),
-      
           BlocBuilder<ScreenBloc, ScreenState>(
             builder: (context, state) {
               // final sc = state.selectedScreen.index;
               return AnimatedContainer(
-                duration: const Duration(seconds: 1),
+                duration: const Duration(milliseconds: 300),
                 height: 2,
                 decoration: BoxDecoration(
                   color: normalColor,
