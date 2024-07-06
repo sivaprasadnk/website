@@ -7,6 +7,7 @@ import 'package:spnk/domain/use_case/get_about_me.dart';
 import 'package:spnk/domain/use_case/get_contact_details.dart';
 import 'package:spnk/domain/use_case/get_exp_details.dart';
 import 'package:spnk/domain/use_case/get_project_details.dart';
+import 'package:spnk/utils/locator.dart';
 import 'package:spnk/utils/themes.dart';
 import 'package:spnk/views/bloc/about_me/about_me_bloc.dart';
 import 'package:spnk/views/bloc/about_me/about_me_event.dart';
@@ -22,6 +23,7 @@ import 'package:spnk/views/bloc/theme_switch/theme_state.dart';
 import 'package:spnk/views/screens/home/home_screen.dart';
 
 void main() {
+  setup();
   runApp(MyApp());
 }
 

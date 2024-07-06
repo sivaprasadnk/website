@@ -162,25 +162,26 @@ class _WindowsHomeLargeState extends State<WindowsHomeLarge>
                     ],
                   ),
           ),
-          Positioned(
-            left: _mousePosition.dx - 35,
-            top: _mousePosition.dy - 35,
-            child: IgnorePointer(
-              child: AnimatedContainer(
-                duration: const Duration(
-                  seconds: 1,
-                ),
-                width: 70,
-                height: 70,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: context.primaryColor,
+          if (context.isLargeDevice)
+            Positioned(
+              left: _mousePosition.dx - 35,
+              top: _mousePosition.dy - 35,
+              child: IgnorePointer(
+                child: AnimatedContainer(
+                  duration: const Duration(
+                    seconds: 1,
+                  ),
+                  width: 70,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: context.primaryColor,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
         ],
       ),
     );
