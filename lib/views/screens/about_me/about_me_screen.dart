@@ -18,7 +18,7 @@ class AboutMeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                width: context.isLargeDevice ? 600 : double.infinity,
+                width: context.screenWidth - 20,
                 child: Padding(
                   padding: const EdgeInsets.only(
                     right: 20,

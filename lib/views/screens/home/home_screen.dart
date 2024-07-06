@@ -20,14 +20,14 @@ import 'package:spnk/views/screens/home/widgets/tab_item.dart';
 import 'package:spnk/views/screens/home/widgets/theme_switch.dart';
 import 'package:spnk/views/screens/projects/projects_screen.dart';
 
-class WindowsHomeLarge extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   static const routeName = '/Home';
 
   @override
-  _WindowsHomeLargeState createState() => _WindowsHomeLargeState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _WindowsHomeLargeState extends State<WindowsHomeLarge>
+class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
