@@ -1,10 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spnk/domain/use_case/get_about_me.dart';
-import 'package:spnk/domain/use_case/get_contact_details.dart';
-import 'package:spnk/domain/use_case/get_exp_details.dart';
-import 'package:spnk/domain/use_case/get_project_details.dart';
 import 'package:spnk/utils/locator.dart';
 import 'package:spnk/utils/themes.dart';
 import 'package:spnk/views/bloc/about_me/about_me_bloc.dart';
@@ -28,31 +24,71 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // final LocalDataSourceImpl localDataSource = LocalDataSourceImpl();
+
+    // final RepositoryImpl repositoryImpl =
+    //     RepositoryImpl(localDataSource: localDataSource);
+
+    // final GetContactDetails getContactDetails =
+    //     GetContactDetails(repository: repositoryImpl);
+
+    // final GetExpDetails getExpDetails = GetExpDetails(repositoryImpl);
+    // final GetAboutMe getAboutMe = GetAboutMe(repositoryImpl);
+
+    // final GetProjectDetails getProjectDetails =
+    //     GetProjectDetails(repository: repositoryImpl);
+
     precacheImage(const AssetImage('assets/images/mesh1.jpg'), context);
     precacheImage(const AssetImage('assets/images/dash/dash1.png'), context);
     return MultiBlocProvider(
       providers: [
+        // BlocProvider<ScreenBloc>(create: (_) => ScreenBloc()),
+        // BlocProvider<AboutMeBloc>(
+        //   create: (_) => AboutMeBloc(getAboutMe)
+        //     ..add(
+        //       FetchAboutMe(),
+        //     ),
+        // ),
+        // BlocProvider<ExpDetailsBloc>(
+        //   create: (_) => ExpDetailsBloc(getExpDetails)
+        //     ..add(
+        //       FetchExpDetails(),
+        //     ),
+        // ),
+        // BlocProvider<ProjectBloc>(
+        //   create: (_) => ProjectBloc(getProjectDetails)
+        //     ..add(
+        //       FetchProjects(),
+        //     ),
+        // ),
+        // BlocProvider<ContactDetailsBloc>(
+        //   create: (_) => ContactDetailsBloc(getContactDetails)
+        //     ..add(
+        //       FetchContactDetails(),
+        //     ),
+        // ),
+        // BlocProvider<ThemeBloc>(create: (_) => ThemeBloc()),
         BlocProvider<ScreenBloc>(create: (_) => ScreenBloc()),
         BlocProvider<AboutMeBloc>(
-          create: (_) => AboutMeBloc(locator<GetAboutMe>())
+          create: (_) => AboutMeBloc()
             ..add(
               FetchAboutMe(),
             ),
         ),
         BlocProvider<ExpDetailsBloc>(
-          create: (_) => ExpDetailsBloc(locator<GetExpDetails>())
+          create: (_) => ExpDetailsBloc()
             ..add(
               FetchExpDetails(),
             ),
         ),
         BlocProvider<ProjectBloc>(
-          create: (_) => ProjectBloc(locator<GetProjectDetails>())
+          create: (_) => ProjectBloc()
             ..add(
               FetchProjects(),
             ),
         ),
         BlocProvider<ContactDetailsBloc>(
-          create: (_) => ContactDetailsBloc(locator<GetContactDetails>())
+          create: (_) => ContactDetailsBloc()
             ..add(
               FetchContactDetails(),
             ),
@@ -89,6 +125,18 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HomeScreen();
-   
+    // return defaultTargetPlatform == TargetPlatform.android ||
+    //         defaultTargetPlatform == TargetPlatform.iOS
+    //     // ? const AndroidHome()
+    //     ? WindowsSmallHome()
+    //     : context.screenWidth > 695
+    //         ? MinSize(
+    //             minHeight: 734,
+    //             child: WindowsHomeLarge(),
+    //           )
+    //         : MinSize(
+    //             minHeight: 734,
+    //             child: WindowsSmallHome(),
+    //           );
   }
 }

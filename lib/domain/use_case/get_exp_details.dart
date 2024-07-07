@@ -1,13 +1,11 @@
+import 'package:spnk/data/repository/repository_impl.dart';
 import 'package:spnk/domain/entity/experience_details.dart';
-import 'package:spnk/domain/repository/repository.dart';
+import 'package:spnk/utils/locator.dart';
 
 class GetExpDetails {
-  GetExpDetails(
-    this.repository,
-  );
-  final Repository repository;
+  GetExpDetails();
 
   List<ExperienceDetails> call() {
-    return repository.getExperienceDetails();
+    return locator<RepositoryImpl>().getExperienceDetails();
   }
 }

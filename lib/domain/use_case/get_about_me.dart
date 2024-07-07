@@ -1,13 +1,11 @@
+import 'package:spnk/data/repository/repository_impl.dart';
 import 'package:spnk/domain/entity/about_me_details.dart';
-import 'package:spnk/domain/repository/repository.dart';
+import 'package:spnk/utils/locator.dart';
 
 class GetAboutMe {
-  final Repository repository;
-  GetAboutMe(
-    this.repository,
-  );
+  GetAboutMe();
 
   AboutMeDetails call() {
-    return repository.getAboutMe();
+    return locator<RepositoryImpl>().getAboutMe();
   }
 }

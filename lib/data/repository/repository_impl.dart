@@ -1,32 +1,31 @@
-import 'package:spnk/data/data_sources/local_data_source.dart';
+import 'package:spnk/data/data_sources/local_data_source_impl.dart';
 import 'package:spnk/domain/entity/about_me_details.dart';
 import 'package:spnk/domain/entity/contact_details.dart';
 import 'package:spnk/domain/entity/experience_details.dart';
 import 'package:spnk/domain/entity/project_details.dart';
 import 'package:spnk/domain/repository/repository.dart';
+import 'package:spnk/utils/locator.dart';
 
 class RepositoryImpl implements Repository {
-  final LocalDataSource localDataSource;
-
-  RepositoryImpl({required this.localDataSource});
+  RepositoryImpl();
 
   @override
   List<ContactDetails> getContactDetails() {
-    return localDataSource.getContactDetails();
+    return locator<LocalDataSourceImpl>().getContactDetails();
   }
 
   @override
   List<ExperienceDetails> getExperienceDetails() {
-    return localDataSource.getExperienceDetails();
+    return locator<LocalDataSourceImpl>().getExperienceDetails();
   }
 
   @override
   List<ProjectDetails> getProjectDetails() {
-    return localDataSource.getProjectDetails();
+    return locator<LocalDataSourceImpl>().getProjectDetails();
   }
-  
+
   @override
   AboutMeDetails getAboutMe() {
-    return localDataSource.getAboutMe();
+    return locator<LocalDataSourceImpl>().getAboutMe();
   }
 }

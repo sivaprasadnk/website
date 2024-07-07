@@ -1,13 +1,11 @@
+import 'package:spnk/data/repository/repository_impl.dart';
 import 'package:spnk/domain/entity/project_details.dart';
-import 'package:spnk/domain/repository/repository.dart';
+import 'package:spnk/utils/locator.dart';
 
 class GetProjectDetails {
-  final Repository repository;
-  GetProjectDetails({
-    required this.repository,
-  });
+  GetProjectDetails();
 
   List<ProjectDetails> call() {
-    return repository.getProjectDetails();
+    return locator<RepositoryImpl>().getProjectDetails();
   }
 }
