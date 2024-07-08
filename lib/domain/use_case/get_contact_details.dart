@@ -5,7 +5,7 @@ import 'package:spnk/utils/locator.dart';
 class GetContactDetails {
   GetContactDetails();
 
-  List<ContactDetails> call() {
+  Future<List<ContactDetails>> call() {
     return locator<RepositoryImpl>().getContactDetails();
   }
 }

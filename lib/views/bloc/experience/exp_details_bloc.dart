@@ -9,8 +9,11 @@ class ExpDetailsBloc extends Bloc<ExpDetailsEvent, ExpDetailsState> {
     on<FetchExpDetails>(_getExpDetails);
   }
 
-  void _getExpDetails(FetchExpDetails event, Emitter<ExpDetailsState> emit) {
-    final list = locator<GetExpDetails>().call();
+  Future<void> _getExpDetails(
+    FetchExpDetails event,
+    Emitter<ExpDetailsState> emit,
+  ) async {
+    final list = await locator<GetExpDetails>().call();
     list.sort((a, b) => b.order.compareTo(a.order));
     emit(state.copyWith(list: list));
   }

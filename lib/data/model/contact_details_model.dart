@@ -9,4 +9,15 @@ class ContactDetailsModel extends ContactDetails {
     required super.type,
     required super.link,
   });
+
+  factory ContactDetailsModel.fromJson(Map<String, dynamic> json) {
+    return ContactDetailsModel(
+      title: json['title'],
+      details: json['details'],
+      iconName: json['icon_name'],
+      index: json['index'],
+      type: json['type'],
+      link: json['link'],
+    );
+  }
 }

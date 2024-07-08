@@ -4,8 +4,8 @@ import 'package:spnk/domain/entity/experience_details.dart';
 import 'package:spnk/domain/entity/project_details.dart';
 
 abstract class Repository {
-  List<ExperienceDetails> getExperienceDetails();
-  List<ProjectDetails> getProjectDetails();
-  List<ContactDetails> getContactDetails();
-  AboutMeDetails getAboutMe();
+  Future<List<ExperienceDetails>> getExperienceDetails();
+  Future<List<ProjectDetails>> getProjectDetails();
+  Future<List<ContactDetails>> getContactDetails();
+  Future<AboutMeDetails> getAboutMe();
 }

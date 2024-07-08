@@ -11,8 +11,11 @@ class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
     on<ShowPrevIcon>(_showPrevIcon);
   }
 
-  void _getProjects(FetchProjects event, Emitter<ProjectState> emit) {
-    final list = locator<GetProjectDetails>().call();
+  Future<void> _getProjects(
+    FetchProjects event,
+    Emitter<ProjectState> emit,
+  ) async {
+    final list = await locator<GetProjectDetails>().call();
     emit(state.copyWith(list: list));
   }
 

@@ -76,3 +76,5 @@ String websiteImageAssetPath = "assets/images/website/screen4.png";
 
 String kPlayfairDisplayFontFamily = 'PlayfairDisplay';
 String kRajdhaniFontFamily = 'Rajdhani';
+
+String baseUrl = 'https://samplenodejs2-production.up.railway.app/';

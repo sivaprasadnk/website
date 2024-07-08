@@ -9,7 +9,7 @@ class LocalDataSourceImpl implements LocalDataSource {
   LocalDataSourceImpl();
 
   @override
-  List<ExperienceDetailsModel> getExperienceDetails() {
+  Future<List<ExperienceDetailsModel>> getExperienceDetails() async {
     return expDetailsList;
   }
 

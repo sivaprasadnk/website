@@ -5,7 +5,7 @@ import 'package:spnk/utils/locator.dart';
 class GetAboutMe {
   GetAboutMe();
 
-  AboutMeDetails call() {
+  Future<AboutMeDetails> call() async {
     return locator<RepositoryImpl>().getAboutMe();
   }
 }

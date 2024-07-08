@@ -5,7 +5,7 @@ import 'package:spnk/utils/locator.dart';
 class GetExpDetails {
   GetExpDetails();
 
-  List<ExperienceDetails> call() {
+  Future<List<ExperienceDetails>> call() {
     return locator<RepositoryImpl>().getExperienceDetails();
   }
 }

@@ -24,50 +24,10 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // final LocalDataSourceImpl localDataSource = LocalDataSourceImpl();
-
-    // final RepositoryImpl repositoryImpl =
-    //     RepositoryImpl(localDataSource: localDataSource);
-
-    // final GetContactDetails getContactDetails =
-    //     GetContactDetails(repository: repositoryImpl);
-
-    // final GetExpDetails getExpDetails = GetExpDetails(repositoryImpl);
-    // final GetAboutMe getAboutMe = GetAboutMe(repositoryImpl);
-
-    // final GetProjectDetails getProjectDetails =
-    //     GetProjectDetails(repository: repositoryImpl);
-
     precacheImage(const AssetImage('assets/images/mesh1.jpg'), context);
     precacheImage(const AssetImage('assets/images/dash/dash1.png'), context);
     return MultiBlocProvider(
       providers: [
-        // BlocProvider<ScreenBloc>(create: (_) => ScreenBloc()),
-        // BlocProvider<AboutMeBloc>(
-        //   create: (_) => AboutMeBloc(getAboutMe)
-        //     ..add(
-        //       FetchAboutMe(),
-        //     ),
-        // ),
-        // BlocProvider<ExpDetailsBloc>(
-        //   create: (_) => ExpDetailsBloc(getExpDetails)
-        //     ..add(
-        //       FetchExpDetails(),
-        //     ),
-        // ),
-        // BlocProvider<ProjectBloc>(
-        //   create: (_) => ProjectBloc(getProjectDetails)
-        //     ..add(
-        //       FetchProjects(),
-        //     ),
-        // ),
-        // BlocProvider<ContactDetailsBloc>(
-        //   create: (_) => ContactDetailsBloc(getContactDetails)
-        //     ..add(
-        //       FetchContactDetails(),
-        //     ),
-        // ),
-        // BlocProvider<ThemeBloc>(create: (_) => ThemeBloc()),
         BlocProvider<ScreenBloc>(create: (_) => ScreenBloc()),
         BlocProvider<AboutMeBloc>(
           create: (_) => AboutMeBloc()

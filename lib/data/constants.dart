@@ -6,7 +6,7 @@ import 'package:spnk/utils/common_strings.dart';
 
 List<ProjectDetailsModel> projectList = [
   ProjectDetailsModel(
-    bgAssetPath: quizImageAssetPath,
+    // bgAssetPath: quizImageAssetPath,
     projName: 'SP Quiz App',
     techStackList: [
       'Flutter',
@@ -21,7 +21,7 @@ List<ProjectDetailsModel> projectList = [
     isWeb: false,
   ),
   ProjectDetailsModel(
-    bgAssetPath: quotesAppImageAssetPath,
+    // bgAssetPath: quotesAppImageAssetPath,
     projName: 'SP Quotes App',
     techStackList: [
       'Flutter',
@@ -36,7 +36,7 @@ List<ProjectDetailsModel> projectList = [
     isWeb: false,
   ),
   ProjectDetailsModel(
-    bgAssetPath: websiteImageAssetPath,
+    // bgAssetPath: websiteImageAssetPath,
     projName: 'Portfolio WebApp',
     techStackList: [
       'Flutter',

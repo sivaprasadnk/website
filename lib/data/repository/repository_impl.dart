@@ -1,4 +1,5 @@
 import 'package:spnk/data/data_sources/local_data_source_impl.dart';
+import 'package:spnk/data/data_sources/remote_data_source_impl.dart';
 import 'package:spnk/domain/entity/about_me_details.dart';
 import 'package:spnk/domain/entity/contact_details.dart';
 import 'package:spnk/domain/entity/experience_details.dart';
@@ -10,22 +11,38 @@ class RepositoryImpl implements Repository {
   RepositoryImpl();
 
   @override
-  List<ContactDetails> getContactDetails() {
-    return locator<LocalDataSourceImpl>().getContactDetails();
+  Future<List<ContactDetails>> getContactDetails() async {
+    final result = await locator<RemoteDataSourceImpl>().getContactDetails();
+    return result.fold(
+      (data) => data,
+      (_) => locator<LocalDataSourceImpl>().getContactDetails(),
+    );
   }
 
   @override
-  List<ExperienceDetails> getExperienceDetails() {
-    return locator<LocalDataSourceImpl>().getExperienceDetails();
+  Future<List<ExperienceDetails>> getExperienceDetails() async {
+    final result = await locator<RemoteDataSourceImpl>().getExperienceDetails();
+    return result.fold(
+      (data) => data,
+      (_) => locator<LocalDataSourceImpl>().getExperienceDetails(),
+    );
   }
 
   @override
-  List<ProjectDetails> getProjectDetails() {
-    return locator<LocalDataSourceImpl>().getProjectDetails();
+  Future<List<ProjectDetails>> getProjectDetails() async {
+    final result = await locator<RemoteDataSourceImpl>().getProjectDetails();
+    return result.fold(
+      (data) => data,
+      (_) => locator<LocalDataSourceImpl>().getProjectDetails(),
+    );
   }
 
   @override
-  AboutMeDetails getAboutMe() {
-    return locator<LocalDataSourceImpl>().getAboutMe();
+  Future<AboutMeDetails> getAboutMe() async {
+    final result = await locator<RemoteDataSourceImpl>().getAboutMe();
+    return result.fold(
+      (data) => data,
+      (_) => locator<LocalDataSourceImpl>().getAboutMe(),
+    );
   }
 }

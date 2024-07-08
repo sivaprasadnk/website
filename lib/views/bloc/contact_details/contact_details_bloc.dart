@@ -6,16 +6,17 @@ import 'package:spnk/views/bloc/contact_details/contact_details_state.dart';
 
 class ContactDetailsBloc
     extends Bloc<ContactDetailsEvent, ContactDetailsState> {
+
   ContactDetailsBloc()
       : super(const ContactDetailsState()) {
     on(_getContactDetails);
   }
 
-  void _getContactDetails(
+  Future<void> _getContactDetails(
     FetchContactDetails event,
     Emitter<ContactDetailsState> emit,
-  ) {
-    final list = locator<GetContactDetails>().call();
+  ) async {
+    final list = await locator<GetContactDetails>().call();
     emit(state.copyWith(details: list));
   }
 }
