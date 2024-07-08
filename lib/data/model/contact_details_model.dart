@@ -13,7 +13,7 @@ class ContactDetailsModel extends ContactDetails {
   factory ContactDetailsModel.fromJson(Map<String, dynamic> json) {
     return ContactDetailsModel(
       title: json['title'],
-      details: json['details'],
+      details: json['details'].toString().trim(),
       iconName: json['icon_name'],
       index: json['index'],
       type: json['type'],

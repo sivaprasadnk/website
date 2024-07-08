@@ -4,6 +4,7 @@ import 'package:spnk/utils/extensions/context_extension.dart';
 import 'package:spnk/views/bloc/experience/exp_details_bloc.dart';
 import 'package:spnk/views/bloc/experience/exp_details_state.dart';
 import 'package:spnk/views/screens/experience/exp_container.dart';
+import 'package:spnk/views/screens/experience/loading_exp_container.dart';
 
 class ExpDetailsListView extends StatelessWidget {
   const ExpDetailsListView({
@@ -23,7 +24,13 @@ class ExpDetailsListView extends StatelessWidget {
               child: Scrollbar(
                 child: context.isLargeDevice
                     ? Wrap(
-                        children: state.expList.map((exp) {
+                        children: state.isLoading
+                            ? [1, 1, 1]
+                                .map(
+                                  (_) => const LoadingExpContainer(),
+                                )
+                                .toList()
+                            : state.expList.map((exp) {
                           return ExpContainer(
                             experience: exp,
                           );
@@ -31,7 +38,13 @@ class ExpDetailsListView extends StatelessWidget {
                       )
                     : Column(
                         mainAxisSize: MainAxisSize.min,
-                        children: state.expList.map((exp) {
+                        children: state.isLoading
+                            ? [1, 1, 1]
+                                .map(
+                                  (_) => const LoadingExpContainer(),
+                                )
+                                .toList()
+                            : state.expList.map((exp) {
                           return ExpContainer(
                             experience: exp,
                           );
