@@ -6,16 +6,13 @@ class LoadingExpContainer extends StatelessWidget {
   const LoadingExpContainer({super.key});
   @override
   Widget build(BuildContext context) {
-    final bulletPoint = LoadingShimmer(
-      child: CircleAvatar(
-        radius: 5,
-        backgroundColor: context.primaryColor,
-      ),
+    final bulletPoint = LoadingShimmer.circle(
+      size: 5,
+      context: context,
     );
     const double height = 20;
-    return AnimatedContainer(
+    return Container(
       margin: const EdgeInsets.only(right: 20, bottom: 20),
-      duration: const Duration(milliseconds: 200),
       width: context.isLargeDevice ? 350 : double.infinity,
       height: 260,
       decoration: BoxDecoration(
@@ -31,7 +28,7 @@ class LoadingExpContainer extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 5, left: 5),
-            child: LoadingShimmer.container(
+            child: LoadingShimmer.rectangle(
               height: height,
               width: 50,
               context: context,
@@ -46,7 +43,7 @@ class LoadingExpContainer extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                LoadingShimmer.container(
+                LoadingShimmer.rectangle(
                   height: height,
                   width: 250,
                   context: context,
@@ -59,13 +56,13 @@ class LoadingExpContainer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                LoadingShimmer.container(
+                LoadingShimmer.rectangle(
                   height: height,
                   width: 50,
                   context: context,
                 ),
                 const SizedBox(width: 10),
-                LoadingShimmer.container(
+                LoadingShimmer.rectangle(
                   height: height,
                   width: 50,
                   context: context,
@@ -87,7 +84,7 @@ class LoadingExpContainer extends StatelessWidget {
                     children: [
                       bulletPoint,
                       const SizedBox(width: 10),
-                      LoadingShimmer.container(
+                      LoadingShimmer.rectangle(
                         height: height,
                         width: 120,
                         context: context,

@@ -14,7 +14,7 @@ class LoadingShimmer extends StatelessWidget {
     );
   }
 
-  factory LoadingShimmer.container({
+  factory LoadingShimmer.rectangle({
     required double height,
     required double width,
     required BuildContext context,
@@ -23,9 +23,19 @@ class LoadingShimmer extends StatelessWidget {
       child: Container(
         height: height,
         width: width,
-        decoration: BoxDecoration(
-          color: context.primaryColor,
-        ),
+        color: context.primaryColor,
+      ),
+    );
+  }
+
+  factory LoadingShimmer.circle({
+    required double size,
+    required BuildContext context,
+  }) {
+    return LoadingShimmer(
+      child: CircleAvatar(
+        radius: size,
+        backgroundColor: context.primaryColor,
       ),
     );
   }

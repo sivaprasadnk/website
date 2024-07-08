@@ -16,7 +16,8 @@ class ContactDetailsBloc
     FetchContactDetails event,
     Emitter<ContactDetailsState> emit,
   ) async {
+    emit(state.copyWith(isLoading: true));
     final list = await locator<GetContactDetails>().call();
-    emit(state.copyWith(details: list));
+    emit(state.copyWith(isLoading: false, details: list));
   }
 }

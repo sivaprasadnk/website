@@ -10,7 +10,9 @@ class AboutMeBloc extends Bloc<AboutMeEvent, AboutMeState> {
   }
 
   Future<void> onAboutMe(FetchAboutMe event, Emitter<AboutMeState> emit) async {
+    emit(state.copyWith(isLoading: true));
     final details = await locator<GetAboutMe>().call();
-    emit(state.copyWith(content: details.content));
+    emit(state.copyWith(isLoading: false, content: details.content));
+    // emit(state.copyWith(content: details.content));
   }
 }

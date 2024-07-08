@@ -15,8 +15,10 @@ class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
     FetchProjects event,
     Emitter<ProjectState> emit,
   ) async {
+    emit(state.copyWith(isLoading: true));
     final list = await locator<GetProjectDetails>().call();
-    emit(state.copyWith(list: list));
+    emit(state.copyWith(isLoading: false, list: list));
+    // emit(state.copyWith(list: list));
   }
 
   void _showNextIcon(ShowNextIcon event, Emitter<ProjectState> emit) {
