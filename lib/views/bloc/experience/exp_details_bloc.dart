@@ -17,6 +17,5 @@ class ExpDetailsBloc extends Bloc<ExpDetailsEvent, ExpDetailsState> {
     final list = await locator<GetExpDetails>().call();
     list.sort((a, b) => b.order.compareTo(a.order));
     emit(state.copyWith(loading: false, list: list));
-    // emit(state.copyWith(list: list));
   }
 }

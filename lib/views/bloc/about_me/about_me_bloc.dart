@@ -13,6 +13,5 @@ class AboutMeBloc extends Bloc<AboutMeEvent, AboutMeState> {
     emit(state.copyWith(isLoading: true));
     final details = await locator<GetAboutMe>().call();
     emit(state.copyWith(isLoading: false, content: details.content));
-    // emit(state.copyWith(content: details.content));
   }
 }
