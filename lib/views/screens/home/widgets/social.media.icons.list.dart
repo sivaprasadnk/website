@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:spnk/utils/common_colors.dart';
-import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/utils/string_constants.dart';
 import 'package:spnk/views/screens/home/widgets/social.media.icon.item.dart';
 
 class SocialMediaIconsList extends StatelessWidget {

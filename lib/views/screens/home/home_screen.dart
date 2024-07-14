@@ -99,6 +99,8 @@ class _HomeScreenState extends State<HomeScreen>
       child: Stack(
         children: [
           Scaffold(
+            // bottomNavigationBar: const FooterText(),
+            // bottomNavigationBar: SlideFadeText(),
             bottomNavigationBar: const BottomNavbar(),
             extendBodyBehindAppBar: true,
             extendBody: true,

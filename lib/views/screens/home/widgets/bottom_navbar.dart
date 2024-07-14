@@ -8,7 +8,7 @@ import 'package:spnk/views/screens/home/widgets/copyright_text.dart';
 import 'package:spnk/views/screens/home/widgets/made_with_flutter_widget.dart';
 
 class BottomNavbar extends StatelessWidget {
-  const BottomNavbar({Key? key}) : super(key: key);
+  const BottomNavbar({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -2,8 +2,8 @@ import 'package:animate_do/animate_do.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_colors.dart';
-import 'package:spnk/utils/common_strings.dart';
 import 'package:spnk/utils/extensions/context_extension.dart';
+import 'package:spnk/utils/string_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GooglePlayButton extends StatelessWidget {
@@ -180,9 +180,9 @@ class TitleText extends StatelessWidget {
 
 class WindowsRightFooter extends StatelessWidget {
   const WindowsRightFooter({
-    Key? key,
+    super.key,
     required this.size,
-  }) : super(key: key);
+  });
   final double size;
   @override
   Widget build(BuildContext context) {
@@ -238,9 +238,9 @@ class WindowsRightFooter extends StatelessWidget {
 
 class AndroidRightFooter extends StatelessWidget {
   const AndroidRightFooter({
-    Key? key,
+    super.key,
     this.size = 15,
-  }) : super(key: key);
+  });
   final double size;
   @override
   Widget build(BuildContext context) {
@@ -314,7 +314,7 @@ class AndroidRightFooter extends StatelessWidget {
 // }
 
 class NameLogo extends StatelessWidget {
-  const NameLogo({Key? key}) : super(key: key);
+  const NameLogo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -399,9 +399,9 @@ class NameLogo extends StatelessWidget {
 
 class AndroidDashImage extends StatelessWidget {
   const AndroidDashImage({
-    Key? key,
+    super.key,
     required this.dashImage,
-  }) : super(key: key);
+  });
 
   final String dashImage;
   @override

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/common_colors.dart';
-import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/utils/string_constants.dart';
 
 
 ThemeData lightTheme = ThemeData(

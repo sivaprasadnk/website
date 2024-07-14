@@ -78,3 +78,8 @@ String kPlayfairDisplayFontFamily = 'PlayfairDisplay';
 String kRajdhaniFontFamily = 'Rajdhani';
 
 String baseUrl = 'https://samplenodejs2-production.up.railway.app/';
+
+String homeLatitude = '9.9482885';
+String homeLongitude = '76.3480163';
+
+String resumeLink = "https://sivaprasadnk.dev/Sivaprasad NK's resume.pdf";

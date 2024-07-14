@@ -1,9 +1,82 @@
+// class SlideFadeText extends StatefulWidget {
+//   @override
+//   _SlideFadeTextState createState() => _SlideFadeTextState();
+// }
+
+// class _SlideFadeTextState extends State<SlideFadeText>
+//     with SingleTickerProviderStateMixin {
+//   late AnimationController _controller;
+//   late Animation<Offset> _slideAnimation;
+//   late Animation<double> _fadeAnimation;
+
+//   @override
+//   void initState() {
+//     super.initState();
+
+//     _controller = AnimationController(
+//       duration: const Duration(seconds: 3),
+//       vsync: this,
+//     );
+
+//     _slideAnimation = Tween<Offset>(
+//       begin: const Offset(0, 1),
+//       end: const Offset(0, -1),
+//     ).animate(
+//       CurvedAnimation(
+//         parent: _controller,
+//         curve: const Interval(0.0, 0.8, curve: Curves.easeInOut),
+//       ),
+//     );
+
+//     _fadeAnimation = Tween<double>(
+//       begin: 0.0,
+//       end: 1.0,
+//     ).animate(
+//       CurvedAnimation(
+//         parent: _controller,
+//         curve: const Interval(0.0, 0.5, curve: Curves.easeIn),
+//       ),
+//     );
+
+//     _controller.forward();
+
+//     _controller.addStatusListener((status) {
+//       if (status == AnimationStatus.completed) {
+//         Future.delayed(const Duration(seconds: 1), () {
+//           _controller.reverse();
+//         });
+//       }
+//     });
+//   }
+
+//   @override
+//   void dispose() {
+//     _controller.dispose();
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SlideTransition(
+//       position: _slideAnimation,
+//       child: FadeTransition(
+//         opacity: _fadeAnimation,
+//         child: const Text(
+//           'Hello Flutter!',
+//           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+
 class FooterText extends StatefulWidget {
-  const FooterText({Key? key}) : super(key: key);
+  const FooterText({super.key});
 
   @override
   State<FooterText> createState() => _FooterTextState();
@@ -16,15 +89,9 @@ class _FooterTextState extends State<FooterText>
     vsync: this,
   )..repeat();
 
-  late final Animation<Offset> _offsetAnimation = Tween<Offset>(
-    begin: Offset.zero,
-    end: const Offset(0, -1),
-  ).animate(
-    CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeIn,
-    ),
-  );
+  late final Animation<Offset> _offsetAnimation1;
+
+  late final Animation<Offset> _offsetAnimation2;
 
   @override
   void dispose() {
@@ -38,9 +105,27 @@ class _FooterTextState extends State<FooterText>
   @override
   void initState() {
     // Timer(const Duration(milliseconds: 200), () => _controller.forward());
-    Timer.periodic(const Duration(milliseconds: 2400), (_) {
+    Timer.periodic(const Duration(milliseconds: 2400), (timer) {
+      _offsetAnimation1 = Tween<Offset>(
+        begin: const Offset(0, -1),
+        end: const Offset(0, 0),
+      ).animate(
+        CurvedAnimation(
+          parent: _controller,
+          curve: Curves.easeIn,
+        ),
+      );
+      _offsetAnimation2 = Tween<Offset>(
+        begin: Offset.zero,
+        end: const Offset(0, 1),
+      ).animate(
+        CurvedAnimation(
+          parent: _controller,
+          curve: Curves.easeIn,
+        ),
+      );
       setState(() {
-        curntText = _offsetAnimation.value.dx == 0
+        curntText = timer.tick.isEven
             ? curntText == txt1
                 ? txt2
                 : txt1
@@ -56,7 +141,7 @@ class _FooterTextState extends State<FooterText>
   @override
   Widget build(BuildContext context) {
     return SlideTransition(
-      position: _offsetAnimation,
+      position: _offsetAnimation1,
       // offset: const Offset(0, -1),
       // duration: const Duration(seconds: 1),
       child: FadeTransition(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spnk/utils/extensions/context_extension.dart';
 import 'package:spnk/utils/extensions/widget_extensions.dart';
+import 'package:spnk/utils/string_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DownloadCvBtn extends StatelessWidget {
@@ -13,7 +14,7 @@ class DownloadCvBtn extends StatelessWidget {
     return GestureDetector(
       onTap: () async {
         await launchUrl(
-          Uri.parse('https://sivaprasadnk.dev/resume.pdf'),
+          Uri.parse(resumeLink),
           // webOnlyWindowName: '_blank',
         );
       },

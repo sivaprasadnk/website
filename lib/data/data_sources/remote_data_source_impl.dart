@@ -9,7 +9,7 @@ import 'package:spnk/data/model/about_me_details_model.dart';
 import 'package:spnk/data/model/contact_details_model.dart';
 import 'package:spnk/data/model/experience_details_model.dart';
 import 'package:spnk/data/model/project_details_model.dart';
-import 'package:spnk/utils/common_strings.dart';
+import 'package:spnk/utils/string_constants.dart';
 
 class RemoteDataSourceImpl extends RemoteDataSource {
   RemoteDataSourceImpl();
