@@ -16,7 +16,6 @@ class RemoteDataSourceImpl extends RemoteDataSource {
 
   @override
   Future<Either<AboutMeDetailsModel, Error>> getAboutMe() async {
-    debugPrint('@@@ get about me');
     try {
       final client = http.Client();
       final response = await client.get(Uri.parse('${baseUrl}about-me'));
@@ -28,7 +27,6 @@ class RemoteDataSourceImpl extends RemoteDataSource {
         return Right(Error());
       }
     } catch (err) {
-      debugPrint('@@@ err :$err');
       throw Exception('Failed to load About Me details');
     }
     // return aboutMeDetailsContent;
@@ -36,7 +34,6 @@ class RemoteDataSourceImpl extends RemoteDataSource {
 
   @override
   Future<Either<List<ContactDetailsModel>, Error>> getContactDetails() async {
-    debugPrint('@@@ getContactDetails');
     try {
       final client = http.Client();
       final response = await client.get(Uri.parse('${baseUrl}contact-me'));
@@ -52,7 +49,6 @@ class RemoteDataSourceImpl extends RemoteDataSource {
         return Right(Error());
       }
     } catch (err) {
-      debugPrint('@@@ err :$err');
       throw Exception('Failed to load contact details');
     }
   }
@@ -60,7 +56,6 @@ class RemoteDataSourceImpl extends RemoteDataSource {
   @override
   Future<Either<List<ExperienceDetailsModel>, Error>>
       getExperienceDetails() async {
-    debugPrint('@@@ getExperienceDetails');
     try {
       final client = http.Client();
       final response = await client.get(Uri.parse('${baseUrl}experience'));
@@ -76,14 +71,12 @@ class RemoteDataSourceImpl extends RemoteDataSource {
         return Right(Error());
       }
     } catch (err) {
-      debugPrint('@@@ err :$err');
       throw Exception('Failed to load exp details');
     }
   }
 
   @override
   Future<Either<List<ProjectDetailsModel>, Error>> getProjectDetails() async {
-    debugPrint('@@@ getProjectDetails');
     try {
       final client = http.Client();
       final response = await client.get(Uri.parse('${baseUrl}projects'));
@@ -99,7 +92,6 @@ class RemoteDataSourceImpl extends RemoteDataSource {
         return Right(Error());
       }
     } catch (err) {
-      debugPrint('@@@ err :$err');
       throw Exception('Failed to load project details');
     }
   }

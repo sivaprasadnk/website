@@ -27,7 +27,6 @@ class _HomeScreenLargeState extends State<HomeScreenLarge>
   Widget build(BuildContext context) {
     super.build(context);
     final screenWidth = context.screenWidth;
-    debugPrint("@@ with :$screenWidth");
     final leftPadding = screenWidth * .1;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,

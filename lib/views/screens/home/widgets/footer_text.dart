@@ -74,7 +74,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-
 class FooterText extends StatefulWidget {
   const FooterText({super.key});
 
@@ -84,18 +83,20 @@ class FooterText extends StatefulWidget {
 
 class _FooterTextState extends State<FooterText>
     with SingleTickerProviderStateMixin {
+  Timer? timer;
   late final AnimationController _controller = AnimationController(
     duration: const Duration(seconds: 2),
     vsync: this,
   )..repeat();
 
-  late final Animation<Offset> _offsetAnimation1;
+  Animation<Offset>? _offsetAnimation1;
 
-  late final Animation<Offset> _offsetAnimation2;
+  Animation<Offset>? _offsetAnimation2;
 
   @override
   void dispose() {
     _controller.dispose();
+    timer?.cancel();
     super.dispose();
   }
 
@@ -105,7 +106,8 @@ class _FooterTextState extends State<FooterText>
   @override
   void initState() {
     // Timer(const Duration(milliseconds: 200), () => _controller.forward());
-    Timer.periodic(const Duration(milliseconds: 2400), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 1), (timerValue) {
+      // debugPrin
       _offsetAnimation1 = Tween<Offset>(
         begin: const Offset(0, -1),
         end: const Offset(0, 0),
@@ -125,13 +127,15 @@ class _FooterTextState extends State<FooterText>
         ),
       );
       setState(() {
-        curntText = timer.tick.isEven
-            ? curntText == txt1
-                ? txt2
-                : txt1
-            : curntText == txt1
-                ? txt2
-                : txt1;
+        timer = timerValue;
+        // curntText = timerValue.tick.isEven
+        //     ? curntText == txt1
+        //         ? txt2
+        //         : txt1
+        //     : curntText == txt1
+        //         ? txt2
+        //         : txt1;
+
       });
     });
 
@@ -140,14 +144,17 @@ class _FooterTextState extends State<FooterText>
 
   @override
   Widget build(BuildContext context) {
-    return SlideTransition(
-      position: _offsetAnimation1,
-      // offset: const Offset(0, -1),
-      // duration: const Duration(seconds: 1),
-      child: FadeTransition(
-        opacity: _controller,
-        child: Text(curntText),
-      ),
-    );
+    return _offsetAnimation1 != null && _offsetAnimation2 != null
+        ? SlideTransition(
+            position:
+                timer!.tick.isEven ? _offsetAnimation1! : _offsetAnimation2!,
+            // offset: const Offset(0, -1),
+            // duration: const Duration(seconds: 1),
+            child: FadeTransition(
+              opacity: _controller,
+              child: Text(curntText),
+            ),
+          )
+        : const SizedBox.shrink();
   }
 }
