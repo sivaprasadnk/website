@@ -16,6 +16,7 @@ class ProjectListView extends StatelessWidget {
     return BlocBuilder<ProjectBloc, ProjectState>(
       builder: (context, state) {
         return SizedBox(
+          width: double.infinity,
           height: context.isLargeDevice ? 460 : context.screenHeight - 200,
           child: ScrollConfiguration(
             behavior:

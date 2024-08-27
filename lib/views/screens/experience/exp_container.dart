@@ -14,7 +14,7 @@ class ExpContainer extends StatelessWidget {
     return AnimatedContainer(
       margin: const EdgeInsets.only(right: 20, bottom: 20),
       duration: const Duration(milliseconds: 200),
-      width: context.isLargeDevice ? 350 : double.infinity,
+      width: context.isLargeDevice ? 340 : double.infinity,
       height: 260,
       decoration: BoxDecoration(
         color: context.scaffoldColor,

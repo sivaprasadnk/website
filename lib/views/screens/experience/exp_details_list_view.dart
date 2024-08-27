@@ -15,7 +15,7 @@ class ExpDetailsListView extends StatelessWidget {
     return BlocBuilder<ExpDetailsBloc, ExpDetailsState>(
       builder: (context, state) {
         return SizedBox(
-          // height: context.isLargeDevice ? 460 : context.screenHeight - 200,
+          width: double.infinity,
           height: context.isLargeDevice ? 460 : context.screenHeight - 200,
           child: ScrollConfiguration(
             behavior:

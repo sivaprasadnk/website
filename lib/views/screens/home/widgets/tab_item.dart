@@ -32,8 +32,9 @@ class _TabItemState extends State<TabItem> {
   @override
   Widget build(BuildContext context) {
     final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
-    final hoverColor = kCyanColor;
-    final normalColor = !isDarkTheme ? kPrimaryBlueColor : kWhiteColor;
+    final hoverColor = context.hoverColor;
+    var normalColor = !isDarkTheme ? kPrimaryBlueColor : kWhiteColor;
+    normalColor = context.primaryColor;
     final currentIdx = widget.tabController.index;
 
     return MouseRegion(
@@ -59,8 +60,6 @@ class _TabItemState extends State<TabItem> {
                 widget.screen.index,
                 duration: const Duration(seconds: 1),
               );
-              // widget.onTap.call();
-              // setState(() {});
             },
             child: SizedBox(
               height: 40,
@@ -69,12 +68,12 @@ class _TabItemState extends State<TabItem> {
                 child: AutoSizeText(
                   widget.title,
                   style: context.displaySmall.copyWith(
-                    fontSize: 15,
+                    fontSize: 16,
                     color: currentIdx == widget.screen.index
                         ? normalColor
                         : isHovering
-                            ? hoverColor
-                            : normalColor,
+                            ? context.hoverColor
+                            : context.primaryColor,
                   ),
                 ),
               ),
@@ -82,7 +81,6 @@ class _TabItemState extends State<TabItem> {
           ),
           BlocBuilder<ScreenBloc, ScreenState>(
             builder: (context, state) {
-              // final sc = state.selectedScreen.index;
               return AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
                 height: 2,

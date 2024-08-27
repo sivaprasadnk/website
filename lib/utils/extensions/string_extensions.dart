@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:animated_icon/animated_icon.dart';
 
 extension StringExt on String {
-  IconData get iconFromString {
+  AnimateIcons get iconFromString {
     if (this == 'home') {
-      return Icons.home;
+      return AnimateIcons.home;
     } else if (this == "call") {
-      return Icons.call;
+      return AnimateIcons.chatMessage;
     } else if (this == 'email') {
-      return Icons.email;
+      return AnimateIcons.mail;
     }
-    return Icons.home;
+    return AnimateIcons.home;
   }
 }

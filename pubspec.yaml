@@ -13,6 +13,7 @@ environment:
 dependencies:
   animate_do: ^2.0.0
   # animated_icon: ^0.0.4
+  animated_icon: ^0.0.9
   auto_animated: ^3.0.0
   auto_size_text: ^3.0.0
   avatar_glow: ^2.0.2
@@ -33,7 +34,7 @@ dependencies:
   get_it: ^7.7.0
   # google_maps_flutter: ^2.7.0
   http: ^1.2.1
-  # lint: ^1.8.2
+  lint: ^1.8.2
   # lottie: ^1.0.1
   shimmer: ^3.0.0
   # tab_indicator_styler: ^2.0.0
@@ -61,22 +62,10 @@ flutter:
     - assets/lotties/
     - assets/images/quizApp/
     - assets/images/quotesApp/
-    - assets/images/social-media/
+    # - assets/images/social-media/
     - assets/images/website/
 
   fonts:
-    - family: PatuaOne
-      fonts:
-        - asset: assets/fonts/PatuaOne-Regular.ttf
-    - family: Courgette
-      fonts:
-        - asset: assets/fonts/Courgette-Regular.ttf
-    - family: Vollkorn
-      fonts:
-        - asset: assets/fonts/Vollkorn-Italic-VariableFont_wght.ttf
-    - family: Gugi
-      fonts:
-        - asset: assets/fonts/Gugi-Regular.ttf
     - family: PlayfairDisplay
       fonts:
         - asset: assets/fonts/PlayfairDisplay-Regular.ttf

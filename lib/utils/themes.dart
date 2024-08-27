@@ -11,12 +11,15 @@ ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   buttonTheme: const ButtonThemeData(
     buttonColor: Color.fromRGBO(0, 34, 120, 1),
+    // buttonColor: kGreyColor2,
     textTheme: ButtonTextTheme.primary,
   ),
   drawerTheme: const DrawerThemeData(
     backgroundColor: Color.fromRGBO(239, 239, 239, 1),
   ),
   primaryColor: kPrimaryBlueColor,
+  // primaryColor: kGreyColor2,
+  hoverColor: kPrimaryLightBlueColor,
   primarySwatch: Colors.indigo,
   scaffoldBackgroundColor: const Color.fromRGBO(239, 239, 239, 1),
   scrollbarTheme: const ScrollbarThemeData().copyWith(
@@ -31,46 +34,54 @@ ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.bold,
       fontFamily: kRajdhaniFontFamily,
       color: kPrimaryBlueColor,
+      // color: kGreyColor2,
     ),
     bodyMedium: TextStyle(
       fontWeight: FontWeight.bold,
       color: kPrimaryBlueColor,
+      // color: kGreyColor2,
       fontSize: 18,
       fontFamily: kRajdhaniFontFamily,
     ),
     bodySmall: TextStyle(
       fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
-      fontSize: 15,
+      fontSize: 18,
       color: kPrimaryBlueColor,
+      // color: kGreyColor2,
     ),
     displayLarge: TextStyle(
       fontFamily: 'Zina',
       fontSize: 50,
       color: kPrimaryBlueColor,
+      // color: kGreyColor2,
     ),
     displayMedium: TextStyle(
       fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 30,
       color: kPrimaryBlueColor,
+      // color: kGreyColor2,
     ),
     displaySmall: TextStyle(
       fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 20,
       color: kPrimaryBlueColor,
+      // color: kGreyColor2,
     ),
     headlineSmall: TextStyle(
       fontFamily: 'Zina',
       fontSize: 50,
       color: kPrimaryBlueColor,
+      // color: kGreyColor2,
     ),
     titleLarge: TextStyle(
       fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
       fontSize: 35,
       color: kPrimaryBlueColor,
+      // color: kGreyColor2,
     ),
   ),
 );
@@ -87,13 +98,15 @@ ThemeData darkTheme = ThemeData(
   drawerTheme: const DrawerThemeData(
     backgroundColor: Color.fromRGBO(0, 34, 51, 1),
   ),
-  primaryColor: const Color.fromRGBO(239, 239, 239, 1),
+  primaryColor: kPrimaryWhiteColor,
+  hoverColor: kPrimaryWhiteColor,
   primarySwatch: kMaterialCyanColor,
   scaffoldBackgroundColor: const Color.fromRGBO(0, 34, 51, 1),
-  scrollbarTheme: const ScrollbarThemeData().copyWith(
-    thumbVisibility: const WidgetStatePropertyAll(false),
-    thumbColor: WidgetStateProperty.all(kCyanColor),
-  ),
+  // scaffoldBackgroundColor: kPrimaryWhiteColor,
+  // scrollbarTheme: const ScrollbarThemeData().copyWith(
+  //   thumbVisibility: const WidgetStatePropertyAll(false),
+  //   thumbColor: WidgetStateProperty.all(kCyanColor),
+  // ),
   shadowColor: Colors.cyan.withOpacity(0.2),
   splashColor: kWhiteColor,
   textTheme: TextTheme(
@@ -112,7 +125,7 @@ ThemeData darkTheme = ThemeData(
     bodySmall: TextStyle(
       fontFamily: kRajdhaniFontFamily,
       fontWeight: FontWeight.bold,
-      fontSize: 15,
+      fontSize: 18,
       color: kWhiteColor,
     ),
     displayLarge: TextStyle(

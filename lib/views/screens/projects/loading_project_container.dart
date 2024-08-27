@@ -18,8 +18,8 @@ class _LoadingProjectContainerState extends State<LoadingProjectContainer> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20, right: 20),
       child: Container(
-        // width: 350,
-        width: context.isLargeDevice ? 350 : double.infinity,
+        // width: 340,
+        width: context.isLargeDevice ? 340 : double.infinity,
 
         height: 265,
         decoration: BoxDecoration(

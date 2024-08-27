@@ -13,7 +13,7 @@ class LoadingExpContainer extends StatelessWidget {
     const double height = 20;
     return Container(
       margin: const EdgeInsets.only(right: 20, bottom: 20),
-      width: context.isLargeDevice ? 350 : double.infinity,
+      width: context.isLargeDevice ? 340 : double.infinity,
       height: 260,
       decoration: BoxDecoration(
         color: context.scaffoldColor,

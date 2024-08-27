@@ -15,9 +15,9 @@ class ProfilePic extends StatelessWidget {
     );
   }
 
-  Future<void> _delayedOpacityChange() async {
-    await Future.delayed(
-      const Duration(milliseconds: 100),
-    ); // Adjust delay as needed
-  }
+  // Future<void> _delayedOpacityChange() async {
+  //   await Future.delayed(
+  //     const Duration(milliseconds: 100),
+  //   ); // Adjust delay as needed
+  // }
 }

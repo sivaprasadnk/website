@@ -32,8 +32,10 @@ class _ShadowContainerState extends State<ShadowContainer> {
           _isHovered = false;
         });
       },
-      child: DecoratedBox(
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 200),
         decoration: BoxDecoration(
+          color: _isHovered ? context.hoverColor : context.primaryColor,
           borderRadius: borderRadius,
           boxShadow: _isHovered
               ? [

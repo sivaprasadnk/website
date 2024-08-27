@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:spnk/utils/common_colors.dart';
+import 'package:spnk/utils/extensions/context_extension.dart';
 import 'package:spnk/utils/string_constants.dart';
 import 'package:spnk/views/screens/home/widgets/social.media.icon.item.dart';
 
@@ -17,11 +18,12 @@ class SocialMediaIconsList extends StatelessWidget {
     const double spacing = 15;
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
 
-    final normalColor = isMobile
+    var normalColor = isMobile
         ? kWhiteColor
         : isDarkTheme
             ? kWhiteColor
             : kPrimaryBlueColor;
+    normalColor = context.primaryColor;
     return FadeInRight(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -37,21 +39,21 @@ class SocialMediaIconsList extends StatelessWidget {
           SocialMediaIconItem(
             icon: FontAwesomeIcons.facebook,
             url: fbLink,
-            iconColor: kWhiteColor,
+            iconColor: normalColor,
             isMobile: isMobile,
           ),
           const SizedBox(width: spacing),
           SocialMediaIconItem(
             icon: FontAwesomeIcons.instagram,
             url: instaLink,
-            iconColor: kWhiteColor,
+            iconColor: normalColor,
             isMobile: isMobile,
           ),
           const SizedBox(width: spacing),
           SocialMediaIconItem(
             icon: FontAwesomeIcons.whatsapp,
             url: whatsappWebLink,
-            iconColor: kWhiteColor,
+            iconColor: normalColor,
             isMobile: isMobile,
           ),
           const SizedBox(width: spacing),
@@ -68,7 +70,7 @@ class SocialMediaIconsList extends StatelessWidget {
             iconColor: normalColor,
             isMobile: isMobile,
           ),
-          const SizedBox(height: spacing),
+          // const SizedBox(height: spacing),
           // Container(
           //   width: 3,
           //   height: 200,

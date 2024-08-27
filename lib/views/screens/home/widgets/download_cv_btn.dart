@@ -18,12 +18,13 @@ class DownloadCvBtn extends StatelessWidget {
           // webOnlyWindowName: '_blank',
         );
       },
-      child: Container(
+      child: AnimatedContainer(
+        duration: Duration(seconds: 1),
         height: 50,
         padding: const EdgeInsets.symmetric(
           horizontal: 45,
         ),
-        color: context.primaryColor,
+        // color: context.hoverColor,
         child: Row(
           children: [
             Text(
