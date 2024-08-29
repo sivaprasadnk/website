@@ -97,10 +97,7 @@ class _ListItemState extends State<ListItem> {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
 
-    const hoverColor = Colors.cyan;
-    final normalColor = isDarkTheme ? kWhiteColor : kPrimaryBlueColor;
     return Theme(
       data: ThemeData(
         splashColor: kTransparentColor,
@@ -129,12 +126,12 @@ class _ListItemState extends State<ListItem> {
             },
             leading: Icon(
               widget.icon,
-              color: !isHovering ? normalColor : hoverColor,
+              color: !isHovering ? context.primaryColor : context.hoverColor,
             ),
             title: Text(
               widget.title,
               style: context.displaySmall.copyWith(
-                color: !isHovering ? normalColor : hoverColor,
+                color: !isHovering ? context.primaryColor : context.hoverColor,
               ),
             ),
           ).showCursorOnHover,

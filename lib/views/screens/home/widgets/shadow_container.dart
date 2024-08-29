@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spnk/utils/extensions/context_extension.dart';
 
 class ShadowContainer extends StatefulWidget {
-  const ShadowContainer({Key? key, required this.child}) : super(key: key);
+  const ShadowContainer({super.key, required this.child});
   final Widget child;
   @override
   State<ShadowContainer> createState() => _ShadowContainerState();
@@ -33,7 +33,7 @@ class _ShadowContainerState extends State<ShadowContainer> {
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         decoration: BoxDecoration(
           color: _isHovered ? context.hoverColor : context.primaryColor,
           borderRadius: borderRadius,
@@ -41,7 +41,7 @@ class _ShadowContainerState extends State<ShadowContainer> {
               ? [
                   BoxShadow(
                     color: context.shadowColor,
-                    blurRadius: 5,
+                    blurRadius: 2,
                     spreadRadius: 2,
                   ),
                 ]

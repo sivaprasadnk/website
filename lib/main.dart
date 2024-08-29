@@ -2,7 +2,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/locator.dart';
-import 'package:spnk/utils/themes.dart';
 import 'package:spnk/views/bloc/about_me/about_me_bloc.dart';
 import 'package:spnk/views/bloc/about_me/about_me_event.dart';
 import 'package:spnk/views/bloc/contact_details/contact_details_bloc.dart';
@@ -57,6 +56,9 @@ class MyApp extends StatelessWidget {
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {
+          final index = state.themeIndex;
+          final theme =
+              state.getTheme(isDarkTheme: state.isDarkTheme, index: index);
           return MaterialApp(
             scrollBehavior: const MaterialScrollBehavior().copyWith(
               dragDevices: {
@@ -68,7 +70,7 @@ class MyApp extends StatelessWidget {
             ),
             title: 'Sivaprasad NK',
             debugShowCheckedModeBanner: false,
-            theme: state.isDarkTheme ? darkTheme : lightTheme,
+            theme: theme,
             routes: {
               '/': (context) => const SplashScreen(),
             },
@@ -85,18 +87,5 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HomeScreen();
-    // return defaultTargetPlatform == TargetPlatform.android ||
-    //         defaultTargetPlatform == TargetPlatform.iOS
-    //     // ? const AndroidHome()
-    //     ? WindowsSmallHome()
-    //     : context.screenWidth > 695
-    //         ? MinSize(
-    //             minHeight: 734,
-    //             child: WindowsHomeLarge(),
-    //           )
-    //         : MinSize(
-    //             minHeight: 734,
-    //             child: WindowsSmallHome(),
-    //           );
   }
 }

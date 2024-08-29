@@ -2,7 +2,6 @@ import 'package:animated_icon/animated_icon.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:spnk/domain/entity/contact_details.dart';
-import 'package:spnk/utils/common_colors.dart';
 import 'package:spnk/utils/extensions/context_extension.dart';
 import 'package:spnk/utils/extensions/string_extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -53,52 +52,49 @@ class _ContactContainerState extends State<ContactContainer> {
             }
             await launchUrl(Uri.parse(link));
           },
-          child: Material(
-            elevation: _isHovered ? 15 : 0,
-            shadowColor: _isHovered ? context.shadowColor : kTransparentColor,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              width: context.isLargeDevice ? 340 : double.infinity,
-              height: 265,
-              decoration: BoxDecoration(
-                color: context.scaffoldColor,
-                border: Border.all(
-                  color: _isHovered || context.isMobileDevice
-                      ? context.primaryColor
-                      : context.scaffoldColor,
-                ),
-                borderRadius: BorderRadius.circular(7),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            width: context.isLargeDevice ? 340 : double.infinity,
+            height: 265,
+            decoration: BoxDecoration(
+              color: context.scaffoldColor,
+              border: Border.all(
+                color: _isHovered || context.isMobileDevice
+                    ? context.primaryColor
+                    : context.scaffoldColor,
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const SizedBox(height: 75),
-                  // Icon(
-                  //   widget.contactDetails.iconName.iconFromString,
-                  //   size: 60,
-                  //   color: context.primaryColor,
-                  // ),
+              borderRadius: BorderRadius.circular(7),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(height: 75),
+                // Icon(
+                //   widget.contactDetails.iconName.iconFromString,
+                //   size: 60,
+                //   color: context.primaryColor,
+                // ),
 
-                  AnimateIcon(
-                    key: UniqueKey(),
-                    onTap: () {},
-                    iconType: context.isLargeDevice
-                        ? IconType.animatedOnHover
-                        : IconType.continueAnimation,
-                    height: 60,
-                    width: 60,
+                AnimateIcon(
+                  key: UniqueKey(),
+                  onTap: () {},
+                  iconType: context.isLargeDevice
+                      ? IconType.animatedOnHover
+                      : IconType.continueAnimation,
+                  height: 60,
+                  width: 60,
+                  color: context.primaryColor,
+
+                  animateIcon: widget.contactDetails.iconName.iconFromString,
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  widget.contactDetails.details,
+                  style: context.bodySmall.copyWith(
                     color: context.primaryColor,
-                    animateIcon: widget.contactDetails.iconName.iconFromString,
                   ),
-                  const SizedBox(height: 20),
-                  Text(
-                    widget.contactDetails.details,
-                    style: context.bodySmall.copyWith(
-                      color: context.primaryColor,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

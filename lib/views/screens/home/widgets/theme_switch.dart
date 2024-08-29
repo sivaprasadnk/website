@@ -6,7 +6,7 @@ import 'package:spnk/views/bloc/theme_switch/theme_event.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_state.dart';
 
 class ThemeSwitch extends StatelessWidget {
-  const ThemeSwitch({Key? key}) : super(key: key);
+  const ThemeSwitch({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +21,14 @@ class ThemeSwitch extends StatelessWidget {
               context.read<ThemeBloc>().add(ToggleTheme());
             },
             child: !state.isDarkTheme
-                ? const Icon(Icons.dark_mode)
-                : const Icon(Icons.light_mode),
+                ? Icon(
+                    Icons.dark_mode,
+                    color: Theme.of(context).primaryColor,
+                  )
+                : Icon(
+                    Icons.light_mode,
+                    color: Theme.of(context).primaryColor,
+                  ),
             // child: DayNightSwitcher(
             //   isDarkModeEnabled: state.isDarkTheme,
             //   onStateChanged: (isDarkModeEnabled) {

@@ -5,6 +5,148 @@ import 'package:spnk/utils/string_constants.dart';
 
 
 ThemeData lightTheme = ThemeData(
+  appBarTheme: AppBarTheme(
+    backgroundColor: kLightColor1,
+    // backgroundColor: ThemeData.light().scaffoldBackgroundColor,
+  ),
+  brightness: Brightness.light,
+  buttonTheme: const ButtonThemeData(
+    buttonColor: Color.fromRGBO(0, 34, 120, 1),
+    textTheme: ButtonTextTheme.primary,
+  ),
+  drawerTheme: const DrawerThemeData(
+    backgroundColor: Color.fromRGBO(239, 239, 239, 1),
+  ),
+  primaryColor: kDarkColor1,
+  hoverColor: kPrimaryLightBlueColor,
+  scaffoldBackgroundColor: kLightColor1,
+  scrollbarTheme: const ScrollbarThemeData().copyWith(
+    thumbVisibility: const WidgetStatePropertyAll(false),
+    thumbColor: WidgetStateProperty.all(kLightColor1),
+  ),
+  shadowColor: Colors.black.withOpacity(0.2),
+  splashColor: const Color(0xFF002278),
+  textTheme: TextTheme(
+    bodyLarge: TextStyle(
+      fontSize: 21,
+      fontWeight: FontWeight.bold,
+      fontFamily: kRajdhaniFontFamily,
+      color: kDarkColor1,
+    ),
+    bodyMedium: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+      fontFamily: kRajdhaniFontFamily,
+      color: kDarkColor1,
+    ),
+    bodySmall: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+      fontFamily: kRajdhaniFontFamily,
+      color: kDarkColor1,
+    ),
+    displayLarge: TextStyle(
+      fontSize: 50,
+      fontFamily: 'Zina',
+      color: kDarkColor1,
+    ),
+    displayMedium: TextStyle(
+      fontSize: 30,
+      fontWeight: FontWeight.bold,
+      fontFamily: kRajdhaniFontFamily,
+      color: kDarkColor1,
+    ),
+    displaySmall: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      fontFamily: kRajdhaniFontFamily,
+      color: kDarkColor1,
+    ),
+    headlineSmall: TextStyle(
+      fontSize: 50,
+      fontFamily: 'Zina',
+      color: kDarkColor1,
+    ),
+    titleLarge: TextStyle(
+      fontSize: 35,
+      fontWeight: FontWeight.bold,
+      fontFamily: kRajdhaniFontFamily,
+      color: kDarkColor1,
+    ),
+  ),
+);
+
+ThemeData darkTheme = ThemeData(
+  appBarTheme: AppBarTheme(
+    backgroundColor: kDarkColor1,
+  ),
+  brightness: Brightness.dark,
+  buttonTheme: const ButtonThemeData(
+    buttonColor: Colors.red,
+    textTheme: ButtonTextTheme.primary,
+  ),
+  drawerTheme: const DrawerThemeData(
+    backgroundColor: Color.fromRGBO(0, 34, 51, 1),
+  ),
+  primaryColor: kLightColor1,
+  hoverColor: kPrimaryWhiteColor,
+  primarySwatch: kMaterialCyanColor,
+  scaffoldBackgroundColor: kDarkColor1,
+  shadowColor: Colors.cyan.withOpacity(0.2),
+  splashColor: kWhiteColor,
+  textTheme: TextTheme(
+    bodyLarge: TextStyle(
+      fontSize: 21,
+      fontWeight: FontWeight.bold,
+      fontFamily: kRajdhaniFontFamily,
+      color: kLightColor1,
+    ),
+    bodyMedium: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+      fontFamily: kRajdhaniFontFamily,
+      color: kLightColor1,
+    ),
+    bodySmall: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+      fontFamily: kRajdhaniFontFamily,
+      color: kLightColor1,
+    ),
+    displayLarge: TextStyle(
+      fontSize: 50,
+      fontFamily: 'Zina',
+      color: kLightColor1,
+    ),
+    displayMedium: TextStyle(
+      fontSize: 30,
+      fontWeight: FontWeight.bold,
+      fontFamily: kRajdhaniFontFamily,
+      color: kLightColor1,
+    ),
+    displaySmall: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      fontFamily: kRajdhaniFontFamily,
+      color: kLightColor1,
+    ),
+    headlineSmall: TextStyle(
+      fontSize: 50,
+      fontFamily: 'Zina',
+      color: kLightColor1,
+    ),
+    titleLarge: TextStyle(
+      fontSize: 35,
+      fontWeight: FontWeight.bold,
+      fontFamily: kRajdhaniFontFamily,
+      color: kLightColor1,
+    ),
+  ),
+);
+
+///
+
+ThemeData lightTheme1 = ThemeData(
   appBarTheme: const AppBarTheme(
     backgroundColor: Color.fromRGBO(239, 239, 239, 1),
   ),
@@ -86,7 +228,7 @@ ThemeData lightTheme = ThemeData(
   ),
 );
 
-ThemeData darkTheme = ThemeData(
+ThemeData darkTheme1 = ThemeData(
   appBarTheme: const AppBarTheme(
     backgroundColor: Color.fromRGBO(0, 34, 51, 1),
   ),
