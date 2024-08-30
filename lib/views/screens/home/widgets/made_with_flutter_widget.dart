@@ -1,18 +1,19 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
-import 'package:spnk/utils/common_colors.dart';
+import 'package:spnk/utils/extensions/context_extension.dart';
 
 class MadeWithFlutterWidget extends StatelessWidget {
   const MadeWithFlutterWidget({
-    Key? key,
+    super.key,
     this.mainAxisAlignment = MainAxisAlignment.end,
     required this.size,
-  }) : super(key: key);
+  });
   final MainAxisAlignment mainAxisAlignment;
   final double size;
 
   @override
   Widget build(BuildContext context) {
+    final color = context.primaryColor.withOpacity(0.5);
     return Row(
       mainAxisAlignment: mainAxisAlignment,
       children: [
@@ -21,12 +22,12 @@ class MadeWithFlutterWidget extends StatelessWidget {
           style: TextStyle(
             // fontWeight: FontWeight.bold,
             fontSize: size,
-            color: kGreyColor,
+            color: color,
             fontFamily: 'Roboto',
           ),
         ),
         AvatarGlow(
-          glowColor: kGreyColor,
+          glowColor: color,
           endRadius: 20.0,
           showTwoGlows: false,
           child: const Icon(
@@ -45,7 +46,7 @@ class MadeWithFlutterWidget extends StatelessWidget {
           style: TextStyle(
             // fontWeight: FontWeight.bold,
             fontSize: size,
-            color: kGreyColor,
+            color: color,
 
             fontFamily: 'Roboto',
           ),
@@ -58,8 +59,7 @@ class MadeWithFlutterWidget extends StatelessWidget {
           style: TextStyle(
             // fontWeight: FontWeight.bold,
             fontSize: size,
-            color: kGreyColor,
-
+            color: color,
             fontFamily: 'Roboto',
           ),
         ),

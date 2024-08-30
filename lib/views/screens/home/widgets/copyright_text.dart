@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:spnk/utils/common_colors.dart';
+import 'package:spnk/utils/extensions/context_extension.dart';
 
 class CopyrightText extends StatelessWidget {
   const CopyrightText({
-    Key? key,
+    super.key,
     required this.size,
-  }) : super(key: key);
+  });
 
   final double size;
 
   @override
   Widget build(BuildContext context) {
+    final color = context.primaryColor.withOpacity(0.5);
+
     return Text(
       'Copyright © 2024 Sivaprasad NK .',
       style: TextStyle(
         fontWeight: FontWeight.bold,
         fontFamily: 'Roboto',
         fontSize: size,
-        color: kGreyColor,
+        color: color,
       ),
     );
   }
