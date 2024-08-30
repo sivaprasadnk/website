@@ -179,9 +179,16 @@ class _HomeScreenState extends State<HomeScreen>
                   height: 70,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(
-                      color: context.primaryColor,
-                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: context.primaryColor.withOpacity(0.8),
+                        spreadRadius: 50,
+                        blurRadius: 100,
+                      ),
+                    ],
+                    // border: Border.all(
+                    //   color: context.primaryColor,
+                    // ),
                   ),
                 ),
               ),
