@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spnk/utils/extensions/context_extension.dart';
 import 'package:spnk/utils/extensions/widget_extensions.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_bloc.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_event.dart';
@@ -18,23 +19,25 @@ class ThemeSwitch extends StatelessWidget {
           child: GestureDetector(
             onDoubleTap: () {},
             onTap: () {
-              context.read<ThemeBloc>().add(ToggleTheme());
+              final isDarkTheme = state.themeData.brightness == Brightness.dark;
+              context.read<ThemeBloc>().add(
+                    UpdateTheme(
+                      brightness:
+                          isDarkTheme ? Brightness.light : Brightness.dark,
+                      primaryColor: context.scaffoldColor,
+                      bgColor: context.primaryColor,
+                    ),
+                  );
             },
-            child: !state.isDarkTheme
+            child: state.themeData.brightness != Brightness.dark
                 ? Icon(
                     Icons.dark_mode,
-                    color: Theme.of(context).primaryColor,
+                    color: context.primaryColor,
                   )
                 : Icon(
                     Icons.light_mode,
-                    color: Theme.of(context).primaryColor,
+                    color: context.primaryColor,
                   ),
-            // child: DayNightSwitcher(
-            //   isDarkModeEnabled: state.isDarkTheme,
-            //   onStateChanged: (isDarkModeEnabled) {
-            //     context.read<ThemeBloc>().add(ToggleTheme());
-            //   },
-            // ),
           ),
         );
       },

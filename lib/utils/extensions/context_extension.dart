@@ -11,6 +11,7 @@ extension BuiltContextExt on BuildContext {
   Color get primaryColor => Theme.of(this).primaryColor;
   Color get shadowColor => Theme.of(this).shadowColor;
   Color get scaffoldColor => Theme.of(this).scaffoldBackgroundColor;
+  // bool get isDarkTheme => Theme.of(this).brightness == Brightness.dark;
   Color get hoverColor => Theme.of(this).hoverColor;
 
   TextTheme get textTheme => Theme.of(this).textTheme;

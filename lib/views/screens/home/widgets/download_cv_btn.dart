@@ -19,7 +19,7 @@ class DownloadCvBtn extends StatelessWidget {
         );
       },
       child: AnimatedContainer(
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         height: 50,
         padding: const EdgeInsets.symmetric(
           horizontal: 45,

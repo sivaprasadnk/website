@@ -56,9 +56,6 @@ class MyApp extends StatelessWidget {
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {
-          final index = state.themeIndex;
-          final theme =
-              state.getTheme(isDarkTheme: state.isDarkTheme, index: index);
           return MaterialApp(
             scrollBehavior: const MaterialScrollBehavior().copyWith(
               dragDevices: {
@@ -70,7 +67,7 @@ class MyApp extends StatelessWidget {
             ),
             title: 'Sivaprasad NK',
             debugShowCheckedModeBanner: false,
-            theme: theme,
+            theme: state.themeData,
             routes: {
               '/': (context) => const SplashScreen(),
             },

@@ -5,7 +5,7 @@ final lightColorList = [
   // kLightColor5,
   kLightColor4,
   kLightColor6,
-  kLightColor2,
+  kLightColor7,
   kLightColor3,
 ];
 final darkColorList = [
@@ -13,6 +13,6 @@ final darkColorList = [
   // kDarkColor5,
   kDarkColor4,
   kDarkColor6,
-  kDarkColor2,
+  kDarkColor7,
   kDarkColor3,
 ];

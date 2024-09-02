@@ -30,6 +30,10 @@ Color kDarkColor5 = const Color.fromRGBO(0, 36, 107, 1);
 Color kLightColor6 = const Color.fromRGBO(208, 150, 131, 1);
 Color kDarkColor6 = const Color.fromRGBO(51, 0, 0, 1);
 
+Color kLightColor7 = const Color.fromRGBO(241, 211, 178, 1);
+Color kDarkColor7 = const Color.fromRGBO(70, 33, 26, 1);
+
+
 // Color kLightBlueColor1 = const Color.fromRGBO(202, 220, 252, 1);
 // Color kDarkBlueColor1 = const Color.fromRGBO(0, 36, 107, 1);
 MaterialColor kMaterialCyanColor =

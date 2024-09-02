@@ -18,7 +18,6 @@ import 'package:spnk/views/screens/home/widgets/home_screen_drawer.dart';
 import 'package:spnk/views/screens/home/widgets/logo_text.dart';
 import 'package:spnk/views/screens/home/widgets/menu_icon.dart';
 import 'package:spnk/views/screens/home/widgets/tab_item.dart';
-import 'package:spnk/views/screens/home/widgets/theme_switch.dart';
 import 'package:spnk/views/screens/projects/projects_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -62,8 +61,8 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     const Duration duration = Duration(seconds: 1);
     List<Widget> menuList = [
-      const ColorThemeSwitch(),
-      const ThemeSwitch(),
+      const ColorThemeIcon(),
+      // const ThemeSwitch(),
     ];
     final List<Widget> screenList = Screen.values.map((screen) {
       return TabItem(

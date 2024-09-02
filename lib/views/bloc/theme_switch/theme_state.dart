@@ -4,32 +4,35 @@ import 'package:spnk/utils/string_constants.dart';
 import 'package:spnk/utils/theme_list.dart';
 
 class ThemeState extends Equatable {
-  final bool isDarkTheme;
-  final int themeIndex;
+  // final bool isDarkTheme;
+  final ThemeData themeData;
   ThemeState({
-    bool? isDarkTheme,
-    int? themeIndex,
-  })  : isDarkTheme = isDarkTheme ?? _getInitialTheme(),
-        themeIndex = themeIndex ?? 0;
+    // bool? isDarkTheme,
+    ThemeData? themeData,
+  }) : themeData = themeData ?? _getInitialTheme();
 
-  ThemeState copyWith({bool? isDark, int? index}) {
+  ThemeState copyWith({ThemeData? newTheme}) {
     return ThemeState(
-      isDarkTheme: isDark ?? isDarkTheme,
-      themeIndex: index ?? themeIndex,
+      // isDarkTheme: isDark ?? isDarkTheme,
+      themeData: newTheme ?? themeData,
     );
   }
 
   @override
-  List<Object?> get props => [isDarkTheme, themeIndex];
+  List<Object?> get props => [
+        // isDarkTheme,
+        themeData,
+      ];
 
-  static bool _getInitialTheme() {
+  static bool _checkForDarkTheme() {
     final now = DateTime.now();
     return now.hour < 12;
   }
 
-  ThemeData getTheme({required bool isDarkTheme, required int index}) {
-    final darkColor = darkColorList[index];
-    final lightColor = lightColorList[index];
+  static ThemeData _getInitialTheme() {
+    final darkColor = darkColorList[0];
+    final lightColor = lightColorList[0];
+    final isDarkTheme = _checkForDarkTheme();
     return ThemeData(
       appBarTheme: AppBarTheme(
         backgroundColor: !isDarkTheme ? lightColor : darkColor,
@@ -101,4 +104,5 @@ class ThemeState extends Equatable {
       ),
     );
   }
+
 }
