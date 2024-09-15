@@ -6,8 +6,8 @@ import 'package:spnk/views/bloc/theme_switch/theme_bloc.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_event.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_state.dart';
 
-class ThemeSwitch extends StatelessWidget {
-  const ThemeSwitch({super.key});
+class BrightnessSwitch extends StatelessWidget {
+  const BrightnessSwitch({super.key});
 
   @override
   Widget build(BuildContext context) {

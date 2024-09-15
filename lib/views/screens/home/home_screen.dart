@@ -13,11 +13,12 @@ import 'package:spnk/views/screens/experience/experience_screen.dart';
 import 'package:spnk/views/screens/home/home_screen_large.dart';
 import 'package:spnk/views/screens/home/home_screen_small.dart';
 import 'package:spnk/views/screens/home/widgets/bottom_navbar.dart';
-import 'package:spnk/views/screens/home/widgets/color_theme_switch.dart';
 import 'package:spnk/views/screens/home/widgets/home_screen_drawer.dart';
 import 'package:spnk/views/screens/home/widgets/logo_text.dart';
 import 'package:spnk/views/screens/home/widgets/menu_icon.dart';
 import 'package:spnk/views/screens/home/widgets/tab_item.dart';
+import 'package:spnk/views/screens/home/widgets/theme_icon.dart';
+import 'package:spnk/views/screens/home/widgets/theme_switch.dart';
 import 'package:spnk/views/screens/projects/projects_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -61,7 +62,11 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     const Duration duration = Duration(seconds: 1);
     List<Widget> menuList = [
-      const ColorThemeIcon(),
+      // const SizedBox(width: 16),
+      const BrightnessSwitch(),
+      const SizedBox(width: 16),
+      const ThemeIcon(),
+      const SizedBox(width: 16),
       // const ThemeSwitch(),
     ];
     final List<Widget> screenList = Screen.values.map((screen) {
