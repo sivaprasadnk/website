@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 enum Screen {
   home,
   aboutMe,
+  skills,
   experience,
   projects,
   contactMe,
@@ -15,6 +16,8 @@ extension ScreenExt on Screen {
         return "Home";
       case Screen.aboutMe:
         return 'About Me';
+      case Screen.skills:
+        return 'My Skills';
       case Screen.experience:
         return 'Experience';
       case Screen.projects:
@@ -30,6 +33,8 @@ extension ScreenExt on Screen {
         return Icons.home;
       case Screen.aboutMe:
         return Icons.person_2;
+      case Screen.skills:
+        return Icons.code;
       case Screen.experience:
         return Icons.work;
       case Screen.projects:

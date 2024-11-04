@@ -6,6 +6,7 @@ import 'package:spnk/domain/use_case/get_about_me.dart';
 import 'package:spnk/domain/use_case/get_contact_details.dart';
 import 'package:spnk/domain/use_case/get_exp_details.dart';
 import 'package:spnk/domain/use_case/get_project_details.dart';
+import 'package:spnk/domain/use_case/get_skills_details.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -17,4 +18,5 @@ void setup() {
   locator.registerSingleton<GetExpDetails>(GetExpDetails());
   locator.registerSingleton<GetAboutMe>(GetAboutMe());
   locator.registerSingleton<GetProjectDetails>(GetProjectDetails());
+  locator.registerSingleton<GetSkillsDetails>(GetSkillsDetails());
 }

@@ -62,7 +62,8 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
         ),
         displayLarge: TextStyle(
           fontSize: 50,
-          fontFamily: 'Zina',
+          // fontFamily: 'Rajdhani',
+          fontFamily: kLogoFontFamily,
           color: primaryColor,
         ),
         displayMedium: TextStyle(
@@ -79,7 +80,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
         ),
         headlineSmall: TextStyle(
           fontSize: 50,
-          fontFamily: 'Zina',
+          fontFamily: 'Rajdhani',
           color: primaryColor,
         ),
         titleLarge: TextStyle(
@@ -136,7 +137,8 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
         ),
         displayLarge: TextStyle(
           fontSize: 50,
-          fontFamily: 'Zina',
+          // fontFamily: 'Rajdhani',
+          fontFamily: kLogoFontFamily,
           color: primaryColor,
         ),
         displayMedium: TextStyle(
@@ -153,7 +155,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
         ),
         headlineSmall: TextStyle(
           fontSize: 50,
-          fontFamily: 'Zina',
+          fontFamily: 'Rajdhani',
           color: primaryColor,
         ),
         titleLarge: TextStyle(
@@ -210,7 +212,8 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
         ),
         displayLarge: TextStyle(
           fontSize: 50,
-          fontFamily: 'Zina',
+          // fontFamily: 'Rajdhani',
+          fontFamily: kLogoFontFamily,
           color: primaryColor,
         ),
         displayMedium: TextStyle(
@@ -227,7 +230,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
         ),
         headlineSmall: TextStyle(
           fontSize: 50,
-          fontFamily: 'Zina',
+          fontFamily: 'Rajdhani',
           color: primaryColor,
         ),
         titleLarge: TextStyle(
@@ -285,7 +288,8 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
         ),
         displayLarge: TextStyle(
           fontSize: 50,
-          fontFamily: 'Zina',
+          // fontFamily: 'Rajdhani',s
+          fontFamily: kLogoFontFamily,
           color: primaryColor,
         ),
         displayMedium: TextStyle(
@@ -302,7 +306,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
         ),
         headlineSmall: TextStyle(
           fontSize: 50,
-          fontFamily: 'Zina',
+          fontFamily: 'Rajdhani',
           color: primaryColor,
         ),
         titleLarge: TextStyle(

@@ -33,6 +33,12 @@ Color kDarkColor6 = const Color.fromRGBO(51, 0, 0, 1);
 Color kLightColor7 = const Color.fromRGBO(241, 211, 178, 1);
 Color kDarkColor7 = const Color.fromRGBO(70, 33, 26, 1);
 
+Color kLightColor8 = const Color.fromRGBO(106, 156, 137, 1);
+Color kDarkColor8 = const Color.fromRGBO(164, 56, 32, 1);
+
+Color kLightColor9 = const Color.fromRGBO(156, 219, 166, 1);
+Color kDarkColor9 = const Color.fromRGBO(13, 124, 102, 1);
+
 
 // Color kLightBlueColor1 = const Color.fromRGBO(202, 220, 252, 1);
 // Color kDarkBlueColor1 = const Color.fromRGBO(0, 36, 107, 1);

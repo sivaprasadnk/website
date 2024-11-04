@@ -47,7 +47,7 @@ ThemeData lightTheme = ThemeData(
     ),
     displayLarge: TextStyle(
       fontSize: 50,
-      fontFamily: 'Zina',
+      fontFamily: kLogoFontFamily,
       color: kDarkColor1,
     ),
     displayMedium: TextStyle(
@@ -64,7 +64,7 @@ ThemeData lightTheme = ThemeData(
     ),
     headlineSmall: TextStyle(
       fontSize: 50,
-      fontFamily: 'Zina',
+      fontFamily: 'Rajdhani',
       color: kDarkColor1,
     ),
     titleLarge: TextStyle(
@@ -115,7 +115,8 @@ ThemeData darkTheme = ThemeData(
     ),
     displayLarge: TextStyle(
       fontSize: 50,
-      fontFamily: 'Zina',
+      // fontFamily: 'Rajdhani',
+      fontFamily: kLogoFontFamily,
       color: kLightColor1,
     ),
     displayMedium: TextStyle(
@@ -132,7 +133,7 @@ ThemeData darkTheme = ThemeData(
     ),
     headlineSmall: TextStyle(
       fontSize: 50,
-      fontFamily: 'Zina',
+      fontFamily: 'Rajdhani',
       color: kLightColor1,
     ),
     titleLarge: TextStyle(
@@ -193,7 +194,8 @@ ThemeData lightTheme1 = ThemeData(
       // color: kGreyColor2,
     ),
     displayLarge: TextStyle(
-      fontFamily: 'Zina',
+      // fontFamily: 'Rajdhani',
+      fontFamily: kLogoFontFamily,
       fontSize: 50,
       color: kPrimaryBlueColor,
       // color: kGreyColor2,
@@ -213,7 +215,7 @@ ThemeData lightTheme1 = ThemeData(
       // color: kGreyColor2,
     ),
     headlineSmall: TextStyle(
-      fontFamily: 'Zina',
+      fontFamily: 'Rajdhani',
       fontSize: 50,
       color: kPrimaryBlueColor,
       // color: kGreyColor2,
@@ -271,7 +273,8 @@ ThemeData darkTheme1 = ThemeData(
       color: kWhiteColor,
     ),
     displayLarge: TextStyle(
-      fontFamily: 'Zina',
+      // fontFamily: 'Rajdhani',
+      fontFamily: kLogoFontFamily,
       fontSize: 50,
       color: kWhiteColor,
     ),
@@ -288,7 +291,7 @@ ThemeData darkTheme1 = ThemeData(
       color: kWhiteColor,
     ),
     headlineSmall: TextStyle(
-      fontFamily: 'Zina',
+      fontFamily: 'Rajdhani',
       fontSize: 50,
       color: kWhiteColor,
     ),

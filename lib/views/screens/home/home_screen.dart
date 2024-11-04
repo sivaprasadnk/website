@@ -20,6 +20,7 @@ import 'package:spnk/views/screens/home/widgets/tab_item.dart';
 import 'package:spnk/views/screens/home/widgets/theme_icon.dart';
 import 'package:spnk/views/screens/home/widgets/theme_switch.dart';
 import 'package:spnk/views/screens/projects/projects_screen.dart';
+import 'package:spnk/views/screens/skills/skills_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/Home';
@@ -147,6 +148,8 @@ class _HomeScreenState extends State<HomeScreen>
                           return ExperienceScreen();
                         case Screen.aboutMe:
                           return const AboutMeScreen();
+                        case Screen.skills:
+                          return SkillsScreen();
                       }
                     },
                   )
@@ -161,6 +164,7 @@ class _HomeScreenState extends State<HomeScreen>
                           children: [
                             HomeScreenLarge(),
                             const AboutMeScreen(),
+                            SkillsScreen(),
                             ExperienceScreen(),
                             ProjectsScreen(),
                             ContactMeScreen(),

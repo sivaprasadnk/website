@@ -11,6 +11,8 @@ import 'package:spnk/views/bloc/experience/exp_details_event.dart';
 import 'package:spnk/views/bloc/project/project_bloc.dart';
 import 'package:spnk/views/bloc/project/project_event.dart';
 import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
+import 'package:spnk/views/bloc/skills/skills_bloc.dart';
+import 'package:spnk/views/bloc/skills/skills_event.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_bloc.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_state.dart';
 import 'package:spnk/views/screens/home/home_screen.dart';
@@ -44,6 +46,12 @@ class MyApp extends StatelessWidget {
           create: (_) => ProjectBloc()
             ..add(
               FetchProjects(),
+            ),
+        ),
+        BlocProvider<SkillDetailsBloc>(
+          create: (_) => SkillDetailsBloc()
+            ..add(
+              FetchSkillDetailsEvent(),
             ),
         ),
         BlocProvider<ContactDetailsBloc>(

@@ -9,6 +9,7 @@ import 'package:spnk/data/model/about_me_details_model.dart';
 import 'package:spnk/data/model/contact_details_model.dart';
 import 'package:spnk/data/model/experience_details_model.dart';
 import 'package:spnk/data/model/project_details_model.dart';
+import 'package:spnk/data/model/skill_details_model.dart';
 import 'package:spnk/utils/string_constants.dart';
 
 class RemoteDataSourceImpl extends RemoteDataSource {
@@ -93,6 +94,27 @@ class RemoteDataSourceImpl extends RemoteDataSource {
       }
     } catch (err) {
       throw Exception('Failed to load project details');
+    }
+  }
+  
+  @override
+  Future<Either<List<SkillDetailsModel>, Error>> getSkillDetails() async {
+    try {
+      final client = http.Client();
+      final response = await client.get(Uri.parse('${baseUrl}my-skills'));
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> resp = jsonDecode(response.body);
+        debugPrint('response :$resp');
+        return Left(
+          (resp['data'] as List)
+              .map((e) => SkillDetailsModel.fromJson(e))
+              .toList(),
+        );
+      } else {
+        return Right(Error());
+      }
+    } catch (err) {
+      throw Exception('Failed to load skill details');
     }
   }
 }

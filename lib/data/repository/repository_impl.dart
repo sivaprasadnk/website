@@ -4,6 +4,7 @@ import 'package:spnk/domain/entity/about_me_details.dart';
 import 'package:spnk/domain/entity/contact_details.dart';
 import 'package:spnk/domain/entity/experience_details.dart';
 import 'package:spnk/domain/entity/project_details.dart';
+import 'package:spnk/domain/entity/skill_details.dart';
 import 'package:spnk/domain/repository/repository.dart';
 import 'package:spnk/utils/locator.dart';
 
@@ -43,6 +44,15 @@ class RepositoryImpl implements Repository {
     return result.fold(
       (data) => data,
       (_) => locator<LocalDataSourceImpl>().getAboutMe(),
+    );
+  }
+
+  @override
+  Future<List<SkillDetails>> getSkillsDetails() async {
+    final result = await locator<RemoteDataSourceImpl>().getSkillDetails();
+    return result.fold(
+      (data) => data,
+      (_) => locator<LocalDataSourceImpl>().getSkillDetails(),
     );
   }
 }

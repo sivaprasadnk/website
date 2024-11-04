@@ -4,7 +4,7 @@ import 'package:spnk/utils/extensions/context_extension.dart';
 import 'package:spnk/views/bloc/contact_details/contact_details_bloc.dart';
 import 'package:spnk/views/bloc/contact_details/contact_details_state.dart';
 import 'package:spnk/views/screens/contact_me/contact_container.dart';
-import 'package:spnk/views/screens/contact_me/loading_contact_ccontainer.dart';
+import 'package:spnk/views/screens/contact_me/loading_contact_container.dart';
 
 class ContactDetailsListView extends StatelessWidget {
   const ContactDetailsListView({

@@ -4,6 +4,7 @@ import 'package:spnk/data/model/about_me_details_model.dart';
 import 'package:spnk/data/model/contact_details_model.dart';
 import 'package:spnk/data/model/experience_details_model.dart';
 import 'package:spnk/data/model/project_details_model.dart';
+import 'package:spnk/data/model/skill_details_model.dart';
 
 class LocalDataSourceImpl implements LocalDataSource {
   LocalDataSourceImpl();
@@ -26,5 +27,10 @@ class LocalDataSourceImpl implements LocalDataSource {
   @override
   AboutMeDetailsModel getAboutMe() {
     return aboutMeDetailsContent;
+  }
+
+  @override
+  List<SkillDetailsModel> getSkillDetails() {
+    return skillsList;
   }
 }

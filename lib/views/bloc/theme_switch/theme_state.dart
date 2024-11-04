@@ -75,7 +75,8 @@ class ThemeState extends Equatable {
         ),
         displayLarge: TextStyle(
           fontSize: 50,
-          fontFamily: 'Zina',
+          // fontFamily: 'Zina',
+          fontFamily: kLogoFontFamily,
           color: isDarkTheme ? lightColor : darkColor,
         ),
         displayMedium: TextStyle(
