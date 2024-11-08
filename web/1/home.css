@@ -1,0 +1,92 @@
+
+
+.welcome-section {
+    height: 80vh;
+    width: 90vw;
+    margin-left: 50px;
+    /* background-color: aquamarine; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 0.1vw;
+}
+
+.welcome-img{
+    /* background-color: brown; */
+    /* padding-left: 0px; */
+    margin-left: 0px;
+}
+
+.hi-text h3 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0px;
+    margin: 0px;
+
+}
+.summary h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 150px;
+}
+
+.propic {
+    margin-left: 100px;
+    width: 400px;
+    height: 400px;
+}
+
+.download-btn {
+    height: 50px;
+    width: 230px;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--bg-color);
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.follow-me{
+    width: 500px;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+}
+
+.follow-me h3{
+   font-weight: 500; 
+}
+
+.follow-me ul{
+    list-style: none;
+    margin-top: 18px;
+    margin-left: 20px;
+
+}
+
+.follow-me li{
+    position: relative;
+    display: inline;
+    font-size: 1.5em;
+    margin: 0;
+    margin-right: 10px;
+    font-size: 1.3rem;
+}
+.fb{
+    width: 100px;
+    height: 100px;
+    /* background-color: blueviolet; */
+}
+
+/* .fa-brands .fa-square-facebook{
+   font-size: 2em; 
+} */
