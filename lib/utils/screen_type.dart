@@ -15,15 +15,32 @@ extension ScreenExt on Screen {
       case Screen.home:
         return "Home";
       case Screen.aboutMe:
-        return 'About Me';
+        return 'About';
       case Screen.skills:
-        return 'My Skills';
+        return 'Skills';
       case Screen.experience:
         return 'Experience';
       case Screen.projects:
         return 'Projects';
       case Screen.contactMe:
-        return "Contact me";
+        return "Contact";
+    }
+  }
+
+  String get screenTitle {
+    switch (this) {
+      case Screen.home:
+        return "Home";
+      case Screen.aboutMe:
+        return 'About Me';
+      case Screen.skills:
+        return 'My Skills';
+      case Screen.experience:
+        return 'My Experience';
+      case Screen.projects:
+        return 'My personal Projects';
+      case Screen.contactMe:
+        return "Contact Me";
     }
   }
 

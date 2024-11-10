@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spnk/utils/extensions/context_extension.dart';
+import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/bloc/about_me/about_me_bloc.dart';
 import 'package:spnk/views/bloc/about_me/about_me_state.dart';
 import 'package:spnk/views/screens/about_me/loading_abt_me_container.dart';
@@ -12,7 +13,7 @@ class AboutMeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenSection(
-      title: 'About Me',
+      title: Screen.aboutMe.screenTitle,
       details: BlocBuilder<AboutMeBloc, AboutMeState>(
         builder: (context, state) {
           return SizedBox(
