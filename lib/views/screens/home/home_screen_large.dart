@@ -40,8 +40,6 @@ class _HomeScreenLargeState extends State<HomeScreenLarge>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IntroText(
-                topPadding: 0,
-                leftPadding: 0,
                 imageHeight: 250,
                 imageWidth: screenWidth * .4,
               ),

@@ -3,13 +3,13 @@ import 'package:spnk/utils/extensions/context_extension.dart';
 
 class IntroText extends StatefulWidget {
   const IntroText({
-    Key? key,
-    required this.leftPadding,
-    required this.topPadding,
+    super.key,
+    this.leftPadding = 0,
+    this.topPadding = 0,
     required this.imageHeight,
     required this.imageWidth,
     this.showImage = true,
-  }) : super(key: key);
+  });
   final double leftPadding;
   final double topPadding;
   final double imageHeight;

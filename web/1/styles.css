@@ -4,6 +4,14 @@
     --bg-color: #fbeaeb;
 }
 
+@media only screen and (min-width: 500px) {
+    .small-screen {display: none;}
+}
+
+@media only screen and (max-width: 500px) {
+    .large-screen {display: none;}
+}
+
 ul,
 li {
     margin: 0px;
@@ -21,6 +29,7 @@ body {
     color: var(--primary-color);
     font-family: "Rajdhani", sans-serif;
     font-weight: 100;
+    overflow: hidden;
 }
 
 h2 {
@@ -31,7 +40,7 @@ h2 {
 .main-hdr {
     /* margin: 10px; */
     margin-left: 30px;
-    margin-top: 6px;
+    margin-top: 4px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -63,6 +72,7 @@ h2 {
     font-weight: 400;
     font-size: 17px;
     transition: all 0.1s;
+    cursor: pointer;
 }
 
 .main-hdr li:hover {
@@ -79,18 +89,20 @@ h2 {
 }
 
 .title {
-    margin-left: 170px;
-    margin-top: 70px;
+    /* margin-left: 170px; */
+    margin-left: 11vw;
+    margin-top: 45px;
     /* font-size: 1.5rem; */
     font-size: 30px;
     font-weight: 500;
 }
 
 .content {
-    margin-left: 170px;
+    margin-left: 11vw;
     margin-top: 80px;
     font-size: 20px;
     font-weight: 500;
+    /* width: 600px; */
 }
 
 .content ul {
@@ -102,4 +114,41 @@ h2 {
 
 .content li {
     padding: 0px;
+}
+
+.footer{
+    /* background-color: aqua; */
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    /* left: 40vw; */
+    /* right: 40vw; */
+    /* padding-bottom: 10px; */
+    /* margin-top: 89px; */
+    /* margin-bottom: 30px; */
+    /* margin: 50px 0px; */
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 100;
+    opacity: 0.5;
+    font-weight: 300;
+    font-size: 15px;
+}
+.made-with{
+    margin-top: 5px;
+    /* color: var(--primary-color); */
+}
+
+.menu-icon a{
+    margin-right: 15px;
+    margin-top: 15px;
+    font-size: 22px;
+}
+
+#love{
+    margin: 0px 10px;
+    color: red;
 }

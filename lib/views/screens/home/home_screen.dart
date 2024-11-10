@@ -153,25 +153,21 @@ class _HomeScreenState extends State<HomeScreen>
                       }
                     },
                   )
-                : Stack(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: context.screenWidth * 0.02,
-                        ),
-                        child: TabBarView(
-                          controller: _tabController,
-                          children: [
-                            HomeScreenLarge(),
-                            const AboutMeScreen(),
-                            SkillsScreen(),
-                            ExperienceScreen(),
-                            ProjectsScreen(),
-                            ContactMeScreen(),
-                          ],
-                        ),
-                      ),
-                    ],
+                : Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.screenWidth * 0.02,
+                    ),
+                    child: TabBarView(
+                      controller: _tabController,
+                      children: [
+                        HomeScreenLarge(),
+                        const AboutMeScreen(),
+                        SkillsScreen(),
+                        ExperienceScreen(),
+                        ProjectsScreen(),
+                        ContactMeScreen(),
+                      ],
+                    ),
                   ),
           ),
           if (context.isLargeDevice)
