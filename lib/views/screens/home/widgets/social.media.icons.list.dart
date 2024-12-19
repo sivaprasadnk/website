@@ -70,6 +70,22 @@ class SocialMediaIconsList extends StatelessWidget {
             iconColor: normalColor,
             isMobile: isMobile,
           ),
+          const SizedBox(width: spacing),
+          SocialMediaIconItem(
+            icon: FontAwesomeIcons.dartLang,
+            url: pubDevLink,
+            iconColor: normalColor,
+            isMobile: isMobile,
+          ),
+          const SizedBox(width: spacing),
+          SocialMediaIconItem(
+            icon: FontAwesomeIcons.store,
+            url: vsCodeThemesLink,
+            iconColor: normalColor,
+            isMobile: isMobile,
+          ),
+
+
           // const SizedBox(height: spacing),
           // Container(
           //   width: 3,
