@@ -26,9 +26,12 @@ class _ScreenSectionState extends State<ScreenSection>
   Widget build(BuildContext context) {
     super.build(context);
     // double leftPadding = context.isLargeDevice ? 150 : 20;
-    final double leftPadding = context.screenWidth * 0.1;
+    // final double leftPadding = context.screenWidth * 0.1;
+    final double padding =
+        context.isLargeDevice ? context.screenWidth * 0.1 : 20;
     return Container(
-      padding: EdgeInsets.only(left: leftPadding),
+      width: context.isMobileDevice ? double.infinity : 600,
+      padding: EdgeInsets.only(left: padding, right: padding),
       child: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Column(

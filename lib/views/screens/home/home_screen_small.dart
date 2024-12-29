@@ -16,7 +16,7 @@ class HomeScreenSmall extends StatelessWidget {
         // const SizedBox(width: 15),
         // const SocialMediaIconsList(),
         const Spacer(),
-        const Spacer(),
+        // const Spacer(),
         Column(
           mainAxisAlignment: MainAxisAlignment.end,
           mainAxisSize: MainAxisSize.min,

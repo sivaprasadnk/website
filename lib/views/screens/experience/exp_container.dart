@@ -12,7 +12,8 @@ class ExpContainer extends StatelessWidget {
       backgroundColor: context.primaryColor,
     );
     return AnimatedContainer(
-      margin: const EdgeInsets.only(right: 20, bottom: 20),
+      margin:
+          EdgeInsets.only(bottom: 20, right: context.isLargeDevice ? 20 : 0),
       duration: const Duration(milliseconds: 200),
       width: context.isLargeDevice ? 340 : double.infinity,
       height: 260,
@@ -34,7 +35,9 @@ class ExpContainer extends StatelessWidget {
               style: context.displaySmall,
             ),
           ),
-          const Divider(),
+          Divider(
+            color: context.primaryColor,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 3,

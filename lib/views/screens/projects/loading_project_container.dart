@@ -15,75 +15,75 @@ class LoadingProjectContainer extends StatefulWidget {
 class _LoadingProjectContainerState extends State<LoadingProjectContainer> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20, right: 20),
-      child: Container(
-        // width: 340,
-        width: context.isLargeDevice ? 340 : double.infinity,
-
-        height: 265,
-        decoration: BoxDecoration(
-          color: context.scaffoldColor,
-          border: Border.all(
+    return Container(
+      // width: 340,
+      width: context.isLargeDevice ? 340 : double.infinity,
+      margin:
+          EdgeInsets.only(bottom: 20, right: context.isLargeDevice ? 20 : 0),
+      height: 265,
+      decoration: BoxDecoration(
+        color: context.scaffoldColor,
+        border: Border.all(
+          color: context.primaryColor,
+        ),
+        borderRadius: BorderRadius.circular(7),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 5, left: 5),
+            child: LoadingShimmer.rectangle(
+              height: 15,
+              width: 75,
+              context: context,
+            ),
+          ),
+          Divider(
             color: context.primaryColor,
           ),
-          borderRadius: BorderRadius.circular(7),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 5, left: 5),
-              child: LoadingShimmer.rectangle(
-                height: 15,
-                width: 75,
-                context: context,
-              ),
-            ),
-            const Divider(),
-            Wrap(
-              children: [1, 1, 1, 1].map((tool) {
-                return Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 5,
-                    vertical: 3,
-                  ),
-                  margin: const EdgeInsets.symmetric(
-                    vertical: 3,
-                    horizontal: 5,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(7),
-                  ),
+          Wrap(
+            children: [1, 1, 1, 1].map((tool) {
+              return Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 5,
+                  vertical: 3,
+                ),
+                margin: const EdgeInsets.symmetric(
+                  vertical: 3,
+                  horizontal: 5,
+                ),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                child: LoadingShimmer.rectangle(
+                  height: 15,
+                  width: 50,
+                  context: context,
+                ),
+              );
+            }).toList(),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 5),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [1, 1, 1, 1].map((desc) {
+                return Padding(
+                  padding: const EdgeInsets.only(top: 8, left: 8),
                   child: LoadingShimmer.rectangle(
                     height: 15,
-                    width: 50,
+                    width: 100,
                     context: context,
                   ),
                 );
               }).toList(),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 5),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [1, 1, 1, 1].map((desc) {
-                  return Padding(
-                    padding: const EdgeInsets.only(top: 8, left: 8),
-                    child: LoadingShimmer.rectangle(
-                      height: 15,
-                      width: 100,
-                      context: context,
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

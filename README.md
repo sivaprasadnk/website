@@ -1,4 +1,4 @@
-# My Portfolio WebApp 
+# Sivaprasad NK's portfolio 
 ( https://dancing-bombolone-f8022d.netlify.app/ )
 
 Made using Flutter.
@@ -11,7 +11,7 @@ Clean Architecture.
 
 Bloc state-management.
 
-Hosted in Netlify.
+Hosted in GitHub Pages.
 
 ![sivaprasadnk dev_ (2)](https://github.com/sivaprasadnk/website/assets/75713903/c3ee9440-b7c0-49d5-9c33-639bbbe2519b)
 

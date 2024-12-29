@@ -12,9 +12,11 @@ class LoadingExpContainer extends StatelessWidget {
     );
     const double height = 20;
     return Container(
-      margin: const EdgeInsets.only(right: 20, bottom: 20),
+      margin:
+          EdgeInsets.only(right: context.isLargeDevice ? 20 : 0, bottom: 20),
       width: context.isLargeDevice ? 340 : double.infinity,
       height: 260,
+
       decoration: BoxDecoration(
         color: context.scaffoldColor,
         border: Border.all(
@@ -34,7 +36,9 @@ class LoadingExpContainer extends StatelessWidget {
               context: context,
             ),
           ),
-          const Divider(),
+          Divider(
+            color: context.primaryColor,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 3,
