@@ -42,7 +42,7 @@ class _ProjectContainerState extends State<ProjectContainer> {
               width: context.isLargeDevice ? 340 : double.infinity,
               height: 265,
               decoration: BoxDecoration(
-                color: context.scaffoldColor,
+                // color: context.scaffoldColor,
                 border: Border.all(
                   color: context.primaryColor,
                 ),

@@ -12,9 +12,9 @@ class CopyrightText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = context.primaryColor.withOpacity(0.5);
-
+    final year = DateTime.now().year;
     return Text(
-      'Copyright © 2024 Sivaprasad NK .',
+      'Copyright © $year Sivaprasad NK .',
       style: TextStyle(
         fontWeight: FontWeight.bold,
         fontFamily: 'Roboto',

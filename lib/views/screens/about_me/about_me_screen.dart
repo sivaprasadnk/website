@@ -16,16 +16,18 @@ class AboutMeScreen extends StatelessWidget {
       title: Screen.aboutMe.screenTitle,
       details: BlocBuilder<AboutMeBloc, AboutMeState>(
         builder: (context, state) {
-          return SizedBox(
-            // width: context.isMobileDevice ? context.screenWidth - 20 : 600,
-            // width: context.isMobileDevice ? double.infinity : 600,
-            child: state.isLoading
-                ? const LoadingAbtMeContainer()
-                : Text(
+          return SingleChildScrollView(
+            child: SizedBox(
+              // width: context.isMobileDevice ? context.screenWidth - 20 : 600,
+              width: context.isMobileDevice ? double.infinity : 800,
+              child: state.isLoading
+                  ? const LoadingAbtMeContainer()
+                  : Text(
                     state.content,
                     textAlign: TextAlign.justify,
                     style: context.displaySmall,
                   ),
+            ),
           );
         },
       ),

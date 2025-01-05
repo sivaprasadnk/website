@@ -53,16 +53,17 @@ class _ContactContainerState extends State<ContactContainer> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           width: context.isLargeDevice ? 340 : double.infinity,
-          height: 265,
+          height: context.isLargeDevice ? 265 : 240,
           margin: EdgeInsets.only(
-              bottom: 20, right: context.isLargeDevice ? 20 : 0),
+            bottom: 20,
+            right: context.isLargeDevice ? 20 : 0,
+          ),
           decoration: BoxDecoration(
-            color: context.scaffoldColor,
-            border: Border.all(
-              color: _isHovered || context.isMobileDevice
-                  ? context.primaryColor
-                  : context.scaffoldColor,
-            ),
+            border: context.isLargeDevice
+                ? _isHovered
+                    ? Border.all(color: context.primaryColor)
+                    : null
+                : Border.all(color: context.primaryColor),
             borderRadius: BorderRadius.circular(7),
           ),
           child: Column(

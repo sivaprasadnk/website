@@ -18,7 +18,7 @@ class ExpContainer extends StatelessWidget {
       width: context.isLargeDevice ? 340 : double.infinity,
       height: 260,
       decoration: BoxDecoration(
-        color: context.scaffoldColor,
+        // color: context.scaffoldColor,
         border: Border.all(
           color: context.primaryColor,
         ),
