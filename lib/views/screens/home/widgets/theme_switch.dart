@@ -33,14 +33,14 @@ class BrightnessSwitch extends StatelessWidget {
                 ? Icon(
                     Icons.dark_mode,
                     color: context.primaryColor,
-                  )
+                  ).showCursorOnHover
                 : Icon(
                     Icons.light_mode,
                     color: context.primaryColor,
-                  ),
+                  ).showCursorOnHover,
           ),
         );
       },
-    ).showCursorOnHover;
+    );
   }
 }

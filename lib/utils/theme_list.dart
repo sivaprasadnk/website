@@ -20,3 +20,14 @@ final darkColorList = [
   kDarkColor8,
   kDarkColor9,
 ];
+
+final darkColorList2 = [
+  // kDarkColor1,
+  // kDarkColor5,
+  kDarkColor4,
+  kDarkColor6,
+  kDarkColor7,
+  kDarkColor3,
+  kDarkColor8,
+  kDarkColor9,
+];

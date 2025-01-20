@@ -7,6 +7,8 @@ import 'package:spnk/utils/screen_type.dart';
 import 'package:spnk/views/bloc/screen_details/screen_bloc.dart';
 import 'package:spnk/views/bloc/screen_details/screen_event.dart';
 import 'package:spnk/views/bloc/screen_details/screen_state.dart';
+import 'package:spnk/views/bloc/theme_switch/theme_bloc.dart';
+import 'package:spnk/views/bloc/theme_switch/theme_state.dart';
 import 'package:spnk/views/screens/about_me/about_me_screen.dart';
 import 'package:spnk/views/screens/contact_me/contact_me_screen.dart';
 import 'package:spnk/views/screens/experience/experience_screen.dart';
@@ -19,6 +21,7 @@ import 'package:spnk/views/screens/home/widgets/menu_icon.dart';
 import 'package:spnk/views/screens/home/widgets/tab_item.dart';
 import 'package:spnk/views/screens/home/widgets/theme_icon.dart';
 import 'package:spnk/views/screens/home/widgets/theme_switch.dart';
+import 'package:spnk/views/screens/home/widgets/torch_icon.dart';
 import 'package:spnk/views/screens/projects/projects_screen.dart';
 import 'package:spnk/views/screens/skills/skills_screen.dart';
 
@@ -58,12 +61,13 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Offset _mousePosition = Offset.zero;
-
+  Offset _pointerPosition = const Offset(0, 0);
   @override
   Widget build(BuildContext context) {
     const Duration duration = Duration(seconds: 1);
     List<Widget> menuList = [
-      // const SizedBox(width: 16),
+      const TorchIcon(),
+      const SizedBox(width: 16),
       const BrightnessSwitch(),
       const SizedBox(width: 16),
       const ThemeIcon(),
@@ -118,6 +122,7 @@ class _HomeScreenState extends State<HomeScreen>
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 child: AppBar(
+                  backgroundColor: Colors.transparent,
                   title: LogoText(
                     onTap: () {
                       if (context.isLargeDevice) {
@@ -125,6 +130,7 @@ class _HomeScreenState extends State<HomeScreen>
                           0,
                           duration: duration,
                         );
+                        // context.read<ThemeBloc>().add(ToggleSpotLight());
                       } else {
                         context.read<ScreenBloc>().add(UpdateScreen());
                       }
@@ -153,50 +159,103 @@ class _HomeScreenState extends State<HomeScreen>
                       }
                     },
                   )
-                : Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: context.screenWidth * 0.02,
-                    ),
-                    child: TabBarView(
-                      controller: _tabController,
-                      children: [
-                        HomeScreenLarge(),
-                        const AboutMeScreen(),
-                        SkillsScreen(),
-                        ExperienceScreen(),
-                        ProjectsScreen(),
-                        ContactMeScreen(),
-                      ],
-                    ),
-                  ),
-          ),
-          if (context.isLargeDevice)
-            Positioned(
-              left: _mousePosition.dx - 35,
-              top: _mousePosition.dy - 35,
-              child: IgnorePointer(
-                child: AnimatedContainer(
-                  duration: const Duration(
-                    seconds: 1,
-                  ),
-                  width: 70,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: context.primaryColor.withOpacity(0.8),
-                        spreadRadius: 50,
-                        blurRadius: 100,
+                : Stack(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: context.screenWidth * 0.02,
+                        ),
+                        child: TabBarView(
+                          controller: _tabController,
+                          children: [
+                            HomeScreenLarge(),
+                            const AboutMeScreen(),
+                            SkillsScreen(),
+                            ExperienceScreen(),
+                            ProjectsScreen(),
+                            ContactMeScreen(),
+                          ],
+                        ),
+                      ),
+                      BlocBuilder<ThemeBloc, ThemeState>(
+                        builder: (context, state) {
+                          if (state.showSpotLight) {
+                            return Positioned.fill(
+                              child: MouseRegion(
+                                onHover: (event) {
+                                  setState(() {
+                                    _pointerPosition = event.localPosition;
+                                  });
+                                },
+                                child: CustomPaint(
+                                  painter: SpotlightPainter(
+                                    _pointerPosition,
+                                    context.scaffoldColor,
+                                  ),
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Positioned(
+                              left: _mousePosition.dx - 35,
+                              top: _mousePosition.dy - 35,
+                              child: IgnorePointer(
+                                child: AnimatedContainer(
+                                  duration: const Duration(
+                                    seconds: 1,
+                                  ),
+                                  width: 70,
+                                  height: 70,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: context.primaryColor
+                                            .withOpacity(0.8),
+                                        spreadRadius: 50,
+                                        blurRadius: 100,
+                                      ),
+                                    ],
+                                    // border: Border.all(
+                                    //   color: context.primaryColor,
+                                    // ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                        },
                       ),
                     ],
-                    // border: Border.all(
-                    //   color: context.primaryColor,
-                    // ),
                   ),
-                ),
-              ),
-            ),
+          ),
+          // if (context.isLargeDevice)
+          //   Positioned(
+          //     left: _mousePosition.dx - 35,
+          //     top: _mousePosition.dy - 35,
+          //     child: IgnorePointer(
+          //       child: AnimatedContainer(
+          //         duration: const Duration(
+          //           seconds: 1,
+          //         ),
+          //         width: 70,
+          //         height: 70,
+          //         decoration: BoxDecoration(
+          //           shape: BoxShape.circle,
+          //           boxShadow: [
+          //             BoxShadow(
+          //               color: context.primaryColor.withOpacity(0.8),
+          //               spreadRadius: 50,
+          //               blurRadius: 100,
+          //             ),
+          //           ],
+          //           // border: Border.all(
+          //           //   color: context.primaryColor,
+          //           // ),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
         ],
       ),
     );

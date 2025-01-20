@@ -41,3 +41,8 @@ class UpdateBgColor extends ThemeEvent {
     required this.primaryColor,
   });
 }
+
+class ToggleSpotLight extends ThemeEvent {
+  // final b;
+  ToggleSpotLight();
+}

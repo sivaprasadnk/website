@@ -81,7 +81,7 @@ class ThemeIcon extends StatelessWidget {
       child: Icon(
         Icons.color_lens,
         color: context.primaryColor,
-      ),
-    ).showCursorOnHover;
+      ).showCursorOnHover,
+    );
   }
 }

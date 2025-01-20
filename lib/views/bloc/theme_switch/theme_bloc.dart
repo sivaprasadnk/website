@@ -8,6 +8,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   ThemeBloc() : super(ThemeState()) {
     on<ToggleTheme>(_toggleTheme);
     on<UpdateTheme>(_updateTheme);
+    on<ToggleSpotLight>(_toggleSpotLight);
     // on<GetColorTheme>(_getColorTheme);s
     // on<UpdatePrimaryColor>(_updatePrimaryColor);
     // on<UpdateBgColor>(_updateBgColor);
@@ -318,6 +319,10 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       ),
     );
     emit(state.copyWith(newTheme: newTheme));
+  }
+
+  void _toggleSpotLight(ToggleSpotLight event, Emitter<ThemeState> emit) {
+    emit(state.copyWith(spotLightMode: !state.showSpotLight));
   }
 
 }

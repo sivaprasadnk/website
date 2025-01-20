@@ -6,15 +6,18 @@ import 'package:spnk/utils/theme_list.dart';
 class ThemeState extends Equatable {
   // final bool isDarkTheme;
   final ThemeData themeData;
+  final bool showSpotLight;
   ThemeState({
     // bool? isDarkTheme,
     ThemeData? themeData,
+    this.showSpotLight = false,
   }) : themeData = themeData ?? _getInitialTheme();
 
-  ThemeState copyWith({ThemeData? newTheme}) {
+  ThemeState copyWith({ThemeData? newTheme, bool? spotLightMode}) {
     return ThemeState(
       // isDarkTheme: isDark ?? isDarkTheme,
       themeData: newTheme ?? themeData,
+      showSpotLight: spotLightMode ?? showSpotLight,
     );
   }
 
@@ -22,6 +25,7 @@ class ThemeState extends Equatable {
   List<Object?> get props => [
         // isDarkTheme,
         themeData,
+        showSpotLight,
       ];
 
   static bool _checkForDarkTheme() {
