@@ -15,6 +15,7 @@ dependencies:
   animate_do: ^2.0.0
   # animated_icon: ^0.0.4
   animated_icon: ^0.0.9
+  animated_text_kit: ^4.2.2
   auto_animated: ^3.0.0
   auto_size_text: ^3.0.0
   avatar_glow: ^2.0.2
@@ -40,6 +41,7 @@ dependencies:
   shimmer: ^3.0.0
   # tab_indicator_styler: ^2.0.0
   # universal_html: ^2.0.8
+  typewritertext: ^3.0.9
   url_launcher:
 
 flutter_icons:

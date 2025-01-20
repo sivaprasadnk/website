@@ -6,6 +6,7 @@ import 'package:spnk/views/bloc/about_me/about_me_bloc.dart';
 import 'package:spnk/views/bloc/about_me/about_me_state.dart';
 import 'package:spnk/views/screens/about_me/loading_abt_me_container.dart';
 import 'package:spnk/views/screens/screen_section.dart';
+import 'package:typewritertext/typewritertext.dart';
 
 class AboutMeScreen extends StatelessWidget {
   const AboutMeScreen({super.key});
@@ -22,11 +23,16 @@ class AboutMeScreen extends StatelessWidget {
               width: context.isMobileDevice ? double.infinity : 800,
               child: state.isLoading
                   ? const LoadingAbtMeContainer()
-                  : Text(
-                    state.content,
-                    textAlign: TextAlign.justify,
-                    style: context.displaySmall,
-                  ),
+                  : TypeWriter.text(
+                      state.content,
+                      duration: const Duration(milliseconds: 22),
+                      style: context.displaySmall,
+                    ),
+              // : Text(
+              //   state.content,
+              //   textAlign: TextAlign.justify,
+              //   style: context.displaySmall,
+              // ),
             ),
           );
         },

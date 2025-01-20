@@ -12,6 +12,8 @@ class BottomNavbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final year = DateTime.now().year;
+
     return BlocBuilder<ScreenBloc, ScreenState>(
       builder: (context, state) {
         return AnimatedSwitcher(
@@ -27,6 +29,17 @@ class BottomNavbar extends StatelessWidget {
                         horizontal: context.screenWidth * 0.03,
                         vertical: 5,
                       ),
+                      // child: AnimatedTextKit(
+                      //   repeatForever: true,
+                      //   animatedTexts: [
+                      //     RotateAnimatedText(
+                      //       'Copyright © $year Sivaprasad NK .',
+                      //     ),
+                      //     RotateAnimatedText(
+                      //       'Made with ❤️ in Flutter',
+                      //     ),
+                      //   ],
+                      // ),
                       child: const Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.end,
