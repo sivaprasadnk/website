@@ -65,13 +65,14 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     const Duration duration = Duration(seconds: 1);
+    final width = context.screenWidth;
+    debugPrint("## width :$width");
     List<Widget> menuList = [
-      const TorchIcon(),
-      const SizedBox(width: 16),
+      const SizedBox(width: 32),
       const BrightnessSwitch(),
-      const SizedBox(width: 16),
+      const SizedBox(width: 32),
       const ThemeIcon(),
-      const SizedBox(width: 16),
+      // const SizedBox(width: 16),
       // const ThemeSwitch(),
     ];
     final List<Widget> screenList = Screen.values.map((screen) {
@@ -88,17 +89,20 @@ class _HomeScreenState extends State<HomeScreen>
       ),
       ...screenList,
     ];
-    if (context.isLargeDevice) {
+    if (context.screenWidth > 995) {
       menuList = [
+        const TorchIcon(),
         ...menuList,
         ...tabsList,
       ];
     } else {
       menuList = [
         ...menuList,
-        ...[
-          const MenuIcon(),
-        ],
+        const SizedBox(width: 16),
+        const MenuIcon(),
+        // ...[
+        //   const MenuIcon(),
+        // ],
       ];
     }
     return MouseRegion(
