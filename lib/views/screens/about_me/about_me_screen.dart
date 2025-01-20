@@ -25,6 +25,7 @@ class AboutMeScreen extends StatelessWidget {
                   ? const LoadingAbtMeContainer()
                   : TypeWriter.text(
                       state.content,
+                      textAlign: TextAlign.justify,
                       duration: const Duration(milliseconds: 22),
                       style: context.displaySmall,
                     ),

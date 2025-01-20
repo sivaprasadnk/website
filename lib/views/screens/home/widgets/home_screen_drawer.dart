@@ -19,7 +19,7 @@ class HomeScreenDrawer extends StatelessWidget {
     return Drawer(
       child: Column(
         children: [
-          const SizedBox(height: 35),
+          const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -40,11 +40,11 @@ class HomeScreenDrawer extends StatelessWidget {
               padding: const EdgeInsets.only(top: 30),
               child: Image.asset(
                 'assets/images/exp_icon.png',
-                height: 250,
+                height: 225,
               ),
             ),
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 20),
           SizedBox(
             width: 320,
             child: LiveList(
