@@ -3,14 +3,16 @@ class ProjectDetails {
   List<String> techStackList;
   List<String> descList;
   // String bgAssetPath;
-  String url;
-  bool isWeb;
+  String webUrl;
+  String playStoreUrl;
+  bool isActive;
   ProjectDetails({
     required this.projName,
     required this.techStackList,
     required this.descList,
     // required this.bgAssetPath,
-    required this.url,
-    required this.isWeb,
+    required this.playStoreUrl,
+    required this.webUrl,
+    required this.isActive,
   });
 }

@@ -6,6 +6,7 @@ import 'package:spnk/views/bloc/theme_switch/theme_bloc.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_state.dart';
 import 'package:spnk/views/screens/home/widgets/dark_color_listview.dart';
 import 'package:spnk/views/screens/home/widgets/light_color_listview.dart';
+import 'package:spnk/views/widgets/common_tooltip.dart';
 
 class ThemeIcon extends StatelessWidget {
   const ThemeIcon({super.key});
@@ -78,10 +79,13 @@ class ThemeIcon extends StatelessWidget {
           },
         );
       },
-      child: Icon(
-        Icons.color_lens,
-        color: context.primaryColor,
-      ).showCursorOnHover,
+      child: CommonTooltip(
+        msg: 'Select color themes',
+        child: Icon(
+          Icons.color_lens,
+          color: context.primaryColor,
+        ).showCursorOnHover,
+      ),
     );
   }
 }

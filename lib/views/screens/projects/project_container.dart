@@ -112,7 +112,12 @@ class _ProjectContainerState extends State<ProjectContainer> {
                 alignment: Alignment.bottomRight,
                 child: GestureDetector(
                   onTap: () async {
-                    await launchUrl(Uri.parse(widget.project.url));
+                    // if (defaultTargetPlatform == TargetPlatform.android) {
+                    if (widget.project.playStoreUrl.isNotEmpty) {
+                      await launchUrl(Uri.parse(widget.project.playStoreUrl));
+                    } else {
+                      await launchUrl(Uri.parse(widget.project.webUrl));
+                    }
                   },
                   child: DecoratedBox(
                     decoration: BoxDecoration(

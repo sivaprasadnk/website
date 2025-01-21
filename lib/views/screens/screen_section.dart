@@ -28,7 +28,7 @@ class _ScreenSectionState extends State<ScreenSection>
     // double leftPadding = context.isLargeDevice ? 150 : 20;
     // final double leftPadding = context.screenWidth * 0.1;
     final double padding =
-        context.isLargeDevice ? context.screenWidth * 0.1 : 20;
+        context.isLargeDevice ? context.screenWidth * 0.09 : 20;
     return Container(
       width: context.isMobileDevice ? double.infinity : 600,
       padding: EdgeInsets.only(left: padding, right: padding),
@@ -40,7 +40,6 @@ class _ScreenSectionState extends State<ScreenSection>
             WindowsLargeSectionTitle(
               title: widget.title,
             ),
-            // SizedBox(height: context.isMobileDevice ? 40 : 75),
             widget.details,
           ],
         ),

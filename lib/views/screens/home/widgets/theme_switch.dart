@@ -5,6 +5,7 @@ import 'package:spnk/utils/extensions/widget_extensions.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_bloc.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_event.dart';
 import 'package:spnk/views/bloc/theme_switch/theme_state.dart';
+import 'package:spnk/views/widgets/common_tooltip.dart';
 
 class BrightnessSwitch extends StatelessWidget {
   const BrightnessSwitch({super.key});
@@ -26,15 +27,18 @@ class BrightnessSwitch extends StatelessWidget {
                   ),
                 );
           },
-          child: state.themeData.brightness != Brightness.dark
-              ? Icon(
-                  Icons.dark_mode,
-                  color: context.primaryColor,
-                ).showCursorOnHover
-              : Icon(
-                  Icons.light_mode,
-                  color: context.primaryColor,
-                ).showCursorOnHover,
+          child: CommonTooltip(
+            msg: 'Toggle Brightnesss',
+            child: state.themeData.brightness != Brightness.dark
+                ? Icon(
+                    Icons.dark_mode,
+                    color: context.primaryColor,
+                  ).showCursorOnHover
+                : Icon(
+                    Icons.light_mode,
+                    color: context.primaryColor,
+                  ).showCursorOnHover,
+          ),
         );
       },
     );

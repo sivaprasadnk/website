@@ -87,6 +87,8 @@ class RemoteDataSourceImpl extends RemoteDataSource {
         return Left(
           (resp['data'] as List)
               .map((e) => ProjectDetailsModel.fromJson(e))
+              .toList()
+              .where((project) => project.isActive)
               .toList(),
         );
       } else {

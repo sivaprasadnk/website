@@ -36,13 +36,13 @@ class SocialMediaIconsList extends StatelessWidget {
           //     borderRadius: BorderRadius.circular(10),
           //   ),
           // ),
-          SocialMediaIconItem(
-            icon: FontAwesomeIcons.facebook,
-            url: fbLink,
-            iconColor: normalColor,
-            isMobile: isMobile,
-          ),
-          const SizedBox(width: spacing),
+          // SocialMediaIconItem(
+          //   icon: FontAwesomeIcons.facebook,
+          //   url: fbLink,
+          //   iconColor: normalColor,
+          //   isMobile: isMobile,
+          // ),
+          // const SizedBox(width: spacing),
           SocialMediaIconItem(
             icon: FontAwesomeIcons.instagram,
             url: instaLink,

@@ -38,7 +38,7 @@ class HomeScreenSmall extends StatelessWidget {
                     width: context.screenWidth * 0.8,
                     child: Text(
                       'Flutter Developer and Fitness Enthusiast from Tripunithura, Kerala .',
-                      style: context.displaySmall,
+                      style: context.displaySmall.copyWith(fontSize: 18),
                     ),
                   ),
                 ),
@@ -56,7 +56,7 @@ class HomeScreenSmall extends StatelessWidget {
               children: [
                 Text(
                   "Follow me ",
-                  style: Theme.of(context).textTheme.displaySmall,
+                  style: context.displaySmall,
                 ),
                 const SizedBox(width: 10),
                 const SocialMediaIconsList(),

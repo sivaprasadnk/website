@@ -35,22 +35,20 @@ class HomeScreenDrawer extends StatelessWidget {
               const SizedBox(width: 16),
             ],
           ),
+          // const SizedBox(height: 0),`
           FadeInRightBig(
-            child: Container(
-              padding: const EdgeInsets.only(top: 30),
-              child: Image.asset(
-                'assets/images/exp_icon.png',
-                height: 225,
-              ),
+            child: Image.asset(
+              'assets/images/exp_icon.png',
+              height: 215,
             ),
           ),
-          const SizedBox(height: 20),
+          // const SizedBox(height: 15),
           SizedBox(
             width: 320,
             child: LiveList(
               shrinkWrap: true,
               separatorBuilder: (ctx, _) => const SizedBox(height: 10),
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(15),
               showItemInterval: const Duration(milliseconds: 200),
               itemCount: Screen.values.length,
               itemBuilder: animationItemBuilder((index) {
@@ -71,8 +69,8 @@ class HomeScreenDrawer extends StatelessWidget {
           ),
           const Spacer(),
           const CopyrightText(size: 15),
-          const Spacer(),
-          // const SizedBox(height: 15),
+          // const Spacer(),
+          const SizedBox(height: 25),
         ],
       ),
     );

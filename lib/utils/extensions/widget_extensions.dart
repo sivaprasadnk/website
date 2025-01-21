@@ -18,6 +18,15 @@ extension HoverExtensions on Widget {
     );
   }
 
+  Widget get addBorder {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        border: Border.all(),
+      ),
+      child: this,
+    );
+  }
+
   // Widget get changeColorOnHover(Color color) {
   //   return HoverContainer(child: this);
   // }

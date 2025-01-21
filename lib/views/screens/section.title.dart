@@ -14,8 +14,8 @@ class WindowsLargeSectionTitle extends StatelessWidget {
     return FadeInDown(
       child: Container(
         padding: EdgeInsets.only(
-          top: context.isLargeDevice ? context.screenHeight * 0.15 : 100,
-          bottom: context.isLargeDevice ? 75 : 40,
+          top: context.isLargeDevice ? context.screenHeight * 0.13 : 100,
+          bottom: context.isLargeDevice ? 30 : 40,
         ),
         child: AutoSizeText(
           title,

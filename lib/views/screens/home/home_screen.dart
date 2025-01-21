@@ -105,86 +105,90 @@ class _HomeScreenState extends State<HomeScreen>
         // ],
       ];
     }
-    return MouseRegion(
-      onHover: (PointerHoverEvent event) {
-        setState(() {
-          _mousePosition = event.position;
-        });
-      },
-      child: Stack(
-        children: [
-          Scaffold(
-            // bottomNavigationBar: const FooterText(),
-            // bottomNavigationBar: SlideFadeText(),
-            bottomNavigationBar: const BottomNavbar(),
-            extendBodyBehindAppBar: true,
-            extendBody: true,
-            endDrawer: const HomeScreenDrawer(),
-            appBar: PreferredSize(
-              preferredSize: Size(context.screenWidth * 0.8, 65),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                child: AppBar(
-                  backgroundColor: Colors.transparent,
-                  title: LogoText(
-                    onTap: () {
-                      if (context.isLargeDevice) {
-                        _tabController.animateTo(
-                          0,
-                          duration: duration,
-                        );
-                        // context.read<ThemeBloc>().add(ToggleSpotLight());
-                      } else {
-                        context.read<ScreenBloc>().add(UpdateScreen());
-                      }
-                    },
-                  ),
-                  actions: menuList,
-                ),
-              ),
-            ),
-            body: context.isMobileDevice
-                ? BlocBuilder<ScreenBloc, ScreenState>(
-                    builder: (context, state) {
-                      switch (state.selectedScreen) {
-                        case Screen.home:
-                          return const HomeScreenSmall();
-                        case Screen.contactMe:
-                          return ContactMeScreen();
-                        case Screen.projects:
-                          return ProjectsScreen();
-                        case Screen.experience:
-                          return ExperienceScreen();
-                        case Screen.aboutMe:
-                          return const AboutMeScreen();
-                        case Screen.skills:
-                          return SkillsScreen();
-                      }
-                    },
-                  )
-                : Stack(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: context.screenWidth * 0.02,
-                        ),
-                        child: TabBarView(
-                          controller: _tabController,
-                          children: [
-                            HomeScreenLarge(),
-                            const AboutMeScreen(),
-                            SkillsScreen(),
-                            ExperienceScreen(),
-                            ProjectsScreen(),
-                            ContactMeScreen(),
-                          ],
-                        ),
+    return BlocBuilder<ThemeBloc, ThemeState>(
+      builder: (context, state) {
+        final showSpotLight = state.showSpotLight;
+        return MouseRegion(
+          cursor: showSpotLight ? SystemMouseCursors.none : MouseCursor.defer,
+          onHover: (PointerHoverEvent event) {
+            setState(() {
+              _mousePosition = event.position;
+            });
+          },
+          child: Stack(
+            children: [
+              Scaffold(
+                // bottomNavigationBar: const FooterText(),
+                // bottomNavigationBar: SlideFadeText(),
+                bottomNavigationBar: const BottomNavbar(),
+                extendBodyBehindAppBar: true,
+                extendBody: true,
+                endDrawer: const HomeScreenDrawer(),
+                appBar: PreferredSize(
+                  preferredSize: Size(context.screenWidth * 0.8, 65),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 10,
+                    ),
+                    child: AppBar(
+                      backgroundColor: Colors.transparent,
+                      title: LogoText(
+                        onTap: () {
+                          if (context.isLargeDevice) {
+                            _tabController.animateTo(
+                              0,
+                              duration: duration,
+                            );
+                            // context.read<ThemeBloc>().add(ToggleSpotLight());
+                          } else {
+                            context.read<ScreenBloc>().add(UpdateScreen());
+                          }
+                        },
                       ),
-                      BlocBuilder<ThemeBloc, ThemeState>(
+                      actions: menuList,
+                    ),
+                  ),
+                ),
+                body: context.isMobileDevice
+                    ? BlocBuilder<ScreenBloc, ScreenState>(
                         builder: (context, state) {
-                          if (state.showSpotLight) {
-                            return Positioned.fill(
+                          switch (state.selectedScreen) {
+                            case Screen.home:
+                              return const HomeScreenSmall();
+                            case Screen.contactMe:
+                              return ContactMeScreen();
+                            case Screen.projects:
+                              return ProjectsScreen();
+                            case Screen.experience:
+                              return ExperienceScreen();
+                            case Screen.aboutMe:
+                              return const AboutMeScreen();
+                            case Screen.skills:
+                              return SkillsScreen();
+                          }
+                        },
+                      )
+                    : Stack(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: context.screenWidth * 0.02,
+                            ),
+                            child: TabBarView(
+                              controller: _tabController,
+                              children: [
+                                HomeScreenLarge(),
+                                const AboutMeScreen(),
+                                SkillsScreen(),
+                                ExperienceScreen(),
+                                ProjectsScreen(),
+                                ContactMeScreen(),
+                              ],
+                            ),
+                          ),
+                          if (showSpotLight)
+                            Positioned.fill(
                               child: MouseRegion(
                                 onHover: (event) {
                                   setState(() {
@@ -198,9 +202,9 @@ class _HomeScreenState extends State<HomeScreen>
                                   ),
                                 ),
                               ),
-                            );
-                          } else {
-                            return Positioned(
+                            )
+                          else
+                            Positioned(
                               left: _mousePosition.dx - 35,
                               top: _mousePosition.dy - 35,
                               child: IgnorePointer(
@@ -226,42 +230,42 @@ class _HomeScreenState extends State<HomeScreen>
                                   ),
                                 ),
                               ),
-                            );
-                          }
-                        },
+                            ),
+                          
+                        ],
                       ),
-                    ],
-                  ),
+              ),
+              // if (context.isLargeDevice)
+              //   Positioned(
+              //     left: _mousePosition.dx - 35,
+              //     top: _mousePosition.dy - 35,
+              //     child: IgnorePointer(
+              //       child: AnimatedContainer(
+              //         duration: const Duration(
+              //           seconds: 1,
+              //         ),
+              //         width: 70,
+              //         height: 70,
+              //         decoration: BoxDecoration(
+              //           shape: BoxShape.circle,
+              //           boxShadow: [
+              //             BoxShadow(
+              //               color: context.primaryColor.withOpacity(0.8),
+              //               spreadRadius: 50,
+              //               blurRadius: 100,
+              //             ),
+              //           ],
+              //           // border: Border.all(
+              //           //   color: context.primaryColor,
+              //           // ),
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+            ],
           ),
-          // if (context.isLargeDevice)
-          //   Positioned(
-          //     left: _mousePosition.dx - 35,
-          //     top: _mousePosition.dy - 35,
-          //     child: IgnorePointer(
-          //       child: AnimatedContainer(
-          //         duration: const Duration(
-          //           seconds: 1,
-          //         ),
-          //         width: 70,
-          //         height: 70,
-          //         decoration: BoxDecoration(
-          //           shape: BoxShape.circle,
-          //           boxShadow: [
-          //             BoxShadow(
-          //               color: context.primaryColor.withOpacity(0.8),
-          //               spreadRadius: 50,
-          //               blurRadius: 100,
-          //             ),
-          //           ],
-          //           // border: Border.all(
-          //           //   color: context.primaryColor,
-          //           // ),
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

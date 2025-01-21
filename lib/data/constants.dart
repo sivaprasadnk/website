@@ -7,6 +7,7 @@ import 'package:spnk/utils/string_constants.dart';
 
 List<ProjectDetailsModel> projectList = [
   ProjectDetailsModel(
+    isActive: true,
     // bgAssetPath: quizImageAssetPath,
     projName: 'SP Quiz App',
     techStackList: [
@@ -18,10 +19,11 @@ List<ProjectDetailsModel> projectList = [
       quizStr2,
       quizStr3,
     ],
-    url: spQuizLink,
-    isWeb: false,
+    playStoreUrl: spQuizLink,
+    webUrl: '',
   ),
   ProjectDetailsModel(
+    isActive: true,
     // bgAssetPath: quotesAppImageAssetPath,
     projName: 'SP Quotes App',
     techStackList: [
@@ -33,10 +35,11 @@ List<ProjectDetailsModel> projectList = [
       quotesAppStr2,
       quotesAppStr3,
     ],
-    url: spQuotesLink,
-    isWeb: false,
+    playStoreUrl: spQuotesLink,
+    webUrl: '',
   ),
   ProjectDetailsModel(
+    isActive: true,
     // bgAssetPath: websiteImageAssetPath,
     projName: 'Portfolio WebApp',
     techStackList: [
@@ -50,8 +53,8 @@ List<ProjectDetailsModel> projectList = [
       websiteStr4,
       websiteStr5,
     ],
-    url: websiteLink,
-    isWeb: true,
+    webUrl: websiteLink,
+    playStoreUrl: '',
   ),
 ];
 

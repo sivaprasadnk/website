@@ -6,8 +6,9 @@ class ProjectDetailsModel extends ProjectDetails {
     required super.techStackList,
     required super.descList,
     // required super.bgAssetPath,
-    required super.url,
-    required super.isWeb,
+    required super.playStoreUrl,
+    required super.webUrl,
+    required super.isActive,
   });
 
   factory ProjectDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -16,8 +17,9 @@ class ProjectDetailsModel extends ProjectDetails {
       techStackList:
           (json['tech_stack'] as List).map((e) => e.toString()).toList(),
       descList: (json['desc'] as List).map((e) => e.toString()).toList(),
-      url: json['url'],
-      isWeb: json['is_web'],
+      playStoreUrl: json['playstore_url'],
+      webUrl: json['web_url'],
+      isActive: json['is_active'] == "Y",
     );
   }
 }

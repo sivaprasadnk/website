@@ -6,6 +6,7 @@ import 'package:spnk/views/bloc/about_me/about_me_bloc.dart';
 import 'package:spnk/views/bloc/about_me/about_me_state.dart';
 import 'package:spnk/views/screens/about_me/loading_abt_me_container.dart';
 import 'package:spnk/views/screens/screen_section.dart';
+import 'package:spnk/views/widgets/sample_common_widget.dart';
 import 'package:typewritertext/typewritertext.dart';
 
 class AboutMeScreen extends StatelessWidget {
@@ -13,32 +14,37 @@ class AboutMeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenSection(
-      title: Screen.aboutMe.screenTitle,
-      details: BlocBuilder<AboutMeBloc, AboutMeState>(
-        builder: (context, state) {
-          return SingleChildScrollView(
-            child: SizedBox(
-              // width: context.isMobileDevice ? context.screenWidth - 20 : 600,
-              width: context.isMobileDevice ? double.infinity : 800,
-              child: state.isLoading
-                  ? const LoadingAbtMeContainer()
-                  : TypeWriter.text(
-                      state.content,
-                      textAlign: TextAlign.justify,
-                      duration: const Duration(milliseconds: 22),
-                      style: context.displaySmall,
-                    ),
-              // : Text(
-              //   state.content,
-              //   textAlign: TextAlign.justify,
-              //   style: context.displaySmall,
-              // ),
-            ),
-          );
-        },
+
+    return SampleCommonWidget(
+      data: '',
+      child: ScreenSection(
+        title: Screen.aboutMe.screenTitle,
+        details: BlocBuilder<AboutMeBloc, AboutMeState>(
+          builder: (context, state) {
+            final data = SampleCommonWidget.of(context).data;
+            return SingleChildScrollView(
+              child: SizedBox(
+                // width: context.isMobileDevice ? context.screenWidth - 20 : 600,
+                width: context.isMobileDevice ? double.infinity : 800,
+                child: state.isLoading
+                    ? const LoadingAbtMeContainer()
+                    : TypeWriter.text(
+                        state.content,
+                        textAlign: TextAlign.justify,
+                        duration: const Duration(milliseconds: 22),
+                        style: context.displaySmall,
+                      ),
+                // : Text(
+                //   state.content,
+                //   textAlign: TextAlign.justify,
+                //   style: context.displaySmall,
+                // ),
+              ),
+            );
+          },
+        ),
+        imageName: '',
       ),
-      imageName: '',
     );
   }
 }
